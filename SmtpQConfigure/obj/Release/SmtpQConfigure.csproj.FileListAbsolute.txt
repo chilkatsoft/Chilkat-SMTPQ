@@ -1,0 +1,8 @@
+C:\ckGitHubProjects\Chilkat-SMTPQ\bin\SmtpQConfigure.exe.config
+C:\ckGitHubProjects\Chilkat-SMTPQ\bin\SmtpQConfigure.exe
+C:\ckGitHubProjects\Chilkat-SMTPQ\bin\SmtpQConfigure.pdb
+C:\ckGitHubProjects\Chilkat-SMTPQ\SmtpQConfigure\obj\Release\SmtpQConfigure.Form1.resources
+C:\ckGitHubProjects\Chilkat-SMTPQ\SmtpQConfigure\obj\Release\SmtpQConfigure.Properties.Resources.resources
+C:\ckGitHubProjects\Chilkat-SMTPQ\SmtpQConfigure\obj\Release\SmtpQConfigure.csproj.GenerateResource.Cache
+C:\ckGitHubProjects\Chilkat-SMTPQ\SmtpQConfigure\obj\Release\SmtpQConfigure.exe
+C:\ckGitHubProjects\Chilkat-SMTPQ\SmtpQConfigure\obj\Release\SmtpQConfigure.pdb

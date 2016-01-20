@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="SmtpQConfigure">
+</Property><Property Name="Solution File" Value="C:\ck2000\components\SmtpQConfigure\SmtpQConfigure.sln">
+</Property><Property Name="Date" Value="Monday, July 22, 2013">
+</Property><Property Name="Time" Value="18:44 PM">
+</Property></Properties><Event ErrorLevel="0" Project="SmtpQConfigure" Source="SmtpQConfigure.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="SmtpQConfigure" Source="SmtpQConfigure.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="SmtpQConfigure.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="SmtpQConfigure.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="SmtpQConfigure" Source="SmtpQConfigure.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

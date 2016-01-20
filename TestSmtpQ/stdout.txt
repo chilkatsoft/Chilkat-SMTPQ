@@ -1,0 +1,333 @@
+ChilkatLog:
+  SendQ2:
+    DllDate: Jan 19 2016
+    ChilkatVersion: 9.5.0.56
+    UnlockPrefix: ABCFFF.EM40117
+    Username: CHILKAT13:Matt
+    Architecture: Little Endian; 32-bit
+    Language: Visual C++ 11.0 (32-bit)
+    VerboseLogging: 0
+    createEmailForSending:
+      xSigningAlg: sha1
+      Auto-generating Message-ID
+    --createEmailForSending
+    smtp_from: support@chilkatsoft.com
+    smtp_recipients: admin@chilkatsoft.com
+    SmtpHost: smtp.chilkatsoft.com
+    SmtpPort: 465
+    SmtpSsl: 1
+    StartTLS: 0
+    SmtpQHeaders: x-sendMime: yes
+x-from: support@chilkatsoft.com
+x-bounceAddr: support@chilkatsoft.com
+x-recipients: admin@chilkatsoft.com
+x-smtpPort: qC1tg0CF/1izkNP2L12wSLu681R0df5SUCoSdBGChVA=
+x-smtpHost: NQbQNU4TG/PZuA9erskYtoiMwVIQon7w9M+LQIlGv8I7nV/iIQw9V3XytvUMcj0i
+x-smtpUsername: Q9n0/UP7phZFwerfGzsGw0lT7xxPgo9XnXWUC//yH9lRUp6gf6i/i2KlkhuATAT5
+x-smtpPassword: HiJ1p3Jeyc9/yi+twh2hsBB5/0eZj7mG4I0lbDhbAig=
+x-sendIndividual: yes
+x-startTls: no
+x-ssl: yes
+x-autoGenMsgId: yes
+x-SMTPQ-Version: 9.5.0.56
+    SendQFilename: c:\temp\testSmtpq\queue\e_20160120_180650_ccd235000B5B409EE.eml
+    Successfully wrote .eml to queue directory
+  --SendQ2
+--ChilkatLog
+
+ChilkatLog:
+  SendQ2:
+    DllDate: Jan 19 2016
+    ChilkatVersion: 9.5.0.56
+    UnlockPrefix: ABCFFF.EM40117
+    Username: CHILKAT13:Matt
+    Architecture: Little Endian; 32-bit
+    Language: Visual C++ 11.0 (32-bit)
+    VerboseLogging: 0
+    createEmailForSending:
+      xSigningAlg: sha1
+      Auto-generating Message-ID
+    --createEmailForSending
+    smtp_from: support@chilkatsoft.com
+    smtp_recipients: admin@chilkatsoft.com
+    SmtpHost: smtp.chilkatsoft.com
+    SmtpPort: 465
+    SmtpSsl: 1
+    StartTLS: 0
+    SmtpQHeaders: x-sendMime: yes
+x-from: support@chilkatsoft.com
+x-bounceAddr: support@chilkatsoft.com
+x-recipients: admin@chilkatsoft.com
+x-smtpPort: qC1tg0CF/1izkNP2L12wSLu681R0df5SUCoSdBGChVA=
+x-smtpHost: NQbQNU4TG/PZuA9erskYtoiMwVIQon7w9M+LQIlGv8I7nV/iIQw9V3XytvUMcj0i
+x-smtpUsername: Q9n0/UP7phZFwerfGzsGw0lT7xxPgo9XnXWUC//yH9lRUp6gf6i/i2KlkhuATAT5
+x-smtpPassword: HiJ1p3Jeyc9/yi+twh2hsBB5/0eZj7mG4I0lbDhbAig=
+x-sendIndividual: yes
+x-startTls: no
+x-ssl: yes
+x-autoGenMsgId: yes
+x-SMTPQ-Version: 9.5.0.56
+    SendQFilename: c:\temp\testSmtpq\queue\e_20160120_180650_ccd24400123DB51E7.eml
+    Successfully wrote .eml to queue directory
+  --SendQ2
+--ChilkatLog
+
+ChilkatLog:
+  SendQ2:
+    DllDate: Jan 19 2016
+    ChilkatVersion: 9.5.0.56
+    UnlockPrefix: ABCFFF.EM40117
+    Username: CHILKAT13:Matt
+    Architecture: Little Endian; 32-bit
+    Language: Visual C++ 11.0 (32-bit)
+    VerboseLogging: 0
+    createEmailForSending:
+      xSigningAlg: sha1
+      Auto-generating Message-ID
+    --createEmailForSending
+    smtp_from: support@chilkatsoft.com
+    smtp_recipients: admin@chilkatsoft.com
+    SmtpHost: smtp.chilkatsoft.com
+    SmtpPort: 465
+    SmtpSsl: 1
+    StartTLS: 0
+    SmtpQHeaders: x-sendMime: yes
+x-from: support@chilkatsoft.com
+x-bounceAddr: support@chilkatsoft.com
+x-recipients: admin@chilkatsoft.com
+x-smtpPort: qC1tg0CF/1izkNP2L12wSLu681R0df5SUCoSdBGChVA=
+x-smtpHost: NQbQNU4TG/PZuA9erskYtoiMwVIQon7w9M+LQIlGv8I7nV/iIQw9V3XytvUMcj0i
+x-smtpUsername: Q9n0/UP7phZFwerfGzsGw0lT7xxPgo9XnXWUC//yH9lRUp6gf6i/i2KlkhuATAT5
+x-smtpPassword: HiJ1p3Jeyc9/yi+twh2hsBB5/0eZj7mG4I0lbDhbAig=
+x-sendIndividual: yes
+x-startTls: no
+x-ssl: yes
+x-autoGenMsgId: yes
+x-SMTPQ-Version: 9.5.0.56
+    SendQFilename: c:\temp\testSmtpq\queue\e_20160120_180650_ccd244002D4998879.eml
+    Successfully wrote .eml to queue directory
+  --SendQ2
+--ChilkatLog
+
+ChilkatLog:
+  SendQ2:
+    DllDate: Jan 19 2016
+    ChilkatVersion: 9.5.0.56
+    UnlockPrefix: ABCFFF.EM40117
+    Username: CHILKAT13:Matt
+    Architecture: Little Endian; 32-bit
+    Language: Visual C++ 11.0 (32-bit)
+    VerboseLogging: 0
+    createEmailForSending:
+      xSigningAlg: sha1
+      Auto-generating Message-ID
+    --createEmailForSending
+    smtp_from: support@chilkatsoft.com
+    smtp_recipients: admin@chilkatsoft.com
+    SmtpHost: smtp.chilkatsoft.com
+    SmtpPort: 465
+    SmtpSsl: 1
+    StartTLS: 0
+    SmtpQHeaders: x-sendMime: yes
+x-from: support@chilkatsoft.com
+x-bounceAddr: support@chilkatsoft.com
+x-recipients: admin@chilkatsoft.com
+x-smtpPort: qC1tg0CF/1izkNP2L12wSLu681R0df5SUCoSdBGChVA=
+x-smtpHost: NQbQNU4TG/PZuA9erskYtoiMwVIQon7w9M+LQIlGv8I7nV/iIQw9V3XytvUMcj0i
+x-smtpUsername: Q9n0/UP7phZFwerfGzsGw0lT7xxPgo9XnXWUC//yH9lRUp6gf6i/i2KlkhuATAT5
+x-smtpPassword: HiJ1p3Jeyc9/yi+twh2hsBB5/0eZj7mG4I0lbDhbAig=
+x-sendIndividual: yes
+x-startTls: no
+x-ssl: yes
+x-autoGenMsgId: yes
+x-SMTPQ-Version: 9.5.0.56
+    SendQFilename: c:\temp\testSmtpq\queue\e_20160120_180650_ccd244003580592D4.eml
+    Successfully wrote .eml to queue directory
+  --SendQ2
+--ChilkatLog
+
+ChilkatLog:
+  SendQ2:
+    DllDate: Jan 19 2016
+    ChilkatVersion: 9.5.0.56
+    UnlockPrefix: ABCFFF.EM40117
+    Username: CHILKAT13:Matt
+    Architecture: Little Endian; 32-bit
+    Language: Visual C++ 11.0 (32-bit)
+    VerboseLogging: 0
+    createEmailForSending:
+      xSigningAlg: sha1
+      Auto-generating Message-ID
+    --createEmailForSending
+    smtp_from: support@chilkatsoft.com
+    smtp_recipients: admin@chilkatsoft.com
+    SmtpHost: smtp.chilkatsoft.com
+    SmtpPort: 465
+    SmtpSsl: 1
+    StartTLS: 0
+    SmtpQHeaders: x-sendMime: yes
+x-from: support@chilkatsoft.com
+x-bounceAddr: support@chilkatsoft.com
+x-recipients: admin@chilkatsoft.com
+x-smtpPort: qC1tg0CF/1izkNP2L12wSLu681R0df5SUCoSdBGChVA=
+x-smtpHost: NQbQNU4TG/PZuA9erskYtoiMwVIQon7w9M+LQIlGv8I7nV/iIQw9V3XytvUMcj0i
+x-smtpUsername: Q9n0/UP7phZFwerfGzsGw0lT7xxPgo9XnXWUC//yH9lRUp6gf6i/i2KlkhuATAT5
+x-smtpPassword: HiJ1p3Jeyc9/yi+twh2hsBB5/0eZj7mG4I0lbDhbAig=
+x-sendIndividual: yes
+x-startTls: no
+x-ssl: yes
+x-autoGenMsgId: yes
+x-SMTPQ-Version: 9.5.0.56
+    SendQFilename: c:\temp\testSmtpq\queue\e_20160120_180650_ccd254004B18482F6.eml
+    Successfully wrote .eml to queue directory
+  --SendQ2
+--ChilkatLog
+
+ChilkatLog:
+  SendQ2:
+    DllDate: Jan 19 2016
+    ChilkatVersion: 9.5.0.56
+    UnlockPrefix: ABCFFF.EM40117
+    Username: CHILKAT13:Matt
+    Architecture: Little Endian; 32-bit
+    Language: Visual C++ 11.0 (32-bit)
+    VerboseLogging: 0
+    createEmailForSending:
+      xSigningAlg: sha1
+      Auto-generating Message-ID
+    --createEmailForSending
+    smtp_from: support@chilkatsoft.com
+    smtp_recipients: admin@chilkatsoft.com
+    SmtpHost: smtp.chilkatsoft.com
+    SmtpPort: 465
+    SmtpSsl: 1
+    StartTLS: 0
+    SmtpQHeaders: x-sendMime: yes
+x-from: support@chilkatsoft.com
+x-bounceAddr: support@chilkatsoft.com
+x-recipients: admin@chilkatsoft.com
+x-smtpPort: qC1tg0CF/1izkNP2L12wSLu681R0df5SUCoSdBGChVA=
+x-smtpHost: NQbQNU4TG/PZuA9erskYtoiMwVIQon7w9M+LQIlGv8I7nV/iIQw9V3XytvUMcj0i
+x-smtpUsername: Q9n0/UP7phZFwerfGzsGw0lT7xxPgo9XnXWUC//yH9lRUp6gf6i/i2KlkhuATAT5
+x-smtpPassword: HiJ1p3Jeyc9/yi+twh2hsBB5/0eZj7mG4I0lbDhbAig=
+x-sendIndividual: yes
+x-startTls: no
+x-ssl: yes
+x-autoGenMsgId: yes
+x-SMTPQ-Version: 9.5.0.56
+    SendQFilename: c:\temp\testSmtpq\queue\e_20160120_180650_ccd2540056617343A.eml
+    Successfully wrote .eml to queue directory
+  --SendQ2
+--ChilkatLog
+
+ChilkatLog:
+  SendQ2:
+    DllDate: Jan 19 2016
+    ChilkatVersion: 9.5.0.56
+    UnlockPrefix: ABCFFF.EM40117
+    Username: CHILKAT13:Matt
+    Architecture: Little Endian; 32-bit
+    Language: Visual C++ 11.0 (32-bit)
+    VerboseLogging: 0
+    createEmailForSending:
+      xSigningAlg: sha1
+      Auto-generating Message-ID
+    --createEmailForSending
+    smtp_from: support@chilkatsoft.com
+    smtp_recipients: admin@chilkatsoft.com
+    SmtpHost: smtp.chilkatsoft.com
+    SmtpPort: 465
+    SmtpSsl: 1
+    StartTLS: 0
+    SmtpQHeaders: x-sendMime: yes
+x-from: support@chilkatsoft.com
+x-bounceAddr: support@chilkatsoft.com
+x-recipients: admin@chilkatsoft.com
+x-smtpPort: qC1tg0CF/1izkNP2L12wSLu681R0df5SUCoSdBGChVA=
+x-smtpHost: NQbQNU4TG/PZuA9erskYtoiMwVIQon7w9M+LQIlGv8I7nV/iIQw9V3XytvUMcj0i
+x-smtpUsername: Q9n0/UP7phZFwerfGzsGw0lT7xxPgo9XnXWUC//yH9lRUp6gf6i/i2KlkhuATAT5
+x-smtpPassword: HiJ1p3Jeyc9/yi+twh2hsBB5/0eZj7mG4I0lbDhbAig=
+x-sendIndividual: yes
+x-startTls: no
+x-ssl: yes
+x-autoGenMsgId: yes
+x-SMTPQ-Version: 9.5.0.56
+    SendQFilename: c:\temp\testSmtpq\queue\e_20160120_180650_ccd254006642F4303.eml
+    Successfully wrote .eml to queue directory
+  --SendQ2
+--ChilkatLog
+
+ChilkatLog:
+  SendQ2:
+    DllDate: Jan 19 2016
+    ChilkatVersion: 9.5.0.56
+    UnlockPrefix: ABCFFF.EM40117
+    Username: CHILKAT13:Matt
+    Architecture: Little Endian; 32-bit
+    Language: Visual C++ 11.0 (32-bit)
+    VerboseLogging: 0
+    createEmailForSending:
+      xSigningAlg: sha1
+      Auto-generating Message-ID
+    --createEmailForSending
+    smtp_from: support@chilkatsoft.com
+    smtp_recipients: admin@chilkatsoft.com
+    SmtpHost: smtp.chilkatsoft.com
+    SmtpPort: 465
+    SmtpSsl: 1
+    StartTLS: 0
+    SmtpQHeaders: x-sendMime: yes
+x-from: support@chilkatsoft.com
+x-bounceAddr: support@chilkatsoft.com
+x-recipients: admin@chilkatsoft.com
+x-smtpPort: qC1tg0CF/1izkNP2L12wSLu681R0df5SUCoSdBGChVA=
+x-smtpHost: NQbQNU4TG/PZuA9erskYtoiMwVIQon7w9M+LQIlGv8I7nV/iIQw9V3XytvUMcj0i
+x-smtpUsername: Q9n0/UP7phZFwerfGzsGw0lT7xxPgo9XnXWUC//yH9lRUp6gf6i/i2KlkhuATAT5
+x-smtpPassword: HiJ1p3Jeyc9/yi+twh2hsBB5/0eZj7mG4I0lbDhbAig=
+x-sendIndividual: yes
+x-startTls: no
+x-ssl: yes
+x-autoGenMsgId: yes
+x-SMTPQ-Version: 9.5.0.56
+    SendQFilename: c:\temp\testSmtpq\queue\e_20160120_180650_ccd263007BBEF1E91.eml
+    Successfully wrote .eml to queue directory
+  --SendQ2
+--ChilkatLog
+
+ChilkatLog:
+  SendQ2:
+    DllDate: Jan 19 2016
+    ChilkatVersion: 9.5.0.56
+    UnlockPrefix: ABCFFF.EM40117
+    Username: CHILKAT13:Matt
+    Architecture: Little Endian; 32-bit
+    Language: Visual C++ 11.0 (32-bit)
+    VerboseLogging: 0
+    createEmailForSending:
+      xSigningAlg: sha1
+      Auto-generating Message-ID
+    --createEmailForSending
+    smtp_from: support@chilkatsoft.com
+    smtp_recipients: admin@chilkatsoft.com
+    SmtpHost: smtp.chilkatsoft.com
+    SmtpPort: 465
+    SmtpSsl: 1
+    StartTLS: 0
+    SmtpQHeaders: x-sendMime: yes
+x-from: support@chilkatsoft.com
+x-bounceAddr: support@chilkatsoft.com
+x-recipients: admin@chilkatsoft.com
+x-smtpPort: qC1tg0CF/1izkNP2L12wSLu681R0df5SUCoSdBGChVA=
+x-smtpHost: NQbQNU4TG/PZuA9erskYtoiMwVIQon7w9M+LQIlGv8I7nV/iIQw9V3XytvUMcj0i
+x-smtpUsername: Q9n0/UP7phZFwerfGzsGw0lT7xxPgo9XnXWUC//yH9lRUp6gf6i/i2KlkhuATAT5
+x-smtpPassword: HiJ1p3Jeyc9/yi+twh2hsBB5/0eZj7mG4I0lbDhbAig=
+x-sendIndividual: yes
+x-startTls: no
+x-ssl: yes
+x-autoGenMsgId: yes
+x-SMTPQ-Version: 9.5.0.56
+    SendQFilename: c:\temp\testSmtpq\queue\e_20160120_180650_ccd263008D52CF661.eml
+    Successfully wrote .eml to queue directory
+  --SendQ2
+--ChilkatLog
+
