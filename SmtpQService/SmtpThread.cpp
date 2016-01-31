@@ -76,14 +76,15 @@ bool SmtpThread::sendEmail(bool &bFailureIsFinal)
 	logNameValue("SendMimeBytes",errText);
 
 	// We can retry from some errors...
-	CkString failReason;
-	m_mailman->get_SmtpFailReason(failReason);
-	if (failReason.equals("Timeout") ||
-	    failReason.equals("ConnectionLost") ||
-	    failReason.equals("FromFailure") ||
-	    failReason.equals("DataFailure") ||
-	    failReason.equals("GreetingError") ||	    
-	    failReason.equals("ConnectFailed"))
+	string failReason = m_mailman->smtpFailReason();
+	logNameValue("SmtpFailReason",failReason);
+
+	if (failReason == "Timeout" ||
+	    failReason == "ConnectionLost" ||
+	    failReason == "FromFailure" ||
+	    failReason == "DataFailure" ||
+	    failReason == "GreetingError" ||	    
+	    failReason == "ConnectFailed")
 	    {
 	    bFailureIsFinal = false;
 	    }
