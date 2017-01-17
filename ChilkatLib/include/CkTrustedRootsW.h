@@ -10,7 +10,7 @@
 #include "chilkatDefs.h"
 
 #include "CkString.h"
-#include "CkWideCharBase.h"
+#include "CkClassWithCallbacksW.h"
 
 class CkCertW;
 class CkJavaKeyStoreW;
@@ -25,11 +25,10 @@ class CkBaseProgressW;
  
 
 // CLASS: CkTrustedRootsW
-class CK_VISIBLE_PUBLIC CkTrustedRootsW  : public CkWideCharBase
+class CK_VISIBLE_PUBLIC CkTrustedRootsW  : public CkClassWithCallbacksW
 {
     private:
 	bool m_cbOwned;
-	void *m_eventCallback;
 
 	// Don't allow assignment or copying these objects.
 	CkTrustedRootsW(const CkTrustedRootsW &);

@@ -80,16 +80,16 @@ class CK_VISIBLE_PUBLIC CkDhW  : public CkWideCharBase
 	// The 2nd and final step in Diffie-Hellman (DH) key exchange. E is the E
 	// created by the other party. Returns the shared secret (K) as an SSH1-format
 	// bignum encoded as a hex string.
-	bool FindK(const wchar_t *e, CkString &outStr);
+	bool FindK(const wchar_t *E, CkString &outStr);
 	// The 2nd and final step in Diffie-Hellman (DH) key exchange. E is the E
 	// created by the other party. Returns the shared secret (K) as an SSH1-format
 	// bignum encoded as a hex string.
-	const wchar_t *findK(const wchar_t *e);
+	const wchar_t *findK(const wchar_t *E);
 
-	// Generates a large safe prime that is numBits bits in size using the generator  G.
+	// Generates a large safe prime that is numBits bits in size using the generator G.
 	// Generating a new (random) P is expensive in both time and CPU cycles. A prime
 	// should be 1024 or more bits in length.
-	bool GenPG(int numBits, int g);
+	bool GenPG(int numBits, int G);
 
 	// Sets explicit values for P and G. Returns true if P and G conform to the
 	// requirements for Diffie-Hellman. P is an SSH1-format bignum passed as a

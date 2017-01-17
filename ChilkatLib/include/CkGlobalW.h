@@ -161,6 +161,13 @@ class CK_VISIBLE_PUBLIC CkGlobalW  : public CkWideCharBase
 	// and each of the pool worker threads for logging async activity.
 	void put_ThreadPoolLogPath(const wchar_t *newVal);
 
+	// Indicates the unlocked status for the last call to UnlockBundle, or any
+	// UnlockComponent call. The possible values are:
+	//     Not unlocked. (Still in locked state.)
+	//     Unlocked with in fully-functional trial mode.
+	//     Unlocked using a valid purchased unlock code.
+	int get_UnlockStatus(void);
+
 
 
 	// ----------------------
@@ -169,10 +176,16 @@ class CK_VISIBLE_PUBLIC CkGlobalW  : public CkWideCharBase
 	// Clears the global DNS cache.
 	bool DnsClearCache(void);
 
+	// Called to stop and finalize all threads in the thread pool. Once the thread pool
+	// is finalized, it may not be used again. This method would only be called at the
+	// end of a program prior to exiting. Most applications, even if using async
+	// functionality, should not need to explicitly finalize the thread pool.
+	bool FinalizeThreadPool(void);
+
 	// Unlocks the entire Chilkat API for all classes. This should be called once at
 	// the beginning of a program. Once unlocked, objects of any Chilkat class may be
 	// instantiated and used. To unlock in fully-functional 30-day trial mode, pass any
-	// string, such as "Hello", in ARG1. If a license is purchased, then replace the
+	// string, such as "Hello", in bundleUnlockCode. If a license is purchased, then replace the
 	// "Hello" with the purchased unlock code.
 	// 
 	// After calling UnlockComponent once, the instance of the CLASS_NAME object may be
@@ -186,12 +199,6 @@ class CK_VISIBLE_PUBLIC CkGlobalW  : public CkWideCharBase
 	// instead.
 	// 
 	bool UnlockBundle(const wchar_t *bundleUnlockCode);
-
-	// Called to stop and finalize all threads in the thread pool. Once the thread pool
-	// is finalized, it may not be used again. This method would only be called at the
-	// end of a program prior to exiting. Most applications, even if using async
-	// functionality, should not need to explicitly finalize the thread pool.
-	bool FinalizeThreadPool(void);
 
 
 

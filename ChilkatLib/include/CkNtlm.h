@@ -24,7 +24,6 @@
 class CK_VISIBLE_PUBLIC CkNtlm  : public CkMultiByteBase
 {
     private:
-	
 
 	// Don't allow assignment or copying these objects.
 	CkNtlm(const CkNtlm &);
@@ -560,7 +559,8 @@ class CK_VISIBLE_PUBLIC CkNtlm  : public CkMultiByteBase
 	bool SetFlag(const char *flagLetter, bool onOrOff);
 
 
-	// To be documented soon.
+	// Unlocks the component. This must be called once prior to calling any other
+	// method.
 	bool UnlockComponent(const char *unlockCode);
 
 

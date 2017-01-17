@@ -77,7 +77,7 @@ class CK_VISIBLE_PUBLIC CkCertChainW  : public CkWideCharBase
 	CkCertW *GetCert(int index);
 
 	// Returns true if the root of the certificate chain is a certificate found in
-	// ARG1.
+	// trustedRoots.
 	bool IsRootTrusted(CkTrustedRootsW &trustedRoots);
 
 	// Verifies the certificate signatures to the root. Returns true if all

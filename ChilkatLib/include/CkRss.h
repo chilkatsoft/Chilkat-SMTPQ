@@ -10,7 +10,7 @@
 #include "chilkatDefs.h"
 
 #include "CkString.h"
-#include "CkMultiByteBase.h"
+#include "CkClassWithCallbacks.h"
 
 class CkTask;
 class CkBaseProgress;
@@ -23,10 +23,9 @@ class CkBaseProgress;
  
 
 // CLASS: CkRss
-class CK_VISIBLE_PUBLIC CkRss  : public CkMultiByteBase
+class CK_VISIBLE_PUBLIC CkRss  : public CkClassWithCallbacks
 {
     private:
-	void *m_eventCallback;
 
 	// Don't allow assignment or copying these objects.
 	CkRss(const CkRss &);
@@ -152,7 +151,7 @@ class CK_VISIBLE_PUBLIC CkRss  : public CkMultiByteBase
 
 
 	// Load an RSS document from a file.
-	bool LoadRssFile(const char *filename);
+	bool LoadRssFile(const char *filePath);
 
 
 	// Loads an RSS feed document from an in-memory string.

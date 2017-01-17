@@ -223,7 +223,7 @@ class CK_VISIBLE_PUBLIC CkDsaW  : public CkWideCharBase
 	bool SaveText(const wchar_t *strToSave, const wchar_t *path);
 
 	// Provides a way to set the Hash property by passing an encoded string. The encoding
-	// can be "hex" or "base64". The  encodedHash contains the encoded bytes of the hash that
+	// can be "hex" or "base64". The encodedHash contains the encoded bytes of the hash that
 	// will be signed or verified via the SignHash and Verify methods.
 	bool SetEncodedHash(const wchar_t *encoding, const wchar_t *encodedHash);
 
@@ -236,19 +236,19 @@ class CK_VISIBLE_PUBLIC CkDsaW  : public CkWideCharBase
 	// Sets the bytes of the Signature property by providing the R and S values in
 	// encoded form. (The signature must be specified prior to calling the Verify
 	// method.) The R and S values may be set via a hex or base64 encoded string. The
-	// ARG1 should be set to either "hex" or "base64".
+	// encoding should be set to either "hex" or "base64".
 	bool SetEncodedSignatureRS(const wchar_t *encoding, const wchar_t *encodedR, const wchar_t *encodedS);
 
-	// Sets the DSA object's private key from explicitly provided  pHex,  qHex,  gHex, and
-	//  xHex values. The groupSizeInBytes specifies the group size (in bytes). It is typically equal
+	// Sets the DSA object's private key from explicitly provided pHex, qHex, gHex, and
+	// xHex values. The groupSizeInBytes specifies the group size (in bytes). It is typically equal
 	// to 20, which is the length of the underlying hash function (SHA-1) for signing.
-	// The  pHex,  qHex,  gHex, and  xHex values are hex-encoded SSH1-format bignums.
+	// The pHex, qHex, gHex, and xHex values are hex-encoded SSH1-format bignums.
 	bool SetKeyExplicit(int groupSizeInBytes, const wchar_t *pHex, const wchar_t *qHex, const wchar_t *gHex, const wchar_t *xHex);
 
-	// Sets the DSA object's private key from explicitly provided  pHex,  qHex,  gHex, and
-	//  yHex values. The groupSizeInBytes specifies the group size (in bytes). It is typically equal
+	// Sets the DSA object's private key from explicitly provided pHex, qHex, gHex, and
+	// yHex values. The groupSizeInBytes specifies the group size (in bytes). It is typically equal
 	// to 20, which is the length of the underlying hash function (SHA-1) for signing.
-	// The  pHex,  qHex,  gHex, and  yHex values are hex-encoded SSH1-format bignums.
+	// The pHex, qHex, gHex, and yHex values are hex-encoded SSH1-format bignums.
 	bool SetPubKeyExplicit(int groupSizeInBytes, const wchar_t *pHex, const wchar_t *qHex, const wchar_t *gHex, const wchar_t *yHex);
 
 	// Signs a hash using the digital signature algorithm. Before calling this method,

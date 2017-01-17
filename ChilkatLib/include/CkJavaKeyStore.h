@@ -31,7 +31,6 @@ class CkXmlCertVault;
 class CK_VISIBLE_PUBLIC CkJavaKeyStore  : public CkMultiByteBase
 {
     private:
-	
 
 	// Don't allow assignment or copying these objects.
 	CkJavaKeyStore(const CkJavaKeyStore &);
@@ -215,44 +214,44 @@ class CK_VISIBLE_PUBLIC CkJavaKeyStore  : public CkMultiByteBase
 
 
 	// Unlocks the component allowing for the full functionality to be used. If a
-	// permanent (purchased) unlock code is passed, there is no expiration. Any other
-	// string automatically begins a fully-functional 30-day trial the first time
+	// purchased unlock code is passed, there is no expiration. Any other string
+	// automatically begins a fully-functional 30-day trial the first time
 	// UnlockComponent is called.
 	bool LoadFile(const char *password, const char *path);
 
 
 	// Removes the Nth trusted certificate or private key entry from the keystore. The
-	// ARG1 indicates whether it is a trusted root or private key entry (1 = trusted
+	// entryType indicates whether it is a trusted root or private key entry (1 = trusted
 	// certificate entry, 2 = private key entry). The 1st entry is at index 0.
 	bool RemoveEntry(int entryType, int index);
 
 
-	// Sets the alias name for a trusted certificate or private key entry. The ARG1
+	// Sets the alias name for a trusted certificate or private key entry. The entryType
 	// indicates whether it is a trusted root or private key entry (1 = trusted
 	// certificate entry, 2 = private key entry). The 1st entry is at index 0.
 	bool SetAlias(int entryType, int index, const char *alias);
 
 
-	// Writes the key store to in-memory bytes. The ARG1 is used for the keyed hash of
+	// Writes the key store to in-memory bytes. The password is used for the keyed hash of
 	// the entire JKS file. (Each private key within the file may use different
 	// passwords, and these are provided when the private key is added via the
 	// AddPrivateKey method.)
 	bool ToBinary(const char *password, CkByteData &outBytes);
 
 
-	// Writes the key store to an encoded string. The ARG2 can be any encoding such as
-	// "base64" or "hex". The ARG1 is used for the keyed hash of the entire JKS file.
+	// Writes the key store to an encoded string. The encoding can be any encoding such as
+	// "base64" or "hex". The password is used for the keyed hash of the entire JKS file.
 	// (Each private key within the file may use different passwords, and these are
 	// provided when the private key is added via the AddPrivateKey method.)
 	bool ToEncodedString(const char *password, const char *encoding, CkString &outStr);
 
-	// Writes the key store to an encoded string. The ARG2 can be any encoding such as
-	// "base64" or "hex". The ARG1 is used for the keyed hash of the entire JKS file.
+	// Writes the key store to an encoded string. The encoding can be any encoding such as
+	// "base64" or "hex". The password is used for the keyed hash of the entire JKS file.
 	// (Each private key within the file may use different passwords, and these are
 	// provided when the private key is added via the AddPrivateKey method.)
 	const char *toEncodedString(const char *password, const char *encoding);
 
-	// Writes the key store to a file. The ARG1 is used for the keyed hash of the
+	// Writes the key store to a file. The password is used for the keyed hash of the
 	// entire JKS file. (Each private key within the file may use different passwords,
 	// and these are provided when the private key is added via the AddPrivateKey
 	// method.)
@@ -270,8 +269,8 @@ class CK_VISIBLE_PUBLIC CkJavaKeyStore  : public CkMultiByteBase
 
 
 	// Unlocks the component allowing for the full functionality to be used. If a
-	// permanent (purchased) unlock code is passed, there is no expiration. Any other
-	// string automatically begins a fully-functional 30-day trial the first time
+	// purchased unlock code is passed, there is no expiration. Any other string
+	// automatically begins a fully-functional 30-day trial the first time
 	// UnlockComponent is called.
 	bool UnlockComponent(const char *unlockCode);
 

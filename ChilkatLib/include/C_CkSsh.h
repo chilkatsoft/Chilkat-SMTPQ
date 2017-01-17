@@ -1,12 +1,20 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.65
 #ifndef _C_CkSsh_H
 #define _C_CkSsh_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
+CK_VISIBLE_PUBLIC void CkSsh_setAbortCheck(HCkSsh cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkSsh_setPercentDone(HCkSsh cHandle, BOOL (*fnPercentDone)(int pctDone));
+CK_VISIBLE_PUBLIC void CkSsh_setProgressInfo(HCkSsh cHandle, void (*fnProgressInfo)(const char *name, const char *value));
+CK_VISIBLE_PUBLIC void CkSsh_setTaskCompleted(HCkSsh cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
 CK_VISIBLE_PUBLIC HCkSsh CkSsh_Create(void);
 CK_VISIBLE_PUBLIC void CkSsh_Dispose(HCkSsh handle);
+CK_VISIBLE_PUBLIC BOOL CkSsh_getAbortCurrent(HCkSsh cHandle);
+CK_VISIBLE_PUBLIC void CkSsh_putAbortCurrent(HCkSsh cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkSsh_getAuthFailReason(HCkSsh cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSsh_getCaretControl(HCkSsh cHandle);
 CK_VISIBLE_PUBLIC void CkSsh_putCaretControl(HCkSsh cHandle, BOOL newVal);
@@ -27,6 +35,8 @@ CK_VISIBLE_PUBLIC const char *CkSsh_debugLogFilePath(HCkSsh cHandle);
 CK_VISIBLE_PUBLIC int CkSsh_getDisconnectCode(HCkSsh cHandle);
 CK_VISIBLE_PUBLIC void CkSsh_getDisconnectReason(HCkSsh cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkSsh_disconnectReason(HCkSsh cHandle);
+CK_VISIBLE_PUBLIC BOOL CkSsh_getEnableCompression(HCkSsh cHandle);
+CK_VISIBLE_PUBLIC void CkSsh_putEnableCompression(HCkSsh cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkSsh_getForceCipher(HCkSsh cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkSsh_putForceCipher(HCkSsh cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkSsh_forceCipher(HCkSsh cHandle);
@@ -80,10 +90,6 @@ CK_VISIBLE_PUBLIC void CkSsh_putReqExecCharset(HCkSsh cHandle, const char *newVa
 CK_VISIBLE_PUBLIC const char *CkSsh_reqExecCharset(HCkSsh cHandle);
 CK_VISIBLE_PUBLIC void CkSsh_getSessionLog(HCkSsh cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkSsh_sessionLog(HCkSsh cHandle);
-CK_VISIBLE_PUBLIC int CkSsh_getSoRcvBuf(HCkSsh cHandle);
-CK_VISIBLE_PUBLIC void CkSsh_putSoRcvBuf(HCkSsh cHandle, int newVal);
-CK_VISIBLE_PUBLIC int CkSsh_getSoSndBuf(HCkSsh cHandle);
-CK_VISIBLE_PUBLIC void CkSsh_putSoSndBuf(HCkSsh cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkSsh_getSocksHostname(HCkSsh cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkSsh_putSocksHostname(HCkSsh cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkSsh_socksHostname(HCkSsh cHandle);
@@ -97,6 +103,10 @@ CK_VISIBLE_PUBLIC void CkSsh_putSocksUsername(HCkSsh cHandle, const char *newVal
 CK_VISIBLE_PUBLIC const char *CkSsh_socksUsername(HCkSsh cHandle);
 CK_VISIBLE_PUBLIC int CkSsh_getSocksVersion(HCkSsh cHandle);
 CK_VISIBLE_PUBLIC void CkSsh_putSocksVersion(HCkSsh cHandle, int newVal);
+CK_VISIBLE_PUBLIC int CkSsh_getSoRcvBuf(HCkSsh cHandle);
+CK_VISIBLE_PUBLIC void CkSsh_putSoRcvBuf(HCkSsh cHandle, int newVal);
+CK_VISIBLE_PUBLIC int CkSsh_getSoSndBuf(HCkSsh cHandle);
+CK_VISIBLE_PUBLIC void CkSsh_putSoSndBuf(HCkSsh cHandle, int newVal);
 CK_VISIBLE_PUBLIC BOOL CkSsh_getStderrToStdout(HCkSsh cHandle);
 CK_VISIBLE_PUBLIC void CkSsh_putStderrToStdout(HCkSsh cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkSsh_getTcpNoDelay(HCkSsh cHandle);
@@ -125,15 +135,15 @@ CK_VISIBLE_PUBLIC int CkSsh_ChannelReadAndPoll(HCkSsh cHandle, int channelNum, i
 CK_VISIBLE_PUBLIC HCkTask CkSsh_ChannelReadAndPollAsync(HCkSsh cHandle, int channelNum, int pollTimeoutMs);
 CK_VISIBLE_PUBLIC int CkSsh_ChannelReadAndPoll2(HCkSsh cHandle, int channelNum, int pollTimeoutMs, int maxNumBytes);
 CK_VISIBLE_PUBLIC HCkTask CkSsh_ChannelReadAndPoll2Async(HCkSsh cHandle, int channelNum, int pollTimeoutMs, int maxNumBytes);
+CK_VISIBLE_PUBLIC BOOL CkSsh_ChannelReceivedClose(HCkSsh cHandle, int channelNum);
+CK_VISIBLE_PUBLIC BOOL CkSsh_ChannelReceivedEof(HCkSsh cHandle, int channelNum);
+CK_VISIBLE_PUBLIC BOOL CkSsh_ChannelReceivedExitStatus(HCkSsh cHandle, int channelNum);
 CK_VISIBLE_PUBLIC BOOL CkSsh_ChannelReceiveToClose(HCkSsh cHandle, int channelNum);
 CK_VISIBLE_PUBLIC HCkTask CkSsh_ChannelReceiveToCloseAsync(HCkSsh cHandle, int channelNum);
 CK_VISIBLE_PUBLIC BOOL CkSsh_ChannelReceiveUntilMatch(HCkSsh cHandle, int channelNum, const char *matchPattern, const char *charset, BOOL caseSensitive);
 CK_VISIBLE_PUBLIC HCkTask CkSsh_ChannelReceiveUntilMatchAsync(HCkSsh cHandle, int channelNum, const char *matchPattern, const char *charset, BOOL caseSensitive);
 CK_VISIBLE_PUBLIC BOOL CkSsh_ChannelReceiveUntilMatchN(HCkSsh cHandle, int channelNum, HCkStringArray matchPatterns, const char *charset, BOOL caseSensitive);
 CK_VISIBLE_PUBLIC HCkTask CkSsh_ChannelReceiveUntilMatchNAsync(HCkSsh cHandle, int channelNum, HCkStringArray matchPatterns, const char *charset, BOOL caseSensitive);
-CK_VISIBLE_PUBLIC BOOL CkSsh_ChannelReceivedClose(HCkSsh cHandle, int channelNum);
-CK_VISIBLE_PUBLIC BOOL CkSsh_ChannelReceivedEof(HCkSsh cHandle, int channelNum);
-CK_VISIBLE_PUBLIC BOOL CkSsh_ChannelReceivedExitStatus(HCkSsh cHandle, int channelNum);
 CK_VISIBLE_PUBLIC void CkSsh_ChannelRelease(HCkSsh cHandle, int channelNum);
 CK_VISIBLE_PUBLIC BOOL CkSsh_ChannelSendClose(HCkSsh cHandle, int channelNum);
 CK_VISIBLE_PUBLIC HCkTask CkSsh_ChannelSendCloseAsync(HCkSsh cHandle, int channelNum);
@@ -175,6 +185,15 @@ CK_VISIBLE_PUBLIC int CkSsh_OpenSessionChannel(HCkSsh cHandle);
 CK_VISIBLE_PUBLIC HCkTask CkSsh_OpenSessionChannelAsync(HCkSsh cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSsh_PeekReceivedText(HCkSsh cHandle, int channelNum, const char *charset, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkSsh_peekReceivedText(HCkSsh cHandle, int channelNum, const char *charset);
+CK_VISIBLE_PUBLIC int CkSsh_QuickCmdCheck(HCkSsh cHandle, int pollTimeoutMs);
+CK_VISIBLE_PUBLIC HCkTask CkSsh_QuickCmdCheckAsync(HCkSsh cHandle, int pollTimeoutMs);
+CK_VISIBLE_PUBLIC int CkSsh_QuickCmdSend(HCkSsh cHandle, const char *command);
+CK_VISIBLE_PUBLIC HCkTask CkSsh_QuickCmdSendAsync(HCkSsh cHandle, const char *command);
+CK_VISIBLE_PUBLIC BOOL CkSsh_QuickCommand(HCkSsh cHandle, const char *command, const char *charset, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkSsh_quickCommand(HCkSsh cHandle, const char *command, const char *charset);
+CK_VISIBLE_PUBLIC HCkTask CkSsh_QuickCommandAsync(HCkSsh cHandle, const char *command, const char *charset);
+CK_VISIBLE_PUBLIC int CkSsh_QuickShell(HCkSsh cHandle);
+CK_VISIBLE_PUBLIC HCkTask CkSsh_QuickShellAsync(HCkSsh cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSsh_ReKey(HCkSsh cHandle);
 CK_VISIBLE_PUBLIC HCkTask CkSsh_ReKeyAsync(HCkSsh cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSsh_SaveLastError(HCkSsh cHandle, const char *path);

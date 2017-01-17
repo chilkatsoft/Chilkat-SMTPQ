@@ -1,9 +1,10 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.63
 #ifndef _C_CkXml_H
 #define _C_CkXml_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
+
 
 CK_VISIBLE_PUBLIC HCkXml CkXml_Create(void);
 CK_VISIBLE_PUBLIC void CkXml_Dispose(HCkXml handle);
@@ -22,11 +23,19 @@ CK_VISIBLE_PUBLIC void CkXml_putDocType(HCkXml cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkXml_docType(HCkXml cHandle);
 CK_VISIBLE_PUBLIC BOOL CkXml_getEmitBom(HCkXml cHandle);
 CK_VISIBLE_PUBLIC void CkXml_putEmitBom(HCkXml cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC BOOL CkXml_getEmitCompact(HCkXml cHandle);
+CK_VISIBLE_PUBLIC void CkXml_putEmitCompact(HCkXml cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkXml_getEmitXmlDecl(HCkXml cHandle);
 CK_VISIBLE_PUBLIC void CkXml_putEmitXmlDecl(HCkXml cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkXml_getEncoding(HCkXml cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkXml_putEncoding(HCkXml cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkXml_encoding(HCkXml cHandle);
+CK_VISIBLE_PUBLIC int CkXml_getI(HCkXml cHandle);
+CK_VISIBLE_PUBLIC void CkXml_putI(HCkXml cHandle, int newVal);
+CK_VISIBLE_PUBLIC int CkXml_getJ(HCkXml cHandle);
+CK_VISIBLE_PUBLIC void CkXml_putJ(HCkXml cHandle, int newVal);
+CK_VISIBLE_PUBLIC int CkXml_getK(HCkXml cHandle);
+CK_VISIBLE_PUBLIC void CkXml_putK(HCkXml cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkXml_getLastErrorHtml(HCkXml cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkXml_lastErrorHtml(HCkXml cHandle);
 CK_VISIBLE_PUBLIC void CkXml_getLastErrorText(HCkXml cHandle, HCkString retval);
@@ -84,14 +93,14 @@ CK_VISIBLE_PUBLIC HCkXml CkXml_FindNextRecord(HCkXml cHandle, const char *tag, c
 CK_VISIBLE_PUBLIC HCkXml CkXml_FindOrAddNewChild(HCkXml cHandle, const char *tag);
 CK_VISIBLE_PUBLIC HCkXml CkXml_FirstChild(HCkXml cHandle);
 CK_VISIBLE_PUBLIC BOOL CkXml_FirstChild2(HCkXml cHandle);
-CK_VISIBLE_PUBLIC BOOL CkXml_GetAttrValue(HCkXml cHandle, const char *name, HCkString outStr);
-CK_VISIBLE_PUBLIC const char *CkXml_getAttrValue(HCkXml cHandle, const char *name);
-CK_VISIBLE_PUBLIC int CkXml_GetAttrValueInt(HCkXml cHandle, const char *name);
 CK_VISIBLE_PUBLIC BOOL CkXml_GetAttributeName(HCkXml cHandle, int index, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkXml_getAttributeName(HCkXml cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkXml_GetAttributeValue(HCkXml cHandle, int index, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkXml_getAttributeValue(HCkXml cHandle, int index);
 CK_VISIBLE_PUBLIC int CkXml_GetAttributeValueInt(HCkXml cHandle, int index);
+CK_VISIBLE_PUBLIC BOOL CkXml_GetAttrValue(HCkXml cHandle, const char *name, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkXml_getAttrValue(HCkXml cHandle, const char *name);
+CK_VISIBLE_PUBLIC int CkXml_GetAttrValueInt(HCkXml cHandle, const char *name);
 CK_VISIBLE_PUBLIC BOOL CkXml_GetBinaryContent(HCkXml cHandle, BOOL unzipFlag, BOOL decryptFlag, const char *password, HCkByteData outData);
 CK_VISIBLE_PUBLIC HCkXml CkXml_GetChild(HCkXml cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkXml_GetChild2(HCkXml cHandle, int index);
@@ -118,8 +127,9 @@ CK_VISIBLE_PUBLIC void CkXml_GetRoot2(HCkXml cHandle);
 CK_VISIBLE_PUBLIC HCkXml CkXml_GetSelf(HCkXml cHandle);
 CK_VISIBLE_PUBLIC BOOL CkXml_GetXml(HCkXml cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkXml_getXml(HCkXml cHandle);
-CK_VISIBLE_PUBLIC BOOL CkXml_HasAttrWithValue(HCkXml cHandle, const char *name, const char *value);
+CK_VISIBLE_PUBLIC BOOL CkXml_GetXmlSb(HCkXml cHandle, HCkStringBuilder sb);
 CK_VISIBLE_PUBLIC BOOL CkXml_HasAttribute(HCkXml cHandle, const char *name);
+CK_VISIBLE_PUBLIC BOOL CkXml_HasAttrWithValue(HCkXml cHandle, const char *name, const char *value);
 CK_VISIBLE_PUBLIC BOOL CkXml_HasChildWithContent(HCkXml cHandle, const char *content);
 CK_VISIBLE_PUBLIC BOOL CkXml_HasChildWithTag(HCkXml cHandle, const char *tag);
 CK_VISIBLE_PUBLIC BOOL CkXml_HasChildWithTagAndContent(HCkXml cHandle, const char *tag, const char *content);
@@ -127,6 +137,7 @@ CK_VISIBLE_PUBLIC void CkXml_InsertChildTreeAfter(HCkXml cHandle, int index, HCk
 CK_VISIBLE_PUBLIC void CkXml_InsertChildTreeBefore(HCkXml cHandle, int index, HCkXml tree);
 CK_VISIBLE_PUBLIC HCkXml CkXml_LastChild(HCkXml cHandle);
 CK_VISIBLE_PUBLIC BOOL CkXml_LastChild2(HCkXml cHandle);
+CK_VISIBLE_PUBLIC BOOL CkXml_LoadSb(HCkXml cHandle, HCkStringBuilder sb, BOOL autoTrim);
 CK_VISIBLE_PUBLIC BOOL CkXml_LoadXml(HCkXml cHandle, const char *xmlData);
 CK_VISIBLE_PUBLIC BOOL CkXml_LoadXml2(HCkXml cHandle, const char *xmlData, BOOL autoTrim);
 CK_VISIBLE_PUBLIC BOOL CkXml_LoadXmlFile(HCkXml cHandle, const char *fileName);
@@ -138,6 +149,7 @@ CK_VISIBLE_PUBLIC HCkXml CkXml_NewChildBefore(HCkXml cHandle, int index, const c
 CK_VISIBLE_PUBLIC void CkXml_NewChildInt2(HCkXml cHandle, const char *tag, int value);
 CK_VISIBLE_PUBLIC HCkXml CkXml_NextSibling(HCkXml cHandle);
 CK_VISIBLE_PUBLIC BOOL CkXml_NextSibling2(HCkXml cHandle);
+CK_VISIBLE_PUBLIC int CkXml_NumChildrenAt(HCkXml cHandle, const char *tagPath);
 CK_VISIBLE_PUBLIC int CkXml_NumChildrenHavingTag(HCkXml cHandle, const char *tag);
 CK_VISIBLE_PUBLIC HCkXml CkXml_PreviousSibling(HCkXml cHandle);
 CK_VISIBLE_PUBLIC BOOL CkXml_PreviousSibling2(HCkXml cHandle);
@@ -179,6 +191,8 @@ CK_VISIBLE_PUBLIC const char *CkXml_tagContent(HCkXml cHandle, const char *tagNa
 CK_VISIBLE_PUBLIC BOOL CkXml_TagEquals(HCkXml cHandle, const char *tag);
 CK_VISIBLE_PUBLIC BOOL CkXml_UnzipContent(HCkXml cHandle);
 CK_VISIBLE_PUBLIC BOOL CkXml_UnzipTree(HCkXml cHandle);
+CK_VISIBLE_PUBLIC BOOL CkXml_UpdateAt(HCkXml cHandle, const char *tagPath, BOOL autoCreate, const char *value);
+CK_VISIBLE_PUBLIC BOOL CkXml_UpdateAttrAt(HCkXml cHandle, const char *tagPath, BOOL autoCreate, const char *attrName, const char *attrValue);
 CK_VISIBLE_PUBLIC BOOL CkXml_UpdateAttribute(HCkXml cHandle, const char *attrName, const char *attrValue);
 CK_VISIBLE_PUBLIC BOOL CkXml_UpdateAttributeInt(HCkXml cHandle, const char *attrName, int value);
 CK_VISIBLE_PUBLIC void CkXml_UpdateChildContent(HCkXml cHandle, const char *tag, const char *value);

@@ -1,21 +1,22 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkCertWH
 #define _C_CkCertWH
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
 CK_VISIBLE_PUBLIC HCkCertW CkCertW_Create(void);
 CK_VISIBLE_PUBLIC void CkCertW_Dispose(HCkCertW handle);
 CK_VISIBLE_PUBLIC void CkCertW_getAuthorityKeyId(HCkCertW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCertW_authorityKeyId(HCkCertW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCertW_getAvoidWindowsPkAccess(HCkCertW cHandle);
-CK_VISIBLE_PUBLIC void CkCertW_putAvoidWindowsPkAccess(HCkCertW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkCertW_putAvoidWindowsPkAccess(HCkCertW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkCertW_getCertVersion(HCkCertW cHandle);
 CK_VISIBLE_PUBLIC void CkCertW_getCspName(HCkCertW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCertW_cspName(HCkCertW cHandle);
 CK_VISIBLE_PUBLIC void CkCertW_getDebugLogFilePath(HCkCertW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkCertW_putDebugLogFilePath(HCkCertW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkCertW_putDebugLogFilePath(HCkCertW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkCertW_debugLogFilePath(HCkCertW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCertW_getExpired(HCkCertW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCertW_getForClientAuthentication(HCkCertW cHandle);
@@ -51,7 +52,7 @@ CK_VISIBLE_PUBLIC const wchar_t *CkCertW_lastErrorText(HCkCertW cHandle);
 CK_VISIBLE_PUBLIC void CkCertW_getLastErrorXml(HCkCertW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCertW_lastErrorXml(HCkCertW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCertW_getLastMethodSuccess(HCkCertW cHandle);
-CK_VISIBLE_PUBLIC void CkCertW_putLastMethodSuccess(HCkCertW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkCertW_putLastMethodSuccess(HCkCertW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkCertW_getMachineKeyset(HCkCertW cHandle);
 CK_VISIBLE_PUBLIC void CkCertW_getOcspUrl(HCkCertW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCertW_ocspUrl(HCkCertW cHandle);
@@ -85,14 +86,14 @@ CK_VISIBLE_PUBLIC const wchar_t *CkCertW_subjectOU(HCkCertW cHandle);
 CK_VISIBLE_PUBLIC void CkCertW_getSubjectS(HCkCertW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCertW_subjectS(HCkCertW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCertW_getTrustedRoot(HCkCertW cHandle);
-CK_VISIBLE_PUBLIC void CkCertW_getValidFrom(HCkCertW cHandle, SYSTEMTIME *retval);
+CK_VISIBLE_PUBLIC void CkCertW_getValidFrom(HCkCertW cHandle, SYSTEMTIME * retval);
 CK_VISIBLE_PUBLIC void CkCertW_getValidFromStr(HCkCertW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCertW_validFromStr(HCkCertW cHandle);
-CK_VISIBLE_PUBLIC void CkCertW_getValidTo(HCkCertW cHandle, SYSTEMTIME *retval);
+CK_VISIBLE_PUBLIC void CkCertW_getValidTo(HCkCertW cHandle, SYSTEMTIME * retval);
 CK_VISIBLE_PUBLIC void CkCertW_getValidToStr(HCkCertW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCertW_validToStr(HCkCertW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCertW_getVerboseLogging(HCkCertW cHandle);
-CK_VISIBLE_PUBLIC void CkCertW_putVerboseLogging(HCkCertW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkCertW_putVerboseLogging(HCkCertW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkCertW_getVersion(HCkCertW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCertW_version(HCkCertW cHandle);
 CK_VISIBLE_PUBLIC int CkCertW_CheckRevoked(HCkCertW cHandle);

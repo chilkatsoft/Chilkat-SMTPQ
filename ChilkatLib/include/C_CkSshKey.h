@@ -1,9 +1,10 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkSshKey_H
 #define _C_CkSshKey_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
+
 
 CK_VISIBLE_PUBLIC HCkSshKey CkSshKey_Create(void);
 CK_VISIBLE_PUBLIC void CkSshKey_Dispose(HCkSshKey handle);
@@ -38,10 +39,10 @@ CK_VISIBLE_PUBLIC BOOL CkSshKey_FromOpenSshPublicKey(HCkSshKey cHandle, const ch
 CK_VISIBLE_PUBLIC BOOL CkSshKey_FromPuttyPrivateKey(HCkSshKey cHandle, const char *keyStr);
 CK_VISIBLE_PUBLIC BOOL CkSshKey_FromRfc4716PublicKey(HCkSshKey cHandle, const char *keyStr);
 CK_VISIBLE_PUBLIC BOOL CkSshKey_FromXml(HCkSshKey cHandle, const char *xmlKey);
-CK_VISIBLE_PUBLIC BOOL CkSshKey_GenFingerprint(HCkSshKey cHandle, HCkString outStr);
-CK_VISIBLE_PUBLIC const char *CkSshKey_genFingerprint(HCkSshKey cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSshKey_GenerateDsaKey(HCkSshKey cHandle, int numBits);
 CK_VISIBLE_PUBLIC BOOL CkSshKey_GenerateRsaKey(HCkSshKey cHandle, int numBits, int exponent);
+CK_VISIBLE_PUBLIC BOOL CkSshKey_GenFingerprint(HCkSshKey cHandle, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkSshKey_genFingerprint(HCkSshKey cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSshKey_LoadText(HCkSshKey cHandle, const char *filename, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkSshKey_loadText(HCkSshKey cHandle, const char *filename);
 CK_VISIBLE_PUBLIC BOOL CkSshKey_SaveLastError(HCkSshKey cHandle, const char *path);

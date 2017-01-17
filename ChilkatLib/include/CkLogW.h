@@ -57,7 +57,7 @@ class CK_VISIBLE_PUBLIC CkLogW  : public CkWideCharBase
 	// ----------------------
 	// Methods
 	// ----------------------
-	// Clears the log. The ARG1 is the initial top-level context tag for the new log.
+	// Clears the log. The initialTag is the initial top-level context tag for the new log.
 	void Clear(const wchar_t *initialTag);
 
 	// Enters a new context labelled with the given tag. Must be paired with a matching
@@ -79,10 +79,10 @@ class CK_VISIBLE_PUBLIC CkLogW  : public CkWideCharBase
 	// Logs binary data in hex format.
 	void LogDataHex(const wchar_t *tag, CkByteData &data);
 
-	// Logs a string, but only up to the 1st ARG3 characters of the string.
+	// Logs a string, but only up to the 1st maxNumChars characters of the string.
 	void LogDataMax(const wchar_t *tag, const wchar_t *message, int maxNumChars);
 
-	// Logs the current date/time in RFC822 format. If ARG2 is true, then the GMT/UTC
+	// Logs the current date/time in RFC822 format. If gmt is true, then the GMT/UTC
 	// time is logged. Otherwise it is the local time.
 	void LogDateTime(const wchar_t *tag, bool gmt);
 

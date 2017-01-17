@@ -1,37 +1,35 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkZip_H
 #define _C_CkZip_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
+CK_VISIBLE_PUBLIC void CkZip_setAbortCheck(HCkZip cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkZip_setPercentDone(HCkZip cHandle, BOOL (*fnPercentDone)(int pctDone));
+CK_VISIBLE_PUBLIC void CkZip_setProgressInfo(HCkZip cHandle, void (*fnProgressInfo)(const char *name, const char *value));
+CK_VISIBLE_PUBLIC void CkZip_setTaskCompleted(HCkZip cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
 CK_VISIBLE_PUBLIC HCkZip CkZip_Create(void);
 CK_VISIBLE_PUBLIC void CkZip_Dispose(HCkZip handle);
+CK_VISIBLE_PUBLIC BOOL CkZip_getAbortCurrent(HCkZip cHandle);
+CK_VISIBLE_PUBLIC void CkZip_putAbortCurrent(HCkZip cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkZip_getAppendFromDir(HCkZip cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkZip_putAppendFromDir(HCkZip cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkZip_appendFromDir(HCkZip cHandle);
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZip_getAutoRun(HCkZip cHandle, HCkString retval);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZip_putAutoRun(HCkZip cHandle, const char *newVal);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC const char *CkZip_autoRun(HCkZip cHandle);
 #endif
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZip_getAutoRunParams(HCkZip cHandle, HCkString retval);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZip_putAutoRunParams(HCkZip cHandle, const char *newVal);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC const char *CkZip_autoRunParams(HCkZip cHandle);
 #endif
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC BOOL CkZip_getAutoTemp(HCkZip cHandle);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZip_putAutoTemp(HCkZip cHandle, BOOL newVal);
 #endif
 CK_VISIBLE_PUBLIC BOOL CkZip_getCaseSensitive(HCkZip cHandle);
@@ -51,89 +49,57 @@ CK_VISIBLE_PUBLIC void CkZip_putDecryptPassword(HCkZip cHandle, const char *newV
 CK_VISIBLE_PUBLIC const char *CkZip_decryptPassword(HCkZip cHandle);
 CK_VISIBLE_PUBLIC BOOL CkZip_getDiscardPaths(HCkZip cHandle);
 CK_VISIBLE_PUBLIC void CkZip_putDiscardPaths(HCkZip cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC int CkZip_getEncryption(HCkZip cHandle);
+CK_VISIBLE_PUBLIC void CkZip_putEncryption(HCkZip cHandle, int newVal);
 CK_VISIBLE_PUBLIC int CkZip_getEncryptKeyLength(HCkZip cHandle);
 CK_VISIBLE_PUBLIC void CkZip_putEncryptKeyLength(HCkZip cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkZip_getEncryptPassword(HCkZip cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkZip_putEncryptPassword(HCkZip cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkZip_encryptPassword(HCkZip cHandle);
-CK_VISIBLE_PUBLIC int CkZip_getEncryption(HCkZip cHandle);
-CK_VISIBLE_PUBLIC void CkZip_putEncryption(HCkZip cHandle, int newVal);
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZip_getExeDefaultDir(HCkZip cHandle, HCkString retval);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZip_putExeDefaultDir(HCkZip cHandle, const char *newVal);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC const char *CkZip_exeDefaultDir(HCkZip cHandle);
 #endif
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC BOOL CkZip_getExeFinishNotifier(HCkZip cHandle);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZip_putExeFinishNotifier(HCkZip cHandle, BOOL newVal);
 #endif
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZip_getExeIconFile(HCkZip cHandle, HCkString retval);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZip_putExeIconFile(HCkZip cHandle, const char *newVal);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC const char *CkZip_exeIconFile(HCkZip cHandle);
 #endif
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC BOOL CkZip_getExeNoInterface(HCkZip cHandle);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZip_putExeNoInterface(HCkZip cHandle, BOOL newVal);
 #endif
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC BOOL CkZip_getExeSilentProgress(HCkZip cHandle);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZip_putExeSilentProgress(HCkZip cHandle, BOOL newVal);
 #endif
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZip_getExeTitle(HCkZip cHandle, HCkString retval);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZip_putExeTitle(HCkZip cHandle, const char *newVal);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC const char *CkZip_exeTitle(HCkZip cHandle);
 #endif
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZip_getExeUnzipCaption(HCkZip cHandle, HCkString retval);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZip_putExeUnzipCaption(HCkZip cHandle, const char *newVal);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC const char *CkZip_exeUnzipCaption(HCkZip cHandle);
 #endif
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZip_getExeUnzipDir(HCkZip cHandle, HCkString retval);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZip_putExeUnzipDir(HCkZip cHandle, const char *newVal);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC const char *CkZip_exeUnzipDir(HCkZip cHandle);
 #endif
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC BOOL CkZip_getExeWaitForSetup(HCkZip cHandle);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZip_putExeWaitForSetup(HCkZip cHandle, BOOL newVal);
 #endif
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZip_getExeXmlConfig(HCkZip cHandle, HCkString retval);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZip_putExeXmlConfig(HCkZip cHandle, const char *newVal);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC const char *CkZip_exeXmlConfig(HCkZip cHandle);
 #endif
 CK_VISIBLE_PUBLIC int CkZip_getFileCount(HCkZip cHandle);
@@ -188,6 +154,7 @@ CK_VISIBLE_PUBLIC void CkZip_AddNoCompressExtension(HCkZip cHandle, const char *
 CK_VISIBLE_PUBLIC HCkZipEntry CkZip_AppendBase64(HCkZip cHandle, const char *fileName, const char *encodedCompressedData);
 CK_VISIBLE_PUBLIC HCkZipEntry CkZip_AppendCompressed(HCkZip cHandle, const char *filename, HCkByteData inData);
 CK_VISIBLE_PUBLIC HCkZipEntry CkZip_AppendData(HCkZip cHandle, const char *fileName, HCkByteData inData);
+CK_VISIBLE_PUBLIC HCkZipEntry CkZip_AppendDataEncoded(HCkZip cHandle, const char *filename, const char *encoding, const char *data);
 CK_VISIBLE_PUBLIC BOOL CkZip_AppendFiles(HCkZip cHandle, const char *filePattern, BOOL recurse);
 CK_VISIBLE_PUBLIC HCkTask CkZip_AppendFilesAsync(HCkZip cHandle, const char *filePattern, BOOL recurse);
 CK_VISIBLE_PUBLIC BOOL CkZip_AppendFilesEx(HCkZip cHandle, const char *filePattern, BOOL recurse, BOOL saveExtraPath, BOOL archiveOnly, BOOL includeHidden, BOOL includeSystem);
@@ -209,8 +176,6 @@ CK_VISIBLE_PUBLIC BOOL CkZip_Extract(HCkZip cHandle, const char *dirPath);
 CK_VISIBLE_PUBLIC HCkTask CkZip_ExtractAsync(HCkZip cHandle, const char *dirPath);
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC BOOL CkZip_ExtractExe(HCkZip cHandle, const char *exePath, const char *dirPath);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC HCkTask CkZip_ExtractExeAsync(HCkZip cHandle, const char *exePath, const char *dirPath);
 #endif
 CK_VISIBLE_PUBLIC BOOL CkZip_ExtractInto(HCkZip cHandle, const char *dirPath);
@@ -227,8 +192,6 @@ CK_VISIBLE_PUBLIC HCkZipEntry CkZip_GetEntryByName(HCkZip cHandle, const char *e
 CK_VISIBLE_PUBLIC HCkStringArray CkZip_GetExclusions(HCkZip cHandle);
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC BOOL CkZip_GetExeConfigParam(HCkZip cHandle, const char *name, HCkString outStr);
-#endif
-#if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC const char *CkZip_getExeConfigParam(HCkZip cHandle, const char *name);
 #endif
 CK_VISIBLE_PUBLIC HCkZipEntry CkZip_InsertNew(HCkZip cHandle, const char *fileName, int beforeIndex);

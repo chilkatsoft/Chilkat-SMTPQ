@@ -5,6 +5,7 @@
 #ifndef _CKHTTPPROGRESS_H
 #define _CKHTTPPROGRESS_H
 
+
 #include "CkBaseProgress.h"
 
 #if !defined(__sun__) && !defined(__sun)
@@ -97,7 +98,7 @@ class CK_VISIBLE_PUBLIC CkHttpProgress : public CkBaseProgress
 	    bool b = HttpRedirect(originalUrl,redirectUrl);
 	    if (abort) *abort = b;
 	    }
-	virtual bool HttpRedirect(const char *originalUrl, const char *redirectUrl) { return false; }
+	virtual bool HttpRedirect(const char * /*originalUrl*/, const char * /*redirectUrl*/) { return false; }
 
 	// Called just before a chunked response is about to be received.
 	// With chunked responses, it is not possible to get PercentDone callbacks because
@@ -105,12 +106,12 @@ class CK_VISIBLE_PUBLIC CkHttpProgress : public CkBaseProgress
 	virtual void HttpChunked(void) { }
 
 	virtual void HttpBeginReceive(void) { }
-	virtual void HttpEndReceive(bool success) { }
+	virtual void HttpEndReceive(bool /*success*/) { }
 	virtual void HttpBeginSend(void) { }
-	virtual void HttpEndSend(bool success) { }
+	virtual void HttpEndSend(bool /*success*/) { }
 
-	virtual void ReceiveRate(__int64 byteCount, unsigned long bytesPerSec) { }
-	virtual void SendRate(__int64 byteCount, unsigned long bytesPerSec) { }
+	virtual void ReceiveRate(__int64 /*byteCount*/, unsigned long /*bytesPerSec*/) { }
+	virtual void SendRate(__int64 /*byteCount*/, unsigned long /*bytesPerSec*/) { }
 
 };
 #if !defined(__sun__) && !defined(__sun)

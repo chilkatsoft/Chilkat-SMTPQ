@@ -10,7 +10,7 @@
 #include "chilkatDefs.h"
 
 #include "CkString.h"
-#include "CkMultiByteBase.h"
+#include "CkClassWithCallbacks.h"
 
 class CkTask;
 class CkByteData;
@@ -24,10 +24,9 @@ class CkBaseProgress;
  
 
 // CLASS: CkBz2
-class CK_VISIBLE_PUBLIC CkBz2  : public CkMultiByteBase
+class CK_VISIBLE_PUBLIC CkBz2  : public CkClassWithCallbacks
 {
     private:
-	void *m_eventCallback;
 
 	// Don't allow assignment or copying these objects.
 	CkBz2(const CkBz2 &);
@@ -53,6 +52,23 @@ class CK_VISIBLE_PUBLIC CkBz2  : public CkMultiByteBase
 	// ----------------------
 	// Properties
 	// ----------------------
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	bool get_AbortCurrent(void);
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	void put_AbortCurrent(bool newVal);
+
 
 	int get_HeartbeatMs(void);
 
@@ -77,18 +93,18 @@ class CK_VISIBLE_PUBLIC CkBz2  : public CkMultiByteBase
 	CkTask *CompressFileToMemAsync(const char *inFilename);
 
 
-	// BZip2 compresses and creates a .bz2 file from in-memory data.
-	bool CompressMemToFile(CkByteData &inData, const char *toPath);
-
-	// BZip2 compresses and creates a .bz2 file from in-memory data.
-	CkTask *CompressMemToFileAsync(CkByteData &inData, const char *toPath);
-
-
 	// Compresses in-memory data to an in-memory image of a .bz2 file.
 	bool CompressMemory(CkByteData &inData, CkByteData &outBytes);
 
 	// Compresses in-memory data to an in-memory image of a .bz2 file.
 	CkTask *CompressMemoryAsync(CkByteData &inData);
+
+
+	// BZip2 compresses and creates a .bz2 file from in-memory data.
+	bool CompressMemToFile(CkByteData &inData, const char *toPath);
+
+	// BZip2 compresses and creates a .bz2 file from in-memory data.
+	CkTask *CompressMemToFileAsync(CkByteData &inData, const char *toPath);
 
 
 	// Unzips a .bz2 file.
@@ -105,13 +121,6 @@ class CK_VISIBLE_PUBLIC CkBz2  : public CkMultiByteBase
 	CkTask *UncompressFileToMemAsync(const char *inFilename);
 
 
-	// Unzips from an in-memory image of a .bz2 file to a file.
-	bool UncompressMemToFile(CkByteData &inData, const char *toPath);
-
-	// Unzips from an in-memory image of a .bz2 file to a file.
-	CkTask *UncompressMemToFileAsync(CkByteData &inData, const char *toPath);
-
-
 	// Unzips from an in-memory image of a .bz2 file directly into memory.
 	bool UncompressMemory(CkByteData &inData, CkByteData &outBytes);
 
@@ -119,9 +128,16 @@ class CK_VISIBLE_PUBLIC CkBz2  : public CkMultiByteBase
 	CkTask *UncompressMemoryAsync(CkByteData &inData);
 
 
+	// Unzips from an in-memory image of a .bz2 file to a file.
+	bool UncompressMemToFile(CkByteData &inData, const char *toPath);
+
+	// Unzips from an in-memory image of a .bz2 file to a file.
+	CkTask *UncompressMemToFileAsync(CkByteData &inData, const char *toPath);
+
+
 	// Unlocks the component allowing for the full functionality to be used. If a
-	// permanent (purchased) unlock code is passed, there is no expiration. Any other
-	// string automatically begins a fully-functional 30-day trial the first time
+	// purchased unlock code is passed, there is no expiration. Any other string
+	// automatically begins a fully-functional 30-day trial the first time
 	// UnlockComponent is called.
 	bool UnlockComponent(const char *regCode);
 

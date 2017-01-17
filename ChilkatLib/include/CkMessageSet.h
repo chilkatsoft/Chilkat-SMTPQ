@@ -25,7 +25,6 @@ class CkTask;
 class CK_VISIBLE_PUBLIC CkMessageSet  : public CkMultiByteBase
 {
     private:
-	
 
 	// Don't allow assignment or copying these objects.
 	CkMessageSet(const CkMessageSet &);
@@ -65,7 +64,7 @@ class CK_VISIBLE_PUBLIC CkMessageSet  : public CkMultiByteBase
 	// Methods
 	// ----------------------
 	// Returns true if the msgId is contained in the message set.
-	bool ContainsId(int id);
+	bool ContainsId(int msgId);
 
 
 	// Loads the message set from a compact-string representation. Here are some

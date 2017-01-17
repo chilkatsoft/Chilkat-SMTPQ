@@ -1,9 +1,10 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.64
 #ifndef _C_CkHttpResponse_H
 #define _C_CkHttpResponse_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
+
 
 CK_VISIBLE_PUBLIC HCkHttpResponse CkHttpResponse_Create(void);
 CK_VISIBLE_PUBLIC void CkHttpResponse_Dispose(HCkHttpResponse handle);
@@ -16,7 +17,7 @@ CK_VISIBLE_PUBLIC void CkHttpResponse_getCharset(HCkHttpResponse cHandle, HCkStr
 CK_VISIBLE_PUBLIC const char *CkHttpResponse_charset(HCkHttpResponse cHandle);
 CK_VISIBLE_PUBLIC unsigned long CkHttpResponse_getContentLength(HCkHttpResponse cHandle);
 CK_VISIBLE_PUBLIC __int64 CkHttpResponse_getContentLength64(HCkHttpResponse cHandle);
-CK_VISIBLE_PUBLIC void CkHttpResponse_getDate(HCkHttpResponse cHandle, SYSTEMTIME *retval);
+CK_VISIBLE_PUBLIC void CkHttpResponse_getDate(HCkHttpResponse cHandle, SYSTEMTIME * retval);
 CK_VISIBLE_PUBLIC void CkHttpResponse_getDateStr(HCkHttpResponse cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkHttpResponse_dateStr(HCkHttpResponse cHandle);
 CK_VISIBLE_PUBLIC void CkHttpResponse_getDebugLogFilePath(HCkHttpResponse cHandle, HCkString retval);
@@ -51,6 +52,8 @@ CK_VISIBLE_PUBLIC BOOL CkHttpResponse_getVerboseLogging(HCkHttpResponse cHandle)
 CK_VISIBLE_PUBLIC void CkHttpResponse_putVerboseLogging(HCkHttpResponse cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkHttpResponse_getVersion(HCkHttpResponse cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkHttpResponse_version(HCkHttpResponse cHandle);
+CK_VISIBLE_PUBLIC BOOL CkHttpResponse_GetBodyBd(HCkHttpResponse cHandle, HCkBinData binData);
+CK_VISIBLE_PUBLIC BOOL CkHttpResponse_GetBodySb(HCkHttpResponse cHandle, HCkStringBuilder sb);
 CK_VISIBLE_PUBLIC BOOL CkHttpResponse_GetCookieDomain(HCkHttpResponse cHandle, int index, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkHttpResponse_getCookieDomain(HCkHttpResponse cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkHttpResponse_GetCookieExpires(HCkHttpResponse cHandle, int index, SYSTEMTIME *outSysTime);

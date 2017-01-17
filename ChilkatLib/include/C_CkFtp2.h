@@ -1,12 +1,20 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkFtp2_H
 #define _C_CkFtp2_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
+CK_VISIBLE_PUBLIC void CkFtp2_setAbortCheck(HCkFtp2 cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkFtp2_setPercentDone(HCkFtp2 cHandle, BOOL (*fnPercentDone)(int pctDone));
+CK_VISIBLE_PUBLIC void CkFtp2_setProgressInfo(HCkFtp2 cHandle, void (*fnProgressInfo)(const char *name, const char *value));
+CK_VISIBLE_PUBLIC void CkFtp2_setTaskCompleted(HCkFtp2 cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
 CK_VISIBLE_PUBLIC HCkFtp2 CkFtp2_Create(void);
 CK_VISIBLE_PUBLIC void CkFtp2_Dispose(HCkFtp2 handle);
+CK_VISIBLE_PUBLIC BOOL CkFtp2_getAbortCurrent(HCkFtp2 cHandle);
+CK_VISIBLE_PUBLIC void CkFtp2_putAbortCurrent(HCkFtp2 cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkFtp2_getAccount(HCkFtp2 cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkFtp2_putAccount(HCkFtp2 cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkFtp2_account(HCkFtp2 cHandle);
@@ -168,10 +176,6 @@ CK_VISIBLE_PUBLIC void CkFtp2_getSessionLog(HCkFtp2 cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkFtp2_sessionLog(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_getSkipFinalReply(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC void CkFtp2_putSkipFinalReply(HCkFtp2 cHandle, BOOL newVal);
-CK_VISIBLE_PUBLIC int CkFtp2_getSoRcvBuf(HCkFtp2 cHandle);
-CK_VISIBLE_PUBLIC void CkFtp2_putSoRcvBuf(HCkFtp2 cHandle, int newVal);
-CK_VISIBLE_PUBLIC int CkFtp2_getSoSndBuf(HCkFtp2 cHandle);
-CK_VISIBLE_PUBLIC void CkFtp2_putSoSndBuf(HCkFtp2 cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkFtp2_getSocksHostname(HCkFtp2 cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkFtp2_putSocksHostname(HCkFtp2 cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkFtp2_socksHostname(HCkFtp2 cHandle);
@@ -185,6 +189,10 @@ CK_VISIBLE_PUBLIC void CkFtp2_putSocksUsername(HCkFtp2 cHandle, const char *newV
 CK_VISIBLE_PUBLIC const char *CkFtp2_socksUsername(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC int CkFtp2_getSocksVersion(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC void CkFtp2_putSocksVersion(HCkFtp2 cHandle, int newVal);
+CK_VISIBLE_PUBLIC int CkFtp2_getSoRcvBuf(HCkFtp2 cHandle);
+CK_VISIBLE_PUBLIC void CkFtp2_putSoRcvBuf(HCkFtp2 cHandle, int newVal);
+CK_VISIBLE_PUBLIC int CkFtp2_getSoSndBuf(HCkFtp2 cHandle);
+CK_VISIBLE_PUBLIC void CkFtp2_putSoSndBuf(HCkFtp2 cHandle, int newVal);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_getSsl(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC void CkFtp2_putSsl(HCkFtp2 cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkFtp2_getSslAllowedCiphers(HCkFtp2 cHandle, HCkString retval);
@@ -194,6 +202,9 @@ CK_VISIBLE_PUBLIC void CkFtp2_getSslProtocol(HCkFtp2 cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkFtp2_putSslProtocol(HCkFtp2 cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkFtp2_sslProtocol(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_getSslServerCertVerified(HCkFtp2 cHandle);
+CK_VISIBLE_PUBLIC void CkFtp2_getSyncedFiles(HCkFtp2 cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkFtp2_putSyncedFiles(HCkFtp2 cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkFtp2_syncedFiles(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC void CkFtp2_getSyncMustMatch(HCkFtp2 cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkFtp2_putSyncMustMatch(HCkFtp2 cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkFtp2_syncMustMatch(HCkFtp2 cHandle);
@@ -202,9 +213,6 @@ CK_VISIBLE_PUBLIC void CkFtp2_putSyncMustNotMatch(HCkFtp2 cHandle, const char *n
 CK_VISIBLE_PUBLIC const char *CkFtp2_syncMustNotMatch(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC void CkFtp2_getSyncPreview(HCkFtp2 cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkFtp2_syncPreview(HCkFtp2 cHandle);
-CK_VISIBLE_PUBLIC void CkFtp2_getSyncedFiles(HCkFtp2 cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkFtp2_putSyncedFiles(HCkFtp2 cHandle, const char *newVal);
-CK_VISIBLE_PUBLIC const char *CkFtp2_syncedFiles(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC void CkFtp2_getTlsCipherSuite(HCkFtp2 cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkFtp2_tlsCipherSuite(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC void CkFtp2_getTlsPinSet(HCkFtp2 cHandle, HCkString retval);
@@ -260,8 +268,10 @@ CK_VISIBLE_PUBLIC HCkTask CkFtp2_DeleteRemoteFileAsync(HCkFtp2 cHandle, const ch
 CK_VISIBLE_PUBLIC BOOL CkFtp2_DeleteTree(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_DeleteTreeAsync(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC int CkFtp2_DetermineProxyMethod(HCkFtp2 cHandle);
+CK_VISIBLE_PUBLIC HCkTask CkFtp2_DetermineProxyMethodAsync(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_DetermineSettings(HCkFtp2 cHandle, HCkString outXmlReport);
 CK_VISIBLE_PUBLIC const char *CkFtp2_determineSettings(HCkFtp2 cHandle);
+CK_VISIBLE_PUBLIC HCkTask CkFtp2_DetermineSettingsAsync(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_DirTreeXml(HCkFtp2 cHandle, HCkString outStrXml);
 CK_VISIBLE_PUBLIC const char *CkFtp2_dirTreeXml(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_DirTreeXmlAsync(HCkFtp2 cHandle);
@@ -291,9 +301,13 @@ CK_VISIBLE_PUBLIC int CkFtp2_GetDirCount(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_GetDirCountAsync(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_GetFile(HCkFtp2 cHandle, const char *remoteFilePath, const char *localFilePath);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_GetFileAsync(HCkFtp2 cHandle, const char *remoteFilePath, const char *localFilePath);
+CK_VISIBLE_PUBLIC BOOL CkFtp2_GetFileBd(HCkFtp2 cHandle, const char *remoteFilePath, HCkBinData binData);
+CK_VISIBLE_PUBLIC HCkTask CkFtp2_GetFileBdAsync(HCkFtp2 cHandle, const char *remoteFilePath, HCkBinData binData);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_GetFilename(HCkFtp2 cHandle, int index, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkFtp2_getFilename(HCkFtp2 cHandle, int index);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_GetFilenameAsync(HCkFtp2 cHandle, int index);
+CK_VISIBLE_PUBLIC BOOL CkFtp2_GetFileSb(HCkFtp2 cHandle, const char *remoteFilePath, const char *charset, HCkStringBuilder sb);
+CK_VISIBLE_PUBLIC HCkTask CkFtp2_GetFileSbAsync(HCkFtp2 cHandle, const char *remoteFilePath, const char *charset, HCkStringBuilder sb);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_GetGroup(HCkFtp2 cHandle, int index, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkFtp2_getGroup(HCkFtp2 cHandle, int index);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_GetGroupAsync(HCkFtp2 cHandle, int index);
@@ -328,12 +342,12 @@ CK_VISIBLE_PUBLIC HCkTask CkFtp2_GetLastModifiedTimeStrAsync(HCkFtp2 cHandle, in
 CK_VISIBLE_PUBLIC BOOL CkFtp2_GetOwner(HCkFtp2 cHandle, int index, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkFtp2_getOwner(HCkFtp2 cHandle, int index);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_GetOwnerAsync(HCkFtp2 cHandle, int index);
-CK_VISIBLE_PUBLIC BOOL CkFtp2_GetPermType(HCkFtp2 cHandle, int index, HCkString outStr);
-CK_VISIBLE_PUBLIC const char *CkFtp2_getPermType(HCkFtp2 cHandle, int index);
-CK_VISIBLE_PUBLIC HCkTask CkFtp2_GetPermTypeAsync(HCkFtp2 cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_GetPermissions(HCkFtp2 cHandle, int index, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkFtp2_getPermissions(HCkFtp2 cHandle, int index);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_GetPermissionsAsync(HCkFtp2 cHandle, int index);
+CK_VISIBLE_PUBLIC BOOL CkFtp2_GetPermType(HCkFtp2 cHandle, int index, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkFtp2_getPermType(HCkFtp2 cHandle, int index);
+CK_VISIBLE_PUBLIC HCkTask CkFtp2_GetPermTypeAsync(HCkFtp2 cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_GetRemoteFileBinaryData(HCkFtp2 cHandle, const char *remoteFilename, HCkByteData outData);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_GetRemoteFileBinaryDataAsync(HCkFtp2 cHandle, const char *remoteFilename);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_GetRemoteFileTextC(HCkFtp2 cHandle, const char *remoteFilename, const char *charset, HCkString outStr);
@@ -362,6 +376,8 @@ CK_VISIBLE_PUBLIC BOOL CkFtp2_GetXmlDirListing(HCkFtp2 cHandle, const char *patt
 CK_VISIBLE_PUBLIC const char *CkFtp2_getXmlDirListing(HCkFtp2 cHandle, const char *pattern);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_GetXmlDirListingAsync(HCkFtp2 cHandle, const char *pattern);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_IsUnlocked(HCkFtp2 cHandle);
+CK_VISIBLE_PUBLIC BOOL CkFtp2_LargeFileUpload(HCkFtp2 cHandle, const char *localPath, const char *remotePath, int chunkSize);
+CK_VISIBLE_PUBLIC HCkTask CkFtp2_LargeFileUploadAsync(HCkFtp2 cHandle, const char *localPath, const char *remotePath, int chunkSize);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_LoginAfterConnectOnly(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_LoginAfterConnectOnlyAsync(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC int CkFtp2_MGetFiles(HCkFtp2 cHandle, const char *remotePattern, const char *localDir);
@@ -375,10 +391,14 @@ CK_VISIBLE_PUBLIC BOOL CkFtp2_Noop(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_NoopAsync(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_PutFile(HCkFtp2 cHandle, const char *localFilePath, const char *remoteFilePath);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_PutFileAsync(HCkFtp2 cHandle, const char *localFilePath, const char *remoteFilePath);
+CK_VISIBLE_PUBLIC BOOL CkFtp2_PutFileBd(HCkFtp2 cHandle, HCkBinData binData, const char *remoteFilePath);
+CK_VISIBLE_PUBLIC HCkTask CkFtp2_PutFileBdAsync(HCkFtp2 cHandle, HCkBinData binData, const char *remoteFilePath);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_PutFileFromBinaryData(HCkFtp2 cHandle, const char *remoteFilename, HCkByteData content);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_PutFileFromBinaryDataAsync(HCkFtp2 cHandle, const char *remoteFilename, HCkByteData content);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_PutFileFromTextData(HCkFtp2 cHandle, const char *remoteFilename, const char *textData, const char *charset);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_PutFileFromTextDataAsync(HCkFtp2 cHandle, const char *remoteFilename, const char *textData, const char *charset);
+CK_VISIBLE_PUBLIC BOOL CkFtp2_PutFileSb(HCkFtp2 cHandle, HCkStringBuilder sb, const char *charset, BOOL includeBom, const char *remoteFilePath);
+CK_VISIBLE_PUBLIC HCkTask CkFtp2_PutFileSbAsync(HCkFtp2 cHandle, HCkStringBuilder sb, const char *charset, BOOL includeBom, const char *remoteFilePath);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_PutPlan(HCkFtp2 cHandle, const char *plan, const char *alreadyDoneFilename);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_PutPlanAsync(HCkFtp2 cHandle, const char *plan, const char *alreadyDoneFilename);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_PutTree(HCkFtp2 cHandle, const char *localDir);
@@ -395,9 +415,10 @@ CK_VISIBLE_PUBLIC const char *CkFtp2_sendCommand(HCkFtp2 cHandle, const char *cm
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_SendCommandAsync(HCkFtp2 cHandle, const char *cmd);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_SetModeZ(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_SetModeZAsync(HCkFtp2 cHandle);
-CK_VISIBLE_PUBLIC void CkFtp2_SetOldestDate(HCkFtp2 cHandle, SYSTEMTIME *oldestDateTime);
+CK_VISIBLE_PUBLIC void CkFtp2_SetOldestDate(HCkFtp2 cHandle, SYSTEMTIME * oldestDateTime);
 CK_VISIBLE_PUBLIC void CkFtp2_SetOldestDateStr(HCkFtp2 cHandle, const char *oldestDateTimeStr);
-CK_VISIBLE_PUBLIC BOOL CkFtp2_SetRemoteFileDateTime(HCkFtp2 cHandle, SYSTEMTIME *dt, const char *remoteFilename);
+CK_VISIBLE_PUBLIC BOOL CkFtp2_SetOption(HCkFtp2 cHandle, const char *option);
+CK_VISIBLE_PUBLIC BOOL CkFtp2_SetRemoteFileDateTime(HCkFtp2 cHandle, SYSTEMTIME * dt, const char *remoteFilename);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_SetRemoteFileDateTimeStr(HCkFtp2 cHandle, const char *dateTimeStr, const char *remoteFilename);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_SetRemoteFileDateTimeStrAsync(HCkFtp2 cHandle, const char *dateTimeStr, const char *remoteFilename);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_SetRemoteFileDt(HCkFtp2 cHandle, HCkDateTime dt, const char *remoteFilename);
@@ -414,7 +435,7 @@ CK_VISIBLE_PUBLIC BOOL CkFtp2_Site(HCkFtp2 cHandle, const char *siteCommand);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_SiteAsync(HCkFtp2 cHandle, const char *siteCommand);
 CK_VISIBLE_PUBLIC void CkFtp2_SleepMs(HCkFtp2 cHandle, int millisec);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_Stat(HCkFtp2 cHandle, HCkString outStr);
-CK_VISIBLE_PUBLIC const char *CkFtp2_ck_stat(HCkFtp2 cHandle);
+CK_VISIBLE_PUBLIC const char *CkFtp2_stat(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_StatAsync(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_SyncDeleteRemote(HCkFtp2 cHandle, const char *localRoot);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_SyncDeleteRemoteAsync(HCkFtp2 cHandle, const char *localRoot);

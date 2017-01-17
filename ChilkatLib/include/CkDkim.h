@@ -10,7 +10,7 @@
 #include "chilkatDefs.h"
 
 #include "CkString.h"
-#include "CkMultiByteBase.h"
+#include "CkClassWithCallbacks.h"
 
 class CkByteData;
 class CkTask;
@@ -24,10 +24,9 @@ class CkBaseProgress;
  
 
 // CLASS: CkDkim
-class CK_VISIBLE_PUBLIC CkDkim  : public CkMultiByteBase
+class CK_VISIBLE_PUBLIC CkDkim  : public CkClassWithCallbacks
 {
     private:
-	void *m_eventCallback;
 
 	// Don't allow assignment or copying these objects.
 	CkDkim(const CkDkim &);
@@ -53,6 +52,23 @@ class CK_VISIBLE_PUBLIC CkDkim  : public CkMultiByteBase
 	// ----------------------
 	// Properties
 	// ----------------------
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	bool get_AbortCurrent(void);
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	void put_AbortCurrent(bool newVal);
+
 	// The signing algorithm to be used in creating the DKIM-Signature. Possible values
 	// are "rsa-sha256" and "rsa-sha1". The default value is "rsa-sha256".
 	void get_DkimAlg(CkString &str);
@@ -227,7 +243,7 @@ class CK_VISIBLE_PUBLIC CkDkim  : public CkMultiByteBase
 	// etc. This method will automatically determine the format and parse it correctly.
 	// A password is only required if key is encrypted, such as for encrypted PEM or
 	// encrypted PKCS8.
-	bool LoadDkimPkFile(const char *privateKeyFilepath, const char *optionalPassword);
+	bool LoadDkimPkFile(const char *privateKeyFilePath, const char *optionalPassword);
 
 
 	// Loads an RSA private key to be used for creating a DomainKey-Signature. Any
@@ -250,11 +266,11 @@ class CK_VISIBLE_PUBLIC CkDkim  : public CkMultiByteBase
 	// XML, etc. This method will automatically determine the format and parse it
 	// correctly. A password is only required if key is encrypted, such as for
 	// encrypted PEM or encrypted PKCS8.
-	bool LoadDomainKeyPkFile(const char *privateKeyFilepath, const char *optionalPassword);
+	bool LoadDomainKeyPkFile(const char *privateKeyFilePath, const char *optionalPassword);
 
 
 	// Caches a public key to be used for verifying DKIM and DomainKey signatures for a
-	// given selector and domain. The  publicKey is a string containing an RSA public key in
+	// given selector and domain. The publicKey is a string containing an RSA public key in
 	// any text format, such as XML, PEM, etc. This method will automatically detect
 	// the format and load the public key correctly. This method is useful for testing
 	// DKIM and DomainKey verification when your public key has not yet been installed
@@ -263,7 +279,7 @@ class CK_VISIBLE_PUBLIC CkDkim  : public CkMultiByteBase
 
 
 	// Caches a public key to be used for verifying DKIM and DomainKey signatures for a
-	// given selector and domain. The  publicKeyFilepath is a filepath of an RSA public key in any
+	// given selector and domain. The publicKeyFilepath is a filepath of an RSA public key in any
 	// format. This method will automatically detect the format and load the public key
 	// correctly. This method is useful for testing DKIM and DomainKey verification
 	// when your public key has not yet been installed in DNS.
@@ -307,42 +323,42 @@ class CK_VISIBLE_PUBLIC CkDkim  : public CkMultiByteBase
 	bool UnlockComponent(const char *unlockCode);
 
 
-	// Verifies the Nth DKIM-Signature header in the  mimeData. (In most cases, there is
+	// Verifies the Nth DKIM-Signature header in the mimeData. (In most cases, there is
 	// only one signature.) The 1st signature is at sigIndex 0.
 	// 
 	// Important: Many anti-virus programs, such as AVG, will modify the MIME of an
 	// email as it is received. This will cause DKIM signature verification to fail
 	// because the body of the MIME is modified.
 	// 
-	bool VerifyDkimSignature(int sigIdx, CkByteData &mimeData);
+	bool VerifyDkimSignature(int sigIndex, CkByteData &mimeData);
 
-	// Verifies the Nth DKIM-Signature header in the  mimeData. (In most cases, there is
+	// Verifies the Nth DKIM-Signature header in the mimeData. (In most cases, there is
 	// only one signature.) The 1st signature is at sigIndex 0.
 	// 
 	// Important: Many anti-virus programs, such as AVG, will modify the MIME of an
 	// email as it is received. This will cause DKIM signature verification to fail
 	// because the body of the MIME is modified.
 	// 
-	CkTask *VerifyDkimSignatureAsync(int sigIdx, CkByteData &mimeData);
+	CkTask *VerifyDkimSignatureAsync(int sigIndex, CkByteData &mimeData);
 
 
-	// Verifies the Nth DomainKey-Signature header in the  mimeData. (In most cases, there
+	// Verifies the Nth DomainKey-Signature header in the mimeData. (In most cases, there
 	// is only one signature.) The 1st signature is at sigIndex 0.
 	// 
 	// Important: Many anti-virus programs, such as AVG, will modify the MIME of an
 	// email as it is received. This will cause DomainKey signature verification to
 	// fail because the body of the MIME is modified.
 	// 
-	bool VerifyDomainKeySignature(int sigIdx, CkByteData &mimeData);
+	bool VerifyDomainKeySignature(int sigIndex, CkByteData &mimeData);
 
-	// Verifies the Nth DomainKey-Signature header in the  mimeData. (In most cases, there
+	// Verifies the Nth DomainKey-Signature header in the mimeData. (In most cases, there
 	// is only one signature.) The 1st signature is at sigIndex 0.
 	// 
 	// Important: Many anti-virus programs, such as AVG, will modify the MIME of an
 	// email as it is received. This will cause DomainKey signature verification to
 	// fail because the body of the MIME is modified.
 	// 
-	CkTask *VerifyDomainKeySignatureAsync(int sigIdx, CkByteData &mimeData);
+	CkTask *VerifyDomainKeySignatureAsync(int sigIndex, CkByteData &mimeData);
 
 
 

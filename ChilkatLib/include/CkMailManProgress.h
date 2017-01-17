@@ -50,12 +50,13 @@ class CK_VISIBLE_PUBLIC CkMailManProgress  : public CkBaseProgress
 	CkMailManProgress() { }
 	virtual ~CkMailManProgress() { }
 
-	virtual void EmailReceived(const char *subject, 
-			    const char *fromAddr, const char *fromName, 
-			    const char *returnPath, 
-			    const char *date, 
-			    const char *uidl, 
-			    int sizeInBytes) { }
+	virtual void EmailReceived(const char * /*subject*/, 
+			    const char * /*fromAddr*/, 
+			    const char * /*fromName*/, 
+			    const char * /*returnPath*/, 
+			    const char * /*date*/, 
+			    const char * /*uidl*/, 
+			    int /*sizeInBytes*/) { }
 
 
 };

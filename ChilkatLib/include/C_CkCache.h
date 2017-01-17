@@ -1,9 +1,10 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkCache_H
 #define _C_CkCache_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
+
 
 CK_VISIBLE_PUBLIC HCkCache CkCache_Create(void);
 CK_VISIBLE_PUBLIC void CkCache_Dispose(HCkCache handle);
@@ -18,7 +19,7 @@ CK_VISIBLE_PUBLIC void CkCache_getLastErrorXml(HCkCache cHandle, HCkString retva
 CK_VISIBLE_PUBLIC const char *CkCache_lastErrorXml(HCkCache cHandle);
 CK_VISIBLE_PUBLIC void CkCache_getLastEtagFetched(HCkCache cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkCache_lastEtagFetched(HCkCache cHandle);
-CK_VISIBLE_PUBLIC void CkCache_getLastExpirationFetched(HCkCache cHandle, SYSTEMTIME *retval);
+CK_VISIBLE_PUBLIC void CkCache_getLastExpirationFetched(HCkCache cHandle, SYSTEMTIME * retval);
 CK_VISIBLE_PUBLIC void CkCache_getLastExpirationFetchedStr(HCkCache cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkCache_lastExpirationFetchedStr(HCkCache cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCache_getLastHitExpired(HCkCache cHandle);
@@ -39,7 +40,7 @@ CK_VISIBLE_PUBLIC void CkCache_AddRoot(HCkCache cHandle, const char *path);
 CK_VISIBLE_PUBLIC int CkCache_DeleteAll(HCkCache cHandle);
 CK_VISIBLE_PUBLIC int CkCache_DeleteAllExpired(HCkCache cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCache_DeleteFromCache(HCkCache cHandle, const char *key);
-CK_VISIBLE_PUBLIC int CkCache_DeleteOlder(HCkCache cHandle, SYSTEMTIME *dateTime);
+CK_VISIBLE_PUBLIC int CkCache_DeleteOlder(HCkCache cHandle, SYSTEMTIME * dateTime);
 CK_VISIBLE_PUBLIC int CkCache_DeleteOlderDt(HCkCache cHandle, HCkDateTime dateTime);
 CK_VISIBLE_PUBLIC int CkCache_DeleteOlderStr(HCkCache cHandle, const char *dateTimeStr);
 CK_VISIBLE_PUBLIC BOOL CkCache_FetchFromCache(HCkCache cHandle, const char *key, HCkByteData outBytes);
@@ -57,15 +58,15 @@ CK_VISIBLE_PUBLIC BOOL CkCache_GetRoot(HCkCache cHandle, int index, HCkString ou
 CK_VISIBLE_PUBLIC const char *CkCache_getRoot(HCkCache cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkCache_IsCached(HCkCache cHandle, const char *key);
 CK_VISIBLE_PUBLIC BOOL CkCache_SaveLastError(HCkCache cHandle, const char *path);
-CK_VISIBLE_PUBLIC BOOL CkCache_SaveText(HCkCache cHandle, const char *key, SYSTEMTIME *expireDateTime, const char *eTag, const char *itemTextData);
+CK_VISIBLE_PUBLIC BOOL CkCache_SaveText(HCkCache cHandle, const char *key, SYSTEMTIME * expireDateTime, const char *eTag, const char *itemTextData);
 CK_VISIBLE_PUBLIC BOOL CkCache_SaveTextDt(HCkCache cHandle, const char *key, HCkDateTime expireDateTime, const char *eTag, const char *itemTextData);
 CK_VISIBLE_PUBLIC BOOL CkCache_SaveTextNoExpire(HCkCache cHandle, const char *key, const char *eTag, const char *itemTextData);
 CK_VISIBLE_PUBLIC BOOL CkCache_SaveTextStr(HCkCache cHandle, const char *key, const char *expireDateTime, const char *eTag, const char *itemTextData);
-CK_VISIBLE_PUBLIC BOOL CkCache_SaveToCache(HCkCache cHandle, const char *key, SYSTEMTIME *expireDateTime, const char *eTag, HCkByteData itemData);
+CK_VISIBLE_PUBLIC BOOL CkCache_SaveToCache(HCkCache cHandle, const char *key, SYSTEMTIME * expireDateTime, const char *eTag, HCkByteData itemData);
 CK_VISIBLE_PUBLIC BOOL CkCache_SaveToCacheDt(HCkCache cHandle, const char *key, HCkDateTime expireDateTime, const char *eTag, HCkByteData itemData);
 CK_VISIBLE_PUBLIC BOOL CkCache_SaveToCacheNoExpire(HCkCache cHandle, const char *key, const char *eTag, HCkByteData itemData);
 CK_VISIBLE_PUBLIC BOOL CkCache_SaveToCacheStr(HCkCache cHandle, const char *key, const char *expireDateTime, const char *eTag, HCkByteData itemData);
-CK_VISIBLE_PUBLIC BOOL CkCache_UpdateExpiration(HCkCache cHandle, const char *key, SYSTEMTIME *expireDateTime);
+CK_VISIBLE_PUBLIC BOOL CkCache_UpdateExpiration(HCkCache cHandle, const char *key, SYSTEMTIME * expireDateTime);
 CK_VISIBLE_PUBLIC BOOL CkCache_UpdateExpirationDt(HCkCache cHandle, const char *key, HCkDateTime expireDateTime);
 CK_VISIBLE_PUBLIC BOOL CkCache_UpdateExpirationStr(HCkCache cHandle, const char *key, const char *expireDateTime);
 #endif

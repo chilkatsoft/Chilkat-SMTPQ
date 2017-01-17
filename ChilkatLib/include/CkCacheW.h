@@ -139,16 +139,16 @@ class CK_VISIBLE_PUBLIC CkCacheW  : public CkWideCharBase
 
 	// Deletes a single item from the disk cache. Returns false if the item exists in
 	// cache but could not be deleted. Otherwise returns true.
-	bool DeleteFromCache(const wchar_t *url);
+	bool DeleteFromCache(const wchar_t *key);
 
 	// Deletes all items older than a specified date/time.
 	// 
 	// Returns the number of items (i.e. cache files) deleted. Returns -1 on error.
 	// 
-	int DeleteOlder(SYSTEMTIME &dt);
+	int DeleteOlder(SYSTEMTIME &dateTime);
 
 	// The same as DeleteOlder, except the dateTime is passed as a CkDateTime.
-	int DeleteOlderDt(CkDateTimeW &dt);
+	int DeleteOlderDt(CkDateTimeW &dateTime);
 
 	// The same as DeleteOlder, except the dateTimeStr is passed as a date/time in RFC822
 	// format.
@@ -159,7 +159,7 @@ class CK_VISIBLE_PUBLIC CkCacheW  : public CkWideCharBase
 	// The key may be any length and may include any characters. It should uniquely
 	// identify the cached item. (No two items in the cache should have the same key.)
 	// 
-	bool FetchFromCache(const wchar_t *url, CkByteData &outBytes);
+	bool FetchFromCache(const wchar_t *key, CkByteData &outBytes);
 
 	// Fetches a text item from the cache and returns it's text content.
 	// 
@@ -175,14 +175,14 @@ class CK_VISIBLE_PUBLIC CkCacheW  : public CkWideCharBase
 	const wchar_t *fetchText(const wchar_t *key);
 
 	// Returns the eTag for an item in the cache.
-	bool GetEtag(const wchar_t *url, CkString &outStr);
+	bool GetEtag(const wchar_t *key, CkString &outStr);
 	// Returns the eTag for an item in the cache.
-	const wchar_t *getEtag(const wchar_t *url);
+	const wchar_t *getEtag(const wchar_t *key);
 	// Returns the eTag for an item in the cache.
-	const wchar_t *etag(const wchar_t *url);
+	const wchar_t *etag(const wchar_t *key);
 
 	// Returns the expire date/time for an item in the cache.
-	bool GetExpiration(const wchar_t *url, SYSTEMTIME &outSysTime);
+	bool GetExpiration(const wchar_t *key, SYSTEMTIME &outSysTime);
 
 	// Returns the expiration date/time for an item in the cache as a CkDateTime
 	// object.
@@ -200,11 +200,11 @@ class CK_VISIBLE_PUBLIC CkCacheW  : public CkWideCharBase
 	const wchar_t *expirationStr(const wchar_t *url);
 
 	// Returns the absolute file path of the cache file associated with the key.
-	bool GetFilename(const wchar_t *url, CkString &outStr);
+	bool GetFilename(const wchar_t *key, CkString &outStr);
 	// Returns the absolute file path of the cache file associated with the key.
-	const wchar_t *getFilename(const wchar_t *url);
+	const wchar_t *getFilename(const wchar_t *key);
 	// Returns the absolute file path of the cache file associated with the key.
-	const wchar_t *filename(const wchar_t *url);
+	const wchar_t *filename(const wchar_t *key);
 
 	// Returns the directory path of the Nth cache root. (Indexing begins at 0.)
 	bool GetRoot(int index, CkString &outStr);
@@ -214,29 +214,29 @@ class CK_VISIBLE_PUBLIC CkCacheW  : public CkWideCharBase
 	const wchar_t *root(int index);
 
 	// Returns true if the item is found in the cache, otherwise returns false.
-	bool IsCached(const wchar_t *url);
+	bool IsCached(const wchar_t *key);
 
-	// Inserts or replaces an text item in the cache. The  eTag is optional and may be
+	// Inserts or replaces an text item in the cache. The eTag is optional and may be
 	// set to a zero-length string. Applications may use it as a place to save
 	// additional information about the cached item. The key may be any length and may
 	// include any characters. It should uniquely identify the cached item. (No two
 	// items in the cache should have the same key.)
-	bool SaveText(const wchar_t *key, SYSTEMTIME &expire, const wchar_t *eTag, const wchar_t *strData);
+	bool SaveText(const wchar_t *key, SYSTEMTIME &expireDateTime, const wchar_t *eTag, const wchar_t *itemTextData);
 
 	// The same as SaveText, except the expire date/time is passed as a CkDateTime
 	// object.
-	bool SaveTextDt(const wchar_t *key, CkDateTimeW &expire, const wchar_t *eTag, const wchar_t *strData);
+	bool SaveTextDt(const wchar_t *key, CkDateTimeW &expireDateTime, const wchar_t *eTag, const wchar_t *itemTextData);
 
 	// Inserts or replaces an text item in the cache with no expiration date/time. The
-	//  eTag is optional and may be set to a zero-length string. Applications may use it
+	// eTag is optional and may be set to a zero-length string. Applications may use it
 	// as a place to save additional information about the cached item.
-	bool SaveTextNoExpire(const wchar_t *key, const wchar_t *eTag, const wchar_t *strData);
+	bool SaveTextNoExpire(const wchar_t *key, const wchar_t *eTag, const wchar_t *itemTextData);
 
 	// The same as SaveText, except the expire date/time is passed as a string in
 	// RFC822 format.
-	bool SaveTextStr(const wchar_t *key, const wchar_t *expireDateTimeStr, const wchar_t *eTag, const wchar_t *strData);
+	bool SaveTextStr(const wchar_t *key, const wchar_t *expireDateTime, const wchar_t *eTag, const wchar_t *itemTextData);
 
-	// Inserts or replaces an item in the cache. The  eTag is optional and may be set to
+	// Inserts or replaces an item in the cache. The eTag is optional and may be set to
 	// a zero-length string. Applications may use it as a place to save additional
 	// information about the cached item. (The Chilkat HTTP component, when caching a
 	// page, writes the eTag (entity-tag) from the HTTP response header to this field.)
@@ -244,30 +244,30 @@ class CK_VISIBLE_PUBLIC CkCacheW  : public CkWideCharBase
 	// The key may be any length and may include any characters. It should uniquely
 	// identify the cached item. (No two items in the cache should have the same key.)
 	// 
-	bool SaveToCache(const wchar_t *url, SYSTEMTIME &expire, const wchar_t *eTag, CkByteData &data);
+	bool SaveToCache(const wchar_t *key, SYSTEMTIME &expireDateTime, const wchar_t *eTag, CkByteData &itemData);
 
 	// The same as SaveToCache, except the expire date/time is passed as a CkDateTime
 	// object.
-	bool SaveToCacheDt(const wchar_t *url, CkDateTimeW &expire, const wchar_t *eTag, CkByteData &data);
+	bool SaveToCacheDt(const wchar_t *key, CkDateTimeW &expireDateTime, const wchar_t *eTag, CkByteData &itemData);
 
 	// Inserts or replaces an item in the cache. The cached item will have no
-	// expiration. The  eTag is optional and may be set to a zero-length string.
+	// expiration. The eTag is optional and may be set to a zero-length string.
 	// Applications may use it as a place to save additional information about the
 	// cached item.
-	bool SaveToCacheNoExpire(const wchar_t *url, const wchar_t *eTag, CkByteData &data);
+	bool SaveToCacheNoExpire(const wchar_t *key, const wchar_t *eTag, CkByteData &itemData);
 
 	// The same as SaveToCache, except the expire date/time is passed in RFC822 string
 	// format.
-	bool SaveToCacheStr(const wchar_t *url, const wchar_t *expireDateTimeStr, const wchar_t *eTag, CkByteData &data);
+	bool SaveToCacheStr(const wchar_t *key, const wchar_t *expireDateTime, const wchar_t *eTag, CkByteData &itemData);
 
 	// Updates the expire date/time for a cached item.
-	bool UpdateExpiration(const wchar_t *url, SYSTEMTIME &dt);
+	bool UpdateExpiration(const wchar_t *key, SYSTEMTIME &expireDateTime);
 
-	// The same as UpdateExpiration, except the  expireDateTime is passed as a CkDateTime.
-	bool UpdateExpirationDt(const wchar_t *url, CkDateTimeW &dt);
+	// The same as UpdateExpiration, except the expireDateTime is passed as a CkDateTime.
+	bool UpdateExpirationDt(const wchar_t *key, CkDateTimeW &expireDateTime);
 
-	// The same as UpdateExpiration, except the  expireDateTime is passed in RFC822 string format.
-	bool UpdateExpirationStr(const wchar_t *url, const wchar_t *dateTimeStr);
+	// The same as UpdateExpiration, except the expireDateTime is passed in RFC822 string format.
+	bool UpdateExpirationStr(const wchar_t *key, const wchar_t *expireDateTime);
 
 
 

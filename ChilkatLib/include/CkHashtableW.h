@@ -12,6 +12,8 @@
 #include "CkString.h"
 #include "CkWideCharBase.h"
 
+class CkStringBuilderW;
+class CkStringTableW;
 
 
 
@@ -56,10 +58,19 @@ class CK_VISIBLE_PUBLIC CkHashtableW  : public CkWideCharBase
 	// ----------------------
 	// Methods
 	// ----------------------
+	// Adds to the hash table from XML previously created by calling ToXmlSb.
+	bool AddFromXmlSb(CkStringBuilderW &sbXml);
+
 	// Adds or replaces an entry with the given key and integer value to the hash
 	// table. Returns true if a new hash entry was added or replaced. Returns false
 	// if an out-of-memory condition occurred.
 	bool AddInt(const wchar_t *key, int value);
+
+	// Adds URL query parameters into the hashtable. The queryParams has the form:
+	// "field1=value1&field2=value2&field3=value3...". It is assumed that the values
+	// are URL encoded, and this method automatically URL decodes the values prior to
+	// inserting into the hashtable.
+	bool AddQueryParams(const wchar_t *queryParams);
 
 	// Adds or replaces an entry with the given key and string value to the hash table.
 	// Returns true if a new hash entry was added or replaced. Returns false if an
@@ -69,7 +80,7 @@ class CK_VISIBLE_PUBLIC CkHashtableW  : public CkWideCharBase
 	// Removes all elements from the Hashtable.
 	void Clear(void);
 
-	// Removes all elements from the Hashtable and re-sizes with the specified ARG1.
+	// Removes all elements from the Hashtable and re-sizes with the specified capacity.
 	// 
 	// The capacity is the number of buckets in the hash table. In the case of a "hash
 	// collision", a single bucket stores multiple entries, which must be searched
@@ -86,6 +97,13 @@ class CK_VISIBLE_PUBLIC CkHashtableW  : public CkWideCharBase
 	// the key exists, otherwise returns false.
 	bool Contains(const wchar_t *key);
 
+	// Determines if a given key is contained within the hash table. Returns true if
+	// the key exists, otherwise returns false.
+	bool ContainsIntKey(int key);
+
+	// Appends the complete set of hashtable key strings to strTable.
+	bool GetKeys(CkStringTableW &strTable);
+
 	// Returns the integer value associated with the specified key. If the key is not
 	// in the hash table, the return value is 0.
 	int LookupInt(const wchar_t *key);
@@ -99,6 +117,9 @@ class CK_VISIBLE_PUBLIC CkHashtableW  : public CkWideCharBase
 	// the key existed and was removed. Returns false if the key did not already
 	// exist.
 	bool Remove(const wchar_t *key);
+
+	// Serializes the hash table to XML format. The XML is appended to sbXml.
+	bool ToXmlSb(CkStringBuilderW &sbXml);
 
 
 

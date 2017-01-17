@@ -10,7 +10,7 @@
 #include "chilkatDefs.h"
 
 #include "CkString.h"
-#include "CkMultiByteBase.h"
+#include "CkClassWithCallbacks.h"
 
 class CkTask;
 class CkByteData;
@@ -25,10 +25,9 @@ class CkBaseProgress;
  
 
 // CLASS: CkZipEntry
-class CK_VISIBLE_PUBLIC CkZipEntry  : public CkMultiByteBase
+class CK_VISIBLE_PUBLIC CkZipEntry  : public CkClassWithCallbacks
 {
     private:
-	void *m_eventCallback;
 
 	// Don't allow assignment or copying these objects.
 	CkZipEntry(const CkZipEntry &);
@@ -189,12 +188,12 @@ class CK_VISIBLE_PUBLIC CkZipEntry  : public CkMultiByteBase
 
 
 	// Appends text data to the zip entry's file contents. The text is appended using
-	// the character encoding specified by the  charset, which can be "utf-8", "ansi", etc.
-	bool AppendString(const char *inStr, const char *charset);
+	// the character encoding specified by the charset, which can be "utf-8", "ansi", etc.
+	bool AppendString(const char *strContent, const char *charset);
 
 	// Appends text data to the zip entry's file contents. The text is appended using
-	// the character encoding specified by the  charset, which can be "utf-8", "ansi", etc.
-	CkTask *AppendStringAsync(const char *inStr, const char *charset);
+	// the character encoding specified by the charset, which can be "utf-8", "ansi", etc.
+	CkTask *AppendStringAsync(const char *strContent, const char *charset);
 
 
 	// Returns the compressed data as a byte array.
@@ -283,7 +282,7 @@ class CK_VISIBLE_PUBLIC CkZipEntry  : public CkMultiByteBase
 	CkZipEntry *NextEntry(void);
 
 
-	// Returns the next entry having a filename matching the ARG1. The "*" characters
+	// Returns the next entry having a filename matching the matchStr. The "*" characters
 	// matches 0 or more of any character. The full filename, including path, is used
 	// when matching against the pattern.
 	// The caller is responsible for deleting the object returned by this method.
@@ -295,9 +294,9 @@ class CK_VISIBLE_PUBLIC CkZipEntry  : public CkMultiByteBase
 
 
 	// Replaces the zip entry's existing contents with new text data. The text will be
-	// stored using the character encoding as specified by  charset, which can be "utf-8",
+	// stored using the character encoding as specified by charset, which can be "utf-8",
 	// "ansi", etc.
-	bool ReplaceString(const char *inStr, const char *charset);
+	bool ReplaceString(const char *strContent, const char *charset);
 
 
 	// Sets the last-modified date/time for this zip entry.
@@ -310,7 +309,7 @@ class CK_VISIBLE_PUBLIC CkZipEntry  : public CkMultiByteBase
 	// 1 = convert all to bare LF's
 	// 2 = convert all to CRLF's
 	// 
-	// The  srcCharset tells the component how to interpret the bytes of the uncompressed file
+	// The srcCharset tells the component how to interpret the bytes of the uncompressed file
 	// -- i.e. as utf-8, utf-16, windows-1252, etc.
 	bool UnzipToString(int lineEndingBehavior, const char *srcCharset, CkString &outStr);
 
@@ -320,7 +319,7 @@ class CK_VISIBLE_PUBLIC CkZipEntry  : public CkMultiByteBase
 	// 1 = convert all to bare LF's
 	// 2 = convert all to CRLF's
 	// 
-	// The  srcCharset tells the component how to interpret the bytes of the uncompressed file
+	// The srcCharset tells the component how to interpret the bytes of the uncompressed file
 	// -- i.e. as utf-8, utf-16, windows-1252, etc.
 	const char *unzipToString(int lineEndingBehavior, const char *srcCharset);
 	// Inflate and return the uncompressed data as a string The lineEndingBehavior is as follows:
@@ -329,7 +328,7 @@ class CK_VISIBLE_PUBLIC CkZipEntry  : public CkMultiByteBase
 	// 1 = convert all to bare LF's
 	// 2 = convert all to CRLF's
 	// 
-	// The  srcCharset tells the component how to interpret the bytes of the uncompressed file
+	// The srcCharset tells the component how to interpret the bytes of the uncompressed file
 	// -- i.e. as utf-8, utf-16, windows-1252, etc.
 	CkTask *UnzipToStringAsync(int lineEndingBehavior, const char *srcCharset);
 

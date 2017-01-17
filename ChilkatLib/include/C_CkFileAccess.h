@@ -1,9 +1,10 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.64
 #ifndef _C_CkFileAccess_H
 #define _C_CkFileAccess_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
+
 
 CK_VISIBLE_PUBLIC HCkFileAccess CkFileAccess_Create(void);
 CK_VISIBLE_PUBLIC void CkFileAccess_Dispose(HCkFileAccess handle);
@@ -46,10 +47,23 @@ CK_VISIBLE_PUBLIC BOOL CkFileAccess_FileExists(HCkFileAccess cHandle, const char
 CK_VISIBLE_PUBLIC int CkFileAccess_FileExists3(HCkFileAccess cHandle, const char *path);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_FileOpen(HCkFileAccess cHandle, const char *filePath, unsigned long accessMode, unsigned long shareMode, unsigned long createDisposition, unsigned long attributes);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_FileRead(HCkFileAccess cHandle, int maxNumBytes, HCkByteData outBytes);
+CK_VISIBLE_PUBLIC BOOL CkFileAccess_FileReadBd(HCkFileAccess cHandle, int maxNumBytes, HCkBinData binData);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_FileRename(HCkFileAccess cHandle, const char *existingFilepath, const char *newFilepath);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_FileSeek(HCkFileAccess cHandle, int offset, int origin);
 CK_VISIBLE_PUBLIC int CkFileAccess_FileSize(HCkFileAccess cHandle, const char *filePath);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_FileWrite(HCkFileAccess cHandle, HCkByteData data);
+CK_VISIBLE_PUBLIC BOOL CkFileAccess_FileWriteBd(HCkFileAccess cHandle, HCkBinData binData, int offset, int numBytes);
+CK_VISIBLE_PUBLIC BOOL CkFileAccess_GenBlockId(HCkFileAccess cHandle, int index, int length, const char *encoding, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkFileAccess_genBlockId(HCkFileAccess cHandle, int index, int length, const char *encoding);
+CK_VISIBLE_PUBLIC BOOL CkFileAccess_GetDirectoryName(HCkFileAccess cHandle, const char *path, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkFileAccess_getDirectoryName(HCkFileAccess cHandle, const char *path);
+CK_VISIBLE_PUBLIC BOOL CkFileAccess_GetExtension(HCkFileAccess cHandle, const char *path, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkFileAccess_getExtension(HCkFileAccess cHandle, const char *path);
+CK_VISIBLE_PUBLIC BOOL CkFileAccess_GetFileName(HCkFileAccess cHandle, const char *path, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkFileAccess_getFileName(HCkFileAccess cHandle, const char *path);
+CK_VISIBLE_PUBLIC BOOL CkFileAccess_GetFileNameWithoutExtension(HCkFileAccess cHandle, const char *path, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkFileAccess_getFileNameWithoutExtension(HCkFileAccess cHandle, const char *path);
+CK_VISIBLE_PUBLIC int CkFileAccess_GetNumBlocks(HCkFileAccess cHandle, int blockSize);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_GetTempFilename(HCkFileAccess cHandle, const char *dirPath, const char *prefix, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkFileAccess_getTempFilename(HCkFileAccess cHandle, const char *dirPath, const char *prefix);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_OpenForAppend(HCkFileAccess cHandle, const char *filePath);
@@ -58,6 +72,7 @@ CK_VISIBLE_PUBLIC BOOL CkFileAccess_OpenForReadWrite(HCkFileAccess cHandle, cons
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_OpenForWrite(HCkFileAccess cHandle, const char *filePath);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_ReadBinaryToEncoded(HCkFileAccess cHandle, const char *filePath, const char *encoding, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkFileAccess_readBinaryToEncoded(HCkFileAccess cHandle, const char *filePath, const char *encoding);
+CK_VISIBLE_PUBLIC BOOL CkFileAccess_ReadBlock(HCkFileAccess cHandle, int blockIndex, int blockSize, HCkByteData outBytes);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_ReadEntireFile(HCkFileAccess cHandle, const char *filePath, HCkByteData outBytes);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_ReadEntireTextFile(HCkFileAccess cHandle, const char *filePath, const char *charset, HCkString outStrFileContents);
 CK_VISIBLE_PUBLIC const char *CkFileAccess_readEntireTextFile(HCkFileAccess cHandle, const char *filePath, const char *charset);

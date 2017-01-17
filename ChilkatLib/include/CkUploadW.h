@@ -10,7 +10,7 @@
 #include "chilkatDefs.h"
 
 #include "CkString.h"
-#include "CkWideCharBase.h"
+#include "CkClassWithCallbacksW.h"
 
 class CkByteData;
 class CkTaskW;
@@ -24,11 +24,10 @@ class CkBaseProgressW;
  
 
 // CLASS: CkUploadW
-class CK_VISIBLE_PUBLIC CkUploadW  : public CkWideCharBase
+class CK_VISIBLE_PUBLIC CkUploadW  : public CkClassWithCallbacksW
 {
     private:
 	bool m_cbOwned;
-	void *m_eventCallback;
 
 	// Don't allow assignment or copying these objects.
 	CkUploadW(const CkUploadW &);
@@ -60,6 +59,23 @@ class CK_VISIBLE_PUBLIC CkUploadW  : public CkWideCharBase
 	// ----------------------
 	// Properties
 	// ----------------------
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	bool get_AbortCurrent(void);
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	void put_AbortCurrent(bool newVal);
+
 	// If non-zero, limits (throttles) the upload bandwidth to approximately this
 	// maximum number of bytes per second. The default value of this property is 0.
 	int get_BandwidthThrottleUp(void);
@@ -369,82 +385,6 @@ class CK_VISIBLE_PUBLIC CkUploadW  : public CkWideCharBase
 	// 
 	void put_Ssl(bool newVal);
 
-	// The total size of the upload (in bytes). This property will become set at the
-	// beginning of an asynchronous upload. A program may monitor asynchronous uploads
-	// by tracking both NumBytesSent and PercentUploaded.
-	// 
-	// This property is also set during synchronous uploads.
-	// 
-	unsigned long get_TotalUploadSize(void);
-
-	// Set to true when an asynchronous upload is started. When the asynchronous
-	// upload is complete, this property becomes equal to false. A program will
-	// typically begin an asynchronous upload by calling BeginUpload, and then
-	// periodically checking the value of this property to determine when the upload is
-	// complete.
-	bool get_UploadInProgress(void);
-
-	// Set to true (success) or false (failed) after an asynchronous upload
-	// completes or aborts due to failure. When a program does an asynchronous upload,
-	// it will wait until UploadInProgress becomes false. It will then check the
-	// value of this property to determine if the upload was successful or not.
-	bool get_UploadSuccess(void);
-
-	// Specifies a set of pins for Public Key Pinning for TLS connections. This
-	// property lists the expected SPKI fingerprints for the server certificates. If
-	// the server's certificate (sent during the TLS handshake) does not match any of
-	// the SPKI fingerprints, then the TLS handshake is aborted and the connection
-	// fails. The format of this string property is as follows:
-	// hash_algorithm, encoding, SPKI_fingerprint_1, SPKI_fingerprint_2, ...
-	// For example, the following string specifies a single sha256 base64-encoded SPKI
-	// fingerprint:
-	// "sha256, base64, lKg1SIqyhPSK19tlPbjl8s02yChsVTDklQpkMCHvsTE="
-	// This example specifies two SPKI fingerprints:
-	// "sha256, base64, 4t37LpnGmrMEAG8HEz9yIrnvJV2euVRwCLb9EH5WZyI=, 68b0G5iqMvWVWvUCjMuhLEyekM5729PadtnU5tdXZKs="
-	// Any of the following hash algorithms are allowed:.sha1, sha256, sha384, sha512,
-	// md2, md5, haval, ripemd128, ripemd160,ripemd256, or ripemd320.
-	// 
-	// The following encodings are allowed: base64, hex, and any of the encodings
-	// indicated in the link below.
-	// 
-	void get_TlsPinSet(CkString &str);
-	// Specifies a set of pins for Public Key Pinning for TLS connections. This
-	// property lists the expected SPKI fingerprints for the server certificates. If
-	// the server's certificate (sent during the TLS handshake) does not match any of
-	// the SPKI fingerprints, then the TLS handshake is aborted and the connection
-	// fails. The format of this string property is as follows:
-	// hash_algorithm, encoding, SPKI_fingerprint_1, SPKI_fingerprint_2, ...
-	// For example, the following string specifies a single sha256 base64-encoded SPKI
-	// fingerprint:
-	// "sha256, base64, lKg1SIqyhPSK19tlPbjl8s02yChsVTDklQpkMCHvsTE="
-	// This example specifies two SPKI fingerprints:
-	// "sha256, base64, 4t37LpnGmrMEAG8HEz9yIrnvJV2euVRwCLb9EH5WZyI=, 68b0G5iqMvWVWvUCjMuhLEyekM5729PadtnU5tdXZKs="
-	// Any of the following hash algorithms are allowed:.sha1, sha256, sha384, sha512,
-	// md2, md5, haval, ripemd128, ripemd160,ripemd256, or ripemd320.
-	// 
-	// The following encodings are allowed: base64, hex, and any of the encodings
-	// indicated in the link below.
-	// 
-	const wchar_t *tlsPinSet(void);
-	// Specifies a set of pins for Public Key Pinning for TLS connections. This
-	// property lists the expected SPKI fingerprints for the server certificates. If
-	// the server's certificate (sent during the TLS handshake) does not match any of
-	// the SPKI fingerprints, then the TLS handshake is aborted and the connection
-	// fails. The format of this string property is as follows:
-	// hash_algorithm, encoding, SPKI_fingerprint_1, SPKI_fingerprint_2, ...
-	// For example, the following string specifies a single sha256 base64-encoded SPKI
-	// fingerprint:
-	// "sha256, base64, lKg1SIqyhPSK19tlPbjl8s02yChsVTDklQpkMCHvsTE="
-	// This example specifies two SPKI fingerprints:
-	// "sha256, base64, 4t37LpnGmrMEAG8HEz9yIrnvJV2euVRwCLb9EH5WZyI=, 68b0G5iqMvWVWvUCjMuhLEyekM5729PadtnU5tdXZKs="
-	// Any of the following hash algorithms are allowed:.sha1, sha256, sha384, sha512,
-	// md2, md5, haval, ripemd128, ripemd160,ripemd256, or ripemd320.
-	// 
-	// The following encodings are allowed: base64, hex, and any of the encodings
-	// indicated in the link below.
-	// 
-	void put_TlsPinSet(const wchar_t *newVal);
-
 	// Provides a means for setting a list of ciphers that are allowed for SSL/TLS
 	// connections. The default (empty string) indicates that all implemented ciphers
 	// are possible. The TLS ciphers supported in Chilkat v9.5.0.55 and later are:
@@ -713,6 +653,82 @@ class CK_VISIBLE_PUBLIC CkUploadW  : public CkWideCharBase
 	// exact protocol is negotiated. It is better to choose "X or higher" than an exact
 	// protocol. The "default" is effectively "SSL 3.0 or higher".
 	void put_SslProtocol(const wchar_t *newVal);
+
+	// Specifies a set of pins for Public Key Pinning for TLS connections. This
+	// property lists the expected SPKI fingerprints for the server certificates. If
+	// the server's certificate (sent during the TLS handshake) does not match any of
+	// the SPKI fingerprints, then the TLS handshake is aborted and the connection
+	// fails. The format of this string property is as follows:
+	// hash_algorithm, encoding, SPKI_fingerprint_1, SPKI_fingerprint_2, ...
+	// For example, the following string specifies a single sha256 base64-encoded SPKI
+	// fingerprint:
+	// "sha256, base64, lKg1SIqyhPSK19tlPbjl8s02yChsVTDklQpkMCHvsTE="
+	// This example specifies two SPKI fingerprints:
+	// "sha256, base64, 4t37LpnGmrMEAG8HEz9yIrnvJV2euVRwCLb9EH5WZyI=, 68b0G5iqMvWVWvUCjMuhLEyekM5729PadtnU5tdXZKs="
+	// Any of the following hash algorithms are allowed:.sha1, sha256, sha384, sha512,
+	// md2, md5, haval, ripemd128, ripemd160,ripemd256, or ripemd320.
+	// 
+	// The following encodings are allowed: base64, hex, and any of the encodings
+	// indicated in the link below.
+	// 
+	void get_TlsPinSet(CkString &str);
+	// Specifies a set of pins for Public Key Pinning for TLS connections. This
+	// property lists the expected SPKI fingerprints for the server certificates. If
+	// the server's certificate (sent during the TLS handshake) does not match any of
+	// the SPKI fingerprints, then the TLS handshake is aborted and the connection
+	// fails. The format of this string property is as follows:
+	// hash_algorithm, encoding, SPKI_fingerprint_1, SPKI_fingerprint_2, ...
+	// For example, the following string specifies a single sha256 base64-encoded SPKI
+	// fingerprint:
+	// "sha256, base64, lKg1SIqyhPSK19tlPbjl8s02yChsVTDklQpkMCHvsTE="
+	// This example specifies two SPKI fingerprints:
+	// "sha256, base64, 4t37LpnGmrMEAG8HEz9yIrnvJV2euVRwCLb9EH5WZyI=, 68b0G5iqMvWVWvUCjMuhLEyekM5729PadtnU5tdXZKs="
+	// Any of the following hash algorithms are allowed:.sha1, sha256, sha384, sha512,
+	// md2, md5, haval, ripemd128, ripemd160,ripemd256, or ripemd320.
+	// 
+	// The following encodings are allowed: base64, hex, and any of the encodings
+	// indicated in the link below.
+	// 
+	const wchar_t *tlsPinSet(void);
+	// Specifies a set of pins for Public Key Pinning for TLS connections. This
+	// property lists the expected SPKI fingerprints for the server certificates. If
+	// the server's certificate (sent during the TLS handshake) does not match any of
+	// the SPKI fingerprints, then the TLS handshake is aborted and the connection
+	// fails. The format of this string property is as follows:
+	// hash_algorithm, encoding, SPKI_fingerprint_1, SPKI_fingerprint_2, ...
+	// For example, the following string specifies a single sha256 base64-encoded SPKI
+	// fingerprint:
+	// "sha256, base64, lKg1SIqyhPSK19tlPbjl8s02yChsVTDklQpkMCHvsTE="
+	// This example specifies two SPKI fingerprints:
+	// "sha256, base64, 4t37LpnGmrMEAG8HEz9yIrnvJV2euVRwCLb9EH5WZyI=, 68b0G5iqMvWVWvUCjMuhLEyekM5729PadtnU5tdXZKs="
+	// Any of the following hash algorithms are allowed:.sha1, sha256, sha384, sha512,
+	// md2, md5, haval, ripemd128, ripemd160,ripemd256, or ripemd320.
+	// 
+	// The following encodings are allowed: base64, hex, and any of the encodings
+	// indicated in the link below.
+	// 
+	void put_TlsPinSet(const wchar_t *newVal);
+
+	// The total size of the upload (in bytes). This property will become set at the
+	// beginning of an asynchronous upload. A program may monitor asynchronous uploads
+	// by tracking both NumBytesSent and PercentUploaded.
+	// 
+	// This property is also set during synchronous uploads.
+	// 
+	unsigned long get_TotalUploadSize(void);
+
+	// Set to true when an asynchronous upload is started. When the asynchronous
+	// upload is complete, this property becomes equal to false. A program will
+	// typically begin an asynchronous upload by calling BeginUpload, and then
+	// periodically checking the value of this property to determine when the upload is
+	// complete.
+	bool get_UploadInProgress(void);
+
+	// Set to true (success) or false (failed) after an asynchronous upload
+	// completes or aborts due to failure. When a program does an asynchronous upload,
+	// it will wait until UploadInProgress becomes false. It will then check the
+	// value of this property to determine if the upload was successful or not.
+	bool get_UploadSuccess(void);
 
 
 

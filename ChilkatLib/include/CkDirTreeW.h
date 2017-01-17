@@ -102,11 +102,24 @@ class CK_VISIBLE_PUBLIC CkDirTreeW  : public CkWideCharBase
 	// ----------------------
 	// Advances the current position in the directory tree traversal to the next file
 	// or sub-directory.
+	// 
+	// Important: If AdvancePosition returns false, it can be an error, or it could
+	// be that there are no more files and directories. To distinguish between the two
+	// cases, examine the DoneIterating property. If DoneIterating is true, then the
+	// false return value is not an error, but instead indicates that the end has
+	// been reached.
+	// 
 	bool AdvancePosition(void);
 
 	// Begins a directory tree traversal. After calling this method, the various
 	// property values such as Fullpath, FileSize32, etc. can be retrieved for the 1st
 	// file / sub-directory in the traversal.
+	// 
+	// Important: If BeginIterate returns false, it can be an error, or it could be
+	// that there are 0 files and directories. To distinguish between the two cases,
+	// examine the DoneIterating property. If DoneIterating is true, then the false
+	// return value is not an error, but instead indicates 0 files/directories.
+	// 
 	bool BeginIterate(void);
 
 

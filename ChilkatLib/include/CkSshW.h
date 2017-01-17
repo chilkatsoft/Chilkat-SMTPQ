@@ -10,7 +10,7 @@
 #include "chilkatDefs.h"
 
 #include "CkString.h"
-#include "CkWideCharBase.h"
+#include "CkClassWithCallbacksW.h"
 
 class CkSshKeyW;
 class CkTaskW;
@@ -26,11 +26,10 @@ class CkBaseProgressW;
  
 
 // CLASS: CkSshW
-class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
+class CK_VISIBLE_PUBLIC CkSshW  : public CkClassWithCallbacksW
 {
     private:
 	bool m_cbOwned;
-	void *m_eventCallback;
 
 	// Don't allow assignment or copying these objects.
 	CkSshW(const CkSshW &);
@@ -62,6 +61,23 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	// ----------------------
 	// Properties
 	// ----------------------
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	bool get_AbortCurrent(void);
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	void put_AbortCurrent(bool newVal);
+
 	// Set to one of the following values if a call to AuthenticatePw, AuthenticatePk,
 	// or AuthenticatePwPk returns a failed status.
 	//     1: Transport failure. This is a failure to communicate with the server (i.e.
@@ -247,6 +263,27 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	// property contains a descriptive string for the "reason code" as specified in RFC
 	// 4253.
 	const wchar_t *disconnectReason(void);
+
+	// Enables or disables the use of compression w/ the SSH connection. The default
+	// value is true, meaning that compression is used if the server supports it.
+	// 
+	// Some older SSH servers have been found that claim to support compression, but
+	// actually fail when compression is used. PuTTY does not enable compression by
+	// default. If trouble is encountered where the SSH server disconnects immediately
+	// after the connection is seemingly established (i.e. during authentication), then
+	// check to see if disabling compression resolves the problem.
+	// 
+	bool get_EnableCompression(void);
+	// Enables or disables the use of compression w/ the SSH connection. The default
+	// value is true, meaning that compression is used if the server supports it.
+	// 
+	// Some older SSH servers have been found that claim to support compression, but
+	// actually fail when compression is used. PuTTY does not enable compression by
+	// default. If trouble is encountered where the SSH server disconnects immediately
+	// after the connection is seemingly established (i.e. during authentication), then
+	// check to see if disabling compression resolves the problem.
+	// 
+	void put_EnableCompression(bool newVal);
 
 	// Set to one of the following encryption algorithms to force that cipher to be
 	// used. By default, the component will automatically choose the first cipher
@@ -478,58 +515,6 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	// filename -- it is a string property that contains the session log data.
 	const wchar_t *sessionLog(void);
 
-	// Sets the receive buffer size socket option. Normally, this property should be
-	// left unchanged. The default value is 0, which indicates that the receive buffer
-	// size socket option should not be explicitly set (i.e. the system default value,
-	// which may vary from system to system, should be used).
-	// 
-	// This property can be changed if download performance seems slow. It is
-	// recommended to be a multiple of 4096. To see the current system's default
-	// receive buffer size, examine the LastErrorText property after calling any method
-	// that establishes a connection. It should be reported under the heading
-	// "SO_RCVBUF". To boost performance, try setting it equal to 2, 3, or 4 times the
-	// default value.
-	// 
-	int get_SoRcvBuf(void);
-	// Sets the receive buffer size socket option. Normally, this property should be
-	// left unchanged. The default value is 0, which indicates that the receive buffer
-	// size socket option should not be explicitly set (i.e. the system default value,
-	// which may vary from system to system, should be used).
-	// 
-	// This property can be changed if download performance seems slow. It is
-	// recommended to be a multiple of 4096. To see the current system's default
-	// receive buffer size, examine the LastErrorText property after calling any method
-	// that establishes a connection. It should be reported under the heading
-	// "SO_RCVBUF". To boost performance, try setting it equal to 2, 3, or 4 times the
-	// default value.
-	// 
-	void put_SoRcvBuf(int newVal);
-
-	// Sets the send buffer size socket option. Normally, this property should be left
-	// unchanged. The default value is 0, which indicates that the send buffer size
-	// socket option should not be explicitly set (i.e. the system default value, which
-	// may vary from system to system, should be used).
-	// 
-	// This property can be changed if upload performance seems slow. It is recommended
-	// to be a multiple of 4096. To see the current system's default send buffer size,
-	// examine the LastErrorText property after calling any method that establishes a
-	// connection. It should be reported under the heading "SO_SNDBUF". To boost
-	// performance, try setting it equal to 2, 3, or 4 times the default value.
-	// 
-	int get_SoSndBuf(void);
-	// Sets the send buffer size socket option. Normally, this property should be left
-	// unchanged. The default value is 0, which indicates that the send buffer size
-	// socket option should not be explicitly set (i.e. the system default value, which
-	// may vary from system to system, should be used).
-	// 
-	// This property can be changed if upload performance seems slow. It is recommended
-	// to be a multiple of 4096. To see the current system's default send buffer size,
-	// examine the LastErrorText property after calling any method that establishes a
-	// connection. It should be reported under the heading "SO_SNDBUF". To boost
-	// performance, try setting it equal to 2, 3, or 4 times the default value.
-	// 
-	void put_SoSndBuf(int newVal);
-
 	// The SOCKS4/SOCKS5 hostname or IPv4 address (in dotted decimal notation). This
 	// property is only used if the SocksVersion property is set to 4 or 5).
 	void get_SocksHostname(CkString &str);
@@ -583,6 +568,58 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	// 5 - Connect via a SOCKS5 proxy.
 	// 
 	void put_SocksVersion(int newVal);
+
+	// Sets the receive buffer size socket option. Normally, this property should be
+	// left unchanged. The default value is 0, which indicates that the receive buffer
+	// size socket option should not be explicitly set (i.e. the system default value,
+	// which may vary from system to system, should be used).
+	// 
+	// This property can be changed if download performance seems slow. It is
+	// recommended to be a multiple of 4096. To see the current system's default
+	// receive buffer size, examine the LastErrorText property after calling any method
+	// that establishes a connection. It should be reported under the heading
+	// "SO_RCVBUF". To boost performance, try setting it equal to 2, 3, or 4 times the
+	// default value.
+	// 
+	int get_SoRcvBuf(void);
+	// Sets the receive buffer size socket option. Normally, this property should be
+	// left unchanged. The default value is 0, which indicates that the receive buffer
+	// size socket option should not be explicitly set (i.e. the system default value,
+	// which may vary from system to system, should be used).
+	// 
+	// This property can be changed if download performance seems slow. It is
+	// recommended to be a multiple of 4096. To see the current system's default
+	// receive buffer size, examine the LastErrorText property after calling any method
+	// that establishes a connection. It should be reported under the heading
+	// "SO_RCVBUF". To boost performance, try setting it equal to 2, 3, or 4 times the
+	// default value.
+	// 
+	void put_SoRcvBuf(int newVal);
+
+	// Sets the send buffer size socket option. Normally, this property should be left
+	// unchanged. The default value is 0, which indicates that the send buffer size
+	// socket option should not be explicitly set (i.e. the system default value, which
+	// may vary from system to system, should be used).
+	// 
+	// This property can be changed if upload performance seems slow. It is recommended
+	// to be a multiple of 4096. To see the current system's default send buffer size,
+	// examine the LastErrorText property after calling any method that establishes a
+	// connection. It should be reported under the heading "SO_SNDBUF". To boost
+	// performance, try setting it equal to 2, 3, or 4 times the default value.
+	// 
+	int get_SoSndBuf(void);
+	// Sets the send buffer size socket option. Normally, this property should be left
+	// unchanged. The default value is 0, which indicates that the send buffer size
+	// socket option should not be explicitly set (i.e. the system default value, which
+	// may vary from system to system, should be used).
+	// 
+	// This property can be changed if upload performance seems slow. It is recommended
+	// to be a multiple of 4096. To see the current system's default send buffer size,
+	// examine the LastErrorText property after calling any method that establishes a
+	// connection. It should be reported under the heading "SO_SNDBUF". To boost
+	// performance, try setting it equal to 2, 3, or 4 times the default value.
+	// 
+	void put_SoSndBuf(int newVal);
 
 	// If true, then stderr is redirected to stdout. In this case, channel output for
 	// both stdout and stderr is combined and retrievable via the following methods:
@@ -654,7 +691,7 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	// ----------------------
 	// Authenticates with the SSH server using public-key authentication. The
 	// corresponding public key must have been installed on the SSH server for the
-	// username. Authentication will succeed if the matching  privateKey is provided.
+	// username. Authentication will succeed if the matching privateKey is provided.
 	// 
 	// Important: When reporting problems, please send the full contents of the
 	// LastErrorText property to support@chilkatsoft.com.
@@ -666,7 +703,7 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *AuthenticatePkAsync(const wchar_t *username, CkSshKeyW &privateKey);
 
-	// Authenticates with the SSH server using a login and  password.
+	// Authenticates with the SSH server using a login and password.
 	// 
 	// An SSH session always begins by first calling Connect to connect to the SSH
 	// server, and then calling either AuthenticatePw or AuthenticatePk to login.
@@ -701,7 +738,7 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	bool ChannelIsOpen(int channelNum);
 
 	// Polls for incoming data on an open channel. This method will read a channel,
-	// waiting at most  pollTimeoutMs milliseconds for data to arrive. Return values are as
+	// waiting at most pollTimeoutMs milliseconds for data to arrive. Return values are as
 	// follows:
 	// 
 	// -1 -- Error. Check the IsConnected property to see if the connection to the SSH
@@ -755,8 +792,8 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	CkTaskW *ChannelReadAsync(int channelNum);
 
 	// Reads incoming data on an open channel and continues reading until no data
-	// arrives for  pollTimeoutMs milliseconds. The first read will wait a max of IdleTimeoutMs
-	// milliseconds before timing out. Subsequent reads wait a max of  pollTimeoutMs milliseconds
+	// arrives for pollTimeoutMs milliseconds. The first read will wait a max of IdleTimeoutMs
+	// milliseconds before timing out. Subsequent reads wait a max of pollTimeoutMs milliseconds
 	// before timing out.
 	// 
 	// The idea behind ChannelReadAndPoll is to capture the output of a shell command.
@@ -767,7 +804,7 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	// longer period of time for the first data to arrive, but once it begins arriving,
 	// the timeout can be shortened. This is exactly what ChannelReadAndPoll does --
 	// the first timeout is controlled by the IdleTimeoutMs property, while the
-	// subsequent reads (once output starts flowing) is controlled by  pollTimeoutMs.
+	// subsequent reads (once output starts flowing) is controlled by pollTimeoutMs.
 	// 
 	// Return values are as follows:
 	// -1 -- Error. Check the IsConnected property to see if the connection to the SSH
@@ -793,7 +830,7 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *ChannelReadAndPollAsync(int channelNum, int pollTimeoutMs);
 
-	// The same as ChannelReadAndPoll, except this method will return as soon as  maxNumBytes
+	// The same as ChannelReadAndPoll, except this method will return as soon as maxNumBytes
 	// is exceeded, which may be as large as the MaxPacketSize property setting.
 	int ChannelReadAndPoll2(int channelNum, int pollTimeoutMs, int maxNumBytes);
 
@@ -801,46 +838,6 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *ChannelReadAndPoll2Async(int channelNum, int pollTimeoutMs, int maxNumBytes);
-
-	// Reads incoming data on an open channel until the channel is closed by the
-	// server. If successful, the number of bytes available to be "picked up" can be
-	// determined by calling GetReceivedNumBytes. The received data may be retrieved by
-	// calling GetReceivedData or GetReceivedText.
-	bool ChannelReceiveToClose(int channelNum);
-
-	// Creates an asynchronous task to call the ChannelReceiveToClose method with the
-	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
-	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *ChannelReceiveToCloseAsync(int channelNum);
-
-	// Reads incoming text data on an open channel until the received data matches the
-	//  matchPattern. For example, to receive data until the string "Hello World" arrives, set
-	//  matchPattern equal to "*Hello World*".  charset indicates the character encoding of the text
-	// being received ("iso-8859-1" for example).  caseSensitive may be set to true for case
-	// sensitive matching, or false for case insensitive matching.
-	// 
-	// Returns true if text data matching  matchPattern was received and is available to be
-	// picked up by calling GetReceivedText (or GetReceivedTextS). IMPORTANT: This
-	// method may read beyond the matching text. Call GetReceivedTextS to extract only
-	// the data up-to and including the matching text.
-	// 
-	bool ChannelReceiveUntilMatch(int channelNum, const wchar_t *matchPattern, const wchar_t *charset, bool caseSensitive);
-
-	// Creates an asynchronous task to call the ChannelReceiveUntilMatch method with
-	// the arguments provided. (Async methods are available starting in Chilkat
-	// v9.5.0.52.)
-	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *ChannelReceiveUntilMatchAsync(int channelNum, const wchar_t *matchPattern, const wchar_t *charset, bool caseSensitive);
-
-	// The same as ChannelReceiveUntilMatch except that the method returns when any one
-	// of the match patterns specified in  matchPatterns are received on the channel.
-	bool ChannelReceiveUntilMatchN(int channelNum, CkStringArrayW &matchPatterns, const wchar_t *charset, bool caseSensitive);
-
-	// Creates an asynchronous task to call the ChannelReceiveUntilMatchN method with
-	// the arguments provided. (Async methods are available starting in Chilkat
-	// v9.5.0.52.)
-	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *ChannelReceiveUntilMatchNAsync(int channelNum, CkStringArrayW &matchPatterns, const wchar_t *charset, bool caseSensitive);
 
 	// true if a CLOSE message has been received on the channel indicated by channelNum.
 	// When a CLOSE is received, no subsequent data should be sent in either direction
@@ -854,6 +851,46 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 
 	// true if an exit status code was received on the channel. Otherwise false.
 	bool ChannelReceivedExitStatus(int channelNum);
+
+	// Reads incoming data on an open channel until the channel is closed by the
+	// server. If successful, the number of bytes available to be "picked up" can be
+	// determined by calling GetReceivedNumBytes. The received data may be retrieved by
+	// calling GetReceivedData or GetReceivedText.
+	bool ChannelReceiveToClose(int channelNum);
+
+	// Creates an asynchronous task to call the ChannelReceiveToClose method with the
+	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *ChannelReceiveToCloseAsync(int channelNum);
+
+	// Reads incoming text data on an open channel until the received data matches the
+	// matchPattern. For example, to receive data until the string "Hello World" arrives, set
+	// matchPattern equal to "*Hello World*". charset indicates the character encoding of the text
+	// being received ("iso-8859-1" for example). caseSensitive may be set to true for case
+	// sensitive matching, or false for case insensitive matching.
+	// 
+	// Returns true if text data matching matchPattern was received and is available to be
+	// picked up by calling GetReceivedText (or GetReceivedTextS). IMPORTANT: This
+	// method may read beyond the matching text. Call GetReceivedTextS to extract only
+	// the data up-to and including the matching text.
+	// 
+	bool ChannelReceiveUntilMatch(int channelNum, const wchar_t *matchPattern, const wchar_t *charset, bool caseSensitive);
+
+	// Creates an asynchronous task to call the ChannelReceiveUntilMatch method with
+	// the arguments provided. (Async methods are available starting in Chilkat
+	// v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *ChannelReceiveUntilMatchAsync(int channelNum, const wchar_t *matchPattern, const wchar_t *charset, bool caseSensitive);
+
+	// The same as ChannelReceiveUntilMatch except that the method returns when any one
+	// of the match patterns specified in matchPatterns are received on the channel.
+	bool ChannelReceiveUntilMatchN(int channelNum, CkStringArrayW &matchPatterns, const wchar_t *charset, bool caseSensitive);
+
+	// Creates an asynchronous task to call the ChannelReceiveUntilMatchN method with
+	// the arguments provided. (Async methods are available starting in Chilkat
+	// v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *ChannelReceiveUntilMatchNAsync(int channelNum, CkStringArrayW &matchPatterns, const wchar_t *charset, bool caseSensitive);
 
 	// Releases the internal memory resources for a channel previously opened by
 	// OpenSessionChannel, OpenCustomChannel, or OpenDirectTcpIpChannel. It is not
@@ -874,12 +911,12 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	CkTaskW *ChannelSendCloseAsync(int channelNum);
 
 	// Sends byte data on the channel indicated by channelNum.
-	bool ChannelSendData(int channelNum, CkByteData &data);
+	bool ChannelSendData(int channelNum, CkByteData &byteData);
 
 	// Creates an asynchronous task to call the ChannelSendData method with the
 	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *ChannelSendDataAsync(int channelNum, CkByteData &data);
+	CkTaskW *ChannelSendDataAsync(int channelNum, CkByteData &byteData);
 
 	// Sends an EOF for the channel indicated by channelNum. Once an EOF is sent, no
 	// additional data may be sent on the channel. However, the channel remains open
@@ -892,15 +929,15 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	CkTaskW *ChannelSendEofAsync(int channelNum);
 
 	// Sends character data on the channel indicated by channelNum. The text is converted to
-	// the charset indicated by  charset prior to being sent. A list of supported charset
+	// the charset indicated by charset prior to being sent. A list of supported charset
 	// values may be found on this page: Supported Charsets
 	// <http://www.chilkatsoft.com/p/p_463.asp> .
-	bool ChannelSendString(int channelNum, const wchar_t *strData, const wchar_t *charset);
+	bool ChannelSendString(int channelNum, const wchar_t *textData, const wchar_t *charset);
 
 	// Creates an asynchronous task to call the ChannelSendString method with the
 	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *ChannelSendStringAsync(int channelNum, const wchar_t *strData, const wchar_t *charset);
+	CkTaskW *ChannelSendStringAsync(int channelNum, const wchar_t *textData, const wchar_t *charset);
 
 	// Returns true if the underlying TCP socket is connected to the SSH server.
 	bool CheckConnection(void);
@@ -908,7 +945,7 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	// Clears the collection of TTY modes that are sent with the SendReqPty method.
 	void ClearTtyModes(void);
 
-	// Connects to the SSH server at domainName: port
+	// Connects to the SSH server at domainName:port
 	// 
 	// The domainName may be a domain name or an IPv4 or IPv6 address in string format.
 	// 
@@ -920,18 +957,18 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	// block the connection. If the connection fails, make sure to check all potential
 	// external causes of blockage.
 	// 
-	bool Connect(const wchar_t *hostname, int port);
+	bool Connect(const wchar_t *domainName, int port);
 
 	// Creates an asynchronous task to call the Connect method with the arguments
 	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *ConnectAsync(const wchar_t *hostname, int port);
+	CkTaskW *ConnectAsync(const wchar_t *domainName, int port);
 
-	// Connects to an SSH server through an existing SSH connection. The ARG1 is an
-	// existing connected and authenticated SSH object. The connection to ARG2:ARG3 is
+	// Connects to an SSH server through an existing SSH connection. The ssh is an
+	// existing connected and authenticated SSH object. The connection to hostname:port is
 	// made through the existing SSH connection via port-forwarding. If successful, the
 	// connection is as follows: application => ServerSSH1 => ServerSSH2. (where
-	// ServerSSH1 is the ARG1 and ServerSSH2 is the SSH server at ARG2:ARG3) Once
+	// ServerSSH1 is the ssh and ServerSSH2 is the SSH server at hostname:port) Once
 	// connected in this way, all communications are routed through ServerSSH1 to
 	// ServerSSH2. This includes authentication -- which means the application must
 	// still call one of the Authenticate* methods to authenticate with ServerSSH2.
@@ -942,10 +979,10 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *ConnectThroughSshAsync(CkSshW &ssh, const wchar_t *hostname, int port);
 
-	// Continues keyboard-interactive authentication with the SSH server. The ARG1 is
+	// Continues keyboard-interactive authentication with the SSH server. The response is
 	// typically the password. If multiple responses are required (because there were
 	// multiple prompts in the infoRequest XML returned by StartKeyboardAuth), then the
-	// ARG1 should be formatted as XML (as shown below) otherwise the ARG1 simply
+	// response should be formatted as XML (as shown below) otherwise the response simply
 	// contains the single response string.
 	// _LT_response_GT_
 	//     _LT_response1_GT_response to first prompt_LT_/response1_GT_
@@ -973,10 +1010,10 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	// 	_LT_/infoRequest_GT_
 	// 
 	bool ContinueKeyboardAuth(const wchar_t *response, CkString &outStr);
-	// Continues keyboard-interactive authentication with the SSH server. The ARG1 is
+	// Continues keyboard-interactive authentication with the SSH server. The response is
 	// typically the password. If multiple responses are required (because there were
 	// multiple prompts in the infoRequest XML returned by StartKeyboardAuth), then the
-	// ARG1 should be formatted as XML (as shown below) otherwise the ARG1 simply
+	// response should be formatted as XML (as shown below) otherwise the response simply
 	// contains the single response string.
 	// _LT_response_GT_
 	//     _LT_response1_GT_response to first prompt_LT_/response1_GT_
@@ -1037,15 +1074,15 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	// clears the channel's internal receive buffer.
 	bool GetReceivedData(int channelNum, CkByteData &outBytes);
 
-	// Same as GetReceivedData, but a maximum of  maxNumBytes bytes is returned.
-	bool GetReceivedDataN(int channelNum, int numBytes, CkByteData &outBytes);
+	// Same as GetReceivedData, but a maximum of maxNumBytes bytes is returned.
+	bool GetReceivedDataN(int channelNum, int maxNumBytes, CkByteData &outBytes);
 
 	// Returns the number of bytes available in the internal receive buffer for the
 	// specified channelNum. The received data may be retrieved by calling GetReceivedData or
 	// GetReceivedText.
 	int GetReceivedNumBytes(int channelNum);
 
-	// Returns the accumulated stderr bytes received on the channel indicated by ARG1
+	// Returns the accumulated stderr bytes received on the channel indicated by channelNum
 	// and clears the channel's internal stderr receive buffer.
 	// 
 	// Note: If the StderrToStdout property is set to true, then stderr is
@@ -1056,56 +1093,56 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	bool GetReceivedStderr(int channelNum, CkByteData &outBytes);
 
 	// Returns the accumulated stderr text received on the channel indicated by channelNum
-	// and clears the channel's internal receive buffer. The  charset indicates the charset
+	// and clears the channel's internal receive buffer. The charset indicates the charset
 	// of the character data in the internal receive buffer. A list of supported
 	// charset values may be found on this page: Supported Charsets
 	// <http://www.chilkatsoft.com/p/p_463.asp> .
 	bool GetReceivedStderrText(int channelNum, const wchar_t *charset, CkString &outStr);
 	// Returns the accumulated stderr text received on the channel indicated by channelNum
-	// and clears the channel's internal receive buffer. The  charset indicates the charset
+	// and clears the channel's internal receive buffer. The charset indicates the charset
 	// of the character data in the internal receive buffer. A list of supported
 	// charset values may be found on this page: Supported Charsets
 	// <http://www.chilkatsoft.com/p/p_463.asp> .
 	const wchar_t *getReceivedStderrText(int channelNum, const wchar_t *charset);
 	// Returns the accumulated stderr text received on the channel indicated by channelNum
-	// and clears the channel's internal receive buffer. The  charset indicates the charset
+	// and clears the channel's internal receive buffer. The charset indicates the charset
 	// of the character data in the internal receive buffer. A list of supported
 	// charset values may be found on this page: Supported Charsets
 	// <http://www.chilkatsoft.com/p/p_463.asp> .
 	const wchar_t *receivedStderrText(int channelNum, const wchar_t *charset);
 
 	// Returns the accumulated text received on the channel indicated by channelNum and
-	// clears the channel's internal receive buffer. The  charset indicates the charset of
+	// clears the channel's internal receive buffer. The charset indicates the charset of
 	// the character data in the internal receive buffer. A list of supported charset
 	// values may be found on this page: Supported Charsets
 	// <http://www.chilkatsoft.com/p/p_463.asp> .
 	bool GetReceivedText(int channelNum, const wchar_t *charset, CkString &outStr);
 	// Returns the accumulated text received on the channel indicated by channelNum and
-	// clears the channel's internal receive buffer. The  charset indicates the charset of
+	// clears the channel's internal receive buffer. The charset indicates the charset of
 	// the character data in the internal receive buffer. A list of supported charset
 	// values may be found on this page: Supported Charsets
 	// <http://www.chilkatsoft.com/p/p_463.asp> .
 	const wchar_t *getReceivedText(int channelNum, const wchar_t *charset);
 	// Returns the accumulated text received on the channel indicated by channelNum and
-	// clears the channel's internal receive buffer. The  charset indicates the charset of
+	// clears the channel's internal receive buffer. The charset indicates the charset of
 	// the character data in the internal receive buffer. A list of supported charset
 	// values may be found on this page: Supported Charsets
 	// <http://www.chilkatsoft.com/p/p_463.asp> .
 	const wchar_t *receivedText(int channelNum, const wchar_t *charset);
 
-	// The same as GetReceivedText, except only the text up to and including  substr is
+	// The same as GetReceivedText, except only the text up to and including substr is
 	// returned. The text returned is removed from the internal receive buffer. If the
-	//  substr was not found in the internal receive buffer, an empty string is returned
+	// substr was not found in the internal receive buffer, an empty string is returned
 	// and the internal receive buffer is not modified.
 	bool GetReceivedTextS(int channelNum, const wchar_t *substr, const wchar_t *charset, CkString &outStr);
-	// The same as GetReceivedText, except only the text up to and including  substr is
+	// The same as GetReceivedText, except only the text up to and including substr is
 	// returned. The text returned is removed from the internal receive buffer. If the
-	//  substr was not found in the internal receive buffer, an empty string is returned
+	// substr was not found in the internal receive buffer, an empty string is returned
 	// and the internal receive buffer is not modified.
 	const wchar_t *getReceivedTextS(int channelNum, const wchar_t *substr, const wchar_t *charset);
-	// The same as GetReceivedText, except only the text up to and including  substr is
+	// The same as GetReceivedText, except only the text up to and including substr is
 	// returned. The text returned is removed from the internal receive buffer. If the
-	//  substr was not found in the internal receive buffer, an empty string is returned
+	// substr was not found in the internal receive buffer, an empty string is returned
 	// and the internal receive buffer is not modified.
 	const wchar_t *receivedTextS(int channelNum, const wchar_t *substr, const wchar_t *charset);
 
@@ -1123,20 +1160,20 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	CkTaskW *OpenCustomChannelAsync(const wchar_t *channelType);
 
 	// Open a direct-tcpip channel for port forwarding. Data sent on the channel via
-	// ChannelSend* methods is sent to the SSH server and then forwarded to targetHostname: targetPort.
-	// The SSH server automatically forwards data received from targetHostname: targetPort to the SSH
+	// ChannelSend* methods is sent to the SSH server and then forwarded to targetHostname:targetPort.
+	// The SSH server automatically forwards data received from targetHostname:targetPort to the SSH
 	// client. Therefore, calling ChannelRead* and ChannelReceive* methods is
-	// equivalent to reading directly from targetHostname: targetPort.
+	// equivalent to reading directly from targetHostname:targetPort.
 	// 
 	// If successful, the channel number is returned. This is the number that should be
 	// passed to any method requiring a channel number. A -1 is returned upon failure.
 	// 
-	int OpenDirectTcpIpChannel(const wchar_t *hostname, int port);
+	int OpenDirectTcpIpChannel(const wchar_t *targetHostname, int targetPort);
 
 	// Creates an asynchronous task to call the OpenDirectTcpIpChannel method with the
 	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *OpenDirectTcpIpChannelAsync(const wchar_t *hostname, int port);
+	CkTaskW *OpenDirectTcpIpChannelAsync(const wchar_t *targetHostname, int targetPort);
 
 	// Opens a new session channel. Almost everything you will do with the Chilkat SSH
 	// component will involve opening a session channel. The normal sequence of
@@ -1160,6 +1197,92 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	// This is the same as GetReceivedText, except the internal receive buffer is not
 	// cleared.
 	const wchar_t *peekReceivedText(int channelNum, const wchar_t *charset);
+
+	// Returns a channel number for a completed command that was previously sent via
+	// QuickCmdSend. Returns -1 if no commands have yet completed. The pollTimeoutMs indicates
+	// how long to wait (in milliseconds) for any command in progress (on any channel)
+	// to complete before returning -1.
+	int QuickCmdCheck(int pollTimeoutMs);
+
+	// Creates an asynchronous task to call the QuickCmdCheck method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *QuickCmdCheckAsync(int pollTimeoutMs);
+
+	// Sends a command and returns the channel number for the command that has started.
+	// This is the equivalent of calling OpenSessionChannel, followed by SendReqExec. A
+	// value of -1 is returned on failure.
+	// 
+	// The ARG2 indicates the charset of the command's output (such as "utf-8" or
+	// "ansi"). A list of supported charset values may be found on this page: Supported
+	// Charsets
+	// <http://www.chilkatsoft.com/p/p_463.asp> .
+	// 
+	// The ReqExecCharset property controls the charset used for the command that is
+	// sent.
+	// 
+	// Important: When reporting problems, please send the full contents of the
+	// LastErrorText property to support@chilkatsoft.com.
+	// 
+	int QuickCmdSend(const wchar_t *command);
+
+	// Creates an asynchronous task to call the QuickCmdSend method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *QuickCmdSendAsync(const wchar_t *command);
+
+	// Simplified method for executing a remote command and getting the complete
+	// output. This is the equivalent of calling OpenSessionChannel, followed by
+	// SendReqExec, then ChannelReceiveToClose, and finally GetReceivedText.
+	// 
+	// The charset indicates the charset of the command's output (such as "utf-8" or
+	// "ansi"). A list of supported charset values may be found on this page: Supported
+	// Charsets
+	// <http://www.chilkatsoft.com/p/p_463.asp> .
+	// 
+	// The ReqExecCharset property controls the charset used for the command that is
+	// sent.
+	// 
+	// Important: When reporting problems, please send the full contents of the
+	// LastErrorText property to support@chilkatsoft.com.
+	// 
+	bool QuickCommand(const wchar_t *command, const wchar_t *charset, CkString &outStr);
+	// Simplified method for executing a remote command and getting the complete
+	// output. This is the equivalent of calling OpenSessionChannel, followed by
+	// SendReqExec, then ChannelReceiveToClose, and finally GetReceivedText.
+	// 
+	// The charset indicates the charset of the command's output (such as "utf-8" or
+	// "ansi"). A list of supported charset values may be found on this page: Supported
+	// Charsets
+	// <http://www.chilkatsoft.com/p/p_463.asp> .
+	// 
+	// The ReqExecCharset property controls the charset used for the command that is
+	// sent.
+	// 
+	// Important: When reporting problems, please send the full contents of the
+	// LastErrorText property to support@chilkatsoft.com.
+	// 
+	const wchar_t *quickCommand(const wchar_t *command, const wchar_t *charset);
+
+	// Creates an asynchronous task to call the QuickCommand method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *QuickCommandAsync(const wchar_t *command, const wchar_t *charset);
+
+	// Simplified method for starting a remote shell session. It is the equivalent of
+	// calling OpenSessionChannel, followed by SendReqPty, and finally SendReqShell.
+	// 
+	// Returns the SSH channel number for the session, or -1 if not successful.
+	// 
+	// Important: When reporting problems, please send the full contents of the
+	// LastErrorText property to support@chilkatsoft.com.
+	// 
+	int QuickShell(void);
+
+	// Creates an asynchronous task to call the QuickShell method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *QuickShellAsync(void);
 
 	// Initiates a re-key with the SSH server. The ReKey method does not return until
 	// the key re-exchange is complete.
@@ -1196,7 +1319,7 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *SendIgnoreAsync(void);
 
-	// Initiates execution of a command on the channel specified by channelNum. The  commandLine
+	// Initiates execution of a command on the channel specified by channelNum. The commandLine
 	// contains the full command line including any command-line parameters (just as
 	// you would type the command at a shell prompt).
 	// 
@@ -1213,21 +1336,21 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	// can be set to control the character encoding of the command sent to the server.
 	// The default is ANSI. A likely alternative value is "utf-8".
 	// 
-	bool SendReqExec(int channelNum, const wchar_t *command);
+	bool SendReqExec(int channelNum, const wchar_t *commandLine);
 
 	// Creates an asynchronous task to call the SendReqExec method with the arguments
 	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *SendReqExecAsync(int channelNum, const wchar_t *command);
+	CkTaskW *SendReqExecAsync(int channelNum, const wchar_t *commandLine);
 
-	// Requests a pseudo-terminal for a session channel. If the  termType is a character
-	// oriented terminal ("vt100" for example), then  widthInChars and  heightInChars would be set to
-	// non-zero values, while  widthInPixels and  heightInPixels may be set to 0. If  termType is pixel-oriented,
-	// such as "xterm", the reverse is true (i.e. set  widthInPixels and  heightInPixels, but set  widthInChars and
-	//  heightInChars equal to 0).
+	// Requests a pseudo-terminal for a session channel. If the termType is a character
+	// oriented terminal ("vt100" for example), then widthInChars and heightInChars would be set to
+	// non-zero values, while widthInPixels and heightInPixels may be set to 0. If termType is pixel-oriented,
+	// such as "xterm", the reverse is true (i.e. set widthInPixels and heightInPixels, but set widthInChars and
+	// heightInChars equal to 0).
 	// 
 	// In most cases, you probably don't even want terminal emulation. In that case,
-	// try setting  termType = "dumb". Terminal emulation causes terminal escape sequences
+	// try setting termType = "dumb". Terminal emulation causes terminal escape sequences
 	// to be included with shell command output. A "dumb" terminal should have no
 	// escape sequences.
 	// 
@@ -1240,12 +1363,12 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	// 4) Request a PTY via this method if necessary.
 	// 5) Start a shell by calling SendReqShell
 	// 
-	bool SendReqPty(int channelNum, const wchar_t *xTermEnvVar, int widthInChars, int heightInRows, int pixWidth, int pixHeight);
+	bool SendReqPty(int channelNum, const wchar_t *termType, int widthInChars, int heightInChars, int widthInPixels, int heightInPixels);
 
 	// Creates an asynchronous task to call the SendReqPty method with the arguments
 	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *SendReqPtyAsync(int channelNum, const wchar_t *xTermEnvVar, int widthInChars, int heightInRows, int pixWidth, int pixHeight);
+	CkTaskW *SendReqPtyAsync(int channelNum, const wchar_t *termType, int widthInChars, int heightInChars, int widthInPixels, int heightInPixels);
 
 	// Sets an environment variable in the remote shell.
 	bool SendReqSetEnv(int channelNum, const wchar_t *name, const wchar_t *value);
@@ -1267,7 +1390,7 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *SendReqShellAsync(int channelNum);
 
-	// Delivers a signal to the remote process/service.  signalName is one of the following:
+	// Delivers a signal to the remote process/service. signalName is one of the following:
 	// ABRT, ALRM, FPE, HUP, ILL, INT, KILL, PIPE, QUIT, SEGV, TERM, USR1, USR2.
 	// (Obviously, these are UNIX signals, so the remote SSH server would need to be a
 	// Unix/Linux system.)
@@ -1324,7 +1447,7 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	// This method can be called multiple times to set many terminal mode flags (one
 	// per call).
 	// 
-	// The  ttyValue is an integer, typically 0 or 1. Valid ttyName flag names include: VINTR,
+	// The ttyValue is an integer, typically 0 or 1. Valid ttyName flag names include: VINTR,
 	// VQUIT, VERASE, VKILL, VEOF, VEOL, VEOL2, VSTART, VSTOP, VSUSP, VDSUSP, VREPRINT,
 	// VWERASE, VLNEXT, VFLUSH, VSWTCH, VSTATUS, VDISCARD, IGNPAR, PARMRK, INPCK,
 	// ISTRIP, INLCR, IGNCR, ICRNL, IUCLC, IXON, IXANY, IXOFF, IMAXBEL, ISIG, ICANON,
@@ -1332,7 +1455,7 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	// PENDIN, OPOST, OLCUC, ONLCR, OCRNL, ONOCR, ONLRET, CS7, CS8, PARENB, PARODD,
 	// TTY_OP_ISPEED, TTY_OP_OSPEED
 	// 
-	bool SetTtyMode(const wchar_t *name, int value);
+	bool SetTtyMode(const wchar_t *ttyName, int ttyValue);
 
 	// Begins keyboard-interactive authentication with the SSH server. Returns an XML
 	// string providing the name, instruction, and prompts. The XML has the following
@@ -1387,10 +1510,11 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkWideCharBase
 	// install.
 	bool UnlockComponent(const wchar_t *unlockCode);
 
-	// Waits for an incoming message on any channel. This includes data, EOF, CLOSE,
-	// etc. If a message arrives in the alotted time, the channel number is returned. A
-	// value of -1 is returned for a timeout, and -2 for any other errors such as if
-	// the connection is lost.
+	// The pollTimeoutMs is the number of milliseconds to wait. To poll, pass a value of 0 in
+	// pollTimeoutMs. Waits for an incoming message on any channel. This includes data, EOF,
+	// CLOSE, etc. If a message arrives in the alotted time, the channel number is
+	// returned. A value of -1 is returned for a timeout, and -2 for any other errors
+	// such as if the connection is lost.
 	// 
 	// Note: If a channel number is returned, the message must still be read by calling
 	// a method such as ChannelRead, ChannelReceiveUntilMatch, etc. Once the message is

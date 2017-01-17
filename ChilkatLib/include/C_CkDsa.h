@@ -1,9 +1,10 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkDsa_H
 #define _C_CkDsa_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
+
 
 CK_VISIBLE_PUBLIC HCkDsa CkDsa_Create(void);
 CK_VISIBLE_PUBLIC void CkDsa_Dispose(HCkDsa handle);
@@ -13,7 +14,7 @@ CK_VISIBLE_PUBLIC const char *CkDsa_debugLogFilePath(HCkDsa cHandle);
 CK_VISIBLE_PUBLIC int CkDsa_getGroupSize(HCkDsa cHandle);
 CK_VISIBLE_PUBLIC void CkDsa_putGroupSize(HCkDsa cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkDsa_getHash(HCkDsa cHandle, HCkByteData retval);
-CK_VISIBLE_PUBLIC void CkDsa_putHash(HCkDsa cHandle, HCkByteData  newVal);
+CK_VISIBLE_PUBLIC void CkDsa_putHash(HCkDsa cHandle, HCkByteData newVal);
 CK_VISIBLE_PUBLIC void CkDsa_getHexG(HCkDsa cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkDsa_hexG(HCkDsa cHandle);
 CK_VISIBLE_PUBLIC void CkDsa_getHexP(HCkDsa cHandle, HCkString retval);
@@ -33,7 +34,7 @@ CK_VISIBLE_PUBLIC const char *CkDsa_lastErrorXml(HCkDsa cHandle);
 CK_VISIBLE_PUBLIC BOOL CkDsa_getLastMethodSuccess(HCkDsa cHandle);
 CK_VISIBLE_PUBLIC void CkDsa_putLastMethodSuccess(HCkDsa cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkDsa_getSignature(HCkDsa cHandle, HCkByteData retval);
-CK_VISIBLE_PUBLIC void CkDsa_putSignature(HCkDsa cHandle, HCkByteData  newVal);
+CK_VISIBLE_PUBLIC void CkDsa_putSignature(HCkDsa cHandle, HCkByteData newVal);
 CK_VISIBLE_PUBLIC BOOL CkDsa_getUtf8(HCkDsa cHandle);
 CK_VISIBLE_PUBLIC void CkDsa_putUtf8(HCkDsa cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkDsa_getVerboseLogging(HCkDsa cHandle);

@@ -48,9 +48,9 @@ class CK_VISIBLE_PUBLIC CkTarProgress : public CkBaseProgress
 	    }
 
 	// Return true if the file should be skipped, false if not skipped.
-	virtual bool NextTarFile(const char *path, 
-	    __int64 fileSize,
-	    bool bIsDirectory) 
+	virtual bool NextTarFile(const char * /*path*/, 
+	    __int64 /*fileSize*/,
+	    bool /*bIsDirectory*/) 
 	    { 
 	    return false;
 	    }

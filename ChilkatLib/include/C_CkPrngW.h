@@ -1,14 +1,15 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkPrngWH
 #define _C_CkPrngWH
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
 CK_VISIBLE_PUBLIC HCkPrngW CkPrngW_Create(void);
 CK_VISIBLE_PUBLIC void CkPrngW_Dispose(HCkPrngW handle);
 CK_VISIBLE_PUBLIC void CkPrngW_getDebugLogFilePath(HCkPrngW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkPrngW_putDebugLogFilePath(HCkPrngW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkPrngW_putDebugLogFilePath(HCkPrngW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkPrngW_debugLogFilePath(HCkPrngW cHandle);
 CK_VISIBLE_PUBLIC void CkPrngW_getLastErrorHtml(HCkPrngW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkPrngW_lastErrorHtml(HCkPrngW cHandle);
@@ -17,18 +18,20 @@ CK_VISIBLE_PUBLIC const wchar_t *CkPrngW_lastErrorText(HCkPrngW cHandle);
 CK_VISIBLE_PUBLIC void CkPrngW_getLastErrorXml(HCkPrngW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkPrngW_lastErrorXml(HCkPrngW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkPrngW_getLastMethodSuccess(HCkPrngW cHandle);
-CK_VISIBLE_PUBLIC void CkPrngW_putLastMethodSuccess(HCkPrngW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkPrngW_putLastMethodSuccess(HCkPrngW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkPrngW_getPrngName(HCkPrngW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkPrngW_putPrngName(HCkPrngW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkPrngW_putPrngName(HCkPrngW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkPrngW_prngName(HCkPrngW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkPrngW_getVerboseLogging(HCkPrngW cHandle);
-CK_VISIBLE_PUBLIC void CkPrngW_putVerboseLogging(HCkPrngW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkPrngW_putVerboseLogging(HCkPrngW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkPrngW_getVersion(HCkPrngW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkPrngW_version(HCkPrngW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkPrngW_AddEntropy(HCkPrngW cHandle, const wchar_t *entropy, const wchar_t *encoding);
 CK_VISIBLE_PUBLIC BOOL CkPrngW_AddEntropyBytes(HCkPrngW cHandle, HCkByteData entropy);
 CK_VISIBLE_PUBLIC BOOL CkPrngW_ExportEntropy(HCkPrngW cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkPrngW_exportEntropy(HCkPrngW cHandle);
+CK_VISIBLE_PUBLIC BOOL CkPrngW_FirebasePushId(HCkPrngW cHandle, HCkString outStr);
+CK_VISIBLE_PUBLIC const wchar_t *CkPrngW_firebasePushId(HCkPrngW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkPrngW_GenRandom(HCkPrngW cHandle, int numBytes, const wchar_t *encoding, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkPrngW_genRandom(HCkPrngW cHandle, int numBytes, const wchar_t *encoding);
 CK_VISIBLE_PUBLIC BOOL CkPrngW_GenRandomBytes(HCkPrngW cHandle, int numBytes, HCkByteData outBytes);

@@ -10,10 +10,11 @@
 #include "chilkatDefs.h"
 
 #include "CkString.h"
-#include "CkWideCharBase.h"
+#include "CkClassWithCallbacksW.h"
 
 class CkByteData;
 class CkTaskW;
+class CkStreamW;
 class CkBaseProgressW;
 
 
@@ -24,11 +25,10 @@ class CkBaseProgressW;
  
 
 // CLASS: CkCompressionW
-class CK_VISIBLE_PUBLIC CkCompressionW  : public CkWideCharBase
+class CK_VISIBLE_PUBLIC CkCompressionW  : public CkClassWithCallbacksW
 {
     private:
 	bool m_cbOwned;
-	void *m_eventCallback;
 
 	// Don't allow assignment or copying these objects.
 	CkCompressionW(const CkCompressionW &);
@@ -307,6 +307,17 @@ class CK_VISIBLE_PUBLIC CkCompressionW  : public CkWideCharBase
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *CompressFileAsync(const wchar_t *srcPath, const wchar_t *destPath);
 
+	// Compresses a stream. Internally, the strm's source is read, compressed, and the
+	// compressed data written to the strm's sink. It does this in streaming fashion.
+	// Extremely large or even infinite streams can be compressed with stable ungrowing
+	// memory usage.
+	bool CompressStream(CkStreamW &strm);
+
+	// Creates an asynchronous task to call the CompressStream method with the
+	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *CompressStreamAsync(CkStreamW &strm);
+
 	// Compresses a string.
 	bool CompressString(const wchar_t *str, CkByteData &outData);
 
@@ -340,12 +351,12 @@ class CK_VISIBLE_PUBLIC CkCompressionW  : public CkWideCharBase
 	// The opposite of CompressBytesENC. encodedCompressedData contains the compressed data as an
 	// encoded string (hex, base64, etc) as specified by the EncodingMode property
 	// setting.
-	bool DecompressBytesENC(const wchar_t *str, CkByteData &outData);
+	bool DecompressBytesENC(const wchar_t *encodedCompressedData, CkByteData &outData);
 
 	// Creates an asynchronous task to call the DecompressBytesENC method with the
 	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *DecompressBytesENCAsync(const wchar_t *str);
+	CkTaskW *DecompressBytesENCAsync(const wchar_t *encodedCompressedData);
 
 	// Performs file-to-file decompression (the opposite of CompressFile). Internally
 	// the file is decompressed in streaming mode which allows files of any size to be
@@ -356,6 +367,17 @@ class CK_VISIBLE_PUBLIC CkCompressionW  : public CkWideCharBase
 	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *DecompressFileAsync(const wchar_t *srcPath, const wchar_t *destPath);
+
+	// Decompresses a stream. Internally, the strm's source is read, decompressed, and
+	// the decompressed data written to the strm's sink. It does this in streaming
+	// fashion. Extremely large or even infinite streams can be decompressed with
+	// stable ungrowing memory usage.
+	bool DecompressStream(CkStreamW &strm);
+
+	// Creates an asynchronous task to call the DecompressStream method with the
+	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *DecompressStreamAsync(CkStreamW &strm);
 
 	// Takes compressed bytes, decompresses, and returns the resulting string.
 	bool DecompressString(CkByteData &data, CkString &outStr);
@@ -370,16 +392,16 @@ class CK_VISIBLE_PUBLIC CkCompressionW  : public CkWideCharBase
 	// The opposite of CompressStringENC. encodedCompressedData contains the compressed data as an
 	// encoded string (hex, base64, etc) as specified by the EncodingMode property
 	// setting.
-	bool DecompressStringENC(const wchar_t *str, CkString &outStr);
+	bool DecompressStringENC(const wchar_t *encodedCompressedData, CkString &outStr);
 	// The opposite of CompressStringENC. encodedCompressedData contains the compressed data as an
 	// encoded string (hex, base64, etc) as specified by the EncodingMode property
 	// setting.
-	const wchar_t *decompressStringENC(const wchar_t *str);
+	const wchar_t *decompressStringENC(const wchar_t *encodedCompressedData);
 
 	// Creates an asynchronous task to call the DecompressStringENC method with the
 	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *DecompressStringENCAsync(const wchar_t *str);
+	CkTaskW *DecompressStringENCAsync(const wchar_t *encodedCompressedData);
 
 	// Must be callled to finalize a compression stream. Returns any remaining
 	// (buffered) compressed data.
@@ -610,7 +632,7 @@ class CK_VISIBLE_PUBLIC CkCompressionW  : public CkWideCharBase
 	// component may be used fully-functional for the 1st 30-days after download by
 	// passing an arbitrary string to this method. If for some reason you do not
 	// receive the full 30-day trial, send email to support@chilkatsoft.com for a
-	// temporary unlock code w/ an explicit expiration date. Upon purchase, a permanent
+	// temporary unlock code w/ an explicit expiration date. Upon purchase, a purchased
 	// unlock code is provided which should replace the temporary/arbitrary string
 	// passed to this method.
 	bool UnlockComponent(const wchar_t *unlockCode);

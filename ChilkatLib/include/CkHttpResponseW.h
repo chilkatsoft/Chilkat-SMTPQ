@@ -13,6 +13,8 @@
 #include "CkWideCharBase.h"
 
 class CkByteData;
+class CkBinDataW;
+class CkStringBuilderW;
 class CkTaskW;
 
 
@@ -141,6 +143,12 @@ class CK_VISIBLE_PUBLIC CkHttpResponseW  : public CkWideCharBase
 	// ----------------------
 	// Methods
 	// ----------------------
+	// Copies the response body to a BinData object.
+	bool GetBodyBd(CkBinDataW &binData);
+
+	// Copies the response body to a Chilkat StringBuilder object.
+	bool GetBodySb(CkStringBuilderW &sb);
+
 	// Returns the domain of the Nth cookie in the response. Indexing begins at 0. The
 	// number of response cookies is specified in the NumCookies property.
 	bool GetCookieDomain(int index, CkString &outStr);
@@ -258,13 +266,13 @@ class CK_VISIBLE_PUBLIC CkHttpResponseW  : public CkWideCharBase
 	// Convenience method for parsing a param's value out of a URL-encoded param
 	// string. For example, if a caller passes the following string in
 	// encodedParamString:oauth_token=ABC&oauth_token_secret=123&oauth_callback_confirmed=true and
-	// "oauth_token_secret" in  paramName, then the return value would be "123".
-	bool UrlEncParamValue(const wchar_t *encodedParams, const wchar_t *paramName, CkString &outStr);
+	// "oauth_token_secret" in paramName, then the return value would be "123".
+	bool UrlEncParamValue(const wchar_t *encodedParamString, const wchar_t *paramName, CkString &outStr);
 	// Convenience method for parsing a param's value out of a URL-encoded param
 	// string. For example, if a caller passes the following string in
 	// encodedParamString:oauth_token=ABC&oauth_token_secret=123&oauth_callback_confirmed=true and
-	// "oauth_token_secret" in  paramName, then the return value would be "123".
-	const wchar_t *urlEncParamValue(const wchar_t *encodedParams, const wchar_t *paramName);
+	// "oauth_token_secret" in paramName, then the return value would be "123".
+	const wchar_t *urlEncParamValue(const wchar_t *encodedParamString, const wchar_t *paramName);
 
 
 

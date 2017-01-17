@@ -1,11 +1,10 @@
-// This is a generated source file for Chilkat version 9.5.0.55
-#if defined(WIN32) || defined(WINCE)
-
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkCreateCS_H
 #define _C_CkCreateCS_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
+
 
 CK_VISIBLE_PUBLIC HCkCreateCS CkCreateCS_Create(void);
 CK_VISIBLE_PUBLIC void CkCreateCS_Dispose(HCkCreateCS handle);
@@ -39,5 +38,3 @@ CK_VISIBLE_PUBLIC HCkCertStore CkCreateCS_OpenOutlookStore(HCkCreateCS cHandle);
 CK_VISIBLE_PUBLIC HCkCertStore CkCreateCS_OpenRegistryStore(HCkCreateCS cHandle, const char *regRoot, const char *regPath);
 CK_VISIBLE_PUBLIC BOOL CkCreateCS_SaveLastError(HCkCreateCS cHandle, const char *path);
 #endif
-
-#endif // WIN32 (entire file)

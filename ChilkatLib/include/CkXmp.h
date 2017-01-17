@@ -27,7 +27,6 @@ class CkByteData;
 class CK_VISIBLE_PUBLIC CkXmp  : public CkMultiByteBase
 {
     private:
-	
 
 	// Don't allow assignment or copying these objects.
 	CkXmp(const CkXmp &);
@@ -242,7 +241,7 @@ class CK_VISIBLE_PUBLIC CkXmp  : public CkMultiByteBase
 
 	// Unlocks the XMP component at runtime. This must be called once at the beginning
 	// of your application. Passing an arbitrary value initiates a fully-functional
-	// 30-day trial. A permanent unlock code is required to use the component beyond 30
+	// 30-day trial. A purchased unlock code is required to use the component beyond 30
 	// days.
 	bool UnlockComponent(const char *unlockCode);
 

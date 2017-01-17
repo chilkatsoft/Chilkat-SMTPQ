@@ -69,9 +69,9 @@ class CK_VISIBLE_PUBLIC CkPfxW  : public CkWideCharBase
 	// Methods
 	// ----------------------
 	// Adds a certificate, its private key (if it exists), and potentially its
-	// certificate chain to the PFX. If ARG2 is true, then the certificate must have
+	// certificate chain to the PFX. If includeChain is true, then the certificate must have
 	// a private key. The certificate's private key is automatically obtained
-	// (internally) via the ARG1's ExportPrivateKey method. If the certificate's chain
+	// (internally) via the cert's ExportPrivateKey method. If the certificate's chain
 	// of authentication is to be added, it is automatically constructed and added
 	// using whatever resources are at hand (such as certs provided via the
 	// UseCertVault method, the trusted roots from Chilkat's TrustedRoots class, etc.
@@ -121,7 +121,7 @@ class CK_VISIBLE_PUBLIC CkPfxW  : public CkWideCharBase
 	// Loads a PFX from in-memory bytes.
 	bool LoadPfxBytes(CkByteData &pfxData, const wchar_t *password);
 
-	// Loads a PFX from encoded byte data. The ARG2 can by any encoding, such as
+	// Loads a PFX from encoded byte data. The encoding can by any encoding, such as
 	// "Base64", "modBase64", "Base32", "UU", "QP" (for quoted-printable), "URL" (for
 	// url-encoding), "Hex", "Q", "B", "url_oath", "url_rfc1738", "url_rfc2396", and
 	// "url_rfc3986".
@@ -133,10 +133,10 @@ class CK_VISIBLE_PUBLIC CkPfxW  : public CkWideCharBase
 	// Write the PFX to in-memory bytes.
 	bool ToBinary(const wchar_t *password, CkByteData &outBytes);
 
-	// Write the PFX to an encoded string. The ARG2 can be any encoding such as
+	// Write the PFX to an encoded string. The encoding can be any encoding such as
 	// "base64" or "hex".
 	bool ToEncodedString(const wchar_t *password, const wchar_t *encoding, CkString &outStr);
-	// Write the PFX to an encoded string. The ARG2 can be any encoding such as
+	// Write the PFX to an encoded string. The encoding can be any encoding such as
 	// "base64" or "hex".
 	const wchar_t *toEncodedString(const wchar_t *password, const wchar_t *encoding);
 
@@ -213,15 +213,15 @@ class CK_VISIBLE_PUBLIC CkPfxW  : public CkWideCharBase
 	// -----END CERTIFICATE----- 
 	const wchar_t *toPem(void);
 
-	// Write the PFX to a PEM formatted string. If ARG1 is true, then extended
-	// properties (Bag Attributes and Key Attributes) are output. If ARG2 is true,
-	// then no private keys are output. If ARG3 is true, then no certificates are
-	// output. If ARG4 is true, then no CA certs or intermediate CA certs are output.
-	// If ARG5 is not empty, it indicates the encryption algorithm to be used for
+	// Write the PFX to a PEM formatted string. If extendedAttrs is true, then extended
+	// properties (Bag Attributes and Key Attributes) are output. If noKeys is true,
+	// then no private keys are output. If noCerts is true, then no certificates are
+	// output. If noCaCerts is true, then no CA certs or intermediate CA certs are output.
+	// If encryptAlg is not empty, it indicates the encryption algorithm to be used for
 	// encrypting the private keys (otherwise the private keys are output unencrypted).
-	// The possible choices for the ARG5 are "des3", "aes128", "aes192", and "aes256".
+	// The possible choices for the encryptAlg are "des3", "aes128", "aes192", and "aes256".
 	// (All encryption algorithm choices use CBC mode.) If the private keys are to be
-	// encrypted, then ARG6 is the password to be used. Otherwise, ARG6 may be left
+	// encrypted, then password is the password to be used. Otherwise, password may be left
 	// empty. For example:
 	// Bag Attributes
 	//     Microsoft Local Key set: <No Values>
@@ -261,15 +261,15 @@ class CK_VISIBLE_PUBLIC CkPfxW  : public CkWideCharBase
 	// ...
 	// -----END CERTIFICATE----- 
 	bool ToPemEx(bool extendedAttrs, bool noKeys, bool noCerts, bool noCaCerts, const wchar_t *encryptAlg, const wchar_t *password, CkString &outStr);
-	// Write the PFX to a PEM formatted string. If ARG1 is true, then extended
-	// properties (Bag Attributes and Key Attributes) are output. If ARG2 is true,
-	// then no private keys are output. If ARG3 is true, then no certificates are
-	// output. If ARG4 is true, then no CA certs or intermediate CA certs are output.
-	// If ARG5 is not empty, it indicates the encryption algorithm to be used for
+	// Write the PFX to a PEM formatted string. If extendedAttrs is true, then extended
+	// properties (Bag Attributes and Key Attributes) are output. If noKeys is true,
+	// then no private keys are output. If noCerts is true, then no certificates are
+	// output. If noCaCerts is true, then no CA certs or intermediate CA certs are output.
+	// If encryptAlg is not empty, it indicates the encryption algorithm to be used for
 	// encrypting the private keys (otherwise the private keys are output unencrypted).
-	// The possible choices for the ARG5 are "des3", "aes128", "aes192", and "aes256".
+	// The possible choices for the encryptAlg are "des3", "aes128", "aes192", and "aes256".
 	// (All encryption algorithm choices use CBC mode.) If the private keys are to be
-	// encrypted, then ARG6 is the password to be used. Otherwise, ARG6 may be left
+	// encrypted, then password is the password to be used. Otherwise, password may be left
 	// empty. For example:
 	// Bag Attributes
 	//     Microsoft Local Key set: <No Values>

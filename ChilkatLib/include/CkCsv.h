@@ -24,7 +24,6 @@
 class CK_VISIBLE_PUBLIC CkCsv  : public CkMultiByteBase
 {
     private:
-	
 
 	// Don't allow assignment or copying these objects.
 	CkCsv(const CkCsv &);
@@ -122,25 +121,25 @@ class CK_VISIBLE_PUBLIC CkCsv  : public CkMultiByteBase
 	bool DeleteRow(int index);
 
 
-	// Returns the contents of the cell at row,  col. Indexing begins at 0. (The
+	// Returns the contents of the cell at row, col. Indexing begins at 0. (The
 	// topmost/leftmost cell is at 0,0)
 	bool GetCell(int row, int col, CkString &outStr);
 
-	// Returns the contents of the cell at row,  col. Indexing begins at 0. (The
+	// Returns the contents of the cell at row, col. Indexing begins at 0. (The
 	// topmost/leftmost cell is at 0,0)
 	const char *getCell(int row, int col);
-	// Returns the contents of the cell at row,  col. Indexing begins at 0. (The
+	// Returns the contents of the cell at row, col. Indexing begins at 0. (The
 	// topmost/leftmost cell is at 0,0)
 	const char *cell(int row, int col);
 
 
 	// The same as GetCell, but the column is specified by name instead of by index.
-	bool GetCellByName(int row, const char *columnName, CkString &outStr);
+	bool GetCellByName(int rowIndex, const char *columnName, CkString &outStr);
 
 	// The same as GetCell, but the column is specified by name instead of by index.
-	const char *getCellByName(int row, const char *columnName);
+	const char *getCellByName(int rowIndex, const char *columnName);
 	// The same as GetCell, but the column is specified by name instead of by index.
-	const char *cellByName(int row, const char *columnName);
+	const char *cellByName(int rowIndex, const char *columnName);
 
 
 	// Returns the name of the Nth column.
@@ -166,11 +165,11 @@ class CK_VISIBLE_PUBLIC CkCsv  : public CkMultiByteBase
 	bool LoadFile(const char *path);
 
 
-	// Loads a CSV from a file. The  charset specifies the character encoding of the CSV
+	// Loads a CSV from a file. The charset specifies the character encoding of the CSV
 	// file. A list of supported character encodings may be found on this page:
 	// Supported Charsets
 	// <http://www.chilkatsoft.com/p/p_463.asp> .
-	bool LoadFile2(const char *path, const char *charset);
+	bool LoadFile2(const char *filename, const char *charset);
 
 
 	// Loads a CSV document from an in-memory string variable.
@@ -179,9 +178,9 @@ class CK_VISIBLE_PUBLIC CkCsv  : public CkMultiByteBase
 
 	// Compares the contents of an entire row to a wildcarded match pattern where "*"
 	// can be used any number of times to match 0 or more of any character. Returns
-	// true if a match was found, otherwise returns false. If  caseSensitive is true, then
+	// true if a match was found, otherwise returns false. If caseSensitive is true, then
 	// the pattern match is case sensitive, otherwise it is case insensitive.
-	bool RowMatches(int row, const char *matchPattern, bool bCaseSensitive);
+	bool RowMatches(int rowIndex, const char *matchPattern, bool caseSensitive);
 
 
 	// Saves a CSV to a file. The output file is written using the ANSI character
@@ -189,11 +188,11 @@ class CK_VISIBLE_PUBLIC CkCsv  : public CkMultiByteBase
 	bool SaveFile(const char *path);
 
 
-	// Saves a CSV to a file. The  charset specifies the character encoding to use for the
+	// Saves a CSV to a file. The charset specifies the character encoding to use for the
 	// CSV file. The text data is converted to this charset when saving. A list of
 	// supported character encodings may be found on this page: Supported Charsets
 	// <http://www.chilkatsoft.com/p/p_463.asp> .
-	bool SaveFile2(const char *path, const char *charset);
+	bool SaveFile2(const char *filename, const char *charset);
 
 
 	// Writes the entire CSV document to a string variable.
@@ -211,7 +210,7 @@ class CK_VISIBLE_PUBLIC CkCsv  : public CkMultiByteBase
 
 
 	// The same as SetCell, except the column is specified by name instead of by index.
-	bool SetCellByName(int row, const char *columnName, const char *content);
+	bool SetCellByName(int rowIndex, const char *columnName, const char *contentStr);
 
 
 	// Sets the name of the Nth column. The first column is at index 0. This method
@@ -220,10 +219,10 @@ class CK_VISIBLE_PUBLIC CkCsv  : public CkMultiByteBase
 	bool SetColumnName(int index, const char *columnName);
 
 
-	// Sorts the rows in the CSV by the contents of a specific column. If  ascending is
-	// true, the sort is in ascending order, otherwise descending order. If  caseSensitive is
+	// Sorts the rows in the CSV by the contents of a specific column. If ascending is
+	// true, the sort is in ascending order, otherwise descending order. If caseSensitive is
 	// true then the sorting is case sensitive.
-	bool SortByColumn(const char *columnName, bool bAscending, bool bCaseSensitive);
+	bool SortByColumn(const char *columnName, bool ascending, bool caseSensitive);
 
 
 

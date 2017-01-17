@@ -1,9 +1,15 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkTar_H
 #define _C_CkTar_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
+
+
+CK_VISIBLE_PUBLIC void CkTar_setAbortCheck(HCkTar cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkTar_setPercentDone(HCkTar cHandle, BOOL (*fnPercentDone)(int pctDone));
+CK_VISIBLE_PUBLIC void CkTar_setProgressInfo(HCkTar cHandle, void (*fnProgressInfo)(const char *name, const char *value));
+CK_VISIBLE_PUBLIC void CkTar_setTaskCompleted(HCkTar cHandle, void (*fnTaskCompleted)(HCkTask hTask));
 
 CK_VISIBLE_PUBLIC HCkTar CkTar_Create(void);
 CK_VISIBLE_PUBLIC void CkTar_Dispose(HCkTar handle);

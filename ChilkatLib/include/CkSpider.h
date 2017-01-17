@@ -10,7 +10,7 @@
 #include "chilkatDefs.h"
 
 #include "CkString.h"
-#include "CkMultiByteBase.h"
+#include "CkClassWithCallbacks.h"
 
 class CkTask;
 class CkBaseProgress;
@@ -23,10 +23,9 @@ class CkBaseProgress;
  
 
 // CLASS: CkSpider
-class CK_VISIBLE_PUBLIC CkSpider  : public CkMultiByteBase
+class CK_VISIBLE_PUBLIC CkSpider  : public CkClassWithCallbacks
 {
     private:
-	void *m_eventCallback;
 
 	// Don't allow assignment or copying these objects.
 	CkSpider(const CkSpider &);
@@ -52,6 +51,23 @@ class CK_VISIBLE_PUBLIC CkSpider  : public CkMultiByteBase
 	// ----------------------
 	// Properties
 	// ----------------------
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	bool get_AbortCurrent(void);
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	void put_AbortCurrent(bool newVal);
+
 	// If set the 1 (true) the spider will avoid all HTTPS URLs. The default is 0
 	// (false).
 	bool get_AvoidHttps(void);
@@ -459,7 +475,7 @@ class CK_VISIBLE_PUBLIC CkSpider  : public CkMultiByteBase
 
 	// Suspends the execution of the current thread until the time-out interval
 	// elapses.
-	void SleepMs(int millisec);
+	void SleepMs(int numMilliseconds);
 
 
 

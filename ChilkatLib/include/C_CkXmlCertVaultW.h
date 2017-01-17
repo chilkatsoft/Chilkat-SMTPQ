@@ -1,14 +1,15 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkXmlCertVaultWH
 #define _C_CkXmlCertVaultWH
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
 CK_VISIBLE_PUBLIC HCkXmlCertVaultW CkXmlCertVaultW_Create(void);
 CK_VISIBLE_PUBLIC void CkXmlCertVaultW_Dispose(HCkXmlCertVaultW handle);
 CK_VISIBLE_PUBLIC void CkXmlCertVaultW_getDebugLogFilePath(HCkXmlCertVaultW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkXmlCertVaultW_putDebugLogFilePath(HCkXmlCertVaultW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkXmlCertVaultW_putDebugLogFilePath(HCkXmlCertVaultW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkXmlCertVaultW_debugLogFilePath(HCkXmlCertVaultW cHandle);
 CK_VISIBLE_PUBLIC void CkXmlCertVaultW_getLastErrorHtml(HCkXmlCertVaultW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkXmlCertVaultW_lastErrorHtml(HCkXmlCertVaultW cHandle);
@@ -17,12 +18,12 @@ CK_VISIBLE_PUBLIC const wchar_t *CkXmlCertVaultW_lastErrorText(HCkXmlCertVaultW 
 CK_VISIBLE_PUBLIC void CkXmlCertVaultW_getLastErrorXml(HCkXmlCertVaultW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkXmlCertVaultW_lastErrorXml(HCkXmlCertVaultW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkXmlCertVaultW_getLastMethodSuccess(HCkXmlCertVaultW cHandle);
-CK_VISIBLE_PUBLIC void CkXmlCertVaultW_putLastMethodSuccess(HCkXmlCertVaultW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkXmlCertVaultW_putLastMethodSuccess(HCkXmlCertVaultW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkXmlCertVaultW_getMasterPassword(HCkXmlCertVaultW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkXmlCertVaultW_putMasterPassword(HCkXmlCertVaultW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkXmlCertVaultW_putMasterPassword(HCkXmlCertVaultW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkXmlCertVaultW_masterPassword(HCkXmlCertVaultW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkXmlCertVaultW_getVerboseLogging(HCkXmlCertVaultW cHandle);
-CK_VISIBLE_PUBLIC void CkXmlCertVaultW_putVerboseLogging(HCkXmlCertVaultW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkXmlCertVaultW_putVerboseLogging(HCkXmlCertVaultW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkXmlCertVaultW_getVersion(HCkXmlCertVaultW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkXmlCertVaultW_version(HCkXmlCertVaultW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkXmlCertVaultW_AddCert(HCkXmlCertVaultW cHandle, HCkCertW cert);

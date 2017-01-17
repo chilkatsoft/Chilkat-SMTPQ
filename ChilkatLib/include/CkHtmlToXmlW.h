@@ -123,12 +123,12 @@ class CK_VISIBLE_PUBLIC CkHtmlToXmlW  : public CkWideCharBase
 	bool ReadFile(const wchar_t *path, CkByteData &outBytes);
 
 	// Convenience method for reading a text file into a string. The character encoding
-	// of the text file is specified by  srcCharset. Valid values, such as "iso-8895-1" or
+	// of the text file is specified by srcCharset. Valid values, such as "iso-8895-1" or
 	// "utf-8" are listed at: List of Charsets
 	// <http://blog.chilkatsoft.com/?p=463> .
 	bool ReadFileToString(const wchar_t *filename, const wchar_t *srcCharset, CkString &outStr);
 	// Convenience method for reading a text file into a string. The character encoding
-	// of the text file is specified by  srcCharset. Valid values, such as "iso-8895-1" or
+	// of the text file is specified by srcCharset. Valid values, such as "iso-8895-1" or
 	// "utf-8" are listed at: List of Charsets
 	// <http://blog.chilkatsoft.com/?p=463> .
 	const wchar_t *readFileToString(const wchar_t *filename, const wchar_t *srcCharset);
@@ -164,11 +164,11 @@ class CK_VISIBLE_PUBLIC CkHtmlToXmlW  : public CkWideCharBase
 	bool WriteFile(const wchar_t *path, CkByteData &fileData);
 
 	// Convenience method for saving a string to a file. The character encoding of the
-	// output text file is specified by  charset (the string is converted to this charset
+	// output text file is specified by charset (the string is converted to this charset
 	// when writing). Valid values, such as "iso-8895-1" or "utf-8" are listed at: List
 	// of Charsets
 	// <http://blog.chilkatsoft.com/?p=463> .
-	bool WriteStringToFile(const wchar_t *str, const wchar_t *filename, const wchar_t *charset);
+	bool WriteStringToFile(const wchar_t *stringToWrite, const wchar_t *filename, const wchar_t *charset);
 
 	// This is the same as the "ToXml" method. It converts the HTML in the "Html"
 	// property to XML and returns the XML string.

@@ -26,7 +26,6 @@ class CkPublicKey;
 class CK_VISIBLE_PUBLIC CkKeyContainer  : public CkMultiByteBase
 {
     private:
-	
 
 	// Don't allow assignment or copying these objects.
 	CkKeyContainer(const CkKeyContainer &);

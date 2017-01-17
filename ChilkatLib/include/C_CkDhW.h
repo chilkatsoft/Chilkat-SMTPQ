@@ -1,14 +1,15 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkDhWH
 #define _C_CkDhWH
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
 CK_VISIBLE_PUBLIC HCkDhW CkDhW_Create(void);
 CK_VISIBLE_PUBLIC void CkDhW_Dispose(HCkDhW handle);
 CK_VISIBLE_PUBLIC void CkDhW_getDebugLogFilePath(HCkDhW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkDhW_putDebugLogFilePath(HCkDhW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkDhW_putDebugLogFilePath(HCkDhW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkDhW_debugLogFilePath(HCkDhW cHandle);
 CK_VISIBLE_PUBLIC int CkDhW_getG(HCkDhW cHandle);
 CK_VISIBLE_PUBLIC void CkDhW_getLastErrorHtml(HCkDhW cHandle, HCkString retval);
@@ -18,11 +19,11 @@ CK_VISIBLE_PUBLIC const wchar_t *CkDhW_lastErrorText(HCkDhW cHandle);
 CK_VISIBLE_PUBLIC void CkDhW_getLastErrorXml(HCkDhW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkDhW_lastErrorXml(HCkDhW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkDhW_getLastMethodSuccess(HCkDhW cHandle);
-CK_VISIBLE_PUBLIC void CkDhW_putLastMethodSuccess(HCkDhW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkDhW_putLastMethodSuccess(HCkDhW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkDhW_getP(HCkDhW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkDhW_p(HCkDhW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkDhW_getVerboseLogging(HCkDhW cHandle);
-CK_VISIBLE_PUBLIC void CkDhW_putVerboseLogging(HCkDhW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkDhW_putVerboseLogging(HCkDhW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkDhW_getVersion(HCkDhW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkDhW_version(HCkDhW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkDhW_CreateE(HCkDhW cHandle, int numBits, HCkString outStr);

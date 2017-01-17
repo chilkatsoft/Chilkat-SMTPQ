@@ -26,7 +26,6 @@ class CkTask;
 class CK_VISIBLE_PUBLIC CkSFtpDir  : public CkMultiByteBase
 {
     private:
-	
 
 	// Don't allow assignment or copying these objects.
 	CkSFtpDir(const CkSFtpDir &);
@@ -65,11 +64,6 @@ class CK_VISIBLE_PUBLIC CkSFtpDir  : public CkMultiByteBase
 	// ----------------------
 	// Methods
 	// ----------------------
-	// Returns the Nth entry in the directory. Indexing begins at 0.
-	// The caller is responsible for deleting the object returned by this method.
-	CkSFtpFile *GetFileObject(int index);
-
-
 	// Returns the Nth filename in the directory (indexing begins at 0).
 	bool GetFilename(int index, CkString &outStr);
 
@@ -77,6 +71,11 @@ class CK_VISIBLE_PUBLIC CkSFtpDir  : public CkMultiByteBase
 	const char *getFilename(int index);
 	// Returns the Nth filename in the directory (indexing begins at 0).
 	const char *filename(int index);
+
+
+	// Returns the Nth entry in the directory. Indexing begins at 0.
+	// The caller is responsible for deleting the object returned by this method.
+	CkSFtpFile *GetFileObject(int index);
 
 
 	// Loads the SFTP directory object from a completed asynchronous task.

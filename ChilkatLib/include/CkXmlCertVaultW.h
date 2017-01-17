@@ -89,7 +89,7 @@ class CK_VISIBLE_PUBLIC CkXmlCertVaultW  : public CkWideCharBase
 	bool AddCertChain(CkCertChainW &certChain);
 
 	// Adds a certificate to the XML vault where certificate is passed directly from
-	// encoded bytes (such as Base64, Hex, etc.). The encoding is indicated by ARG2.
+	// encoded bytes (such as Base64, Hex, etc.). The encoding is indicated by encoding.
 	bool AddCertEncoded(const wchar_t *encodedBytes, const wchar_t *encoding);
 
 	// Adds a certificate to the XML vault.
@@ -112,7 +112,7 @@ class CK_VISIBLE_PUBLIC CkXmlCertVaultW  : public CkWideCharBase
 	bool AddPfxBinary(CkByteData &pfxBytes, const wchar_t *password);
 
 	// Adds a PFX to the XML vault where PFX is passed directly from encoded bytes
-	// (such as Base64, Hex, etc.). The encoding is indicated by ARG2.
+	// (such as Base64, Hex, etc.). The encoding is indicated by encoding.
 	bool AddPfxEncoded(const wchar_t *encodedBytes, const wchar_t *encoding, const wchar_t *password);
 
 	// Adds a PFX file to the XML vault.

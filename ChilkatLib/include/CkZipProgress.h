@@ -66,8 +66,8 @@ class CK_VISIBLE_PUBLIC CkZipProgress : public CkBaseProgress
 	    bool b = ToBeAdded(filePath,fileSize);
 	    if (skip) *skip = b;
 	    }
-	virtual bool ToBeAdded(const char *filePath, 
-	    __int64 fileSize) { return false; }
+	virtual bool ToBeAdded(const char * /*filePath*/, 
+	    __int64 /*fileSize*/) { return false; }
 
 	virtual void DirToBeAdded(const char *filePath, 
 	    bool *skip) 
@@ -75,7 +75,7 @@ class CK_VISIBLE_PUBLIC CkZipProgress : public CkBaseProgress
 	    bool b = DirToBeAdded(filePath);
 	    if (skip) *skip = b;
 	    }
-	virtual bool DirToBeAdded(const char *filePath) { return false; }
+	virtual bool DirToBeAdded(const char * /*filePath*/) { return false; }
 
 	virtual void FileAdded(const char *filePath, 
 	    __int64 fileSize, 
@@ -84,8 +84,8 @@ class CK_VISIBLE_PUBLIC CkZipProgress : public CkBaseProgress
 	    bool b = FileAdded(filePath,fileSize);
 	    if (abort) *abort = b;
 	    }
-	virtual bool FileAdded(const char *filePath, 
-	    __int64 fileSize) { return false; }
+	virtual bool FileAdded(const char * /*filePath*/, 
+	    __int64 /*fileSize*/) { return false; }
 
 	virtual void ToBeZipped(const char *filePath, 
 	    __int64 fileSize, 
@@ -94,8 +94,8 @@ class CK_VISIBLE_PUBLIC CkZipProgress : public CkBaseProgress
 	    bool b = ToBeZipped(filePath,fileSize);
 	    if (skip) *skip = b;
 	    }
-	virtual bool ToBeZipped(const char *filePath, 
-	    __int64 fileSize) { return false; }
+	virtual bool ToBeZipped(const char * /*filePath*/, 
+	    __int64 /*fileSize*/) { return false; }
 
 	virtual void FileZipped(const char *filePath, 
 	    __int64 fileSize, 
@@ -105,9 +105,9 @@ class CK_VISIBLE_PUBLIC CkZipProgress : public CkBaseProgress
 	    bool b = FileZipped(filePath,fileSize,compressedSize);
 	    if (abort) *abort = b;
 	    }
-	virtual bool FileZipped(const char *filePath, 
-	    __int64 fileSize, 
-	    __int64 compressedSize) { return false; }
+	virtual bool FileZipped(const char * /*filePath*/, 
+	    __int64 /*fileSize*/, 
+	    __int64 /*compressedSize*/) { return false; }
 
 	virtual void ToBeUnzipped(const char *filePath, 
 	    __int64 compressedSize,
@@ -118,10 +118,10 @@ class CK_VISIBLE_PUBLIC CkZipProgress : public CkBaseProgress
 	    bool b = ToBeUnzipped(filePath,compressedSize,fileSize,isDirectory);
 	    if (skip) *skip = b;
 	    }
-	virtual bool ToBeUnzipped(const char *filePath, 
-	    __int64 compressedSize,
-	    __int64 fileSize, 
-	    bool isDirectory) { return false; }
+	virtual bool ToBeUnzipped(const char * /*filePath*/, 
+	    __int64 /*compressedSize*/,
+	    __int64 /*fileSize*/, 
+	    bool /*isDirectory*/) { return false; }
 
 	virtual void FileUnzipped(const char *filePath, 
 	    __int64 compressedSize,
@@ -132,15 +132,15 @@ class CK_VISIBLE_PUBLIC CkZipProgress : public CkBaseProgress
 	    bool b = FileUnzipped(filePath,compressedSize,fileSize,isDirectory);
 	    if (abort) *abort = b;
 	    }
-	virtual bool FileUnzipped(const char *filePath, 
-	    __int64 compressedSize,
-	    __int64 fileSize, 
-	    bool isDirectory) { return false; }
+	virtual bool FileUnzipped(const char * /*filePath*/, 
+	    __int64 /*compressedSize*/,
+	    __int64 /*fileSize*/, 
+	    bool /*isDirectory*/) { return false; }
 
-	virtual void SkippedForUnzip(const char *filePath, 
-	    __int64 compressedSize,
-	    __int64 fileSize,
-	    bool isDirectory) { }
+	virtual void SkippedForUnzip(const char * /*filePath*/, 
+	    __int64 /*compressedSize*/,
+	    __int64 /*fileSize*/,
+	    bool /*isDirectory*/) { }
 
 	virtual void AddFilesBegin(void) { }
 	virtual void AddFilesEnd(void) { }

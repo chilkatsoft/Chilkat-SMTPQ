@@ -62,49 +62,49 @@ class CK_VISIBLE_PUBLIC CkFtp2Progress : public CkBaseProgress
 	    bool b = BeginDownloadFile(pathUtf8);
 	    if (skip) *skip = b;
 	    }
-	virtual bool BeginDownloadFile(const char *pathUtf8) { return false; }
+	virtual bool BeginDownloadFile(const char * /*pathUtf8*/) { return false; }
 
-	virtual void EndDownloadFile(const char *pathUtf8, __int64 numBytes) { }
+	virtual void EndDownloadFile(const char * /*pathUtf8*/, __int64 /*numBytes*/) { }
 
 	virtual void VerifyDownloadDir(const char *pathUtf8, bool *skip) 
 	    { 
 	    bool b = VerifyDownloadDir(pathUtf8);
 	    if (skip) *skip = b;
 	    }
-	virtual bool VerifyDownloadDir(const char *pathUtf8) { return false; }
+	virtual bool VerifyDownloadDir(const char * /*pathUtf8*/) { return false; }
 
 	virtual void BeginUploadFile(const char *pathUtf8, bool *skip) 
 	    { 
 	    bool b = BeginUploadFile(pathUtf8);
 	    if (skip) *skip = b;
 	    }
-	virtual bool BeginUploadFile(const char *pathUtf8) { return false; }
+	virtual bool BeginUploadFile(const char * /*pathUtf8*/) { return false; }
 
-	virtual void EndUploadFile(const char *pathUtf8, __int64 numBytes) { }
+	virtual void EndUploadFile(const char * /*pathUtf8*/, __int64 /*numBytes*/) { }
 
 	virtual void VerifyUploadDir(const char *pathUtf8, bool *skip) 
 	    { 
 	    bool b = VerifyUploadDir(pathUtf8);
 	    if (skip) *skip = b;
 	    }
-	virtual bool VerifyUploadDir(const char *pathUtf8) { return false; }
+	virtual bool VerifyUploadDir(const char * /*pathUtf8*/) { return false; }
 
 	virtual void VerifyDeleteDir(const char *pathUtf8, bool *skip) 
 	    { 
 	    bool b = VerifyDeleteDir(pathUtf8);
 	    if (skip) *skip = b;
 	    }
-	virtual bool VerifyDeleteDir(const char *pathUtf8) { return false; }
+	virtual bool VerifyDeleteDir(const char * /*pathUtf8*/) { return false; }
 
 	virtual void VerifyDeleteFile(const char *pathUtf8, bool *skip) 
 	    { 
 	    bool b = VerifyDeleteFile(pathUtf8);
 	    if (skip) *skip = b;
 	    }
-	virtual bool VerifyDeleteFile(const char *pathUtf8) { return false; }
+	virtual bool VerifyDeleteFile(const char * /*pathUtf8*/) { return false; }
 
-	virtual void UploadRate(__int64 byteCount, unsigned long bytesPerSec) { }
-	virtual void DownloadRate(__int64 byteCount, unsigned long bytesPerSec) { }
+	virtual void UploadRate(__int64 /*byteCount*/, unsigned long /*bytesPerSec*/) { }
+	virtual void DownloadRate(__int64 /*byteCount*/, unsigned long /*bytesPerSec*/) { }
 
 
 

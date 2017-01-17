@@ -103,12 +103,12 @@ class CK_VISIBLE_PUBLIC CkHtmlToTextW  : public CkWideCharBase
 	bool IsUnlocked(void);
 
 	// Convenience method for reading a text file into a string. The character encoding
-	// of the text file is specified by  srcCharset. Valid values, such as "iso-8895-1" or
+	// of the text file is specified by srcCharset. Valid values, such as "iso-8895-1" or
 	// "utf-8" are listed at: List of Charsets
 	// <http://blog.chilkatsoft.com/?p=463> .
 	bool ReadFileToString(const wchar_t *filename, const wchar_t *srcCharset, CkString &outStr);
 	// Convenience method for reading a text file into a string. The character encoding
-	// of the text file is specified by  srcCharset. Valid values, such as "iso-8895-1" or
+	// of the text file is specified by srcCharset. Valid values, such as "iso-8895-1" or
 	// "utf-8" are listed at: List of Charsets
 	// <http://blog.chilkatsoft.com/?p=463> .
 	const wchar_t *readFileToString(const wchar_t *filename, const wchar_t *srcCharset);
@@ -122,17 +122,16 @@ class CK_VISIBLE_PUBLIC CkHtmlToTextW  : public CkWideCharBase
 	// begin a 30-day trial.
 	// 
 	// This class is included with the Chilkat HTML-to-XML conversion component
-	// license. A permanent unlock code for Chilkat HTML-to-XML should be used to
-	// unlock this object.
+	// license.
 	// 
 	bool UnlockComponent(const wchar_t *code);
 
 	// Convenience method for saving a string to a file. The character encoding of the
-	// output text file is specified by  charset (the string is converted to this charset
+	// output text file is specified by charset (the string is converted to this charset
 	// when writing). Valid values, such as "iso-8895-1" or "utf-8" are listed at: List
 	// of Charsets
 	// <http://blog.chilkatsoft.com/?p=463> .
-	bool WriteStringToFile(const wchar_t *str, const wchar_t *filename, const wchar_t *charset);
+	bool WriteStringToFile(const wchar_t *stringToWrite, const wchar_t *filename, const wchar_t *charset);
 
 
 

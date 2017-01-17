@@ -1,17 +1,18 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkSshKeyWH
 #define _C_CkSshKeyWH
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
 CK_VISIBLE_PUBLIC HCkSshKeyW CkSshKeyW_Create(void);
 CK_VISIBLE_PUBLIC void CkSshKeyW_Dispose(HCkSshKeyW handle);
 CK_VISIBLE_PUBLIC void CkSshKeyW_getComment(HCkSshKeyW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkSshKeyW_putComment(HCkSshKeyW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkSshKeyW_putComment(HCkSshKeyW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkSshKeyW_comment(HCkSshKeyW cHandle);
 CK_VISIBLE_PUBLIC void CkSshKeyW_getDebugLogFilePath(HCkSshKeyW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkSshKeyW_putDebugLogFilePath(HCkSshKeyW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkSshKeyW_putDebugLogFilePath(HCkSshKeyW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkSshKeyW_debugLogFilePath(HCkSshKeyW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSshKeyW_getIsDsaKey(HCkSshKeyW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSshKeyW_getIsPrivateKey(HCkSshKeyW cHandle);
@@ -23,12 +24,12 @@ CK_VISIBLE_PUBLIC const wchar_t *CkSshKeyW_lastErrorText(HCkSshKeyW cHandle);
 CK_VISIBLE_PUBLIC void CkSshKeyW_getLastErrorXml(HCkSshKeyW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkSshKeyW_lastErrorXml(HCkSshKeyW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSshKeyW_getLastMethodSuccess(HCkSshKeyW cHandle);
-CK_VISIBLE_PUBLIC void CkSshKeyW_putLastMethodSuccess(HCkSshKeyW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkSshKeyW_putLastMethodSuccess(HCkSshKeyW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkSshKeyW_getPassword(HCkSshKeyW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkSshKeyW_putPassword(HCkSshKeyW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkSshKeyW_putPassword(HCkSshKeyW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkSshKeyW_password(HCkSshKeyW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSshKeyW_getVerboseLogging(HCkSshKeyW cHandle);
-CK_VISIBLE_PUBLIC void CkSshKeyW_putVerboseLogging(HCkSshKeyW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkSshKeyW_putVerboseLogging(HCkSshKeyW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkSshKeyW_getVersion(HCkSshKeyW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkSshKeyW_version(HCkSshKeyW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSshKeyW_FromOpenSshPrivateKey(HCkSshKeyW cHandle, const wchar_t *keyStr);
@@ -36,10 +37,10 @@ CK_VISIBLE_PUBLIC BOOL CkSshKeyW_FromOpenSshPublicKey(HCkSshKeyW cHandle, const 
 CK_VISIBLE_PUBLIC BOOL CkSshKeyW_FromPuttyPrivateKey(HCkSshKeyW cHandle, const wchar_t *keyStr);
 CK_VISIBLE_PUBLIC BOOL CkSshKeyW_FromRfc4716PublicKey(HCkSshKeyW cHandle, const wchar_t *keyStr);
 CK_VISIBLE_PUBLIC BOOL CkSshKeyW_FromXml(HCkSshKeyW cHandle, const wchar_t *xmlKey);
-CK_VISIBLE_PUBLIC BOOL CkSshKeyW_GenFingerprint(HCkSshKeyW cHandle, HCkString outStr);
-CK_VISIBLE_PUBLIC const wchar_t *CkSshKeyW_genFingerprint(HCkSshKeyW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSshKeyW_GenerateDsaKey(HCkSshKeyW cHandle, int numBits);
 CK_VISIBLE_PUBLIC BOOL CkSshKeyW_GenerateRsaKey(HCkSshKeyW cHandle, int numBits, int exponent);
+CK_VISIBLE_PUBLIC BOOL CkSshKeyW_GenFingerprint(HCkSshKeyW cHandle, HCkString outStr);
+CK_VISIBLE_PUBLIC const wchar_t *CkSshKeyW_genFingerprint(HCkSshKeyW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSshKeyW_LoadText(HCkSshKeyW cHandle, const wchar_t *filename, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkSshKeyW_loadText(HCkSshKeyW cHandle, const wchar_t *filename);
 CK_VISIBLE_PUBLIC BOOL CkSshKeyW_SaveLastError(HCkSshKeyW cHandle, const wchar_t *path);

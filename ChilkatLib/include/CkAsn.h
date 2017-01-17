@@ -25,7 +25,6 @@ class CkByteData;
 class CK_VISIBLE_PUBLIC CkAsn  : public CkMultiByteBase
 {
     private:
-	
 
 	// Don't allow assignment or copying these objects.
 	CkAsn(const CkAsn &);
@@ -147,20 +146,20 @@ class CK_VISIBLE_PUBLIC CkAsn  : public CkMultiByteBase
 	// Appends an ASN.1 integer, but one that is a big (huge) integer that is too large
 	// to be represented by an integer variable. The bytes composing the integer are
 	// passed in encoded string format (such as base64, hex, etc.). The byte order must
-	// be big-endian. The ARG2 may be any of the following encodings: "Base64", "Hex",
+	// be big-endian. The encoding may be any of the following encodings: "Base64", "Hex",
 	// "Base58", "modBase64", "Base32", "UU", "QP" (for quoted-printable), "URL" (for
 	// url-encoding), "Q", "B", "url_oath", "url_rfc1738", "url_rfc2396", and
-	// "url_rfc3986". The ARG2 name is case insensitive (for example, both "Base64" and
+	// "url_rfc3986". The encoding name is case insensitive (for example, both "Base64" and
 	// "base64" are treated the same).
 	bool AppendBigInt(const char *encodedBytes, const char *encoding);
 
 
 	// Appends an ASN.1 bit string to the caller's sub-items. The bytes containing the
 	// bits are passed in encoded string format (such as base64, hex, etc.). The byte
-	// order must be big-endian (MSB first). The ARG2 may be any of the following
+	// order must be big-endian (MSB first). The encoding may be any of the following
 	// encodings: "Base64", "Hex", "Base58", "modBase64", "Base32", "UU", "QP" (for
 	// quoted-printable), "URL" (for url-encoding), "Q", "B", "url_oath",
-	// "url_rfc1738", "url_rfc2396", and "url_rfc3986". The ARG2 name is case
+	// "url_rfc1738", "url_rfc2396", and "url_rfc3986". The encoding name is case
 	// insensitive (for example, both "Base64" and "base64" are treated the same).
 	bool AppendBits(const char *encodedBytes, const char *encoding);
 
@@ -175,10 +174,10 @@ class CK_VISIBLE_PUBLIC CkAsn  : public CkMultiByteBase
 
 
 	// Appends an ASN.1 context-specific primitive item to the caller's sub-items. The
-	// bytes are passed in encoded string format (such as base64, hex, etc.). The ARG3
+	// bytes are passed in encoded string format (such as base64, hex, etc.). The encoding
 	// may be any of the following encodings: "Base64", "Hex", "Base58", "modBase64",
 	// "Base32", "UU", "QP" (for quoted-printable), "URL" (for url-encoding), "Q", "B",
-	// "url_oath", "url_rfc1738", "url_rfc2396", and "url_rfc3986". The ARG3 name is
+	// "url_oath", "url_rfc1738", "url_rfc2396", and "url_rfc3986". The encoding name is
 	// case insensitive (for example, both "Base64" and "base64" are treated the same).
 	bool AppendContextPrimitive(int tag, const char *encodedBytes, const char *encoding);
 
@@ -194,10 +193,10 @@ class CK_VISIBLE_PUBLIC CkAsn  : public CkMultiByteBase
 
 
 	// Appends an ASN.1 octet string to the caller's sub-items. The bytes are passed in
-	// encoded string format (such as base64, hex, etc.). The ARG2 may be any of the
+	// encoded string format (such as base64, hex, etc.). The encoding may be any of the
 	// following encodings: "Base64", "Hex", "Base58", "modBase64", "Base32", "UU",
 	// "QP" (for quoted-printable), "URL" (for url-encoding), "Q", "B", "url_oath",
-	// "url_rfc1738", "url_rfc2396", and "url_rfc3986". The ARG2 name is case
+	// "url_rfc1738", "url_rfc2396", and "url_rfc3986". The encoding name is case
 	// insensitive (for example, both "Base64" and "base64" are treated the same).
 	bool AppendOctets(const char *encodedBytes, const char *encoding);
 
@@ -237,20 +236,20 @@ class CK_VISIBLE_PUBLIC CkAsn  : public CkMultiByteBase
 	CkAsn *AppendSetR(void);
 
 
-	// Appends a string item to the caller's sub-items. The ARG1 specifies the type of
+	// Appends a string item to the caller's sub-items. The strType specifies the type of
 	// string to be added. It may be "utf8", "ia5", "t61", "printable", "visible",
-	// "numeric", "universal", or "bmp". The ARG2 must conform to the ASN.1
+	// "numeric", "universal", or "bmp". The value must conform to the ASN.1
 	// restrictions imposed for a given string type. The "utf8", "bmp", and "universal"
 	// types have no restrictions on what characters are allowed. In general, unless a
 	// specific type of string is required, choose the "utf8" type.
 	bool AppendString(const char *strType, const char *value);
 
 
-	// Appends a UTCTime item to the caller's sub-items. The ARG1 specifies the format
-	// of the ARG2. It should be set to "utc". (In the future, this method will be
-	// expanded to append GeneralizedTime items by using "generalized" for ARG1.) To
-	// append the current date/time, set ARG2 equal to the empty string or the keyword
-	// "now". Otherwise, the ARG2 should be in the UTC time format "YYMMDDhhmm[ss]Z" or
+	// Appends a UTCTime item to the caller's sub-items. The timeFormat specifies the format
+	// of the dateTimeStr. It should be set to "utc". (In the future, this method will be
+	// expanded to append GeneralizedTime items by using "generalized" for timeFormat.) To
+	// append the current date/time, set dateTimeStr equal to the empty string or the keyword
+	// "now". Otherwise, the dateTimeStr should be in the UTC time format "YYMMDDhhmm[ss]Z" or
 	// "YYMMDDhhmm[ss](+|-)hhmm".
 	bool AppendTime(const char *timeFormat, const char *dateTimeStr);
 
@@ -269,35 +268,35 @@ class CK_VISIBLE_PUBLIC CkAsn  : public CkMultiByteBase
 	bool GetBinaryDer(CkByteData &outBytes);
 
 
-	// Returns the content of the ASN.1 item in encoded string form. The ARG1 may be
+	// Returns the content of the ASN.1 item in encoded string form. The encoding may be
 	// any of the following encodings: "Base64", "Hex", "Base58", "modBase64",
 	// "Base32", "UU", "QP" (for quoted-printable), "URL" (for url-encoding), "Q", "B",
-	// "url_oath", "url_rfc1738", "url_rfc2396", and "url_rfc3986". The ARG1 name is
+	// "url_oath", "url_rfc1738", "url_rfc2396", and "url_rfc3986". The encoding name is
 	// case insensitive (for example, both "Base64" and "base64" are treated the same).
 	bool GetEncodedContent(const char *encoding, CkString &outStr);
 
-	// Returns the content of the ASN.1 item in encoded string form. The ARG1 may be
+	// Returns the content of the ASN.1 item in encoded string form. The encoding may be
 	// any of the following encodings: "Base64", "Hex", "Base58", "modBase64",
 	// "Base32", "UU", "QP" (for quoted-printable), "URL" (for url-encoding), "Q", "B",
-	// "url_oath", "url_rfc1738", "url_rfc2396", and "url_rfc3986". The ARG1 name is
+	// "url_oath", "url_rfc1738", "url_rfc2396", and "url_rfc3986". The encoding name is
 	// case insensitive (for example, both "Base64" and "base64" are treated the same).
 	const char *getEncodedContent(const char *encoding);
-	// Returns the content of the ASN.1 item in encoded string form. The ARG1 may be
+	// Returns the content of the ASN.1 item in encoded string form. The encoding may be
 	// any of the following encodings: "Base64", "Hex", "Base58", "modBase64",
 	// "Base32", "UU", "QP" (for quoted-printable), "URL" (for url-encoding), "Q", "B",
-	// "url_oath", "url_rfc1738", "url_rfc2396", and "url_rfc3986". The ARG1 name is
+	// "url_oath", "url_rfc1738", "url_rfc2396", and "url_rfc3986". The encoding name is
 	// case insensitive (for example, both "Base64" and "base64" are treated the same).
 	const char *encodedContent(const char *encoding);
 
 
-	// Returns the binary DER in encoded string form. The ARG1 indicates the encoding
+	// Returns the binary DER in encoded string form. The encoding indicates the encoding
 	// and can be "base64", "hex", "uu", "quoted-printable", "base32", or "modbase64".
 	bool GetEncodedDer(const char *encoding, CkString &outStr);
 
-	// Returns the binary DER in encoded string form. The ARG1 indicates the encoding
+	// Returns the binary DER in encoded string form. The encoding indicates the encoding
 	// and can be "base64", "hex", "uu", "quoted-printable", "base32", or "modbase64".
 	const char *getEncodedDer(const char *encoding);
-	// Returns the binary DER in encoded string form. The ARG1 indicates the encoding
+	// Returns the binary DER in encoded string form. The encoding indicates the encoding
 	// and can be "base64", "hex", "uu", "quoted-printable", "base32", or "modbase64".
 	const char *encodedDer(const char *encoding);
 
@@ -326,15 +325,15 @@ class CK_VISIBLE_PUBLIC CkAsn  : public CkMultiByteBase
 	bool LoadBinaryFile(const char *path);
 
 
-	// Loads ASN.1 from an encoded string. The ARG2 can be "base64", "hex", "uu",
+	// Loads ASN.1 from an encoded string. The encoding can be "base64", "hex", "uu",
 	// "quoted-printable", "base32", or "modbase64".
 	bool LoadEncoded(const char *asnContent, const char *encoding);
 
 
-	// Sets the content of this primitive ASN.1 item. The ARG2 may be any of the
+	// Sets the content of this primitive ASN.1 item. The encoding may be any of the
 	// following encodings: "Base64", "Hex", "Base58", "modBase64", "Base32", "UU",
 	// "QP" (for quoted-printable), "URL" (for url-encoding), "Q", "B", "url_oath",
-	// "url_rfc1738", "url_rfc2396", and "url_rfc3986". The ARG2 name is case
+	// "url_rfc1738", "url_rfc2396", and "url_rfc3986". The encoding name is case
 	// insensitive (for example, both "Base64" and "base64" are treated the same).
 	bool SetEncodedContent(const char *encodedBytes, const char *encoding);
 

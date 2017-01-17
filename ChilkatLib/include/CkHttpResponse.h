@@ -13,6 +13,8 @@
 #include "CkMultiByteBase.h"
 
 class CkByteData;
+class CkBinData;
+class CkStringBuilder;
 class CkTask;
 
 
@@ -26,7 +28,6 @@ class CkTask;
 class CK_VISIBLE_PUBLIC CkHttpResponse  : public CkMultiByteBase
 {
     private:
-	
 
 	// Don't allow assignment or copying these objects.
 	CkHttpResponse(const CkHttpResponse &);
@@ -138,6 +139,14 @@ class CK_VISIBLE_PUBLIC CkHttpResponse  : public CkMultiByteBase
 	// ----------------------
 	// Methods
 	// ----------------------
+	// Copies the response body to a BinData object.
+	bool GetBodyBd(CkBinData &binData);
+
+
+	// Copies the response body to a Chilkat StringBuilder object.
+	bool GetBodySb(CkStringBuilder &sb);
+
+
 	// Returns the domain of the Nth cookie in the response. Indexing begins at 0. The
 	// number of response cookies is specified in the NumCookies property.
 	bool GetCookieDomain(int index, CkString &outStr);
@@ -277,14 +286,14 @@ class CK_VISIBLE_PUBLIC CkHttpResponse  : public CkMultiByteBase
 	// Convenience method for parsing a param's value out of a URL-encoded param
 	// string. For example, if a caller passes the following string in
 	// encodedParamString:oauth_token=ABC&oauth_token_secret=123&oauth_callback_confirmed=true and
-	// "oauth_token_secret" in  paramName, then the return value would be "123".
-	bool UrlEncParamValue(const char *encodedParams, const char *paramName, CkString &outStr);
+	// "oauth_token_secret" in paramName, then the return value would be "123".
+	bool UrlEncParamValue(const char *encodedParamString, const char *paramName, CkString &outStr);
 
 	// Convenience method for parsing a param's value out of a URL-encoded param
 	// string. For example, if a caller passes the following string in
 	// encodedParamString:oauth_token=ABC&oauth_token_secret=123&oauth_callback_confirmed=true and
-	// "oauth_token_secret" in  paramName, then the return value would be "123".
-	const char *urlEncParamValue(const char *encodedParams, const char *paramName);
+	// "oauth_token_secret" in paramName, then the return value would be "123".
+	const char *urlEncParamValue(const char *encodedParamString, const char *paramName);
 
 
 

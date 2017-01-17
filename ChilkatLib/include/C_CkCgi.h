@@ -1,15 +1,16 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkCgi_H
 #define _C_CkCgi_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
 CK_VISIBLE_PUBLIC HCkCgi CkCgi_Create(void);
 CK_VISIBLE_PUBLIC void CkCgi_Dispose(HCkCgi handle);
-CK_VISIBLE_PUBLIC unsigned long CkCgi_getAsyncBytesRead(HCkCgi cHandle);
+CK_VISIBLE_PUBLIC int CkCgi_getAsyncBytesRead(HCkCgi cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCgi_getAsyncInProgress(HCkCgi cHandle);
-CK_VISIBLE_PUBLIC unsigned long CkCgi_getAsyncPostSize(HCkCgi cHandle);
+CK_VISIBLE_PUBLIC int CkCgi_getAsyncPostSize(HCkCgi cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCgi_getAsyncSuccess(HCkCgi cHandle);
 CK_VISIBLE_PUBLIC void CkCgi_getDebugLogFilePath(HCkCgi cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkCgi_putDebugLogFilePath(HCkCgi cHandle, const char *newVal);
@@ -30,8 +31,8 @@ CK_VISIBLE_PUBLIC int CkCgi_getNumParams(HCkCgi cHandle);
 CK_VISIBLE_PUBLIC int CkCgi_getNumUploadFiles(HCkCgi cHandle);
 CK_VISIBLE_PUBLIC int CkCgi_getReadChunkSize(HCkCgi cHandle);
 CK_VISIBLE_PUBLIC void CkCgi_putReadChunkSize(HCkCgi cHandle, int newVal);
-CK_VISIBLE_PUBLIC unsigned long CkCgi_getSizeLimitKB(HCkCgi cHandle);
-CK_VISIBLE_PUBLIC void CkCgi_putSizeLimitKB(HCkCgi cHandle, unsigned long newVal);
+CK_VISIBLE_PUBLIC int CkCgi_getSizeLimitKB(HCkCgi cHandle);
+CK_VISIBLE_PUBLIC void CkCgi_putSizeLimitKB(HCkCgi cHandle, int newVal);
 CK_VISIBLE_PUBLIC BOOL CkCgi_getStreamToUploadDir(HCkCgi cHandle);
 CK_VISIBLE_PUBLIC void CkCgi_putStreamToUploadDir(HCkCgi cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkCgi_getUploadDir(HCkCgi cHandle, HCkString retval);
@@ -56,7 +57,7 @@ CK_VISIBLE_PUBLIC BOOL CkCgi_GetRawPostData(HCkCgi cHandle, HCkByteData outData)
 CK_VISIBLE_PUBLIC BOOL CkCgi_GetUploadData(HCkCgi cHandle, int index, HCkByteData outData);
 CK_VISIBLE_PUBLIC BOOL CkCgi_GetUploadFilename(HCkCgi cHandle, int index, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkCgi_getUploadFilename(HCkCgi cHandle, int index);
-CK_VISIBLE_PUBLIC unsigned long CkCgi_GetUploadSize(HCkCgi cHandle, int index);
+CK_VISIBLE_PUBLIC int CkCgi_GetUploadSize(HCkCgi cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkCgi_IsGet(HCkCgi cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCgi_IsHead(HCkCgi cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCgi_IsPost(HCkCgi cHandle);

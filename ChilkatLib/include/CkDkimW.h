@@ -10,7 +10,7 @@
 #include "chilkatDefs.h"
 
 #include "CkString.h"
-#include "CkWideCharBase.h"
+#include "CkClassWithCallbacksW.h"
 
 class CkByteData;
 class CkTaskW;
@@ -24,11 +24,10 @@ class CkBaseProgressW;
  
 
 // CLASS: CkDkimW
-class CK_VISIBLE_PUBLIC CkDkimW  : public CkWideCharBase
+class CK_VISIBLE_PUBLIC CkDkimW  : public CkClassWithCallbacksW
 {
     private:
 	bool m_cbOwned;
-	void *m_eventCallback;
 
 	// Don't allow assignment or copying these objects.
 	CkDkimW(const CkDkimW &);
@@ -60,6 +59,23 @@ class CK_VISIBLE_PUBLIC CkDkimW  : public CkWideCharBase
 	// ----------------------
 	// Properties
 	// ----------------------
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	bool get_AbortCurrent(void);
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	void put_AbortCurrent(bool newVal);
+
 	// The signing algorithm to be used in creating the DKIM-Signature. Possible values
 	// are "rsa-sha256" and "rsa-sha1". The default value is "rsa-sha256".
 	void get_DkimAlg(CkString &str);
@@ -230,7 +246,7 @@ class CK_VISIBLE_PUBLIC CkDkimW  : public CkWideCharBase
 	// etc. This method will automatically determine the format and parse it correctly.
 	// A password is only required if key is encrypted, such as for encrypted PEM or
 	// encrypted PKCS8.
-	bool LoadDkimPkFile(const wchar_t *privateKeyFilepath, const wchar_t *optionalPassword);
+	bool LoadDkimPkFile(const wchar_t *privateKeyFilePath, const wchar_t *optionalPassword);
 
 	// Loads an RSA private key to be used for creating a DomainKey-Signature. Any
 	// valid RSA private key format that is not binary, such as PEM or XML, may be
@@ -250,10 +266,10 @@ class CK_VISIBLE_PUBLIC CkDkimW  : public CkWideCharBase
 	// XML, etc. This method will automatically determine the format and parse it
 	// correctly. A password is only required if key is encrypted, such as for
 	// encrypted PEM or encrypted PKCS8.
-	bool LoadDomainKeyPkFile(const wchar_t *privateKeyFilepath, const wchar_t *optionalPassword);
+	bool LoadDomainKeyPkFile(const wchar_t *privateKeyFilePath, const wchar_t *optionalPassword);
 
 	// Caches a public key to be used for verifying DKIM and DomainKey signatures for a
-	// given selector and domain. The  publicKey is a string containing an RSA public key in
+	// given selector and domain. The publicKey is a string containing an RSA public key in
 	// any text format, such as XML, PEM, etc. This method will automatically detect
 	// the format and load the public key correctly. This method is useful for testing
 	// DKIM and DomainKey verification when your public key has not yet been installed
@@ -261,7 +277,7 @@ class CK_VISIBLE_PUBLIC CkDkimW  : public CkWideCharBase
 	bool LoadPublicKey(const wchar_t *selector, const wchar_t *domain, const wchar_t *publicKey);
 
 	// Caches a public key to be used for verifying DKIM and DomainKey signatures for a
-	// given selector and domain. The  publicKeyFilepath is a filepath of an RSA public key in any
+	// given selector and domain. The publicKeyFilepath is a filepath of an RSA public key in any
 	// format. This method will automatically detect the format and load the public key
 	// correctly. This method is useful for testing DKIM and DomainKey verification
 	// when your public key has not yet been installed in DNS.
@@ -294,34 +310,34 @@ class CK_VISIBLE_PUBLIC CkDkimW  : public CkWideCharBase
 	// property to determine the reason for failure.
 	bool UnlockComponent(const wchar_t *unlockCode);
 
-	// Verifies the Nth DKIM-Signature header in the  mimeData. (In most cases, there is
+	// Verifies the Nth DKIM-Signature header in the mimeData. (In most cases, there is
 	// only one signature.) The 1st signature is at sigIndex 0.
 	// 
 	// Important: Many anti-virus programs, such as AVG, will modify the MIME of an
 	// email as it is received. This will cause DKIM signature verification to fail
 	// because the body of the MIME is modified.
 	// 
-	bool VerifyDkimSignature(int sigIdx, CkByteData &mimeData);
+	bool VerifyDkimSignature(int sigIndex, CkByteData &mimeData);
 
 	// Creates an asynchronous task to call the VerifyDkimSignature method with the
 	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *VerifyDkimSignatureAsync(int sigIdx, CkByteData &mimeData);
+	CkTaskW *VerifyDkimSignatureAsync(int sigIndex, CkByteData &mimeData);
 
-	// Verifies the Nth DomainKey-Signature header in the  mimeData. (In most cases, there
+	// Verifies the Nth DomainKey-Signature header in the mimeData. (In most cases, there
 	// is only one signature.) The 1st signature is at sigIndex 0.
 	// 
 	// Important: Many anti-virus programs, such as AVG, will modify the MIME of an
 	// email as it is received. This will cause DomainKey signature verification to
 	// fail because the body of the MIME is modified.
 	// 
-	bool VerifyDomainKeySignature(int sigIdx, CkByteData &mimeData);
+	bool VerifyDomainKeySignature(int sigIndex, CkByteData &mimeData);
 
 	// Creates an asynchronous task to call the VerifyDomainKeySignature method with
 	// the arguments provided. (Async methods are available starting in Chilkat
 	// v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *VerifyDomainKeySignatureAsync(int sigIdx, CkByteData &mimeData);
+	CkTaskW *VerifyDomainKeySignatureAsync(int sigIndex, CkByteData &mimeData);
 
 
 

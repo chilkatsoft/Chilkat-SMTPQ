@@ -3,6 +3,7 @@
 //////////////////////////////////////////////////////////////////////
 
 // This header is NOT generated.
+// Some methods may be undocumented in the online reference documentation.
 
 #ifndef _CKSTRING_H
 #define _CKSTRING_H
@@ -48,8 +49,6 @@ class CK_VISIBLE_PUBLIC CkString : public CkObject
        operator const char *();
        operator const wchar_t *();
 
-
-        void appendHexData(const char *pByteData, unsigned long szByteData);
 
 	// BEGIN PUBLIC INTERFACE
 	bool get_Utf8(void) const;
@@ -116,6 +115,9 @@ class CK_VISIBLE_PUBLIC CkString : public CkObject
 	void chopAtStr(CkString &str);
 	void chopAtStr(const char *s);
 
+	// For Q/B encoding, such as "?UTF-8?Q?Chilkat=20Software=2C=20Inc?= <support@chilkatsoft.com>"
+	void qbDecode(void);
+
 	void urlDecode(const char *charset);
 	void urlEncode(const char *charset);
 	void base64Decode(const char *charset);
@@ -151,10 +153,17 @@ class CK_VISIBLE_PUBLIC CkString : public CkObject
 
 	void appendDateRfc822Gmt(SYSTEMTIME &sysTime);
 
-	// Self explanatory, right?
+	// Clears the string (i.e. resets the length to 0).  The internal buffer is
+	// not deallocated.  Deallocation happens when the CkString object is destructed.
 	void clear(void);
+
 	void prepend(const char *s);	    
 	void prependW(const wchar_t *s);
+
+	// Causes the internal buffers to always be securely cleared by zeroing out the memory prior to deallocation or clearing.
+	bool get_SecureClear(void) const;
+	void put_SecureClear(bool b);
+
 
 	void appendInt(int n);
 	void append(const char *s);	    
@@ -167,7 +176,7 @@ class CK_VISIBLE_PUBLIC CkString : public CkObject
 	void appendRandom(int numBytes, const char *encoding);	// such as "base64", "hex", "qp", "url", etc.
 
 	// Convert the binary data to a hex string representation and append.
-        void appendHexData(const unsigned char *pByteData, unsigned long szByteData);
+        void appendHexData(const void *pByteData, unsigned long szByteData);
 
 	// Same as clearing the string and appending.
         void setString(const char *s);
@@ -177,6 +186,7 @@ class CK_VISIBLE_PUBLIC CkString : public CkObject
 	// To/From Unicode (wchar_t)
 	// On some systems wchar_t is utf-16, on others it is utf-32.
 	void setStringU(const wchar_t *unicode);
+	void setStringUtf16(const uint16_t *unicode);
 	void appendU(const wchar_t *unicode);
 	void appendNU(const wchar_t *unicode, int numChars);
 	const wchar_t *getUnicode(void) const;
@@ -199,7 +209,7 @@ class CK_VISIBLE_PUBLIC CkString : public CkObject
 	const char *getEnc(const char *encoding);
 	const char *getEncW(const wchar_t *encoding);
 
-	// Same as strcmp
+	// Same as ckStrCmp
 	int compareStr(const CkString &str) const;	// Compare against another CkString
 
 	const char *getString(void) const;

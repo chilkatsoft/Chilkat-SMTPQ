@@ -223,7 +223,7 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// Important: If trying to match OpenSSL results, set the LittleEndian property =
 	// false.
 	// 
-	bool DecryptBytes(CkByteData &data, bool bUsePrivateKey, CkByteData &outData);
+	bool DecryptBytes(CkByteData &inData, bool usePrivateKey, CkByteData &outData);
 
 	// Same as DecryptBytes, except the input is an encoded string. The encoding is
 	// specified by the EncodingMode property, which can have values such as "base64",
@@ -234,7 +234,7 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// 
 	bool DecryptBytesENC(const wchar_t *str, bool bUsePrivateKey, CkByteData &outData);
 
-	// Decrypts encrypted string data and returns an unencrypted string.  usePrivateKey should be
+	// Decrypts encrypted string data and returns an unencrypted string. usePrivateKey should be
 	// set to true if the private key is to be used for decrypting. Otherwise it
 	// should be set to false if the public key is to be used. The Charset property
 	// controls how the component interprets the decrypted string. Depending on the
@@ -246,8 +246,8 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// Important: If trying to match OpenSSL results, set the LittleEndian property =
 	// false.
 	// 
-	bool DecryptString(CkByteData &data, bool bUsePrivateKey, CkString &outStr);
-	// Decrypts encrypted string data and returns an unencrypted string.  usePrivateKey should be
+	bool DecryptString(CkByteData &binarySig, bool usePrivateKey, CkString &outStr);
+	// Decrypts encrypted string data and returns an unencrypted string. usePrivateKey should be
 	// set to true if the private key is to be used for decrypting. Otherwise it
 	// should be set to false if the public key is to be used. The Charset property
 	// controls how the component interprets the decrypted string. Depending on the
@@ -259,7 +259,7 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// Important: If trying to match OpenSSL results, set the LittleEndian property =
 	// false.
 	// 
-	const wchar_t *decryptString(CkByteData &data, bool bUsePrivateKey);
+	const wchar_t *decryptString(CkByteData &binarySig, bool usePrivateKey);
 
 	// Same as DecryptString, except the input is an encoded string. The encoding is
 	// specified by the EncodingMode property, which can have values such as "base64",
@@ -268,7 +268,7 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// Important: If trying to match OpenSSL results, set the LittleEndian property =
 	// false.
 	// 
-	bool DecryptStringENC(const wchar_t *str, bool bUsePrivateKey, CkString &outStr);
+	bool DecryptStringENC(const wchar_t *encodedSig, bool usePrivateKey, CkString &outStr);
 	// Same as DecryptString, except the input is an encoded string. The encoding is
 	// specified by the EncodingMode property, which can have values such as "base64",
 	// "hex", "quoted-printable", "url", etc.
@@ -276,16 +276,16 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// Important: If trying to match OpenSSL results, set the LittleEndian property =
 	// false.
 	// 
-	const wchar_t *decryptStringENC(const wchar_t *str, bool bUsePrivateKey);
+	const wchar_t *decryptStringENC(const wchar_t *encodedSig, bool usePrivateKey);
 
-	// Encrypts byte data using the RSA encryption algorithm.  usePrivateKey should be set to
+	// Encrypts byte data using the RSA encryption algorithm. usePrivateKey should be set to
 	// true if the private key is to be used for encrypting. Otherwise it should be
 	// set to false if the public key is to be used for encrypting.
 	// 
 	// Important: If trying to match OpenSSL results, set the LittleEndian property =
 	// false.
 	// 
-	bool EncryptBytes(CkByteData &data, bool bUsePrivateKey, CkByteData &outData);
+	bool EncryptBytes(CkByteData &binaryData, bool usePrivateKey, CkByteData &outData);
 
 	// Same as EncryptBytes, except the output is an encoded string. The encoding is
 	// specified by the EncodingMode property, which can have values such as "base64",
@@ -304,7 +304,7 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// 
 	const wchar_t *encryptBytesENC(CkByteData &data, bool bUsePrivateKey);
 
-	// Encrypts a string using the RSA encryption algorithm.  usePrivateKey should be set to
+	// Encrypts a string using the RSA encryption algorithm. usePrivateKey should be set to
 	// true if the private key is to be used for encrypting. Otherwise it should be
 	// set to false if the public key is to be used for encrypting. The string is
 	// first converted (if necessary) to the character encoding specified by the
@@ -313,7 +313,7 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// Important: If trying to match OpenSSL results, set the LittleEndian property =
 	// false.
 	// 
-	bool EncryptString(const wchar_t *str, bool bUsePrivateKey, CkByteData &outData);
+	bool EncryptString(const wchar_t *stringToEncrypt, bool usePrivateKey, CkByteData &outData);
 
 	// Same as EncryptString, except the output is an encoded string. The encoding is
 	// specified by the EncodingMode property, which can have values such as "base64",
@@ -389,7 +389,7 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// not both. Importing a private key overwrites the existing key regardless of
 	// whether the type of key is public or private.
 	// 
-	bool ImportPrivateKey(const wchar_t *xml);
+	bool ImportPrivateKey(const wchar_t *xmlKey);
 
 	// Imports a private key from a private key object. The imported private key is
 	// used in methods that sign or decrypt.
@@ -411,7 +411,7 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// not both. Importing a private key overwrites the existing key regardless of
 	// whether the type of key is public or private.
 	// 
-	bool ImportPublicKey(const wchar_t *xml);
+	bool ImportPublicKey(const wchar_t *xmlKey);
 
 	// Imports a public key from a public key object. The imported public key is used
 	// in methods that encrypt data or verify signatures.
@@ -472,7 +472,7 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	const wchar_t *openSslVerifyStringENC(const wchar_t *str);
 
 	// Creates an RSA digital signature by hashing binaryData and then signing the hash. The
-	// hash algorithm is specified by  hashAlgorithm, which may be "SHA-1", "MD5", "MD2",
+	// hash algorithm is specified by hashAlgorithm, which may be "SHA-1", "MD5", "MD2",
 	// "SHA-256", "SHA-384", or "SHA-512". The recommended hash algorithm is "SHA-1".
 	// 
 	// Important: If trying to match OpenSSL results, set the LittleEndian property =
@@ -483,10 +483,10 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// 
 	// An error is indicated when a byte array of 0 length is returned.
 	// 
-	bool SignBytes(CkByteData &data, const wchar_t *hashAlg, CkByteData &outData);
+	bool SignBytes(CkByteData &binaryData, const wchar_t *hashAlgorithm, CkByteData &outData);
 
 	// Creates an RSA digital signature by hashing binaryData and then signing the hash. The
-	// hash algorithm is specified by  hashAlgorithm, which may be "SHA-1", "MD5", "MD2",
+	// hash algorithm is specified by hashAlgorithm, which may be "SHA-1", "MD5", "MD2",
 	// "SHA-256", "SHA-384", or "SHA-512". The recommended hash algorithm is "SHA-1".
 	// The digital signature is returned as an encoded string, where the encoding is
 	// specified by the EncodingMode property.
@@ -499,9 +499,9 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// 
 	// An error is indicated when null reference is returned.
 	// 
-	bool SignBytesENC(CkByteData &data, const wchar_t *hashAlg, CkString &outStr);
+	bool SignBytesENC(CkByteData &binaryData, const wchar_t *hashAlgorithm, CkString &outStr);
 	// Creates an RSA digital signature by hashing binaryData and then signing the hash. The
-	// hash algorithm is specified by  hashAlgorithm, which may be "SHA-1", "MD5", "MD2",
+	// hash algorithm is specified by hashAlgorithm, which may be "SHA-1", "MD5", "MD2",
 	// "SHA-256", "SHA-384", or "SHA-512". The recommended hash algorithm is "SHA-1".
 	// The digital signature is returned as an encoded string, where the encoding is
 	// specified by the EncodingMode property.
@@ -514,7 +514,7 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// 
 	// An error is indicated when null reference is returned.
 	// 
-	const wchar_t *signBytesENC(CkByteData &data, const wchar_t *hashAlg);
+	const wchar_t *signBytesENC(CkByteData &binaryData, const wchar_t *hashAlgorithm);
 
 	// The same as the SignBytes method, except the hash to be signed is passed
 	// directly.
@@ -526,7 +526,7 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	const wchar_t *signHashENC(const wchar_t *encodedHash, const wchar_t *hashAlg);
 
 	// Creates an RSA digital signature by hashing strToBeHashed and then signing the hash. The
-	// hash algorithm is specified by  hashAlgorithm, which may be "SHA-1", "MD5", "MD2",
+	// hash algorithm is specified by hashAlgorithm, which may be "SHA-1", "MD5", "MD2",
 	// "SHA-256", "SHA-384", or "SHA-512". The recommended hash algorithm is "SHA-1".
 	// 
 	// Important: If trying to match OpenSSL results, set the LittleEndian property =
@@ -537,10 +537,10 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// 
 	// An error is indicated when a byte array of 0 length is returned.
 	// 
-	bool SignString(const wchar_t *str, const wchar_t *hashAlg, CkByteData &outData);
+	bool SignString(const wchar_t *strToBeHashed, const wchar_t *hashAlgorithm, CkByteData &outData);
 
 	// Creates an RSA digital signature by hashing strToBeHashed and then signing the hash. The
-	// hash algorithm is specified by  hashAlgorithm, which may be "SHA-1", "MD5", "MD2",
+	// hash algorithm is specified by hashAlgorithm, which may be "SHA-1", "MD5", "MD2",
 	// "SHA-256", "SHA-384", or "SHA-512". The recommended hash algorithm is "SHA-1".
 	// The digital signature is returned as an encoded string, where the encoding is
 	// specified by the EncodingMode property.
@@ -553,9 +553,9 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// 
 	// An error is indicated when null reference is returned.
 	// 
-	bool SignStringENC(const wchar_t *str, const wchar_t *hashAlg, CkString &outStr);
+	bool SignStringENC(const wchar_t *strToBeHashed, const wchar_t *hashAlgorithm, CkString &outStr);
 	// Creates an RSA digital signature by hashing strToBeHashed and then signing the hash. The
-	// hash algorithm is specified by  hashAlgorithm, which may be "SHA-1", "MD5", "MD2",
+	// hash algorithm is specified by hashAlgorithm, which may be "SHA-1", "MD5", "MD2",
 	// "SHA-256", "SHA-384", or "SHA-512". The recommended hash algorithm is "SHA-1".
 	// The digital signature is returned as an encoded string, where the encoding is
 	// specified by the EncodingMode property.
@@ -568,7 +568,7 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// 
 	// An error is indicated when null reference is returned.
 	// 
-	const wchar_t *signStringENC(const wchar_t *str, const wchar_t *hashAlg);
+	const wchar_t *signStringENC(const wchar_t *strToBeHashed, const wchar_t *hashAlgorithm);
 
 	// Imports a .snk file to an XML document that can be imported via the
 	// ImportPrivateKey method.
@@ -582,18 +582,18 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	bool UnlockComponent(const wchar_t *unlockCode);
 
 	// Verifies an RSA digital signature. Returns true if the signature is valid for
-	// the originalData. The  hashAlgorithm may be "SHA-1", "MD5", "MD2", "SHA-256", "SHA-384", or
+	// the originalData. The hashAlgorithm may be "SHA-1", "MD5", "MD2", "SHA-256", "SHA-384", or
 	// "SHA-512". The recommended hash algorithm is "SHA-1".
-	bool VerifyBytes(CkByteData &data, const wchar_t *hashAlg, CkByteData &sig);
+	bool VerifyBytes(CkByteData &originalData, const wchar_t *hashAlgorithm, CkByteData &signatureBytes);
 
 	// Verifies an RSA digital signature. Returns true if the signature is valid for
-	// the originalData. The  hashAlgorithm may be "SHA-1", "MD5", "MD2", "SHA-256", "SHA-384", or
+	// the originalData. The hashAlgorithm may be "SHA-1", "MD5", "MD2", "SHA-256", "SHA-384", or
 	// "SHA-512". The recommended hash algorithm is "SHA-1".
 	// 
-	// The  encodedSig is a digital signature encoded according to the EncodingMode property
+	// The encodedSig is a digital signature encoded according to the EncodingMode property
 	// (i.e. base64, hex, etc.).
 	// 
-	bool VerifyBytesENC(CkByteData &data, const wchar_t *hashAlg, const wchar_t *encodedSig);
+	bool VerifyBytesENC(CkByteData &originalData, const wchar_t *hashAlgorithm, const wchar_t *encodedSig);
 
 	// The same as VerifyBytes except the hash of the original data is passed directly.
 	bool VerifyHash(CkByteData &hashBytes, const wchar_t *hashAlg, CkByteData &sigBytes);
@@ -607,18 +607,18 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	bool VerifyPrivateKey(const wchar_t *xml);
 
 	// Verifies an RSA digital signature. Returns true if the signature is valid for
-	// the originalString. The  hashAlgorithm may be "SHA-1", "MD5", "MD2", "SHA-256", "SHA-384", or
+	// the originalString. The hashAlgorithm may be "SHA-1", "MD5", "MD2", "SHA-256", "SHA-384", or
 	// "SHA-512". The recommended hash algorithm is "SHA-1".
-	bool VerifyString(const wchar_t *str, const wchar_t *hashAlg, CkByteData &sig);
+	bool VerifyString(const wchar_t *originalString, const wchar_t *hashAlgorithm, CkByteData &binarySig);
 
 	// Verifies an RSA digital signature. Returns true if the signature is valid for
-	// the originalString. The  hashAlgorithm may be "SHA-1", "MD5", "MD2", "SHA-256", "SHA-384", or
+	// the originalString. The hashAlgorithm may be "SHA-1", "MD5", "MD2", "SHA-256", "SHA-384", or
 	// "SHA-512". The recommended hash algorithm is "SHA-1".
 	// 
-	// The  encodedSig is a digital signature encoded according to the EncodingMode property
+	// The encodedSig is a digital signature encoded according to the EncodingMode property
 	// (i.e. base64, hex, etc.).
 	// 
-	bool VerifyStringENC(const wchar_t *str, const wchar_t *hashAlg, const wchar_t *sig);
+	bool VerifyStringENC(const wchar_t *originalString, const wchar_t *hashAlgorithm, const wchar_t *encodedSig);
 
 
 

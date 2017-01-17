@@ -1,16 +1,15 @@
-// This is a generated source file for Chilkat version 9.5.0.55
-#if defined(WIN32) || defined(WINCE)
-
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkCspWH
 #define _C_CkCspWH
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
 CK_VISIBLE_PUBLIC HCkCspW CkCspW_Create(void);
 CK_VISIBLE_PUBLIC void CkCspW_Dispose(HCkCspW handle);
 CK_VISIBLE_PUBLIC void CkCspW_getDebugLogFilePath(HCkCspW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkCspW_putDebugLogFilePath(HCkCspW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkCspW_putDebugLogFilePath(HCkCspW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkCspW_debugLogFilePath(HCkCspW cHandle);
 CK_VISIBLE_PUBLIC void CkCspW_getEncryptAlgorithm(HCkCspW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCspW_encryptAlgorithm(HCkCspW cHandle);
@@ -21,7 +20,7 @@ CK_VISIBLE_PUBLIC const wchar_t *CkCspW_hashAlgorithm(HCkCspW cHandle);
 CK_VISIBLE_PUBLIC int CkCspW_getHashAlgorithmID(HCkCspW cHandle);
 CK_VISIBLE_PUBLIC int CkCspW_getHashNumBits(HCkCspW cHandle);
 CK_VISIBLE_PUBLIC void CkCspW_getKeyContainerName(HCkCspW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkCspW_putKeyContainerName(HCkCspW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkCspW_putKeyContainerName(HCkCspW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkCspW_keyContainerName(HCkCspW cHandle);
 CK_VISIBLE_PUBLIC void CkCspW_getLastErrorHtml(HCkCspW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCspW_lastErrorHtml(HCkCspW cHandle);
@@ -30,20 +29,20 @@ CK_VISIBLE_PUBLIC const wchar_t *CkCspW_lastErrorText(HCkCspW cHandle);
 CK_VISIBLE_PUBLIC void CkCspW_getLastErrorXml(HCkCspW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCspW_lastErrorXml(HCkCspW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCspW_getLastMethodSuccess(HCkCspW cHandle);
-CK_VISIBLE_PUBLIC void CkCspW_putLastMethodSuccess(HCkCspW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkCspW_putLastMethodSuccess(HCkCspW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkCspW_getMachineKeyset(HCkCspW cHandle);
-CK_VISIBLE_PUBLIC void CkCspW_putMachineKeyset(HCkCspW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkCspW_putMachineKeyset(HCkCspW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkCspW_getNumEncryptAlgorithms(HCkCspW cHandle);
 CK_VISIBLE_PUBLIC int CkCspW_getNumHashAlgorithms(HCkCspW cHandle);
 CK_VISIBLE_PUBLIC int CkCspW_getNumKeyContainers(HCkCspW cHandle);
 CK_VISIBLE_PUBLIC int CkCspW_getNumKeyExchangeAlgorithms(HCkCspW cHandle);
 CK_VISIBLE_PUBLIC int CkCspW_getNumSignatureAlgorithms(HCkCspW cHandle);
 CK_VISIBLE_PUBLIC void CkCspW_getProviderName(HCkCspW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkCspW_putProviderName(HCkCspW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkCspW_putProviderName(HCkCspW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkCspW_providerName(HCkCspW cHandle);
 CK_VISIBLE_PUBLIC int CkCspW_getProviderType(HCkCspW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCspW_getVerboseLogging(HCkCspW cHandle);
-CK_VISIBLE_PUBLIC void CkCspW_putVerboseLogging(HCkCspW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkCspW_putVerboseLogging(HCkCspW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkCspW_getVersion(HCkCspW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCspW_version(HCkCspW cHandle);
 CK_VISIBLE_PUBLIC HCkStringArrayW CkCspW_GetKeyContainerNames(HCkCspW cHandle);
@@ -72,5 +71,3 @@ CK_VISIBLE_PUBLIC BOOL CkCspW_SetProviderMicrosoftEnhanced(HCkCspW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCspW_SetProviderMicrosoftRsaAes(HCkCspW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCspW_SetProviderMicrosoftStrong(HCkCspW cHandle);
 #endif
-
-#endif // WIN32 (entire file)

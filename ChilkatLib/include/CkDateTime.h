@@ -3,6 +3,9 @@
 //////////////////////////////////////////////////////////////////////
 
 // This header is NOT generated.
+// This header is NOT generated.
+// This header is NOT generated.
+// This header is NOT generated.
 
 #ifndef _CkDateTime_H
 #define _CkDateTime_H
@@ -55,7 +58,7 @@ class CK_VISIBLE_PUBLIC CkDateTime  : public CkMultiByteBase
 	bool Serialize(CkString &outStr);
 	const char *serialize(void);
 
-	void SetFromCurrentSystemTime(void);
+	bool SetFromCurrentSystemTime(void);
 
 	// bLocal indicates whether the date/time returned is local or UTC,
 	// or if the date/time passed in is local or UTC.
@@ -71,36 +74,49 @@ class CK_VISIBLE_PUBLIC CkDateTime  : public CkMultiByteBase
 	// 32-bit Unix time.
 	int GetAsUnixTimeInt(bool bLocal);
 	time_t GetAsUnixTime(bool bLocal);
-	void SetFromUnixTime(bool bLocal, time_t t);
+	bool SetFromUnixTime(bool bLocal, time_t t);
 
 	// 32-bit NTP time (number of seconds since 00:00 (midnight) 1 January 1900 GMT)
-	void SetFromNtpTime(int t);
+	bool SetFromNtpTime(int t);
+
+
+	// Return the difference in seconds between this date/time and dt.  (returns this-dt)
+	int DiffSeconds(CkDateTime &dt);
 
 	// 64-bit Unix time.
 	__int64 GetAsUnixTime64(bool bLocal);
-	void SetFromUnixTime64(bool bLocal, __int64 t);
+	bool SetFromUnixTime64(bool bLocal, __int64 t);
 
 	// Unix time (double)
 	double GetAsUnixTimeDbl(bool bLocal);
-	void SetFromUnixTimeDbl(bool bLocal, double t);
+	bool SetFromUnixTimeDbl(bool bLocal, double t);
 
 	// struct tm
 	void GetAsTmStruct(bool bLocal, struct tm &tmbuf);
-	void SetFromTmStruct(bool bLocal, struct tm &tmbuf);
+	bool SetFromTmStruct(bool bLocal, struct tm &tmbuf);
 
 	// Windows SYSTEMTIME struct.
-	void GetAsSystemTime(bool bLocal, SYSTEMTIME &outSysTime);
-	void SetFromSystemTime(bool bLocal, SYSTEMTIME &sysTime);
+	bool GetAsSystemTime(bool bLocal, SYSTEMTIME &outSysTime);
+	bool SetFromSystemTime(bool bLocal, SYSTEMTIME &sysTime);
+
+	// Same as GetAsSystemTime..
+	bool GetAsDateTime(bool bLocal, SYSTEMTIME &outSysTime);
 
 	// Windows FILETIME struct.
 	void GetAsFileTime(bool bLocal, FILETIME &fTime);
-	void SetFromFileTime(bool bLocal, FILETIME &fTime);
+	bool SetFromFileTime(bool bLocal, FILETIME &fTime);
 
 	// The OLE automation date format is a floating point value, 
 	// counting days since midnight 30 December 1899. Hours and minutes are 
 	// represented as fractional days. 
 	double GetAsOleDate(bool bLocal);
-	void SetFromOleDate(bool bLocal, double dt);
+	bool SetFromOleDate(bool bLocal, double dt);
+
+	 bool AddSeconds(int numSeconds);
+	 bool GetAsUnixTimeStr(bool bLocal, CkString &outStr);
+	 const char *getAsUnixTimeStr(bool bLocal);
+	 bool GetAsIso8601(const char *formatStr, bool bLocal, CkString &outStr);
+	 const char *getAsIso8601(const char *formatStr, bool bLocal);
 
 
 //	The DOS date/time format is a bitmask:
@@ -125,9 +141,9 @@ class CK_VISIBLE_PUBLIC CkDateTime  : public CkMultiByteBase
 
 #if !defined(CK_USE_UINT_T)
 	unsigned long GetAsDosDate(bool bLocal);
-	void SetFromDosDate(bool bLocal, unsigned long t);
+	bool SetFromDosDate(bool bLocal, unsigned long t);
 
-	void SetFromDosDate2(bool bLocal, unsigned short d, unsigned short t);
+	bool SetFromDosDate2(bool bLocal, unsigned short d, unsigned short t);
 	unsigned short GetDosDateHigh(bool bLocal);
 	unsigned short GetDosDateLow(bool bLocal);
 #endif
@@ -135,9 +151,9 @@ class CK_VISIBLE_PUBLIC CkDateTime  : public CkMultiByteBase
 	// Do not use #else because of C++ --> C code generation...
 #if defined(CK_USE_UINT_T)
 	uint32_t GetAsDosDate(bool bLocal);
-	void SetFromDosDate(bool bLocal, uint32_t t);
+	bool SetFromDosDate(bool bLocal, uint32_t t);
 
-	void SetFromDosDate2(bool bLocal, uint16_t d, uint16_t t);
+	bool SetFromDosDate2(bool bLocal, uint16_t d, uint16_t t);
 	uint16_t GetDosDateHigh(bool bLocal);
 	uint16_t GetDosDateLow(bool bLocal);
 #endif
@@ -159,7 +175,7 @@ class CK_VISIBLE_PUBLIC CkDateTime  : public CkMultiByteBase
 	// in the context of an explicit or default calendar.
 
 	__int64 GetAsDateTimeTicks(bool bLocal);
-	void SetFromDateTimeTicks(bool bLocal, __int64 n);
+	bool SetFromDateTimeTicks(bool bLocal, __int64 n);
 
 
 	// ---------------------------------------------------------
@@ -188,7 +204,13 @@ class CK_VISIBLE_PUBLIC CkDateTime  : public CkMultiByteBase
 	bool GetAsRfc822(bool bLocal, CkString &outStr);
 	const char *getAsRfc822(bool bLocal);
 
+	bool GetAsTimestamp(bool bLocal, CkString &outStr);
+	const char *getAsTimestamp(bool bLocal);
+
 	bool SetFromRfc822(const char *rfc822Str);
+
+	// Sets the date/time from an RFC 3339 date/time formatted string.
+	bool SetFromTimestamp(const char *rfc3339Str);
 
 	// Loads the date/time from a completed asynchronous task.
 	bool LoadTaskResult(CkTask &task);

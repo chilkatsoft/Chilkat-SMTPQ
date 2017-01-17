@@ -2,6 +2,7 @@
 #ifndef _CHILKATDEFS_H_INCLUDED_
 #define _CHILKATDEFS_H_INCLUDED_
 
+
 // If this is Windows Phone, then define CK_LIBWINPHONE
 #if !defined(CK_LIBWINPHONE)
 #if defined(WINAPI_FAMILY) && WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP

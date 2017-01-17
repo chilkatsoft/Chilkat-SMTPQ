@@ -65,7 +65,7 @@ class CK_VISIBLE_PUBLIC CkByteData : public CkObject
 	void appendShort(short v, bool littleEndian);
 	const char *getEncodedRange(const char *encoding, unsigned long index, unsigned long numBytes);
 	void appendRange(const CkByteData &byteData, unsigned long index, unsigned long numBytes);
-	void ensureBuffer(unsigned long numBytes);
+	bool ensureBuffer(unsigned long numBytes);
 	// Return -1 if not found, otherwise returns the index.
 	int findBytes2(const void *pByteData, unsigned long szByteData);
 	int findBytes(const CkByteData &byteData);
@@ -128,7 +128,7 @@ class CK_VISIBLE_PUBLIC CkByteData : public CkObject
 
 	// The CkByteData will use *your* memory buffer, and will not delete
 	// it when the object is destructed.  
-	void borrowData(void *pByteData, unsigned long szByteData);
+	void borrowData(const void *pByteData, unsigned long szByteData);
 
 	// Removes the data from the CkByteData object.  The caller will receive
 	// a pointer to the memory buffer, and is responsible for deleting it.

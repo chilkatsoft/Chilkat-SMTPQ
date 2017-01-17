@@ -1,26 +1,27 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkCsvWH
 #define _C_CkCsvWH
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
 CK_VISIBLE_PUBLIC HCkCsvW CkCsvW_Create(void);
 CK_VISIBLE_PUBLIC void CkCsvW_Dispose(HCkCsvW handle);
 CK_VISIBLE_PUBLIC BOOL CkCsvW_getAutoTrim(HCkCsvW cHandle);
-CK_VISIBLE_PUBLIC void CkCsvW_putAutoTrim(HCkCsvW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkCsvW_putAutoTrim(HCkCsvW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkCsvW_getCrlf(HCkCsvW cHandle);
-CK_VISIBLE_PUBLIC void CkCsvW_putCrlf(HCkCsvW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkCsvW_putCrlf(HCkCsvW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkCsvW_getDebugLogFilePath(HCkCsvW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkCsvW_putDebugLogFilePath(HCkCsvW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkCsvW_putDebugLogFilePath(HCkCsvW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkCsvW_debugLogFilePath(HCkCsvW cHandle);
 CK_VISIBLE_PUBLIC void CkCsvW_getDelimiter(HCkCsvW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkCsvW_putDelimiter(HCkCsvW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkCsvW_putDelimiter(HCkCsvW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkCsvW_delimiter(HCkCsvW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCsvW_getEscapeBackslash(HCkCsvW cHandle);
-CK_VISIBLE_PUBLIC void CkCsvW_putEscapeBackslash(HCkCsvW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkCsvW_putEscapeBackslash(HCkCsvW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkCsvW_getHasColumnNames(HCkCsvW cHandle);
-CK_VISIBLE_PUBLIC void CkCsvW_putHasColumnNames(HCkCsvW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkCsvW_putHasColumnNames(HCkCsvW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkCsvW_getLastErrorHtml(HCkCsvW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCsvW_lastErrorHtml(HCkCsvW cHandle);
 CK_VISIBLE_PUBLIC void CkCsvW_getLastErrorText(HCkCsvW cHandle, HCkString retval);
@@ -28,11 +29,11 @@ CK_VISIBLE_PUBLIC const wchar_t *CkCsvW_lastErrorText(HCkCsvW cHandle);
 CK_VISIBLE_PUBLIC void CkCsvW_getLastErrorXml(HCkCsvW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCsvW_lastErrorXml(HCkCsvW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCsvW_getLastMethodSuccess(HCkCsvW cHandle);
-CK_VISIBLE_PUBLIC void CkCsvW_putLastMethodSuccess(HCkCsvW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkCsvW_putLastMethodSuccess(HCkCsvW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkCsvW_getNumColumns(HCkCsvW cHandle);
 CK_VISIBLE_PUBLIC int CkCsvW_getNumRows(HCkCsvW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCsvW_getVerboseLogging(HCkCsvW cHandle);
-CK_VISIBLE_PUBLIC void CkCsvW_putVerboseLogging(HCkCsvW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkCsvW_putVerboseLogging(HCkCsvW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkCsvW_getVersion(HCkCsvW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCsvW_version(HCkCsvW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCsvW_DeleteColumn(HCkCsvW cHandle, int index);

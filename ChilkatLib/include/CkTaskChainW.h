@@ -10,7 +10,7 @@
 #include "chilkatDefs.h"
 
 #include "CkString.h"
-#include "CkWideCharBase.h"
+#include "CkClassWithCallbacksW.h"
 
 class CkTaskW;
 class CkBaseProgressW;
@@ -23,11 +23,10 @@ class CkBaseProgressW;
  
 
 // CLASS: CkTaskChainW
-class CK_VISIBLE_PUBLIC CkTaskChainW  : public CkWideCharBase
+class CK_VISIBLE_PUBLIC CkTaskChainW  : public CkClassWithCallbacksW
 {
     private:
 	bool m_cbOwned;
-	void *m_eventCallback;
 
 	// Don't allow assignment or copying these objects.
 	CkTaskChainW(const CkTaskChainW &);
@@ -175,9 +174,9 @@ class CK_VISIBLE_PUBLIC CkTaskChainW  : public CkWideCharBase
 	void SleepMs(int numMs);
 
 	// Waits for the task chain to complete. Returns when all of the tasks in the chain
-	// have completed, or after ARG1 milliseconds have elapsed. (A ARG1 value of 0 is
+	// have completed, or after maxWaitMs milliseconds have elapsed. (A maxWaitMs value of 0 is
 	// to wait indefinitely.) Returns (false) if the task chain has not yet been
-	// started by calling the Run method, or if the ARG1 expired. If the task chain
+	// started by calling the Run method, or if the maxWaitMs expired. If the task chain
 	// completed, was already completed, was canceled, or aborted, then this method
 	// returns true.
 	bool Wait(int maxWaitMs);

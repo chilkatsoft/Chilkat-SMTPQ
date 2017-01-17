@@ -1,12 +1,20 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkSpider_H
 #define _C_CkSpider_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
+CK_VISIBLE_PUBLIC void CkSpider_setAbortCheck(HCkSpider cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkSpider_setPercentDone(HCkSpider cHandle, BOOL (*fnPercentDone)(int pctDone));
+CK_VISIBLE_PUBLIC void CkSpider_setProgressInfo(HCkSpider cHandle, void (*fnProgressInfo)(const char *name, const char *value));
+CK_VISIBLE_PUBLIC void CkSpider_setTaskCompleted(HCkSpider cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
 CK_VISIBLE_PUBLIC HCkSpider CkSpider_Create(void);
 CK_VISIBLE_PUBLIC void CkSpider_Dispose(HCkSpider handle);
+CK_VISIBLE_PUBLIC BOOL CkSpider_getAbortCurrent(HCkSpider cHandle);
+CK_VISIBLE_PUBLIC void CkSpider_putAbortCurrent(HCkSpider cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkSpider_getAvoidHttps(HCkSpider cHandle);
 CK_VISIBLE_PUBLIC void CkSpider_putAvoidHttps(HCkSpider cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkSpider_getCacheDir(HCkSpider cHandle, HCkString retval);
@@ -42,7 +50,7 @@ CK_VISIBLE_PUBLIC void CkSpider_getLastHtmlTitle(HCkSpider cHandle, HCkString re
 CK_VISIBLE_PUBLIC const char *CkSpider_lastHtmlTitle(HCkSpider cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSpider_getLastMethodSuccess(HCkSpider cHandle);
 CK_VISIBLE_PUBLIC void CkSpider_putLastMethodSuccess(HCkSpider cHandle, BOOL newVal);
-CK_VISIBLE_PUBLIC void CkSpider_getLastModDate(HCkSpider cHandle, SYSTEMTIME *retval);
+CK_VISIBLE_PUBLIC void CkSpider_getLastModDate(HCkSpider cHandle, SYSTEMTIME * retval);
 CK_VISIBLE_PUBLIC void CkSpider_getLastModDateStr(HCkSpider cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkSpider_lastModDateStr(HCkSpider cHandle);
 CK_VISIBLE_PUBLIC void CkSpider_getLastUrl(HCkSpider cHandle, HCkString retval);

@@ -53,13 +53,13 @@ class CK_VISIBLE_PUBLIC CkCgiW  : public CkWideCharBase
 	// Properties
 	// ----------------------
 
-	unsigned long get_AsyncBytesRead(void);
+	int get_AsyncBytesRead(void);
 
 
 	bool get_AsyncInProgress(void);
 
 
-	unsigned long get_AsyncPostSize(void);
+	int get_AsyncPostSize(void);
 
 
 	bool get_AsyncSuccess(void);
@@ -86,9 +86,9 @@ class CK_VISIBLE_PUBLIC CkCgiW  : public CkWideCharBase
 	void put_ReadChunkSize(int newVal);
 
 
-	unsigned long get_SizeLimitKB(void);
+	int get_SizeLimitKB(void);
 
-	void put_SizeLimitKB(unsigned long newVal);
+	void put_SizeLimitKB(int newVal);
 
 
 	bool get_StreamToUploadDir(void);
@@ -157,7 +157,7 @@ class CK_VISIBLE_PUBLIC CkCgiW  : public CkWideCharBase
 	const wchar_t *uploadFilename(int index);
 
 
-	unsigned long GetUploadSize(int index);
+	int GetUploadSize(int index);
 
 
 	bool IsGet(void);

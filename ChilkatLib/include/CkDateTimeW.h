@@ -3,6 +3,8 @@
 //////////////////////////////////////////////////////////////////////
 
 // This header is NOT generated.
+// This header is NOT generated.
+// This header is NOT generated.
 
 #ifndef _CkDateTimeW_H
 #define _CkDateTimeW_H
@@ -165,6 +167,13 @@ class CkDateTimeW  : public CkWideCharBase
 	// 
 	const wchar_t *asRfc822(bool bLocal);
 
+	// Return the difference in seconds between this date/time and dt.  (returns this-dt)
+	int DiffSeconds(CkDateTimeW &dt);
+
+	bool GetAsTimestamp(bool bLocal, CkString &outStr);
+	const wchar_t *getAsTimestamp(bool bLocal);
+	const wchar_t *asTimestamp(bool bLocal);
+
 	// Returns the date/time in a Windows SYSTEMTIME structure.
 	// 
 	// bLocal indicates whether the date/time returned is local or UTC.
@@ -189,7 +198,9 @@ class CkDateTimeW  : public CkWideCharBase
 	//     int m_isdst;
 	//     } 	SYSTEMTIME;
 	// 
-	void GetAsSystemTime(bool bLocal, SYSTEMTIME &outSysTime);
+	bool GetAsSystemTime(bool bLocal, SYSTEMTIME &outSysTime);
+	// Same as GetAsSystemTime..
+	bool GetAsDateTime(bool bLocal, SYSTEMTIME &outSysTime);
 
 	// Returns the date/time in a Unix "struct tm" structure.
 	void GetAsTmStruct(bool bLocal, struct tm &tmbuf);
@@ -248,19 +259,19 @@ class CkDateTimeW  : public CkWideCharBase
 	const wchar_t *serialize(void);
 
 	// Sets the date/time from the current system time.
-	void SetFromCurrentSystemTime(void);
+	bool SetFromCurrentSystemTime(void);
 
 	// Sets the date/time from a .NET DateTime value represented in ticks. See
 	// GetAsDateTimeTicks for more information.
 	// 
 	// bLocal indicates whether the passed in date/time is local or UTC.
 	// 
-	void SetFromDateTimeTicks(bool bLocal, __int64 ticks);
+	bool SetFromDateTimeTicks(bool bLocal, __int64 ticks);
 
 #if !defined(CK_USE_UINT_T)
 	// Sets the date/time from a 32-bit DOS date/time bitmask. See GetAsDosDate for
 	// more information.
-	void SetFromDosDate(bool bLocal, unsigned long t);
+	bool SetFromDosDate(bool bLocal, unsigned long t);
 #endif
 
 #if !defined(CK_USE_UINT_T)
@@ -269,7 +280,7 @@ class CkDateTimeW  : public CkWideCharBase
 	// 
 	// bLocal indicates whether the passed in date/time is local or UTC.
 	// 
-	void SetFromDosDate2(bool bLocal, unsigned short d, unsigned short t);
+	bool SetFromDosDate2(bool bLocal, unsigned short d, unsigned short t);
 #endif
 
 	// Sets the date/time from a Windows FILETIME structure.
@@ -285,16 +296,19 @@ class CkDateTimeW  : public CkWideCharBase
 	//     unsigned long dwHighDateTime;
 	//     } 	FILETIME;
 	// 
-	void SetFromFileTime(bool bLocal, FILETIME &fTime);
+	bool SetFromFileTime(bool bLocal, FILETIME &fTime);
 
 	// Sets the date/time from a Windows OLE "DATE" value.
 	// 
 	// bLocal indicates whether the passed in date/time is local or UTC.
 	// 
-	void SetFromOleDate(bool bLocal, double dt);
+	bool SetFromOleDate(bool bLocal, double dt);
 
 	// Sets the date/time from an RFC822 date/time formatted string.
 	bool SetFromRfc822(const wchar_t *rfc822Str);
+
+	// Sets the date/time from an RFC 3339 date/time formatted string.
+	bool SetFromTimestamp(const wchar_t *rfc3339Str);
 
 	// Sets the date/time from a Windows SYSTEMTIME structure.
 	// 
@@ -320,34 +334,34 @@ class CkDateTimeW  : public CkWideCharBase
 	//     int m_isdst;
 	//     } 	SYSTEMTIME;
 	// 
-	void SetFromSystemTime(bool bLocal, SYSTEMTIME &sysTime);
+	bool SetFromSystemTime(bool bLocal, SYSTEMTIME &sysTime);
 
 	// Sets the date/time from a Unix "struct tm" structure.
-	void SetFromTmStruct(bool bLocal, struct tm &tmbuf);
+	bool SetFromTmStruct(bool bLocal, struct tm &tmbuf);
 
 	// Sets the date/time from a 32-bit UNIX time value. (See GetAsUnixTime for
 	// information about the Y2038 problem.)
 	// 
 	// bLocal indicates whether the passed in date/time is local or UTC.
 	// 
-	void SetFromUnixTime(bool bLocal, time_t t);
+	bool SetFromUnixTime(bool bLocal, time_t t);
 
 
-	void SetFromNtpTime(int t);
+	bool SetFromNtpTime(int t);
 
 	// The same as SetFromUnixTime, except that it uses a 64-bit integer to solve the
 	// Y2038 problem. (See GetAsUnixTime for more information about Y2038).
 	// 
 	// bLocal indicates whether the passed in date/time is local or UTC.
 	// 
-	void SetFromUnixTime64(bool bLocal, __int64 t);
+	bool SetFromUnixTime64(bool bLocal, __int64 t);
 
 	// The same as SetFromUnixTime, except that it uses a double to solve the Y2038
 	// problem. (See GetAsUnixTime for more information about Y2038).
 	// 
 	// bLocal indicates whether the passed in date/time is local or UTC.
 	// 
-	void SetFromUnixTimeDbl(bool bLocal, double t);
+	bool SetFromUnixTimeDbl(bool bLocal, double t);
 
 	CkDtObjW *GetDtObj(bool bLocal);
 	bool SetFromDtObj(CkDtObjW &dtObj);
@@ -355,6 +369,11 @@ class CkDateTimeW  : public CkWideCharBase
 	// Loads the date/time from a completed asynchronous task.
 	bool LoadTaskResult(CkTaskW &task);
 
+	 bool AddSeconds(int numSeconds);
+	 bool GetAsUnixTimeStr(bool bLocal, CkString &outStr);
+	 const wchar_t *getAsUnixTimeStr(bool bLocal);
+	 bool GetAsIso8601(const wchar_t *formatStr, bool bLocal, CkString &outStr);
+	 const wchar_t *getAsIso8601(const wchar_t *formatStr, bool bLocal);
 
 	// END PUBLIC INTERFACE
 

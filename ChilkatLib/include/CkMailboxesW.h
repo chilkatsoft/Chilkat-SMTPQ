@@ -83,26 +83,32 @@ class CK_VISIBLE_PUBLIC CkMailboxesW  : public CkWideCharBase
 	// The name of the Nth mailbox in this collection. Indexing begins at 0.
 	const wchar_t *name(int index);
 
-	// Returns the name of the Nth flag for the Mth mailbox. The ARG1 is the index of
-	// the mailbox. The ARG2 is the index of the flag.
+	// Returns the name of the Nth flag for the Mth mailbox. The index is the index of
+	// the mailbox. The flagIndex is the index of the flag.
 	bool GetNthFlag(int index, int flagIndex, CkString &outStr);
-	// Returns the name of the Nth flag for the Mth mailbox. The ARG1 is the index of
-	// the mailbox. The ARG2 is the index of the flag.
+	// Returns the name of the Nth flag for the Mth mailbox. The index is the index of
+	// the mailbox. The flagIndex is the index of the flag.
 	const wchar_t *getNthFlag(int index, int flagIndex);
-	// Returns the name of the Nth flag for the Mth mailbox. The ARG1 is the index of
-	// the mailbox. The ARG2 is the index of the flag.
+	// Returns the name of the Nth flag for the Mth mailbox. The index is the index of
+	// the mailbox. The flagIndex is the index of the flag.
 	const wchar_t *nthFlag(int index, int flagIndex);
 
-	// Returns the number of flags for the Nth mailbox. Returns -1 if the ARG1 is out
+	// Returns the number of flags for the Nth mailbox. Returns -1 if the index is out
 	// of range.
 	int GetNumFlags(int index);
 
 	// Returns true if the Nth mailbox has the specified flag set. The flag name is
 	// case insensitive and should begin with a backslash character, such as
-	// "\Flagged". The ARG1 is the index of the Nth mailbox.
+	// "\Flagged". The index is the index of the Nth mailbox.
 	bool HasFlag(int index, const wchar_t *flagName);
 
-	// Returns true if the Nth mailbox has inferiors (i.e. sub-mailboxes)
+	// Returns true if the Nth mailbox has inferiors (i.e. sub-mailboxes), or if it
+	// is possible to create child mailboxes in the future.
+	// 
+	// Note: the HasNoChildren attribute/flag should not be confused with the IMAP4
+	// [RFC-2060] defined attribute Noinferiors which indicates that no child mailboxes
+	// exist now AND none can be created in the future.
+	// 
 	bool HasInferiors(int index);
 
 	// Returns true if the Nth mailbox is marked.

@@ -25,7 +25,6 @@ class CkEmail;
 class CK_VISIBLE_PUBLIC CkBounce  : public CkMultiByteBase
 {
     private:
-	
 
 	// Don't allow assignment or copying these objects.
 	CkBounce(const CkBounce &);
@@ -109,11 +108,11 @@ class CK_VISIBLE_PUBLIC CkBounce  : public CkMultiByteBase
 
 
 	// Unlocks the component. This must be called once at the beginning of your program
-	// to unlock the component. A permanent unlock code is provided when the Bounce
+	// to unlock the component. A purchased unlock code is provided when the Bounce
 	// component is licensed.
 	// 
-	// A permanent unlock code for the bounce component/library will included the
-	// substring "BOUNCE".
+	// A purchased unlock code for the bounce component/library will included the
+	// substring "BOUNCE", or can be a Bundle unlock code.
 	// 
 	bool UnlockComponent(const char *unlockCode);
 

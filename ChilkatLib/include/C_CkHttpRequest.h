@@ -1,9 +1,10 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.64
 #ifndef _C_CkHttpRequest_H
 #define _C_CkHttpRequest_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
+
 
 CK_VISIBLE_PUBLIC HCkHttpRequest CkHttpRequest_Create(void);
 CK_VISIBLE_PUBLIC void CkHttpRequest_Dispose(HCkHttpRequest handle);
@@ -58,6 +59,7 @@ CK_VISIBLE_PUBLIC void CkHttpRequest_AddParam(HCkHttpRequest cHandle, const char
 CK_VISIBLE_PUBLIC BOOL CkHttpRequest_AddStringForUpload(HCkHttpRequest cHandle, const char *name, const char *filename, const char *strData, const char *charset);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequest_AddStringForUpload2(HCkHttpRequest cHandle, const char *name, const char *filename, const char *strData, const char *charset, const char *contentType);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequest_AddSubHeader(HCkHttpRequest cHandle, int index, const char *name, const char *value);
+CK_VISIBLE_PUBLIC BOOL CkHttpRequest_GenerateRequestFile(HCkHttpRequest cHandle, const char *path);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequest_GenerateRequestText(HCkHttpRequest cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkHttpRequest_generateRequestText(HCkHttpRequest cHandle);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequest_GetHeaderField(HCkHttpRequest cHandle, const char *name, HCkString outStr);

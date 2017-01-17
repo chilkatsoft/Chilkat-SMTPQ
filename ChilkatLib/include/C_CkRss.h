@@ -1,9 +1,15 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkRss_H
 #define _C_CkRss_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
+
+
+CK_VISIBLE_PUBLIC void CkRss_setAbortCheck(HCkRss cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkRss_setPercentDone(HCkRss cHandle, BOOL (*fnPercentDone)(int pctDone));
+CK_VISIBLE_PUBLIC void CkRss_setProgressInfo(HCkRss cHandle, void (*fnProgressInfo)(const char *name, const char *value));
+CK_VISIBLE_PUBLIC void CkRss_setTaskCompleted(HCkRss cHandle, void (*fnTaskCompleted)(HCkTask hTask));
 
 CK_VISIBLE_PUBLIC HCkRss CkRss_Create(void);
 CK_VISIBLE_PUBLIC void CkRss_Dispose(HCkRss handle);
@@ -55,7 +61,7 @@ CK_VISIBLE_PUBLIC void CkRss_NewRss(HCkRss cHandle);
 CK_VISIBLE_PUBLIC void CkRss_Remove(HCkRss cHandle, const char *tag);
 CK_VISIBLE_PUBLIC BOOL CkRss_SaveLastError(HCkRss cHandle, const char *path);
 CK_VISIBLE_PUBLIC void CkRss_SetAttr(HCkRss cHandle, const char *tag, const char *attrName, const char *value);
-CK_VISIBLE_PUBLIC void CkRss_SetDate(HCkRss cHandle, const char *tag, SYSTEMTIME *dateTime);
+CK_VISIBLE_PUBLIC void CkRss_SetDate(HCkRss cHandle, const char *tag, SYSTEMTIME * dateTime);
 CK_VISIBLE_PUBLIC void CkRss_SetDateNow(HCkRss cHandle, const char *tag);
 CK_VISIBLE_PUBLIC void CkRss_SetDateStr(HCkRss cHandle, const char *tag, const char *dateTimeStr);
 CK_VISIBLE_PUBLIC void CkRss_SetInt(HCkRss cHandle, const char *tag, int value);

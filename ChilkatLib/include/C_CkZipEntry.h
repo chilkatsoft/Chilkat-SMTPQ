@@ -1,9 +1,15 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkZipEntry_H
 #define _C_CkZipEntry_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
+
+
+CK_VISIBLE_PUBLIC void CkZipEntry_setAbortCheck(HCkZipEntry cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkZipEntry_setPercentDone(HCkZipEntry cHandle, BOOL (*fnPercentDone)(int pctDone));
+CK_VISIBLE_PUBLIC void CkZipEntry_setProgressInfo(HCkZipEntry cHandle, void (*fnProgressInfo)(const char *name, const char *value));
+CK_VISIBLE_PUBLIC void CkZipEntry_setTaskCompleted(HCkZipEntry cHandle, void (*fnTaskCompleted)(HCkTask hTask));
 
 CK_VISIBLE_PUBLIC HCkZipEntry CkZipEntry_Create(void);
 CK_VISIBLE_PUBLIC void CkZipEntry_Dispose(HCkZipEntry handle);
@@ -24,7 +30,7 @@ CK_VISIBLE_PUBLIC void CkZipEntry_putDebugLogFilePath(HCkZipEntry cHandle, const
 CK_VISIBLE_PUBLIC const char *CkZipEntry_debugLogFilePath(HCkZipEntry cHandle);
 CK_VISIBLE_PUBLIC int CkZipEntry_getEntryID(HCkZipEntry cHandle);
 CK_VISIBLE_PUBLIC int CkZipEntry_getEntryType(HCkZipEntry cHandle);
-CK_VISIBLE_PUBLIC void CkZipEntry_getFileDateTime(HCkZipEntry cHandle, SYSTEMTIME *retval);
+CK_VISIBLE_PUBLIC void CkZipEntry_getFileDateTime(HCkZipEntry cHandle, SYSTEMTIME * retval);
 CK_VISIBLE_PUBLIC void CkZipEntry_putFileDateTime(HCkZipEntry cHandle, SYSTEMTIME *newVal);
 CK_VISIBLE_PUBLIC void CkZipEntry_getFileDateTimeStr(HCkZipEntry cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkZipEntry_putFileDateTimeStr(HCkZipEntry cHandle, const char *newVal);

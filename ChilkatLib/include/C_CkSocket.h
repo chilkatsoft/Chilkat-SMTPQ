@@ -1,12 +1,20 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.65
 #ifndef _C_CkSocket_H
 #define _C_CkSocket_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
+CK_VISIBLE_PUBLIC void CkSocket_setAbortCheck(HCkSocket cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkSocket_setPercentDone(HCkSocket cHandle, BOOL (*fnPercentDone)(int pctDone));
+CK_VISIBLE_PUBLIC void CkSocket_setProgressInfo(HCkSocket cHandle, void (*fnProgressInfo)(const char *name, const char *value));
+CK_VISIBLE_PUBLIC void CkSocket_setTaskCompleted(HCkSocket cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
 CK_VISIBLE_PUBLIC HCkSocket CkSocket_Create(void);
 CK_VISIBLE_PUBLIC void CkSocket_Dispose(HCkSocket handle);
+CK_VISIBLE_PUBLIC BOOL CkSocket_getAbortCurrent(HCkSocket cHandle);
+CK_VISIBLE_PUBLIC void CkSocket_putAbortCurrent(HCkSocket cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkSocket_getAcceptFailReason(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSocket_getAsyncAcceptFinished(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC void CkSocket_getAsyncAcceptLog(HCkSocket cHandle, HCkString retval);
@@ -22,13 +30,13 @@ CK_VISIBLE_PUBLIC const char *CkSocket_asyncDnsLog(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC void CkSocket_getAsyncDnsResult(HCkSocket cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkSocket_asyncDnsResult(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSocket_getAsyncDnsSuccess(HCkSocket cHandle);
+CK_VISIBLE_PUBLIC void CkSocket_getAsyncReceivedBytes(HCkSocket cHandle, HCkByteData retval);
+CK_VISIBLE_PUBLIC void CkSocket_getAsyncReceivedString(HCkSocket cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC const char *CkSocket_asyncReceivedString(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSocket_getAsyncReceiveFinished(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC void CkSocket_getAsyncReceiveLog(HCkSocket cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkSocket_asyncReceiveLog(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSocket_getAsyncReceiveSuccess(HCkSocket cHandle);
-CK_VISIBLE_PUBLIC void CkSocket_getAsyncReceivedBytes(HCkSocket cHandle, HCkByteData retval);
-CK_VISIBLE_PUBLIC void CkSocket_getAsyncReceivedString(HCkSocket cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const char *CkSocket_asyncReceivedString(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSocket_getAsyncSendFinished(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC void CkSocket_getAsyncSendLog(HCkSocket cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkSocket_asyncSendLog(HCkSocket cHandle);
@@ -88,6 +96,7 @@ CK_VISIBLE_PUBLIC BOOL CkSocket_getLastMethodSuccess(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC void CkSocket_putLastMethodSuccess(HCkSocket cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkSocket_getListenIpv6(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC void CkSocket_putListenIpv6(HCkSocket cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC int CkSocket_getListenPort(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC void CkSocket_getLocalIpAddress(HCkSocket cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkSocket_localIpAddress(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC int CkSocket_getLocalPort(HCkSocket cHandle);
@@ -105,13 +114,13 @@ CK_VISIBLE_PUBLIC int CkSocket_getPercentDoneScale(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC void CkSocket_putPercentDoneScale(HCkSocket cHandle, int newVal);
 CK_VISIBLE_PUBLIC BOOL CkSocket_getPreferIpv6(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC void CkSocket_putPreferIpv6(HCkSocket cHandle, BOOL newVal);
-CK_VISIBLE_PUBLIC int CkSocket_getReceiveFailReason(HCkSocket cHandle);
-CK_VISIBLE_PUBLIC int CkSocket_getReceivePacketSize(HCkSocket cHandle);
-CK_VISIBLE_PUBLIC void CkSocket_putReceivePacketSize(HCkSocket cHandle, int newVal);
 CK_VISIBLE_PUBLIC int CkSocket_getReceivedCount(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC void CkSocket_putReceivedCount(HCkSocket cHandle, int newVal);
 CK_VISIBLE_PUBLIC int CkSocket_getReceivedInt(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC void CkSocket_putReceivedInt(HCkSocket cHandle, int newVal);
+CK_VISIBLE_PUBLIC int CkSocket_getReceiveFailReason(HCkSocket cHandle);
+CK_VISIBLE_PUBLIC int CkSocket_getReceivePacketSize(HCkSocket cHandle);
+CK_VISIBLE_PUBLIC void CkSocket_putReceivePacketSize(HCkSocket cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkSocket_getRemoteIpAddress(HCkSocket cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkSocket_remoteIpAddress(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC int CkSocket_getRemotePort(HCkSocket cHandle);
@@ -131,12 +140,6 @@ CK_VISIBLE_PUBLIC const char *CkSocket_sessionLog(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC void CkSocket_getSessionLogEncoding(HCkSocket cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkSocket_putSessionLogEncoding(HCkSocket cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkSocket_sessionLogEncoding(HCkSocket cHandle);
-CK_VISIBLE_PUBLIC int CkSocket_getSoRcvBuf(HCkSocket cHandle);
-CK_VISIBLE_PUBLIC void CkSocket_putSoRcvBuf(HCkSocket cHandle, int newVal);
-CK_VISIBLE_PUBLIC BOOL CkSocket_getSoReuseAddr(HCkSocket cHandle);
-CK_VISIBLE_PUBLIC void CkSocket_putSoReuseAddr(HCkSocket cHandle, BOOL newVal);
-CK_VISIBLE_PUBLIC int CkSocket_getSoSndBuf(HCkSocket cHandle);
-CK_VISIBLE_PUBLIC void CkSocket_putSoSndBuf(HCkSocket cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkSocket_getSocksHostname(HCkSocket cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkSocket_putSocksHostname(HCkSocket cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkSocket_socksHostname(HCkSocket cHandle);
@@ -150,6 +153,12 @@ CK_VISIBLE_PUBLIC void CkSocket_putSocksUsername(HCkSocket cHandle, const char *
 CK_VISIBLE_PUBLIC const char *CkSocket_socksUsername(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC int CkSocket_getSocksVersion(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC void CkSocket_putSocksVersion(HCkSocket cHandle, int newVal);
+CK_VISIBLE_PUBLIC int CkSocket_getSoRcvBuf(HCkSocket cHandle);
+CK_VISIBLE_PUBLIC void CkSocket_putSoRcvBuf(HCkSocket cHandle, int newVal);
+CK_VISIBLE_PUBLIC BOOL CkSocket_getSoReuseAddr(HCkSocket cHandle);
+CK_VISIBLE_PUBLIC void CkSocket_putSoReuseAddr(HCkSocket cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC int CkSocket_getSoSndBuf(HCkSocket cHandle);
+CK_VISIBLE_PUBLIC void CkSocket_putSoSndBuf(HCkSocket cHandle, int newVal);
 CK_VISIBLE_PUBLIC BOOL CkSocket_getSsl(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC void CkSocket_putSsl(HCkSocket cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkSocket_getSslAllowedCiphers(HCkSocket cHandle, HCkString retval);
@@ -200,6 +209,7 @@ CK_VISIBLE_PUBLIC BOOL CkSocket_AsyncSendByteData(HCkSocket cHandle, HCkByteData
 CK_VISIBLE_PUBLIC BOOL CkSocket_AsyncSendBytes(HCkSocket cHandle, HCkByteData byteData);
 CK_VISIBLE_PUBLIC BOOL CkSocket_AsyncSendString(HCkSocket cHandle, const char *stringToSend);
 CK_VISIBLE_PUBLIC BOOL CkSocket_BindAndListen(HCkSocket cHandle, int port, int backLog);
+CK_VISIBLE_PUBLIC HCkTask CkSocket_BindAndListenAsync(HCkSocket cHandle, int port, int backLog);
 CK_VISIBLE_PUBLIC BOOL CkSocket_BuildHttpGetRequest(HCkSocket cHandle, const char *url, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkSocket_buildHttpGetRequest(HCkSocket cHandle, const char *url);
 CK_VISIBLE_PUBLIC int CkSocket_CheckWriteable(HCkSocket cHandle, int maxWaitMs);
@@ -227,6 +237,11 @@ CK_VISIBLE_PUBLIC BOOL CkSocket_InitSslServer(HCkSocket cHandle, HCkCert cert);
 CK_VISIBLE_PUBLIC BOOL CkSocket_IsUnlocked(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSocket_LoadTaskResult(HCkSocket cHandle, HCkTask task);
 CK_VISIBLE_PUBLIC BOOL CkSocket_PollDataAvailable(HCkSocket cHandle);
+CK_VISIBLE_PUBLIC HCkTask CkSocket_PollDataAvailableAsync(HCkSocket cHandle);
+CK_VISIBLE_PUBLIC BOOL CkSocket_ReceiveBd(HCkSocket cHandle, HCkBinData binData);
+CK_VISIBLE_PUBLIC HCkTask CkSocket_ReceiveBdAsync(HCkSocket cHandle, HCkBinData binData);
+CK_VISIBLE_PUBLIC BOOL CkSocket_ReceiveBdN(HCkSocket cHandle, unsigned long numBytes, HCkBinData binData);
+CK_VISIBLE_PUBLIC HCkTask CkSocket_ReceiveBdNAsync(HCkSocket cHandle, unsigned long numBytes, HCkBinData binData);
 CK_VISIBLE_PUBLIC BOOL CkSocket_ReceiveByte(HCkSocket cHandle, BOOL bUnsigned);
 CK_VISIBLE_PUBLIC HCkTask CkSocket_ReceiveByteAsync(HCkSocket cHandle, BOOL bUnsigned);
 CK_VISIBLE_PUBLIC BOOL CkSocket_ReceiveBytes(HCkSocket cHandle, HCkByteData outData);
@@ -247,6 +262,8 @@ CK_VISIBLE_PUBLIC HCkTask CkSocket_ReceiveInt32Async(HCkSocket cHandle, BOOL big
 CK_VISIBLE_PUBLIC BOOL CkSocket_ReceiveNBytesENC(HCkSocket cHandle, unsigned long numBytes, const char *encodingAlg, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkSocket_receiveNBytesENC(HCkSocket cHandle, unsigned long numBytes, const char *encodingAlg);
 CK_VISIBLE_PUBLIC HCkTask CkSocket_ReceiveNBytesENCAsync(HCkSocket cHandle, unsigned long numBytes, const char *encodingAlg);
+CK_VISIBLE_PUBLIC BOOL CkSocket_ReceiveSb(HCkSocket cHandle, HCkStringBuilder sb);
+CK_VISIBLE_PUBLIC HCkTask CkSocket_ReceiveSbAsync(HCkSocket cHandle, HCkStringBuilder sb);
 CK_VISIBLE_PUBLIC BOOL CkSocket_ReceiveString(HCkSocket cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkSocket_receiveString(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC HCkTask CkSocket_ReceiveStringAsync(HCkSocket cHandle);
@@ -269,6 +286,8 @@ CK_VISIBLE_PUBLIC int CkSocket_SelectForReading(HCkSocket cHandle, int timeoutMs
 CK_VISIBLE_PUBLIC HCkTask CkSocket_SelectForReadingAsync(HCkSocket cHandle, int timeoutMs);
 CK_VISIBLE_PUBLIC int CkSocket_SelectForWriting(HCkSocket cHandle, int timeoutMs);
 CK_VISIBLE_PUBLIC HCkTask CkSocket_SelectForWritingAsync(HCkSocket cHandle, int timeoutMs);
+CK_VISIBLE_PUBLIC BOOL CkSocket_SendBd(HCkSocket cHandle, HCkBinData binData, int offset, int numBytes);
+CK_VISIBLE_PUBLIC HCkTask CkSocket_SendBdAsync(HCkSocket cHandle, HCkBinData binData, int offset, int numBytes);
 CK_VISIBLE_PUBLIC BOOL CkSocket_SendByte(HCkSocket cHandle, int value);
 CK_VISIBLE_PUBLIC HCkTask CkSocket_SendByteAsync(HCkSocket cHandle, int value);
 CK_VISIBLE_PUBLIC BOOL CkSocket_SendBytes(HCkSocket cHandle, HCkByteData data);
@@ -281,6 +300,8 @@ CK_VISIBLE_PUBLIC BOOL CkSocket_SendInt16(HCkSocket cHandle, int value, BOOL big
 CK_VISIBLE_PUBLIC HCkTask CkSocket_SendInt16Async(HCkSocket cHandle, int value, BOOL bigEndian);
 CK_VISIBLE_PUBLIC BOOL CkSocket_SendInt32(HCkSocket cHandle, int value, BOOL bigEndian);
 CK_VISIBLE_PUBLIC HCkTask CkSocket_SendInt32Async(HCkSocket cHandle, int value, BOOL bigEndian);
+CK_VISIBLE_PUBLIC BOOL CkSocket_SendSb(HCkSocket cHandle, HCkStringBuilder sb);
+CK_VISIBLE_PUBLIC HCkTask CkSocket_SendSbAsync(HCkSocket cHandle, HCkStringBuilder sb);
 CK_VISIBLE_PUBLIC BOOL CkSocket_SendString(HCkSocket cHandle, const char *stringToSend);
 CK_VISIBLE_PUBLIC HCkTask CkSocket_SendStringAsync(HCkSocket cHandle, const char *stringToSend);
 CK_VISIBLE_PUBLIC BOOL CkSocket_SetSslClientCert(HCkSocket cHandle, HCkCert cert);

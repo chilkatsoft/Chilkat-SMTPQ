@@ -65,10 +65,10 @@ class CK_VISIBLE_PUBLIC CkEmailBundleW  : public CkWideCharBase
 	// Adds an email object to the bundle.
 	bool AddEmail(CkEmailW &email);
 
-	// Returns the first email having a header field matching the headerFieldName and  headerFieldValue exactly
+	// Returns the first email having a header field matching the headerFieldName and headerFieldValue exactly
 	// (case sensitive). If no matching email is found, returns _NULL_.
 	// The caller is responsible for deleting the object returned by this method.
-	CkEmailW *FindByHeader(const wchar_t *name, const wchar_t *value);
+	CkEmailW *FindByHeader(const wchar_t *headerFieldName, const wchar_t *headerFieldValue);
 
 	// Returns the Nth Email in the bundle. The email returned is a copy of the email
 	// in the bundle. Updating the email object returned by GetEmail has no effect on

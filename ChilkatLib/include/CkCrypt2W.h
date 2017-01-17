@@ -10,11 +10,12 @@
 #include "chilkatDefs.h"
 
 #include "CkString.h"
-#include "CkWideCharBase.h"
+#include "CkClassWithCallbacksW.h"
 
 class CkByteData;
 class CkCertW;
 class CkTaskW;
+class CkStreamW;
 class CkCertChainW;
 class CkCspW;
 class CkPrivateKeyW;
@@ -29,11 +30,10 @@ class CkBaseProgressW;
  
 
 // CLASS: CkCrypt2W
-class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
+class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 {
     private:
 	bool m_cbOwned;
-	void *m_eventCallback;
 
 	// Don't allow assignment or copying these objects.
 	CkCrypt2W(const CkCrypt2W &);
@@ -65,6 +65,44 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// ----------------------
 	// Properties
 	// ----------------------
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	bool get_AbortCurrent(void);
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	void put_AbortCurrent(bool newVal);
+
+	// The BCrypt work factor to be used for the BCryptHash and BCryptVerify. This is
+	// the log2 of the number of rounds of hashing to apply. For example, if the work
+	// (cost) factor is 12, then 2^12 rounds of hashing are applied. The purpose of
+	// this cost factor is to make the BCrypt computation expensive enought to prevent
+	// brute-force attacks. (Any complaints about BCrypt "not being fast enough" will
+	// be ignored.)
+	// 
+	// The default value is 10.
+	// 
+	int get_BCryptWorkFactor(void);
+	// The BCrypt work factor to be used for the BCryptHash and BCryptVerify. This is
+	// the log2 of the number of rounds of hashing to apply. For example, if the work
+	// (cost) factor is 12, then 2^12 rounds of hashing are applied. The purpose of
+	// this cost factor is to make the BCrypt computation expensive enought to prevent
+	// brute-force attacks. (Any complaints about BCrypt "not being fast enough" will
+	// be ignored.)
+	// 
+	// The default value is 10.
+	// 
+	void put_BCryptWorkFactor(int newVal);
+
 	// The block-size (in bytes) of the selected encryption algorithm. For example, if
 	// the CryptAlgorithm property is set to "aes", the BlockSize property is
 	// automatically set to 16. The block-size for the ARC4 streaming encryption
@@ -432,13 +470,18 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// 
 	void put_Charset(const wchar_t *newVal);
 
-	// Controls the cipher mode for block encryption algorithms (AES, Blowfish,
-	// TwoFish, DES, 3DES, RC2). Possible values are "CBC" (the default) , "ECB",
-	// "CTR", and "CFB".
+	// Controls the cipher mode for block encryption algorithms (AES, Blowfish,TwoFish,
+	// DES, 3DES, RC2). Possible values are "CBC" (the default) , "ECB", "CTR", "OFB",
+	// "GCM", and "CFB". These acronyms have the following meanings:
 	// 
-	// CBC is an acronym for Cipher Block Chaining, ECB is an acronym for Electronic
-	// CookBook, CTR is for Counter, and CFB is for Cipher Feedback (see
-	// http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation )
+	//     CBC: Cipher Block Chaining,
+	//     ECB: Electronic CookBook
+	//     CTR: Counter Mode
+	//     CFB: Cipher Feedback
+	//     OFB: Output Feedback
+	//     GCM: Galois/Counter Mode
+	// 
+	// (see http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation )
 	// 
 	// Note: Prior to Chilkat v9.5.0.55, the CFB mode is only implemented for AES,
 	// Blowfish, and DES/3DES, and the CTR mode is only implemented for AES.
@@ -450,13 +493,18 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// PaddingScheme property is unused because no padding occurs.
 	// 
 	void get_CipherMode(CkString &str);
-	// Controls the cipher mode for block encryption algorithms (AES, Blowfish,
-	// TwoFish, DES, 3DES, RC2). Possible values are "CBC" (the default) , "ECB",
-	// "CTR", and "CFB".
+	// Controls the cipher mode for block encryption algorithms (AES, Blowfish,TwoFish,
+	// DES, 3DES, RC2). Possible values are "CBC" (the default) , "ECB", "CTR", "OFB",
+	// "GCM", and "CFB". These acronyms have the following meanings:
 	// 
-	// CBC is an acronym for Cipher Block Chaining, ECB is an acronym for Electronic
-	// CookBook, CTR is for Counter, and CFB is for Cipher Feedback (see
-	// http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation )
+	//     CBC: Cipher Block Chaining,
+	//     ECB: Electronic CookBook
+	//     CTR: Counter Mode
+	//     CFB: Cipher Feedback
+	//     OFB: Output Feedback
+	//     GCM: Galois/Counter Mode
+	// 
+	// (see http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation )
 	// 
 	// Note: Prior to Chilkat v9.5.0.55, the CFB mode is only implemented for AES,
 	// Blowfish, and DES/3DES, and the CTR mode is only implemented for AES.
@@ -468,13 +516,18 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// PaddingScheme property is unused because no padding occurs.
 	// 
 	const wchar_t *cipherMode(void);
-	// Controls the cipher mode for block encryption algorithms (AES, Blowfish,
-	// TwoFish, DES, 3DES, RC2). Possible values are "CBC" (the default) , "ECB",
-	// "CTR", and "CFB".
+	// Controls the cipher mode for block encryption algorithms (AES, Blowfish,TwoFish,
+	// DES, 3DES, RC2). Possible values are "CBC" (the default) , "ECB", "CTR", "OFB",
+	// "GCM", and "CFB". These acronyms have the following meanings:
 	// 
-	// CBC is an acronym for Cipher Block Chaining, ECB is an acronym for Electronic
-	// CookBook, CTR is for Counter, and CFB is for Cipher Feedback (see
-	// http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation )
+	//     CBC: Cipher Block Chaining,
+	//     ECB: Electronic CookBook
+	//     CTR: Counter Mode
+	//     CFB: Cipher Feedback
+	//     OFB: Output Feedback
+	//     GCM: Galois/Counter Mode
+	// 
+	// (see http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation )
 	// 
 	// Note: Prior to Chilkat v9.5.0.55, the CFB mode is only implemented for AES,
 	// Blowfish, and DES/3DES, and the CTR mode is only implemented for AES.
@@ -512,10 +565,10 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// 
 	// Password-based encryption (PBE) is selected by setting this property to "pbes1"
 	// or "pbes2". Password-based encryption is defined in the PKCS5 Password-Based
-	// Cryptography Standard at http://www.rsa.com/rsalabs/node.asp?id=2127. If PBE is
-	// used, the underlying encryption algorithm is specified by the PbesAlgorithm
-	// property. The underlying encryption (PbesAlgorithm) for PBES1 is limited to
-	// 56-bit DES or 64-bit RC2.
+	// Cryptography Standard at https://tools.ietf.org/html/rfc2898. If PBE is used,
+	// the underlying encryption algorithm is specified by the PbesAlgorithm property.
+	// The underlying encryption (PbesAlgorithm) for PBES1 is limited to 56-bit DES or
+	// 64-bit RC2.
 	// 
 	// Note:The chacha20 algorithm is introduced in Chilkat v9.5.0.55.
 	// 
@@ -535,10 +588,10 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// 
 	// Password-based encryption (PBE) is selected by setting this property to "pbes1"
 	// or "pbes2". Password-based encryption is defined in the PKCS5 Password-Based
-	// Cryptography Standard at http://www.rsa.com/rsalabs/node.asp?id=2127. If PBE is
-	// used, the underlying encryption algorithm is specified by the PbesAlgorithm
-	// property. The underlying encryption (PbesAlgorithm) for PBES1 is limited to
-	// 56-bit DES or 64-bit RC2.
+	// Cryptography Standard at https://tools.ietf.org/html/rfc2898. If PBE is used,
+	// the underlying encryption algorithm is specified by the PbesAlgorithm property.
+	// The underlying encryption (PbesAlgorithm) for PBES1 is limited to 56-bit DES or
+	// 64-bit RC2.
 	// 
 	// Note:The chacha20 algorithm is introduced in Chilkat v9.5.0.55.
 	// 
@@ -558,19 +611,20 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// 
 	// Password-based encryption (PBE) is selected by setting this property to "pbes1"
 	// or "pbes2". Password-based encryption is defined in the PKCS5 Password-Based
-	// Cryptography Standard at http://www.rsa.com/rsalabs/node.asp?id=2127. If PBE is
-	// used, the underlying encryption algorithm is specified by the PbesAlgorithm
-	// property. The underlying encryption (PbesAlgorithm) for PBES1 is limited to
-	// 56-bit DES or 64-bit RC2.
+	// Cryptography Standard at https://tools.ietf.org/html/rfc2898. If PBE is used,
+	// the underlying encryption algorithm is specified by the PbesAlgorithm property.
+	// The underlying encryption (PbesAlgorithm) for PBES1 is limited to 56-bit DES or
+	// 64-bit RC2.
 	// 
 	// Note:The chacha20 algorithm is introduced in Chilkat v9.5.0.55.
 	// 
 	void put_CryptAlgorithm(const wchar_t *newVal);
 
 	// Controls the encoding of binary data to a printable string for many methods. The
-	// valid modes are "Base64", "modBase64", "Base32", "Base58", "UU", "QP" (for
-	// quoted-printable), "URL" (for url-encoding), "Hex", "Q", "B", "url_oauth",
-	// "url_rfc1738", "url_rfc2396", "url_rfc3986", "fingerprint", or "decimal".
+	// valid modes are "Base64", "modBase64", "base64url", "Base32", "Base58", "UU",
+	// "QP" (for quoted-printable), "URL" (for url-encoding), "Hex", "Q", "B",
+	// "url_oauth", "url_rfc1738", "url_rfc2396", "url_rfc3986", "fingerprint", or
+	// "decimal".
 	// 
 	// The "fingerprint" and"decimal" encodings are introduced in Chilkat v9.5.0.55.
 	// 
@@ -585,9 +639,10 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// 
 	void get_EncodingMode(CkString &str);
 	// Controls the encoding of binary data to a printable string for many methods. The
-	// valid modes are "Base64", "modBase64", "Base32", "Base58", "UU", "QP" (for
-	// quoted-printable), "URL" (for url-encoding), "Hex", "Q", "B", "url_oauth",
-	// "url_rfc1738", "url_rfc2396", "url_rfc3986", "fingerprint", or "decimal".
+	// valid modes are "Base64", "modBase64", "base64url", "Base32", "Base58", "UU",
+	// "QP" (for quoted-printable), "URL" (for url-encoding), "Hex", "Q", "B",
+	// "url_oauth", "url_rfc1738", "url_rfc2396", "url_rfc3986", "fingerprint", or
+	// "decimal".
 	// 
 	// The "fingerprint" and"decimal" encodings are introduced in Chilkat v9.5.0.55.
 	// 
@@ -602,9 +657,10 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// 
 	const wchar_t *encodingMode(void);
 	// Controls the encoding of binary data to a printable string for many methods. The
-	// valid modes are "Base64", "modBase64", "Base32", "Base58", "UU", "QP" (for
-	// quoted-printable), "URL" (for url-encoding), "Hex", "Q", "B", "url_oauth",
-	// "url_rfc1738", "url_rfc2396", "url_rfc3986", "fingerprint", or "decimal".
+	// valid modes are "Base64", "modBase64", "base64url", "Base32", "Base58", "UU",
+	// "QP" (for quoted-printable), "URL" (for url-encoding), "Hex", "Q", "B",
+	// "url_oauth", "url_rfc1738", "url_rfc2396", "url_rfc3986", "fingerprint", or
+	// "decimal".
 	// 
 	// The "fingerprint" and"decimal" encodings are introduced in Chilkat v9.5.0.55.
 	// 
@@ -722,13 +778,6 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// 
 	void put_HeartbeatMs(int newVal);
 
-	// The initialization vector to be used with symmetric encryption algorithms (AES,
-	// Blowfish, Twofish, etc.). If left unset, no initialization vector is used.
-	void get_IV(CkByteData &outBytes);
-	// The initialization vector to be used with symmetric encryption algorithms (AES,
-	// Blowfish, Twofish, etc.). If left unset, no initialization vector is used.
-	void put_IV(const CkByteData &inBytes);
-
 	// Only applies when creating digital signatures. If true (the default), then
 	// additional certificates (if any) in the chain of authentication are included in
 	// the PKCS7 digital signature.
@@ -764,11 +813,18 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// 
 	void put_IterationCount(int newVal);
 
+	// The initialization vector to be used with symmetric encryption algorithms (AES,
+	// Blowfish, Twofish, etc.). If left unset, no initialization vector is used.
+	void get_IV(CkByteData &outBytes);
+	// The initialization vector to be used with symmetric encryption algorithms (AES,
+	// Blowfish, Twofish, etc.). If left unset, no initialization vector is used.
+	void put_IV(const CkByteData &inBytes);
+
 	// The key length in bits for symmetric encryption algorithms. The default value is
-	// 128.
+	// 256.
 	int get_KeyLength(void);
 	// The key length in bits for symmetric encryption algorithms. The default value is
-	// 128.
+	// 256.
 	void put_KeyLength(int newVal);
 
 	// (See the description for the FirstChunk property.)
@@ -887,15 +943,15 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 
 	// When the CryptAlgorithm property is "PKI" to select PKCS7 public-key encryption,
 	// this selects the underlying symmetric encryption algorithm. Possible values are:
-	// "aes", "des", "3des", and "rc2".
+	// "aes", "des", "3des", and "rc2". The default value is "aes".
 	void get_Pkcs7CryptAlg(CkString &str);
 	// When the CryptAlgorithm property is "PKI" to select PKCS7 public-key encryption,
 	// this selects the underlying symmetric encryption algorithm. Possible values are:
-	// "aes", "des", "3des", and "rc2".
+	// "aes", "des", "3des", and "rc2". The default value is "aes".
 	const wchar_t *pkcs7CryptAlg(void);
 	// When the CryptAlgorithm property is "PKI" to select PKCS7 public-key encryption,
 	// this selects the underlying symmetric encryption algorithm. Possible values are:
-	// "aes", "des", "3des", and "rc2".
+	// "aes", "des", "3des", and "rc2". The default value is "aes".
 	void put_Pkcs7CryptAlg(const wchar_t *newVal);
 
 	// The effective key length (in bits) for the RC2 encryption algorithm. When RC2 is
@@ -982,7 +1038,7 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// 
 	// The pfxBytes contains the bytes of a PFX file (also known as PKCS12 or .p12).
 	// 
-	bool AddPfxSourceData(CkByteData &pfxData, const wchar_t *password);
+	bool AddPfxSourceData(CkByteData &pfxBytes, const wchar_t *pfxPassword);
 
 	// Adds a PFX file to the object's internal list of sources to be searched for
 	// certificates and private keys when decrypting. Multiple PFX files can be added
@@ -992,11 +1048,18 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// 
 	// The pfxFilePath contains the bytes of a PFX file (also known as PKCS12 or .p12).
 	// 
-	bool AddPfxSourceFile(const wchar_t *pfxFilePath, const wchar_t *password);
+	bool AddPfxSourceFile(const wchar_t *pfxFilePath, const wchar_t *pfxPassword);
 
-	// Convenience method for byte swapping between little-endian byte ordering and
-	// big-endian byte ordering.
-	bool ByteSwap4321(CkByteData &data, CkByteData &outBytes);
+	// Computes and returns a bcrypt hash of the password. The number of rounds of hashing
+	// is determined by the BCryptWorkFactor property.
+	bool BCryptHash(const wchar_t *password, CkString &outStr);
+	// Computes and returns a bcrypt hash of the password. The number of rounds of hashing
+	// is determined by the BCryptWorkFactor property.
+	const wchar_t *bCryptHash(const wchar_t *password);
+
+	// Verifies the password against a previously computed BCrypt hash. Returns true if
+	// the password matches the bcryptHash. Returns false if the password does not match.
+	bool BCryptVerify(const wchar_t *password, const wchar_t *bcryptHash);
 
 	// Utility method to convert bytes to a string -- interpreting the bytes according
 	// to the charset specified.
@@ -1004,6 +1067,10 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// Utility method to convert bytes to a string -- interpreting the bytes according
 	// to the charset specified.
 	const wchar_t *bytesToString(CkByteData &inData, const wchar_t *charset);
+
+	// Convenience method for byte swapping between little-endian byte ordering and
+	// big-endian byte ordering.
+	bool ByteSwap4321(CkByteData &data, CkByteData &outBytes);
 
 	// File-to-file decryption. There is no limit to the size of the file that can be
 	// decrypted because the component will operate in streaming mode internally.
@@ -1086,13 +1153,13 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	const wchar_t *compressStringENC(const wchar_t *str);
 
 	// Calculates a CRC for in-memory byte data. To compute the CRC used in the Zip
-	// file format, pass "CRC-32" for the ARG1. (The ARG1 argument provides the
+	// file format, pass "CRC-32" for the crcAlg. (The crcAlg argument provides the
 	// flexibility to add additional CRC algorithms on an as-needed basis in the
 	// future.)
 	unsigned long CrcBytes(const wchar_t *crcAlg, CkByteData &byteData);
 
 	// Calculates a CRC for the contents of a file. To compute the CRC used in the Zip
-	// file format, pass "CRC-32" for the ARG1. (The ARG1 argument provides the
+	// file format, pass "CRC-32" for the crcAlg. (The crcAlg argument provides the
 	// flexibility to add additional CRC algorithms on an as-needed basis in the
 	// future.) A value of 0 is returned if the file is unable to be read. Given that
 	// there is a 1 in 4 billion chance of having an actual CRC of 0, an application
@@ -1113,32 +1180,42 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// This method is equivalent to CreateP7S. The CreateP7S method was added to
 	// clarify the format of the signature file that is created.
 	// 
-	bool CreateDetachedSignature(const wchar_t *filename, const wchar_t *sigFile);
+	bool CreateDetachedSignature(const wchar_t *inFilePath, const wchar_t *sigFilePath);
 
 	// Digitally signs a file and creates a .p7m (PKCS #7 Message) file that contains
-	// both the signature and original file content. The input file (ARG1) is
+	// both the signature and original file content. The input file (inFilename) is
 	// unmodified. A certificate for signing must be specified by calling
 	// SetSigningCert or SetSigningCert2 prior to calling this method.
+	// 
+	// To sign with a particular hash algorithm, set the HashAlgorithm property. Valid
+	// hash algorithms for signing are "sha256", "sha1", "sha384", "sha512", "md5", and
+	// "md2".
+	// 
 	bool CreateP7M(const wchar_t *inFilename, const wchar_t *p7mPath);
 
 	// Digitally signs a file and creates a .p7s (PKCS #7 Signature) signature file.
-	// The input file (inFilename) is unmodified. The output file ( p7sPath) contains only the
+	// The input file (inFilename) is unmodified. The output file (p7sPath) contains only the
 	// signature and not the original data. A certificate for signing must be specified
 	// by calling SetSigningCert or SetSigningCert2 prior to calling this method.
-	bool CreateP7S(const wchar_t *inFilename, const wchar_t *p7sFilename);
+	// 
+	// To sign with a particular hash algorithm, set the HashAlgorithm property. Valid
+	// hash algorithms for signing are "sha256", "sha1", "sha384", "sha512", "md5", and
+	// "md2".
+	// 
+	bool CreateP7S(const wchar_t *inFilename, const wchar_t *p7sPath);
 
-	// Decode binary data from an encoded string. The  encoding can be set to any of the
+	// Decode binary data from an encoded string. The encoding can be set to any of the
 	// following strings: "base64", "hex", "quoted-printable", "url", "base32", "Q",
 	// "B", "url_rc1738", "url_rfc2396", "url_rfc3986", "url_oauth", "uu", "modBase64",
 	// or "html" (for HTML entity encoding).
 	bool Decode(const wchar_t *str, const wchar_t *encoding, CkByteData &outData);
 
-	// Decodes from an encoding back to the original string. The  encoding can be set to any
+	// Decodes from an encoding back to the original string. The encoding can be set to any
 	// of the following strings: "base64", "hex", "quoted-printable", "url", "base32",
 	// "Q", "B", "url_rc1738", "url_rfc2396", "url_rfc3986", "url_oauth", "uu",
 	// "modBase64", or "html" (for HTML entity encoding).
 	bool DecodeString(const wchar_t *inStr, const wchar_t *charset, const wchar_t *encoding, CkString &outStr);
-	// Decodes from an encoding back to the original string. The  encoding can be set to any
+	// Decodes from an encoding back to the original string. The encoding can be set to any
 	// of the following strings: "base64", "hex", "quoted-printable", "url", "base32",
 	// "Q", "B", "url_rc1738", "url_rfc2396", "url_rfc3986", "url_oauth", "uu",
 	// "modBase64", or "html" (for HTML entity encoding).
@@ -1161,12 +1238,23 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// etc.). This method first decodes the input data according to the EncodingMode
 	// property setting. It then decrypts and re-encodes using the EncodingMode
 	// setting, and returns the decrypted data in encoded string form.
-	bool DecryptEncoded(const wchar_t *str, CkString &outStr);
+	bool DecryptEncoded(const wchar_t *encodedEncryptedData, CkString &outStr);
 	// Encrypted data is passed to this method as an encoded string (base64, hex,
 	// etc.). This method first decodes the input data according to the EncodingMode
 	// property setting. It then decrypts and re-encodes using the EncodingMode
 	// setting, and returns the decrypted data in encoded string form.
-	const wchar_t *decryptEncoded(const wchar_t *str);
+	const wchar_t *decryptEncoded(const wchar_t *encodedEncryptedData);
+
+	// Decrypts a stream. Internally, the strm's source is read, decrypted, and the
+	// decrypted data written to the strm's sink. It does this in streaming fashion.
+	// Extremely large or even infinite streams can be decrypted with stable ungrowing
+	// memory usage.
+	bool DecryptStream(CkStreamW &strm);
+
+	// Creates an asynchronous task to call the DecryptStream method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *DecryptStreamAsync(CkStreamW &strm);
 
 	// The reverse of EncryptString.
 	// 
@@ -1202,54 +1290,54 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// 
 	const wchar_t *decryptStringENC(const wchar_t *str);
 
-	// Encode binary data to base64, hex, quoted-printable, or URL-encoding. The  encoding
+	// Encode binary data to base64, hex, quoted-printable, or URL-encoding. The encoding
 	// can be set to any of the following strings: "base64", "hex", "quoted-printable"
 	// (or "qp"), "url", "base32", "Q", "B", "url_rc1738", "url_rfc2396",
 	// "url_rfc3986", "url_oauth", "uu", "modBase64", or "html" (for HTML entity
 	// encoding).
-	bool Encode(CkByteData &data, const wchar_t *encoding, CkString &outStr);
-	// Encode binary data to base64, hex, quoted-printable, or URL-encoding. The  encoding
+	bool Encode(CkByteData &byteData, const wchar_t *encoding, CkString &outStr);
+	// Encode binary data to base64, hex, quoted-printable, or URL-encoding. The encoding
 	// can be set to any of the following strings: "base64", "hex", "quoted-printable"
 	// (or "qp"), "url", "base32", "Q", "B", "url_rc1738", "url_rfc2396",
 	// "url_rfc3986", "url_oauth", "uu", "modBase64", or "html" (for HTML entity
 	// encoding).
-	const wchar_t *encode(CkByteData &data, const wchar_t *encoding);
+	const wchar_t *encode(CkByteData &byteData, const wchar_t *encoding);
 
-	// Encode binary data to base64, hex, quoted-printable, or URL-encoding. The  encoding
+	// Encode binary data to base64, hex, quoted-printable, or URL-encoding. The encoding
 	// can be set to any of the following strings: "base64", "hex", "quoted-printable",
 	// "url", "base32", "Q", "B", "url_rc1738", "url_rfc2396", "url_rfc3986",
 	// "url_oauth", "uu", "modBase64", or "html" (for HTML entity encoding).
 	// 
-	// The pByteData points to the bytes to be encoded. The  szByteData specifies the number of
+	// The pByteData points to the bytes to be encoded. The szByteData specifies the number of
 	// bytes to encode.
 	// 
 	bool EncodeBytes(const void *pByteData, unsigned long szByteData, const wchar_t *encoding, CkString &outStr);
-	// Encode binary data to base64, hex, quoted-printable, or URL-encoding. The  encoding
+	// Encode binary data to base64, hex, quoted-printable, or URL-encoding. The encoding
 	// can be set to any of the following strings: "base64", "hex", "quoted-printable",
 	// "url", "base32", "Q", "B", "url_rc1738", "url_rfc2396", "url_rfc3986",
 	// "url_oauth", "uu", "modBase64", or "html" (for HTML entity encoding).
 	// 
-	// The pByteData points to the bytes to be encoded. The  szByteData specifies the number of
+	// The pByteData points to the bytes to be encoded. The szByteData specifies the number of
 	// bytes to encode.
 	// 
 	const wchar_t *encodeBytes(const void *pByteData, unsigned long szByteData, const wchar_t *encoding);
 
-	// Encodes a string. The  toEncodingName can be set to any of the following strings: "base64",
+	// Encodes a string. The toEncodingName can be set to any of the following strings: "base64",
 	// "hex", "quoted-printable", "url", "base32", "Q", "B", "url_rc1738",
 	// "url_rfc2396", "url_rfc3986", "url_oauth", "uu", "modBase64", or "html" (for
-	// HTML entity encoding). The  charsetName is important, and usually you'll want to specify
+	// HTML entity encoding). The charsetName is important, and usually you'll want to specify
 	// "ansi". For example, if the string "ABC" is to be encoded to "hex" using ANSI,
 	// the result will be "414243". However, if "unicode" is used, the result is
 	// "410042004300".
-	bool EncodeString(const wchar_t *inStr, const wchar_t *charset, const wchar_t *encoding, CkString &outStr);
-	// Encodes a string. The  toEncodingName can be set to any of the following strings: "base64",
+	bool EncodeString(const wchar_t *strToEncode, const wchar_t *charsetName, const wchar_t *toEncodingName, CkString &outStr);
+	// Encodes a string. The toEncodingName can be set to any of the following strings: "base64",
 	// "hex", "quoted-printable", "url", "base32", "Q", "B", "url_rc1738",
 	// "url_rfc2396", "url_rfc3986", "url_oauth", "uu", "modBase64", or "html" (for
-	// HTML entity encoding). The  charsetName is important, and usually you'll want to specify
+	// HTML entity encoding). The charsetName is important, and usually you'll want to specify
 	// "ansi". For example, if the string "ABC" is to be encoded to "hex" using ANSI,
 	// the result will be "414243". However, if "unicode" is used, the result is
 	// "410042004300".
-	const wchar_t *encodeString(const wchar_t *inStr, const wchar_t *charset, const wchar_t *encoding);
+	const wchar_t *encodeString(const wchar_t *strToEncode, const wchar_t *charsetName, const wchar_t *toEncodingName);
 
 	// Encrypts a byte array. The minimal set of properties that should be set before
 	// encrypting are: CryptAlgorithm, SecretKey. Other properties that control
@@ -1284,6 +1372,17 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// according to the encryption algorithm specified by CryptAlgorithm. The resulting
 	// encrypted data is encoded (using EncodingMode) and returned.
 	const wchar_t *encryptEncoded(const wchar_t *str);
+
+	// Encrypts a stream. Internally, the strm's source is read, encrypted, and the
+	// encrypted data written to the strm's sink. It does this in streaming fashion.
+	// Extremely large or even infinite streams can be encrypted with stable ungrowing
+	// memory usage.
+	bool EncryptStream(CkStreamW &strm);
+
+	// Creates an asynchronous task to call the EncryptStream method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *EncryptStreamAsync(CkStreamW &strm);
 
 	// Encrypts a string and returns the encrypted data as a byte array. The minimal
 	// set of properties that should be set before encrypting are: CryptAlgorithm,
@@ -1411,34 +1510,27 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	const wchar_t *encryptStringENC(const wchar_t *str);
 
 	// Important: In the v9.5.0.49 release, a bug involving this method was introduced:
-	// The  encoding is ignored and instead the encoding used is the current value of the
+	// The encoding is ignored and instead the encoding used is the current value of the
 	// EncodingMode property. The workaround is to make sure the EncodingMode property
 	// is set to the value of the desired output encoding. This problem will be fixed
 	// in v9.5.0.50.
 	// 
 	// Identical to the GenerateSecretKey method, except it returns the binary secret
-	// key as a string encoded according to  encoding, which may be "base64", "hex", "url",
+	// key as a string encoded according to encoding, which may be "base64", "hex", "url",
 	// etc. Please see the documentation for GenerateSecretKey for more information.
 	// 
 	bool GenEncodedSecretKey(const wchar_t *password, const wchar_t *encoding, CkString &outStr);
 	// Important: In the v9.5.0.49 release, a bug involving this method was introduced:
-	// The  encoding is ignored and instead the encoding used is the current value of the
+	// The encoding is ignored and instead the encoding used is the current value of the
 	// EncodingMode property. The workaround is to make sure the EncodingMode property
 	// is set to the value of the desired output encoding. This problem will be fixed
 	// in v9.5.0.50.
 	// 
 	// Identical to the GenerateSecretKey method, except it returns the binary secret
-	// key as a string encoded according to  encoding, which may be "base64", "hex", "url",
+	// key as a string encoded according to encoding, which may be "base64", "hex", "url",
 	// etc. Please see the documentation for GenerateSecretKey for more information.
 	// 
 	const wchar_t *genEncodedSecretKey(const wchar_t *password, const wchar_t *encoding);
-
-	// Generates numBytes random bytes and returns them as an encoded string. The encoding,
-	// such as base64, hex, etc. is controlled by the EncodingMode property.
-	bool GenRandomBytesENC(int numBytes, CkString &outStr);
-	// Generates numBytes random bytes and returns them as an encoded string. The encoding,
-	// such as base64, hex, etc. is controlled by the EncodingMode property.
-	const wchar_t *genRandomBytesENC(int numBytes);
 
 	// Hashes a string to a byte array that has the same number of bits as the current
 	// value of the KeyLength property. For example, if KeyLength is equal to 128 bits,
@@ -1462,6 +1554,13 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// Generates a random UUID string having standard UUID format, such as
 	// "de305d54-75b4-431b-adb2-eb6b9e546014".
 	const wchar_t *generateUuid(void);
+
+	// Generates numBytes random bytes and returns them as an encoded string. The encoding,
+	// such as base64, hex, etc. is controlled by the EncodingMode property.
+	bool GenRandomBytesENC(int numBytes, CkString &outStr);
+	// Generates numBytes random bytes and returns them as an encoded string. The encoding,
+	// such as base64, hex, etc. is controlled by the EncodingMode property.
+	const wchar_t *genRandomBytesENC(int numBytes);
 
 	// Returns the last certificate used for public-key decryption.
 	// The caller is responsible for deleting the object returned by this method.
@@ -1495,7 +1594,7 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// 
 	const wchar_t *encodedAad(const wchar_t *encoding);
 
-	// Returns the authentication tag as an encoded string. The ARG1 argument may be
+	// Returns the authentication tag as an encoded string. The encoding argument may be
 	// set to any of the following strings: "base64", "hex", "quoted-printable", or
 	// "url". The authentication tag is an output of authenticated encryption modes
 	// such as GCM when encrypting. When GCM mode decrypting, the authenticate tag is
@@ -1506,7 +1605,7 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// of 16 bytes, such as AES or Twofish.
 	// 
 	bool GetEncodedAuthTag(const wchar_t *encoding, CkString &outStr);
-	// Returns the authentication tag as an encoded string. The ARG1 argument may be
+	// Returns the authentication tag as an encoded string. The encoding argument may be
 	// set to any of the following strings: "base64", "hex", "quoted-printable", or
 	// "url". The authentication tag is an output of authenticated encryption modes
 	// such as GCM when encrypting. When GCM mode decrypting, the authenticate tag is
@@ -1517,7 +1616,7 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// of 16 bytes, such as AES or Twofish.
 	// 
 	const wchar_t *getEncodedAuthTag(const wchar_t *encoding);
-	// Returns the authentication tag as an encoded string. The ARG1 argument may be
+	// Returns the authentication tag as an encoded string. The encoding argument may be
 	// set to any of the following strings: "base64", "hex", "quoted-printable", or
 	// "url". The authentication tag is an output of authenticated encryption modes
 	// such as GCM when encrypting. When GCM mode decrypting, the authenticate tag is
@@ -1605,12 +1704,6 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// The caller is responsible for deleting the object returned by this method.
 	CkCertChainW *GetSignerCertChain(int index);
 
-	// This method can be called after a digital signature has been verified by one of
-	// the Verify* methods. Returns true if a signing time for the Nth certificate is
-	// available and can be retrieved by either the GetSignatureSigningTime or
-	// GetSignatureSigningTimeStr methods.
-	bool HasSignatureSigningTime(int index);
-
 	// Begin hashing a byte stream. Call this method to hash the 1st chunk. Additional
 	// chunks are hashed by calling HashMoreBytes 0 or more times followed by a final
 	// call to HashFinal (or HashFinalENC) to retrieve the result. The hash algorithm
@@ -1656,30 +1749,30 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// KeyLength. The HavalRounds may have values of 3, 4, or 5. The KeyLength may have
 	// values of 128, 160, 192, 224, or 256.
 	// 
-	bool HashFile(const wchar_t *filename, CkByteData &outBytes);
+	bool HashFile(const wchar_t *path, CkByteData &outBytes);
 
 	// Creates an asynchronous task to call the HashFile method with the arguments
 	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *HashFileAsync(const wchar_t *filename);
+	CkTaskW *HashFileAsync(const wchar_t *path);
 
 	// Hashes a file. The hash algorithm to be used is controlled by the HashAlgorithm
 	// property, which can be set to "sha1", "sha384", "sha512", "md2", "md5", or
 	// "haval". The function returns the hash as a string encoded according to the
 	// EncodingMode property. Any size file is supported because the file is hashed
 	// internally in streaming mode.
-	bool HashFileENC(const wchar_t *filename, CkString &outStr);
+	bool HashFileENC(const wchar_t *path, CkString &outStr);
 	// Hashes a file. The hash algorithm to be used is controlled by the HashAlgorithm
 	// property, which can be set to "sha1", "sha384", "sha512", "md2", "md5", or
 	// "haval". The function returns the hash as a string encoded according to the
 	// EncodingMode property. Any size file is supported because the file is hashed
 	// internally in streaming mode.
-	const wchar_t *hashFileENC(const wchar_t *filename);
+	const wchar_t *hashFileENC(const wchar_t *path);
 
 	// Creates an asynchronous task to call the HashFileENC method with the arguments
 	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *HashFileENCAsync(const wchar_t *filename);
+	CkTaskW *HashFileENCAsync(const wchar_t *path);
 
 	// Finalizes a multi-step hash computation and returns the hash bytes.
 	bool HashFinal(CkByteData &outBytes);
@@ -1762,6 +1855,12 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// values of 128, 160, 192, 224, or 256.
 	// 
 	const wchar_t *hashStringENC(const wchar_t *str);
+
+	// This method can be called after a digital signature has been verified by one of
+	// the Verify* methods. Returns true if a signing time for the Nth certificate is
+	// available and can be retrieved by either the GetSignatureSigningTime or
+	// GetSignatureSigningTimeStr methods.
+	bool HasSignatureSigningTime(int index);
 
 	// Computes a keyed-Hash Message Authentication Code (HMAC or KHMAC), which is a
 	// type of message authentication code (MAC) calculated using a specific algorithm
@@ -1903,19 +2002,19 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 
 	// Matches MySQL's AES_DECRYPT function. strEncryptedHex is a hex-encoded string of the AES
 	// encrypted data. The return value is the original unencrypted string.
-	bool MySqlAesDecrypt(const wchar_t *strEncrypted, const wchar_t *strKey, CkString &outStr);
+	bool MySqlAesDecrypt(const wchar_t *strEncryptedHex, const wchar_t *strPassword, CkString &outStr);
 	// Matches MySQL's AES_DECRYPT function. strEncryptedHex is a hex-encoded string of the AES
 	// encrypted data. The return value is the original unencrypted string.
-	const wchar_t *mySqlAesDecrypt(const wchar_t *strEncrypted, const wchar_t *strKey);
+	const wchar_t *mySqlAesDecrypt(const wchar_t *strEncryptedHex, const wchar_t *strPassword);
 
 	// Matches MySQL's AES_ENCRYPT function. The return value is a hex-encoded string
 	// of the encrypted data. The equivalent call in MySQL would look like this:
 	// HEX(AES_ENCRYPT('The quick brown fox jumps over the lazy dog','password'))
-	bool MySqlAesEncrypt(const wchar_t *strData, const wchar_t *strKey, CkString &outStr);
+	bool MySqlAesEncrypt(const wchar_t *strData, const wchar_t *strPassword, CkString &outStr);
 	// Matches MySQL's AES_ENCRYPT function. The return value is a hex-encoded string
 	// of the encrypted data. The equivalent call in MySQL would look like this:
 	// HEX(AES_ENCRYPT('The quick brown fox jumps over the lazy dog','password'))
-	const wchar_t *mySqlAesEncrypt(const wchar_t *strData, const wchar_t *strKey);
+	const wchar_t *mySqlAesEncrypt(const wchar_t *strData, const wchar_t *strPassword);
 
 	// Digitally signs a byte array and returns a PKCS7/CMS format signature. This is a
 	// signature that contains both the original data as well as the signature. A
@@ -2006,32 +2105,32 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	const wchar_t *opaqueVerifyStringENC(const wchar_t *p7s);
 
 	// Implements the PBKDF1 algorithm (Password Based Key Derivation Function #1). The
-	// password is converted to the character encoding represented by  charset before being
-	// passed (internally) to the key derivation function. The  hashAlg may be "md5",
-	// "sha1", "md2", etc. The  salt should be random data at least 8 bytes (64 bits) in
+	// password is converted to the character encoding represented by charset before being
+	// passed (internally) to the key derivation function. The hashAlg may be "md5",
+	// "sha1", "md2", etc. The salt should be random data at least 8 bytes (64 bits) in
 	// length. (The GenRandomBytesENC method is good for generating a random salt
-	// value.) The  iterationCount should be no less than 1000. The length (in bits) of the
-	// derived key output by this method is controlled by  outputKeyBitLen. The  encoding argument may
+	// value.) The iterationCount should be no less than 1000. The length (in bits) of the
+	// derived key output by this method is controlled by outputKeyBitLen. The encoding argument may
 	// be "base64", "hex", etc. It controls the encoding of the output, and the
-	// expected encoding of the  salt. The derived key is returned.
+	// expected encoding of the salt. The derived key is returned.
 	// 
-	// Note: Starting in version 9.5.0.47, if the  charset is set to one of the keywords
+	// Note: Starting in version 9.5.0.47, if the charset is set to one of the keywords
 	// "hex" or "base64", then the password will be considered binary data that is hex
 	// or base64 encoded. The bytes will be decoded and used directly as a binary
 	// password.
 	// 
 	bool Pbkdf1(const wchar_t *password, const wchar_t *charset, const wchar_t *hashAlg, const wchar_t *salt, int iterationCount, int outputKeyBitLen, const wchar_t *encoding, CkString &outStr);
 	// Implements the PBKDF1 algorithm (Password Based Key Derivation Function #1). The
-	// password is converted to the character encoding represented by  charset before being
-	// passed (internally) to the key derivation function. The  hashAlg may be "md5",
-	// "sha1", "md2", etc. The  salt should be random data at least 8 bytes (64 bits) in
+	// password is converted to the character encoding represented by charset before being
+	// passed (internally) to the key derivation function. The hashAlg may be "md5",
+	// "sha1", "md2", etc. The salt should be random data at least 8 bytes (64 bits) in
 	// length. (The GenRandomBytesENC method is good for generating a random salt
-	// value.) The  iterationCount should be no less than 1000. The length (in bits) of the
-	// derived key output by this method is controlled by  outputKeyBitLen. The  encoding argument may
+	// value.) The iterationCount should be no less than 1000. The length (in bits) of the
+	// derived key output by this method is controlled by outputKeyBitLen. The encoding argument may
 	// be "base64", "hex", etc. It controls the encoding of the output, and the
-	// expected encoding of the  salt. The derived key is returned.
+	// expected encoding of the salt. The derived key is returned.
 	// 
-	// Note: Starting in version 9.5.0.47, if the  charset is set to one of the keywords
+	// Note: Starting in version 9.5.0.47, if the charset is set to one of the keywords
 	// "hex" or "base64", then the password will be considered binary data that is hex
 	// or base64 encoded. The bytes will be decoded and used directly as a binary
 	// password.
@@ -2039,46 +2138,46 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	const wchar_t *pbkdf1(const wchar_t *password, const wchar_t *charset, const wchar_t *hashAlg, const wchar_t *salt, int iterationCount, int outputKeyBitLen, const wchar_t *encoding);
 
 	// Implements the PBKDF2 algorithm (Password Based Key Derivation Function #2). The
-	// password is converted to the character encoding represented by  charset before being
-	// passed (internally) to the key derivation function. The  hashAlg may be "sha256",
+	// password is converted to the character encoding represented by charset before being
+	// passed (internally) to the key derivation function. The hashAlg may be "sha256",
 	// "sha384", "sha512", "md5", "sha1", "md2", or any hash algorithm listed in the
-	// HashAlgorithm property. The  salt should be random data at least 8 bytes (64
+	// HashAlgorithm property. The salt should be random data at least 8 bytes (64
 	// bits) in length. (The GenRandomBytesENC method is good for generating a random
-	// salt value.) The  iterationCount should be no less than 1000. The length (in bits) of the
-	// derived key output by this method is controlled by  outputKeyBitLen. The  encoding argument may
+	// salt value.) The iterationCount should be no less than 1000. The length (in bits) of the
+	// derived key output by this method is controlled by outputKeyBitLen. The encoding argument may
 	// be "base64", "hex", etc. It controls the encoding of the output, and the
-	// expected encoding of the  salt. The derived key is returned.
+	// expected encoding of the salt. The derived key is returned.
 	// 
 	// Note: The PBKDF2 function (internally) utilizes a PRF that is a pseudorandom
-	// function that is a keyed HMAC. The hash algorithm specified by  hashAlg determines
-	// this PRF. If  hashAlg is "SHA256", then HMAC-SHA256 is used for the PRF. Likewise,
+	// function that is a keyed HMAC. The hash algorithm specified by hashAlg determines
+	// this PRF. If hashAlg is "SHA256", then HMAC-SHA256 is used for the PRF. Likewise,
 	// if the hash function is "SHA1", then HMAC-SHA1 is used. HMAC can be used with
 	// any hash algorithm.
 	// 
-	// Note: Starting in version 9.5.0.47, if the  charset is set to one of the keywords
+	// Note: Starting in version 9.5.0.47, if the charset is set to one of the keywords
 	// "hex" or "base64", then the password will be considered binary data that is hex
 	// or base64 encoded. The bytes will be decoded and used directly as a binary
 	// password.
 	// 
 	bool Pbkdf2(const wchar_t *password, const wchar_t *charset, const wchar_t *hashAlg, const wchar_t *salt, int iterationCount, int outputKeyBitLen, const wchar_t *encoding, CkString &outStr);
 	// Implements the PBKDF2 algorithm (Password Based Key Derivation Function #2). The
-	// password is converted to the character encoding represented by  charset before being
-	// passed (internally) to the key derivation function. The  hashAlg may be "sha256",
+	// password is converted to the character encoding represented by charset before being
+	// passed (internally) to the key derivation function. The hashAlg may be "sha256",
 	// "sha384", "sha512", "md5", "sha1", "md2", or any hash algorithm listed in the
-	// HashAlgorithm property. The  salt should be random data at least 8 bytes (64
+	// HashAlgorithm property. The salt should be random data at least 8 bytes (64
 	// bits) in length. (The GenRandomBytesENC method is good for generating a random
-	// salt value.) The  iterationCount should be no less than 1000. The length (in bits) of the
-	// derived key output by this method is controlled by  outputKeyBitLen. The  encoding argument may
+	// salt value.) The iterationCount should be no less than 1000. The length (in bits) of the
+	// derived key output by this method is controlled by outputKeyBitLen. The encoding argument may
 	// be "base64", "hex", etc. It controls the encoding of the output, and the
-	// expected encoding of the  salt. The derived key is returned.
+	// expected encoding of the salt. The derived key is returned.
 	// 
 	// Note: The PBKDF2 function (internally) utilizes a PRF that is a pseudorandom
-	// function that is a keyed HMAC. The hash algorithm specified by  hashAlg determines
-	// this PRF. If  hashAlg is "SHA256", then HMAC-SHA256 is used for the PRF. Likewise,
+	// function that is a keyed HMAC. The hash algorithm specified by hashAlg determines
+	// this PRF. If hashAlg is "SHA256", then HMAC-SHA256 is used for the PRF. Likewise,
 	// if the hash function is "SHA1", then HMAC-SHA1 is used. HMAC can be used with
 	// any hash algorithm.
 	// 
-	// Note: Starting in version 9.5.0.47, if the  charset is set to one of the keywords
+	// Note: Starting in version 9.5.0.47, if the charset is set to one of the keywords
 	// "hex" or "base64", then the password will be considered binary data that is hex
 	// or base64 encoded. The bytes will be decoded and used directly as a binary
 	// password.
@@ -2100,23 +2199,23 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// Sets the secret key to a random value.
 	void RandomizeKey(void);
 
-	// Provides a means for converting from one encoding to another (such as base64 to
-	// hex). This is helpful for programming environments where byte arrays are a real
-	// pain-in-the-***. The  fromEncoding and  toEncoding may be (case-insensitive) "Base64",
-	// "modBase64", "Base32", "Base58", "UU", "QP" (for quoted-printable), "URL" (for
-	// url-encoding), "Hex", "Q", "B", "url_oauth", "url_rfc1738", "url_rfc2396", and
-	// "url_rfc3986".
-	bool ReEncode(const wchar_t *data, const wchar_t *fromEncoding, const wchar_t *toEncoding, CkString &outStr);
-	// Provides a means for converting from one encoding to another (such as base64 to
-	// hex). This is helpful for programming environments where byte arrays are a real
-	// pain-in-the-***. The  fromEncoding and  toEncoding may be (case-insensitive) "Base64",
-	// "modBase64", "Base32", "Base58", "UU", "QP" (for quoted-printable), "URL" (for
-	// url-encoding), "Hex", "Q", "B", "url_oauth", "url_rfc1738", "url_rfc2396", and
-	// "url_rfc3986".
-	const wchar_t *reEncode(const wchar_t *data, const wchar_t *fromEncoding, const wchar_t *toEncoding);
-
 	// Convenience method to read an entire file and return as a byte array.
 	bool ReadFile(const wchar_t *filename, CkByteData &outBytes);
+
+	// Provides a means for converting from one encoding to another (such as base64 to
+	// hex). This is helpful for programming environments where byte arrays are a real
+	// pain-in-the-***. The fromEncoding and toEncoding may be (case-insensitive) "Base64",
+	// "modBase64", "Base32", "Base58", "UU", "QP" (for quoted-printable), "URL" (for
+	// url-encoding), "Hex", "Q", "B", "url_oauth", "url_rfc1738", "url_rfc2396", and
+	// "url_rfc3986".
+	bool ReEncode(const wchar_t *encodedData, const wchar_t *fromEncoding, const wchar_t *toEncoding, CkString &outStr);
+	// Provides a means for converting from one encoding to another (such as base64 to
+	// hex). This is helpful for programming environments where byte arrays are a real
+	// pain-in-the-***. The fromEncoding and toEncoding may be (case-insensitive) "Base64",
+	// "modBase64", "Base32", "Base58", "UU", "QP" (for quoted-printable), "URL" (for
+	// url-encoding), "Hex", "Q", "B", "url_oauth", "url_rfc1738", "url_rfc2396", and
+	// "url_rfc3986".
+	const wchar_t *reEncode(const wchar_t *encodedData, const wchar_t *fromEncoding, const wchar_t *toEncoding);
 
 #if defined(CK_CSP_INCLUDED)
 	// (Only applies to the Microsoft Windows OS) Sets the Cryptographic Service
@@ -2148,7 +2247,7 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 
 	// Sets the authenticated additional data from an encoded string. The authenticated
 	// additional data (AAD), if any, is used in authenticated encryption modes such as
-	// GCM. The ARG1 argument can be set to any of the following strings: "base64",
+	// GCM. The aadStr argument can be set to any of the following strings: "base64",
 	// "hex", "quoted-printable", "ascii", or "url".
 	// 
 	// The Aad is used when the CipherMode is "gcm" (Galois/Counter Mode), which is a
@@ -2159,7 +2258,7 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 
 	// Sets the expected authenticated tag from an encoded string. The authenticated
 	// tag is used in authenticated encryption modes such as GCM. An application would
-	// set the expected authenticated tag prior to decrypting. The ARG1 argument can be
+	// set the expected authenticated tag prior to decrypting. The authTagStr argument can be
 	// set to any of the following strings: "base64", "hex", "quoted-printable",
 	// "ascii", or "url".
 	// 
@@ -2197,7 +2296,7 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// 
 	void SetHmacKeyBytes(CkByteData &keyBytes);
 
-	// Sets the secret key to be used for one of the HMAC methods. The  encoding can be set
+	// Sets the secret key to be used for one of the HMAC methods. The encoding can be set
 	// to any of the following strings: "base64", "hex", "quoted-printable", or "url".
 	// 
 	// Note: If using Chilkat v9.5.0.55 or later, update your programs to use
@@ -2218,12 +2317,12 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// length of the IV should equal the block size of the algorithm. (It is not equal
 	// to the key length). For AES and TwoFish, the block size (and thus IV size) is
 	// always 16 bytes. For Blowfish it's 8 bytes. For DES and 3DES it's 8 bytes.
-	void SetIV(const unsigned char *pByteData, unsigned long szByteData);
+	void SetIV(const void *pByteData, unsigned long szByteData);
 
 	// Sets the MAC key to be used for one of the Mac methods.
 	bool SetMacKeyBytes(CkByteData &keyBytes);
 
-	// Sets the MAC key to be used for one of the Mac methods. The ARG2 can be set to
+	// Sets the MAC key to be used for one of the Mac methods. The encoding can be set to
 	// any of the following strings: "base64", "hex", "quoted-printable", or "url".
 	bool SetMacKeyEncoded(const wchar_t *key, const wchar_t *encoding);
 
@@ -2231,7 +2330,7 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	bool SetMacKeyString(const wchar_t *key);
 
 	// Sets the value of the SecretKey property.
-	void SetSecretKey(const unsigned char *pByteData, unsigned long szByteData);
+	void SetSecretKey(const void *pByteData, unsigned long szByteData);
 
 	// Accepts a password string and (internally) generates a binary secret key of the
 	// appropriate bit length and sets the SecretKey property. This method should only
@@ -2250,7 +2349,7 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 
 	// Specifies a digital certificate and private key to be used for creating PKCS7
 	// digital signatures.
-	bool SetSigningCert2(CkCertW &cert, CkPrivateKeyW &key);
+	bool SetSigningCert2(CkCertW &cert, CkPrivateKeyW &privateKey);
 
 	// Sets the digital certificate to be used in verifying a signature.
 	bool SetVerifyCert(CkCertW &cert);
@@ -2347,7 +2446,7 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkWideCharBase
 	// Verifies a .p7s (PKCS #7 Signature) against the original file (or exact copy of
 	// it). If the inFilename has not been modified, the return value is true, otherwise it
 	// is false. This method is equivalent to VerifyP7S.
-	bool VerifyDetachedSignature(const wchar_t *filename, const wchar_t *sigFile);
+	bool VerifyDetachedSignature(const wchar_t *inFilename, const wchar_t *p7sFilename);
 
 	// Verifies a .p7m file and extracts the original file from the .p7m. Returns
 	// true if the signature is valid and the contents are unchanged. Otherwise

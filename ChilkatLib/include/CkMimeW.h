@@ -16,6 +16,8 @@ class CkCertW;
 class CkPrivateKeyW;
 class CkByteData;
 class CkStringArrayW;
+class CkBinDataW;
+class CkStringBuilderW;
 class CkCertChainW;
 class CkCspW;
 class CkXmlCertVaultW;
@@ -275,15 +277,15 @@ class CK_VISIBLE_PUBLIC CkMimeW  : public CkWideCharBase
 
 	// When the MIME is encrypted (using PKCS7 public-key encryption), this selects the
 	// underlying symmetric encryption algorithm. Possible values are: "aes", "des",
-	// "3des", and "rc2".
+	// "3des", and "rc2". The default value is "aes".
 	void get_Pkcs7CryptAlg(CkString &str);
 	// When the MIME is encrypted (using PKCS7 public-key encryption), this selects the
 	// underlying symmetric encryption algorithm. Possible values are: "aes", "des",
-	// "3des", and "rc2".
+	// "3des", and "rc2". The default value is "aes".
 	const wchar_t *pkcs7CryptAlg(void);
 	// When the MIME is encrypted (using PKCS7 public-key encryption), this selects the
 	// underlying symmetric encryption algorithm. Possible values are: "aes", "des",
-	// "3des", and "rc2".
+	// "3des", and "rc2". The default value is "aes".
 	void put_Pkcs7CryptAlg(const wchar_t *newVal);
 
 	// When the MIME is encrypted (using PKCS7 public-key encryption), this selects the
@@ -445,7 +447,7 @@ class CK_VISIBLE_PUBLIC CkMimeW  : public CkWideCharBase
 	// 
 	// The pfxFileData contains the bytes of a PFX file (also known as PKCS12 or .p12).
 	// 
-	bool AddPfxSourceData(CkByteData &pfxData, const wchar_t *password);
+	bool AddPfxSourceData(CkByteData &pfxFileData, const wchar_t *pfxPassword);
 
 	// Adds a PFX file to the object's internal list of sources to be searched for
 	// certificates and private keys when decrypting. Multiple PFX files can be added
@@ -453,7 +455,7 @@ class CK_VISIBLE_PUBLIC CkMimeW  : public CkWideCharBase
 	// registry-based certificate stores are also automatically searched, so it is
 	// commonly not required to explicitly add PFX sources.)
 	// 
-	// The ARG1 contains the bytes of a PFX file (also known as PKCS12 or .p12).
+	// The pfxFilePath contains the bytes of a PFX file (also known as PKCS12 or .p12).
 	// 
 	bool AddPfxSourceFile(const wchar_t *pfxFilePath, const wchar_t *password);
 
@@ -688,7 +690,7 @@ class CK_VISIBLE_PUBLIC CkMimeW  : public CkWideCharBase
 	// Decrypts MIME using a specific PFX file (also known as PKCS12) as the source for
 	// any required certificates and private keys. (Note: .pfx and .p12 files are both
 	// PKCS12 format.)
-	bool DecryptUsingPfxFile(const wchar_t *pfxFilePath, const wchar_t *password);
+	bool DecryptUsingPfxFile(const wchar_t *pfxFilePath, const wchar_t *pfxPassword);
 
 	// Encrypts the MIME to create PKCS7 encrypted MIME. A digital certificate (which
 	// always contains a public-key) is used to encrypt.
@@ -763,11 +765,11 @@ class CK_VISIBLE_PUBLIC CkMimeW  : public CkWideCharBase
 	const wchar_t *entireHead(void);
 
 	// Returns the value of a MIME header field. fieldName is case-insensitive.
-	bool GetHeaderField(const wchar_t *name, CkString &outStr);
+	bool GetHeaderField(const wchar_t *fieldName, CkString &outStr);
 	// Returns the value of a MIME header field. fieldName is case-insensitive.
-	const wchar_t *getHeaderField(const wchar_t *name);
+	const wchar_t *getHeaderField(const wchar_t *fieldName);
 	// Returns the value of a MIME header field. fieldName is case-insensitive.
-	const wchar_t *headerField(const wchar_t *name);
+	const wchar_t *headerField(const wchar_t *fieldName);
 
 	// Parses a MIME header field and returns the value of an attribute. MIME header
 	// fields w/ attributes are formatted like this:
@@ -827,9 +829,16 @@ class CK_VISIBLE_PUBLIC CkMimeW  : public CkWideCharBase
 	// Returns a string containing the complete MIME message, including all sub-parts.
 	const wchar_t *mime(void);
 
+	// Writes the MIME to a BinData object, replacing the contents of the BinData.
+	bool GetMimeBd(CkBinDataW &bindat);
+
 	// Returns a byte array containing the complete MIME message, including all
 	// sub-parts.
 	bool GetMimeBytes(CkByteData &outBytes);
+
+	// Writes the MIME to a StringBuilder object, replacing the contents of the
+	// StringBuilder.
+	bool GetMimeSb(CkStringBuilderW &sb);
 
 	// Returns the Nth sub-part of the MIME message. Indexing begins at 0.
 	// The caller is responsible for deleting the object returned by this method.
@@ -860,6 +869,16 @@ class CK_VISIBLE_PUBLIC CkMimeW  : public CkWideCharBase
 	// message. Indexing begins at 0.
 	// The caller is responsible for deleting the object returned by this method.
 	CkCertChainW *GetSignerCertChain(int index);
+
+	// Returns a string summarizing the MIME structure. The output format is specified
+	// by fmt and can be "text" or "xml".
+	bool GetStructure(const wchar_t *fmt, CkString &outStr);
+	// Returns a string summarizing the MIME structure. The output format is specified
+	// by fmt and can be "text" or "xml".
+	const wchar_t *getStructure(const wchar_t *fmt);
+	// Returns a string summarizing the MIME structure. The output format is specified
+	// by fmt and can be "text" or "xml".
+	const wchar_t *structure(const wchar_t *fmt);
 
 	// Converts the MIME (or S/MIME) message to XML and returns the XML as a string.
 	bool GetXml(CkString &outStr);
@@ -940,12 +959,20 @@ class CK_VISIBLE_PUBLIC CkMimeW  : public CkWideCharBase
 	// from a string.
 	bool LoadMime(const wchar_t *mimeMsg);
 
+	// Discards the current contents of the MIME object and loads a new MIME message
+	// from a BinData object.
+	bool LoadMimeBd(CkBinDataW &bindat);
+
 	// Loads a MIME document from an in-memory byte array.
 	bool LoadMimeBytes(CkByteData &binData);
 
 	// Discards the current contents of the MIME object and loads a new MIME message
 	// from a file.
 	bool LoadMimeFile(const wchar_t *fileName);
+
+	// Discards the current contents of the MIME object and loads a new MIME message
+	// from a StringBuilder.
+	bool LoadMimeSb(CkStringBuilderW &sb);
 
 	// Converts XML to MIME and replaces the MIME object's contents with the converted
 	// XML.
@@ -972,10 +999,10 @@ class CK_VISIBLE_PUBLIC CkMimeW  : public CkWideCharBase
 	// initializes the MIME object to be an empty mulipart/related message.
 	bool NewMultipartRelated(void);
 
-	// Removes a header field from the MIME header. If  bAllOccurances is true, then all
-	// occurances of the header field are removed. Otherwise, only the 1st occurance is
-	// removed.
-	void RemoveHeaderField(const wchar_t *name, bool bAllOccurances);
+	// Removes a header field from the MIME header. If bAllOccurrences is true, then all
+	// occurrences of the header field are removed. Otherwise, only the 1st occurrence
+	// is removed.
+	void RemoveHeaderField(const wchar_t *fieldName, bool bAllOccurrences);
 
 	// Removes the Nth subpart from the MIME message.
 	bool RemovePart(int index);
@@ -1077,7 +1104,7 @@ class CK_VISIBLE_PUBLIC CkMimeW  : public CkWideCharBase
 #endif
 
 	// Adds or replaces a MIME message header field. If the field already exists, it is
-	// automatically replaced. Otherwise it is added. Pass zero-length  value to remove
+	// automatically replaced. Otherwise it is added. Pass zero-length value to remove
 	// the header field.
 	bool SetHeaderField(const wchar_t *name, const wchar_t *value);
 
@@ -1145,16 +1172,6 @@ class CK_VISIBLE_PUBLIC CkMimeW  : public CkWideCharBase
 	// if it was correctly pre-installed on the computer.
 	// 
 	bool Verify(void);
-
-	// Returns a string summarizing the MIME structure. The output format is specified
-	// by ARG1 and can be "text" or "xml".
-	bool GetStructure(const wchar_t *fmt, CkString &outStr);
-	// Returns a string summarizing the MIME structure. The output format is specified
-	// by ARG1 and can be "text" or "xml".
-	const wchar_t *getStructure(const wchar_t *fmt);
-	// Returns a string summarizing the MIME structure. The output format is specified
-	// by ARG1 and can be "text" or "xml".
-	const wchar_t *structure(const wchar_t *fmt);
 
 
 

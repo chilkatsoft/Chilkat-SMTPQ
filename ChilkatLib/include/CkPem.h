@@ -10,7 +10,7 @@
 #include "chilkatDefs.h"
 
 #include "CkString.h"
-#include "CkMultiByteBase.h"
+#include "CkClassWithCallbacks.h"
 
 class CkCert;
 class CkPrivateKey;
@@ -30,10 +30,9 @@ class CkBaseProgress;
  
 
 // CLASS: CkPem
-class CK_VISIBLE_PUBLIC CkPem  : public CkMultiByteBase
+class CK_VISIBLE_PUBLIC CkPem  : public CkClassWithCallbacks
 {
     private:
-	void *m_eventCallback;
 
 	// Don't allow assignment or copying these objects.
 	CkPem(const CkPem &);
@@ -153,9 +152,18 @@ class CK_VISIBLE_PUBLIC CkPem  : public CkMultiByteBase
 	// Methods
 	// ----------------------
 	// Adds a certificate, and potentially the certs in its chain of authentication to
-	// the PEM. If ARG2 is true, then certificates in the ARG1's chain of
+	// the PEM. If includeChain is true, then certificates in the cert's chain of
 	// authentication up to and including the root are automatically added.
 	bool AddCert(CkCert &cert, bool includeChain);
+
+
+	// Adds a certificate, private key, public key, or csr to the PEM. The possible
+	// values for itemType are "certificate" (or "cert"), "privateKey", "publicKey", or
+	// "csr". The encoding can be "Base64", "modBase64", "Base32", "QP" (for
+	// quoted-printable), "URL" (for url-encoding), "Hex", "url_oauth", "url_rfc1738",
+	// "url_rfc2396", and "url_rfc3986". The itemData contains the ASN.1 data in string
+	// format according to the encoding specified in encoding.
+	bool AddItem(const char *itemType, const char *encoding, const char *itemData);
 
 
 	// Adds a private key to the PEM object.
@@ -180,30 +188,30 @@ class CK_VISIBLE_PUBLIC CkPem  : public CkMultiByteBase
 
 
 	// Returns the encoded contents of the Nth item of a particular type (0-based
-	// ARG4). The possible values for ARG1 are "certificate" (or "cert"), "privateKey",
-	// "publicKey", or "csr". Input string args are case-insensitive. If the ARG1 is
-	// "privateKey", the ARG2 may be "der" or "pkcs8". If the ARG1 is "publicKey", the
-	// ARG2 may be "der" or "pkcs1". The ARG2 is ignored for other values of ARG1. The
-	// valid ARG3 modes are "Base64", "modBase64", "Base32", "Base58", "QP" (for
+	// index). The possible values for itemType are "certificate" (or "cert"), "privateKey",
+	// "publicKey", or "csr". Input string args are case-insensitive. If the itemType is
+	// "privateKey", the itemSubType may be "der" or "pkcs8". If the itemType is "publicKey", the
+	// itemSubType may be "der" or "pkcs1". The itemSubType is ignored for other values of itemType. The
+	// valid encoding modes are "Base64", "modBase64", "Base32", "Base58", "QP" (for
 	// quoted-printable), "URL" (for url-encoding), "Hex", "url_oauth", "url_rfc1738",
 	// "url_rfc2396", and "url_rfc3986".
 	bool GetEncodedItem(const char *itemType, const char *itemSubType, const char *encoding, int index, CkString &outStr);
 
 	// Returns the encoded contents of the Nth item of a particular type (0-based
-	// ARG4). The possible values for ARG1 are "certificate" (or "cert"), "privateKey",
-	// "publicKey", or "csr". Input string args are case-insensitive. If the ARG1 is
-	// "privateKey", the ARG2 may be "der" or "pkcs8". If the ARG1 is "publicKey", the
-	// ARG2 may be "der" or "pkcs1". The ARG2 is ignored for other values of ARG1. The
-	// valid ARG3 modes are "Base64", "modBase64", "Base32", "Base58", "QP" (for
+	// index). The possible values for itemType are "certificate" (or "cert"), "privateKey",
+	// "publicKey", or "csr". Input string args are case-insensitive. If the itemType is
+	// "privateKey", the itemSubType may be "der" or "pkcs8". If the itemType is "publicKey", the
+	// itemSubType may be "der" or "pkcs1". The itemSubType is ignored for other values of itemType. The
+	// valid encoding modes are "Base64", "modBase64", "Base32", "Base58", "QP" (for
 	// quoted-printable), "URL" (for url-encoding), "Hex", "url_oauth", "url_rfc1738",
 	// "url_rfc2396", and "url_rfc3986".
 	const char *getEncodedItem(const char *itemType, const char *itemSubType, const char *encoding, int index);
 	// Returns the encoded contents of the Nth item of a particular type (0-based
-	// ARG4). The possible values for ARG1 are "certificate" (or "cert"), "privateKey",
-	// "publicKey", or "csr". Input string args are case-insensitive. If the ARG1 is
-	// "privateKey", the ARG2 may be "der" or "pkcs8". If the ARG1 is "publicKey", the
-	// ARG2 may be "der" or "pkcs1". The ARG2 is ignored for other values of ARG1. The
-	// valid ARG3 modes are "Base64", "modBase64", "Base32", "Base58", "QP" (for
+	// index). The possible values for itemType are "certificate" (or "cert"), "privateKey",
+	// "publicKey", or "csr". Input string args are case-insensitive. If the itemType is
+	// "privateKey", the itemSubType may be "der" or "pkcs8". If the itemType is "publicKey", the
+	// itemSubType may be "der" or "pkcs1". The itemSubType is ignored for other values of itemType. The
+	// valid encoding modes are "Base64", "modBase64", "Base32", "Base58", "QP" (for
 	// quoted-printable), "URL" (for url-encoding), "Hex", "url_oauth", "url_rfc1738",
 	// "url_rfc2396", and "url_rfc3986".
 	const char *encodedItem(const char *itemType, const char *itemSubType, const char *encoding, int index);
@@ -233,25 +241,25 @@ class CK_VISIBLE_PUBLIC CkPem  : public CkMultiByteBase
 	CkTask *LoadP7bFileAsync(const char *path);
 
 
-	// Loads the PEM from a PEM string. If encrypted, then the ARG2 is required for
+	// Loads the PEM from a PEM string. If encrypted, then the password is required for
 	// decryption. Otherwise, an empty string (or any string) may be passed for the
-	// ARG2.
+	// password.
 	bool LoadPem(const char *pemContent, const char *password);
 
-	// Loads the PEM from a PEM string. If encrypted, then the ARG2 is required for
+	// Loads the PEM from a PEM string. If encrypted, then the password is required for
 	// decryption. Otherwise, an empty string (or any string) may be passed for the
-	// ARG2.
+	// password.
 	CkTask *LoadPemAsync(const char *pemContent, const char *password);
 
 
-	// Loads the PEM from a PEM file. If encrypted, then the ARG2 is required for
+	// Loads the PEM from a PEM file. If encrypted, then the password is required for
 	// decryption. Otherwise, an empty string (or any string) may be passed for the
-	// ARG2.
+	// password.
 	bool LoadPemFile(const char *path, const char *password);
 
-	// Loads the PEM from a PEM file. If encrypted, then the ARG2 is required for
+	// Loads the PEM from a PEM file. If encrypted, then the password is required for
 	// decryption. Otherwise, an empty string (or any string) may be passed for the
-	// ARG2.
+	// password.
 	CkTask *LoadPemFileAsync(const char *path, const char *password);
 
 
@@ -263,11 +271,11 @@ class CK_VISIBLE_PUBLIC CkPem  : public CkMultiByteBase
 	bool RemovePrivateKey(int index);
 
 
-	// Converts the PEM to JKS and returns the Java KeyStore object. If the ARG1 is
+	// Converts the PEM to JKS and returns the Java KeyStore object. If the alias is
 	// non-empty, the 1st object (private key or certificate) will use the alias, and
 	// all others (if any) will receive auto-generated aliases. The JKS returned will
-	// be encrypted using the provided ARG2. If the PEM contains only certificates (no
-	// private keys), then the ARG2 is unused.
+	// be encrypted using the provided password. If the PEM contains only certificates (no
+	// private keys), then the password is unused.
 	// The caller is responsible for deleting the object returned by this method.
 	CkJavaKeyStore *ToJks(const char *alias, const char *password);
 
@@ -322,15 +330,15 @@ class CK_VISIBLE_PUBLIC CkPem  : public CkMultiByteBase
 	// -----END CERTIFICATE----- 
 	const char *toPem(void);
 
-	// Write the PFX to a PEM formatted string. If ARG1 is true, then extended
-	// properties (Bag Attributes and Key Attributes) are output. If ARG2 is true,
-	// then no private keys are output. If ARG3 is true, then no certificates are
-	// output. If ARG4 is true, then no CA certs or intermediate CA certs are output.
-	// If ARG5 is not empty, it indicates the encryption algorithm to be used for
+	// Write the PFX to a PEM formatted string. If extendedAttrs is true, then extended
+	// properties (Bag Attributes and Key Attributes) are output. If noKeys is true,
+	// then no private keys are output. If noCerts is true, then no certificates are
+	// output. If noCaCerts is true, then no CA certs or intermediate CA certs are output.
+	// If encryptAlg is not empty, it indicates the encryption algorithm to be used for
 	// encrypting the private keys (otherwise the private keys are output unencrypted).
-	// The possible choices for the ARG5 are "des3", "aes128", "aes192", and "aes256".
+	// The possible choices for the encryptAlg are "des3", "aes128", "aes192", and "aes256".
 	// (All encryption algorithm choices use CBC mode.) If the private keys are to be
-	// encrypted, then ARG6 is the password to be used. Otherwise, ARG6 may be left
+	// encrypted, then password is the password to be used. Otherwise, password may be left
 	// empty. For example:
 	// Bag Attributes
 	//     Microsoft Local Key set: <No Values>
@@ -371,15 +379,15 @@ class CK_VISIBLE_PUBLIC CkPem  : public CkMultiByteBase
 	// -----END CERTIFICATE----- 
 	bool ToPemEx(bool extendedAttrs, bool noKeys, bool noCerts, bool noCaCerts, const char *encryptAlg, const char *password, CkString &outStr);
 
-	// Write the PFX to a PEM formatted string. If ARG1 is true, then extended
-	// properties (Bag Attributes and Key Attributes) are output. If ARG2 is true,
-	// then no private keys are output. If ARG3 is true, then no certificates are
-	// output. If ARG4 is true, then no CA certs or intermediate CA certs are output.
-	// If ARG5 is not empty, it indicates the encryption algorithm to be used for
+	// Write the PFX to a PEM formatted string. If extendedAttrs is true, then extended
+	// properties (Bag Attributes and Key Attributes) are output. If noKeys is true,
+	// then no private keys are output. If noCerts is true, then no certificates are
+	// output. If noCaCerts is true, then no CA certs or intermediate CA certs are output.
+	// If encryptAlg is not empty, it indicates the encryption algorithm to be used for
 	// encrypting the private keys (otherwise the private keys are output unencrypted).
-	// The possible choices for the ARG5 are "des3", "aes128", "aes192", and "aes256".
+	// The possible choices for the encryptAlg are "des3", "aes128", "aes192", and "aes256".
 	// (All encryption algorithm choices use CBC mode.) If the private keys are to be
-	// encrypted, then ARG6 is the password to be used. Otherwise, ARG6 may be left
+	// encrypted, then password is the password to be used. Otherwise, password may be left
 	// empty. For example:
 	// Bag Attributes
 	//     Microsoft Local Key set: <No Values>

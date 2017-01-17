@@ -26,7 +26,6 @@ class CkByteData;
 class CK_VISIBLE_PUBLIC CkCertStore  : public CkMultiByteBase
 {
     private:
-	
 
 	// Don't allow assignment or copying these objects.
 	CkCertStore(const CkCertStore &);
@@ -107,7 +106,7 @@ class CK_VISIBLE_PUBLIC CkCertStore  : public CkMultiByteBase
 #if defined(CK_WINCERTSTORE_INCLUDED)
 	// (This method only available on Microsoft Windows operating systems.)
 	// Creates a registry-based certificate store. regRoot must be "CurrentUser" or
-	// "LocalMachine".  regPath is a registry path such as
+	// "LocalMachine". regPath is a registry path such as
 	// "Software/MyApplication/Certificates".
 	bool CreateRegistryStore(const char *regRoot, const char *regPath);
 
@@ -233,7 +232,7 @@ class CK_VISIBLE_PUBLIC CkCertStore  : public CkMultiByteBase
 	// within the PFX may be searched via the Find* methods. It is also possible to
 	// iterate from 0 to NumCertficates-1, calling GetCertificate for each index, to
 	// retrieve each certificate within the PFX.
-	bool LoadPfxData2(const unsigned char *pByteData, unsigned long szByteData, const char *password);
+	bool LoadPfxData2(const void *pByteData, unsigned long szByteData, const char *password);
 
 #endif
 
@@ -291,10 +290,10 @@ class CK_VISIBLE_PUBLIC CkCertStore  : public CkMultiByteBase
 #if defined(CK_WINCERTSTORE_INCLUDED)
 	// (This method only available on Microsoft Windows operating systems.)
 	// Opens an arbitrary registry-based certificate store. regRoot must be "CurrentUser"
-	// or "LocalMachine".  regPath is a registry path such as
+	// or "LocalMachine". regPath is a registry path such as
 	// "Software/MyApplication/Certificates".
 	// 
-	// Setting  readOnly = true causes the certificate store to be opened read-only, and
+	// Setting readOnly = true causes the certificate store to be opened read-only, and
 	// will prevent "permission denied" errors caused by the need for read-write
 	// permission.
 	// 
@@ -308,8 +307,8 @@ class CK_VISIBLE_PUBLIC CkCertStore  : public CkMultiByteBase
 
 #if defined(CK_WINCERTSTORE_INCLUDED)
 	// (This method only available on Microsoft Windows operating systems.)
-	// Opens a Microsoft Windows certificate store. ARG1 must be "CurrentUser" or
-	// "LocalMachine". ARG2 is the name of the certificate store to open. It may be any
+	// Opens a Microsoft Windows certificate store. storeLocation must be "CurrentUser" or
+	// "LocalMachine". storeName is the name of the certificate store to open. It may be any
 	// of the following:
 	//     AddressBook: Certificate store for other users.
 	//     AuthRoot: Certificate store for third-party certification authorities (CAs).
@@ -321,7 +320,7 @@ class CK_VISIBLE_PUBLIC CkCertStore  : public CkMultiByteBase
 	//     TrustedPeople: Certificate store for directly trusted people and resources.
 	//     TrustedPublisher: Certificate store for directly trusted publishers.
 	// 
-	// Setting ARG3 = true causes the certificate store to be opened read-only, and
+	// Setting readOnly = true causes the certificate store to be opened read-only, and
 	// will prevent "permission denied" errors caused by the need for read-write
 	// permission.
 	// 

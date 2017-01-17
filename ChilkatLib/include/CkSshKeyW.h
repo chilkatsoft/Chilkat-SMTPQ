@@ -127,13 +127,6 @@ class CK_VISIBLE_PUBLIC CkSshKeyW  : public CkWideCharBase
 	// 
 	bool FromXml(const wchar_t *xmlKey);
 
-	// Generates a fingerpring for an SSH key. A sample fingerprint looks like this:
-	// ssh-dss 2048 d0:5f:f7:d6:49:60:7b:50:19:f4:41:59:d4:1f:61:7a
-	bool GenFingerprint(CkString &outStr);
-	// Generates a fingerpring for an SSH key. A sample fingerprint looks like this:
-	// ssh-dss 2048 d0:5f:f7:d6:49:60:7b:50:19:f4:41:59:d4:1f:61:7a
-	const wchar_t *genFingerprint(void);
-
 	// Generates a new SSH DSA key that is numBits bits in length. The numBits should be at
 	// least 1024 bits and a multiple of 64. Typical values are 1024 and 2048.
 	bool GenerateDsaKey(int numBits);
@@ -143,13 +136,20 @@ class CK_VISIBLE_PUBLIC CkSshKeyW  : public CkWideCharBase
 	// the public/private keys can be exported in OpenSSH or PuTTY format.
 	// 
 	// (excerpt from Wikipedia's article on RSA) 65537 is a commonly used value for
-	//  exponent. This value can be regarded as a compromise between avoiding potential
+	// exponent. This value can be regarded as a compromise between avoiding potential
 	// small exponent attacks and still allowing efficient encryptions (or signature
 	// verification). The NIST Special Publication on Computer Security (SP 800-78 Rev
 	// 1 of August 2007) does not allow public exponents e smaller than 65537, but does
 	// not state a reason for this restriction.
 	// 
 	bool GenerateRsaKey(int numBits, int exponent);
+
+	// Generates a fingerpring for an SSH key. A sample fingerprint looks like this:
+	// ssh-dss 2048 d0:5f:f7:d6:49:60:7b:50:19:f4:41:59:d4:1f:61:7a
+	bool GenFingerprint(CkString &outStr);
+	// Generates a fingerpring for an SSH key. A sample fingerprint looks like this:
+	// ssh-dss 2048 d0:5f:f7:d6:49:60:7b:50:19:f4:41:59:d4:1f:61:7a
+	const wchar_t *genFingerprint(void);
 
 	// Convenience method for loading an entire text file into an in-memory string.
 	bool LoadText(const wchar_t *filename, CkString &outStr);

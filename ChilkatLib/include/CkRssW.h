@@ -10,7 +10,7 @@
 #include "chilkatDefs.h"
 
 #include "CkString.h"
-#include "CkWideCharBase.h"
+#include "CkClassWithCallbacksW.h"
 
 class CkTaskW;
 class CkBaseProgressW;
@@ -23,11 +23,10 @@ class CkBaseProgressW;
  
 
 // CLASS: CkRssW
-class CK_VISIBLE_PUBLIC CkRssW  : public CkWideCharBase
+class CK_VISIBLE_PUBLIC CkRssW  : public CkClassWithCallbacksW
 {
     private:
 	bool m_cbOwned;
-	void *m_eventCallback;
 
 	// Don't allow assignment or copying these objects.
 	CkRssW(const CkRssW &);
@@ -144,7 +143,7 @@ class CK_VISIBLE_PUBLIC CkRssW  : public CkWideCharBase
 	const wchar_t *string(const wchar_t *tag);
 
 	// Load an RSS document from a file.
-	bool LoadRssFile(const wchar_t *filename);
+	bool LoadRssFile(const wchar_t *filePath);
 
 	// Loads an RSS feed document from an in-memory string.
 	bool LoadRssString(const wchar_t *rssString);

@@ -25,7 +25,6 @@ class CkByteData;
 class CK_VISIBLE_PUBLIC CkCgi  : public CkMultiByteBase
 {
     private:
-	
 
 	// Don't allow assignment or copying these objects.
 	CkCgi(const CkCgi &);
@@ -50,13 +49,13 @@ class CK_VISIBLE_PUBLIC CkCgi  : public CkMultiByteBase
 	// Properties
 	// ----------------------
 
-	unsigned long get_AsyncBytesRead(void);
+	int get_AsyncBytesRead(void);
 
 
 	bool get_AsyncInProgress(void);
 
 
-	unsigned long get_AsyncPostSize(void);
+	int get_AsyncPostSize(void);
 
 
 	bool get_AsyncSuccess(void);
@@ -83,9 +82,9 @@ class CK_VISIBLE_PUBLIC CkCgi  : public CkMultiByteBase
 	void put_ReadChunkSize(int newVal);
 
 
-	unsigned long get_SizeLimitKB(void);
+	int get_SizeLimitKB(void);
 
-	void put_SizeLimitKB(unsigned long newVal);
+	void put_SizeLimitKB(int newVal);
 
 
 	bool get_StreamToUploadDir(void);
@@ -168,7 +167,7 @@ class CK_VISIBLE_PUBLIC CkCgi  : public CkMultiByteBase
 
 
 
-	unsigned long GetUploadSize(int index);
+	int GetUploadSize(int index);
 
 
 

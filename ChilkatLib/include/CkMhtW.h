@@ -10,7 +10,7 @@
 #include "chilkatDefs.h"
 
 #include "CkString.h"
-#include "CkWideCharBase.h"
+#include "CkClassWithCallbacksW.h"
 
 class CkTaskW;
 class CkBaseProgressW;
@@ -23,11 +23,10 @@ class CkBaseProgressW;
  
 
 // CLASS: CkMhtW
-class CK_VISIBLE_PUBLIC CkMhtW  : public CkWideCharBase
+class CK_VISIBLE_PUBLIC CkMhtW  : public CkClassWithCallbacksW
 {
     private:
 	bool m_cbOwned;
-	void *m_eventCallback;
 
 	// Don't allow assignment or copying these objects.
 	CkMhtW(const CkMhtW &);
@@ -59,6 +58,23 @@ class CK_VISIBLE_PUBLIC CkMhtW  : public CkWideCharBase
 	// ----------------------
 	// Properties
 	// ----------------------
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	bool get_AbortCurrent(void);
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	void put_AbortCurrent(bool newVal);
+
 	// When processing an HTML file or string (not a website URL), this defines the
 	// base URL to be used when converting relative HREFs to absolute HREFs.
 	void get_BaseUrl(CkString &str);
@@ -541,41 +557,41 @@ class CK_VISIBLE_PUBLIC CkMhtW  : public CkWideCharBase
 
 	// Creates an EML file from a web page or HTML file. All external images and style
 	// sheets are downloaded and embedded in the EML file.
-	bool GetAndSaveEML(const wchar_t *url, const wchar_t *emlFilename);
+	bool GetAndSaveEML(const wchar_t *url_or_htmlFilepath, const wchar_t *emlPath);
 
 	// Creates an asynchronous task to call the GetAndSaveEML method with the arguments
 	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *GetAndSaveEMLAsync(const wchar_t *url, const wchar_t *emlFilename);
+	CkTaskW *GetAndSaveEMLAsync(const wchar_t *url_or_htmlFilepath, const wchar_t *emlPath);
 
 	// Creates an MHT file from a web page or local HTML file. All external images,
 	// scripts, and style sheets are downloaded and embedded in the MHT file.
-	bool GetAndSaveMHT(const wchar_t *url, const wchar_t *mhtFilename);
+	bool GetAndSaveMHT(const wchar_t *url_or_htmlFilepath, const wchar_t *mhtPath);
 
 	// Creates an asynchronous task to call the GetAndSaveMHT method with the arguments
 	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *GetAndSaveMHTAsync(const wchar_t *url, const wchar_t *mhtFilename);
+	CkTaskW *GetAndSaveMHTAsync(const wchar_t *url_or_htmlFilepath, const wchar_t *mhtPath);
 
 	// Creates an EML file from a web page or HTML file, compresses, and appends to a
 	// new or existing Zip file. All external images and style sheets are downloaded
 	// and embedded in the EML.
-	bool GetAndZipEML(const wchar_t *url, const wchar_t *zipEntryFilename, const wchar_t *zipFilename);
+	bool GetAndZipEML(const wchar_t *url_or_htmlFilepath, const wchar_t *zipEntryFilename, const wchar_t *zipFilename);
 
 	// Creates an asynchronous task to call the GetAndZipEML method with the arguments
 	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *GetAndZipEMLAsync(const wchar_t *url, const wchar_t *zipEntryFilename, const wchar_t *zipFilename);
+	CkTaskW *GetAndZipEMLAsync(const wchar_t *url_or_htmlFilepath, const wchar_t *zipEntryFilename, const wchar_t *zipFilename);
 
 	// Creates an MHT file from a web page or HTML file, compresses, and appends to a
 	// new or existing Zip file. All external images and style sheets are downloaded
 	// and embedded in the MHT.
-	bool GetAndZipMHT(const wchar_t *url, const wchar_t *zipEntryFilename, const wchar_t *zipFilename);
+	bool GetAndZipMHT(const wchar_t *url_or_htmlFilepath, const wchar_t *zipEntryFilename, const wchar_t *zipFilename);
 
 	// Creates an asynchronous task to call the GetAndZipMHT method with the arguments
 	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *GetAndZipMHTAsync(const wchar_t *url, const wchar_t *zipEntryFilename, const wchar_t *zipFilename);
+	CkTaskW *GetAndZipMHTAsync(const wchar_t *url_or_htmlFilepath, const wchar_t *zipEntryFilename, const wchar_t *zipFilename);
 
 	// Returns the Nth cache root (indexing begins at 0). Cache roots are set by
 	// calling AddCacheRoot one or more times.
@@ -589,33 +605,33 @@ class CK_VISIBLE_PUBLIC CkMhtW  : public CkWideCharBase
 
 	// Creates EML from a web page or HTML file, and returns the EML (MIME) message
 	// data as a string.
-	bool GetEML(const wchar_t *url, CkString &outStr);
+	bool GetEML(const wchar_t *url_or_htmlFilepath, CkString &outStr);
 	// Creates EML from a web page or HTML file, and returns the EML (MIME) message
 	// data as a string.
-	const wchar_t *getEML(const wchar_t *url);
+	const wchar_t *getEML(const wchar_t *url_or_htmlFilepath);
 	// Creates EML from a web page or HTML file, and returns the EML (MIME) message
 	// data as a string.
-	const wchar_t *eML(const wchar_t *url);
+	const wchar_t *eML(const wchar_t *url_or_htmlFilepath);
 
 	// Creates an asynchronous task to call the GetEML method with the arguments
 	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *GetEMLAsync(const wchar_t *url);
+	CkTaskW *GetEMLAsync(const wchar_t *url_or_htmlFilepath);
 
 	// Creates MHT from a web page or local HTML file, and returns the MHT (MIME)
 	// message data as a string
-	bool GetMHT(const wchar_t *url, CkString &outStr);
+	bool GetMHT(const wchar_t *url_or_htmlFilepath, CkString &outStr);
 	// Creates MHT from a web page or local HTML file, and returns the MHT (MIME)
 	// message data as a string
-	const wchar_t *getMHT(const wchar_t *url);
+	const wchar_t *getMHT(const wchar_t *url_or_htmlFilepath);
 	// Creates MHT from a web page or local HTML file, and returns the MHT (MIME)
 	// message data as a string
-	const wchar_t *mHT(const wchar_t *url);
+	const wchar_t *mHT(const wchar_t *url_or_htmlFilepath);
 
 	// Creates an asynchronous task to call the GetMHT method with the arguments
 	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *GetMHTAsync(const wchar_t *url);
+	CkTaskW *GetMHTAsync(const wchar_t *url_or_htmlFilepath);
 
 	// Creates an in-memory EML string from an in-memory HTML string. All external
 	// images and style sheets are downloaded and embedded in the EML string that is
@@ -675,8 +691,8 @@ class CK_VISIBLE_PUBLIC CkMhtW  : public CkWideCharBase
 	bool UnlockComponent(const wchar_t *unlockCode);
 
 	// Unpacks the contents of a MHT file. The destination directory is specified by
-	//  unpackDir. The name of the HTML file created is specified by  htmlFilename, and supporting
-	// files (images, javascripts, etc.) are created in  partsSubDir, which is automatically
+	// unpackDir. The name of the HTML file created is specified by htmlFilename, and supporting
+	// files (images, javascripts, etc.) are created in partsSubDir, which is automatically
 	// created if it does not already exist.
 	bool UnpackMHT(const wchar_t *mhtFilename, const wchar_t *unpackDir, const wchar_t *htmlFilename, const wchar_t *partsSubDir);
 

@@ -1,11 +1,10 @@
-// This is a generated source file for Chilkat version 9.5.0.55
-#if defined(WIN32) || defined(WINCE)
-
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkCsp_H
 #define _C_CkCsp_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
+
 
 CK_VISIBLE_PUBLIC HCkCsp CkCsp_Create(void);
 CK_VISIBLE_PUBLIC void CkCsp_Dispose(HCkCsp handle);
@@ -74,5 +73,3 @@ CK_VISIBLE_PUBLIC BOOL CkCsp_SetProviderMicrosoftEnhanced(HCkCsp cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCsp_SetProviderMicrosoftRsaAes(HCkCsp cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCsp_SetProviderMicrosoftStrong(HCkCsp cHandle);
 #endif
-
-#endif // WIN32 (entire file)

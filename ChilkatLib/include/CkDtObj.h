@@ -24,7 +24,6 @@
 class CK_VISIBLE_PUBLIC CkDtObj  : public CkMultiByteBase
 {
     private:
-	
 
 	// Don't allow assignment or copying these objects.
 	CkDtObj(const CkDtObj &);

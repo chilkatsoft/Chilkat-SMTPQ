@@ -1,19 +1,20 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkDsaWH
 #define _C_CkDsaWH
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
 CK_VISIBLE_PUBLIC HCkDsaW CkDsaW_Create(void);
 CK_VISIBLE_PUBLIC void CkDsaW_Dispose(HCkDsaW handle);
 CK_VISIBLE_PUBLIC void CkDsaW_getDebugLogFilePath(HCkDsaW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkDsaW_putDebugLogFilePath(HCkDsaW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkDsaW_putDebugLogFilePath(HCkDsaW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkDsaW_debugLogFilePath(HCkDsaW cHandle);
 CK_VISIBLE_PUBLIC int CkDsaW_getGroupSize(HCkDsaW cHandle);
-CK_VISIBLE_PUBLIC void CkDsaW_putGroupSize(HCkDsaW cHandle, int newVal);
+CK_VISIBLE_PUBLIC void  CkDsaW_putGroupSize(HCkDsaW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkDsaW_getHash(HCkDsaW cHandle, HCkByteData retval);
-CK_VISIBLE_PUBLIC void CkDsaW_putHash(HCkDsaW cHandle, HCkByteData  newVal);
+CK_VISIBLE_PUBLIC void  CkDsaW_putHash(HCkDsaW cHandle, HCkByteData newVal);
 CK_VISIBLE_PUBLIC void CkDsaW_getHexG(HCkDsaW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkDsaW_hexG(HCkDsaW cHandle);
 CK_VISIBLE_PUBLIC void CkDsaW_getHexP(HCkDsaW cHandle, HCkString retval);
@@ -31,11 +32,11 @@ CK_VISIBLE_PUBLIC const wchar_t *CkDsaW_lastErrorText(HCkDsaW cHandle);
 CK_VISIBLE_PUBLIC void CkDsaW_getLastErrorXml(HCkDsaW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkDsaW_lastErrorXml(HCkDsaW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkDsaW_getLastMethodSuccess(HCkDsaW cHandle);
-CK_VISIBLE_PUBLIC void CkDsaW_putLastMethodSuccess(HCkDsaW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkDsaW_putLastMethodSuccess(HCkDsaW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkDsaW_getSignature(HCkDsaW cHandle, HCkByteData retval);
-CK_VISIBLE_PUBLIC void CkDsaW_putSignature(HCkDsaW cHandle, HCkByteData  newVal);
+CK_VISIBLE_PUBLIC void  CkDsaW_putSignature(HCkDsaW cHandle, HCkByteData newVal);
 CK_VISIBLE_PUBLIC BOOL CkDsaW_getVerboseLogging(HCkDsaW cHandle);
-CK_VISIBLE_PUBLIC void CkDsaW_putVerboseLogging(HCkDsaW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkDsaW_putVerboseLogging(HCkDsaW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkDsaW_getVersion(HCkDsaW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkDsaW_version(HCkDsaW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkDsaW_FromDer(HCkDsaW cHandle, HCkByteData derData);

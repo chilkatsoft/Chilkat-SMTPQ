@@ -25,7 +25,6 @@ class CkByteData;
 class CK_VISIBLE_PUBLIC CkPrng  : public CkMultiByteBase
 {
     private:
-	
 
 	// Don't allow assignment or copying these objects.
 	CkPrng(const CkPrng &);
@@ -90,8 +89,8 @@ class CK_VISIBLE_PUBLIC CkPrng  : public CkMultiByteBase
 	// the reproduction of the same pseudo-random number sequence for testing and
 	// debugging purposes.
 	// 
-	// The entropy bytes are passed in ARG1 using the binary encoding specified in
-	// ARG2. Binary encodings can be "hex", "base64", etc. See the link below for
+	// The entropy bytes are passed in entropy using the binary encoding specified in
+	// encoding. Binary encodings can be "hex", "base64", etc. See the link below for
 	// supported binary encodings.
 	// 
 	bool AddEntropy(const char *entropy, const char *encoding);
@@ -139,8 +138,16 @@ class CK_VISIBLE_PUBLIC CkPrng  : public CkMultiByteBase
 	// 
 	const char *exportEntropy(void);
 
-	// Generates and returns ARG1 random bytes in encoded string form. The binary
-	// encoding is specified by ARG2, and can be "hex", "base64", etc. (See the link
+	// Generates a random Firebase Push ID. See Firebase Unique Identifiers
+	// <https://www.firebase.com/blog/2015-02-11-firebase-unique-identifiers.html> .
+	bool FirebasePushId(CkString &outStr);
+
+	// Generates a random Firebase Push ID. See Firebase Unique Identifiers
+	// <https://www.firebase.com/blog/2015-02-11-firebase-unique-identifiers.html> .
+	const char *firebasePushId(void);
+
+	// Generates and returns numBytes random bytes in encoded string form. The binary
+	// encoding is specified by encoding, and can be "hex", "base64", etc. (See the link
 	// below for supported binary encodings.)
 	// 
 	// Important: If no entropy was explicitly added prior to first call to generate
@@ -149,8 +156,8 @@ class CK_VISIBLE_PUBLIC CkPrng  : public CkMultiByteBase
 	// 
 	bool GenRandom(int numBytes, const char *encoding, CkString &outStr);
 
-	// Generates and returns ARG1 random bytes in encoded string form. The binary
-	// encoding is specified by ARG2, and can be "hex", "base64", etc. (See the link
+	// Generates and returns numBytes random bytes in encoded string form. The binary
+	// encoding is specified by encoding, and can be "hex", "base64", etc. (See the link
 	// below for supported binary encodings.)
 	// 
 	// Important: If no entropy was explicitly added prior to first call to generate
@@ -159,7 +166,7 @@ class CK_VISIBLE_PUBLIC CkPrng  : public CkMultiByteBase
 	// 
 	const char *genRandom(int numBytes, const char *encoding);
 
-	// Generates and returns ARG1 random bytes.
+	// Generates and returns numBytes random bytes.
 	// 
 	// Important: If no entropy was explicitly added prior to first call to generate
 	// random bytes, then 32 bytes of entropy (from the system source, such as
@@ -178,7 +185,7 @@ class CK_VISIBLE_PUBLIC CkPrng  : public CkMultiByteBase
 	// app is free to periodically add bits of entropy to a long-running PRNG as it
 	// sees fit.
 	// 
-	// The ARG2 specifies the encoding to be used. It can be "hex", "base64", or many
+	// The encoding specifies the encoding to be used. It can be "hex", "base64", or many
 	// other possibilities. See the link below.
 	// 
 	bool GetEntropy(int numBytes, const char *encoding, CkString &outStr);
@@ -193,7 +200,7 @@ class CK_VISIBLE_PUBLIC CkPrng  : public CkMultiByteBase
 	// app is free to periodically add bits of entropy to a long-running PRNG as it
 	// sees fit.
 	// 
-	// The ARG2 specifies the encoding to be used. It can be "hex", "base64", or many
+	// The encoding specifies the encoding to be used. It can be "hex", "base64", or many
 	// other possibilities. See the link below.
 	// 
 	const char *getEntropy(int numBytes, const char *encoding);
@@ -207,7 +214,7 @@ class CK_VISIBLE_PUBLIC CkPrng  : public CkMultiByteBase
 	// app is free to periodically add bits of entropy to a long-running PRNG as it
 	// sees fit.
 	// 
-	// The ARG2 specifies the encoding to be used. It can be "hex", "base64", or many
+	// The encoding specifies the encoding to be used. It can be "hex", "base64", or many
 	// other possibilities. See the link below.
 	// 
 	const char *entropy(int numBytes, const char *encoding);
@@ -231,44 +238,44 @@ class CK_VISIBLE_PUBLIC CkPrng  : public CkMultiByteBase
 	bool ImportEntropy(const char *entropy);
 
 
-	// Generates and returns a random integer between ARG1 and ARG2 (inclusive). For
-	// example, if ARG1 is 4 and ARG2 is 8, then random integers in the range 4, 5, 6,
+	// Generates and returns a random integer between low and high (inclusive). For
+	// example, if low is 4 and high is 8, then random integers in the range 4, 5, 6,
 	// 7, 8 are returned.
 	int RandomInt(int low, int high);
 
 
-	// Generates and returns a random password of a specified length. If ARG2 is
-	// true, the generated password will contain at least one digit (0-9). If ARG3 is
+	// Generates and returns a random password of a specified length. If mustIncludeDigit is
+	// true, the generated password will contain at least one digit (0-9). If upperAndLowercase is
 	// true, then generated password will contain both lowercase and uppercase
-	// USASCII chars (a-z and A-Z). If ARG4 is a non-empty string, it contains the set
+	// USASCII chars (a-z and A-Z). If mustHaveOneOf is a non-empty string, it contains the set
 	// of non-alphanumeric characters, one of which must be included in the password.
-	// For example, ARG4 might be the string "!@#$%". If ARG5 is a non-empty string, it
+	// For example, mustHaveOneOf might be the string "!@#$%". If excludeChars is a non-empty string, it
 	// contains chars that should be excluded from the password. A typical need would
 	// be to exclude chars that appear similar to others, such as i, l, 1, L, o, 0, O.
 	bool RandomPassword(int length, bool mustIncludeDigit, bool upperAndLowercase, const char *mustHaveOneOf, const char *excludeChars, CkString &outStr);
 
-	// Generates and returns a random password of a specified length. If ARG2 is
-	// true, the generated password will contain at least one digit (0-9). If ARG3 is
+	// Generates and returns a random password of a specified length. If mustIncludeDigit is
+	// true, the generated password will contain at least one digit (0-9). If upperAndLowercase is
 	// true, then generated password will contain both lowercase and uppercase
-	// USASCII chars (a-z and A-Z). If ARG4 is a non-empty string, it contains the set
+	// USASCII chars (a-z and A-Z). If mustHaveOneOf is a non-empty string, it contains the set
 	// of non-alphanumeric characters, one of which must be included in the password.
-	// For example, ARG4 might be the string "!@#$%". If ARG5 is a non-empty string, it
+	// For example, mustHaveOneOf might be the string "!@#$%". If excludeChars is a non-empty string, it
 	// contains chars that should be excluded from the password. A typical need would
 	// be to exclude chars that appear similar to others, such as i, l, 1, L, o, 0, O.
 	const char *randomPassword(int length, bool mustIncludeDigit, bool upperAndLowercase, const char *mustHaveOneOf, const char *excludeChars);
 
 	// Generates and returns a random string that may contain digits (0-9), lowercase
-	// ASCII (a-z) , and uppercase ASCII (A-Z). To include numeric digits, set ARG2
-	// equal to true. To include lowercase ASCII, set ARG3 equal to true. To
-	// include uppercase ASCII, set ARG4 equal to true. The length of the string to
-	// be generated is specified by ARG1.
+	// ASCII (a-z) , and uppercase ASCII (A-Z). To include numeric digits, set bDigits
+	// equal to true. To include lowercase ASCII, set bLower equal to true. To
+	// include uppercase ASCII, set bUpper equal to true. The length of the string to
+	// be generated is specified by length.
 	bool RandomString(int length, bool bDigits, bool bLower, bool bUpper, CkString &outStr);
 
 	// Generates and returns a random string that may contain digits (0-9), lowercase
-	// ASCII (a-z) , and uppercase ASCII (A-Z). To include numeric digits, set ARG2
-	// equal to true. To include lowercase ASCII, set ARG3 equal to true. To
-	// include uppercase ASCII, set ARG4 equal to true. The length of the string to
-	// be generated is specified by ARG1.
+	// ASCII (a-z) , and uppercase ASCII (A-Z). To include numeric digits, set bDigits
+	// equal to true. To include lowercase ASCII, set bLower equal to true. To
+	// include uppercase ASCII, set bUpper equal to true. The length of the string to
+	// be generated is specified by length.
 	const char *randomString(int length, bool bDigits, bool bLower, bool bUpper);
 
 

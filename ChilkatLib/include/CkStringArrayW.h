@@ -84,11 +84,11 @@ class CK_VISIBLE_PUBLIC CkStringArrayW  : public CkWideCharBase
 
 	// If true, then duplicates are not allowed. When an attempt is made to insert a
 	// string that already exists, the duplicate insertion is silently suppressed and
-	// no error is returned.
+	// no error is returned. The default value is false.
 	bool get_Unique(void);
 	// If true, then duplicates are not allowed. When an attempt is made to insert a
 	// string that already exists, the duplicate insertion is silently suppressed and
-	// no error is returned.
+	// no error is returned. The default value is false.
 	void put_Unique(bool newVal);
 
 
@@ -110,19 +110,19 @@ class CK_VISIBLE_PUBLIC CkStringArrayW  : public CkWideCharBase
 	// comparisons are case sensitive.
 	bool Contains(const wchar_t *str);
 
-	// Finds the index of the first string equal to findStr. The search begins at  startIndex. If
+	// Finds the index of the first string equal to findStr. The search begins at startIndex. If
 	// the string is not found, -1 is returned. The first string in the array is at
 	// index 0.
-	int Find(const wchar_t *str, int firstIndex);
+	int Find(const wchar_t *findStr, int startIndex);
 
-	// Finds the first string that matches the matchPattern. The search begins at  startIndex. If the
+	// Finds the first string that matches the matchPattern. The search begins at startIndex. If the
 	// string is not found, -1 is returned. The first string in the array is at index
 	// 0.
 	// 
 	// The matchPattern may contain zero or more asterisk chars, each of which matches 0 or
 	// more of any character.
 	// 
-	int FindFirstMatch(const wchar_t *str, int firstIndex);
+	int FindFirstMatch(const wchar_t *matchPattern, int startIndex);
 
 	// Returns the string at an indexed location within the internal collection. The
 	// first string is located at index 0.
@@ -150,12 +150,12 @@ class CK_VISIBLE_PUBLIC CkStringArrayW  : public CkWideCharBase
 	// Loads strings from a file (one per line) into the internal collection. It is
 	// assumed the file contains ANSI strings. To load from a file containing non-ANSI
 	// strings (such as utf-8), call LoadFromFile2 instead.
-	bool LoadFromFile(const wchar_t *filename);
+	bool LoadFromFile(const wchar_t *path);
 
-	// Loads strings from a file (one per line) into the internal collection. The  charset
+	// Loads strings from a file (one per line) into the internal collection. The charset
 	// specifies the character encoding (such as utf-8) of the strings contained in the
 	// file.
-	bool LoadFromFile2(const wchar_t *filename, const wchar_t *charset);
+	bool LoadFromFile2(const wchar_t *path, const wchar_t *charset);
 
 	// Loads strings from an in-memory string (one per line) into the internal
 	// collection.
@@ -182,16 +182,16 @@ class CK_VISIBLE_PUBLIC CkStringArrayW  : public CkWideCharBase
 	void ReplaceAt(int index, const wchar_t *str);
 
 	// Saves the Nth string in the collection to a file.
-	bool SaveNthToFile(int index, const wchar_t *filename);
+	bool SaveNthToFile(int index, const wchar_t *saveToPath);
 
 	// Saves the collection of strings to a file, one string per line. Strings are
 	// saved using the ANSI charset. (Call SaveToFile2 to specify a charset, such as
 	// "utf-8")
-	bool SaveToFile(const wchar_t *filename);
+	bool SaveToFile(const wchar_t *path);
 
 	// Saves the collection of strings to a file, one string per line. Strings are
-	// saved using the specified  charset.
-	bool SaveToFile2(const wchar_t *filename, const wchar_t *charset);
+	// saved using the specified charset.
+	bool SaveToFile2(const wchar_t *saveToPath, const wchar_t *charset);
 
 	// Writes the collection of strings to a single string, one per line (separated by
 	// CRLF line endings).
@@ -224,11 +224,11 @@ class CK_VISIBLE_PUBLIC CkStringArrayW  : public CkWideCharBase
 
 	// Subtracts the strings contained within stringArrayObj from the caller's internal
 	// collection.
-	void Subtract(CkStringArrayW &sa);
+	void Subtract(CkStringArrayW &stringArrayObj);
 
 	// Performs the union set-operator. The result is that the caller will have a
 	// string collection that is the union of itself and stringArrayObj.
-	void Union(CkStringArrayW &sa);
+	void Union(CkStringArrayW &stringArrayObj);
 
 
 

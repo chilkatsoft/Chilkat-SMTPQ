@@ -1,14 +1,15 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkXmpWH
 #define _C_CkXmpWH
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
 CK_VISIBLE_PUBLIC HCkXmpW CkXmpW_Create(void);
 CK_VISIBLE_PUBLIC void CkXmpW_Dispose(HCkXmpW handle);
 CK_VISIBLE_PUBLIC void CkXmpW_getDebugLogFilePath(HCkXmpW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkXmpW_putDebugLogFilePath(HCkXmpW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkXmpW_putDebugLogFilePath(HCkXmpW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkXmpW_debugLogFilePath(HCkXmpW cHandle);
 CK_VISIBLE_PUBLIC void CkXmpW_getLastErrorHtml(HCkXmpW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkXmpW_lastErrorHtml(HCkXmpW cHandle);
@@ -17,23 +18,23 @@ CK_VISIBLE_PUBLIC const wchar_t *CkXmpW_lastErrorText(HCkXmpW cHandle);
 CK_VISIBLE_PUBLIC void CkXmpW_getLastErrorXml(HCkXmpW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkXmpW_lastErrorXml(HCkXmpW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkXmpW_getLastMethodSuccess(HCkXmpW cHandle);
-CK_VISIBLE_PUBLIC void CkXmpW_putLastMethodSuccess(HCkXmpW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkXmpW_putLastMethodSuccess(HCkXmpW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkXmpW_getNumEmbedded(HCkXmpW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkXmpW_getStructInnerDescrip(HCkXmpW cHandle);
-CK_VISIBLE_PUBLIC void CkXmpW_putStructInnerDescrip(HCkXmpW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkXmpW_putStructInnerDescrip(HCkXmpW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkXmpW_getVerboseLogging(HCkXmpW cHandle);
-CK_VISIBLE_PUBLIC void CkXmpW_putVerboseLogging(HCkXmpW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkXmpW_putVerboseLogging(HCkXmpW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkXmpW_getVersion(HCkXmpW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkXmpW_version(HCkXmpW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkXmpW_AddArray(HCkXmpW cHandle, HCkXmlW xml, const wchar_t *arrType, const wchar_t *propName, HCkStringArrayW values);
 CK_VISIBLE_PUBLIC void CkXmpW_AddNsMapping(HCkXmpW cHandle, const wchar_t *ns, const wchar_t *uri);
-CK_VISIBLE_PUBLIC BOOL CkXmpW_AddSimpleDate(HCkXmpW cHandle, HCkXmlW iXml, const wchar_t *propName, SYSTEMTIME *propVal);
+CK_VISIBLE_PUBLIC BOOL CkXmpW_AddSimpleDate(HCkXmpW cHandle, HCkXmlW iXml, const wchar_t *propName, SYSTEMTIME * propVal);
 CK_VISIBLE_PUBLIC BOOL CkXmpW_AddSimpleInt(HCkXmpW cHandle, HCkXmlW iXml, const wchar_t *propName, int propVal);
 CK_VISIBLE_PUBLIC BOOL CkXmpW_AddSimpleStr(HCkXmpW cHandle, HCkXmlW iXml, const wchar_t *propName, const wchar_t *propVal);
 CK_VISIBLE_PUBLIC BOOL CkXmpW_AddStructProp(HCkXmpW cHandle, HCkXmlW iChilkatXml, const wchar_t *structName, const wchar_t *propName, const wchar_t *propValue);
 CK_VISIBLE_PUBLIC BOOL CkXmpW_Append(HCkXmpW cHandle, HCkXmlW iXml);
-CK_VISIBLE_PUBLIC BOOL CkXmpW_DateToString(HCkXmpW cHandle, SYSTEMTIME *d, HCkString outStr);
-CK_VISIBLE_PUBLIC const wchar_t *CkXmpW_dateToString(HCkXmpW cHandle, SYSTEMTIME *d);
+CK_VISIBLE_PUBLIC BOOL CkXmpW_DateToString(HCkXmpW cHandle, SYSTEMTIME * d, HCkString outStr);
+CK_VISIBLE_PUBLIC const wchar_t *CkXmpW_dateToString(HCkXmpW cHandle, SYSTEMTIME * d);
 CK_VISIBLE_PUBLIC HCkStringArrayW CkXmpW_GetArray(HCkXmpW cHandle, HCkXmlW iXml, const wchar_t *propName);
 CK_VISIBLE_PUBLIC HCkXmlW CkXmpW_GetEmbedded(HCkXmpW cHandle, int index);
 CK_VISIBLE_PUBLIC HCkXmlW CkXmpW_GetProperty(HCkXmpW cHandle, HCkXmlW iXml, const wchar_t *propName);

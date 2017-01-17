@@ -24,7 +24,6 @@
 class CK_VISIBLE_PUBLIC CkUrl  : public CkMultiByteBase
 {
     private:
-	
 
 	// Don't allow assignment or copying these objects.
 	CkUrl(const CkUrl &);
@@ -107,6 +106,21 @@ class CK_VISIBLE_PUBLIC CkUrl  : public CkMultiByteBase
 	// VPDKIKX0DER&pf_rd_s=desktop-1", then the path is
 	// "/gp/product/1476752842/ref=s9_psimh_gw_p14_d0_i3".
 	const char *path(void);
+
+	// The path (and params) part of the URL, including the query params, but excluding
+	// the fragment. If the URL is:
+	// "http://www.amazon.com/gp/product/1476752842/ref=s9_psimh_gw_p14_d0_i3?pf_rd_m=AT
+	// VPDKIKX0DER&pf_rd_s=desktop-1", then then this property returns
+	// "/gp/product/1476752842/ref=s9_psimh_gw_p14_d0_i3?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=d
+	// esktop-1".
+	void get_PathWithQueryParams(CkString &str);
+	// The path (and params) part of the URL, including the query params, but excluding
+	// the fragment. If the URL is:
+	// "http://www.amazon.com/gp/product/1476752842/ref=s9_psimh_gw_p14_d0_i3?pf_rd_m=AT
+	// VPDKIKX0DER&pf_rd_s=desktop-1", then then this property returns
+	// "/gp/product/1476752842/ref=s9_psimh_gw_p14_d0_i3?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=d
+	// esktop-1".
+	const char *pathWithQueryParams(void);
 
 	// The port number of the URL.
 	// 

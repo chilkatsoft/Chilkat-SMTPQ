@@ -1,9 +1,10 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkMime_H
 #define _C_CkMime_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
+
 
 CK_VISIBLE_PUBLIC HCkMime CkMime_Create(void);
 CK_VISIBLE_PUBLIC void CkMime_Dispose(HCkMime handle);
@@ -122,7 +123,9 @@ CK_VISIBLE_PUBLIC BOOL CkMime_GetHeaderFieldValue(HCkMime cHandle, int index, HC
 CK_VISIBLE_PUBLIC const char *CkMime_getHeaderFieldValue(HCkMime cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkMime_GetMime(HCkMime cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkMime_getMime(HCkMime cHandle);
+CK_VISIBLE_PUBLIC BOOL CkMime_GetMimeBd(HCkMime cHandle, HCkBinData bindat);
 CK_VISIBLE_PUBLIC BOOL CkMime_GetMimeBytes(HCkMime cHandle, HCkByteData outBytes);
+CK_VISIBLE_PUBLIC BOOL CkMime_GetMimeSb(HCkMime cHandle, HCkStringBuilder sb);
 CK_VISIBLE_PUBLIC HCkMime CkMime_GetPart(HCkMime cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkMime_GetSignatureSigningTime(HCkMime cHandle, int index, SYSTEMTIME *outSysTime);
 CK_VISIBLE_PUBLIC BOOL CkMime_GetSignatureSigningTimeStr(HCkMime cHandle, int index, HCkString outStr);
@@ -151,15 +154,17 @@ CK_VISIBLE_PUBLIC BOOL CkMime_IsUnlocked(HCkMime cHandle);
 CK_VISIBLE_PUBLIC BOOL CkMime_IsVideo(HCkMime cHandle);
 CK_VISIBLE_PUBLIC BOOL CkMime_IsXml(HCkMime cHandle);
 CK_VISIBLE_PUBLIC BOOL CkMime_LoadMime(HCkMime cHandle, const char *mimeMsg);
+CK_VISIBLE_PUBLIC BOOL CkMime_LoadMimeBd(HCkMime cHandle, HCkBinData bindat);
 CK_VISIBLE_PUBLIC BOOL CkMime_LoadMimeBytes(HCkMime cHandle, HCkByteData binData);
 CK_VISIBLE_PUBLIC BOOL CkMime_LoadMimeFile(HCkMime cHandle, const char *fileName);
+CK_VISIBLE_PUBLIC BOOL CkMime_LoadMimeSb(HCkMime cHandle, HCkStringBuilder sb);
 CK_VISIBLE_PUBLIC BOOL CkMime_LoadXml(HCkMime cHandle, const char *xml);
 CK_VISIBLE_PUBLIC BOOL CkMime_LoadXmlFile(HCkMime cHandle, const char *fileName);
 CK_VISIBLE_PUBLIC BOOL CkMime_NewMessageRfc822(HCkMime cHandle, HCkMime mimeObject);
 CK_VISIBLE_PUBLIC BOOL CkMime_NewMultipartAlternative(HCkMime cHandle);
 CK_VISIBLE_PUBLIC BOOL CkMime_NewMultipartMixed(HCkMime cHandle);
 CK_VISIBLE_PUBLIC BOOL CkMime_NewMultipartRelated(HCkMime cHandle);
-CK_VISIBLE_PUBLIC void CkMime_RemoveHeaderField(HCkMime cHandle, const char *fieldName, BOOL bAllOccurances);
+CK_VISIBLE_PUBLIC void CkMime_RemoveHeaderField(HCkMime cHandle, const char *fieldName, BOOL bAllOccurrences);
 CK_VISIBLE_PUBLIC BOOL CkMime_RemovePart(HCkMime cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkMime_SaveBody(HCkMime cHandle, const char *filename);
 CK_VISIBLE_PUBLIC BOOL CkMime_SaveLastError(HCkMime cHandle, const char *path);

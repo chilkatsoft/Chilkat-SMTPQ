@@ -26,7 +26,6 @@ class CkTrustedRoots;
 class CK_VISIBLE_PUBLIC CkCertChain  : public CkMultiByteBase
 {
     private:
-	
 
 	// Don't allow assignment or copying these objects.
 	CkCertChain(const CkCertChain &);
@@ -75,7 +74,7 @@ class CK_VISIBLE_PUBLIC CkCertChain  : public CkMultiByteBase
 
 
 	// Returns true if the root of the certificate chain is a certificate found in
-	// ARG1.
+	// trustedRoots.
 	bool IsRootTrusted(CkTrustedRoots &trustedRoots);
 
 

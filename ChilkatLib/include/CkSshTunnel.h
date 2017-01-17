@@ -10,7 +10,7 @@
 #include "chilkatDefs.h"
 
 #include "CkString.h"
-#include "CkMultiByteBase.h"
+#include "CkClassWithCallbacks.h"
 
 class CkTask;
 class CkSshKey;
@@ -25,10 +25,9 @@ class CkBaseProgress;
  
 
 // CLASS: CkSshTunnel
-class CK_VISIBLE_PUBLIC CkSshTunnel  : public CkMultiByteBase
+class CK_VISIBLE_PUBLIC CkSshTunnel  : public CkClassWithCallbacks
 {
     private:
-	void *m_eventCallback;
 
 	// Don't allow assignment or copying these objects.
 	CkSshTunnel(const CkSshTunnel &);
@@ -54,6 +53,23 @@ class CK_VISIBLE_PUBLIC CkSshTunnel  : public CkMultiByteBase
 	// ----------------------
 	// Properties
 	// ----------------------
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	bool get_AbortCurrent(void);
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	void put_AbortCurrent(bool newVal);
+
 	// Contains an in-memory log of the listen thread. This will only contain content
 	// if the KeepAcceptLog property is true.
 	void get_AcceptLog(CkString &str);
@@ -72,10 +88,12 @@ class CK_VISIBLE_PUBLIC CkSshTunnel  : public CkMultiByteBase
 	void put_AcceptLogPath(const char *newVal);
 
 	// Maximum number of milliseconds to wait when connecting to an SSH server. The
-	// default value is 10000 (i.e. 10 seconds).
+	// default value is 10000 (i.e. 10 seconds). A value of 0 indicates no timeout
+	// (wait forever).
 	int get_ConnectTimeoutMs(void);
 	// Maximum number of milliseconds to wait when connecting to an SSH server. The
-	// default value is 10000 (i.e. 10 seconds).
+	// default value is 10000 (i.e. 10 seconds). A value of 0 indicates no timeout
+	// (wait forever).
 	void put_ConnectTimeoutMs(int newVal);
 
 	// The destination hostname or IP address (in dotted decimal notation) of the
@@ -124,6 +142,13 @@ class CK_VISIBLE_PUBLIC CkSshTunnel  : public CkMultiByteBase
 	// gain access.
 	// 
 	void put_DynamicPortForwarding(bool newVal);
+
+	// Set after connecting to an SSH server. The format of the fingerprint looks like
+	// this: "ssh-rsa 1024 68:ff:d1:4e:6c:ff:d7:b0:d6:58:73:85:07:bc:2e:d5"
+	void get_HostKeyFingerprint(CkString &str);
+	// Set after connecting to an SSH server. The format of the fingerprint looks like
+	// this: "ssh-rsa 1024 68:ff:d1:4e:6c:ff:d7:b0:d6:58:73:85:07:bc:2e:d5"
+	const char *hostKeyFingerprint(void);
 
 	// If an HTTP proxy requiring authentication is to be used, set this property to
 	// the HTTP proxy authentication method name. Valid choices are "Basic" or "NTLM".
@@ -360,58 +385,6 @@ class CK_VISIBLE_PUBLIC CkSshTunnel  : public CkMultiByteBase
 	// set this property.)
 	void put_OutboundBindPort(int newVal);
 
-	// Sets the receive buffer size socket option. Normally, this property should be
-	// left unchanged. The default value is 0, which indicates that the receive buffer
-	// size socket option should not be explicitly set (i.e. the system default value,
-	// which may vary from system to system, should be used).
-	// 
-	// This property can be changed if download performance seems slow. It is
-	// recommended to be a multiple of 4096. To see the current system's default
-	// receive buffer size, examine the LastErrorText property after calling any method
-	// that establishes a connection. It should be reported under the heading
-	// "SO_RCVBUF". To boost performance, try setting it equal to 2, 3, or 4 times the
-	// default value.
-	// 
-	int get_SoRcvBuf(void);
-	// Sets the receive buffer size socket option. Normally, this property should be
-	// left unchanged. The default value is 0, which indicates that the receive buffer
-	// size socket option should not be explicitly set (i.e. the system default value,
-	// which may vary from system to system, should be used).
-	// 
-	// This property can be changed if download performance seems slow. It is
-	// recommended to be a multiple of 4096. To see the current system's default
-	// receive buffer size, examine the LastErrorText property after calling any method
-	// that establishes a connection. It should be reported under the heading
-	// "SO_RCVBUF". To boost performance, try setting it equal to 2, 3, or 4 times the
-	// default value.
-	// 
-	void put_SoRcvBuf(int newVal);
-
-	// Sets the send buffer size socket option. Normally, this property should be left
-	// unchanged. The default value is 0, which indicates that the send buffer size
-	// socket option should not be explicitly set (i.e. the system default value, which
-	// may vary from system to system, should be used).
-	// 
-	// This property can be changed if upload performance seems slow. It is recommended
-	// to be a multiple of 4096. To see the current system's default send buffer size,
-	// examine the LastErrorText property after calling any method that establishes a
-	// connection. It should be reported under the heading "SO_SNDBUF". To boost
-	// performance, try setting it equal to 2, 3, or 4 times the default value.
-	// 
-	int get_SoSndBuf(void);
-	// Sets the send buffer size socket option. Normally, this property should be left
-	// unchanged. The default value is 0, which indicates that the send buffer size
-	// socket option should not be explicitly set (i.e. the system default value, which
-	// may vary from system to system, should be used).
-	// 
-	// This property can be changed if upload performance seems slow. It is recommended
-	// to be a multiple of 4096. To see the current system's default send buffer size,
-	// examine the LastErrorText property after calling any method that establishes a
-	// connection. It should be reported under the heading "SO_SNDBUF". To boost
-	// performance, try setting it equal to 2, 3, or 4 times the default value.
-	// 
-	void put_SoSndBuf(int newVal);
-
 	// The SOCKS4/SOCKS5 hostname or IPv4 address (in dotted decimal notation). This
 	// property is only used if the SocksVersion property is set to 4 or 5).
 	// 
@@ -516,6 +489,58 @@ class CK_VISIBLE_PUBLIC CkSshTunnel  : public CkMultiByteBase
 	// 
 	void put_SocksVersion(int newVal);
 
+	// Sets the receive buffer size socket option. Normally, this property should be
+	// left unchanged. The default value is 0, which indicates that the receive buffer
+	// size socket option should not be explicitly set (i.e. the system default value,
+	// which may vary from system to system, should be used).
+	// 
+	// This property can be changed if download performance seems slow. It is
+	// recommended to be a multiple of 4096. To see the current system's default
+	// receive buffer size, examine the LastErrorText property after calling any method
+	// that establishes a connection. It should be reported under the heading
+	// "SO_RCVBUF". To boost performance, try setting it equal to 2, 3, or 4 times the
+	// default value.
+	// 
+	int get_SoRcvBuf(void);
+	// Sets the receive buffer size socket option. Normally, this property should be
+	// left unchanged. The default value is 0, which indicates that the receive buffer
+	// size socket option should not be explicitly set (i.e. the system default value,
+	// which may vary from system to system, should be used).
+	// 
+	// This property can be changed if download performance seems slow. It is
+	// recommended to be a multiple of 4096. To see the current system's default
+	// receive buffer size, examine the LastErrorText property after calling any method
+	// that establishes a connection. It should be reported under the heading
+	// "SO_RCVBUF". To boost performance, try setting it equal to 2, 3, or 4 times the
+	// default value.
+	// 
+	void put_SoRcvBuf(int newVal);
+
+	// Sets the send buffer size socket option. Normally, this property should be left
+	// unchanged. The default value is 0, which indicates that the send buffer size
+	// socket option should not be explicitly set (i.e. the system default value, which
+	// may vary from system to system, should be used).
+	// 
+	// This property can be changed if upload performance seems slow. It is recommended
+	// to be a multiple of 4096. To see the current system's default send buffer size,
+	// examine the LastErrorText property after calling any method that establishes a
+	// connection. It should be reported under the heading "SO_SNDBUF". To boost
+	// performance, try setting it equal to 2, 3, or 4 times the default value.
+	// 
+	int get_SoSndBuf(void);
+	// Sets the send buffer size socket option. Normally, this property should be left
+	// unchanged. The default value is 0, which indicates that the send buffer size
+	// socket option should not be explicitly set (i.e. the system default value, which
+	// may vary from system to system, should be used).
+	// 
+	// This property can be changed if upload performance seems slow. It is recommended
+	// to be a multiple of 4096. To see the current system's default send buffer size,
+	// examine the LastErrorText property after calling any method that establishes a
+	// connection. It should be reported under the heading "SO_SNDBUF". To boost
+	// performance, try setting it equal to 2, 3, or 4 times the default value.
+	// 
+	void put_SoSndBuf(int newVal);
+
 	// Controls whether the TCP_NODELAY socket option is used for the underlying TCP/IP
 	// socket. The default value is false. Setting this property equal to true
 	// disables the Nagle algorithm and allows for better performance when small
@@ -549,14 +574,26 @@ class CK_VISIBLE_PUBLIC CkSshTunnel  : public CkMultiByteBase
 	// ----------------------
 	// Methods
 	// ----------------------
-	// Returns true if the underlying TCP socket is connected to the SFTP server.
+	// Authenticates with the SSH server using public-key authentication. The
+	// corresponding public key must have been installed on the SSH server for the
+	// username. Authentication will succeed if the matching privateKey is provided.
+	// 
+	// Important: When reporting problems, please send the full contents of the
+	// LastErrorText property to support@chilkatsoft.com.
+	// 
 	bool AuthenticatePk(const char *username, CkSshKey &privateKey);
 
-	// Returns true if the underlying TCP socket is connected to the SFTP server.
+	// Authenticates with the SSH server using public-key authentication. The
+	// corresponding public key must have been installed on the SSH server for the
+	// username. Authentication will succeed if the matching privateKey is provided.
+	// 
+	// Important: When reporting problems, please send the full contents of the
+	// LastErrorText property to support@chilkatsoft.com.
+	// 
 	CkTask *AuthenticatePkAsync(const char *username, CkSshKey &privateKey);
 
 
-	// Authenticates with the SSH server using a login and  password.
+	// Authenticates with the SSH server using a login and password.
 	// 
 	// An SSH session always begins by first calling Connect to connect to the SSH
 	// server, and then calling either AuthenticatePw or AuthenticatePk to login.
@@ -568,7 +605,7 @@ class CK_VISIBLE_PUBLIC CkSshTunnel  : public CkMultiByteBase
 	// 
 	bool AuthenticatePw(const char *login, const char *password);
 
-	// Authenticates with the SSH server using a login and  password.
+	// Authenticates with the SSH server using a login and password.
 	// 
 	// An SSH session always begins by first calling Connect to connect to the SSH
 	// server, and then calling either AuthenticatePw or AuthenticatePk to login.
@@ -625,7 +662,7 @@ class CK_VISIBLE_PUBLIC CkSshTunnel  : public CkMultiByteBase
 	CkTask *BeginAcceptingAsync(int listenPort);
 
 
-	// Closes the SSH tunnel and disconnects all existing clients. If ARG1 is true,
+	// Closes the SSH tunnel and disconnects all existing clients. If waitForThreads is true,
 	// the method will wait for the tunnel and client threads to exit before returning.
 	bool CloseTunnel(bool waitForThreads);
 
@@ -637,13 +674,48 @@ class CK_VISIBLE_PUBLIC CkSshTunnel  : public CkMultiByteBase
 	CkTask *ConnectAsync(const char *hostname, int port);
 
 
-	// Disconnects all clients, keeping the SSH tunnel open. If ARG1 is true, the
+	// Connects to an SSH server through an existing SSH connection. The ssh is an
+	// existing connected and authenticated SSH object. The connection to hostname:port is
+	// made through the existing SSH connection via port-forwarding. If successful, the
+	// connection is as follows: application => ServerSSH1 => ServerSSH2. (where
+	// ServerSSH1 is the ssh and ServerSSH2 is the SSH server at hostname:port) Once
+	// connected in this way, all communications are routed through ServerSSH1 to
+	// ServerSSH2. This includes authentication -- which means the application must
+	// still call one of the Authenticate* methods to authenticate with ServerSSH2.
+	bool ConnectThroughSsh(CkSsh &ssh, const char *hostname, int port);
+
+	// Connects to an SSH server through an existing SSH connection. The ssh is an
+	// existing connected and authenticated SSH object. The connection to hostname:port is
+	// made through the existing SSH connection via port-forwarding. If successful, the
+	// connection is as follows: application => ServerSSH1 => ServerSSH2. (where
+	// ServerSSH1 is the ssh and ServerSSH2 is the SSH server at hostname:port) Once
+	// connected in this way, all communications are routed through ServerSSH1 to
+	// ServerSSH2. This includes authentication -- which means the application must
+	// still call one of the Authenticate* methods to authenticate with ServerSSH2.
+	CkTask *ConnectThroughSshAsync(CkSsh &ssh, const char *hostname, int port);
+
+
+	// Disconnects all clients, keeping the SSH tunnel open. If waitForThreads is true, the
 	// method will wait for the client threads to exit before returning.
 	bool DisconnectAllClients(bool waitForThreads);
 
 
+	// Returns the current state of existing tunnels in an XML string.
+	bool GetCurrentState(CkString &outStr);
+
+	// Returns the current state of existing tunnels in an XML string.
+	const char *getCurrentState(void);
+	// Returns the current state of existing tunnels in an XML string.
+	const char *currentState(void);
+
+
+	// Returns true if connected to the SSH server. Returns false if the connection
+	// has been lost (or was never established).
+	bool IsSshConnected(void);
+
+
 	// Stops the listen background thread. It is possible to continue accepting
-	// connections by re-calling BeginAccepting. If ARG1 is true, the method will
+	// connections by re-calling BeginAccepting. If waitForThread is true, the method will
 	// wait for the listen thread to exit before returning.
 	bool StopAccepting(bool waitForThread);
 
@@ -654,27 +726,6 @@ class CK_VISIBLE_PUBLIC CkSshTunnel  : public CkMultiByteBase
 	// "abc123" will unlock the component for the 1st thirty days after the initial
 	// install.
 	bool UnlockComponent(const char *unlockCode);
-
-
-	// Connects to an SSH server through an existing SSH connection. The ARG1 is an
-	// existing connected and authenticated SSH object. The connection to ARG2:ARG3 is
-	// made through the existing SSH connection via port-forwarding. If successful, the
-	// connection is as follows: application => ServerSSH1 => ServerSSH2. (where
-	// ServerSSH1 is the ARG1 and ServerSSH2 is the SSH server at ARG2:ARG3) Once
-	// connected in this way, all communications are routed through ServerSSH1 to
-	// ServerSSH2. This includes authentication -- which means the application must
-	// still call one of the Authenticate* methods to authenticate with ServerSSH2.
-	bool ConnectThroughSsh(CkSsh &ssh, const char *hostname, int port);
-
-	// Connects to an SSH server through an existing SSH connection. The ARG1 is an
-	// existing connected and authenticated SSH object. The connection to ARG2:ARG3 is
-	// made through the existing SSH connection via port-forwarding. If successful, the
-	// connection is as follows: application => ServerSSH1 => ServerSSH2. (where
-	// ServerSSH1 is the ARG1 and ServerSSH2 is the SSH server at ARG2:ARG3) Once
-	// connected in this way, all communications are routed through ServerSSH1 to
-	// ServerSSH2. This includes authentication -- which means the application must
-	// still call one of the Authenticate* methods to authenticate with ServerSSH2.
-	CkTask *ConnectThroughSshAsync(CkSsh &ssh, const char *hostname, int port);
 
 
 

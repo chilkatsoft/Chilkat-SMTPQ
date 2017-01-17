@@ -79,27 +79,208 @@ class CK_VISIBLE_PUBLIC CkPrivateKeyW  : public CkWideCharBase
 	// ----------------------
 	// Methods
 	// ----------------------
-	// Gets the private key in PKCS1 format and returns in an encoded string, as
-	// specified by the ARG1 argument.
+	// Gets the private key in unencrypted binary DER format, preferring PKCS1 if
+	// possible.
+	// 
+	// RSA keys are returned in PKCS1 ASN.1 DER format:
+	// RSAPrivateKey ::= SEQUENCE {
+	//     version           Version,
+	//     modulus           INTEGER,  -- n
+	//     publicExponent    INTEGER,  -- e
+	//     privateExponent   INTEGER,  -- d
+	//     prime1            INTEGER,  -- p
+	//     prime2            INTEGER,  -- q
+	//     exponent1         INTEGER,  -- d mod (p-1)
+	//     exponent2         INTEGER,  -- d mod (q-1)
+	//     coefficient       INTEGER,  -- (inverse of q) mod p
+	//     otherPrimeInfos   OtherPrimeInfos OPTIONAL
+	// }
+	// 
+	// DSA keys are returned in this ASN.1 DER format:
+	// SEQUENCE(6 elem)
+	//     INTEGER 0
+	//     INTEGER(2048 bit) (p) 
+	//     INTEGER(160 bit) (q) 
+	//     INTEGER(2044 bit) (g) 
+	//     INTEGER(2040 bit) (y - public key) 
+	//     INTEGER(156 bit) (x - private key) 
+	// 
+	// ECC keys are returned in this ASN.1 DER format:
+	// (from RFC 5915)
+	// ECPrivateKey ::= SEQUENCE {
+	//     version        INTEGER { ecPrivkeyVer1(1) } (ecPrivkeyVer1),
+	//     privateKey     OCTET STRING,
+	//     parameters [0] ECParameters {{ NamedCurve }} OPTIONAL,
+	//     publicKey  [1] BIT STRING OPTIONAL (This is the ANSI X9.63 public key format.)
+	// 
+	bool GetPkcs1(CkByteData &outBytes);
+
+	// Gets the private key in unencrypted binary DER format, preferring PKCS1 if
+	// possible, and returns in an encoded string, as specified by the encoding argument.
+	// 
+	// RSA keys are returned in PKCS1 ASN.1 DER format:
+	// RSAPrivateKey ::= SEQUENCE {
+	//     version           Version,
+	//     modulus           INTEGER,  -- n
+	//     publicExponent    INTEGER,  -- e
+	//     privateExponent   INTEGER,  -- d
+	//     prime1            INTEGER,  -- p
+	//     prime2            INTEGER,  -- q
+	//     exponent1         INTEGER,  -- d mod (p-1)
+	//     exponent2         INTEGER,  -- d mod (q-1)
+	//     coefficient       INTEGER,  -- (inverse of q) mod p
+	//     otherPrimeInfos   OtherPrimeInfos OPTIONAL
+	// }
+	// 
+	// DSA keys are returned in this ASN.1 DER format:
+	// SEQUENCE(6 elem)
+	//     INTEGER 0
+	//     INTEGER(2048 bit) (p) 
+	//     INTEGER(160 bit) (q) 
+	//     INTEGER(2044 bit) (g) 
+	//     INTEGER(2040 bit) (y - public key) 
+	//     INTEGER(156 bit) (x - private key) 
+	// 
+	// ECC keys are returned in this ASN.1 DER format:
+	// (from RFC 5915)
+	// ECPrivateKey ::= SEQUENCE {
+	//     version        INTEGER { ecPrivkeyVer1(1) } (ecPrivkeyVer1),
+	//     privateKey     OCTET STRING,
+	//     parameters [0] ECParameters {{ NamedCurve }} OPTIONAL,
+	//     publicKey  [1] BIT STRING OPTIONAL (This is the ANSI X9.63 public key format.)
+	// 
 	bool GetPkcs1ENC(const wchar_t *encoding, CkString &outStr);
-	// Gets the private key in PKCS1 format and returns in an encoded string, as
-	// specified by the ARG1 argument.
+	// Gets the private key in unencrypted binary DER format, preferring PKCS1 if
+	// possible, and returns in an encoded string, as specified by the encoding argument.
+	// 
+	// RSA keys are returned in PKCS1 ASN.1 DER format:
+	// RSAPrivateKey ::= SEQUENCE {
+	//     version           Version,
+	//     modulus           INTEGER,  -- n
+	//     publicExponent    INTEGER,  -- e
+	//     privateExponent   INTEGER,  -- d
+	//     prime1            INTEGER,  -- p
+	//     prime2            INTEGER,  -- q
+	//     exponent1         INTEGER,  -- d mod (p-1)
+	//     exponent2         INTEGER,  -- d mod (q-1)
+	//     coefficient       INTEGER,  -- (inverse of q) mod p
+	//     otherPrimeInfos   OtherPrimeInfos OPTIONAL
+	// }
+	// 
+	// DSA keys are returned in this ASN.1 DER format:
+	// SEQUENCE(6 elem)
+	//     INTEGER 0
+	//     INTEGER(2048 bit) (p) 
+	//     INTEGER(160 bit) (q) 
+	//     INTEGER(2044 bit) (g) 
+	//     INTEGER(2040 bit) (y - public key) 
+	//     INTEGER(156 bit) (x - private key) 
+	// 
+	// ECC keys are returned in this ASN.1 DER format:
+	// (from RFC 5915)
+	// ECPrivateKey ::= SEQUENCE {
+	//     version        INTEGER { ecPrivkeyVer1(1) } (ecPrivkeyVer1),
+	//     privateKey     OCTET STRING,
+	//     parameters [0] ECParameters {{ NamedCurve }} OPTIONAL,
+	//     publicKey  [1] BIT STRING OPTIONAL (This is the ANSI X9.63 public key format.)
+	// 
 	const wchar_t *getPkcs1ENC(const wchar_t *encoding);
-	// Gets the private key in PKCS1 format and returns in an encoded string, as
-	// specified by the ARG1 argument.
+	// Gets the private key in unencrypted binary DER format, preferring PKCS1 if
+	// possible, and returns in an encoded string, as specified by the encoding argument.
+	// 
+	// RSA keys are returned in PKCS1 ASN.1 DER format:
+	// RSAPrivateKey ::= SEQUENCE {
+	//     version           Version,
+	//     modulus           INTEGER,  -- n
+	//     publicExponent    INTEGER,  -- e
+	//     privateExponent   INTEGER,  -- d
+	//     prime1            INTEGER,  -- p
+	//     prime2            INTEGER,  -- q
+	//     exponent1         INTEGER,  -- d mod (p-1)
+	//     exponent2         INTEGER,  -- d mod (q-1)
+	//     coefficient       INTEGER,  -- (inverse of q) mod p
+	//     otherPrimeInfos   OtherPrimeInfos OPTIONAL
+	// }
+	// 
+	// DSA keys are returned in this ASN.1 DER format:
+	// SEQUENCE(6 elem)
+	//     INTEGER 0
+	//     INTEGER(2048 bit) (p) 
+	//     INTEGER(160 bit) (q) 
+	//     INTEGER(2044 bit) (g) 
+	//     INTEGER(2040 bit) (y - public key) 
+	//     INTEGER(156 bit) (x - private key) 
+	// 
+	// ECC keys are returned in this ASN.1 DER format:
+	// (from RFC 5915)
+	// ECPrivateKey ::= SEQUENCE {
+	//     version        INTEGER { ecPrivkeyVer1(1) } (ecPrivkeyVer1),
+	//     privateKey     OCTET STRING,
+	//     parameters [0] ECParameters {{ NamedCurve }} OPTIONAL,
+	//     publicKey  [1] BIT STRING OPTIONAL (This is the ANSI X9.63 public key format.)
+	// 
 	const wchar_t *pkcs1ENC(const wchar_t *encoding);
 
-	// Gets the private key in PKCS8 format.
+	// Gets the private key in non-encrypted PEM format, preferring PKCS1 over PKCS8 if
+	// possible for the key type.
+	bool GetPkcs1Pem(CkString &outStr);
+	// Gets the private key in non-encrypted PEM format, preferring PKCS1 over PKCS8 if
+	// possible for the key type.
+	const wchar_t *getPkcs1Pem(void);
+	// Gets the private key in non-encrypted PEM format, preferring PKCS1 over PKCS8 if
+	// possible for the key type.
+	const wchar_t *pkcs1Pem(void);
+
+	// Gets the private key in unencrypted PKCS8 format.
+	// 
+	// RSA keys are returned in PKCS8 ASN.1 DER format:
+	// SEQUENCE                  // PrivateKeyInfo
+	// +- INTEGER                // Version - 0 (v1998)
+	// +- SEQUENCE               // AlgorithmIdentifier
+	//    +- OID                 // 1.2.840.113549.1.1.1
+	//    +- NULL                // Optional Parameters
+	// +- OCTETSTRING            // PrivateKey
+	//    +- SEQUENCE            // RSAPrivateKey
+	//       +- INTEGER(0)       // Version - v1998(0)
+	//       +- INTEGER(N)       // N
+	//       +- INTEGER(E)       // E
+	//       +- INTEGER(D)       // D
+	//       +- INTEGER(P)       // P
+	//       +- INTEGER(Q)       // Q
+	//       +- INTEGER(DP)      // d mod p-1
+	//       +- INTEGER(DQ)      // d mod q-1
+	//       +- INTEGER(Inv Q)   // INV(q) mod p
+	// 
+	// DSA keys are returned in this ASN.1 DER format:
+	// SEQUENCE                 // PrivateKeyInfo
+	// +- INTEGER                 // Version
+	// +- SEQUENCE              // AlgorithmIdentifier
+	//     +- OID                       // 1.2.840.10040.4.1
+	//     +- SEQUENCE           // DSS-Params (Optional Parameters)
+	// 	+- INTEGER(P)      // P
+	// 	+- INTEGER(Q)      // Q
+	// 	+- INTEGER(G)      // G
+	//     +- OCTETSTRING             // PrivateKey
+	// 	+- INTEGER(X)      // DSAPrivateKey X
+	// 
+	// ECC keys are returned in this ASN.1 DER format:
+	// (from RFC 5915)
+	// ECPrivateKey ::= SEQUENCE {
+	//     version        INTEGER { ecPrivkeyVer1(1) } (ecPrivkeyVer1),
+	//     privateKey     OCTET STRING,
+	//     parameters [0] ECParameters {{ NamedCurve }} OPTIONAL,
+	//     publicKey  [1] BIT STRING OPTIONAL (This is the ANSI X9.63 public key format.)
+	// 
 	bool GetPkcs8(CkByteData &outData);
 
-	// Gets the private key in PKCS8 format and returns in an encoded string, as
-	// specified by the ARG1 argument.
+	// Gets the private key in unencrypted PKCS8 format and returned in an encoded
+	// string, as specified by the encoding argument.
 	bool GetPkcs8ENC(const wchar_t *encoding, CkString &outStr);
-	// Gets the private key in PKCS8 format and returns in an encoded string, as
-	// specified by the ARG1 argument.
+	// Gets the private key in unencrypted PKCS8 format and returned in an encoded
+	// string, as specified by the encoding argument.
 	const wchar_t *getPkcs8ENC(const wchar_t *encoding);
-	// Gets the private key in PKCS8 format and returns in an encoded string, as
-	// specified by the ARG1 argument.
+	// Gets the private key in unencrypted PKCS8 format and returned in an encoded
+	// string, as specified by the encoding argument.
 	const wchar_t *pkcs8ENC(const wchar_t *encoding);
 
 	// Writes the private key to password-protected PKCS8 format. The Pkcs8EncryptAlg
@@ -107,15 +288,15 @@ class CK_VISIBLE_PUBLIC CkPrivateKeyW  : public CkWideCharBase
 	bool GetPkcs8Encrypted(const wchar_t *password, CkByteData &outBytes);
 
 	// Writes the private key to password-protected PKCS8 format and returns as an
-	// encoded string as specified by the ARG1 argument. The Pkcs8EncryptAlg property
+	// encoded string as specified by the encoding argument. The Pkcs8EncryptAlg property
 	// controls the encryption algorithm used to encrypt.
 	bool GetPkcs8EncryptedENC(const wchar_t *encoding, const wchar_t *password, CkString &outStr);
 	// Writes the private key to password-protected PKCS8 format and returns as an
-	// encoded string as specified by the ARG1 argument. The Pkcs8EncryptAlg property
+	// encoded string as specified by the encoding argument. The Pkcs8EncryptAlg property
 	// controls the encryption algorithm used to encrypt.
 	const wchar_t *getPkcs8EncryptedENC(const wchar_t *encoding, const wchar_t *password);
 	// Writes the private key to password-protected PKCS8 format and returns as an
-	// encoded string as specified by the ARG1 argument. The Pkcs8EncryptAlg property
+	// encoded string as specified by the encoding argument. The Pkcs8EncryptAlg property
 	// controls the encryption algorithm used to encrypt.
 	const wchar_t *pkcs8EncryptedENC(const wchar_t *encoding, const wchar_t *password);
 
@@ -140,18 +321,28 @@ class CK_VISIBLE_PUBLIC CkPrivateKeyW  : public CkWideCharBase
 	// The caller is responsible for deleting the object returned by this method.
 	CkPublicKeyW *GetPublicKey(void);
 
-	// Gets the private key in PKCS1 DER format.
+	// Gets the private key in PKCS1 DER format. This method is deprecated and is
+	// replaced by the GetPkcs1Der method (given that this object may contain a non-RSA
+	// key).
 	bool GetRsaDer(CkByteData &outData);
 
-	// Gets the private key in PKCS1 PEM format.
+	// Gets the private key in PKCS1 PEM format. This method is deprecated and is
+	// replaced by the GetPem method (given that this object may contain a non-RSA
+	// key).
 	bool GetRsaPem(CkString &outStr);
-	// Gets the private key in PKCS1 PEM format.
+	// Gets the private key in PKCS1 PEM format. This method is deprecated and is
+	// replaced by the GetPem method (given that this object may contain a non-RSA
+	// key).
 	const wchar_t *getRsaPem(void);
-	// Gets the private key in PKCS1 PEM format.
+	// Gets the private key in PKCS1 PEM format. This method is deprecated and is
+	// replaced by the GetPem method (given that this object may contain a non-RSA
+	// key).
 	const wchar_t *rsaPem(void);
 
 	// Returns the private key in XML format. The private key is returned unencrypted
-	// and the parts are base64 encoded. The XML has this structure:
+	// and the parts are base64 encoded.
+	// 
+	// RSA keys have this XML format:
 	// <RSAKeyValue>
 	//   <Modulus>...</Modulus>
 	//   <Exponent>...</Exponent>
@@ -162,9 +353,25 @@ class CK_VISIBLE_PUBLIC CkPrivateKeyW  : public CkWideCharBase
 	//   <InverseQ>...</InverseQ>
 	//   <D>...</D>
 	// </RSAKeyValue>
+	// 
+	// DSA keys have this XML format:
+	// <DSAKeyValue>
+	// 	<P>...</P>
+	// 	<Q>...</Q>
+	// 	<G>...</G>
+	// 	<Y>...</Y>
+	// 	<X>...</X>
+	// </DSAKeyValue>
+	// 
+	// ECC keys have this XML format. The CURVE_NAME could be one of secp256r1,
+	// secp384r1, secp521r1, secp256k1 (or others as new curves are supported.)
+	// <ECCKeyValue curve="CURVE_NAME">...</ECCKeyValue>
+	// 
 	bool GetXml(CkString &outStr);
 	// Returns the private key in XML format. The private key is returned unencrypted
-	// and the parts are base64 encoded. The XML has this structure:
+	// and the parts are base64 encoded.
+	// 
+	// RSA keys have this XML format:
 	// <RSAKeyValue>
 	//   <Modulus>...</Modulus>
 	//   <Exponent>...</Exponent>
@@ -175,9 +382,25 @@ class CK_VISIBLE_PUBLIC CkPrivateKeyW  : public CkWideCharBase
 	//   <InverseQ>...</InverseQ>
 	//   <D>...</D>
 	// </RSAKeyValue>
+	// 
+	// DSA keys have this XML format:
+	// <DSAKeyValue>
+	// 	<P>...</P>
+	// 	<Q>...</Q>
+	// 	<G>...</G>
+	// 	<Y>...</Y>
+	// 	<X>...</X>
+	// </DSAKeyValue>
+	// 
+	// ECC keys have this XML format. The CURVE_NAME could be one of secp256r1,
+	// secp384r1, secp521r1, secp256k1 (or others as new curves are supported.)
+	// <ECCKeyValue curve="CURVE_NAME">...</ECCKeyValue>
+	// 
 	const wchar_t *getXml(void);
 	// Returns the private key in XML format. The private key is returned unencrypted
-	// and the parts are base64 encoded. The XML has this structure:
+	// and the parts are base64 encoded.
+	// 
+	// RSA keys have this XML format:
 	// <RSAKeyValue>
 	//   <Modulus>...</Modulus>
 	//   <Exponent>...</Exponent>
@@ -188,6 +411,20 @@ class CK_VISIBLE_PUBLIC CkPrivateKeyW  : public CkWideCharBase
 	//   <InverseQ>...</InverseQ>
 	//   <D>...</D>
 	// </RSAKeyValue>
+	// 
+	// DSA keys have this XML format:
+	// <DSAKeyValue>
+	// 	<P>...</P>
+	// 	<Q>...</Q>
+	// 	<G>...</G>
+	// 	<Y>...</Y>
+	// 	<X>...</X>
+	// </DSAKeyValue>
+	// 
+	// ECC keys have this XML format. The CURVE_NAME could be one of secp256r1,
+	// secp384r1, secp521r1, secp256k1 (or others as new curves are supported.)
+	// <ECCKeyValue curve="CURVE_NAME">...</ECCKeyValue>
+	// 
 	const wchar_t *xml(void);
 
 	// Loads the private key from an in-memory encrypted PEM string. An encrypted PEM
@@ -274,6 +511,22 @@ class CK_VISIBLE_PUBLIC CkPrivateKeyW  : public CkWideCharBase
 	// Loads a private key from a PEM file.
 	bool LoadPemFile(const wchar_t *path);
 
+	// Loads an RSA, ECC, or DSA private key from binary DER.
+	// 
+	// Note: Each of the private key Load* methods willl auto-recognize the content and
+	// will parse appropriately. The private key should be successfully loaded even
+	// when the wrong format data is passed to the wrong method.
+	// 
+	bool LoadPkcs1(CkByteData &data);
+
+	// Loads a private key from a PKCS1 file.
+	// 
+	// Note: Each of the private key Load* methods willl auto-recognize the content and
+	// will parse appropriately. The private key should be successfully loaded even
+	// when the wrong format data is passed to the wrong method.
+	// 
+	bool LoadPkcs1File(const wchar_t *path);
+
 	// Loads a private key from in-memory PKCS8 byte data.
 	// 
 	// For those requiring a deeper understanding, the PKCS8 contains ASN.1 in DER
@@ -350,6 +603,9 @@ class CK_VISIBLE_PUBLIC CkPrivateKeyW  : public CkWideCharBase
 	bool LoadPvkFile(const wchar_t *path, const wchar_t *password);
 #endif
 
+	// This method is deprecated. Deprecated methods will be removed at some point in
+	// the future. Applications should instead call LoadPkcs1.
+	// 
 	// Loads a private key from in-memory RSA PKCS#1 DER byte data.
 	// 
 	// For those requiring a deeper understanding, the PKCS1 contains ASN.1 in DER
@@ -373,6 +629,9 @@ class CK_VISIBLE_PUBLIC CkPrivateKeyW  : public CkWideCharBase
 	// 
 	bool LoadRsaDer(CkByteData &data);
 
+	// This method is deprecated. Deprecated methods will be removed at some point in
+	// the future. Applications should instead call LoadPkcs1File.
+	// 
 	// Loads a private key from an RSA DER format file.
 	// 
 	// Note: Each of the private key Load* methods willl auto-recognize the content and
@@ -381,8 +640,9 @@ class CK_VISIBLE_PUBLIC CkPrivateKeyW  : public CkWideCharBase
 	// 
 	bool LoadRsaDerFile(const wchar_t *path);
 
-	// Loads a private key from an in-memory XML string. The RSA private key in XML has
-	// this format:
+	// Loads a private key from an XML string.
+	// 
+	// RSA keys have this XML format:
 	// <RSAKeyValue>
 	//   <Modulus>...</Modulus>
 	//   <Exponent>...</Exponent>
@@ -393,6 +653,19 @@ class CK_VISIBLE_PUBLIC CkPrivateKeyW  : public CkWideCharBase
 	//   <InverseQ>...</InverseQ>
 	//   <D>...</D>
 	// </RSAKeyValue>
+	// 
+	// DSA keys have this XML format:
+	// <DSAKeyValue>
+	// 	<P>...</P>
+	// 	<Q>...</Q>
+	// 	<G>...</G>
+	// 	<Y>...</Y>
+	// 	<X>...</X>
+	// </DSAKeyValue>
+	// 
+	// ECC keys have this XML format. The CURVE_NAME could be one of secp256r1,
+	// secp384r1, secp521r1, secp256k1 (or others as new curves are supported.)
+	// <ECCKeyValue curve="CURVE_NAME">...</ECCKeyValue>
 	// 
 	// Note: Each of the private key Load* methods willl auto-recognize the content and
 	// will parse appropriately. The private key should be successfully loaded even
@@ -408,6 +681,12 @@ class CK_VISIBLE_PUBLIC CkPrivateKeyW  : public CkWideCharBase
 	// 
 	bool LoadXmlFile(const wchar_t *path);
 
+	// Saves the private key to an unencrypted PKCS1 PEM format file.
+	bool SavePemFile(const wchar_t *path);
+
+	// Saves the private key to an unencrypted binary PKCS1 format file.
+	bool SavePkcs1File(const wchar_t *path);
+
 	// Saves the private key to a password-protected PKCS8 format file. The
 	// Pkcs8EncryptAlg property controls the encryption algorithm used to encrypt.
 	bool SavePkcs8EncryptedFile(const wchar_t *password, const wchar_t *path);
@@ -416,16 +695,22 @@ class CK_VISIBLE_PUBLIC CkPrivateKeyW  : public CkWideCharBase
 	// Pkcs8EncryptAlg property controls the encryption algorithm used to encrypt.
 	bool SavePkcs8EncryptedPemFile(const wchar_t *password, const wchar_t *path);
 
-	// Saves the private key to a PKCS8 format file.
+	// Saves the private key to an unencrypted binary PKCS8 format file.
 	bool SavePkcs8File(const wchar_t *path);
 
 	// Saves the private key to a PKCS8 PEM format file.
 	bool SavePkcs8PemFile(const wchar_t *path);
 
-	// Saves the private key to a PKCS1 DER format file.
+	// This method is deprecated and applications should instead call SavePkcs1File.
+	// 
+	// Saves the private key to a binary PKCS1 DER format file.
+	// 
 	bool SaveRsaDerFile(const wchar_t *path);
 
+	// This method is deprecated. Applications should instead call SavePemFile.
+	// 
 	// Saves the private key to a PKCS1 PEM format file.
+	// 
 	bool SaveRsaPemFile(const wchar_t *path);
 
 	// Saves the private key to an XML file.

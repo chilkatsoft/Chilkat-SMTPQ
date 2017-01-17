@@ -25,7 +25,6 @@ class CkTask;
 class CK_VISIBLE_PUBLIC CkStringArray  : public CkMultiByteBase
 {
     private:
-	
 
 	// Don't allow assignment or copying these objects.
 	CkStringArray(const CkStringArray &);
@@ -81,11 +80,11 @@ class CK_VISIBLE_PUBLIC CkStringArray  : public CkMultiByteBase
 
 	// If true, then duplicates are not allowed. When an attempt is made to insert a
 	// string that already exists, the duplicate insertion is silently suppressed and
-	// no error is returned.
+	// no error is returned. The default value is false.
 	bool get_Unique(void);
 	// If true, then duplicates are not allowed. When an attempt is made to insert a
 	// string that already exists, the duplicate insertion is silently suppressed and
-	// no error is returned.
+	// no error is returned. The default value is false.
 	void put_Unique(bool newVal);
 
 
@@ -111,20 +110,20 @@ class CK_VISIBLE_PUBLIC CkStringArray  : public CkMultiByteBase
 	bool Contains(const char *str);
 
 
-	// Finds the index of the first string equal to findStr. The search begins at  startIndex. If
+	// Finds the index of the first string equal to findStr. The search begins at startIndex. If
 	// the string is not found, -1 is returned. The first string in the array is at
 	// index 0.
-	int Find(const char *str, int firstIndex);
+	int Find(const char *findStr, int startIndex);
 
 
-	// Finds the first string that matches the matchPattern. The search begins at  startIndex. If the
+	// Finds the first string that matches the matchPattern. The search begins at startIndex. If the
 	// string is not found, -1 is returned. The first string in the array is at index
 	// 0.
 	// 
 	// The matchPattern may contain zero or more asterisk chars, each of which matches 0 or
 	// more of any character.
 	// 
-	int FindFirstMatch(const char *str, int firstIndex);
+	int FindFirstMatch(const char *matchPattern, int startIndex);
 
 
 	// Returns the string at an indexed location within the internal collection. The
@@ -158,13 +157,13 @@ class CK_VISIBLE_PUBLIC CkStringArray  : public CkMultiByteBase
 	// Loads strings from a file (one per line) into the internal collection. It is
 	// assumed the file contains ANSI strings. To load from a file containing non-ANSI
 	// strings (such as utf-8), call LoadFromFile2 instead.
-	bool LoadFromFile(const char *filename);
+	bool LoadFromFile(const char *path);
 
 
-	// Loads strings from a file (one per line) into the internal collection. The  charset
+	// Loads strings from a file (one per line) into the internal collection. The charset
 	// specifies the character encoding (such as utf-8) of the strings contained in the
 	// file.
-	bool LoadFromFile2(const char *filename, const char *charset);
+	bool LoadFromFile2(const char *path, const char *charset);
 
 
 	// Loads strings from an in-memory string (one per line) into the internal
@@ -199,18 +198,18 @@ class CK_VISIBLE_PUBLIC CkStringArray  : public CkMultiByteBase
 
 
 	// Saves the Nth string in the collection to a file.
-	bool SaveNthToFile(int index, const char *filename);
+	bool SaveNthToFile(int index, const char *saveToPath);
 
 
 	// Saves the collection of strings to a file, one string per line. Strings are
 	// saved using the ANSI charset. (Call SaveToFile2 to specify a charset, such as
 	// "utf-8")
-	bool SaveToFile(const char *filename);
+	bool SaveToFile(const char *path);
 
 
 	// Saves the collection of strings to a file, one string per line. Strings are
-	// saved using the specified  charset.
-	bool SaveToFile2(const char *filename, const char *charset);
+	// saved using the specified charset.
+	bool SaveToFile2(const char *saveToPath, const char *charset);
 
 
 	// Writes the collection of strings to a single string, one per line (separated by
@@ -249,12 +248,12 @@ class CK_VISIBLE_PUBLIC CkStringArray  : public CkMultiByteBase
 
 	// Subtracts the strings contained within stringArrayObj from the caller's internal
 	// collection.
-	void Subtract(CkStringArray &sa);
+	void Subtract(CkStringArray &stringArrayObj);
 
 
 	// Performs the union set-operator. The result is that the caller will have a
 	// string collection that is the union of itself and stringArrayObj.
-	void Union(CkStringArray &sa);
+	void Union(CkStringArray &stringArrayObj);
 
 
 

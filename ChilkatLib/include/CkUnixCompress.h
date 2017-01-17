@@ -10,7 +10,7 @@
 #include "chilkatDefs.h"
 
 #include "CkString.h"
-#include "CkMultiByteBase.h"
+#include "CkClassWithCallbacks.h"
 
 class CkTask;
 class CkByteData;
@@ -24,10 +24,9 @@ class CkBaseProgress;
  
 
 // CLASS: CkUnixCompress
-class CK_VISIBLE_PUBLIC CkUnixCompress  : public CkMultiByteBase
+class CK_VISIBLE_PUBLIC CkUnixCompress  : public CkClassWithCallbacks
 {
     private:
-	void *m_eventCallback;
 
 	// Don't allow assignment or copying these objects.
 	CkUnixCompress(const CkUnixCompress &);
@@ -53,6 +52,23 @@ class CK_VISIBLE_PUBLIC CkUnixCompress  : public CkMultiByteBase
 	// ----------------------
 	// Properties
 	// ----------------------
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	bool get_AbortCurrent(void);
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	void put_AbortCurrent(bool newVal);
+
 	// The number of milliseconds between each AbortCheck event callback. The
 	// AbortCheck callback allows an application to abort any method call prior to
 	// completion. If HeartbeatMs is 0 (the default), no AbortCheck event callbacks
@@ -87,26 +103,26 @@ class CK_VISIBLE_PUBLIC CkUnixCompress  : public CkMultiByteBase
 	CkTask *CompressFileToMemAsync(const char *inFilename);
 
 
-	// Unix compresses and creates a .Z file from in-memory data. (This compression
-	// uses the LZW (Lempel-Ziv-Welch) compression algorithm.)
-	bool CompressMemToFile(CkByteData &inData, const char *destPath);
-
-
 	// Compresses in-memory data to an in-memory image of a .Z file. (This compression
 	// uses the LZW (Lempel-Ziv-Welch) compression algorithm.)
 	bool CompressMemory(CkByteData &inData, CkByteData &outData);
 
 
+	// Unix compresses and creates a .Z file from in-memory data. (This compression
+	// uses the LZW (Lempel-Ziv-Welch) compression algorithm.)
+	bool CompressMemToFile(CkByteData &inData, const char *destPath);
+
+
 	// Compresses a string to an in-memory image of a .Z file. Prior to compression,
-	// the string is converted to the character encoding specified by  charset. The  charset
+	// the string is converted to the character encoding specified by charset. The charset
 	// can be any one of a large number of character encodings, such as "utf-8",
 	// "iso-8859-1", "Windows-1252", "ucs-2", etc.
 	bool CompressString(const char *inStr, const char *charset, CkByteData &outBytes);
 
 
-	// Unix compresses and creates a .Z file from string data. The  charset specifies the
+	// Unix compresses and creates a .Z file from string data. The charset specifies the
 	// character encoding used for the byte representation of the characters when
-	// compressed. The  charset can be any one of a large number of character encodings,
+	// compressed. The charset can be any one of a large number of character encodings,
 	// such as "utf-8", "iso-8859-1", "Windows-1252", "ucs-2", etc.
 	bool CompressStringToFile(const char *inStr, const char *charset, const char *destPath);
 
@@ -114,17 +130,6 @@ class CK_VISIBLE_PUBLIC CkUnixCompress  : public CkMultiByteBase
 	// Returns true if the component has been unlocked. (For ActiveX, returns 1 if
 	// unlocked.)
 	bool IsUnlocked(void);
-
-
-	// Unpacks a .tar.Z file. The decompress and untar occur in streaming mode. There
-	// are no temporary files and the memory footprint is constant (and small) while
-	// untarring.
-	bool UnTarZ(const char *zFilename, const char *destDir, bool bNoAbsolute);
-
-	// Unpacks a .tar.Z file. The decompress and untar occur in streaming mode. There
-	// are no temporary files and the memory footprint is constant (and small) while
-	// untarring.
-	CkTask *UnTarZAsync(const char *zFilename, const char *destDir, bool bNoAbsolute);
 
 
 	// Uncompresses a .Z file. (This compression uses the LZW (Lempel-Ziv-Welch)
@@ -147,25 +152,20 @@ class CK_VISIBLE_PUBLIC CkUnixCompress  : public CkMultiByteBase
 
 	// Uncompresses a .Z file that contains a text file. The contents of the text file
 	// are returned as a string. The character encoding of the text file is specified
-	// by  charset. Typical charsets are "iso-8859-1", "utf-8", "windows-1252",
+	// by charset. Typical charsets are "iso-8859-1", "utf-8", "windows-1252",
 	// "shift_JIS", "big5", etc.
-	bool UncompressFileToString(const char *inFilename, const char *inCharset, CkString &outStr);
+	bool UncompressFileToString(const char *zFilename, const char *charset, CkString &outStr);
 
 	// Uncompresses a .Z file that contains a text file. The contents of the text file
 	// are returned as a string. The character encoding of the text file is specified
-	// by  charset. Typical charsets are "iso-8859-1", "utf-8", "windows-1252",
+	// by charset. Typical charsets are "iso-8859-1", "utf-8", "windows-1252",
 	// "shift_JIS", "big5", etc.
-	const char *uncompressFileToString(const char *inFilename, const char *inCharset);
+	const char *uncompressFileToString(const char *zFilename, const char *charset);
 	// Uncompresses a .Z file that contains a text file. The contents of the text file
 	// are returned as a string. The character encoding of the text file is specified
-	// by  charset. Typical charsets are "iso-8859-1", "utf-8", "windows-1252",
+	// by charset. Typical charsets are "iso-8859-1", "utf-8", "windows-1252",
 	// "shift_JIS", "big5", etc.
-	CkTask *UncompressFileToStringAsync(const char *inFilename, const char *inCharset);
-
-
-	// Uncompresses from an in-memory image of a .Z file to a file. (This compression
-	// uses the LZW (Lempel-Ziv-Welch) compression algorithm.)
-	bool UncompressMemToFile(CkByteData &inData, const char *destPath);
+	CkTask *UncompressFileToStringAsync(const char *zFilename, const char *charset);
 
 
 	// Uncompresses from an in-memory image of a .Z file directly into memory. (This
@@ -173,20 +173,36 @@ class CK_VISIBLE_PUBLIC CkUnixCompress  : public CkMultiByteBase
 	bool UncompressMemory(CkByteData &inData, CkByteData &outData);
 
 
-	// Uncompresses from an in-memory image of a .Z file directly to a string. The  charset
-	// specifies the character encoding used to interpret the bytes resulting from the
-	// decompression. The  charset can be any one of a large number of character encodings,
-	// such as "utf-8", "iso-8859-1", "Windows-1252", "ucs-2", etc.
-	bool UncompressString(CkByteData &inData, const char *inCharset, CkString &outStr);
+	// Uncompresses from an in-memory image of a .Z file to a file. (This compression
+	// uses the LZW (Lempel-Ziv-Welch) compression algorithm.)
+	bool UncompressMemToFile(CkByteData &inData, const char *destPath);
 
-	// Uncompresses from an in-memory image of a .Z file directly to a string. The  charset
+
+	// Uncompresses from an in-memory image of a .Z file directly to a string. The charset
 	// specifies the character encoding used to interpret the bytes resulting from the
-	// decompression. The  charset can be any one of a large number of character encodings,
+	// decompression. The charset can be any one of a large number of character encodings,
 	// such as "utf-8", "iso-8859-1", "Windows-1252", "ucs-2", etc.
-	const char *uncompressString(CkByteData &inData, const char *inCharset);
+	bool UncompressString(CkByteData &inCompressedData, const char *charset, CkString &outStr);
+
+	// Uncompresses from an in-memory image of a .Z file directly to a string. The charset
+	// specifies the character encoding used to interpret the bytes resulting from the
+	// decompression. The charset can be any one of a large number of character encodings,
+	// such as "utf-8", "iso-8859-1", "Windows-1252", "ucs-2", etc.
+	const char *uncompressString(CkByteData &inCompressedData, const char *charset);
 
 	// Unlocks the component allowing for the full functionality to be used.
 	bool UnlockComponent(const char *unlockCode);
+
+
+	// Unpacks a .tar.Z file. The decompress and untar occur in streaming mode. There
+	// are no temporary files and the memory footprint is constant (and small) while
+	// untarring.
+	bool UnTarZ(const char *zFilename, const char *destDir, bool bNoAbsolute);
+
+	// Unpacks a .tar.Z file. The decompress and untar occur in streaming mode. There
+	// are no temporary files and the memory footprint is constant (and small) while
+	// untarring.
+	CkTask *UnTarZAsync(const char *zFilename, const char *destDir, bool bNoAbsolute);
 
 
 

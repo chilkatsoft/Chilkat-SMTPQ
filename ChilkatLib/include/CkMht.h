@@ -10,7 +10,7 @@
 #include "chilkatDefs.h"
 
 #include "CkString.h"
-#include "CkMultiByteBase.h"
+#include "CkClassWithCallbacks.h"
 
 class CkTask;
 class CkBaseProgress;
@@ -23,10 +23,9 @@ class CkBaseProgress;
  
 
 // CLASS: CkMht
-class CK_VISIBLE_PUBLIC CkMht  : public CkMultiByteBase
+class CK_VISIBLE_PUBLIC CkMht  : public CkClassWithCallbacks
 {
     private:
-	void *m_eventCallback;
 
 	// Don't allow assignment or copying these objects.
 	CkMht(const CkMht &);
@@ -52,6 +51,23 @@ class CK_VISIBLE_PUBLIC CkMht  : public CkMultiByteBase
 	// ----------------------
 	// Properties
 	// ----------------------
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	bool get_AbortCurrent(void);
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	void put_AbortCurrent(bool newVal);
+
 	// When processing an HTML file or string (not a website URL), this defines the
 	// base URL to be used when converting relative HREFs to absolute HREFs.
 	void get_BaseUrl(CkString &str);
@@ -539,42 +555,42 @@ class CK_VISIBLE_PUBLIC CkMht  : public CkMultiByteBase
 
 	// Creates an EML file from a web page or HTML file. All external images and style
 	// sheets are downloaded and embedded in the EML file.
-	bool GetAndSaveEML(const char *url, const char *emlFilename);
+	bool GetAndSaveEML(const char *url_or_htmlFilepath, const char *emlPath);
 
 	// Creates an EML file from a web page or HTML file. All external images and style
 	// sheets are downloaded and embedded in the EML file.
-	CkTask *GetAndSaveEMLAsync(const char *url, const char *emlFilename);
+	CkTask *GetAndSaveEMLAsync(const char *url_or_htmlFilepath, const char *emlPath);
 
 
 	// Creates an MHT file from a web page or local HTML file. All external images,
 	// scripts, and style sheets are downloaded and embedded in the MHT file.
-	bool GetAndSaveMHT(const char *url, const char *mhtFilename);
+	bool GetAndSaveMHT(const char *url_or_htmlFilepath, const char *mhtPath);
 
 	// Creates an MHT file from a web page or local HTML file. All external images,
 	// scripts, and style sheets are downloaded and embedded in the MHT file.
-	CkTask *GetAndSaveMHTAsync(const char *url, const char *mhtFilename);
+	CkTask *GetAndSaveMHTAsync(const char *url_or_htmlFilepath, const char *mhtPath);
 
 
 	// Creates an EML file from a web page or HTML file, compresses, and appends to a
 	// new or existing Zip file. All external images and style sheets are downloaded
 	// and embedded in the EML.
-	bool GetAndZipEML(const char *url, const char *zipEntryFilename, const char *zipFilename);
+	bool GetAndZipEML(const char *url_or_htmlFilepath, const char *zipEntryFilename, const char *zipFilename);
 
 	// Creates an EML file from a web page or HTML file, compresses, and appends to a
 	// new or existing Zip file. All external images and style sheets are downloaded
 	// and embedded in the EML.
-	CkTask *GetAndZipEMLAsync(const char *url, const char *zipEntryFilename, const char *zipFilename);
+	CkTask *GetAndZipEMLAsync(const char *url_or_htmlFilepath, const char *zipEntryFilename, const char *zipFilename);
 
 
 	// Creates an MHT file from a web page or HTML file, compresses, and appends to a
 	// new or existing Zip file. All external images and style sheets are downloaded
 	// and embedded in the MHT.
-	bool GetAndZipMHT(const char *url, const char *zipEntryFilename, const char *zipFilename);
+	bool GetAndZipMHT(const char *url_or_htmlFilepath, const char *zipEntryFilename, const char *zipFilename);
 
 	// Creates an MHT file from a web page or HTML file, compresses, and appends to a
 	// new or existing Zip file. All external images and style sheets are downloaded
 	// and embedded in the MHT.
-	CkTask *GetAndZipMHTAsync(const char *url, const char *zipEntryFilename, const char *zipFilename);
+	CkTask *GetAndZipMHTAsync(const char *url_or_htmlFilepath, const char *zipEntryFilename, const char *zipFilename);
 
 
 	// Returns the Nth cache root (indexing begins at 0). Cache roots are set by
@@ -591,34 +607,34 @@ class CK_VISIBLE_PUBLIC CkMht  : public CkMultiByteBase
 
 	// Creates EML from a web page or HTML file, and returns the EML (MIME) message
 	// data as a string.
-	bool GetEML(const char *url, CkString &outStr);
+	bool GetEML(const char *url_or_htmlFilepath, CkString &outStr);
 
 	// Creates EML from a web page or HTML file, and returns the EML (MIME) message
 	// data as a string.
-	const char *getEML(const char *url);
+	const char *getEML(const char *url_or_htmlFilepath);
 	// Creates EML from a web page or HTML file, and returns the EML (MIME) message
 	// data as a string.
-	const char *eML(const char *url);
+	const char *eML(const char *url_or_htmlFilepath);
 
 	// Creates EML from a web page or HTML file, and returns the EML (MIME) message
 	// data as a string.
-	CkTask *GetEMLAsync(const char *url);
+	CkTask *GetEMLAsync(const char *url_or_htmlFilepath);
 
 
 	// Creates MHT from a web page or local HTML file, and returns the MHT (MIME)
 	// message data as a string
-	bool GetMHT(const char *url, CkString &outStr);
+	bool GetMHT(const char *url_or_htmlFilepath, CkString &outStr);
 
 	// Creates MHT from a web page or local HTML file, and returns the MHT (MIME)
 	// message data as a string
-	const char *getMHT(const char *url);
+	const char *getMHT(const char *url_or_htmlFilepath);
 	// Creates MHT from a web page or local HTML file, and returns the MHT (MIME)
 	// message data as a string
-	const char *mHT(const char *url);
+	const char *mHT(const char *url_or_htmlFilepath);
 
 	// Creates MHT from a web page or local HTML file, and returns the MHT (MIME)
 	// message data as a string
-	CkTask *GetMHTAsync(const char *url);
+	CkTask *GetMHTAsync(const char *url_or_htmlFilepath);
 
 
 	// Creates an in-memory EML string from an in-memory HTML string. All external
@@ -684,8 +700,8 @@ class CK_VISIBLE_PUBLIC CkMht  : public CkMultiByteBase
 
 
 	// Unpacks the contents of a MHT file. The destination directory is specified by
-	//  unpackDir. The name of the HTML file created is specified by  htmlFilename, and supporting
-	// files (images, javascripts, etc.) are created in  partsSubDir, which is automatically
+	// unpackDir. The name of the HTML file created is specified by htmlFilename, and supporting
+	// files (images, javascripts, etc.) are created in partsSubDir, which is automatically
 	// created if it does not already exist.
 	bool UnpackMHT(const char *mhtFilename, const char *unpackDir, const char *htmlFilename, const char *partsSubDir);
 

@@ -1,9 +1,10 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkHtmlToText_H
 #define _C_CkHtmlToText_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
+
 
 CK_VISIBLE_PUBLIC HCkHtmlToText CkHtmlToText_Create(void);
 CK_VISIBLE_PUBLIC void CkHtmlToText_Dispose(HCkHtmlToText handle);

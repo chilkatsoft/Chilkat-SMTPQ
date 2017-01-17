@@ -63,6 +63,11 @@ class CK_VISIBLE_PUBLIC CkSFtpFileW  : public CkWideCharBase
 	// formatted string.
 	const wchar_t *createTimeStr(void);
 
+	// The filename (or directory name, symbolic link name, etc.)
+	void get_Filename(CkString &str);
+	// The filename (or directory name, symbolic link name, etc.)
+	const wchar_t *filename(void);
+
 	// One of the following values:
 	//   regular
 	//   directory
@@ -85,11 +90,6 @@ class CK_VISIBLE_PUBLIC CkSFtpFileW  : public CkWideCharBase
 	//   blockDevice
 	//   fifo
 	const wchar_t *fileType(void);
-
-	// The filename (or directory name, symbolic link name, etc.)
-	void get_Filename(CkString &str);
-	// The filename (or directory name, symbolic link name, etc.)
-	const wchar_t *filename(void);
 
 	// The integer Group ID of the file.
 	int get_Gid(void);

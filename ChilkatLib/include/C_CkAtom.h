@@ -1,12 +1,19 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkAtom_H
 #define _C_CkAtom_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
+CK_VISIBLE_PUBLIC void CkAtom_setAbortCheck(HCkAtom cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkAtom_setPercentDone(HCkAtom cHandle, BOOL (*fnPercentDone)(int pctDone));
+CK_VISIBLE_PUBLIC void CkAtom_setProgressInfo(HCkAtom cHandle, void (*fnProgressInfo)(const char *name, const char *value));
+CK_VISIBLE_PUBLIC void CkAtom_setTaskCompleted(HCkAtom cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
 CK_VISIBLE_PUBLIC HCkAtom CkAtom_Create(void);
 CK_VISIBLE_PUBLIC void CkAtom_Dispose(HCkAtom handle);
+CK_VISIBLE_PUBLIC BOOL CkAtom_getAbortCurrent(HCkAtom cHandle);
 CK_VISIBLE_PUBLIC void CkAtom_getDebugLogFilePath(HCkAtom cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkAtom_putDebugLogFilePath(HCkAtom cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkAtom_debugLogFilePath(HCkAtom cHandle);
@@ -26,7 +33,7 @@ CK_VISIBLE_PUBLIC void CkAtom_putVerboseLogging(HCkAtom cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkAtom_getVersion(HCkAtom cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkAtom_version(HCkAtom cHandle);
 CK_VISIBLE_PUBLIC int CkAtom_AddElement(HCkAtom cHandle, const char *tag, const char *value);
-CK_VISIBLE_PUBLIC int CkAtom_AddElementDate(HCkAtom cHandle, const char *tag, SYSTEMTIME *dateTime);
+CK_VISIBLE_PUBLIC int CkAtom_AddElementDate(HCkAtom cHandle, const char *tag, SYSTEMTIME * dateTime);
 CK_VISIBLE_PUBLIC int CkAtom_AddElementDateStr(HCkAtom cHandle, const char *tag, const char *dateTimeStr);
 CK_VISIBLE_PUBLIC int CkAtom_AddElementDt(HCkAtom cHandle, const char *tag, HCkDateTime dateTime);
 CK_VISIBLE_PUBLIC int CkAtom_AddElementHtml(HCkAtom cHandle, const char *tag, const char *htmlStr);
@@ -66,7 +73,7 @@ CK_VISIBLE_PUBLIC void CkAtom_SetTopAttr(HCkAtom cHandle, const char *attrName, 
 CK_VISIBLE_PUBLIC BOOL CkAtom_ToXmlString(HCkAtom cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkAtom_toXmlString(HCkAtom cHandle);
 CK_VISIBLE_PUBLIC void CkAtom_UpdateElement(HCkAtom cHandle, const char *tag, int index, const char *value);
-CK_VISIBLE_PUBLIC void CkAtom_UpdateElementDate(HCkAtom cHandle, const char *tag, int index, SYSTEMTIME *dateTime);
+CK_VISIBLE_PUBLIC void CkAtom_UpdateElementDate(HCkAtom cHandle, const char *tag, int index, SYSTEMTIME * dateTime);
 CK_VISIBLE_PUBLIC void CkAtom_UpdateElementDateStr(HCkAtom cHandle, const char *tag, int index, const char *dateTimeStr);
 CK_VISIBLE_PUBLIC void CkAtom_UpdateElementDt(HCkAtom cHandle, const char *tag, int index, HCkDateTime dateTime);
 CK_VISIBLE_PUBLIC void CkAtom_UpdateElementHtml(HCkAtom cHandle, const char *tag, int index, const char *htmlStr);

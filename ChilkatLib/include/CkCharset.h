@@ -25,7 +25,6 @@ class CkByteData;
 class CK_VISIBLE_PUBLIC CkCharset  : public CkMultiByteBase
 {
     private:
-	
 
 	// Don't allow assignment or copying these objects.
 	CkCharset(const CkCharset &);
@@ -69,19 +68,13 @@ class CK_VISIBLE_PUBLIC CkCharset  : public CkMultiByteBase
 	// converted to the target charset, the action taken is controlled by this
 	// property. The possible settings are: (0) drop the error characters, (1)
 	// substitute the data set by the SetErrorBytes or SetErrorString method, (2)
-	// convert to a hex-escaped string (&#XXXX), (3) RESERVED, (4) RESERVED, (5)
-	// RESERVED, (6) convert the error character to the AltToCharset instead, if that
-	// fails then drop the character, (7) Pass non-convertible characters to the output
-	// unchanged.
+	// convert to a hex-escaped string (
 	int get_ErrorAction(void);
 	// Controls how errors are handled. When a character in the input data cannot be
 	// converted to the target charset, the action taken is controlled by this
 	// property. The possible settings are: (0) drop the error characters, (1)
 	// substitute the data set by the SetErrorBytes or SetErrorString method, (2)
-	// convert to a hex-escaped string (&#XXXX), (3) RESERVED, (4) RESERVED, (5)
-	// RESERVED, (6) convert the error character to the AltToCharset instead, if that
-	// fails then drop the character, (7) Pass non-convertible characters to the output
-	// unchanged.
+	// convert to a hex-escaped string (
 	void put_ErrorAction(int newVal);
 
 	// Tells the charset converter the charset of the input data for a conversion.
@@ -708,13 +701,13 @@ class CK_VISIBLE_PUBLIC CkCharset  : public CkMultiByteBase
 	// the ToCharset is utf-16 or utf-8, then the preamble (also known as BOM) is
 	// included in the output. (Call ConvertFileNoPreamble to suppress the output of
 	// the BOM.)
-	bool ConvertFile(const char *srcPath, const char *destPath);
+	bool ConvertFile(const char *inPath, const char *destPath);
 
 
 	// Converts a file from one character encoding to another. The FromCharset and
 	// ToCharset properties specify the source and destination character encodings. No
 	// preamble (also known as BOM) is included in the output.
-	bool ConvertFileNoPreamble(const char *srcPath, const char *destPath);
+	bool ConvertFileNoPreamble(const char *inPath, const char *destPath);
 
 
 	// Converts Unicode (utf-16) text to the charset specified by the ToCharset
@@ -737,7 +730,7 @@ class CK_VISIBLE_PUBLIC CkCharset  : public CkMultiByteBase
 	// set, it is obtained from the HTML META tag that indicates the charset. This
 	// method automatically edits the META tag within the HTML that indicates the
 	// charset.
-	bool ConvertHtmlFile(const char *srcPath, const char *destPath);
+	bool ConvertHtmlFile(const char *inPath, const char *destPath);
 
 
 	// Converts multibyte character data to a Unicode string. The FromCharset property
@@ -778,14 +771,14 @@ class CK_VISIBLE_PUBLIC CkCharset  : public CkMultiByteBase
 
 	// Examines an HTML file and extracts the charset name specified by the META tag,
 	// if present.
-	bool GetHtmlFileCharset(const char *htmlFilename, CkString &outCharset);
+	bool GetHtmlFileCharset(const char *htmlFilePath, CkString &outCharset);
 
 	// Examines an HTML file and extracts the charset name specified by the META tag,
 	// if present.
-	const char *getHtmlFileCharset(const char *htmlFilename);
+	const char *getHtmlFileCharset(const char *htmlFilePath);
 	// Examines an HTML file and extracts the charset name specified by the META tag,
 	// if present.
-	const char *htmlFileCharset(const char *htmlFilename);
+	const char *htmlFileCharset(const char *htmlFilePath);
 
 
 	// Converts HTML entities to Unicode characters.
@@ -804,7 +797,7 @@ class CK_VISIBLE_PUBLIC CkCharset  : public CkMultiByteBase
 	// decoded. See http://www.w3.org/TR/REC-html40/sgml/entities.html for information
 	// on HTML entities. Examples of HTML entities are _AMP_lt; , _AMP_#229; ,
 	// _AMP_#xE5; , _AMP_#x6C34; , _AMP_Iacute; , etc.
-	bool HtmlEntityDecodeFile(const char *inFilename, const char *destPath);
+	bool HtmlEntityDecodeFile(const char *inPath, const char *destPath);
 
 
 	// Returns true if the component is unlocked.
@@ -818,18 +811,18 @@ class CK_VISIBLE_PUBLIC CkCharset  : public CkMultiByteBase
 	const char *lowerCase(const char *inStr);
 
 	// Convenience method for reading the entire contents of a file into a byte array.
-	bool ReadFile(const char *filename, CkByteData &outData);
+	bool ReadFile(const char *path, CkByteData &outData);
 
 
 	// Reads a text file and returns the text converted to a Unicode string. The
 	// filename is specified by the first method argument, and the charset of the text
 	// data is specified by the 2nd method argument.
-	bool ReadFileToString(const char *filename, const char *srcCharset, CkString &outStr);
+	bool ReadFileToString(const char *path, const char *charset, CkString &outStr);
 
 	// Reads a text file and returns the text converted to a Unicode string. The
 	// filename is specified by the first method argument, and the charset of the text
 	// data is specified by the 2nd method argument.
-	const char *readFileToString(const char *filename, const char *srcCharset);
+	const char *readFileToString(const char *path, const char *charset);
 
 	// If the ErrorAction property is set to 1, the bytes passed to this method are
 	// used as the result for any characters that cannot be converted during a
@@ -868,16 +861,16 @@ class CK_VISIBLE_PUBLIC CkCharset  : public CkMultiByteBase
 
 	// Returns true if the file contains character data that conforms to the charset
 	// passed in the 1st argument.
-	bool VerifyFile(const char *charset, const char *filename);
+	bool VerifyFile(const char *charset, const char *path);
 
 
 	// Convenience method for saving an entire byte array to a file.
-	bool WriteFile(const char *filename, CkByteData &fileData);
+	bool WriteFile(const char *path, CkByteData &byteData);
 
 
 	// Converts a Unicode string to a multibyte charset and writes the multibyte text
 	// data to a file. The destination charset is specified in the 2nd method argument.
-	bool WriteStringToFile(const char *str, const char *filename, const char *charset);
+	bool WriteStringToFile(const char *textData, const char *path, const char *charset);
 
 
 

@@ -1,12 +1,20 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkUpload_H
 #define _C_CkUpload_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
+CK_VISIBLE_PUBLIC void CkUpload_setAbortCheck(HCkUpload cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkUpload_setPercentDone(HCkUpload cHandle, BOOL (*fnPercentDone)(int pctDone));
+CK_VISIBLE_PUBLIC void CkUpload_setProgressInfo(HCkUpload cHandle, void (*fnProgressInfo)(const char *name, const char *value));
+CK_VISIBLE_PUBLIC void CkUpload_setTaskCompleted(HCkUpload cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
 CK_VISIBLE_PUBLIC HCkUpload CkUpload_Create(void);
 CK_VISIBLE_PUBLIC void CkUpload_Dispose(HCkUpload handle);
+CK_VISIBLE_PUBLIC BOOL CkUpload_getAbortCurrent(HCkUpload cHandle);
+CK_VISIBLE_PUBLIC void CkUpload_putAbortCurrent(HCkUpload cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkUpload_getBandwidthThrottleUp(HCkUpload cHandle);
 CK_VISIBLE_PUBLIC void CkUpload_putBandwidthThrottleUp(HCkUpload cHandle, int newVal);
 CK_VISIBLE_PUBLIC int CkUpload_getChunkSize(HCkUpload cHandle);

@@ -10,7 +10,7 @@
 #include "chilkatDefs.h"
 
 #include "CkString.h"
-#include "CkMultiByteBase.h"
+#include "CkClassWithCallbacks.h"
 
 class CkZipEntry;
 class CkByteData;
@@ -26,10 +26,9 @@ class CkZipProgress;
  
 
 // CLASS: CkZip
-class CK_VISIBLE_PUBLIC CkZip  : public CkMultiByteBase
+class CK_VISIBLE_PUBLIC CkZip  : public CkClassWithCallbacks
 {
     private:
-	void *m_eventCallback;
 
 	// Don't allow assignment or copying these objects.
 	CkZip(const CkZip &);
@@ -55,6 +54,23 @@ class CK_VISIBLE_PUBLIC CkZip  : public CkMultiByteBase
 	// ----------------------
 	// Properties
 	// ----------------------
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	bool get_AbortCurrent(void);
+	// When set to true, causes the currently running method to abort. Methods that
+	// always finish quickly (i.e.have no length file operations or network
+	// communications) are not affected. If no method is running, then this property is
+	// automatically reset to false when the next method is called. When the abort
+	// occurs, this property is reset to false. Both synchronous and asynchronous
+	// method calls can be aborted. (A synchronous method call could be aborted by
+	// setting this property from a separate thread.)
+	void put_AbortCurrent(bool newVal);
+
 	// When files are added to a Zip archive, they are appended from this directory.
 	// For example, to add all the files under c:/abc/123/myAppDir, this property could
 	// be set to "c:/abc/123", and "myAppDir/*" would be passed to AppendFiles. The
@@ -228,43 +244,6 @@ class CK_VISIBLE_PUBLIC CkZip  : public CkMultiByteBase
 	// false.
 	void put_DiscardPaths(bool newVal);
 
-	// The encryption key length if AES, Blowfish, Twofish, or WinZip-compatible AES
-	// encryption is used. This value must be 128, 192, or 256. The default value is
-	// 128.
-	int get_EncryptKeyLength(void);
-	// The encryption key length if AES, Blowfish, Twofish, or WinZip-compatible AES
-	// encryption is used. This value must be 128, 192, or 256. The default value is
-	// 128.
-	void put_EncryptKeyLength(int newVal);
-
-	// The password used when writing a password-protected or strong-encrytped Zip.
-	// 
-	// Note:The SetPassword method has the effect of setting both this property as well
-	// as the DecryptPassword property. The SetPassword method should no longer be
-	// used. It has been replaced by the DecryptPassword and EncryptPassword properties
-	// to make it possible to open an encrypted zip and re-write it with a new
-	// password.
-	// 
-	void get_EncryptPassword(CkString &str);
-	// The password used when writing a password-protected or strong-encrytped Zip.
-	// 
-	// Note:The SetPassword method has the effect of setting both this property as well
-	// as the DecryptPassword property. The SetPassword method should no longer be
-	// used. It has been replaced by the DecryptPassword and EncryptPassword properties
-	// to make it possible to open an encrypted zip and re-write it with a new
-	// password.
-	// 
-	const char *encryptPassword(void);
-	// The password used when writing a password-protected or strong-encrytped Zip.
-	// 
-	// Note:The SetPassword method has the effect of setting both this property as well
-	// as the DecryptPassword property. The SetPassword method should no longer be
-	// used. It has been replaced by the DecryptPassword and EncryptPassword properties
-	// to make it possible to open an encrypted zip and re-write it with a new
-	// password.
-	// 
-	void put_EncryptPassword(const char *newVal);
-
 	// Indicate whether the Zip is to be strong encrypted or not. Valid values are 0
 	// (not encrypted) or 4 (AES encrypted). When this property is set to the value 4,
 	// WinZip AES compatible encrypted zip archives are produced.
@@ -310,6 +289,43 @@ class CK_VISIBLE_PUBLIC CkZip  : public CkMultiByteBase
 	// 
 	void put_Encryption(int newVal);
 
+	// The encryption key length if AES, Blowfish, Twofish, or WinZip-compatible AES
+	// encryption is used. This value must be 128, 192, or 256. The default value is
+	// 128.
+	int get_EncryptKeyLength(void);
+	// The encryption key length if AES, Blowfish, Twofish, or WinZip-compatible AES
+	// encryption is used. This value must be 128, 192, or 256. The default value is
+	// 128.
+	void put_EncryptKeyLength(int newVal);
+
+	// The password used when writing a password-protected or strong-encrytped Zip.
+	// 
+	// Note:The SetPassword method has the effect of setting both this property as well
+	// as the DecryptPassword property. The SetPassword method should no longer be
+	// used. It has been replaced by the DecryptPassword and EncryptPassword properties
+	// to make it possible to open an encrypted zip and re-write it with a new
+	// password.
+	// 
+	void get_EncryptPassword(CkString &str);
+	// The password used when writing a password-protected or strong-encrytped Zip.
+	// 
+	// Note:The SetPassword method has the effect of setting both this property as well
+	// as the DecryptPassword property. The SetPassword method should no longer be
+	// used. It has been replaced by the DecryptPassword and EncryptPassword properties
+	// to make it possible to open an encrypted zip and re-write it with a new
+	// password.
+	// 
+	const char *encryptPassword(void);
+	// The password used when writing a password-protected or strong-encrytped Zip.
+	// 
+	// Note:The SetPassword method has the effect of setting both this property as well
+	// as the DecryptPassword property. The SetPassword method should no longer be
+	// used. It has been replaced by the DecryptPassword and EncryptPassword properties
+	// to make it possible to open an encrypted zip and re-write it with a new
+	// password.
+	// 
+	void put_EncryptPassword(const char *newVal);
+
 #if defined(CK_SFX_INCLUDED)
 	// (Relevant only when running on a Microsoft Windows operating system.) Specifies
 	// the default unzip directory path to appear in the user-interface dialog box when
@@ -345,16 +361,31 @@ class CK_VISIBLE_PUBLIC CkZip  : public CkMultiByteBase
 	// creating self-extracting EXEs. This property can be set to a pre-existing icon
 	// filename (.ico) that will be embedded within the to-be-created EXE and set as
 	// its default icon.
+	// 
+	// Note: This property is only possible for 32-bit applications. (Meaning that the
+	// application that is creating the self-extracting EXE must be a 32-bit
+	// application if an ExeIconFile is to be used.)
+	// 
 	void get_ExeIconFile(CkString &str);
 	// (Relevant only when running on a Microsoft Windows operating system.) Applies to
 	// creating self-extracting EXEs. This property can be set to a pre-existing icon
 	// filename (.ico) that will be embedded within the to-be-created EXE and set as
 	// its default icon.
+	// 
+	// Note: This property is only possible for 32-bit applications. (Meaning that the
+	// application that is creating the self-extracting EXE must be a 32-bit
+	// application if an ExeIconFile is to be used.)
+	// 
 	const char *exeIconFile(void);
 	// (Relevant only when running on a Microsoft Windows operating system.) Applies to
 	// creating self-extracting EXEs. This property can be set to a pre-existing icon
 	// filename (.ico) that will be embedded within the to-be-created EXE and set as
 	// its default icon.
+	// 
+	// Note: This property is only possible for 32-bit applications. (Meaning that the
+	// application that is creating the self-extracting EXE must be a 32-bit
+	// application if an ExeIconFile is to be used.)
+	// 
 	void put_ExeIconFile(const char *newVal);
 #endif
 
@@ -725,9 +756,17 @@ class CK_VISIBLE_PUBLIC CkZip  : public CkMultiByteBase
 
 	// true if the Zip should be password-protected using older Zip 2.0 encryption,
 	// commonly referred to as "password-protection".
+	// 
+	// This property is set when a zip archive is opened by any of the Open* methods,
+	// such as OpenZip, OpenFromMemory, etc.
+	// 
 	bool get_PasswordProtect(void);
 	// true if the Zip should be password-protected using older Zip 2.0 encryption,
 	// commonly referred to as "password-protection".
+	// 
+	// This property is set when a zip archive is opened by any of the Open* methods,
+	// such as OpenZip, OpenFromMemory, etc.
+	// 
 	void put_PasswordProtect(bool newVal);
 
 	// A prefix that is added to each filename when zipping. One might set the
@@ -934,7 +973,7 @@ class CK_VISIBLE_PUBLIC CkZip  : public CkMultiByteBase
 	// (Meaning data compressed using the "deflate" compression algorithm.)
 	// 
 	// The caller is responsible for deleting the object returned by this method.
-	CkZipEntry *AppendCompressed(const char *fileName, CkByteData &inData);
+	CkZipEntry *AppendCompressed(const char *filename, CkByteData &inData);
 
 
 	// Appends in-memory data as a new entry to a Zip object. The ZipEntry object
@@ -945,6 +984,20 @@ class CK_VISIBLE_PUBLIC CkZip  : public CkMultiByteBase
 	// 
 	// The caller is responsible for deleting the object returned by this method.
 	CkZipEntry *AppendData(const char *fileName, CkByteData &inData);
+
+
+	// Appends in-memory data as a new entry to a Zip object. The filename is the filename
+	// of the entry as it will appear within the zip. The encoding is the encoding of the
+	// data, such as "base64", "hex", etc. The full list of encodings is listed at the
+	// web page linked below.
+	// 
+	// Returns the zip entry object.
+	// 
+	// Note: This method only updates the zip object. To update (rewrite) a zip file,
+	// either the WriteZip or WriteZipAndClose method would need to be called.
+	// 
+	// The caller is responsible for deleting the object returned by this method.
+	CkZipEntry *AppendDataEncoded(const char *filename, const char *encoding, const char *data);
 
 
 	// Appends one or more files to the Zip object. The filePattern can use the "*"
@@ -968,18 +1021,18 @@ class CK_VISIBLE_PUBLIC CkZip  : public CkMultiByteBase
 	CkTask *AppendFilesAsync(const char *filePattern, bool recurse);
 
 
-	// Appends one or more files to the Zip object. The ARG1 can use the "*" and "?"
+	// Appends one or more files to the Zip object. The filePattern can use the "*" and "?"
 	// wildcard characters where "*" means 0 or more of any character and "?" means any
-	// single character. The ARG2 controls whether directories are recursively
-	// traversed. Set ARG2 equal to true to append files and subdirectories in the
-	// directory tree. Set ARG2 equal to false to add files only from the indicated
+	// single character. The recurse controls whether directories are recursively
+	// traversed. Set recurse equal to true to append files and subdirectories in the
+	// directory tree. Set recurse equal to false to add files only from the indicated
 	// directory.
 	// 
-	// The ARG3 only applies when the ARG1 is an absolute path pattern, such as
-	// "C:/temp/abc/*.txt". If ARG3 is true, then the absolute path will be included
+	// The saveExtraPath only applies when the filePattern is an absolute path pattern, such as
+	// "C:/temp/abc/*.txt". If saveExtraPath is true, then the absolute path will be included
 	// in the zip entry filenames as relative paths. For example, "temp/abc/xyz.txt".
 	// 
-	// The ARG4, ARG4, and ARG5 flags only apply when on the Windows operating system.
+	// The archiveOnly, archiveOnly, and includeHidden flags only apply when on the Windows operating system.
 	// These flags control whether files with the Archive, Hidden, or System attributes
 	// are included.
 	// 
@@ -991,18 +1044,18 @@ class CK_VISIBLE_PUBLIC CkZip  : public CkMultiByteBase
 	// 
 	bool AppendFilesEx(const char *filePattern, bool recurse, bool saveExtraPath, bool archiveOnly, bool includeHidden, bool includeSystem);
 
-	// Appends one or more files to the Zip object. The ARG1 can use the "*" and "?"
+	// Appends one or more files to the Zip object. The filePattern can use the "*" and "?"
 	// wildcard characters where "*" means 0 or more of any character and "?" means any
-	// single character. The ARG2 controls whether directories are recursively
-	// traversed. Set ARG2 equal to true to append files and subdirectories in the
-	// directory tree. Set ARG2 equal to false to add files only from the indicated
+	// single character. The recurse controls whether directories are recursively
+	// traversed. Set recurse equal to true to append files and subdirectories in the
+	// directory tree. Set recurse equal to false to add files only from the indicated
 	// directory.
 	// 
-	// The ARG3 only applies when the ARG1 is an absolute path pattern, such as
-	// "C:/temp/abc/*.txt". If ARG3 is true, then the absolute path will be included
+	// The saveExtraPath only applies when the filePattern is an absolute path pattern, such as
+	// "C:/temp/abc/*.txt". If saveExtraPath is true, then the absolute path will be included
 	// in the zip entry filenames as relative paths. For example, "temp/abc/xyz.txt".
 	// 
-	// The ARG4, ARG4, and ARG5 flags only apply when on the Windows operating system.
+	// The archiveOnly, archiveOnly, and includeHidden flags only apply when on the Windows operating system.
 	// These flags control whether files with the Archive, Hidden, or System attributes
 	// are included.
 	// 
@@ -1074,24 +1127,24 @@ class CK_VISIBLE_PUBLIC CkZip  : public CkMultiByteBase
 	CkZipEntry *AppendNewDir(const char *dirName);
 
 
-	// Appends a single file or directory to the Zip object. The  saveExtraPath applies when fileOrDirPath
-	// is an absolute (non-relative) path. If  saveExtraPath is true, then the absolute path is
+	// Appends a single file or directory to the Zip object. The saveExtraPath applies when fileOrDirPath
+	// is an absolute (non-relative) path. If saveExtraPath is true, then the absolute path is
 	// made relative and saved in the zip. For example, if the fileOrDirPath is
-	// "C:/temp/xyz/test.txt" and  saveExtraPath is true, then the path in the zip will be
-	// "./temp/xyz/test.txt". If however, fileOrDirPath contains a relative path, then  saveExtraPath has
+	// "C:/temp/xyz/test.txt" and saveExtraPath is true, then the path in the zip will be
+	// "./temp/xyz/test.txt". If however, fileOrDirPath contains a relative path, then saveExtraPath has
 	// no effect.
-	bool AppendOneFileOrDir(const char *fileOrDirName, bool saveExtraPath);
+	bool AppendOneFileOrDir(const char *fileOrDirPath, bool saveExtraPath);
 
-	// Appends a single file or directory to the Zip object. The  saveExtraPath applies when fileOrDirPath
-	// is an absolute (non-relative) path. If  saveExtraPath is true, then the absolute path is
+	// Appends a single file or directory to the Zip object. The saveExtraPath applies when fileOrDirPath
+	// is an absolute (non-relative) path. If saveExtraPath is true, then the absolute path is
 	// made relative and saved in the zip. For example, if the fileOrDirPath is
-	// "C:/temp/xyz/test.txt" and  saveExtraPath is true, then the path in the zip will be
-	// "./temp/xyz/test.txt". If however, fileOrDirPath contains a relative path, then  saveExtraPath has
+	// "C:/temp/xyz/test.txt" and saveExtraPath is true, then the path in the zip will be
+	// "./temp/xyz/test.txt". If however, fileOrDirPath contains a relative path, then saveExtraPath has
 	// no effect.
-	CkTask *AppendOneFileOrDirAsync(const char *fileOrDirName, bool saveExtraPath);
+	CkTask *AppendOneFileOrDirAsync(const char *fileOrDirPath, bool saveExtraPath);
 
 
-	// Adds an in-memory string to the Zip object. The  textData argument is converted to
+	// Adds an in-memory string to the Zip object. The textData argument is converted to
 	// the ANSI charset before being added to the Zip. If the Zip were written to disk
 	// by calling WriteZip, and later unzipped, the entry would unzip to an ANSI text
 	// file.
@@ -1100,18 +1153,18 @@ class CK_VISIBLE_PUBLIC CkZip  : public CkMultiByteBase
 	// either the WriteZip or WriteZipAndClose method would need to be called.
 	// 
 	// The caller is responsible for deleting the object returned by this method.
-	CkZipEntry *AppendString(const char *fileName, const char *str);
+	CkZipEntry *AppendString(const char *internalZipFilepath, const char *textData);
 
 
-	// Same as AppendString, but allows the charset to be specified. The  textData is
-	// converted to  charset before being added to the zip. The internalZipFilepath is the path of the
+	// Same as AppendString, but allows the charset to be specified. The textData is
+	// converted to charset before being added to the zip. The internalZipFilepath is the path of the
 	// file that will be stored within the zip.
 	// 
 	// Note: This method only updates the zip object. To update (rewrite) a zip file,
 	// either the WriteZip or WriteZipAndClose method would need to be called.
 	// 
 	// The caller is responsible for deleting the object returned by this method.
-	CkZipEntry *AppendString2(const char *fileName, const char *str, const char *charset);
+	CkZipEntry *AppendString2(const char *internalZipFilepath, const char *textData, const char *charset);
 
 
 	// Adds the contents of another existing Zip file to this Zip object.
@@ -1266,7 +1319,7 @@ class CK_VISIBLE_PUBLIC CkZip  : public CkMultiByteBase
 	// Clears and initializes the contents of the Zip object. If a Zip file was open,
 	// it is closed and all entries are removed from the object. The FileName property
 	// is set to the zipFilePath argument.
-	bool NewZip(const char *ZipFileName);
+	bool NewZip(const char *zipFilePath);
 
 
 #if defined(CK_SFX_INCLUDED)
@@ -1277,11 +1330,25 @@ class CK_VISIBLE_PUBLIC CkZip  : public CkMultiByteBase
 #endif
 
 	// Same as OpenFromMemory.
+	// 
+	// When a zip is opened, the PasswordProtect and Encryption properties will be
+	// appropriately set. If the zip is password protected (i.e. uses older Zip 2.0
+	// encrypion), then the PasswordProtect property will be set to true. If the zip
+	// is strong encrypted, the Encryption property will be set to a value 1 through 4,
+	// where 4 indicates WinZip compatible AES encryption.
+	// 
 	bool OpenFromByteData(CkByteData &byteData);
 
 
 	// Open a Zip that is completely in-memory. This allows for Zip files to be opened
 	// from non-filesystem sources, such as a database.
+	// 
+	// When a zip is opened, the PasswordProtect and Encryption properties will be
+	// appropriately set. If the zip is password protected (i.e. uses older Zip 2.0
+	// encrypion), then the PasswordProtect property will be set to true. If the zip
+	// is strong encrypted, the Encryption property will be set to a value 1 through 4,
+	// where 4 indicates WinZip compatible AES encryption.
+	// 
 	bool OpenFromMemory(CkByteData &inData);
 
 
@@ -1377,7 +1444,7 @@ class CK_VISIBLE_PUBLIC CkZip  : public CkMultiByteBase
 	// For example, to specify the text for the self-extractor's main dialog unzip
 	// button, paramName would be "MainUnzipBtn".
 	// 
-	void SetExeConfigParam(const char *name, const char *value);
+	void SetExeConfigParam(const char *paramName, const char *paramValue);
 
 #endif
 
@@ -1386,8 +1453,8 @@ class CK_VISIBLE_PUBLIC CkZip  : public CkMultiByteBase
 
 
 	// Unlocks the component allowing for the full functionality to be used. If a
-	// permanent (purchased) unlock code is passed, there is no expiration. Any other
-	// string automatically begins a fully-functional 30-day trial the first time
+	// purchased unlock code is passed, there is no expiration. Any other string
+	// automatically begins a fully-functional 30-day trial the first time
 	// UnlockComponent is called.
 	bool UnlockComponent(const char *regCode);
 

@@ -1,16 +1,17 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkCertStoreWH
 #define _C_CkCertStoreWH
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
 CK_VISIBLE_PUBLIC HCkCertStoreW CkCertStoreW_Create(void);
 CK_VISIBLE_PUBLIC void CkCertStoreW_Dispose(HCkCertStoreW handle);
 CK_VISIBLE_PUBLIC BOOL CkCertStoreW_getAvoidWindowsPkAccess(HCkCertStoreW cHandle);
-CK_VISIBLE_PUBLIC void CkCertStoreW_putAvoidWindowsPkAccess(HCkCertStoreW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkCertStoreW_putAvoidWindowsPkAccess(HCkCertStoreW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkCertStoreW_getDebugLogFilePath(HCkCertStoreW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkCertStoreW_putDebugLogFilePath(HCkCertStoreW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkCertStoreW_putDebugLogFilePath(HCkCertStoreW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkCertStoreW_debugLogFilePath(HCkCertStoreW cHandle);
 CK_VISIBLE_PUBLIC void CkCertStoreW_getLastErrorHtml(HCkCertStoreW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCertStoreW_lastErrorHtml(HCkCertStoreW cHandle);
@@ -19,13 +20,13 @@ CK_VISIBLE_PUBLIC const wchar_t *CkCertStoreW_lastErrorText(HCkCertStoreW cHandl
 CK_VISIBLE_PUBLIC void CkCertStoreW_getLastErrorXml(HCkCertStoreW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCertStoreW_lastErrorXml(HCkCertStoreW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCertStoreW_getLastMethodSuccess(HCkCertStoreW cHandle);
-CK_VISIBLE_PUBLIC void CkCertStoreW_putLastMethodSuccess(HCkCertStoreW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkCertStoreW_putLastMethodSuccess(HCkCertStoreW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkCertStoreW_getNumCertificates(HCkCertStoreW cHandle);
 #if defined(CK_WINCERTSTORE_INCLUDED)
 CK_VISIBLE_PUBLIC int CkCertStoreW_getNumEmailCerts(HCkCertStoreW cHandle);
 #endif
 CK_VISIBLE_PUBLIC BOOL CkCertStoreW_getVerboseLogging(HCkCertStoreW cHandle);
-CK_VISIBLE_PUBLIC void CkCertStoreW_putVerboseLogging(HCkCertStoreW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkCertStoreW_putVerboseLogging(HCkCertStoreW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkCertStoreW_getVersion(HCkCertStoreW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCertStoreW_version(HCkCertStoreW cHandle);
 #if defined(CK_WINCERTSTORE_INCLUDED)

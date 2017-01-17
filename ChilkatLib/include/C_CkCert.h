@@ -1,9 +1,10 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkCert_H
 #define _C_CkCert_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
+
 
 CK_VISIBLE_PUBLIC HCkCert CkCert_Create(void);
 CK_VISIBLE_PUBLIC void CkCert_Dispose(HCkCert handle);
@@ -87,10 +88,10 @@ CK_VISIBLE_PUBLIC const char *CkCert_subjectS(HCkCert cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCert_getTrustedRoot(HCkCert cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCert_getUtf8(HCkCert cHandle);
 CK_VISIBLE_PUBLIC void CkCert_putUtf8(HCkCert cHandle, BOOL newVal);
-CK_VISIBLE_PUBLIC void CkCert_getValidFrom(HCkCert cHandle, SYSTEMTIME *retval);
+CK_VISIBLE_PUBLIC void CkCert_getValidFrom(HCkCert cHandle, SYSTEMTIME * retval);
 CK_VISIBLE_PUBLIC void CkCert_getValidFromStr(HCkCert cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkCert_validFromStr(HCkCert cHandle);
-CK_VISIBLE_PUBLIC void CkCert_getValidTo(HCkCert cHandle, SYSTEMTIME *retval);
+CK_VISIBLE_PUBLIC void CkCert_getValidTo(HCkCert cHandle, SYSTEMTIME * retval);
 CK_VISIBLE_PUBLIC void CkCert_getValidToStr(HCkCert cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkCert_validToStr(HCkCert cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCert_getVerboseLogging(HCkCert cHandle);

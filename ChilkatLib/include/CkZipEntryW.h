@@ -10,7 +10,7 @@
 #include "chilkatDefs.h"
 
 #include "CkString.h"
-#include "CkWideCharBase.h"
+#include "CkClassWithCallbacksW.h"
 
 class CkByteData;
 class CkTaskW;
@@ -25,11 +25,10 @@ class CkBaseProgressW;
  
 
 // CLASS: CkZipEntryW
-class CK_VISIBLE_PUBLIC CkZipEntryW  : public CkWideCharBase
+class CK_VISIBLE_PUBLIC CkZipEntryW  : public CkClassWithCallbacksW
 {
     private:
 	bool m_cbOwned;
-	void *m_eventCallback;
 
 	// Don't allow assignment or copying these objects.
 	CkZipEntryW(const CkZipEntryW &);
@@ -197,13 +196,13 @@ class CK_VISIBLE_PUBLIC CkZipEntryW  : public CkWideCharBase
 	CkTaskW *AppendDataAsync(CkByteData &inData);
 
 	// Appends text data to the zip entry's file contents. The text is appended using
-	// the character encoding specified by the  charset, which can be "utf-8", "ansi", etc.
-	bool AppendString(const wchar_t *inStr, const wchar_t *charset);
+	// the character encoding specified by the charset, which can be "utf-8", "ansi", etc.
+	bool AppendString(const wchar_t *strContent, const wchar_t *charset);
 
 	// Creates an asynchronous task to call the AppendString method with the arguments
 	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *AppendStringAsync(const wchar_t *inStr, const wchar_t *charset);
+	CkTaskW *AppendStringAsync(const wchar_t *strContent, const wchar_t *charset);
 
 	// Returns the compressed data as a byte array.
 	// 
@@ -286,7 +285,7 @@ class CK_VISIBLE_PUBLIC CkZipEntryW  : public CkWideCharBase
 	// The caller is responsible for deleting the object returned by this method.
 	CkZipEntryW *NextEntry(void);
 
-	// Returns the next entry having a filename matching the ARG1. The "*" characters
+	// Returns the next entry having a filename matching the matchStr. The "*" characters
 	// matches 0 or more of any character. The full filename, including path, is used
 	// when matching against the pattern.
 	// The caller is responsible for deleting the object returned by this method.
@@ -296,9 +295,9 @@ class CK_VISIBLE_PUBLIC CkZipEntryW  : public CkWideCharBase
 	bool ReplaceData(CkByteData &inData);
 
 	// Replaces the zip entry's existing contents with new text data. The text will be
-	// stored using the character encoding as specified by  charset, which can be "utf-8",
+	// stored using the character encoding as specified by charset, which can be "utf-8",
 	// "ansi", etc.
-	bool ReplaceString(const wchar_t *inStr, const wchar_t *charset);
+	bool ReplaceString(const wchar_t *strContent, const wchar_t *charset);
 
 	// Sets the last-modified date/time for this zip entry.
 	void SetDt(CkDateTimeW &dt);
@@ -309,7 +308,7 @@ class CK_VISIBLE_PUBLIC CkZipEntryW  : public CkWideCharBase
 	// 1 = convert all to bare LF's
 	// 2 = convert all to CRLF's
 	// 
-	// The  srcCharset tells the component how to interpret the bytes of the uncompressed file
+	// The srcCharset tells the component how to interpret the bytes of the uncompressed file
 	// -- i.e. as utf-8, utf-16, windows-1252, etc.
 	bool UnzipToString(int lineEndingBehavior, const wchar_t *srcCharset, CkString &outStr);
 	// Inflate and return the uncompressed data as a string The lineEndingBehavior is as follows:
@@ -318,7 +317,7 @@ class CK_VISIBLE_PUBLIC CkZipEntryW  : public CkWideCharBase
 	// 1 = convert all to bare LF's
 	// 2 = convert all to CRLF's
 	// 
-	// The  srcCharset tells the component how to interpret the bytes of the uncompressed file
+	// The srcCharset tells the component how to interpret the bytes of the uncompressed file
 	// -- i.e. as utf-8, utf-16, windows-1252, etc.
 	const wchar_t *unzipToString(int lineEndingBehavior, const wchar_t *srcCharset);
 

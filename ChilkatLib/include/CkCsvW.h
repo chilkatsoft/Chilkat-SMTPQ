@@ -122,22 +122,22 @@ class CK_VISIBLE_PUBLIC CkCsvW  : public CkWideCharBase
 	// Deletes the entire Nth row. (The 1st row is at index 0.)
 	bool DeleteRow(int index);
 
-	// Returns the contents of the cell at row,  col. Indexing begins at 0. (The
+	// Returns the contents of the cell at row, col. Indexing begins at 0. (The
 	// topmost/leftmost cell is at 0,0)
 	bool GetCell(int row, int col, CkString &outStr);
-	// Returns the contents of the cell at row,  col. Indexing begins at 0. (The
+	// Returns the contents of the cell at row, col. Indexing begins at 0. (The
 	// topmost/leftmost cell is at 0,0)
 	const wchar_t *getCell(int row, int col);
-	// Returns the contents of the cell at row,  col. Indexing begins at 0. (The
+	// Returns the contents of the cell at row, col. Indexing begins at 0. (The
 	// topmost/leftmost cell is at 0,0)
 	const wchar_t *cell(int row, int col);
 
 	// The same as GetCell, but the column is specified by name instead of by index.
-	bool GetCellByName(int row, const wchar_t *columnName, CkString &outStr);
+	bool GetCellByName(int rowIndex, const wchar_t *columnName, CkString &outStr);
 	// The same as GetCell, but the column is specified by name instead of by index.
-	const wchar_t *getCellByName(int row, const wchar_t *columnName);
+	const wchar_t *getCellByName(int rowIndex, const wchar_t *columnName);
 	// The same as GetCell, but the column is specified by name instead of by index.
-	const wchar_t *cellByName(int row, const wchar_t *columnName);
+	const wchar_t *cellByName(int rowIndex, const wchar_t *columnName);
 
 	// Returns the name of the Nth column.
 	bool GetColumnName(int index, CkString &outStr);
@@ -157,30 +157,30 @@ class CK_VISIBLE_PUBLIC CkCsvW  : public CkWideCharBase
 	// characters.
 	bool LoadFile(const wchar_t *path);
 
-	// Loads a CSV from a file. The  charset specifies the character encoding of the CSV
+	// Loads a CSV from a file. The charset specifies the character encoding of the CSV
 	// file. A list of supported character encodings may be found on this page:
 	// Supported Charsets
 	// <http://www.chilkatsoft.com/p/p_463.asp> .
-	bool LoadFile2(const wchar_t *path, const wchar_t *charset);
+	bool LoadFile2(const wchar_t *filename, const wchar_t *charset);
 
 	// Loads a CSV document from an in-memory string variable.
 	bool LoadFromString(const wchar_t *csvData);
 
 	// Compares the contents of an entire row to a wildcarded match pattern where "*"
 	// can be used any number of times to match 0 or more of any character. Returns
-	// true if a match was found, otherwise returns false. If  caseSensitive is true, then
+	// true if a match was found, otherwise returns false. If caseSensitive is true, then
 	// the pattern match is case sensitive, otherwise it is case insensitive.
-	bool RowMatches(int row, const wchar_t *matchPattern, bool bCaseSensitive);
+	bool RowMatches(int rowIndex, const wchar_t *matchPattern, bool caseSensitive);
 
 	// Saves a CSV to a file. The output file is written using the ANSI character
 	// encoding.
 	bool SaveFile(const wchar_t *path);
 
-	// Saves a CSV to a file. The  charset specifies the character encoding to use for the
+	// Saves a CSV to a file. The charset specifies the character encoding to use for the
 	// CSV file. The text data is converted to this charset when saving. A list of
 	// supported character encodings may be found on this page: Supported Charsets
 	// <http://www.chilkatsoft.com/p/p_463.asp> .
-	bool SaveFile2(const wchar_t *path, const wchar_t *charset);
+	bool SaveFile2(const wchar_t *filename, const wchar_t *charset);
 
 	// Writes the entire CSV document to a string variable.
 	bool SaveToString(CkString &outStr);
@@ -195,17 +195,17 @@ class CK_VISIBLE_PUBLIC CkCsvW  : public CkWideCharBase
 	bool SetCell(int row, int col, const wchar_t *content);
 
 	// The same as SetCell, except the column is specified by name instead of by index.
-	bool SetCellByName(int row, const wchar_t *columnName, const wchar_t *content);
+	bool SetCellByName(int rowIndex, const wchar_t *columnName, const wchar_t *contentStr);
 
 	// Sets the name of the Nth column. The first column is at index 0. This method
 	// would only return false if an invalid index is passed (such as a negative
 	// number).
 	bool SetColumnName(int index, const wchar_t *columnName);
 
-	// Sorts the rows in the CSV by the contents of a specific column. If  ascending is
-	// true, the sort is in ascending order, otherwise descending order. If  caseSensitive is
+	// Sorts the rows in the CSV by the contents of a specific column. If ascending is
+	// true, the sort is in ascending order, otherwise descending order. If caseSensitive is
 	// true then the sorting is case sensitive.
-	bool SortByColumn(const wchar_t *columnName, bool bAscending, bool bCaseSensitive);
+	bool SortByColumn(const wchar_t *columnName, bool ascending, bool caseSensitive);
 
 
 

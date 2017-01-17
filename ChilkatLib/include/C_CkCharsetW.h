@@ -1,22 +1,23 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkCharsetWH
 #define _C_CkCharsetWH
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
 CK_VISIBLE_PUBLIC HCkCharsetW CkCharsetW_Create(void);
 CK_VISIBLE_PUBLIC void CkCharsetW_Dispose(HCkCharsetW handle);
 CK_VISIBLE_PUBLIC void CkCharsetW_getAltToCharset(HCkCharsetW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkCharsetW_putAltToCharset(HCkCharsetW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkCharsetW_putAltToCharset(HCkCharsetW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkCharsetW_altToCharset(HCkCharsetW cHandle);
 CK_VISIBLE_PUBLIC void CkCharsetW_getDebugLogFilePath(HCkCharsetW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkCharsetW_putDebugLogFilePath(HCkCharsetW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkCharsetW_putDebugLogFilePath(HCkCharsetW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkCharsetW_debugLogFilePath(HCkCharsetW cHandle);
 CK_VISIBLE_PUBLIC int CkCharsetW_getErrorAction(HCkCharsetW cHandle);
-CK_VISIBLE_PUBLIC void CkCharsetW_putErrorAction(HCkCharsetW cHandle, int newVal);
+CK_VISIBLE_PUBLIC void  CkCharsetW_putErrorAction(HCkCharsetW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkCharsetW_getFromCharset(HCkCharsetW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkCharsetW_putFromCharset(HCkCharsetW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkCharsetW_putFromCharset(HCkCharsetW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkCharsetW_fromCharset(HCkCharsetW cHandle);
 CK_VISIBLE_PUBLIC void CkCharsetW_getLastErrorHtml(HCkCharsetW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCharsetW_lastErrorHtml(HCkCharsetW cHandle);
@@ -29,18 +30,18 @@ CK_VISIBLE_PUBLIC const wchar_t *CkCharsetW_lastInputAsHex(HCkCharsetW cHandle);
 CK_VISIBLE_PUBLIC void CkCharsetW_getLastInputAsQP(HCkCharsetW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCharsetW_lastInputAsQP(HCkCharsetW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCharsetW_getLastMethodSuccess(HCkCharsetW cHandle);
-CK_VISIBLE_PUBLIC void CkCharsetW_putLastMethodSuccess(HCkCharsetW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkCharsetW_putLastMethodSuccess(HCkCharsetW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkCharsetW_getLastOutputAsHex(HCkCharsetW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCharsetW_lastOutputAsHex(HCkCharsetW cHandle);
 CK_VISIBLE_PUBLIC void CkCharsetW_getLastOutputAsQP(HCkCharsetW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCharsetW_lastOutputAsQP(HCkCharsetW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCharsetW_getSaveLast(HCkCharsetW cHandle);
-CK_VISIBLE_PUBLIC void CkCharsetW_putSaveLast(HCkCharsetW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkCharsetW_putSaveLast(HCkCharsetW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkCharsetW_getToCharset(HCkCharsetW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkCharsetW_putToCharset(HCkCharsetW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkCharsetW_putToCharset(HCkCharsetW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkCharsetW_toCharset(HCkCharsetW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCharsetW_getVerboseLogging(HCkCharsetW cHandle);
-CK_VISIBLE_PUBLIC void CkCharsetW_putVerboseLogging(HCkCharsetW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkCharsetW_putVerboseLogging(HCkCharsetW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkCharsetW_getVersion(HCkCharsetW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCharsetW_version(HCkCharsetW cHandle);
 CK_VISIBLE_PUBLIC int CkCharsetW_CharsetToCodePage(HCkCharsetW cHandle, const wchar_t *charsetName);

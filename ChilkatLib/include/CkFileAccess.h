@@ -13,6 +13,7 @@
 #include "CkMultiByteBase.h"
 
 class CkByteData;
+class CkBinData;
 class CkDateTime;
 
 
@@ -26,7 +27,6 @@ class CkDateTime;
 class CK_VISIBLE_PUBLIC CkFileAccess  : public CkMultiByteBase
 {
     private:
-	
 
 	// Don't allow assignment or copying these objects.
 	CkFileAccess(const CkFileAccess &);
@@ -101,7 +101,7 @@ class CK_VISIBLE_PUBLIC CkFileAccess  : public CkMultiByteBase
 
 	// Appends a string using the character encoding specified by str to the currently
 	// open file.
-	bool AppendText(const char *text, const char *charset);
+	bool AppendText(const char *str, const char *charset);
 
 
 	// Appends the 2-byte Unicode BOM (little endian) to the currently open file.
@@ -112,21 +112,21 @@ class CK_VISIBLE_PUBLIC CkFileAccess  : public CkMultiByteBase
 	bool AppendUtf8BOM(void);
 
 
-	// Creates all directories necessary such that the entire dirPath exists.
-	bool DirAutoCreate(const char *path);
+	// Same as DirEnsureExists, except the argument is a file path (the last part of
+	// the path is a filename and not a directory). Creates all missing directories
+	// such that dirPath may be created.
+	bool DirAutoCreate(const char *dirPath);
 
 
 	// Creates a new directory specified by dirPath.
-	bool DirCreate(const char *path);
+	bool DirCreate(const char *dirPath);
 
 
 	// Deletes the directory specified by dirPath.
-	bool DirDelete(const char *path);
+	bool DirDelete(const char *dirPath);
 
 
-	// Same as DirAutoCreate, except the argument is a file path (the last part of the
-	// path is a filename and not a directory). Creates all missing directories such
-	// that filePath may be created.
+	// Creates all directories necessary such that the entire filePath exists.
 	bool DirEnsureExists(const char *filePath);
 
 
@@ -139,20 +139,20 @@ class CK_VISIBLE_PUBLIC CkFileAccess  : public CkMultiByteBase
 	// the sizes are equal. The files are not entirely loaded into memory. Instead,
 	// they are compared chunk by chunk. This allows for any size files to be compared,
 	// regardless of the memory capacity of the computer.
-	bool FileContentsEqual(const char *path1, const char *path2);
+	bool FileContentsEqual(const char *filePath1, const char *filePath2);
 
 
-	// Copys existingFilepath to  newFilepath. If  failIfExists is true and  newFilepath already exists, then an error is
+	// Copys existingFilepath to newFilepath. If failIfExists is true and newFilepath already exists, then an error is
 	// returned.
-	bool FileCopy(const char *existing, const char *newFilename, bool failIfExists);
+	bool FileCopy(const char *existingFilepath, const char *newFilepath, bool failIfExists);
 
 
 	// Deletes the file specified by filePath.
-	bool FileDelete(const char *filename);
+	bool FileDelete(const char *filePath);
 
 
 	// Returns true if filePath exists, otherwise returns false.
-	bool FileExists(const char *path);
+	bool FileExists(const char *filePath);
 
 
 	// Returns 1 if the file exists, 0 if the file does not exist, and -1 if unable to
@@ -192,20 +192,25 @@ class CK_VISIBLE_PUBLIC CkFileAccess  : public CkMultiByteBase
 	// FILE_ATTRIBUTE_NORMAL           0x00000080
 	// FILE_ATTRIBUTE_TEMPORARY	   0x00000100
 	// 
-	bool FileOpen(const char *filename, unsigned long accessMode, unsigned long shareMode, unsigned long createDisp, unsigned long attr);
+	bool FileOpen(const char *filePath, unsigned long accessMode, unsigned long shareMode, unsigned long createDisposition, unsigned long attributes);
 
 
 	// Reads bytes from the currently open file. maxNumBytes specifies the maximum number of
 	// bytes to read. Returns an empty byte array on error.
-	bool FileRead(int numBytes, CkByteData &outBytes);
+	bool FileRead(int maxNumBytes, CkByteData &outBytes);
 
 
-	// Renames a file from existingFilepath to  newFilepath.
-	bool FileRename(const char *existing, const char *newFilename);
+	// Reads bytes from the currently open file. maxNumBytes specifies the maximum number of
+	// bytes to read. Appends the bytes to the binData.
+	bool FileReadBd(int maxNumBytes, CkBinData &binData);
+
+
+	// Renames a file from existingFilepath to newFilepath.
+	bool FileRename(const char *existingFilepath, const char *newFilepath);
 
 
 	// Sets the file pointer for the currently open file. The offset is an offset in
-	// bytes from the  origin. The  origin can be one of the following:
+	// bytes from the origin. The origin can be one of the following:
 	// 0 = Offset is from beginning of file.
 	// 1 = Offset is from current position of file pointer.
 	// 2 = Offset is from the end-of-file (offset may be negative).
@@ -213,26 +218,96 @@ class CK_VISIBLE_PUBLIC CkFileAccess  : public CkMultiByteBase
 
 
 	// Returns the size, in bytes, of a file. Returns -1 for failure.
-	int FileSize(const char *filename);
+	int FileSize(const char *filePath);
 
 
 	// Writes bytes to the currently open file.
 	bool FileWrite(CkByteData &data);
 
 
-	// Creates a temporary filepath of the form dirPath\ prefix_xxxx.TMP Where "xxxx" are
-	// random alpha-numeric chars. The returned filepath is guaranteed to not already
-	// exist.
-	bool GetTempFilename(const char *dirName, const char *prefix, CkString &outStr);
+	// Writes the contents of binData to the currently open file. To specify the entire
+	// contents of binData, set both offset and numBytes equal to 0. To write all remaining data
+	// starting at offset, then set numBytes equal to 0.
+	bool FileWriteBd(CkBinData &binData, int offset, int numBytes);
 
-	// Creates a temporary filepath of the form dirPath\ prefix_xxxx.TMP Where "xxxx" are
+
+	// This is purely a utility/convenience method -- initially created to help with
+	// block file uploads to Azure Blob storage. It generates a block ID string that is
+	// the decimal representation of the index in length chars, and then encoded according
+	// to encoding (which can be an encoding such as "base64", "hex", "ascii", etc.) For
+	// example, if index = 8, length = 12, and encoding = "base64", then the string "00000012"
+	// is returned base64 encoded.
+	bool GenBlockId(int index, int length, const char *encoding, CkString &outStr);
+
+	// This is purely a utility/convenience method -- initially created to help with
+	// block file uploads to Azure Blob storage. It generates a block ID string that is
+	// the decimal representation of the index in length chars, and then encoded according
+	// to encoding (which can be an encoding such as "base64", "hex", "ascii", etc.) For
+	// example, if index = 8, length = 12, and encoding = "base64", then the string "00000012"
+	// is returned base64 encoded.
+	const char *genBlockId(int index, int length, const char *encoding);
+
+	// Returns the directory information for the specified path string.
+	bool GetDirectoryName(const char *path, CkString &outStr);
+
+	// Returns the directory information for the specified path string.
+	const char *getDirectoryName(const char *path);
+	// Returns the directory information for the specified path string.
+	const char *directoryName(const char *path);
+
+
+	// Returns the extension of the specified path string.
+	bool GetExtension(const char *path, CkString &outStr);
+
+	// Returns the extension of the specified path string.
+	const char *getExtension(const char *path);
+	// Returns the extension of the specified path string.
+	const char *extension(const char *path);
+
+
+	// Returns the file name and extension of the specified path string.
+	bool GetFileName(const char *path, CkString &outStr);
+
+	// Returns the file name and extension of the specified path string.
+	const char *getFileName(const char *path);
+	// Returns the file name and extension of the specified path string.
+	const char *fileName(const char *path);
+
+
+	// Returns the file name of the specified path string without the extension.
+	bool GetFileNameWithoutExtension(const char *path, CkString &outStr);
+
+	// Returns the file name of the specified path string without the extension.
+	const char *getFileNameWithoutExtension(const char *path);
+	// Returns the file name of the specified path string without the extension.
+	const char *fileNameWithoutExtension(const char *path);
+
+
+	// Returns the number of blocks in the currently open file. The number of bytes per
+	// block is specified by blockSize. The number of blocks is the file size divided by the
+	// blockSize, plus 1 if the file size is not evenly divisible by blockSize. For example, if
+	// the currently open file is 60500 bytes, and if the blockSize is 1000 bytes, then this
+	// method returns a count of 61 blocks.
+	// 
+	// Returns -1 if no file is open. Return 0 if the file is completely empty (0
+	// bytes).
+	// 
+	int GetNumBlocks(int blockSize);
+
+
+	// Creates a temporary filepath of the form dirPath\prefix_xxxx.TMP Where "xxxx" are
 	// random alpha-numeric chars. The returned filepath is guaranteed to not already
 	// exist.
-	const char *getTempFilename(const char *dirName, const char *prefix);
-	// Creates a temporary filepath of the form dirPath\ prefix_xxxx.TMP Where "xxxx" are
+	bool GetTempFilename(const char *dirPath, const char *prefix, CkString &outStr);
+
+	// Creates a temporary filepath of the form dirPath\prefix_xxxx.TMP Where "xxxx" are
 	// random alpha-numeric chars. The returned filepath is guaranteed to not already
 	// exist.
-	const char *tempFilename(const char *dirName, const char *prefix);
+	const char *getTempFilename(const char *dirPath, const char *prefix);
+	// Creates a temporary filepath of the form dirPath\prefix_xxxx.TMP Where "xxxx" are
+	// random alpha-numeric chars. The returned filepath is guaranteed to not already
+	// exist.
+	const char *tempFilename(const char *dirPath, const char *prefix);
 
 
 	// Opens a file for appending. If filePath did not already exists, it is created. When
@@ -271,48 +346,55 @@ class CK_VISIBLE_PUBLIC CkFileAccess  : public CkMultiByteBase
 
 
 	// Reads the entire contents of a binary file and returns it as an encoded string
-	// (using an encoding such as Base64, Hex, etc.) The  encoding may be one of the
+	// (using an encoding such as Base64, Hex, etc.) The encoding may be one of the
 	// following strings: base64, hex, qp, or url.
-	bool ReadBinaryToEncoded(const char *filename, const char *encoding, CkString &outStr);
+	bool ReadBinaryToEncoded(const char *filePath, const char *encoding, CkString &outStr);
 
 	// Reads the entire contents of a binary file and returns it as an encoded string
-	// (using an encoding such as Base64, Hex, etc.) The  encoding may be one of the
+	// (using an encoding such as Base64, Hex, etc.) The encoding may be one of the
 	// following strings: base64, hex, qp, or url.
-	const char *readBinaryToEncoded(const char *filename, const char *encoding);
+	const char *readBinaryToEncoded(const char *filePath, const char *encoding);
+
+	// Reads the Nth block of a file, where the size of each block is specified by
+	// blockSize. The first block is at blockIndex 0. If the block to be read is the last in the
+	// file and there is not enough data to fill an entire block, then the partial
+	// block is returned.
+	bool ReadBlock(int blockIndex, int blockSize, CkByteData &outBytes);
+
 
 	// Reads the entire contents of a binary file and returns the data.
-	bool ReadEntireFile(const char *filename, CkByteData &outBytes);
+	bool ReadEntireFile(const char *filePath, CkByteData &outBytes);
 
 
 	// Reads the entire contents of a text file, interprets the bytes according to the
-	// character encoding specified by  charset, and returns the text file as a string.
-	bool ReadEntireTextFile(const char *filename, const char *charset, CkString &outStrFileContents);
+	// character encoding specified by charset, and returns the text file as a string.
+	bool ReadEntireTextFile(const char *filePath, const char *charset, CkString &outStrFileContents);
 
 	// Reads the entire contents of a text file, interprets the bytes according to the
-	// character encoding specified by  charset, and returns the text file as a string.
-	const char *readEntireTextFile(const char *filename, const char *charset);
+	// character encoding specified by charset, and returns the text file as a string.
+	const char *readEntireTextFile(const char *filePath, const char *charset);
 
 	// Reassembles a file previously split by the SplitFile method.
 	bool ReassembleFile(const char *partsDirPath, const char *partPrefix, const char *partExtension, const char *reassembledFilename);
 
 
-	// Replaces all occurances of  existingString with  replacementString in a file. The character encoding,
-	// such as utf-8, ansi, etc. is specified by  charset.
-	int ReplaceStrings(const char *path, const char *charset, const char *existingString, const char *replacementString);
+	// Replaces all occurrences of existingString with replacementString in a file. The character encoding,
+	// such as utf-8, ansi, etc. is specified by charset.
+	int ReplaceStrings(const char *filePath, const char *charset, const char *existingString, const char *replacementString);
 
 
 	// Sets the current working directory for the calling process to dirPath.
-	bool SetCurrentDir(const char *path);
+	bool SetCurrentDir(const char *dirPath);
 
 
 	// Sets the create date/time, the last-access date/time, and the last-modified
 	// date/time for a file. For non-Windows filesystems where create times are not
-	// implemented, the  createTime is ignored.
-	bool SetFileTimes(const char *path, CkDateTime &create, CkDateTime &lastAccess, CkDateTime &lastModified);
+	// implemented, the createTime is ignored.
+	bool SetFileTimes(const char *filePath, CkDateTime &createTime, CkDateTime &lastAccessTime, CkDateTime &lastModTime);
 
 
 	// Sets the last-modified date/time for a file.
-	bool SetLastModified(const char *path, CkDateTime &lastModified);
+	bool SetLastModified(const char *filePath, CkDateTime &lastModified);
 
 
 	// Splits a file into chunks. Please refer to the example below:
@@ -323,14 +405,14 @@ class CK_VISIBLE_PUBLIC CkFileAccess  : public CkMultiByteBase
 	bool TreeDelete(const char *path);
 
 
-	// Opens/creates filePath, writes  fileData, and closes the file.
-	bool WriteEntireFile(const char *filename, CkByteData &fileData);
+	// Opens/creates filePath, writes fileData, and closes the file.
+	bool WriteEntireFile(const char *filePath, CkByteData &fileData);
 
 
-	// Opens filePath, writes  textData using the character encoding specified by  charset, and
-	// closes the file. If  includedPreamble is true and the  charset is Unicode or utf-8, then the
+	// Opens filePath, writes textData using the character encoding specified by charset, and
+	// closes the file. If includedPreamble is true and the charset is Unicode or utf-8, then the
 	// BOM is included at the beginning of the file.
-	bool WriteEntireTextFile(const char *filename, const char *fileData, const char *charset, bool includePreamble);
+	bool WriteEntireTextFile(const char *filePath, const char *textData, const char *charset, bool includedPreamble);
 
 
 

@@ -1,9 +1,10 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.64
 #ifndef _C_CkUrl_H
 #define _C_CkUrl_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
+
 
 CK_VISIBLE_PUBLIC HCkUrl CkUrl_Create(void);
 CK_VISIBLE_PUBLIC void CkUrl_Dispose(HCkUrl handle);
@@ -13,12 +14,16 @@ CK_VISIBLE_PUBLIC void CkUrl_getHost(HCkUrl cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkUrl_host(HCkUrl cHandle);
 CK_VISIBLE_PUBLIC void CkUrl_getHostType(HCkUrl cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkUrl_hostType(HCkUrl cHandle);
+CK_VISIBLE_PUBLIC BOOL CkUrl_getLastMethodSuccess(HCkUrl cHandle);
+CK_VISIBLE_PUBLIC void CkUrl_putLastMethodSuccess(HCkUrl cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkUrl_getLogin(HCkUrl cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkUrl_login(HCkUrl cHandle);
 CK_VISIBLE_PUBLIC void CkUrl_getPassword(HCkUrl cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkUrl_password(HCkUrl cHandle);
 CK_VISIBLE_PUBLIC void CkUrl_getPath(HCkUrl cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkUrl_path(HCkUrl cHandle);
+CK_VISIBLE_PUBLIC void CkUrl_getPathWithQueryParams(HCkUrl cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC const char *CkUrl_pathWithQueryParams(HCkUrl cHandle);
 CK_VISIBLE_PUBLIC int CkUrl_getPort(HCkUrl cHandle);
 CK_VISIBLE_PUBLIC void CkUrl_getQuery(HCkUrl cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkUrl_query(HCkUrl cHandle);

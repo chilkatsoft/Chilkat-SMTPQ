@@ -25,7 +25,6 @@ class CkByteData;
 class CK_VISIBLE_PUBLIC CkLog  : public CkMultiByteBase
 {
     private:
-	
 
 	// Don't allow assignment or copying these objects.
 	CkLog(const CkLog &);
@@ -54,7 +53,7 @@ class CK_VISIBLE_PUBLIC CkLog  : public CkMultiByteBase
 	// ----------------------
 	// Methods
 	// ----------------------
-	// Clears the log. The ARG1 is the initial top-level context tag for the new log.
+	// Clears the log. The initialTag is the initial top-level context tag for the new log.
 	void Clear(const char *initialTag);
 
 
@@ -82,11 +81,11 @@ class CK_VISIBLE_PUBLIC CkLog  : public CkMultiByteBase
 	void LogDataHex(const char *tag, CkByteData &data);
 
 
-	// Logs a string, but only up to the 1st ARG3 characters of the string.
+	// Logs a string, but only up to the 1st maxNumChars characters of the string.
 	void LogDataMax(const char *tag, const char *message, int maxNumChars);
 
 
-	// Logs the current date/time in RFC822 format. If ARG2 is true, then the GMT/UTC
+	// Logs the current date/time in RFC822 format. If gmt is true, then the GMT/UTC
 	// time is logged. Otherwise it is the local time.
 	void LogDateTime(const char *tag, bool gmt);
 

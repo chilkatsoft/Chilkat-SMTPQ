@@ -1,15 +1,23 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.64
 #ifndef _C_CkHttp_H
 #define _C_CkHttp_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
+CK_VISIBLE_PUBLIC void CkHttp_setAbortCheck(HCkHttp cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkHttp_setPercentDone(HCkHttp cHandle, BOOL (*fnPercentDone)(int pctDone));
+CK_VISIBLE_PUBLIC void CkHttp_setProgressInfo(HCkHttp cHandle, void (*fnProgressInfo)(const char *name, const char *value));
+CK_VISIBLE_PUBLIC void CkHttp_setTaskCompleted(HCkHttp cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
 CK_VISIBLE_PUBLIC HCkHttp CkHttp_Create(void);
 CK_VISIBLE_PUBLIC void CkHttp_Dispose(HCkHttp handle);
+CK_VISIBLE_PUBLIC BOOL CkHttp_getAbortCurrent(HCkHttp cHandle);
+CK_VISIBLE_PUBLIC void CkHttp_putAbortCurrent(HCkHttp cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkHttp_getAccept(HCkHttp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkHttp_putAccept(HCkHttp cHandle, const char *newVal);
-CK_VISIBLE_PUBLIC const char *CkHttp_ck_accept(HCkHttp cHandle);
+CK_VISIBLE_PUBLIC const char *CkHttp_accept(HCkHttp cHandle);
 CK_VISIBLE_PUBLIC void CkHttp_getAcceptCharset(HCkHttp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkHttp_putAcceptCharset(HCkHttp cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkHttp_acceptCharset(HCkHttp cHandle);
@@ -18,6 +26,8 @@ CK_VISIBLE_PUBLIC void CkHttp_putAcceptLanguage(HCkHttp cHandle, const char *new
 CK_VISIBLE_PUBLIC const char *CkHttp_acceptLanguage(HCkHttp cHandle);
 CK_VISIBLE_PUBLIC BOOL CkHttp_getAllowGzip(HCkHttp cHandle);
 CK_VISIBLE_PUBLIC void CkHttp_putAllowGzip(HCkHttp cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC BOOL CkHttp_getAllowHeaderFolding(HCkHttp cHandle);
+CK_VISIBLE_PUBLIC void CkHttp_putAllowHeaderFolding(HCkHttp cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkHttp_getAutoAddHostHeader(HCkHttp cHandle);
 CK_VISIBLE_PUBLIC void CkHttp_putAutoAddHostHeader(HCkHttp cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkHttp_getAwsAccessKey(HCkHttp cHandle, HCkString retval);
@@ -26,9 +36,14 @@ CK_VISIBLE_PUBLIC const char *CkHttp_awsAccessKey(HCkHttp cHandle);
 CK_VISIBLE_PUBLIC void CkHttp_getAwsEndpoint(HCkHttp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkHttp_putAwsEndpoint(HCkHttp cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkHttp_awsEndpoint(HCkHttp cHandle);
+CK_VISIBLE_PUBLIC void CkHttp_getAwsRegion(HCkHttp cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkHttp_putAwsRegion(HCkHttp cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkHttp_awsRegion(HCkHttp cHandle);
 CK_VISIBLE_PUBLIC void CkHttp_getAwsSecretKey(HCkHttp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkHttp_putAwsSecretKey(HCkHttp cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkHttp_awsSecretKey(HCkHttp cHandle);
+CK_VISIBLE_PUBLIC int CkHttp_getAwsSignatureVersion(HCkHttp cHandle);
+CK_VISIBLE_PUBLIC void CkHttp_putAwsSignatureVersion(HCkHttp cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkHttp_getAwsSubResources(HCkHttp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkHttp_putAwsSubResources(HCkHttp cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkHttp_awsSubResources(HCkHttp cHandle);
@@ -51,11 +66,12 @@ CK_VISIBLE_PUBLIC BOOL CkHttp_getBgTaskSuccess(HCkHttp cHandle);
 CK_VISIBLE_PUBLIC void CkHttp_getClientIpAddress(HCkHttp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkHttp_putClientIpAddress(HCkHttp cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkHttp_clientIpAddress(HCkHttp cHandle);
-CK_VISIBLE_PUBLIC int CkHttp_getConnectTimeout(HCkHttp cHandle);
-CK_VISIBLE_PUBLIC void CkHttp_putConnectTimeout(HCkHttp cHandle, int newVal);
+CK_VISIBLE_PUBLIC int CkHttp_getConnectFailReason(HCkHttp cHandle);
 CK_VISIBLE_PUBLIC void CkHttp_getConnection(HCkHttp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkHttp_putConnection(HCkHttp cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkHttp_connection(HCkHttp cHandle);
+CK_VISIBLE_PUBLIC int CkHttp_getConnectTimeout(HCkHttp cHandle);
+CK_VISIBLE_PUBLIC void CkHttp_putConnectTimeout(HCkHttp cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkHttp_getCookieDir(HCkHttp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkHttp_putCookieDir(HCkHttp cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkHttp_cookieDir(HCkHttp cHandle);
@@ -85,8 +101,6 @@ CK_VISIBLE_PUBLIC BOOL CkHttp_getKeepEventLog(HCkHttp cHandle);
 CK_VISIBLE_PUBLIC void CkHttp_putKeepEventLog(HCkHttp cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkHttp_getKeepResponseBody(HCkHttp cHandle);
 CK_VISIBLE_PUBLIC void CkHttp_putKeepResponseBody(HCkHttp cHandle, BOOL newVal);
-CK_VISIBLE_PUBLIC int CkHttp_getLMFactor(HCkHttp cHandle);
-CK_VISIBLE_PUBLIC void CkHttp_putLMFactor(HCkHttp cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkHttp_getLastContentType(HCkHttp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkHttp_lastContentType(HCkHttp cHandle);
 CK_VISIBLE_PUBLIC void CkHttp_getLastErrorHtml(HCkHttp cHandle, HCkString retval);
@@ -106,6 +120,8 @@ CK_VISIBLE_PUBLIC const char *CkHttp_lastResponseBody(HCkHttp cHandle);
 CK_VISIBLE_PUBLIC void CkHttp_getLastResponseHeader(HCkHttp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkHttp_lastResponseHeader(HCkHttp cHandle);
 CK_VISIBLE_PUBLIC int CkHttp_getLastStatus(HCkHttp cHandle);
+CK_VISIBLE_PUBLIC int CkHttp_getLMFactor(HCkHttp cHandle);
+CK_VISIBLE_PUBLIC void CkHttp_putLMFactor(HCkHttp cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkHttp_getLogin(HCkHttp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkHttp_putLogin(HCkHttp cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkHttp_login(HCkHttp cHandle);
@@ -191,11 +207,11 @@ CK_VISIBLE_PUBLIC const char *CkHttp_redirectVerb(HCkHttp cHandle);
 CK_VISIBLE_PUBLIC void CkHttp_getReferer(HCkHttp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkHttp_putReferer(HCkHttp cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkHttp_referer(HCkHttp cHandle);
-CK_VISIBLE_PUBLIC BOOL CkHttp_getRequireSslCertVerify(HCkHttp cHandle);
-CK_VISIBLE_PUBLIC void CkHttp_putRequireSslCertVerify(HCkHttp cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkHttp_getRequiredContentType(HCkHttp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkHttp_putRequiredContentType(HCkHttp cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkHttp_requiredContentType(HCkHttp cHandle);
+CK_VISIBLE_PUBLIC BOOL CkHttp_getRequireSslCertVerify(HCkHttp cHandle);
+CK_VISIBLE_PUBLIC void CkHttp_putRequireSslCertVerify(HCkHttp cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkHttp_getS3Ssl(HCkHttp cHandle);
 CK_VISIBLE_PUBLIC void CkHttp_putS3Ssl(HCkHttp cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkHttp_getSaveCookies(HCkHttp cHandle);
@@ -207,10 +223,6 @@ CK_VISIBLE_PUBLIC void CkHttp_putSendCookies(HCkHttp cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkHttp_getSessionLogFilename(HCkHttp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkHttp_putSessionLogFilename(HCkHttp cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkHttp_sessionLogFilename(HCkHttp cHandle);
-CK_VISIBLE_PUBLIC int CkHttp_getSoRcvBuf(HCkHttp cHandle);
-CK_VISIBLE_PUBLIC void CkHttp_putSoRcvBuf(HCkHttp cHandle, int newVal);
-CK_VISIBLE_PUBLIC int CkHttp_getSoSndBuf(HCkHttp cHandle);
-CK_VISIBLE_PUBLIC void CkHttp_putSoSndBuf(HCkHttp cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkHttp_getSocksHostname(HCkHttp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkHttp_putSocksHostname(HCkHttp cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkHttp_socksHostname(HCkHttp cHandle);
@@ -224,6 +236,10 @@ CK_VISIBLE_PUBLIC void CkHttp_putSocksUsername(HCkHttp cHandle, const char *newV
 CK_VISIBLE_PUBLIC const char *CkHttp_socksUsername(HCkHttp cHandle);
 CK_VISIBLE_PUBLIC int CkHttp_getSocksVersion(HCkHttp cHandle);
 CK_VISIBLE_PUBLIC void CkHttp_putSocksVersion(HCkHttp cHandle, int newVal);
+CK_VISIBLE_PUBLIC int CkHttp_getSoRcvBuf(HCkHttp cHandle);
+CK_VISIBLE_PUBLIC void CkHttp_putSoRcvBuf(HCkHttp cHandle, int newVal);
+CK_VISIBLE_PUBLIC int CkHttp_getSoSndBuf(HCkHttp cHandle);
+CK_VISIBLE_PUBLIC void CkHttp_putSoSndBuf(HCkHttp cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkHttp_getSslAllowedCiphers(HCkHttp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkHttp_putSslAllowedCiphers(HCkHttp cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkHttp_sslAllowedCiphers(HCkHttp cHandle);
@@ -269,9 +285,13 @@ CK_VISIBLE_PUBLIC BOOL CkHttp_Download(HCkHttp cHandle, const char *url, const c
 CK_VISIBLE_PUBLIC HCkTask CkHttp_DownloadAsync(HCkHttp cHandle, const char *url, const char *localFilePath);
 CK_VISIBLE_PUBLIC BOOL CkHttp_DownloadAppend(HCkHttp cHandle, const char *url, const char *filename);
 CK_VISIBLE_PUBLIC HCkTask CkHttp_DownloadAppendAsync(HCkHttp cHandle, const char *url, const char *filename);
+CK_VISIBLE_PUBLIC BOOL CkHttp_DownloadBd(HCkHttp cHandle, const char *url, HCkBinData binData);
+CK_VISIBLE_PUBLIC HCkTask CkHttp_DownloadBdAsync(HCkHttp cHandle, const char *url, HCkBinData binData);
 CK_VISIBLE_PUBLIC BOOL CkHttp_DownloadHash(HCkHttp cHandle, const char *url, const char *hashAlgorithm, const char *encoding, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkHttp_downloadHash(HCkHttp cHandle, const char *url, const char *hashAlgorithm, const char *encoding);
 CK_VISIBLE_PUBLIC HCkTask CkHttp_DownloadHashAsync(HCkHttp cHandle, const char *url, const char *hashAlgorithm, const char *encoding);
+CK_VISIBLE_PUBLIC BOOL CkHttp_DownloadSb(HCkHttp cHandle, const char *url, const char *charset, HCkStringBuilder sb);
+CK_VISIBLE_PUBLIC HCkTask CkHttp_DownloadSbAsync(HCkHttp cHandle, const char *url, const char *charset, HCkStringBuilder sb);
 CK_VISIBLE_PUBLIC BOOL CkHttp_EventLogName(HCkHttp cHandle, int index, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkHttp_eventLogName(HCkHttp cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkHttp_EventLogValue(HCkHttp cHandle, int index, HCkString outStr);
@@ -304,8 +324,6 @@ CK_VISIBLE_PUBLIC BOOL CkHttp_HasRequestHeader(HCkHttp cHandle, const char *name
 CK_VISIBLE_PUBLIC BOOL CkHttp_IsUnlocked(HCkHttp cHandle);
 CK_VISIBLE_PUBLIC HCkHttpResponse CkHttp_PBinary(HCkHttp cHandle, const char *verb, const char *url, HCkByteData byteData, const char *contentType, BOOL md5, BOOL gzip);
 CK_VISIBLE_PUBLIC HCkTask CkHttp_PBinaryAsync(HCkHttp cHandle, const char *verb, const char *url, HCkByteData byteData, const char *contentType, BOOL md5, BOOL gzip);
-CK_VISIBLE_PUBLIC HCkHttpResponse CkHttp_PText(HCkHttp cHandle, const char *verb, const char *url, const char *textData, const char *charset, const char *contentType, BOOL md5, BOOL gzip);
-CK_VISIBLE_PUBLIC HCkTask CkHttp_PTextAsync(HCkHttp cHandle, const char *verb, const char *url, const char *textData, const char *charset, const char *contentType, BOOL md5, BOOL gzip);
 CK_VISIBLE_PUBLIC BOOL CkHttp_PostBinary(HCkHttp cHandle, const char *url, HCkByteData byteData, const char *contentType, BOOL md5, BOOL gzip, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkHttp_postBinary(HCkHttp cHandle, const char *url, HCkByteData byteData, const char *contentType, BOOL md5, BOOL gzip);
 CK_VISIBLE_PUBLIC HCkTask CkHttp_PostBinaryAsync(HCkHttp cHandle, const char *url, HCkByteData byteData, const char *contentType, BOOL md5, BOOL gzip);
@@ -317,6 +335,8 @@ CK_VISIBLE_PUBLIC HCkHttpResponse CkHttp_PostUrlEncoded(HCkHttp cHandle, const c
 CK_VISIBLE_PUBLIC HCkTask CkHttp_PostUrlEncodedAsync(HCkHttp cHandle, const char *url, HCkHttpRequest req);
 CK_VISIBLE_PUBLIC HCkHttpResponse CkHttp_PostXml(HCkHttp cHandle, const char *endpointUrl, const char *xmlContent, const char *xmlCharset);
 CK_VISIBLE_PUBLIC HCkTask CkHttp_PostXmlAsync(HCkHttp cHandle, const char *endpointUrl, const char *xmlContent, const char *xmlCharset);
+CK_VISIBLE_PUBLIC HCkHttpResponse CkHttp_PText(HCkHttp cHandle, const char *verb, const char *url, const char *textData, const char *charset, const char *contentType, BOOL md5, BOOL gzip);
+CK_VISIBLE_PUBLIC HCkTask CkHttp_PTextAsync(HCkHttp cHandle, const char *verb, const char *url, const char *textData, const char *charset, const char *contentType, BOOL md5, BOOL gzip);
 CK_VISIBLE_PUBLIC BOOL CkHttp_PutBinary(HCkHttp cHandle, const char *url, HCkByteData byteData, const char *contentType, BOOL md5, BOOL gzip, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkHttp_putBinary(HCkHttp cHandle, const char *url, HCkByteData byteData, const char *contentType, BOOL md5, BOOL gzip);
 CK_VISIBLE_PUBLIC HCkTask CkHttp_PutBinaryAsync(HCkHttp cHandle, const char *url, HCkByteData byteData, const char *contentType, BOOL md5, BOOL gzip);
@@ -328,8 +348,12 @@ CK_VISIBLE_PUBLIC const char *CkHttp_quickDeleteStr(HCkHttp cHandle, const char 
 CK_VISIBLE_PUBLIC HCkTask CkHttp_QuickDeleteStrAsync(HCkHttp cHandle, const char *url);
 CK_VISIBLE_PUBLIC BOOL CkHttp_QuickGet(HCkHttp cHandle, const char *url, HCkByteData outData);
 CK_VISIBLE_PUBLIC HCkTask CkHttp_QuickGetAsync(HCkHttp cHandle, const char *url);
+CK_VISIBLE_PUBLIC BOOL CkHttp_QuickGetBd(HCkHttp cHandle, const char *url, HCkBinData binData);
+CK_VISIBLE_PUBLIC HCkTask CkHttp_QuickGetBdAsync(HCkHttp cHandle, const char *url, HCkBinData binData);
 CK_VISIBLE_PUBLIC HCkHttpResponse CkHttp_QuickGetObj(HCkHttp cHandle, const char *url);
 CK_VISIBLE_PUBLIC HCkTask CkHttp_QuickGetObjAsync(HCkHttp cHandle, const char *url);
+CK_VISIBLE_PUBLIC BOOL CkHttp_QuickGetSb(HCkHttp cHandle, const char *url, HCkStringBuilder sbContent);
+CK_VISIBLE_PUBLIC HCkTask CkHttp_QuickGetSbAsync(HCkHttp cHandle, const char *url, HCkStringBuilder sbContent);
 CK_VISIBLE_PUBLIC BOOL CkHttp_QuickGetStr(HCkHttp cHandle, const char *url, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkHttp_quickGetStr(HCkHttp cHandle, const char *url);
 CK_VISIBLE_PUBLIC HCkTask CkHttp_QuickGetStrAsync(HCkHttp cHandle, const char *url);

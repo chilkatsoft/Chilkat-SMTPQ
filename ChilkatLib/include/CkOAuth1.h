@@ -12,6 +12,7 @@
 #include "CkString.h"
 #include "CkMultiByteBase.h"
 
+class CkPrivateKey;
 
 
 
@@ -24,7 +25,6 @@
 class CK_VISIBLE_PUBLIC CkOAuth1  : public CkMultiByteBase
 {
     private:
-	
 
 	// Don't allow assignment or copying these objects.
 	CkOAuth1(const CkOAuth1 &);
@@ -152,11 +152,14 @@ class CK_VISIBLE_PUBLIC CkOAuth1  : public CkMultiByteBase
 	// The generated base64 signature.
 	const char *signature(void);
 
-	// The signature method. Defaults to "HMAC-SHA1".
+	// The signature method. Defaults to "HMAC-SHA1". Other possible choices are
+	// "HMAC1-SHA256", "RSA-SHA1", and "RSA-SHA2".
 	void get_SignatureMethod(CkString &str);
-	// The signature method. Defaults to "HMAC-SHA1".
+	// The signature method. Defaults to "HMAC-SHA1". Other possible choices are
+	// "HMAC1-SHA256", "RSA-SHA1", and "RSA-SHA2".
 	const char *signatureMethod(void);
-	// The signature method. Defaults to "HMAC-SHA1".
+	// The signature method. Defaults to "HMAC-SHA1". Other possible choices are
+	// "HMAC1-SHA256", "RSA-SHA1", and "RSA-SHA2".
 	void put_SignatureMethod(const char *newVal);
 
 	// The timestamp, such as "1441632569".
@@ -197,17 +200,22 @@ class CK_VISIBLE_PUBLIC CkOAuth1  : public CkMultiByteBase
 	bool Generate(void);
 
 
-	// Removes a name/value parameter from the OAuth1 signature.
-	bool RemoveParam(const char *name);
-
-
-	// Generates a random nonce ARG1 in length and sets the Nonce property to the hex
+	// Generates a random nonce numBytes in length and sets the Nonce property to the hex
 	// encoded value.
 	bool GenNonce(int numBytes);
 
 
 	// Sets the Timestamp property to the current date/time.
 	bool GenTimestamp(void);
+
+
+	// Removes a name/value parameter from the OAuth1 signature.
+	bool RemoveParam(const char *name);
+
+
+	// Sets the RSA key to be used when the SignatureMethod is set to "RSA-SHA1" or
+	// "RSA-SHA2".
+	bool SetRsaKey(CkPrivateKey &privKey);
 
 
 

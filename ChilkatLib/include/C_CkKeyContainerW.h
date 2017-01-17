@@ -1,22 +1,19 @@
-// This is a generated source file for Chilkat version 9.5.0.55
-#if defined(WIN32) || defined(WINCE)
-
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkKeyContainerWH
 #define _C_CkKeyContainerWH
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
 CK_VISIBLE_PUBLIC HCkKeyContainerW CkKeyContainerW_Create(void);
 CK_VISIBLE_PUBLIC void CkKeyContainerW_Dispose(HCkKeyContainerW handle);
 #if defined(CK_CRYPTOAPI_INCLUDED)
 CK_VISIBLE_PUBLIC void CkKeyContainerW_getContainerName(HCkKeyContainerW cHandle, HCkString retval);
-#endif
-#if defined(CK_CRYPTOAPI_INCLUDED)
 CK_VISIBLE_PUBLIC const wchar_t *CkKeyContainerW_containerName(HCkKeyContainerW cHandle);
 #endif
 CK_VISIBLE_PUBLIC void CkKeyContainerW_getDebugLogFilePath(HCkKeyContainerW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkKeyContainerW_putDebugLogFilePath(HCkKeyContainerW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkKeyContainerW_putDebugLogFilePath(HCkKeyContainerW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkKeyContainerW_debugLogFilePath(HCkKeyContainerW cHandle);
 #if defined(CK_CRYPTOAPI_INCLUDED)
 CK_VISIBLE_PUBLIC BOOL CkKeyContainerW_getIsMachineKeyset(HCkKeyContainerW cHandle);
@@ -31,9 +28,9 @@ CK_VISIBLE_PUBLIC const wchar_t *CkKeyContainerW_lastErrorText(HCkKeyContainerW 
 CK_VISIBLE_PUBLIC void CkKeyContainerW_getLastErrorXml(HCkKeyContainerW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkKeyContainerW_lastErrorXml(HCkKeyContainerW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkKeyContainerW_getLastMethodSuccess(HCkKeyContainerW cHandle);
-CK_VISIBLE_PUBLIC void CkKeyContainerW_putLastMethodSuccess(HCkKeyContainerW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkKeyContainerW_putLastMethodSuccess(HCkKeyContainerW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkKeyContainerW_getVerboseLogging(HCkKeyContainerW cHandle);
-CK_VISIBLE_PUBLIC void CkKeyContainerW_putVerboseLogging(HCkKeyContainerW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkKeyContainerW_putVerboseLogging(HCkKeyContainerW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkKeyContainerW_getVersion(HCkKeyContainerW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkKeyContainerW_version(HCkKeyContainerW cHandle);
 #if defined(CK_CRYPTOAPI_INCLUDED)
@@ -53,14 +50,10 @@ CK_VISIBLE_PUBLIC BOOL CkKeyContainerW_GenerateKeyPair(HCkKeyContainerW cHandle,
 #endif
 #if defined(CK_CRYPTOAPI_INCLUDED)
 CK_VISIBLE_PUBLIC BOOL CkKeyContainerW_GenerateUuid(HCkKeyContainerW cHandle, HCkString outGuid);
-#endif
-#if defined(CK_CRYPTOAPI_INCLUDED)
 CK_VISIBLE_PUBLIC const wchar_t *CkKeyContainerW_generateUuid(HCkKeyContainerW cHandle);
 #endif
 #if defined(CK_CRYPTOAPI_INCLUDED)
 CK_VISIBLE_PUBLIC BOOL CkKeyContainerW_GetNthContainerName(HCkKeyContainerW cHandle, BOOL bMachineKeyset, int index, HCkString outName);
-#endif
-#if defined(CK_CRYPTOAPI_INCLUDED)
 CK_VISIBLE_PUBLIC const wchar_t *CkKeyContainerW_getNthContainerName(HCkKeyContainerW cHandle, BOOL bMachineKeyset, int index);
 #endif
 #if defined(CK_CRYPTOAPI_INCLUDED)
@@ -83,5 +76,3 @@ CK_VISIBLE_PUBLIC BOOL CkKeyContainerW_OpenContainer(HCkKeyContainerW cHandle, c
 #endif
 CK_VISIBLE_PUBLIC BOOL CkKeyContainerW_SaveLastError(HCkKeyContainerW cHandle, const wchar_t *path);
 #endif
-
-#endif // WIN32 (entire file)

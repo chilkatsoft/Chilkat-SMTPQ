@@ -1,13 +1,16 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.64
 #ifndef _C_CkMailboxesWH
 #define _C_CkMailboxesWH
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
 CK_VISIBLE_PUBLIC HCkMailboxesW CkMailboxesW_Create(void);
 CK_VISIBLE_PUBLIC void CkMailboxesW_Dispose(HCkMailboxesW handle);
 CK_VISIBLE_PUBLIC int CkMailboxesW_getCount(HCkMailboxesW cHandle);
+CK_VISIBLE_PUBLIC BOOL CkMailboxesW_getLastMethodSuccess(HCkMailboxesW cHandle);
+CK_VISIBLE_PUBLIC void  CkMailboxesW_putLastMethodSuccess(HCkMailboxesW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkMailboxesW_GetFlags(HCkMailboxesW cHandle, int index, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkMailboxesW_getFlags(HCkMailboxesW cHandle, int index);
 CK_VISIBLE_PUBLIC int CkMailboxesW_GetMailboxIndex(HCkMailboxesW cHandle, const wchar_t *mbxName);

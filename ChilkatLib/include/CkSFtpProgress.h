@@ -37,8 +37,8 @@ class CK_VISIBLE_PUBLIC CkSFtpProgress : public CkBaseProgress
 	CkSFtpProgress() { }
 	virtual ~CkSFtpProgress() { }
 
-	virtual void UploadRate(__int64 byteCount, unsigned long bytesPerSec) { }
-	virtual void DownloadRate(__int64 byteCount, unsigned long bytesPerSec) { }
+	virtual void UploadRate(__int64 /*byteCount*/, unsigned long /*bytesPerSec*/) { }
+	virtual void DownloadRate(__int64 /*byteCount*/, unsigned long /*bytesPerSec*/) { }
 
 };
 #if !defined(__sun__) && !defined(__sun)

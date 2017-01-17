@@ -198,15 +198,15 @@ class CK_VISIBLE_PUBLIC CkHttpRequestW  : public CkWideCharBase
 	// 
 	// name is an arbitrary name. (In HTML, it is the form field name of the input
 	// tag.)
-	//  remoteFileName is the name of the file to be created on the HTTP server.
-	//  byteData contains the contents (bytes) to be uploaded.
+	// remoteFileName is the name of the file to be created on the HTTP server.
+	// byteData contains the contents (bytes) to be uploaded.
 	// 
-	bool AddBytesForUpload(const wchar_t *name, const wchar_t *filename, CkByteData &byteData);
+	bool AddBytesForUpload(const wchar_t *name, const wchar_t *remoteFileName, CkByteData &byteData);
 
 	// Same as AddBytesForUpload, but allows the Content-Type header field to be
 	// directly specified. (Otherwise, the Content-Type header is automatically
-	// determined based on the  remoteFileName's file extension.)
-	bool AddBytesForUpload2(const wchar_t *name, const wchar_t *filename, CkByteData &byteData, const wchar_t *contentType);
+	// determined based on the remoteFileName's file extension.)
+	bool AddBytesForUpload2(const wchar_t *name, const wchar_t *remoteFileName, CkByteData &byteData, const wchar_t *contentType);
 
 	// Adds a file to an upload request. To create a file upload request, call
 	// UseUpload and then call AddFileForUpload, AddBytesForUpload, or
@@ -217,9 +217,9 @@ class CK_VISIBLE_PUBLIC CkHttpRequestW  : public CkWideCharBase
 	// 
 	// name is an arbitrary name. (In HTML, it is the form field name of the input
 	// tag.)
-	//  filePath is the path to an existing file in the local filesystem.
+	// filePath is the path to an existing file in the local filesystem.
 	// 
-	bool AddFileForUpload(const wchar_t *name, const wchar_t *filename);
+	bool AddFileForUpload(const wchar_t *name, const wchar_t *filePath);
 
 	// Same as AddFileForUpload, but allows the Content-Type header field to be
 	// directly specified. (Otherwise, the Content-Type header is automatically
@@ -227,9 +227,9 @@ class CK_VISIBLE_PUBLIC CkHttpRequestW  : public CkWideCharBase
 	// 
 	// name is an arbitrary name. (In HTML, it is the form field name of the input
 	// tag.)
-	//  filePath is the path to an existing file in the local filesystem.
+	// filePath is the path to an existing file in the local filesystem.
 	// 
-	bool AddFileForUpload2(const wchar_t *name, const wchar_t *filename, const wchar_t *contentType);
+	bool AddFileForUpload2(const wchar_t *name, const wchar_t *filePath, const wchar_t *contentType);
 
 	// Adds a request header to the HTTP request. If a header having the same field
 	// name is already present, this method replaces it.
@@ -252,12 +252,16 @@ class CK_VISIBLE_PUBLIC CkHttpRequestW  : public CkWideCharBase
 
 	// Same as AddStringForUpload, but allows the Content-Type header field to be
 	// directly specified. (Otherwise, the Content-Type header is automatically
-	// determined based on the ARG2's file extension.)
+	// determined based on the filename's file extension.)
 	bool AddStringForUpload2(const wchar_t *name, const wchar_t *filename, const wchar_t *strData, const wchar_t *charset, const wchar_t *contentType);
 
 	// Adds a request header to the Nth sub-header of the HTTP request. If a header
 	// having the same field name is already present, this method replaces it.
 	bool AddSubHeader(int index, const wchar_t *name, const wchar_t *value);
+
+	// The same as GenerateRequestText, except the generated request is written to the
+	// file specified by path.
+	bool GenerateRequestFile(const wchar_t *path);
 
 	// Returns the request text that would be sent if Http.SynchronousRequest was
 	// called.
@@ -350,14 +354,14 @@ class CK_VISIBLE_PUBLIC CkHttpRequestW  : public CkWideCharBase
 	// the exact contents of the byteData.
 	// Note: A non-multipart HTTP request consists of (1) the HTTP start line, (2) MIME
 	// header fields, and (3) the MIME body. This method sets the MIME body.
-	bool LoadBodyFromBytes(CkByteData &binaryData);
+	bool LoadBodyFromBytes(CkByteData &byteData);
 
 	// The HTTP protocol is such that all HTTP requests are MIME. For non-multipart
 	// requests, this method may be called to set the MIME body of the HTTP request to
 	// the exact contents of filePath.
 	// Note: A non-multipart HTTP request consists of (1) the HTTP start line, (2) MIME
 	// header fields, and (3) the MIME body. This method sets the MIME body.
-	bool LoadBodyFromFile(const wchar_t *filename);
+	bool LoadBodyFromFile(const wchar_t *filePath);
 
 	// The HTTP protocol is such that all HTTP requests are MIME. For non-multipart
 	// requests, this method may be called to set the MIME body of the HTTP request to
@@ -365,7 +369,7 @@ class CK_VISIBLE_PUBLIC CkHttpRequestW  : public CkWideCharBase
 	// Note: A non-multipart HTTP request consists of (1) the HTTP start line, (2) MIME
 	// header fields, and (3) the MIME body. This method sets the MIME body.
 	// 
-	//  charset indicates the charset, such as "utf-8" or "iso-8859-1", to be used. The
+	// charset indicates the charset, such as "utf-8" or "iso-8859-1", to be used. The
 	// HTTP body will contain the bodyStr converted to this character encoding.
 	// 
 	bool LoadBodyFromString(const wchar_t *bodyStr, const wchar_t *charset);
@@ -373,7 +377,7 @@ class CK_VISIBLE_PUBLIC CkHttpRequestW  : public CkWideCharBase
 	// Removes all request parameters.
 	void RemoveAllParams(void);
 
-	// Removes all occurances of a HTTP request header field. Always returns true.
+	// Removes all occurrences of a HTTP request header field. Always returns true.
 	bool RemoveHeader(const wchar_t *name);
 
 	// Removes a single HTTP request parameter by name.
@@ -390,10 +394,10 @@ class CK_VISIBLE_PUBLIC CkHttpRequestW  : public CkWideCharBase
 	// streamed directly from a file. When the HTTP request is actually sent, the body
 	// is streamed directly from the file, and thus the file never needs to be loaded
 	// in its entirety in memory.
-	bool StreamBodyFromFile(const wchar_t *filename);
+	bool StreamBodyFromFile(const wchar_t *filePath);
 
 	// This method is the same as StreamBodyFromFile, but allows for an offset and
-	// number of bytes to be specified. The ARG2 and ARG3 are integers passed as
+	// number of bytes to be specified. The offset and numBytes are integers passed as
 	// strings.
 	bool StreamChunkFromFile(const wchar_t *path, const wchar_t *offset, const wchar_t *numBytes);
 

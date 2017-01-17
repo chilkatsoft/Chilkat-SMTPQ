@@ -1,22 +1,27 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkTaskWH
 #define _C_CkTaskWH
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
 
+
+CK_VISIBLE_PUBLIC void CkTaskW_setAbortCheck(HCkTaskW cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkTaskW_setPercentDone(HCkTaskW cHandle, BOOL (*fnPercentDone)(int pctDone));
+CK_VISIBLE_PUBLIC void CkTaskW_setProgressInfo(HCkTaskW cHandle, void (*fnProgressInfo)(const wchar_t *name, const wchar_t *value));
+CK_VISIBLE_PUBLIC void CkTaskW_setTaskCompleted(HCkTaskW cHandle, void (*fnTaskCompleted)(HCkTaskW hTask));
+
 CK_VISIBLE_PUBLIC HCkTaskW CkTaskW_Create(void);
-CK_VISIBLE_PUBLIC HCkTaskW CkTaskW_Create2(BOOL bCallbackOwned);
 CK_VISIBLE_PUBLIC void CkTaskW_Dispose(HCkTaskW handle);
 CK_VISIBLE_PUBLIC void CkTaskW_getDebugLogFilePath(HCkTaskW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkTaskW_putDebugLogFilePath(HCkTaskW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkTaskW_putDebugLogFilePath(HCkTaskW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkTaskW_debugLogFilePath(HCkTaskW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkTaskW_getFinished(HCkTaskW cHandle);
 CK_VISIBLE_PUBLIC int CkTaskW_getHeartbeatMs(HCkTaskW cHandle);
-CK_VISIBLE_PUBLIC void CkTaskW_putHeartbeatMs(HCkTaskW cHandle, int newVal);
+CK_VISIBLE_PUBLIC void  CkTaskW_putHeartbeatMs(HCkTaskW cHandle, int newVal);
 CK_VISIBLE_PUBLIC BOOL CkTaskW_getInert(HCkTaskW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkTaskW_getKeepProgressLog(HCkTaskW cHandle);
-CK_VISIBLE_PUBLIC void CkTaskW_putKeepProgressLog(HCkTaskW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkTaskW_putKeepProgressLog(HCkTaskW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkTaskW_getLastErrorHtml(HCkTaskW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkTaskW_lastErrorHtml(HCkTaskW cHandle);
 CK_VISIBLE_PUBLIC void CkTaskW_getLastErrorText(HCkTaskW cHandle, HCkString retval);
@@ -24,7 +29,7 @@ CK_VISIBLE_PUBLIC const wchar_t *CkTaskW_lastErrorText(HCkTaskW cHandle);
 CK_VISIBLE_PUBLIC void CkTaskW_getLastErrorXml(HCkTaskW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkTaskW_lastErrorXml(HCkTaskW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkTaskW_getLastMethodSuccess(HCkTaskW cHandle);
-CK_VISIBLE_PUBLIC void CkTaskW_putLastMethodSuccess(HCkTaskW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkTaskW_putLastMethodSuccess(HCkTaskW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkTaskW_getLive(HCkTaskW cHandle);
 CK_VISIBLE_PUBLIC int CkTaskW_getPercentDone(HCkTaskW cHandle);
 CK_VISIBLE_PUBLIC int CkTaskW_getProgressLogSize(HCkTaskW cHandle);
@@ -38,10 +43,10 @@ CK_VISIBLE_PUBLIC int CkTaskW_getStatusInt(HCkTaskW cHandle);
 CK_VISIBLE_PUBLIC int CkTaskW_getTaskId(HCkTaskW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkTaskW_getTaskSuccess(HCkTaskW cHandle);
 CK_VISIBLE_PUBLIC void CkTaskW_getUserData(HCkTaskW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC void CkTaskW_putUserData(HCkTaskW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC void  CkTaskW_putUserData(HCkTaskW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkTaskW_userData(HCkTaskW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkTaskW_getVerboseLogging(HCkTaskW cHandle);
-CK_VISIBLE_PUBLIC void CkTaskW_putVerboseLogging(HCkTaskW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void  CkTaskW_putVerboseLogging(HCkTaskW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkTaskW_getVersion(HCkTaskW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkTaskW_version(HCkTaskW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkTaskW_Cancel(HCkTaskW cHandle);

@@ -1,9 +1,10 @@
-// This is a generated source file for Chilkat version 9.5.0.55
+// This is a generated source file for Chilkat version 9.5.0.62
 #ifndef _C_CkXmp_H
 #define _C_CkXmp_H
 #include "chilkatDefs.h"
 
 #include "Chilkat_C.h"
+
 
 CK_VISIBLE_PUBLIC HCkXmp CkXmp_Create(void);
 CK_VISIBLE_PUBLIC void CkXmp_Dispose(HCkXmp handle);
@@ -29,13 +30,13 @@ CK_VISIBLE_PUBLIC void CkXmp_getVersion(HCkXmp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkXmp_version(HCkXmp cHandle);
 CK_VISIBLE_PUBLIC BOOL CkXmp_AddArray(HCkXmp cHandle, HCkXml xml, const char *arrType, const char *propName, HCkStringArray values);
 CK_VISIBLE_PUBLIC void CkXmp_AddNsMapping(HCkXmp cHandle, const char *ns, const char *uri);
-CK_VISIBLE_PUBLIC BOOL CkXmp_AddSimpleDate(HCkXmp cHandle, HCkXml iXml, const char *propName, SYSTEMTIME *propVal);
+CK_VISIBLE_PUBLIC BOOL CkXmp_AddSimpleDate(HCkXmp cHandle, HCkXml iXml, const char *propName, SYSTEMTIME * propVal);
 CK_VISIBLE_PUBLIC BOOL CkXmp_AddSimpleInt(HCkXmp cHandle, HCkXml iXml, const char *propName, int propVal);
 CK_VISIBLE_PUBLIC BOOL CkXmp_AddSimpleStr(HCkXmp cHandle, HCkXml iXml, const char *propName, const char *propVal);
 CK_VISIBLE_PUBLIC BOOL CkXmp_AddStructProp(HCkXmp cHandle, HCkXml iChilkatXml, const char *structName, const char *propName, const char *propValue);
 CK_VISIBLE_PUBLIC BOOL CkXmp_Append(HCkXmp cHandle, HCkXml iXml);
-CK_VISIBLE_PUBLIC BOOL CkXmp_DateToString(HCkXmp cHandle, SYSTEMTIME *d, HCkString outStr);
-CK_VISIBLE_PUBLIC const char *CkXmp_dateToString(HCkXmp cHandle, SYSTEMTIME *d);
+CK_VISIBLE_PUBLIC BOOL CkXmp_DateToString(HCkXmp cHandle, SYSTEMTIME * d, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkXmp_dateToString(HCkXmp cHandle, SYSTEMTIME * d);
 CK_VISIBLE_PUBLIC HCkStringArray CkXmp_GetArray(HCkXmp cHandle, HCkXml iXml, const char *propName);
 CK_VISIBLE_PUBLIC HCkXml CkXmp_GetEmbedded(HCkXmp cHandle, int index);
 CK_VISIBLE_PUBLIC HCkXml CkXmp_GetProperty(HCkXmp cHandle, HCkXml iXml, const char *propName);
