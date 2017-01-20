@@ -14,6 +14,7 @@
 
 class CkByteData;
 class CkTaskW;
+class CkBinDataW;
 class CkStreamW;
 class CkBaseProgressW;
 
@@ -278,6 +279,14 @@ class CK_VISIBLE_PUBLIC CkCompressionW  : public CkClassWithCallbacksW
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *BeginDecompressStringENCAsync(const wchar_t *str);
 
+	// Compresses the data contained in a BinData object.
+	bool CompressBd(CkBinDataW &binData);
+
+	// Creates an asynchronous task to call the CompressBd method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *CompressBdAsync(CkBinDataW &binData);
+
 	// Compresses byte data.
 	bool CompressBytes(CkByteData &data, CkByteData &outData);
 
@@ -339,6 +348,14 @@ class CK_VISIBLE_PUBLIC CkCompressionW  : public CkClassWithCallbacksW
 	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *CompressStringENCAsync(const wchar_t *str);
+
+	// Decompresses the data contained in a BinData object.
+	bool DecompressBd(CkBinDataW &binData);
+
+	// Creates an asynchronous task to call the DecompressBd method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *DecompressBdAsync(CkBinDataW &binData);
 
 	// The opposite of CompressBytes.
 	bool DecompressBytes(CkByteData &data, CkByteData &outData);

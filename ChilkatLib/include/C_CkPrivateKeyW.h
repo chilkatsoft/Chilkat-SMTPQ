@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.62
+// This is a generated source file for Chilkat version 9.5.0.66
 #ifndef _C_CkPrivateKeyWH
 #define _C_CkPrivateKeyWH
 #include "chilkatDefs.h"
@@ -29,6 +29,8 @@ CK_VISIBLE_PUBLIC BOOL CkPrivateKeyW_getVerboseLogging(HCkPrivateKeyW cHandle);
 CK_VISIBLE_PUBLIC void  CkPrivateKeyW_putVerboseLogging(HCkPrivateKeyW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkPrivateKeyW_getVersion(HCkPrivateKeyW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkPrivateKeyW_version(HCkPrivateKeyW cHandle);
+CK_VISIBLE_PUBLIC BOOL CkPrivateKeyW_GetJwk(HCkPrivateKeyW cHandle, HCkString outStr);
+CK_VISIBLE_PUBLIC const wchar_t *CkPrivateKeyW_getJwk(HCkPrivateKeyW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkPrivateKeyW_GetPkcs1(HCkPrivateKeyW cHandle, HCkByteData outBytes);
 CK_VISIBLE_PUBLIC BOOL CkPrivateKeyW_GetPkcs1ENC(HCkPrivateKeyW cHandle, const wchar_t *encoding, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkPrivateKeyW_getPkcs1ENC(HCkPrivateKeyW cHandle, const wchar_t *encoding);
@@ -52,6 +54,7 @@ CK_VISIBLE_PUBLIC BOOL CkPrivateKeyW_GetXml(HCkPrivateKeyW cHandle, HCkString ou
 CK_VISIBLE_PUBLIC const wchar_t *CkPrivateKeyW_getXml(HCkPrivateKeyW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkPrivateKeyW_LoadEncryptedPem(HCkPrivateKeyW cHandle, const wchar_t *pemStr, const wchar_t *password);
 CK_VISIBLE_PUBLIC BOOL CkPrivateKeyW_LoadEncryptedPemFile(HCkPrivateKeyW cHandle, const wchar_t *path, const wchar_t *password);
+CK_VISIBLE_PUBLIC BOOL CkPrivateKeyW_LoadJwk(HCkPrivateKeyW cHandle, const wchar_t *jsonStr);
 CK_VISIBLE_PUBLIC BOOL CkPrivateKeyW_LoadPem(HCkPrivateKeyW cHandle, const wchar_t *str);
 CK_VISIBLE_PUBLIC BOOL CkPrivateKeyW_LoadPemFile(HCkPrivateKeyW cHandle, const wchar_t *path);
 CK_VISIBLE_PUBLIC BOOL CkPrivateKeyW_LoadPkcs1(HCkPrivateKeyW cHandle, HCkByteData data);

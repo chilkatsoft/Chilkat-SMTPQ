@@ -82,6 +82,51 @@ class CK_VISIBLE_PUBLIC CkPublicKey  : public CkMultiByteBase
 	const char *encoded(bool preferPkcs1, const char *encoding);
 
 
+	// Gets the public key in JWK (JSON Web Key) format.
+	// 
+	// RSA public keys have this JWK format:
+	//          {"kty":"RSA",
+	//           "n": "0vx7agoebGcQSuuPiLJXZptN9 ... U8awapJzKnqDKgw",
+	//           "e":"AQAB"}
+	// 
+	// ECC public keys have this JWK format:
+	//          {"kty":"EC",
+	//           "crv":"P-256",
+	//           "x":"MKBCTNIcKUSDii11ySs3526iDZ8AiTo7Tu6KPAqv7D4",
+	//           "y":"4Etl6SRW2YiLUrN5vfvVHuhp7x8PxltmWWlbbM4IFyM"}
+	// 
+	bool GetJwk(CkString &outStr);
+
+	// Gets the public key in JWK (JSON Web Key) format.
+	// 
+	// RSA public keys have this JWK format:
+	//          {"kty":"RSA",
+	//           "n": "0vx7agoebGcQSuuPiLJXZptN9 ... U8awapJzKnqDKgw",
+	//           "e":"AQAB"}
+	// 
+	// ECC public keys have this JWK format:
+	//          {"kty":"EC",
+	//           "crv":"P-256",
+	//           "x":"MKBCTNIcKUSDii11ySs3526iDZ8AiTo7Tu6KPAqv7D4",
+	//           "y":"4Etl6SRW2YiLUrN5vfvVHuhp7x8PxltmWWlbbM4IFyM"}
+	// 
+	const char *getJwk(void);
+	// Gets the public key in JWK (JSON Web Key) format.
+	// 
+	// RSA public keys have this JWK format:
+	//          {"kty":"RSA",
+	//           "n": "0vx7agoebGcQSuuPiLJXZptN9 ... U8awapJzKnqDKgw",
+	//           "e":"AQAB"}
+	// 
+	// ECC public keys have this JWK format:
+	//          {"kty":"EC",
+	//           "crv":"P-256",
+	//           "x":"MKBCTNIcKUSDii11ySs3526iDZ8AiTo7Tu6KPAqv7D4",
+	//           "y":"4Etl6SRW2YiLUrN5vfvVHuhp7x8PxltmWWlbbM4IFyM"}
+	// 
+	const char *jwk(void);
+
+
 	// This method is deprecated. Applications should call GetDer with preference for
 	// PKCS8 instead.
 	// 
@@ -258,12 +303,20 @@ class CK_VISIBLE_PUBLIC CkPublicKey  : public CkMultiByteBase
 	// such as binary DER (PKCS1 or PKCS8), PEM, XML, or encoded binary DER (such as
 	// base64 encoded binary DER). The format of the contents of the file is
 	// auto-recognized.
+	// 
+	// Starting in version 9.5.0.66, this method also supports loading the JWK (JSON
+	// Web Key) format.
+	// 
 	bool LoadFromFile(const char *path);
 
 
 	// Loads a public key from any string format, such as PEM, XML, or encoded binary
 	// DER (such as base64 encoded binary DER). The format of the keyString is
 	// auto-recognized.
+	// 
+	// Starting in version 9.5.0.66, this method also supports loading the JWK (JSON
+	// Web Key) format.
+	// 
 	bool LoadFromString(const char *keyString);
 
 

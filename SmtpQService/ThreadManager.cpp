@@ -70,7 +70,7 @@ void ThreadManager::tmFinalize(void)
 	    }
 	}
 
-    logNameValueInt("m_files_size",m_files.size());
+    logNameValueInt("m_files_size",(int)m_files.size());
     m_files.clear();
 
     return;

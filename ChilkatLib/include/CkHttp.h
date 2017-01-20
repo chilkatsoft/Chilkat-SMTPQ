@@ -2572,6 +2572,12 @@ class CK_VISIBLE_PUBLIC CkHttp  : public CkClassWithCallbacks
 	// used in the xmlContent, which is typically "utf-8". The HTTP response is returned in
 	// an HTTP response object.
 	// 
+	// Important: This method sends the POST with a "Content-Type" header value of
+	// "text/xml". Sometimes a server might require the Content-Type header to be
+	// "application/xml". To use "application/xml" instead of the default "text/xml",
+	// call SetHeaderField("Content-Type","application/xml") prior to calling this
+	// method.
+	// 
 	// To use HTTPS simply pass an endpointUrl beginning with "https://" instead of "http://".
 	// This applies to any Chilkat method where a URL is passed as an argument.
 	// 
@@ -2582,6 +2588,12 @@ class CK_VISIBLE_PUBLIC CkHttp  : public CkClassWithCallbacks
 	// making SOAP calls using HTTP POST. The xmlCharset should match the character encoding
 	// used in the xmlContent, which is typically "utf-8". The HTTP response is returned in
 	// an HTTP response object.
+	// 
+	// Important: This method sends the POST with a "Content-Type" header value of
+	// "text/xml". Sometimes a server might require the Content-Type header to be
+	// "application/xml". To use "application/xml" instead of the default "text/xml",
+	// call SetHeaderField("Content-Type","application/xml") prior to calling this
+	// method.
 	// 
 	// To use HTTPS simply pass an endpointUrl beginning with "https://" instead of "http://".
 	// This applies to any Chilkat method where a URL is passed as an argument.
@@ -3011,15 +3023,49 @@ class CK_VISIBLE_PUBLIC CkHttp  : public CkClassWithCallbacks
 	CkTask *S3_FileExistsAsync(const char *bucketPath, const char *objectName);
 
 
-	// Generates a temporary pre-signed URL for Amazon S3. Requires that the
-	// AwsSecretKey and AwsAccessKey be set to valid values prior to calling this
+	// Generates a temporary pre-signed URL for Amazon S3 using AWS Signature V2. (Call
+	// S3_GenerateUrlV4 to generate AWS Signature V4 pre-signed URLs.) Requires that
+	// the AwsSecretKey and AwsAccessKey be set to valid values prior to calling this
 	// method.
 	bool S3_GenerateUrl(const char *bucket, const char *path, CkDateTime &expire, CkString &outStr);
 
-	// Generates a temporary pre-signed URL for Amazon S3. Requires that the
-	// AwsSecretKey and AwsAccessKey be set to valid values prior to calling this
+	// Generates a temporary pre-signed URL for Amazon S3 using AWS Signature V2. (Call
+	// S3_GenerateUrlV4 to generate AWS Signature V4 pre-signed URLs.) Requires that
+	// the AwsSecretKey and AwsAccessKey be set to valid values prior to calling this
 	// method.
 	const char *s3_GenerateUrl(const char *bucket, const char *path, CkDateTime &expire);
+
+	// Generates a temporary pre-signed URL for Amazon S3 using AWS Signature V4. (Call
+	// S3_GenerateUrl to generate AWS Signature V2 pre-signed URLs.) Requires that the
+	// AwsSecretKey, AwsAccessKey, and AwsRegion properties be set to valid values
+	// prior to calling this method. Also requires the AwsEndpoint property to be set
+	// if the endpoint is different than "s3.amazonaws.com".
+	// 
+	// The URL that is generated has this format:
+	// https:////?X-Amz-Algorithm=AWS4-HMAC-SHA256
+	// &X-Amz-Credential=////aws4_request
+	// &X-Amz-Date=&X-Amz-Expires=&X-Amz-SignedHeaders=host
+	// &X-Amz-Signature=
+	// 
+	// The numSecondsValid is a string naming the AWS service, such as "s3".   If useHttps is true, then the URL begins with "https://", otherwise it begins with "http://".
+	// 
+	bool S3_GenerateUrlV4(bool useHttps, const char *bucketName, const char *path, int numSecondsValid, const char *awsService, CkString &outStr);
+
+	// Generates a temporary pre-signed URL for Amazon S3 using AWS Signature V4. (Call
+	// S3_GenerateUrl to generate AWS Signature V2 pre-signed URLs.) Requires that the
+	// AwsSecretKey, AwsAccessKey, and AwsRegion properties be set to valid values
+	// prior to calling this method. Also requires the AwsEndpoint property to be set
+	// if the endpoint is different than "s3.amazonaws.com".
+	// 
+	// The URL that is generated has this format:
+	// https:////?X-Amz-Algorithm=AWS4-HMAC-SHA256
+	// &X-Amz-Credential=////aws4_request
+	// &X-Amz-Date=&X-Amz-Expires=&X-Amz-SignedHeaders=host
+	// &X-Amz-Signature=
+	// 
+	// The numSecondsValid is a string naming the AWS service, such as "s3".   If useHttps is true, then the URL begins with "https://", otherwise it begins with "http://".
+	// 
+	const char *s3_GenerateUrlV4(bool useHttps, const char *bucketName, const char *path, int numSecondsValid, const char *awsService);
 
 	// Retrieves the XML listing of the objects contained within an Amazon S3 bucket.
 	// (This is like a directory listing, but in XML format.)

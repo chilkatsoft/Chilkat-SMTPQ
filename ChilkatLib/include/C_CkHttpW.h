@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.64
+// This is a generated source file for Chilkat version 9.5.0.66
 #ifndef _C_CkHttpWH
 #define _C_CkHttpWH
 #include "chilkatDefs.h"
@@ -383,6 +383,8 @@ CK_VISIBLE_PUBLIC int CkHttpW_S3_FileExists(HCkHttpW cHandle, const wchar_t *buc
 CK_VISIBLE_PUBLIC HCkTaskW CkHttpW_S3_FileExistsAsync(HCkHttpW cHandle, const wchar_t *bucketPath, const wchar_t *objectName);
 CK_VISIBLE_PUBLIC BOOL CkHttpW_S3_GenerateUrl(HCkHttpW cHandle, const wchar_t *bucket, const wchar_t *path, HCkDateTimeW expire, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkHttpW_s3_GenerateUrl(HCkHttpW cHandle, const wchar_t *bucket, const wchar_t *path, HCkDateTimeW expire);
+CK_VISIBLE_PUBLIC BOOL CkHttpW_S3_GenerateUrlV4(HCkHttpW cHandle, BOOL useHttps, const wchar_t *bucketName, const wchar_t *path, int numSecondsValid, const wchar_t *awsService, HCkString outStr);
+CK_VISIBLE_PUBLIC const wchar_t *CkHttpW_s3_GenerateUrlV4(HCkHttpW cHandle, BOOL useHttps, const wchar_t *bucketName, const wchar_t *path, int numSecondsValid, const wchar_t *awsService);
 CK_VISIBLE_PUBLIC BOOL CkHttpW_S3_ListBucketObjects(HCkHttpW cHandle, const wchar_t *bucketPath, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkHttpW_s3_ListBucketObjects(HCkHttpW cHandle, const wchar_t *bucketPath);
 CK_VISIBLE_PUBLIC HCkTaskW CkHttpW_S3_ListBucketObjectsAsync(HCkHttpW cHandle, const wchar_t *bucketPath);

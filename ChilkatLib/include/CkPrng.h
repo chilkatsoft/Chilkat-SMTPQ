@@ -13,6 +13,7 @@
 #include "CkMultiByteBase.h"
 
 class CkByteData;
+class CkBinData;
 
 
 
@@ -165,6 +166,15 @@ class CK_VISIBLE_PUBLIC CkPrng  : public CkMultiByteBase
 	// /dev/random) are automatically added to seed the PRNG.
 	// 
 	const char *genRandom(int numBytes, const char *encoding);
+
+	// Appends numBytes random bytes to bd.
+	// 
+	// Important: If no entropy was explicitly added prior to first call to generate
+	// random bytes, then 32 bytes of entropy (from the system source, such as
+	// /dev/random) are automatically added to seed the PRNG.
+	// 
+	bool GenRandomBd(int numBytes, CkBinData &bd);
+
 
 	// Generates and returns numBytes random bytes.
 	// 

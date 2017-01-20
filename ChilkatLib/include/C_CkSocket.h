@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.65
+// This is a generated source file for Chilkat version 9.5.0.66
 #ifndef _C_CkSocket_H
 #define _C_CkSocket_H
 #include "chilkatDefs.h"
@@ -286,8 +286,8 @@ CK_VISIBLE_PUBLIC int CkSocket_SelectForReading(HCkSocket cHandle, int timeoutMs
 CK_VISIBLE_PUBLIC HCkTask CkSocket_SelectForReadingAsync(HCkSocket cHandle, int timeoutMs);
 CK_VISIBLE_PUBLIC int CkSocket_SelectForWriting(HCkSocket cHandle, int timeoutMs);
 CK_VISIBLE_PUBLIC HCkTask CkSocket_SelectForWritingAsync(HCkSocket cHandle, int timeoutMs);
-CK_VISIBLE_PUBLIC BOOL CkSocket_SendBd(HCkSocket cHandle, HCkBinData binData, int offset, int numBytes);
-CK_VISIBLE_PUBLIC HCkTask CkSocket_SendBdAsync(HCkSocket cHandle, HCkBinData binData, int offset, int numBytes);
+CK_VISIBLE_PUBLIC BOOL CkSocket_SendBd(HCkSocket cHandle, HCkBinData binData, unsigned long offset, unsigned long numBytes);
+CK_VISIBLE_PUBLIC HCkTask CkSocket_SendBdAsync(HCkSocket cHandle, HCkBinData binData, unsigned long offset, unsigned long numBytes);
 CK_VISIBLE_PUBLIC BOOL CkSocket_SendByte(HCkSocket cHandle, int value);
 CK_VISIBLE_PUBLIC HCkTask CkSocket_SendByteAsync(HCkSocket cHandle, int value);
 CK_VISIBLE_PUBLIC BOOL CkSocket_SendBytes(HCkSocket cHandle, HCkByteData data);

@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.62
+// This is a generated source file for Chilkat version 9.5.0.66
 #ifndef _C_CkCompression_H
 #define _C_CkCompression_H
 #include "chilkatDefs.h"
@@ -61,6 +61,8 @@ CK_VISIBLE_PUBLIC HCkTask CkCompression_BeginDecompressStringAsync(HCkCompressio
 CK_VISIBLE_PUBLIC BOOL CkCompression_BeginDecompressStringENC(HCkCompression cHandle, const char *str, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkCompression_beginDecompressStringENC(HCkCompression cHandle, const char *str);
 CK_VISIBLE_PUBLIC HCkTask CkCompression_BeginDecompressStringENCAsync(HCkCompression cHandle, const char *str);
+CK_VISIBLE_PUBLIC BOOL CkCompression_CompressBd(HCkCompression cHandle, HCkBinData binData);
+CK_VISIBLE_PUBLIC HCkTask CkCompression_CompressBdAsync(HCkCompression cHandle, HCkBinData binData);
 CK_VISIBLE_PUBLIC BOOL CkCompression_CompressBytes(HCkCompression cHandle, HCkByteData data, HCkByteData outData);
 CK_VISIBLE_PUBLIC HCkTask CkCompression_CompressBytesAsync(HCkCompression cHandle, HCkByteData data);
 CK_VISIBLE_PUBLIC BOOL CkCompression_CompressBytesENC(HCkCompression cHandle, HCkByteData data, HCkString outStr);
@@ -75,6 +77,8 @@ CK_VISIBLE_PUBLIC HCkTask CkCompression_CompressStringAsync(HCkCompression cHand
 CK_VISIBLE_PUBLIC BOOL CkCompression_CompressStringENC(HCkCompression cHandle, const char *str, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkCompression_compressStringENC(HCkCompression cHandle, const char *str);
 CK_VISIBLE_PUBLIC HCkTask CkCompression_CompressStringENCAsync(HCkCompression cHandle, const char *str);
+CK_VISIBLE_PUBLIC BOOL CkCompression_DecompressBd(HCkCompression cHandle, HCkBinData binData);
+CK_VISIBLE_PUBLIC HCkTask CkCompression_DecompressBdAsync(HCkCompression cHandle, HCkBinData binData);
 CK_VISIBLE_PUBLIC BOOL CkCompression_DecompressBytes(HCkCompression cHandle, HCkByteData data, HCkByteData outData);
 CK_VISIBLE_PUBLIC HCkTask CkCompression_DecompressBytesAsync(HCkCompression cHandle, HCkByteData data);
 CK_VISIBLE_PUBLIC BOOL CkCompression_DecompressBytesENC(HCkCompression cHandle, const char *encodedCompressedData, HCkByteData outData);

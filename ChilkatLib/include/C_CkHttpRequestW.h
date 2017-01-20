@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.64
+// This is a generated source file for Chilkat version 9.5.0.66
 #ifndef _C_CkHttpRequestWH
 #define _C_CkHttpRequestWH
 #include "chilkatDefs.h"

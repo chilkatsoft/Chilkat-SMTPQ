@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.62
+// This is a generated source file for Chilkat version 9.5.0.66
 #ifndef _C_CkEcc_H
 #define _C_CkEcc_H
 #include "chilkatDefs.h"

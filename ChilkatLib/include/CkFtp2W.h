@@ -841,6 +841,27 @@ class CK_VISIBLE_PUBLIC CkFtp2W  : public CkClassWithCallbacksW
 	// obtained via the SessionLog property.
 	void put_KeepSessionLog(bool newVal);
 
+	// Enables internal features that can help when downloading extremely large files.
+	// In some cases, if the time required to download a file is long, the control
+	// connection is closed by the server or other network infrastructure because it
+	// was idle for so long. Setting this property equal to true will keep the
+	// control connection very slightly used to prevent this from happening.
+	// 
+	// The default value of this property is false. This property should only be set
+	// to true if this sort of problem is encountered.
+	// 
+	bool get_LargeFileMeasures(void);
+	// Enables internal features that can help when downloading extremely large files.
+	// In some cases, if the time required to download a file is long, the control
+	// connection is closed by the server or other network infrastructure because it
+	// was idle for so long. Setting this property equal to true will keep the
+	// control connection very slightly used to prevent this from happening.
+	// 
+	// The default value of this property is false. This property should only be set
+	// to true if this sort of problem is encountered.
+	// 
+	void put_LargeFileMeasures(bool newVal);
+
 	// Contains the last control-channel reply. For example: "550 Failed to change
 	// directory." or "250 Directory successfully changed." The control channel reply
 	// is typically formatted as an integer status code followed by a one-line

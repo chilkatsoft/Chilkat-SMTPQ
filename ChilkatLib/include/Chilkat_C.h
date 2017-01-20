@@ -141,6 +141,9 @@ typedef void *HCkOAuth2;
 typedef void *HCkBinData;
 typedef void *HCkStringTable;
 typedef void *HCkCsr;
+typedef void *HCkJwe;
+typedef void *HCkJws;
+typedef void *HCkAccounts;
 
 
 typedef void *HCkByteDataW;
@@ -258,5 +261,8 @@ typedef void *HCkOAuth2W;
 typedef void *HCkBinDataW;
 typedef void *HCkStringTableW;
 typedef void *HCkCsrW;
+typedef void *HCkJweW;
+typedef void *HCkJwsW;
+typedef void *HCkAccountsW;
 
 #endif

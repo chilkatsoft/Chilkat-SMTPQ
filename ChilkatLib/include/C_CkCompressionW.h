@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.62
+// This is a generated source file for Chilkat version 9.5.0.66
 #ifndef _C_CkCompressionWH
 #define _C_CkCompressionWH
 #include "chilkatDefs.h"
@@ -59,6 +59,8 @@ CK_VISIBLE_PUBLIC HCkTaskW CkCompressionW_BeginDecompressStringAsync(HCkCompress
 CK_VISIBLE_PUBLIC BOOL CkCompressionW_BeginDecompressStringENC(HCkCompressionW cHandle, const wchar_t *str, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkCompressionW_beginDecompressStringENC(HCkCompressionW cHandle, const wchar_t *str);
 CK_VISIBLE_PUBLIC HCkTaskW CkCompressionW_BeginDecompressStringENCAsync(HCkCompressionW cHandle, const wchar_t *str);
+CK_VISIBLE_PUBLIC BOOL CkCompressionW_CompressBd(HCkCompressionW cHandle, HCkBinDataW binData);
+CK_VISIBLE_PUBLIC HCkTaskW CkCompressionW_CompressBdAsync(HCkCompressionW cHandle, HCkBinDataW binData);
 CK_VISIBLE_PUBLIC BOOL CkCompressionW_CompressBytes(HCkCompressionW cHandle, HCkByteData data, HCkByteData outData);
 CK_VISIBLE_PUBLIC HCkTaskW CkCompressionW_CompressBytesAsync(HCkCompressionW cHandle, HCkByteData data);
 CK_VISIBLE_PUBLIC BOOL CkCompressionW_CompressBytesENC(HCkCompressionW cHandle, HCkByteData data, HCkString outStr);
@@ -73,6 +75,8 @@ CK_VISIBLE_PUBLIC HCkTaskW CkCompressionW_CompressStringAsync(HCkCompressionW cH
 CK_VISIBLE_PUBLIC BOOL CkCompressionW_CompressStringENC(HCkCompressionW cHandle, const wchar_t *str, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkCompressionW_compressStringENC(HCkCompressionW cHandle, const wchar_t *str);
 CK_VISIBLE_PUBLIC HCkTaskW CkCompressionW_CompressStringENCAsync(HCkCompressionW cHandle, const wchar_t *str);
+CK_VISIBLE_PUBLIC BOOL CkCompressionW_DecompressBd(HCkCompressionW cHandle, HCkBinDataW binData);
+CK_VISIBLE_PUBLIC HCkTaskW CkCompressionW_DecompressBdAsync(HCkCompressionW cHandle, HCkBinDataW binData);
 CK_VISIBLE_PUBLIC BOOL CkCompressionW_DecompressBytes(HCkCompressionW cHandle, HCkByteData data, HCkByteData outData);
 CK_VISIBLE_PUBLIC HCkTaskW CkCompressionW_DecompressBytesAsync(HCkCompressionW cHandle, HCkByteData data);
 CK_VISIBLE_PUBLIC BOOL CkCompressionW_DecompressBytesENC(HCkCompressionW cHandle, const wchar_t *encodedCompressedData, HCkByteData outData);

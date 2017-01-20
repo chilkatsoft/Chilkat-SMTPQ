@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.64
+// This is a generated source file for Chilkat version 9.5.0.66
 #ifndef _C_CkStringBuilderWH
 #define _C_CkStringBuilderWH
 #include "chilkatDefs.h"

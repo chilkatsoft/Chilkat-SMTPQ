@@ -75,6 +75,72 @@ class CK_VISIBLE_PUBLIC CkPrivateKey  : public CkMultiByteBase
 	// ----------------------
 	// Methods
 	// ----------------------
+	// Gets the private key in JWK (JSON Web Key) format.
+	// 
+	// RSA keys have this JWK format:
+	//          {"kty":"RSA",
+	//           "n":"0vx7agoebGcQ ... JzKnqDKgw",
+	//           "e":"AQAB",
+	//           "d":"X4cTteJY_gn4F ... 4jfcKoAC8Q",
+	//           "p":"83i-7IvMGXoMX ... vn7O0nVbfs",
+	//           "q":"3dfOR9cuYq-0S ... 4vIcb6yelxk",
+	//           "dp":"G4sPXkc6Ya9 ... 8YeiKkTiBj0",
+	//           "dq":"s9lAH9fggBso ... w494Q_cgk",
+	//           "qi":"GyM_p6JrXySi ... zTKhAVRU"}
+	// 
+	// ECC keys have this JWK format.
+	//          {"kty":"EC",
+	//           "crv":"P-256",
+	//           "x":"MKBCTNIcKUSDii11ySs3526iDZ8AiTo7Tu6KPAqv7D4",
+	//           "y":"4Etl6SRW2YiLUrN5vfvVHuhp7x8PxltmWWlbbM4IFyM",
+	//           "d":"870MB6gfuTJ4HtUnUvYMyJpr5eUZNP4Bk43bVdj3eAE"}
+	// 
+	bool GetJwk(CkString &outStr);
+
+	// Gets the private key in JWK (JSON Web Key) format.
+	// 
+	// RSA keys have this JWK format:
+	//          {"kty":"RSA",
+	//           "n":"0vx7agoebGcQ ... JzKnqDKgw",
+	//           "e":"AQAB",
+	//           "d":"X4cTteJY_gn4F ... 4jfcKoAC8Q",
+	//           "p":"83i-7IvMGXoMX ... vn7O0nVbfs",
+	//           "q":"3dfOR9cuYq-0S ... 4vIcb6yelxk",
+	//           "dp":"G4sPXkc6Ya9 ... 8YeiKkTiBj0",
+	//           "dq":"s9lAH9fggBso ... w494Q_cgk",
+	//           "qi":"GyM_p6JrXySi ... zTKhAVRU"}
+	// 
+	// ECC keys have this JWK format.
+	//          {"kty":"EC",
+	//           "crv":"P-256",
+	//           "x":"MKBCTNIcKUSDii11ySs3526iDZ8AiTo7Tu6KPAqv7D4",
+	//           "y":"4Etl6SRW2YiLUrN5vfvVHuhp7x8PxltmWWlbbM4IFyM",
+	//           "d":"870MB6gfuTJ4HtUnUvYMyJpr5eUZNP4Bk43bVdj3eAE"}
+	// 
+	const char *getJwk(void);
+	// Gets the private key in JWK (JSON Web Key) format.
+	// 
+	// RSA keys have this JWK format:
+	//          {"kty":"RSA",
+	//           "n":"0vx7agoebGcQ ... JzKnqDKgw",
+	//           "e":"AQAB",
+	//           "d":"X4cTteJY_gn4F ... 4jfcKoAC8Q",
+	//           "p":"83i-7IvMGXoMX ... vn7O0nVbfs",
+	//           "q":"3dfOR9cuYq-0S ... 4vIcb6yelxk",
+	//           "dp":"G4sPXkc6Ya9 ... 8YeiKkTiBj0",
+	//           "dq":"s9lAH9fggBso ... w494Q_cgk",
+	//           "qi":"GyM_p6JrXySi ... zTKhAVRU"}
+	// 
+	// ECC keys have this JWK format.
+	//          {"kty":"EC",
+	//           "crv":"P-256",
+	//           "x":"MKBCTNIcKUSDii11ySs3526iDZ8AiTo7Tu6KPAqv7D4",
+	//           "y":"4Etl6SRW2YiLUrN5vfvVHuhp7x8PxltmWWlbbM4IFyM",
+	//           "d":"870MB6gfuTJ4HtUnUvYMyJpr5eUZNP4Bk43bVdj3eAE"}
+	// 
+	const char *jwk(void);
+
+
 	// Gets the private key in unencrypted binary DER format, preferring PKCS1 if
 	// possible.
 	// 
@@ -476,6 +542,33 @@ class CK_VISIBLE_PUBLIC CkPrivateKey  : public CkMultiByteBase
 	// when the wrong format data is passed to the wrong method.
 	// 
 	bool LoadEncryptedPemFile(const char *path, const char *password);
+
+
+	// Loads a private key from an JWK (JSON Web Key) string.
+	// 
+	// RSA keys have this JWK format:
+	//          {"kty":"RSA",
+	//           "n":"0vx7agoebGcQ ... JzKnqDKgw",
+	//           "e":"AQAB",
+	//           "d":"X4cTteJY_gn4F ... 4jfcKoAC8Q",
+	//           "p":"83i-7IvMGXoMX ... vn7O0nVbfs",
+	//           "q":"3dfOR9cuYq-0S ... 4vIcb6yelxk",
+	//           "dp":"G4sPXkc6Ya9 ... 8YeiKkTiBj0",
+	//           "dq":"s9lAH9fggBso ... w494Q_cgk",
+	//           "qi":"GyM_p6JrXySi ... zTKhAVRU"}
+	// 
+	// ECC keys have this JWK format.
+	//          {"kty":"EC",
+	//           "crv":"P-256",
+	//           "x":"MKBCTNIcKUSDii11ySs3526iDZ8AiTo7Tu6KPAqv7D4",
+	//           "y":"4Etl6SRW2YiLUrN5vfvVHuhp7x8PxltmWWlbbM4IFyM",
+	//           "d":"870MB6gfuTJ4HtUnUvYMyJpr5eUZNP4Bk43bVdj3eAE"}
+	// 
+	// Note: Each of the private key Load* methods willl auto-recognize the content and
+	// will parse appropriately. The private key should be successfully loaded even
+	// when the wrong format data is passed to the wrong method.
+	// 
+	bool LoadJwk(const char *jsonStr);
 
 
 	// Loads the private key from an in-memory PEM string. If the PEM contains an

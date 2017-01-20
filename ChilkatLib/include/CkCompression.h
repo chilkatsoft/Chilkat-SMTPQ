@@ -14,6 +14,7 @@
 
 class CkTask;
 class CkByteData;
+class CkBinData;
 class CkStream;
 class CkBaseProgress;
 
@@ -305,6 +306,13 @@ class CK_VISIBLE_PUBLIC CkCompression  : public CkClassWithCallbacks
 	CkTask *BeginDecompressStringENCAsync(const char *str);
 
 
+	// Compresses the data contained in a BinData object.
+	bool CompressBd(CkBinData &binData);
+
+	// Compresses the data contained in a BinData object.
+	CkTask *CompressBdAsync(CkBinData &binData);
+
+
 	// Compresses byte data.
 	bool CompressBytes(CkByteData &data, CkByteData &outData);
 
@@ -366,6 +374,13 @@ class CK_VISIBLE_PUBLIC CkCompression  : public CkClassWithCallbacks
 	// output encoding (hex, base64, etc.) is determined by the EncodingMode property
 	// setting.
 	CkTask *CompressStringENCAsync(const char *str);
+
+
+	// Decompresses the data contained in a BinData object.
+	bool DecompressBd(CkBinData &binData);
+
+	// Decompresses the data contained in a BinData object.
+	CkTask *DecompressBdAsync(CkBinData &binData);
 
 
 	// The opposite of CompressBytes.

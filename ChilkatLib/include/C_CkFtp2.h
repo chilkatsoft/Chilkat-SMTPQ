@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.62
+// This is a generated source file for Chilkat version 9.5.0.66
 #ifndef _C_CkFtp2_H
 #define _C_CkFtp2_H
 #include "chilkatDefs.h"
@@ -116,6 +116,8 @@ CK_VISIBLE_PUBLIC void CkFtp2_putIdleTimeoutMs(HCkFtp2 cHandle, int newVal);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_getIsConnected(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_getKeepSessionLog(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC void CkFtp2_putKeepSessionLog(HCkFtp2 cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC BOOL CkFtp2_getLargeFileMeasures(HCkFtp2 cHandle);
+CK_VISIBLE_PUBLIC void CkFtp2_putLargeFileMeasures(HCkFtp2 cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkFtp2_getLastErrorHtml(HCkFtp2 cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkFtp2_lastErrorHtml(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC void CkFtp2_getLastErrorText(HCkFtp2 cHandle, HCkString retval);

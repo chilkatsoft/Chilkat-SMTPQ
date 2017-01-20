@@ -92,6 +92,11 @@ bool SmtpThread::sendEmail(bool &bFailureIsFinal)
 	// Make sure the SMTP connection is closed after a failure.
 	m_mailman->CloseSmtpConnection();
 	}
+ //   else
+	//{
+	//string errText = m_mailman->lastErrorText();
+	//logNameValue("SendMimeBytes",errText);
+	//}
 
     return success;
     }

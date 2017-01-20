@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.63
+// This is a generated source file for Chilkat version 9.5.0.66
 #ifndef _C_CkXmlWH
 #define _C_CkXmlWH
 #include "chilkatDefs.h"
@@ -71,7 +71,7 @@ CK_VISIBLE_PUBLIC void CkXmlW_AddToChildContent(HCkXmlW cHandle, const wchar_t *
 CK_VISIBLE_PUBLIC void CkXmlW_AddToContent(HCkXmlW cHandle, int amount);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_AppendToContent(HCkXmlW cHandle, const wchar_t *str);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_BEncodeContent(HCkXmlW cHandle, const wchar_t *charset, HCkByteData inData);
-CK_VISIBLE_PUBLIC BOOL CkXmlW_ChildContentMatches(HCkXmlW cHandle, const wchar_t *tag, const wchar_t *pattern, BOOL caseSensitive);
+CK_VISIBLE_PUBLIC BOOL CkXmlW_ChildContentMatches(HCkXmlW cHandle, const wchar_t *tagPath, const wchar_t *pattern, BOOL caseSensitive);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_ChilkatPath(HCkXmlW cHandle, const wchar_t *pathCmd, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkXmlW_chilkatPath(HCkXmlW cHandle, const wchar_t *pathCmd);
 CK_VISIBLE_PUBLIC void CkXmlW_Clear(HCkXmlW cHandle);
@@ -84,11 +84,11 @@ CK_VISIBLE_PUBLIC const wchar_t *CkXmlW_decodeEntities(HCkXmlW cHandle, const wc
 CK_VISIBLE_PUBLIC BOOL CkXmlW_DecryptContent(HCkXmlW cHandle, const wchar_t *password);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_EncryptContent(HCkXmlW cHandle, const wchar_t *password);
 CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_ExtractChildByIndex(HCkXmlW cHandle, int index);
-CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_ExtractChildByName(HCkXmlW cHandle, const wchar_t *tag, const wchar_t *attrName, const wchar_t *attrValue);
-CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_FindChild(HCkXmlW cHandle, const wchar_t *tag);
-CK_VISIBLE_PUBLIC BOOL CkXmlW_FindChild2(HCkXmlW cHandle, const wchar_t *tag);
-CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_FindNextRecord(HCkXmlW cHandle, const wchar_t *tag, const wchar_t *contentPattern);
-CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_FindOrAddNewChild(HCkXmlW cHandle, const wchar_t *tag);
+CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_ExtractChildByName(HCkXmlW cHandle, const wchar_t *tagPath, const wchar_t *attrName, const wchar_t *attrValue);
+CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_FindChild(HCkXmlW cHandle, const wchar_t *tagPath);
+CK_VISIBLE_PUBLIC BOOL CkXmlW_FindChild2(HCkXmlW cHandle, const wchar_t *tagPath);
+CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_FindNextRecord(HCkXmlW cHandle, const wchar_t *tagPath, const wchar_t *contentPattern);
+CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_FindOrAddNewChild(HCkXmlW cHandle, const wchar_t *tagPath);
 CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_FirstChild(HCkXmlW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_FirstChild2(HCkXmlW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_GetAttributeName(HCkXmlW cHandle, int index, HCkString outStr);
@@ -102,20 +102,20 @@ CK_VISIBLE_PUBLIC int CkXmlW_GetAttrValueInt(HCkXmlW cHandle, const wchar_t *nam
 CK_VISIBLE_PUBLIC BOOL CkXmlW_GetBinaryContent(HCkXmlW cHandle, BOOL unzipFlag, BOOL decryptFlag, const wchar_t *password, HCkByteData outData);
 CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_GetChild(HCkXmlW cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_GetChild2(HCkXmlW cHandle, int index);
-CK_VISIBLE_PUBLIC BOOL CkXmlW_GetChildBoolValue(HCkXmlW cHandle, const wchar_t *tag);
-CK_VISIBLE_PUBLIC BOOL CkXmlW_GetChildContent(HCkXmlW cHandle, const wchar_t *tag, HCkString outStr);
-CK_VISIBLE_PUBLIC const wchar_t *CkXmlW_getChildContent(HCkXmlW cHandle, const wchar_t *tag);
+CK_VISIBLE_PUBLIC BOOL CkXmlW_GetChildBoolValue(HCkXmlW cHandle, const wchar_t *tagPath);
+CK_VISIBLE_PUBLIC BOOL CkXmlW_GetChildContent(HCkXmlW cHandle, const wchar_t *tagPath, HCkString outStr);
+CK_VISIBLE_PUBLIC const wchar_t *CkXmlW_getChildContent(HCkXmlW cHandle, const wchar_t *tagPath);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_GetChildContentByIndex(HCkXmlW cHandle, int index, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkXmlW_getChildContentByIndex(HCkXmlW cHandle, int index);
 CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_GetChildExact(HCkXmlW cHandle, const wchar_t *tag, const wchar_t *content);
-CK_VISIBLE_PUBLIC int CkXmlW_GetChildIntValue(HCkXmlW cHandle, const wchar_t *tag);
+CK_VISIBLE_PUBLIC int CkXmlW_GetChildIntValue(HCkXmlW cHandle, const wchar_t *tagPath);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_GetChildTag(HCkXmlW cHandle, int index, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkXmlW_getChildTag(HCkXmlW cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_GetChildTagByIndex(HCkXmlW cHandle, int index, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkXmlW_getChildTagByIndex(HCkXmlW cHandle, int index);
-CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_GetChildWithAttr(HCkXmlW cHandle, const wchar_t *tag, const wchar_t *attrName, const wchar_t *attrValue);
+CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_GetChildWithAttr(HCkXmlW cHandle, const wchar_t *tagPath, const wchar_t *attrName, const wchar_t *attrValue);
 CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_GetChildWithContent(HCkXmlW cHandle, const wchar_t *content);
-CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_GetChildWithTag(HCkXmlW cHandle, const wchar_t *tag);
+CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_GetChildWithTag(HCkXmlW cHandle, const wchar_t *tagPath);
 CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_GetNthChildWithTag(HCkXmlW cHandle, const wchar_t *tag, int n);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_GetNthChildWithTag2(HCkXmlW cHandle, const wchar_t *tag, int n);
 CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_GetParent(HCkXmlW cHandle);
@@ -129,8 +129,8 @@ CK_VISIBLE_PUBLIC BOOL CkXmlW_GetXmlSb(HCkXmlW cHandle, HCkStringBuilderW sb);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_HasAttribute(HCkXmlW cHandle, const wchar_t *name);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_HasAttrWithValue(HCkXmlW cHandle, const wchar_t *name, const wchar_t *value);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_HasChildWithContent(HCkXmlW cHandle, const wchar_t *content);
-CK_VISIBLE_PUBLIC BOOL CkXmlW_HasChildWithTag(HCkXmlW cHandle, const wchar_t *tag);
-CK_VISIBLE_PUBLIC BOOL CkXmlW_HasChildWithTagAndContent(HCkXmlW cHandle, const wchar_t *tag, const wchar_t *content);
+CK_VISIBLE_PUBLIC BOOL CkXmlW_HasChildWithTag(HCkXmlW cHandle, const wchar_t *tagPath);
+CK_VISIBLE_PUBLIC BOOL CkXmlW_HasChildWithTagAndContent(HCkXmlW cHandle, const wchar_t *tagPath, const wchar_t *content);
 CK_VISIBLE_PUBLIC void CkXmlW_InsertChildTreeAfter(HCkXmlW cHandle, int index, HCkXmlW tree);
 CK_VISIBLE_PUBLIC void CkXmlW_InsertChildTreeBefore(HCkXmlW cHandle, int index, HCkXmlW tree);
 CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_LastChild(HCkXmlW cHandle);
@@ -140,11 +140,11 @@ CK_VISIBLE_PUBLIC BOOL CkXmlW_LoadXml(HCkXmlW cHandle, const wchar_t *xmlData);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_LoadXml2(HCkXmlW cHandle, const wchar_t *xmlData, BOOL autoTrim);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_LoadXmlFile(HCkXmlW cHandle, const wchar_t *fileName);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_LoadXmlFile2(HCkXmlW cHandle, const wchar_t *fileName, BOOL autoTrim);
-CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_NewChild(HCkXmlW cHandle, const wchar_t *tag, const wchar_t *content);
-CK_VISIBLE_PUBLIC void CkXmlW_NewChild2(HCkXmlW cHandle, const wchar_t *tag, const wchar_t *content);
+CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_NewChild(HCkXmlW cHandle, const wchar_t *tagPath, const wchar_t *content);
+CK_VISIBLE_PUBLIC void CkXmlW_NewChild2(HCkXmlW cHandle, const wchar_t *tagPath, const wchar_t *content);
 CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_NewChildAfter(HCkXmlW cHandle, int index, const wchar_t *tag, const wchar_t *content);
 CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_NewChildBefore(HCkXmlW cHandle, int index, const wchar_t *tag, const wchar_t *content);
-CK_VISIBLE_PUBLIC void CkXmlW_NewChildInt2(HCkXmlW cHandle, const wchar_t *tag, int value);
+CK_VISIBLE_PUBLIC void CkXmlW_NewChildInt2(HCkXmlW cHandle, const wchar_t *tagPath, int value);
 CK_VISIBLE_PUBLIC HCkXmlW CkXmlW_NextSibling(HCkXmlW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_NextSibling2(HCkXmlW cHandle);
 CK_VISIBLE_PUBLIC int CkXmlW_NumChildrenAt(HCkXmlW cHandle, const wchar_t *tagPath);
@@ -155,7 +155,7 @@ CK_VISIBLE_PUBLIC BOOL CkXmlW_QEncodeContent(HCkXmlW cHandle, const wchar_t *cha
 CK_VISIBLE_PUBLIC BOOL CkXmlW_RemoveAllAttributes(HCkXmlW cHandle);
 CK_VISIBLE_PUBLIC void CkXmlW_RemoveAllChildren(HCkXmlW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_RemoveAttribute(HCkXmlW cHandle, const wchar_t *name);
-CK_VISIBLE_PUBLIC void CkXmlW_RemoveChild(HCkXmlW cHandle, const wchar_t *tag);
+CK_VISIBLE_PUBLIC void CkXmlW_RemoveChild(HCkXmlW cHandle, const wchar_t *tagPath);
 CK_VISIBLE_PUBLIC void CkXmlW_RemoveChildByIndex(HCkXmlW cHandle, int index);
 CK_VISIBLE_PUBLIC void CkXmlW_RemoveChildWithContent(HCkXmlW cHandle, const wchar_t *content);
 CK_VISIBLE_PUBLIC void CkXmlW_RemoveFromTree(HCkXmlW cHandle);
@@ -193,8 +193,8 @@ CK_VISIBLE_PUBLIC BOOL CkXmlW_UpdateAt(HCkXmlW cHandle, const wchar_t *tagPath, 
 CK_VISIBLE_PUBLIC BOOL CkXmlW_UpdateAttrAt(HCkXmlW cHandle, const wchar_t *tagPath, BOOL autoCreate, const wchar_t *attrName, const wchar_t *attrValue);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_UpdateAttribute(HCkXmlW cHandle, const wchar_t *attrName, const wchar_t *attrValue);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_UpdateAttributeInt(HCkXmlW cHandle, const wchar_t *attrName, int value);
-CK_VISIBLE_PUBLIC void CkXmlW_UpdateChildContent(HCkXmlW cHandle, const wchar_t *tag, const wchar_t *value);
-CK_VISIBLE_PUBLIC void CkXmlW_UpdateChildContentInt(HCkXmlW cHandle, const wchar_t *tag, int value);
+CK_VISIBLE_PUBLIC void CkXmlW_UpdateChildContent(HCkXmlW cHandle, const wchar_t *tagPath, const wchar_t *value);
+CK_VISIBLE_PUBLIC void CkXmlW_UpdateChildContentInt(HCkXmlW cHandle, const wchar_t *tagPath, int value);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_ZipContent(HCkXmlW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkXmlW_ZipTree(HCkXmlW cHandle);
 #endif

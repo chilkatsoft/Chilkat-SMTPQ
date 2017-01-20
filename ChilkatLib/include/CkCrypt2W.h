@@ -17,6 +17,7 @@ class CkCertW;
 class CkTaskW;
 class CkStreamW;
 class CkCertChainW;
+class CkBinDataW;
 class CkCspW;
 class CkPrivateKeyW;
 class CkXmlCertVaultW;
@@ -89,6 +90,8 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// brute-force attacks. (Any complaints about BCrypt "not being fast enough" will
 	// be ignored.)
 	// 
+	// This property must have a value ranging from 4 to 31 inclusive.
+	// 
 	// The default value is 10.
 	// 
 	int get_BCryptWorkFactor(void);
@@ -98,6 +101,8 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// this cost factor is to make the BCrypt computation expensive enought to prevent
 	// brute-force attacks. (Any complaints about BCrypt "not being fast enough" will
 	// be ignored.)
+	// 
+	// This property must have a value ranging from 4 to 31 inclusive.
 	// 
 	// The default value is 10.
 	// 
@@ -732,6 +737,11 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// SHA-256, SHA-384, and SHA-512. Chilkat by definition supports "SHA-2" because it
 	// supports these algorithms.
 	// 
+	// Note: The HAVAL hash algorithm is affected by two other properties: HavalRounds
+	// and KeyLength.
+	//     The HavalRounds may have values of 3, 4, or 5.
+	//     The KeyLength may have values of 128, 160, 192, 224, or 256.
+	// 
 	void get_HashAlgorithm(CkString &str);
 	// Selects the hash algorithm used by methods that create hashes. The valid choices
 	// are "sha1", "sha256", "sha384", "sha512", "md2", "md5", "haval", "ripemd128",
@@ -741,6 +751,11 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// SHA-256, SHA-384, and SHA-512. Chilkat by definition supports "SHA-2" because it
 	// supports these algorithms.
 	// 
+	// Note: The HAVAL hash algorithm is affected by two other properties: HavalRounds
+	// and KeyLength.
+	//     The HavalRounds may have values of 3, 4, or 5.
+	//     The KeyLength may have values of 128, 160, 192, 224, or 256.
+	// 
 	const wchar_t *hashAlgorithm(void);
 	// Selects the hash algorithm used by methods that create hashes. The valid choices
 	// are "sha1", "sha256", "sha384", "sha512", "md2", "md5", "haval", "ripemd128",
@@ -749,6 +764,11 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// Note: SHA-2 designates a set of cryptographic hash functions that includes
 	// SHA-256, SHA-384, and SHA-512. Chilkat by definition supports "SHA-2" because it
 	// supports these algorithms.
+	// 
+	// Note: The HAVAL hash algorithm is affected by two other properties: HavalRounds
+	// and KeyLength.
+	//     The HavalRounds may have values of 3, 4, or 5.
+	//     The KeyLength may have values of 128, 160, 192, 224, or 256.
 	// 
 	void put_HashAlgorithm(const wchar_t *newVal);
 
@@ -1049,6 +1069,80 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// The pfxFilePath contains the bytes of a PFX file (also known as PKCS12 or .p12).
 	// 
 	bool AddPfxSourceFile(const wchar_t *pfxFilePath, const wchar_t *pfxPassword);
+
+	// Implements the AES Key Wrap Algorithm (RFC 3394) for unwrapping. The kek is the
+	// Key Encryption Key (the AES key used to unwrap the wrappedKeyData). The arguments and
+	// return value are binary encoded strings using the encoding specified by encoding
+	// (which can be "base64", "hex", "base64url", etc.) The full list of supported
+	// encodings is available at the link below.
+	// 
+	// The kek should be an AES key of 16 bytes, 24 bytes, or 32 bytes (i.e. 128-bits,
+	// 192- bits, or 256-bits). For example, if passed as a hex string, then the kek
+	// should be 32 chars in length, 48 chars, or 64 chars (because each byte is
+	// represented as 2 chars in hex).
+	// 
+	// The wrappedKeyData contains the data to be unwrapped. The result, if decoded, is 8 bytes
+	// less than the wrapped key data. For example, if a 256-bit AES key (32 bytes) is
+	// wrapped, the size of the wrapped key data is 40 bytes. Unwrapping restores it to
+	// the original 32 bytes.
+	// 
+	bool AesKeyUnwrap(const wchar_t *kek, const wchar_t *wrappedKeyData, const wchar_t *encoding, CkString &outStr);
+	// Implements the AES Key Wrap Algorithm (RFC 3394) for unwrapping. The kek is the
+	// Key Encryption Key (the AES key used to unwrap the wrappedKeyData). The arguments and
+	// return value are binary encoded strings using the encoding specified by encoding
+	// (which can be "base64", "hex", "base64url", etc.) The full list of supported
+	// encodings is available at the link below.
+	// 
+	// The kek should be an AES key of 16 bytes, 24 bytes, or 32 bytes (i.e. 128-bits,
+	// 192- bits, or 256-bits). For example, if passed as a hex string, then the kek
+	// should be 32 chars in length, 48 chars, or 64 chars (because each byte is
+	// represented as 2 chars in hex).
+	// 
+	// The wrappedKeyData contains the data to be unwrapped. The result, if decoded, is 8 bytes
+	// less than the wrapped key data. For example, if a 256-bit AES key (32 bytes) is
+	// wrapped, the size of the wrapped key data is 40 bytes. Unwrapping restores it to
+	// the original 32 bytes.
+	// 
+	const wchar_t *aesKeyUnwrap(const wchar_t *kek, const wchar_t *wrappedKeyData, const wchar_t *encoding);
+
+	// Implements the AES Key Wrap Algorithm (RFC 3394). The kek is the Key Encryption
+	// Key (the AES key used to encrypt the keyData). The arguments and return value are
+	// binary encoded strings using the encoding specified by encoding (which can be
+	// "base64", "hex", "base64url", etc.) The full list of supported encodings is
+	// available at the link below.
+	// 
+	// The kek should be an AES key of 16 bytes, 24 bytes, or 32 bytes (i.e. 128-bits,
+	// 192- bits, or 256-bits). For example, if passed as a hex string, then the kek
+	// should be 32 chars in length, 48 chars, or 64 chars (because each byte is
+	// represented as 2 chars in hex).
+	// 
+	// The keyData contains the data to be key wrapped. It must be a multiple of 64-bits
+	// in length. In other words, if the keyData is decoded to binary, it should be a
+	// number of bytes that is a multiple of 8.
+	// 
+	// The return string, if decoded to binary bytes, is equal to the size of the key
+	// data + 8 additional bytes.
+	// 
+	bool AesKeyWrap(const wchar_t *kek, const wchar_t *keyData, const wchar_t *encoding, CkString &outStr);
+	// Implements the AES Key Wrap Algorithm (RFC 3394). The kek is the Key Encryption
+	// Key (the AES key used to encrypt the keyData). The arguments and return value are
+	// binary encoded strings using the encoding specified by encoding (which can be
+	// "base64", "hex", "base64url", etc.) The full list of supported encodings is
+	// available at the link below.
+	// 
+	// The kek should be an AES key of 16 bytes, 24 bytes, or 32 bytes (i.e. 128-bits,
+	// 192- bits, or 256-bits). For example, if passed as a hex string, then the kek
+	// should be 32 chars in length, 48 chars, or 64 chars (because each byte is
+	// represented as 2 chars in hex).
+	// 
+	// The keyData contains the data to be key wrapped. It must be a multiple of 64-bits
+	// in length. In other words, if the keyData is decoded to binary, it should be a
+	// number of bytes that is a multiple of 8.
+	// 
+	// The return string, if decoded to binary bytes, is equal to the size of the key
+	// data + 8 additional bytes.
+	// 
+	const wchar_t *aesKeyWrap(const wchar_t *kek, const wchar_t *keyData, const wchar_t *encoding);
 
 	// Computes and returns a bcrypt hash of the password. The number of rounds of hashing
 	// is determined by the BCryptWorkFactor property.
@@ -1704,6 +1798,23 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// The caller is responsible for deleting the object returned by this method.
 	CkCertChainW *GetSignerCertChain(int index);
 
+	// Hashes the the bytes contained in bd and returns the hash as an encoded
+	// string.
+	// 
+	// The hash algorithm is specified by the HashAlgorithm property, The encoding is
+	// controlled by the EncodingMode property, which can be set to "base64", "hex",
+	// "base64url", or any of the encodings listed at the link below.
+	// 
+	bool HashBdENC(CkBinDataW &bd, CkString &outStr);
+	// Hashes the the bytes contained in bd and returns the hash as an encoded
+	// string.
+	// 
+	// The hash algorithm is specified by the HashAlgorithm property, The encoding is
+	// controlled by the EncodingMode property, which can be set to "base64", "hex",
+	// "base64url", or any of the encodings listed at the link below.
+	// 
+	const wchar_t *hashBdENC(CkBinDataW &bd);
+
 	// Begin hashing a byte stream. Call this method to hash the 1st chunk. Additional
 	// chunks are hashed by calling HashMoreBytes 0 or more times followed by a final
 	// call to HashFinal (or HashFinalENC) to retrieve the result. The hash algorithm
@@ -1716,38 +1827,35 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// is selected by the HashAlgorithm property setting.
 	bool HashBeginString(const wchar_t *strData);
 
-	// Hashes a byte array. The hash algorithm to be used is controlled by the
-	// HashAlgorithm property, which can be set to "sha1", "sha384", "sha512", "md2",
-	// "md5", "haval", "ripemd128", "ripemd160","ripemd256", or "ripemd320".
+	// Hashes a byte array.
 	// 
-	// The HAVAL hash algorithm is affected by two other properties: HavalRounds and
-	// KeyLength. The HavalRounds may have values of 3, 4, or 5. The KeyLength may have
-	// values of 128, 160, 192, 224, or 256.
+	// The hash algorithm is specified by the HashAlgorithm property, The encoding is
+	// controlled by the EncodingMode property, which can be set to "base64", "hex",
+	// "base64url", or any of the encodings listed at the link below.
 	// 
 	bool HashBytes(CkByteData &data, CkByteData &outData);
 
-	// Hashes a byte array and returns an encoded (printable) string of the binary
-	// hash. The hash algorithm to be used is controlled by the HashAlgorithm property,
-	// which can be set to "sha1", "sha384", "sha512", "md2", "md5", or "haval". The
-	// encoding is controlled by the EncodingMode property, which can be set to
-	// "Base64", "QP", or "Hex".
+	// Hashes a byte array and returns the hash as an encoded string.
+	// 
+	// The hash algorithm is specified by the HashAlgorithm property, The encoding is
+	// controlled by the EncodingMode property, which can be set to "base64", "hex",
+	// "base64url", or any of the encodings listed at the link below.
+	// 
 	bool HashBytesENC(CkByteData &data, CkString &outStr);
-	// Hashes a byte array and returns an encoded (printable) string of the binary
-	// hash. The hash algorithm to be used is controlled by the HashAlgorithm property,
-	// which can be set to "sha1", "sha384", "sha512", "md2", "md5", or "haval". The
-	// encoding is controlled by the EncodingMode property, which can be set to
-	// "Base64", "QP", or "Hex".
+	// Hashes a byte array and returns the hash as an encoded string.
+	// 
+	// The hash algorithm is specified by the HashAlgorithm property, The encoding is
+	// controlled by the EncodingMode property, which can be set to "base64", "hex",
+	// "base64url", or any of the encodings listed at the link below.
+	// 
 	const wchar_t *hashBytesENC(CkByteData &data);
 
-	// Hashes a file. The hash algorithm to be used is controlled by the HashAlgorithm
-	// property, which can be set to "sha1", "sha384", "sha512", "md2", "md5", "haval",
-	// "ripemd128", "ripemd160","ripemd256", or "ripemd320". The function returns the
-	// hash bytes. Any size file is supported because the file is hashed internally in
-	// streaming mode.
+	// Hashes a file and returns the hash bytes.
 	// 
-	// The HAVAL hash algorithm is affected by two other properties: HavalRounds and
-	// KeyLength. The HavalRounds may have values of 3, 4, or 5. The KeyLength may have
-	// values of 128, 160, 192, 224, or 256.
+	// The hash algorithm is specified by the HashAlgorithm property,
+	// 
+	// Any size file may be hashed because the file is hashed internally in streaming
+	// mode (keeping memory usage low and constant).
 	// 
 	bool HashFile(const wchar_t *path, CkByteData &outBytes);
 
@@ -1756,17 +1864,25 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *HashFileAsync(const wchar_t *path);
 
-	// Hashes a file. The hash algorithm to be used is controlled by the HashAlgorithm
-	// property, which can be set to "sha1", "sha384", "sha512", "md2", "md5", or
-	// "haval". The function returns the hash as a string encoded according to the
-	// EncodingMode property. Any size file is supported because the file is hashed
-	// internally in streaming mode.
+	// Hashes a file and returns the hash as an encoded string.
+	// 
+	// The hash algorithm is specified by the HashAlgorithm property, The encoding is
+	// controlled by the EncodingMode property, which can be set to "base64", "hex",
+	// "base64url", or any of the encodings listed at the link below.
+	// 
+	// Any size file is supported because the file is hashed internally in streaming
+	// mode (keeping memory usage low and constant).
+	// 
 	bool HashFileENC(const wchar_t *path, CkString &outStr);
-	// Hashes a file. The hash algorithm to be used is controlled by the HashAlgorithm
-	// property, which can be set to "sha1", "sha384", "sha512", "md2", "md5", or
-	// "haval". The function returns the hash as a string encoded according to the
-	// EncodingMode property. Any size file is supported because the file is hashed
-	// internally in streaming mode.
+	// Hashes a file and returns the hash as an encoded string.
+	// 
+	// The hash algorithm is specified by the HashAlgorithm property, The encoding is
+	// controlled by the EncodingMode property, which can be set to "base64", "hex",
+	// "base64url", or any of the encodings listed at the link below.
+	// 
+	// Any size file is supported because the file is hashed internally in streaming
+	// mode (keeping memory usage low and constant).
+	// 
 	const wchar_t *hashFileENC(const wchar_t *path);
 
 	// Creates an asynchronous task to call the HashFileENC method with the arguments
@@ -1790,10 +1906,8 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// Adds more text to the hash currently under computation. (See HashBeginString)
 	bool HashMoreString(const wchar_t *strData);
 
-	// Hashes a string and returns a binary hash. The hash algorithm to be used is
-	// controlled by the HashAlgorithm property, which can be set to "sha1", "sha384",
-	// "sha512", "md2", "md5", "haval", "ripemd128", "ripemd160","ripemd256", or
-	// "ripemd320".
+	// Hashes a string and returns a binary hash. The hash algorithm is specified by
+	// the HashAlgorithm property,
 	// 
 	// The Charset property controls the character encoding of the string that is
 	// hashed. Languages such as VB.NET, C#, and Visual Basic work with Unicode
@@ -1813,10 +1927,11 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// 
 	bool HashString(const wchar_t *str, CkByteData &outData);
 
-	// Hashes a string and returns an encoded (printable) string of the binary hash.
-	// The hash algorithm to be used is controlled by the HashAlgorithm property, which
-	// can be set to "sha1", "sha384", "sha512", "md2", "md5", "haval", "ripemd128",
-	// "ripemd160","ripemd256", or "ripemd320".
+	// Hashes a string and returns the hash bytes as an encoded string.
+	// 
+	// The hash algorithm is specified by the HashAlgorithm property, The encoding is
+	// controlled by the EncodingMode property, which can be set to "base64", "hex",
+	// "base64url", or any of the encodings listed at the link below.
 	// 
 	// The Charset property controls the character encoding of the string that is
 	// hashed. Languages such as VB.NET, C#, and Visual Basic work with Unicode
@@ -1826,18 +1941,13 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// Charset is set to "iso-8859-1", the input string is first implicitly converted
 	// to iso-8859-1 (1 byte per character) before hashing. The full list of supported
 	// charsets is listed in the EncryptString method description.
-	// The encoding of the output string is controlled by the EncodingMode property,
-	// which can be set to "Base64", "QP", or "Hex".
-	// 
-	// The HAVAL hash algorithm is affected by two other properties: HavalRounds and
-	// KeyLength. The HavalRounds may have values of 3, 4, or 5. The KeyLength may have
-	// values of 128, 160, 192, 224, or 256.
 	// 
 	bool HashStringENC(const wchar_t *str, CkString &outStr);
-	// Hashes a string and returns an encoded (printable) string of the binary hash.
-	// The hash algorithm to be used is controlled by the HashAlgorithm property, which
-	// can be set to "sha1", "sha384", "sha512", "md2", "md5", "haval", "ripemd128",
-	// "ripemd160","ripemd256", or "ripemd320".
+	// Hashes a string and returns the hash bytes as an encoded string.
+	// 
+	// The hash algorithm is specified by the HashAlgorithm property, The encoding is
+	// controlled by the EncodingMode property, which can be set to "base64", "hex",
+	// "base64url", or any of the encodings listed at the link below.
 	// 
 	// The Charset property controls the character encoding of the string that is
 	// hashed. Languages such as VB.NET, C#, and Visual Basic work with Unicode
@@ -1847,12 +1957,6 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// Charset is set to "iso-8859-1", the input string is first implicitly converted
 	// to iso-8859-1 (1 byte per character) before hashing. The full list of supported
 	// charsets is listed in the EncryptString method description.
-	// The encoding of the output string is controlled by the EncodingMode property,
-	// which can be set to "Base64", "QP", or "Hex".
-	// 
-	// The HAVAL hash algorithm is affected by two other properties: HavalRounds and
-	// KeyLength. The HavalRounds may have values of 3, 4, or 5. The KeyLength may have
-	// values of 128, 160, 192, 224, or 256.
 	// 
 	const wchar_t *hashStringENC(const wchar_t *str);
 
@@ -1973,6 +2077,17 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 
 	// Returns true if the component is unlocked.
 	bool IsUnlocked(void);
+
+	// Computes a Message Authentication Code on the bytes contained in bd, using the
+	// MAC algorithm specified in the MacAlgorithm property. The result is encoded to a
+	// string using the encoding (base64, hex, etc.) specified by the EncodingMode
+	// property.
+	bool MacBdENC(CkBinDataW &bd, CkString &outStr);
+	// Computes a Message Authentication Code on the bytes contained in bd, using the
+	// MAC algorithm specified in the MacAlgorithm property. The result is encoded to a
+	// string using the encoding (base64, hex, etc.) specified by the EncodingMode
+	// property.
+	const wchar_t *macBdENC(CkBinDataW &bd);
 
 	// Computes a Message Authentication Code using the MAC algorithm specified in the
 	// MacAlgorithm property.
@@ -2337,6 +2452,15 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// be used if you are using Chilkat for both encryption and decryption because the
 	// password-to-secret-key algorithm would need to be identical for the decryption
 	// to match the encryption.
+	// 
+	// There is no minimum or maximum password length. The password string is
+	// transformed to a binary secret key by computing the MD5 digest (of the utf-8
+	// password) to obtain 16 bytes. If the KeyLength is greater than 16 bytes, then
+	// the MD5 digest of the Base64 encoding of the utf-8 password is added. A max of
+	// 32 bytes of key material is generated, and this is truncated to the actual
+	// KeyLength required. The example below shows how to manually duplicate the
+	// computation.
+	// 
 	void SetSecretKeyViaPassword(const wchar_t *password);
 
 	// Specifies a certificate to be used when creating PKCS7 digital signatures.

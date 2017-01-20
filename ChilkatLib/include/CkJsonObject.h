@@ -207,6 +207,11 @@ class CK_VISIBLE_PUBLIC CkJsonObject  : public CkMultiByteBase
 	bool BoolOf(const char *jsonPath);
 
 
+	// Returns a copy of this JSON object.
+	// The caller is responsible for deleting the object returned by this method.
+	CkJsonObject *Clone(void);
+
+
 	// Deletes the member at having the name specified by name.
 	bool Delete(const char *name);
 

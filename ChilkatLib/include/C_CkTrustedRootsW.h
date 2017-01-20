@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.62
+// This is a generated source file for Chilkat version 9.5.0.66
 #ifndef _C_CkTrustedRootsWH
 #define _C_CkTrustedRootsWH
 #include "chilkatDefs.h"

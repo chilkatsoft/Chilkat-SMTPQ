@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.65
+// This is a generated source file for Chilkat version 9.5.0.66
 #ifndef _C_CkJsonObjectWH
 #define _C_CkJsonObjectWH
 #include "chilkatDefs.h"
@@ -53,6 +53,7 @@ CK_VISIBLE_PUBLIC HCkJsonArrayW CkJsonObjectW_ArrayAt(HCkJsonObjectW cHandle, in
 CK_VISIBLE_PUBLIC HCkJsonArrayW CkJsonObjectW_ArrayOf(HCkJsonObjectW cHandle, const wchar_t *jsonPath);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_BoolAt(HCkJsonObjectW cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_BoolOf(HCkJsonObjectW cHandle, const wchar_t *jsonPath);
+CK_VISIBLE_PUBLIC HCkJsonObjectW CkJsonObjectW_Clone(HCkJsonObjectW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_Delete(HCkJsonObjectW cHandle, const wchar_t *name);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_DeleteAt(HCkJsonObjectW cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_Emit(HCkJsonObjectW cHandle, HCkString outStr);

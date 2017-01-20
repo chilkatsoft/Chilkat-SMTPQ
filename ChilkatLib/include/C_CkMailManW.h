@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.62
+// This is a generated source file for Chilkat version 9.5.0.66
 #ifndef _C_CkMailManWH
 #define _C_CkMailManWH
 #include "chilkatDefs.h"
@@ -84,8 +84,10 @@ CK_VISIBLE_PUBLIC void CkMailManW_getLastErrorXml(HCkMailManW cHandle, HCkString
 CK_VISIBLE_PUBLIC const wchar_t *CkMailManW_lastErrorXml(HCkMailManW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkMailManW_getLastMethodSuccess(HCkMailManW cHandle);
 CK_VISIBLE_PUBLIC void  CkMailManW_putLastMethodSuccess(HCkMailManW cHandle, BOOL newVal);
+#if defined(CK_SMTPQ_INCLUDED)
 CK_VISIBLE_PUBLIC void CkMailManW_getLastSendQFilename(HCkMailManW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkMailManW_lastSendQFilename(HCkMailManW cHandle);
+#endif
 CK_VISIBLE_PUBLIC int CkMailManW_getLastSmtpStatus(HCkMailManW cHandle);
 CK_VISIBLE_PUBLIC void CkMailManW_getLogMailReceivedFilename(HCkMailManW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkMailManW_putLogMailReceivedFilename(HCkMailManW cHandle, const wchar_t *newVal);

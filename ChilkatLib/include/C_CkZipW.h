@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.62
+// This is a generated source file for Chilkat version 9.5.0.66
 #ifndef _C_CkZipWH
 #define _C_CkZipWH
 #include "chilkatDefs.h"
@@ -205,8 +205,8 @@ CK_VISIBLE_PUBLIC BOOL CkZipW_OpenFromMemory(HCkZipW cHandle, HCkByteData inData
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC BOOL CkZipW_OpenMyEmbedded(HCkZipW cHandle, const wchar_t *resourceName);
 #endif
-CK_VISIBLE_PUBLIC BOOL CkZipW_OpenZip(HCkZipW cHandle, const wchar_t *ZipFileName);
-CK_VISIBLE_PUBLIC HCkTaskW CkZipW_OpenZipAsync(HCkZipW cHandle, const wchar_t *ZipFileName);
+CK_VISIBLE_PUBLIC BOOL CkZipW_OpenZip(HCkZipW cHandle, const wchar_t *zipPath);
+CK_VISIBLE_PUBLIC HCkTaskW CkZipW_OpenZipAsync(HCkZipW cHandle, const wchar_t *zipPath);
 CK_VISIBLE_PUBLIC BOOL CkZipW_QuickAppend(HCkZipW cHandle, const wchar_t *ZipFileName);
 CK_VISIBLE_PUBLIC HCkTaskW CkZipW_QuickAppendAsync(HCkZipW cHandle, const wchar_t *ZipFileName);
 #if defined(CK_SFX_INCLUDED)

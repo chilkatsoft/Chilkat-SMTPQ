@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.62
+// This is a generated source file for Chilkat version 9.5.0.66
 #ifndef _C_CkPrngWH
 #define _C_CkPrngWH
 #include "chilkatDefs.h"
@@ -34,6 +34,7 @@ CK_VISIBLE_PUBLIC BOOL CkPrngW_FirebasePushId(HCkPrngW cHandle, HCkString outStr
 CK_VISIBLE_PUBLIC const wchar_t *CkPrngW_firebasePushId(HCkPrngW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkPrngW_GenRandom(HCkPrngW cHandle, int numBytes, const wchar_t *encoding, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkPrngW_genRandom(HCkPrngW cHandle, int numBytes, const wchar_t *encoding);
+CK_VISIBLE_PUBLIC BOOL CkPrngW_GenRandomBd(HCkPrngW cHandle, int numBytes, HCkBinDataW bd);
 CK_VISIBLE_PUBLIC BOOL CkPrngW_GenRandomBytes(HCkPrngW cHandle, int numBytes, HCkByteData outBytes);
 CK_VISIBLE_PUBLIC BOOL CkPrngW_GetEntropy(HCkPrngW cHandle, int numBytes, const wchar_t *encoding, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkPrngW_getEntropy(HCkPrngW cHandle, int numBytes, const wchar_t *encoding);

@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.64
+// This is a generated source file for Chilkat version 9.5.0.66
 #ifndef _C_CkImapWH
 #define _C_CkImapWH
 #include "chilkatDefs.h"

@@ -195,6 +195,10 @@ class CK_VISIBLE_PUBLIC CkJsonObjectW  : public CkWideCharBase
 	// Returns the boolean at the specified jsonPath.
 	bool BoolOf(const wchar_t *jsonPath);
 
+	// Returns a copy of this JSON object.
+	// The caller is responsible for deleting the object returned by this method.
+	CkJsonObjectW *Clone(void);
+
 	// Deletes the member at having the name specified by name.
 	bool Delete(const wchar_t *name);
 
