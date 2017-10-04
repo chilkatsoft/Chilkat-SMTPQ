@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkTrustedRoots_H
 #define _CkTrustedRoots_H
@@ -54,6 +54,10 @@ class CK_VISIBLE_PUBLIC CkTrustedRoots  : public CkClassWithCallbacks
 	// Properties
 	// ----------------------
 	// The number of certificates contained within this object.
+	// 
+	// This is the number of certificates explicitly added by the methods AddCert,
+	// AddJavaKeyStore, and LoadCaCertsPem.
+	// 
 	int get_NumCerts(void);
 
 	// Indicates whether the operating system's CA root certificates are automatically

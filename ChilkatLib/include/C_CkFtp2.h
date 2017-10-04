@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkFtp2_H
 #define _C_CkFtp2_H
 #include "chilkatDefs.h"
@@ -310,6 +310,8 @@ CK_VISIBLE_PUBLIC const char *CkFtp2_getFilename(HCkFtp2 cHandle, int index);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_GetFilenameAsync(HCkFtp2 cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_GetFileSb(HCkFtp2 cHandle, const char *remoteFilePath, const char *charset, HCkStringBuilder sb);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_GetFileSbAsync(HCkFtp2 cHandle, const char *remoteFilePath, const char *charset, HCkStringBuilder sb);
+CK_VISIBLE_PUBLIC BOOL CkFtp2_GetFileToStream(HCkFtp2 cHandle, const char *remoteFilePath, HCkStream toStream);
+CK_VISIBLE_PUBLIC HCkTask CkFtp2_GetFileToStreamAsync(HCkFtp2 cHandle, const char *remoteFilePath, HCkStream toStream);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_GetGroup(HCkFtp2 cHandle, int index, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkFtp2_getGroup(HCkFtp2 cHandle, int index);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_GetGroupAsync(HCkFtp2 cHandle, int index);

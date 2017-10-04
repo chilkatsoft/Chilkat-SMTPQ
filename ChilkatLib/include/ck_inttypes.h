@@ -15,6 +15,7 @@
 #elif defined(CK_WINDOWS) || defined(WIN32) || defined(_WIN32) || defined(_WINDOWS) || defined(WINCE) || defined(__BORLANDC__) || defined(__BCPLUSPLUS__)
 
 #if !defined(_STDINT)
+typedef unsigned char uint8_t;
 typedef short int16_t;
 typedef unsigned short uint16_t;
 typedef int int32_t;

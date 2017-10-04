@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkJsonObjectW_H
 #define _CkJsonObjectW_H
@@ -13,7 +13,10 @@
 #include "CkWideCharBase.h"
 
 class CkJsonArrayW;
+class CkStringTableW;
+class CkBinDataW;
 class CkStringBuilderW;
+class CkHashtableW;
 
 
 
@@ -179,6 +182,9 @@ class CK_VISIBLE_PUBLIC CkJsonObjectW  : public CkWideCharBase
 	// method.)
 	bool AppendString(const wchar_t *name, const wchar_t *value);
 
+	// Appends an array of string values.
+	bool AppendStringArray(const wchar_t *name, CkStringTableW &values);
+
 	// Returns the JSON array that is the value of the Nth member. Indexing is 0-based
 	// (the 1st member is at index 0).
 	// The caller is responsible for deleting the object returned by this method.
@@ -194,6 +200,10 @@ class CK_VISIBLE_PUBLIC CkJsonObjectW  : public CkWideCharBase
 
 	// Returns the boolean at the specified jsonPath.
 	bool BoolOf(const wchar_t *jsonPath);
+
+	// Appends the binary bytes at the specified jsonPath to bd. The encoding indicates the
+	// encoding of the bytes, such as "base64", "hex", etc.
+	bool BytesOf(const wchar_t *jsonPath, const wchar_t *encoding, CkBinDataW &bd);
 
 	// Returns a copy of this JSON object.
 	// The caller is responsible for deleting the object returned by this method.
@@ -223,6 +233,20 @@ const wchar_t *emit(void);
 
 	// Appends the JSON to a StringBuilder object.
 	bool EmitSb(CkStringBuilderW &sb);
+
+	// Emits the JSON document with variable substitutions applied. If omitEmpty is true,
+	// then members having empty strings or empty arrays are omitted.
+	bool EmitWithSubs(CkHashtableW &subs, bool omitEmpty, CkString &outStr);
+	// Emits the JSON document with variable substitutions applied. If omitEmpty is true,
+	// then members having empty strings or empty arrays are omitted.
+	const wchar_t *emitWithSubs(CkHashtableW &subs, bool omitEmpty);
+
+	// Recursively searches the JSON subtree rooted at the caller's node for a JSON
+	// object containing a member having a specified name. (If the caller is the root
+	// node of the entire JSON document, then the entire JSON document is searched.)
+	// Returns the first match or _NULL_ if not found.
+	// The caller is responsible for deleting the object returned by this method.
+	CkJsonObjectW *FindObjectWithMember(const wchar_t *name);
 
 	// Finds a JSON record in an array where a particular field equals or matches a
 	// value pattern. Reviewing the example below is the best way to understand this
@@ -287,6 +311,16 @@ const wchar_t *emit(void);
 	// false.
 	bool IsNullOf(const wchar_t *jsonPath);
 
+	// Returns the type of data at the given jsonPath. Possible return values are:
+	//     string
+	//     number
+	//     object
+	//     array
+	//     boolean
+	//     null
+	// Returns -1 if no member exists at the given jsonPath.
+	int JsonTypeOf(const wchar_t *jsonPath);
+
 	// Parses a JSON string and loads it into this JSON object to provide DOM-style
 	// access.
 	bool Load(const wchar_t *json);
@@ -294,6 +328,9 @@ const wchar_t *emit(void);
 	// Loads a JSON file into this JSON object. The path is the file path to the JSON
 	// file.
 	bool LoadFile(const wchar_t *path);
+
+	// Loads this JSON object from a predefined document having a specified name.
+	bool LoadPredefined(const wchar_t *name);
 
 	// Loads JSON from the contents of a StringBuilder object.
 	bool LoadSb(CkStringBuilderW &sb);
@@ -313,6 +350,10 @@ const wchar_t *emit(void);
 	// Returns the JSON object at the specified jsonPath.
 	// The caller is responsible for deleting the object returned by this method.
 	CkJsonObjectW *ObjectOf(const wchar_t *jsonPath);
+
+	// Adds or replaces this JSON to an internal global set of predefined JSON
+	// documents that can be subsequently loaded by name.
+	bool Predefine(const wchar_t *name);
 
 	// Renames the member named oldName to newName.
 	bool Rename(const wchar_t *oldName, const wchar_t *newName);
@@ -373,6 +414,9 @@ const wchar_t *emit(void);
 	// Returns the string value at the specified jsonPath.
 	const wchar_t *stringOf(const wchar_t *jsonPath);
 
+	// Appends the string value at the specified jsonPath to sb.
+	bool StringOfSb(const wchar_t *jsonPath, CkStringBuilderW &sb);
+
 	// Returns the type of data at the given index. Possible return values are:
 	//     string
 	//     number
@@ -382,6 +426,12 @@ const wchar_t *emit(void);
 	//     null
 	// Returns -1 if no member exists at the given index.
 	int TypeAt(int index);
+
+	// Updates or appends a new string member with the encoded contents of bd. If the
+	// full path specified by jsonPath does not exist, it is automatically created as
+	// needed. The bytes contained in bd are encoded according to encoding (such as
+	// "base64", "hex", etc.)
+	bool UpdateBd(const wchar_t *jsonPath, const wchar_t *encoding, CkBinDataW &bd);
 
 	// Updates or appends a new boolean member. If the full path specified by jsonPath does
 	// not exist, it is automatically created as needed.
@@ -399,8 +449,18 @@ const wchar_t *emit(void);
 	// not exist, it is automatically created as needed.
 	bool UpdateNumber(const wchar_t *jsonPath, const wchar_t *numericStr);
 
+	// Updates or appends a new string member with the contents of sb. If the full
+	// path specified by jsonPath does not exist, it is automatically created as needed.
+	bool UpdateSb(const wchar_t *jsonPath, CkStringBuilderW &sb);
+
 	// Updates or appends a new string member. If the full path specified by jsonPath does
 	// not exist, it is automatically created as needed.
+	// 
+	// Important: Prior to version 9.5.0.68, the string passed in to this method did
+	// not get properly JSON escaped. This could cause problems if non-us-ascii chars
+	// are present, or if certain special chars such as quotes, CR's, or LF's are
+	// present. Version 9.5.0.68 fixes the problem.
+	// 
 	bool UpdateString(const wchar_t *jsonPath, const wchar_t *value);
 
 

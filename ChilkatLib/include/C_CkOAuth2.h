@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkOAuth2_H
 #define _C_CkOAuth2_H
 #include "chilkatDefs.h"
@@ -48,6 +48,8 @@ CK_VISIBLE_PUBLIC BOOL CkOAuth2_getLastMethodSuccess(HCkOAuth2 cHandle);
 CK_VISIBLE_PUBLIC void CkOAuth2_putLastMethodSuccess(HCkOAuth2 cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkOAuth2_getListenPort(HCkOAuth2 cHandle);
 CK_VISIBLE_PUBLIC void CkOAuth2_putListenPort(HCkOAuth2 cHandle, int newVal);
+CK_VISIBLE_PUBLIC int CkOAuth2_getListenPortRangeEnd(HCkOAuth2 cHandle);
+CK_VISIBLE_PUBLIC void CkOAuth2_putListenPortRangeEnd(HCkOAuth2 cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkOAuth2_getLocalHost(HCkOAuth2 cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkOAuth2_putLocalHost(HCkOAuth2 cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkOAuth2_localHost(HCkOAuth2 cHandle);
@@ -60,6 +62,9 @@ CK_VISIBLE_PUBLIC const char *CkOAuth2_redirectDenyHtml(HCkOAuth2 cHandle);
 CK_VISIBLE_PUBLIC void CkOAuth2_getRefreshToken(HCkOAuth2 cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkOAuth2_putRefreshToken(HCkOAuth2 cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkOAuth2_refreshToken(HCkOAuth2 cHandle);
+CK_VISIBLE_PUBLIC void CkOAuth2_getResource(HCkOAuth2 cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkOAuth2_putResource(HCkOAuth2 cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkOAuth2_resource(HCkOAuth2 cHandle);
 CK_VISIBLE_PUBLIC void CkOAuth2_getScope(HCkOAuth2 cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkOAuth2_putScope(HCkOAuth2 cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkOAuth2_scope(HCkOAuth2 cHandle);
@@ -76,6 +81,8 @@ CK_VISIBLE_PUBLIC void CkOAuth2_putVerboseLogging(HCkOAuth2 cHandle, BOOL newVal
 CK_VISIBLE_PUBLIC void CkOAuth2_getVersion(HCkOAuth2 cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkOAuth2_version(HCkOAuth2 cHandle);
 CK_VISIBLE_PUBLIC BOOL CkOAuth2_Cancel(HCkOAuth2 cHandle);
+CK_VISIBLE_PUBLIC BOOL CkOAuth2_GetRedirectRequestParam(HCkOAuth2 cHandle, const char *paramName, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkOAuth2_getRedirectRequestParam(HCkOAuth2 cHandle, const char *paramName);
 CK_VISIBLE_PUBLIC BOOL CkOAuth2_Monitor(HCkOAuth2 cHandle);
 CK_VISIBLE_PUBLIC HCkTask CkOAuth2_MonitorAsync(HCkOAuth2 cHandle);
 CK_VISIBLE_PUBLIC BOOL CkOAuth2_RefreshAccessToken(HCkOAuth2 cHandle);

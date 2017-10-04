@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkMimeW_H
 #define _CkMimeW_H
@@ -19,6 +19,7 @@ class CkStringArrayW;
 class CkBinDataW;
 class CkStringBuilderW;
 class CkCertChainW;
+class CkJsonObjectW;
 class CkCspW;
 class CkXmlCertVaultW;
 
@@ -275,6 +276,25 @@ class CK_VISIBLE_PUBLIC CkMimeW  : public CkWideCharBase
 	// set after UnwrapSecurity is called.
 	int get_NumSignerCerts(void);
 
+	// Selects the hash algorithm for use within OAEP padding when encrypting MIME
+	// using RSAES-OAEP. The valid choices are "sha1", "sha256", "sha384", "sha512",
+	void get_OaepHash(CkString &str);
+	// Selects the hash algorithm for use within OAEP padding when encrypting MIME
+	// using RSAES-OAEP. The valid choices are "sha1", "sha256", "sha384", "sha512",
+	const wchar_t *oaepHash(void);
+	// Selects the hash algorithm for use within OAEP padding when encrypting MIME
+	// using RSAES-OAEP. The valid choices are "sha1", "sha256", "sha384", "sha512",
+	void put_OaepHash(const wchar_t *newVal);
+
+	// Selects the RSA encryption scheme when encrypting MIME. The default value is
+	// false, which selects RSAES_PKCS1-V1_5. If set to true, then RSAES_OAEP is
+	// used.
+	bool get_OaepPadding(void);
+	// Selects the RSA encryption scheme when encrypting MIME. The default value is
+	// false, which selects RSAES_PKCS1-V1_5. If set to true, then RSAES_OAEP is
+	// used.
+	void put_OaepPadding(bool newVal);
+
 	// When the MIME is encrypted (using PKCS7 public-key encryption), this selects the
 	// underlying symmetric encryption algorithm. Possible values are: "aes", "des",
 	// "3des", and "rc2". The default value is "aes".
@@ -319,6 +339,31 @@ class CK_VISIBLE_PUBLIC CkMimeW  : public CkWideCharBase
 	//   boundary="------------ms000908010507020408060303"
 	// then the value of the Protocol property is "application/x-pkcs7-signature".
 	void put_Protocol(const wchar_t *newVal);
+
+	// Selects the signature algorithm to be used when creating signed (PKCS7) MIME.
+	// The default value is "PKCS1-v1_5". This can be set to "RSASSA-PSS" (or simply
+	// "pss") to use the RSASSA-PSS signature scheme.
+	// 
+	// Note: This property only applies when signing with an RSA private key. It does
+	// not apply for ECC or DSA private keys.
+	// 
+	void get_SigningAlg(CkString &str);
+	// Selects the signature algorithm to be used when creating signed (PKCS7) MIME.
+	// The default value is "PKCS1-v1_5". This can be set to "RSASSA-PSS" (or simply
+	// "pss") to use the RSASSA-PSS signature scheme.
+	// 
+	// Note: This property only applies when signing with an RSA private key. It does
+	// not apply for ECC or DSA private keys.
+	// 
+	const wchar_t *signingAlg(void);
+	// Selects the signature algorithm to be used when creating signed (PKCS7) MIME.
+	// The default value is "PKCS1-v1_5". This can be set to "RSASSA-PSS" (or simply
+	// "pss") to use the RSASSA-PSS signature scheme.
+	// 
+	// Note: This property only applies when signing with an RSA private key. It does
+	// not apply for ECC or DSA private keys.
+	// 
+	void put_SigningAlg(const wchar_t *newVal);
 
 	// Selects the underlying hash algorithm used when creating signed (PKCS7) MIME.
 	// Possible values are "sha1", "sha256", "sha384", "sha512", "md5", and "md2".
@@ -714,6 +759,9 @@ class CK_VISIBLE_PUBLIC CkMimeW  : public CkWideCharBase
 	// The caller is responsible for deleting the object returned by this method.
 	CkCertW *FindIssuer(CkCertW &cert);
 
+	// Returns the body of the MIME message in a BinData object.
+	bool GetBodyBd(CkBinDataW &binDat);
+
 	// Returns the body of the MIME message as a block of binary data. The body is
 	// automatically converted from its encoding type, such as base64 or
 	// quoted-printable, before being returned.
@@ -829,15 +877,14 @@ class CK_VISIBLE_PUBLIC CkMimeW  : public CkWideCharBase
 	// Returns a string containing the complete MIME message, including all sub-parts.
 	const wchar_t *mime(void);
 
-	// Writes the MIME to a BinData object, replacing the contents of the BinData.
+	// Appends the MIME to a BinData object.
 	bool GetMimeBd(CkBinDataW &bindat);
 
 	// Returns a byte array containing the complete MIME message, including all
 	// sub-parts.
 	bool GetMimeBytes(CkByteData &outBytes);
 
-	// Writes the MIME to a StringBuilder object, replacing the contents of the
-	// StringBuilder.
+	// Appends the MIME to a StringBuilder object.
 	bool GetMimeSb(CkStringBuilderW &sb);
 
 	// Returns the Nth sub-part of the MIME message. Indexing begins at 0.
@@ -954,6 +1001,15 @@ class CK_VISIBLE_PUBLIC CkMimeW  : public CkWideCharBase
 
 	// Return true if the MIME message body is XML, otherwise returns false.
 	bool IsXml(void);
+
+	// Provides information about what transpired in the last method called on this
+	// object instance. For many methods, there is no information. However, for some
+	// methods, details about what occurred can be obtained by getting the LastJsonData
+	// right after the method call returns. For example, after calling UnwrapSecurity,
+	// the LastJsonData will return JSON with details about the algorithms used for
+	// signature verification and decryption.
+	// The caller is responsible for deleting the object returned by this method.
+	CkJsonObjectW *LastJsonData(void);
 
 	// Discards the current contents of the MIME object and loads a new MIME message
 	// from a string.

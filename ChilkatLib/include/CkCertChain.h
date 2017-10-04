@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkCertChain_H
 #define _CkCertChain_H
@@ -14,6 +14,7 @@
 
 class CkCert;
 class CkTrustedRoots;
+class CkJsonObject;
 
 
 
@@ -76,6 +77,10 @@ class CK_VISIBLE_PUBLIC CkCertChain  : public CkMultiByteBase
 	// Returns true if the root of the certificate chain is a certificate found in
 	// trustedRoots.
 	bool IsRootTrusted(CkTrustedRoots &trustedRoots);
+
+
+	// Loads a certificate chain from the "x5c" parameter of a JWK (JSON Web Key).
+	bool LoadX5C(CkJsonObject &jwk);
 
 
 	// Verifies the certificate signatures to the root. Returns true if all

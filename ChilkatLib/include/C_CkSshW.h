@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkSshWH
 #define _C_CkSshWH
 #include "chilkatDefs.h"
@@ -109,6 +109,8 @@ CK_VISIBLE_PUBLIC int CkSshW_getSoSndBuf(HCkSshW cHandle);
 CK_VISIBLE_PUBLIC void  CkSshW_putSoSndBuf(HCkSshW cHandle, int newVal);
 CK_VISIBLE_PUBLIC BOOL CkSshW_getStderrToStdout(HCkSshW cHandle);
 CK_VISIBLE_PUBLIC void  CkSshW_putStderrToStdout(HCkSshW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC BOOL CkSshW_getStripColorCodes(HCkSshW cHandle);
+CK_VISIBLE_PUBLIC void  CkSshW_putStripColorCodes(HCkSshW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkSshW_getTcpNoDelay(HCkSshW cHandle);
 CK_VISIBLE_PUBLIC void  CkSshW_putTcpNoDelay(HCkSshW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkSshW_getUserAuthBanner(HCkSshW cHandle, HCkString retval);

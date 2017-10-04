@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkJwsW_H
 #define _CkJwsW_H
@@ -56,19 +56,34 @@ class CK_VISIBLE_PUBLIC CkJwsW  : public CkWideCharBase
 	// ----------------------
 	// Properties
 	// ----------------------
-	// Controls whether to use JWE Compact Serialization or JWE JSON Serialization when
-	// creating JWEs. The default value is true, which is to use compact
-	// serialization. If multiple recipients are used, or if any unprotected headers
-	// exist, then JWE JSON Serialization is used regardless of this property setting.
-	bool get_Compact(void);
-	// Controls whether to use JWE Compact Serialization or JWE JSON Serialization when
-	// creating JWEs. The default value is true, which is to use compact
-	// serialization. If multiple recipients are used, or if any unprotected headers
-	// exist, then JWE JSON Serialization is used regardless of this property setting.
-	void put_Compact(bool newVal);
-
 	// The number of signatures contained in this JWS.
 	int get_NumSignatures(void);
+
+	// Controls whether to use the JWS Compact Serialization or JWS JSON Serialization
+	// when creating JWSs. The default value is true, which is to choose the compact
+	// serialization when possible. If multiple signatures exist, or if any unprotected
+	// headers exist, then JWS JSON Serialization is used regardless of this property
+	// setting.
+	bool get_PreferCompact(void);
+	// Controls whether to use the JWS Compact Serialization or JWS JSON Serialization
+	// when creating JWSs. The default value is true, which is to choose the compact
+	// serialization when possible. If multiple signatures exist, or if any unprotected
+	// headers exist, then JWS JSON Serialization is used regardless of this property
+	// setting.
+	void put_PreferCompact(bool newVal);
+
+	// Controls whether to use the flattened or general JWE JSON Serialization when
+	// creating JWSs. The default value is true, which is to choose the flattened
+	// serialization when possible. If multiple signatures exist, then the general
+	// (non-flattened) JWS JSON Serialization is used regardless of this property
+	// setting.
+	bool get_PreferFlattened(void);
+	// Controls whether to use the flattened or general JWE JSON Serialization when
+	// creating JWSs. The default value is true, which is to choose the flattened
+	// serialization when possible. If multiple signatures exist, then the general
+	// (non-flattened) JWS JSON Serialization is used regardless of this property
+	// setting.
+	void put_PreferFlattened(bool newVal);
 
 
 
@@ -84,6 +99,19 @@ class CK_VISIBLE_PUBLIC CkJwsW  : public CkWideCharBase
 
 	// Creates and returns the JWS by appending it to the contents of sbJws.
 	bool CreateJwsSb(CkStringBuilderW &sbJws);
+
+	// Returns the JWS payload. The charset specifies the byte representation to be used
+	// in interpreting the bytes of the payload. (For example, "utf-8", "windows-1252",
+	// "utf-16", etc.)
+	bool GetPayload(const wchar_t *charset, CkString &outStr);
+	// Returns the JWS payload. The charset specifies the byte representation to be used
+	// in interpreting the bytes of the payload. (For example, "utf-8", "windows-1252",
+	// "utf-16", etc.)
+	const wchar_t *getPayload(const wchar_t *charset);
+	// Returns the JWS payload. The charset specifies the byte representation to be used
+	// in interpreting the bytes of the payload. (For example, "utf-8", "windows-1252",
+	// "utf-16", etc.)
+	const wchar_t *payload(const wchar_t *charset);
 
 	// Returns the JWS payload by appending it to the binData.
 	bool GetPayloadBd(CkBinDataW &binData);
@@ -112,16 +140,23 @@ class CK_VISIBLE_PUBLIC CkJwsW  : public CkWideCharBase
 	bool LoadJwsSb(CkStringBuilderW &sbJws);
 
 	// Sets the MAC key to be used for creating or validating a signature for the
-	// algorithms "HS256", "HS384", or "HS512". The key can be thought of as the
-	// password. The charset is a charset, such as "utf-8" that determines the byte
-	// representation of the key to be used for the MAC key. The 1st signature is at
-	// index 0. (Most JWSs only contain a single signature.)
-	bool SetMacKey(int index, const wchar_t *key, const wchar_t *charset);
+	// algorithms "HS256", "HS384", or "HS512". The key is an encoded string
+	// representation of the MAC key bytes. The encoding is an encoding, such as
+	// "base64url", "base64", "hex", etc. The 1st signature is at index 0. (Most JWSs
+	// only contain a single signature.)
+	bool SetMacKey(int index, const wchar_t *key, const wchar_t *encoding);
 
 	// Sets the MAC key to be used for creating or validating a signature for the
 	// algorithms "HS256", "HS384", or "HS512". The key contains the binary bytes of
 	// the MAC key for the Nth signature. The 1st signature is at index 0.
 	bool SetMacKeyBd(int index, CkBinDataW &key);
+
+	// Sets the JWS payload from the contents of payload. The charset specifies the byte
+	// representation to be used for the string that is to be the payload. (For
+	// example, "utf-8", "windows-1252", "utf-16", etc.). If includeBom is true, then the
+	// byte-order-mark (BOM), also known as preamble, if one exists for the given charset,
+	// is included in the payload. Normally, includeBom should be set to false.
+	bool SetPayload(const wchar_t *payload, const wchar_t *charset, bool includeBom);
 
 	// Sets the JWS payload from the contents of binData.
 	bool SetPayloadBd(CkBinDataW &binData);

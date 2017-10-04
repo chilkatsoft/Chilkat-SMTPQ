@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkSFtpWH
 #define _C_CkSFtpWH
 #include "chilkatDefs.h"
@@ -179,6 +179,8 @@ CK_VISIBLE_PUBLIC HCkTaskW CkSFtpW_DownloadFileByNameAsync(HCkSFtpW cHandle, con
 CK_VISIBLE_PUBLIC BOOL CkSFtpW_DownloadSb(HCkSFtpW cHandle, const wchar_t *remoteFilePath, const wchar_t *charset, HCkStringBuilderW sb);
 CK_VISIBLE_PUBLIC HCkTaskW CkSFtpW_DownloadSbAsync(HCkSFtpW cHandle, const wchar_t *remoteFilePath, const wchar_t *charset, HCkStringBuilderW sb);
 CK_VISIBLE_PUBLIC BOOL CkSFtpW_Eof(HCkSFtpW cHandle, const wchar_t *handle);
+CK_VISIBLE_PUBLIC int CkSFtpW_FileExists(HCkSFtpW cHandle, const wchar_t *remotePath, BOOL followLinks);
+CK_VISIBLE_PUBLIC HCkTaskW CkSFtpW_FileExistsAsync(HCkSFtpW cHandle, const wchar_t *remotePath, BOOL followLinks);
 CK_VISIBLE_PUBLIC HCkDateTimeW CkSFtpW_GetFileCreateDt(HCkSFtpW cHandle, const wchar_t *pathOrHandle, BOOL bFollowLinks, BOOL bIsHandle);
 CK_VISIBLE_PUBLIC HCkTaskW CkSFtpW_GetFileCreateDtAsync(HCkSFtpW cHandle, const wchar_t *pathOrHandle, BOOL bFollowLinks, BOOL bIsHandle);
 CK_VISIBLE_PUBLIC BOOL CkSFtpW_GetFileCreateTime(HCkSFtpW cHandle, const wchar_t *pathOrHandle, BOOL bFollowLinks, BOOL bIsHandle, SYSTEMTIME *outSysTime);
@@ -249,6 +251,8 @@ CK_VISIBLE_PUBLIC HCkTaskW CkSFtpW_ResumeDownloadFileByNameAsync(HCkSFtpW cHandl
 CK_VISIBLE_PUBLIC BOOL CkSFtpW_ResumeUploadFileByName(HCkSFtpW cHandle, const wchar_t *remoteFilePath, const wchar_t *localFilePath);
 CK_VISIBLE_PUBLIC HCkTaskW CkSFtpW_ResumeUploadFileByNameAsync(HCkSFtpW cHandle, const wchar_t *remoteFilePath, const wchar_t *localFilePath);
 CK_VISIBLE_PUBLIC BOOL CkSFtpW_SaveLastError(HCkSFtpW cHandle, const wchar_t *path);
+CK_VISIBLE_PUBLIC BOOL CkSFtpW_SendIgnore(HCkSFtpW cHandle);
+CK_VISIBLE_PUBLIC HCkTaskW CkSFtpW_SendIgnoreAsync(HCkSFtpW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSFtpW_SetCreateDt(HCkSFtpW cHandle, const wchar_t *pathOrHandle, BOOL isHandle, HCkDateTimeW createDateTime);
 CK_VISIBLE_PUBLIC HCkTaskW CkSFtpW_SetCreateDtAsync(HCkSFtpW cHandle, const wchar_t *pathOrHandle, BOOL isHandle, HCkDateTimeW createDateTime);
 CK_VISIBLE_PUBLIC BOOL CkSFtpW_SetCreateTime(HCkSFtpW cHandle, const wchar_t *pathOrHandle, BOOL isHandle, SYSTEMTIME * createDateTime);

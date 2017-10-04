@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkBinData_H
 #define _C_CkBinData_H
 #include "chilkatDefs.h"
@@ -29,9 +29,12 @@ CK_VISIBLE_PUBLIC const char *CkBinData_getEncoded(HCkBinData cHandle, const cha
 CK_VISIBLE_PUBLIC BOOL CkBinData_GetEncodedChunk(HCkBinData cHandle, int offset, int numBytes, const char *encoding, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkBinData_getEncodedChunk(HCkBinData cHandle, int offset, int numBytes, const char *encoding);
 CK_VISIBLE_PUBLIC BOOL CkBinData_GetEncodedSb(HCkBinData cHandle, const char *encoding, HCkStringBuilder sb);
+CK_VISIBLE_PUBLIC BOOL CkBinData_GetString(HCkBinData cHandle, const char *charset, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkBinData_getString(HCkBinData cHandle, const char *charset);
 CK_VISIBLE_PUBLIC BOOL CkBinData_LoadBinary(HCkBinData cHandle, HCkByteData data);
 CK_VISIBLE_PUBLIC BOOL CkBinData_LoadEncoded(HCkBinData cHandle, const char *encData, const char *encoding);
 CK_VISIBLE_PUBLIC BOOL CkBinData_LoadFile(HCkBinData cHandle, const char *path);
 CK_VISIBLE_PUBLIC BOOL CkBinData_RemoveChunk(HCkBinData cHandle, int offset, int numBytes);
+CK_VISIBLE_PUBLIC BOOL CkBinData_SecureClear(HCkBinData cHandle);
 CK_VISIBLE_PUBLIC BOOL CkBinData_WriteFile(HCkBinData cHandle, const char *path);
 #endif

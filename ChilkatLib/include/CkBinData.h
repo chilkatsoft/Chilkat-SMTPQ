@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkBinData_H
 #define _CkBinData_H
@@ -163,6 +163,21 @@ class CK_VISIBLE_PUBLIC CkBinData  : public CkMultiByteBase
 	bool GetEncodedSb(const char *encoding, CkStringBuilder &sb);
 
 
+	// Interprets the bytes according to charset and returns the string. The charset can be
+	// "utf-8", "utf-16", "ansi", "iso-8859-*", "windows-125*", or any of the supported
+	// character encodings listed in the link below.
+	bool GetString(const char *charset, CkString &outStr);
+
+	// Interprets the bytes according to charset and returns the string. The charset can be
+	// "utf-8", "utf-16", "ansi", "iso-8859-*", "windows-125*", or any of the supported
+	// character encodings listed in the link below.
+	const char *getString(const char *charset);
+	// Interprets the bytes according to charset and returns the string. The charset can be
+	// "utf-8", "utf-16", "ansi", "iso-8859-*", "windows-125*", or any of the supported
+	// character encodings listed in the link below.
+	const char *string(const char *charset);
+
+
 	// Loads binary data and replaces the current contents, if any.
 	bool LoadBinary(CkByteData &data);
 
@@ -181,6 +196,11 @@ class CK_VISIBLE_PUBLIC CkBinData  : public CkMultiByteBase
 
 	// Removes a chunk of bytes from the binary data.
 	bool RemoveChunk(int offset, int numBytes);
+
+
+	// Securely clears the contents by writing 0 bytes to the memory prior to
+	// deallocating the internal memory.
+	bool SecureClear(void);
 
 
 	// Writes the contents to a file.

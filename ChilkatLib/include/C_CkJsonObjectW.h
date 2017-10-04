@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkJsonObjectWH
 #define _C_CkJsonObjectWH
 #include "chilkatDefs.h"
@@ -49,16 +49,21 @@ CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_AppendBool(HCkJsonObjectW cHandle, const wc
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_AppendInt(HCkJsonObjectW cHandle, const wchar_t *name, int value);
 CK_VISIBLE_PUBLIC HCkJsonObjectW CkJsonObjectW_AppendObject(HCkJsonObjectW cHandle, const wchar_t *name);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_AppendString(HCkJsonObjectW cHandle, const wchar_t *name, const wchar_t *value);
+CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_AppendStringArray(HCkJsonObjectW cHandle, const wchar_t *name, HCkStringTableW values);
 CK_VISIBLE_PUBLIC HCkJsonArrayW CkJsonObjectW_ArrayAt(HCkJsonObjectW cHandle, int index);
 CK_VISIBLE_PUBLIC HCkJsonArrayW CkJsonObjectW_ArrayOf(HCkJsonObjectW cHandle, const wchar_t *jsonPath);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_BoolAt(HCkJsonObjectW cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_BoolOf(HCkJsonObjectW cHandle, const wchar_t *jsonPath);
+CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_BytesOf(HCkJsonObjectW cHandle, const wchar_t *jsonPath, const wchar_t *encoding, HCkBinDataW bd);
 CK_VISIBLE_PUBLIC HCkJsonObjectW CkJsonObjectW_Clone(HCkJsonObjectW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_Delete(HCkJsonObjectW cHandle, const wchar_t *name);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_DeleteAt(HCkJsonObjectW cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_Emit(HCkJsonObjectW cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkJsonObjectW_emit(HCkJsonObjectW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_EmitSb(HCkJsonObjectW cHandle, HCkStringBuilderW sb);
+CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_EmitWithSubs(HCkJsonObjectW cHandle, HCkHashtableW subs, BOOL omitEmpty, HCkString outStr);
+CK_VISIBLE_PUBLIC const wchar_t *CkJsonObjectW_emitWithSubs(HCkJsonObjectW cHandle, HCkHashtableW subs, BOOL omitEmpty);
+CK_VISIBLE_PUBLIC HCkJsonObjectW CkJsonObjectW_FindObjectWithMember(HCkJsonObjectW cHandle, const wchar_t *name);
 CK_VISIBLE_PUBLIC HCkJsonObjectW CkJsonObjectW_FindRecord(HCkJsonObjectW cHandle, const wchar_t *arrayPath, const wchar_t *relPath, const wchar_t *value, BOOL caseSensitive);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_FindRecordString(HCkJsonObjectW cHandle, const wchar_t *arrayPath, const wchar_t *relPath, const wchar_t *value, BOOL caseSensitive, const wchar_t *retRelPath, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkJsonObjectW_findRecordString(HCkJsonObjectW cHandle, const wchar_t *arrayPath, const wchar_t *relPath, const wchar_t *value, BOOL caseSensitive, const wchar_t *retRelPath);
@@ -72,13 +77,16 @@ CK_VISIBLE_PUBLIC int CkJsonObjectW_IntAt(HCkJsonObjectW cHandle, int index);
 CK_VISIBLE_PUBLIC int CkJsonObjectW_IntOf(HCkJsonObjectW cHandle, const wchar_t *jsonPath);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_IsNullAt(HCkJsonObjectW cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_IsNullOf(HCkJsonObjectW cHandle, const wchar_t *jsonPath);
+CK_VISIBLE_PUBLIC int CkJsonObjectW_JsonTypeOf(HCkJsonObjectW cHandle, const wchar_t *jsonPath);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_Load(HCkJsonObjectW cHandle, const wchar_t *json);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_LoadFile(HCkJsonObjectW cHandle, const wchar_t *path);
+CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_LoadPredefined(HCkJsonObjectW cHandle, const wchar_t *name);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_LoadSb(HCkJsonObjectW cHandle, HCkStringBuilderW sb);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_NameAt(HCkJsonObjectW cHandle, int index, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkJsonObjectW_nameAt(HCkJsonObjectW cHandle, int index);
 CK_VISIBLE_PUBLIC HCkJsonObjectW CkJsonObjectW_ObjectAt(HCkJsonObjectW cHandle, int index);
 CK_VISIBLE_PUBLIC HCkJsonObjectW CkJsonObjectW_ObjectOf(HCkJsonObjectW cHandle, const wchar_t *jsonPath);
+CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_Predefine(HCkJsonObjectW cHandle, const wchar_t *name);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_Rename(HCkJsonObjectW cHandle, const wchar_t *oldName, const wchar_t *newName);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_RenameAt(HCkJsonObjectW cHandle, int index, const wchar_t *name);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_SaveLastError(HCkJsonObjectW cHandle, const wchar_t *path);
@@ -97,10 +105,13 @@ CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_StringAt(HCkJsonObjectW cHandle, int index,
 CK_VISIBLE_PUBLIC const wchar_t *CkJsonObjectW_stringAt(HCkJsonObjectW cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_StringOf(HCkJsonObjectW cHandle, const wchar_t *jsonPath, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkJsonObjectW_stringOf(HCkJsonObjectW cHandle, const wchar_t *jsonPath);
+CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_StringOfSb(HCkJsonObjectW cHandle, const wchar_t *jsonPath, HCkStringBuilderW sb);
 CK_VISIBLE_PUBLIC int CkJsonObjectW_TypeAt(HCkJsonObjectW cHandle, int index);
+CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_UpdateBd(HCkJsonObjectW cHandle, const wchar_t *jsonPath, const wchar_t *encoding, HCkBinDataW bd);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_UpdateBool(HCkJsonObjectW cHandle, const wchar_t *jsonPath, BOOL value);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_UpdateInt(HCkJsonObjectW cHandle, const wchar_t *jsonPath, int value);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_UpdateNull(HCkJsonObjectW cHandle, const wchar_t *jsonPath);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_UpdateNumber(HCkJsonObjectW cHandle, const wchar_t *jsonPath, const wchar_t *numericStr);
+CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_UpdateSb(HCkJsonObjectW cHandle, const wchar_t *jsonPath, HCkStringBuilderW sb);
 CK_VISIBLE_PUBLIC BOOL CkJsonObjectW_UpdateString(HCkJsonObjectW cHandle, const wchar_t *jsonPath, const wchar_t *value);
 #endif

@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkStreamW_H
 #define _CkStreamW_H
@@ -12,8 +12,10 @@
 #include "CkString.h"
 #include "CkClassWithCallbacksW.h"
 
-class CkByteData;
+class CkBinDataW;
 class CkTaskW;
+class CkByteData;
+class CkStringBuilderW;
 class CkBaseProgressW;
 
 
@@ -338,6 +340,16 @@ class CK_VISIBLE_PUBLIC CkStreamW  : public CkClassWithCallbacksW
 	// ----------------------
 	// Read as much data as is immediately available on the stream. If no data is
 	// immediately available, it waits up to ReadTimeoutMs milliseconds for data to
+	// arrive. The incoming data is appended to binData.
+	bool ReadBd(CkBinDataW &binData);
+
+	// Creates an asynchronous task to call the ReadBd method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *ReadBdAsync(CkBinDataW &binData);
+
+	// Read as much data as is immediately available on the stream. If no data is
+	// immediately available, it waits up to ReadTimeoutMs milliseconds for data to
 	// arrive.
 	bool ReadBytes(CkByteData &outBytes);
 
@@ -382,6 +394,18 @@ class CK_VISIBLE_PUBLIC CkStreamW  : public CkClassWithCallbacksW
 	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *ReadNBytesENCAsync(int numBytes, const wchar_t *encoding);
+
+	// Read as much data as is immediately available on the stream. If no data is
+	// immediately available, it waits up to ReadTimeoutMs milliseconds for data to
+	// arrive. The data is appended to sb. The incoming bytes are interpreted
+	// according to the StringCharset property. For example, if utf-8 bytes are
+	// expected, then StringCharset should be set to "utf-8" prior to calling ReadSb.
+	bool ReadSb(CkStringBuilderW &sb);
+
+	// Creates an asynchronous task to call the ReadSb method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *ReadSbAsync(CkStringBuilderW &sb);
 
 	// Read as much data as is immediately available on the stream. If no data is
 	// immediately available, it waits up to ReadTimeoutMs milliseconds for data to
@@ -499,6 +523,14 @@ class CK_VISIBLE_PUBLIC CkStreamW  : public CkClassWithCallbacksW
 	// character encoding to be used for the byte representation of the srcStr.
 	bool SetSourceString(const wchar_t *srcStr, const wchar_t *charset);
 
+	// Writes the contents of binData to the stream.
+	bool WriteBd(CkBinDataW &binData);
+
+	// Creates an asynchronous task to call the WriteBd method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *WriteBdAsync(CkBinDataW &binData);
+
 	// Writes a single byte to the stream. The byteVal must have a value from 0 to 255.
 	bool WriteByte(int byteVal);
 
@@ -527,6 +559,17 @@ class CK_VISIBLE_PUBLIC CkStreamW  : public CkClassWithCallbacksW
 
 	// Indicates that no more data will be written to the stream.
 	bool WriteClose(void);
+
+	// Writes the contents of sb to the stream. The actual bytes written are the byte
+	// representation of the string as indicated by the StringCharset property. For
+	// example, to write utf-8 bytes, first set StringCharset equal to "utf-8" and then
+	// call WriteSb.
+	bool WriteSb(CkStringBuilderW &sb);
+
+	// Creates an asynchronous task to call the WriteSb method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *WriteSbAsync(CkStringBuilderW &sb);
 
 	// Writes a string to a stream. The actual bytes written are the byte
 	// representation of the string as indicated by the StringCharset property. For

@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkRest_H
 #define _CkRest_H
@@ -312,6 +312,29 @@ class CK_VISIBLE_PUBLIC CkRest  : public CkClassWithCallbacks
 	bool AddHeader(const char *name, const char *value);
 
 
+	// Computes the Amazon MWS signature using the mwsSecretKey and adds the "Signature"
+	// parameter to the request. This method should be called for all Amazon
+	// Marketplace Web Service (Amazon MWS) HTTP requests. It should be called after
+	// all request parameters have been added.
+	// 
+	// The domain should be the domain of the request, such as one of the following:
+	//     mws.amazonservices.com
+	//     mws-eu.amazonservices.com
+	//     mws.amazonservices.in
+	//     mws.amazonservices.com.cn
+	//     mws.amazonservices.jp
+	// 
+	// The httpVerb should be the HTTP verb, such as "GET", "POST", etc. The uriPath is the
+	// URI path, such as "/Feeds/2009-01-01". In general, the httpVerb and uriPath should be
+	// identical to the 1st two args passed to methods such as
+	// FullRequestFormUrlEncoded.
+	// 
+	// Note: This method also automatically adds or replaces the existing Timestamp
+	// parameter to the current system date/time.
+	// 
+	bool AddMwsSignature(const char *httpVerb, const char *uriPath, const char *domain, const char *mwsSecretKey);
+
+
 	// Adds a query parameter. If the query parameter already exists, then it is
 	// replaced.
 	bool AddQueryParam(const char *name, const char *value);
@@ -339,6 +362,10 @@ class CK_VISIBLE_PUBLIC CkRest  : public CkClassWithCallbacks
 
 	// Clears all query parameters.
 	bool ClearAllQueryParams(void);
+
+
+	// Clears all authentication settings.
+	bool ClearAuth(void);
 
 
 	// Clears the response body stream set by calling SetResponseBodyStream.
@@ -908,6 +935,11 @@ class CK_VISIBLE_PUBLIC CkRest  : public CkClassWithCallbacks
 	// 
 	// The autoReconnect indicates whether connection should automatically be established as
 	// needed for subsequent REST requests.
+	// 
+	// Important: The UseConnection method is provided as a means for handling more
+	// complicated connections -- such as connections through proxies, tunnels, etc. If
+	// your application is connecting directly to the HTTP server, then simply call
+	// this class's Connect method.
 	// 
 	bool UseConnection(CkSocket &connection, bool autoReconnect);
 

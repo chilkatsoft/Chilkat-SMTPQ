@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkPublicKeyWH
 #define _C_CkPublicKeyWH
 #include "chilkatDefs.h"
@@ -11,6 +11,7 @@ CK_VISIBLE_PUBLIC void CkPublicKeyW_Dispose(HCkPublicKeyW handle);
 CK_VISIBLE_PUBLIC void CkPublicKeyW_getDebugLogFilePath(HCkPublicKeyW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkPublicKeyW_putDebugLogFilePath(HCkPublicKeyW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkPublicKeyW_debugLogFilePath(HCkPublicKeyW cHandle);
+CK_VISIBLE_PUBLIC int CkPublicKeyW_getKeySize(HCkPublicKeyW cHandle);
 CK_VISIBLE_PUBLIC void CkPublicKeyW_getKeyType(HCkPublicKeyW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkPublicKeyW_keyType(HCkPublicKeyW cHandle);
 CK_VISIBLE_PUBLIC void CkPublicKeyW_getLastErrorHtml(HCkPublicKeyW cHandle, HCkString retval);
@@ -30,6 +31,8 @@ CK_VISIBLE_PUBLIC BOOL CkPublicKeyW_GetEncoded(HCkPublicKeyW cHandle, BOOL prefe
 CK_VISIBLE_PUBLIC const wchar_t *CkPublicKeyW_getEncoded(HCkPublicKeyW cHandle, BOOL preferPkcs1, const wchar_t *encoding);
 CK_VISIBLE_PUBLIC BOOL CkPublicKeyW_GetJwk(HCkPublicKeyW cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkPublicKeyW_getJwk(HCkPublicKeyW cHandle);
+CK_VISIBLE_PUBLIC BOOL CkPublicKeyW_GetJwkThumbprint(HCkPublicKeyW cHandle, const wchar_t *hashAlg, HCkString outStr);
+CK_VISIBLE_PUBLIC const wchar_t *CkPublicKeyW_getJwkThumbprint(HCkPublicKeyW cHandle, const wchar_t *hashAlg);
 CK_VISIBLE_PUBLIC BOOL CkPublicKeyW_GetOpenSslDer(HCkPublicKeyW cHandle, HCkByteData outData);
 CK_VISIBLE_PUBLIC BOOL CkPublicKeyW_GetOpenSslPem(HCkPublicKeyW cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkPublicKeyW_getOpenSslPem(HCkPublicKeyW cHandle);

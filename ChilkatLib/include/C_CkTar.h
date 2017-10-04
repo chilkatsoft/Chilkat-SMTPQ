@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkTar_H
 #define _C_CkTar_H
 #include "chilkatDefs.h"
@@ -94,6 +94,8 @@ CK_VISIBLE_PUBLIC const char *CkTar_xmlListing(HCkTar cHandle);
 CK_VISIBLE_PUBLIC BOOL CkTar_AddDirRoot(HCkTar cHandle, const char *dirPath);
 CK_VISIBLE_PUBLIC BOOL CkTar_AddDirRoot2(HCkTar cHandle, const char *rootPrefix, const char *rootPath);
 CK_VISIBLE_PUBLIC BOOL CkTar_AddFile(HCkTar cHandle, const char *path);
+CK_VISIBLE_PUBLIC BOOL CkTar_AddFile2(HCkTar cHandle, const char *filePath, const char *pathWithinTar);
+CK_VISIBLE_PUBLIC BOOL CkTar_CreateDeb(HCkTar cHandle, const char *controlPath, const char *dataPath, const char *debPath);
 CK_VISIBLE_PUBLIC BOOL CkTar_GetDirRoot(HCkTar cHandle, int index, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkTar_getDirRoot(HCkTar cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkTar_ListXml(HCkTar cHandle, const char *tarPath, HCkString outStr);

@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkTask_H
 #define _CkTask_H
@@ -10,10 +10,9 @@
 #include "chilkatDefs.h"
 
 #include "CkString.h"
-#include "CkClassWithCallbacks.h"
+#include "CkMultiByteBase.h"
 
 class CkByteData;
-class CkBaseProgress;
 
 
 
@@ -23,7 +22,7 @@ class CkBaseProgress;
  
 
 // CLASS: CkTask
-class CK_VISIBLE_PUBLIC CkTask  : public CkClassWithCallbacks
+class CK_VISIBLE_PUBLIC CkTask  : public CkMultiByteBase
 {
     private:
 
@@ -42,9 +41,7 @@ class CK_VISIBLE_PUBLIC CkTask  : public CkClassWithCallbacks
 	// internal resources held by the object. 
 	void dispose(void);
 
-	CkBaseProgress *get_EventCallbackObject(void) const;
-	void put_EventCallbackObject(CkBaseProgress *progress);
-
+	
 
 	// BEGIN PUBLIC INTERFACE
 
@@ -206,24 +203,39 @@ class CK_VISIBLE_PUBLIC CkTask  : public CkClassWithCallbacks
 	// ----------------------
 	// Methods
 	// ----------------------
-	// Cancels an asynchronous task. The expected behavior depends on the current
-	// status of the task as described here:
+	// Marks an asynchronous task for cancellation. The expected behavior depends on
+	// the current status of the task as described here:
 	//     "loaded" - If the task has been loaded but has not yet been queued to run in
-	//     the thread pool, then there is no change. (There is nothing to cancel because
-	//     the task's Run method has not yet been called.)
-	//     "queued" - The task is marked as canceled and will not run. The task's
-	//     status changes immediately to "canceled".
-	//     "running" - The already-running task is aborted. The task's status will
-	//     change to "aborted" after the aborted asynchronous method call returns. The
-	//     ResultErrorText property will contain the "LastErrorText" of the method call. In
-	//     the case where a task is aborted just at the time when it's completing, the task
-	//     status may instead change to "completed" if the task completed just prior to the
-	//     request to abort.
-	//     "canceled", "aborted", "completed" - In all these cases, the task has
-	//     already finished, and there is no change in status.
-	// The method returns true if the task was in the "queued" or "running" state and
-	// was canceled or aborted. The method returns false if the task has any other
-	// status.
+	//     the thread pool, then there is nothing to do. (There is nothing to cancel
+	//     because the task's Run method has not yet been called.) The task will remain in
+	//     the "loaded" state.
+	//     "queued" - The task is marked for cancellation, is dequeued, and will not
+	//     run. The task's status changes immediately to "canceled".
+	//     "running" - The already-running task is marked for cancellation. The task's
+	//     status will eventually change to "aborted" when the asynchronous method returns.
+	//     At that point in time, the ResultErrorText property will contain the
+	//     "LastErrorText" of the method call. In the case where a task is marked for
+	//     cancellation just at the time it's completing, the task status may instead
+	//     change to "completed".
+	//     "canceled", "aborted", "completed" - In these cases the task has already
+	//     finished, and there will be no change in status.
+	// Cancel returns true if the task was in the "queued" or "running" state when it
+	// was marked for cancellation. Cancel returns false if the task was in any other
+	// state.
+	// 
+	// Important: Calling the Cancel method marks a task for cancellation. It sets a
+	// flag in memory that the running task will soon notice and then abort. It is
+	// important to realize that your application is likely calling Cancel from the
+	// main UI thread, whereas the asynchronous task is running in a background thread.
+	// If the task was in the "running" state when Cancel was called, it will still be
+	// in the "running" state when Cancel returns. It will take a short amount of time
+	// until the task actually aborts. This is because operating systems schedule
+	// threads in time slices, and the thread needs one or more time slices to notice
+	// the cancellation flag and abort. After calling Cancel, your application might
+	// wish to call the Wait method to wait until the task has actually aborted, or it
+	// could periodically check the task's status and then react once the status
+	// changes to "aborted".
+	// 
 	bool Cancel(void);
 
 

@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkMime_H
 #define _C_CkMime_H
 #include "chilkatDefs.h"
@@ -49,6 +49,11 @@ CK_VISIBLE_PUBLIC int CkMime_getNumEncryptCerts(HCkMime cHandle);
 CK_VISIBLE_PUBLIC int CkMime_getNumHeaderFields(HCkMime cHandle);
 CK_VISIBLE_PUBLIC int CkMime_getNumParts(HCkMime cHandle);
 CK_VISIBLE_PUBLIC int CkMime_getNumSignerCerts(HCkMime cHandle);
+CK_VISIBLE_PUBLIC void CkMime_getOaepHash(HCkMime cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkMime_putOaepHash(HCkMime cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkMime_oaepHash(HCkMime cHandle);
+CK_VISIBLE_PUBLIC BOOL CkMime_getOaepPadding(HCkMime cHandle);
+CK_VISIBLE_PUBLIC void CkMime_putOaepPadding(HCkMime cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkMime_getPkcs7CryptAlg(HCkMime cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkMime_putPkcs7CryptAlg(HCkMime cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkMime_pkcs7CryptAlg(HCkMime cHandle);
@@ -57,6 +62,9 @@ CK_VISIBLE_PUBLIC void CkMime_putPkcs7KeyLength(HCkMime cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkMime_getProtocol(HCkMime cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkMime_putProtocol(HCkMime cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkMime_protocol(HCkMime cHandle);
+CK_VISIBLE_PUBLIC void CkMime_getSigningAlg(HCkMime cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkMime_putSigningAlg(HCkMime cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkMime_signingAlg(HCkMime cHandle);
 CK_VISIBLE_PUBLIC void CkMime_getSigningHashAlg(HCkMime cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkMime_putSigningHashAlg(HCkMime cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkMime_signingHashAlg(HCkMime cHandle);
@@ -103,6 +111,7 @@ CK_VISIBLE_PUBLIC BOOL CkMime_Encrypt(HCkMime cHandle, HCkCert cert);
 CK_VISIBLE_PUBLIC BOOL CkMime_EncryptN(HCkMime cHandle);
 CK_VISIBLE_PUBLIC HCkStringArray CkMime_ExtractPartsToFiles(HCkMime cHandle, const char *dirPath);
 CK_VISIBLE_PUBLIC HCkCert CkMime_FindIssuer(HCkMime cHandle, HCkCert cert);
+CK_VISIBLE_PUBLIC BOOL CkMime_GetBodyBd(HCkMime cHandle, HCkBinData binDat);
 CK_VISIBLE_PUBLIC BOOL CkMime_GetBodyBinary(HCkMime cHandle, HCkByteData outData);
 CK_VISIBLE_PUBLIC BOOL CkMime_GetBodyDecoded(HCkMime cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkMime_getBodyDecoded(HCkMime cHandle);
@@ -153,6 +162,7 @@ CK_VISIBLE_PUBLIC BOOL CkMime_IsText(HCkMime cHandle);
 CK_VISIBLE_PUBLIC BOOL CkMime_IsUnlocked(HCkMime cHandle);
 CK_VISIBLE_PUBLIC BOOL CkMime_IsVideo(HCkMime cHandle);
 CK_VISIBLE_PUBLIC BOOL CkMime_IsXml(HCkMime cHandle);
+CK_VISIBLE_PUBLIC HCkJsonObject CkMime_LastJsonData(HCkMime cHandle);
 CK_VISIBLE_PUBLIC BOOL CkMime_LoadMime(HCkMime cHandle, const char *mimeMsg);
 CK_VISIBLE_PUBLIC BOOL CkMime_LoadMimeBd(HCkMime cHandle, HCkBinData bindat);
 CK_VISIBLE_PUBLIC BOOL CkMime_LoadMimeBytes(HCkMime cHandle, HCkByteData binData);

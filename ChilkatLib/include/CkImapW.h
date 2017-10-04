@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkImapW_H
 #define _CkImapW_H
@@ -613,54 +613,34 @@ class CK_VISIBLE_PUBLIC CkImapW  : public CkClassWithCallbacksW
 	void put_SocksVersion(int newVal);
 
 	// Sets the receive buffer size socket option. Normally, this property should be
-	// left unchanged. The default value is 0, which indicates that the receive buffer
-	// size socket option should not be explicitly set (i.e. the system default value,
-	// which may vary from system to system, should be used).
+	// left unchanged. The default value is 4194304.
 	// 
-	// This property can be changed if download performance seems slow. It is
-	// recommended to be a multiple of 4096. To see the current system's default
-	// receive buffer size, examine the LastErrorText property after calling any method
-	// that establishes a connection. It should be reported under the heading
-	// "SO_RCVBUF". To boost performance, try setting it equal to 2, 3, or 4 times the
-	// default value.
+	// This property can be increased if download performance seems slow. It is
+	// recommended to be a multiple of 4096.
 	// 
 	int get_SoRcvBuf(void);
 	// Sets the receive buffer size socket option. Normally, this property should be
-	// left unchanged. The default value is 0, which indicates that the receive buffer
-	// size socket option should not be explicitly set (i.e. the system default value,
-	// which may vary from system to system, should be used).
+	// left unchanged. The default value is 4194304.
 	// 
-	// This property can be changed if download performance seems slow. It is
-	// recommended to be a multiple of 4096. To see the current system's default
-	// receive buffer size, examine the LastErrorText property after calling any method
-	// that establishes a connection. It should be reported under the heading
-	// "SO_RCVBUF". To boost performance, try setting it equal to 2, 3, or 4 times the
-	// default value.
+	// This property can be increased if download performance seems slow. It is
+	// recommended to be a multiple of 4096.
 	// 
 	void put_SoRcvBuf(int newVal);
 
 	// Sets the send buffer size socket option. Normally, this property should be left
-	// unchanged. The default value is 0, which indicates that the send buffer size
-	// socket option should not be explicitly set (i.e. the system default value, which
-	// may vary from system to system, should be used).
+	// unchanged. The default value is 262144.
 	// 
-	// This property can be changed if upload performance seems slow. It is recommended
-	// to be a multiple of 4096. To see the current system's default send buffer size,
-	// examine the LastErrorText property after calling any method that establishes a
-	// connection. It should be reported under the heading "SO_SNDBUF". To boost
-	// performance, try setting it equal to 2, 3, or 4 times the default value.
+	// This property can be increased if upload performance seems slow. It is
+	// recommended to be a multiple of 4096. Testing with sizes such as 512K and 1MB is
+	// reasonable.
 	// 
 	int get_SoSndBuf(void);
 	// Sets the send buffer size socket option. Normally, this property should be left
-	// unchanged. The default value is 0, which indicates that the send buffer size
-	// socket option should not be explicitly set (i.e. the system default value, which
-	// may vary from system to system, should be used).
+	// unchanged. The default value is 262144.
 	// 
-	// This property can be changed if upload performance seems slow. It is recommended
-	// to be a multiple of 4096. To see the current system's default send buffer size,
-	// examine the LastErrorText property after calling any method that establishes a
-	// connection. It should be reported under the heading "SO_SNDBUF". To boost
-	// performance, try setting it equal to 2, 3, or 4 times the default value.
+	// This property can be increased if upload performance seems slow. It is
+	// recommended to be a multiple of 4096. Testing with sizes such as 512K and 1MB is
+	// reasonable.
 	// 
 	void put_SoSndBuf(int newVal);
 
@@ -1153,6 +1133,10 @@ class CK_VISIBLE_PUBLIC CkImapW  : public CkClassWithCallbacksW
 	void ClearSessionLog(void);
 
 	// Closes the currently selected mailbox.
+	// 
+	// Note: The term "mailbox" and "folder" are synonymous. Whenever the word
+	// "mailbox" is used, it has the same meaning as "folder".
+	// 
 	bool CloseMailbox(const wchar_t *mailbox);
 
 	// Creates an asynchronous task to call the CloseMailbox method with the arguments
@@ -1207,6 +1191,10 @@ class CK_VISIBLE_PUBLIC CkImapW  : public CkClassWithCallbacksW
 	CkTaskW *CopySequenceAsync(int startSeqNum, int count, const wchar_t *copyToMailbox);
 
 	// Creates a new mailbox.
+	// 
+	// Note: The term "mailbox" and "folder" are synonymous. Whenever the word
+	// "mailbox" is used, it has the same meaning as "folder".
+	// 
 	bool CreateMailbox(const wchar_t *mailbox);
 
 	// Creates an asynchronous task to call the CreateMailbox method with the arguments
@@ -1215,6 +1203,10 @@ class CK_VISIBLE_PUBLIC CkImapW  : public CkClassWithCallbacksW
 	CkTaskW *CreateMailboxAsync(const wchar_t *mailbox);
 
 	// Deletes an existing mailbox.
+	// 
+	// Note: The term "mailbox" and "folder" are synonymous. Whenever the word
+	// "mailbox" is used, it has the same meaning as "folder".
+	// 
 	bool DeleteMailbox(const wchar_t *mailbox);
 
 	// Creates an asynchronous task to call the DeleteMailbox method with the arguments
@@ -1235,6 +1227,10 @@ class CK_VISIBLE_PUBLIC CkImapW  : public CkClassWithCallbacksW
 	// Selects a mailbox such that only read-only transactions are allowed. This method
 	// would be called instead of SelectMailbox if the logged-on user has read-only
 	// permission.
+	// 
+	// Note: The term "mailbox" and "folder" are synonymous. Whenever the word
+	// "mailbox" is used, it has the same meaning as "folder".
+	// 
 	bool ExamineMailbox(const wchar_t *mailbox);
 
 	// Creates an asynchronous task to call the ExamineMailbox method with the
@@ -1380,18 +1376,40 @@ class CK_VISIBLE_PUBLIC CkImapW  : public CkClassWithCallbacksW
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *FetchChunkAsync(int startSeqNum, int count, CkMessageSetW &failedSet, CkMessageSetW &fetchedSet);
 
-	// Fetches the flags for an email. The bUid argument determines whether the msgId
-	// argument is a UID or sequence number.
+	// Fetches the flags for an email. The bUid argument determines whether the msgId is
+	// a UID or sequence number.
 	// 
 	// Returns the SPACE separated list of flags set for the email, such as "\Flagged
 	// \Seen $label1".
+	// 
+	// If an empty string is returned, then it could be that the email referenced by
+	// msgId does not exist in the currently selected mailbox, or it simply has no flags
+	// that are set. To determine the difference, examine the contents of the
+	// LastResponse property. For the case where the message does not exist, the
+	// LastResponse will contain a "NO" and will look something like this:
+	// aaah NO The specified message set is invalid.
+	// For the case where the message exists, but no flags are set, the LastResponse
+	// will contain an "OK" in the last response line. For example:
+	// ...
+	// aaah OK FETCH completed.
 	// 
 	bool FetchFlags(int msgId, bool bUid, CkString &outStrFlags);
-	// Fetches the flags for an email. The bUid argument determines whether the msgId
-	// argument is a UID or sequence number.
+	// Fetches the flags for an email. The bUid argument determines whether the msgId is
+	// a UID or sequence number.
 	// 
 	// Returns the SPACE separated list of flags set for the email, such as "\Flagged
 	// \Seen $label1".
+	// 
+	// If an empty string is returned, then it could be that the email referenced by
+	// msgId does not exist in the currently selected mailbox, or it simply has no flags
+	// that are set. To determine the difference, examine the contents of the
+	// LastResponse property. For the case where the message does not exist, the
+	// LastResponse will contain a "NO" and will look something like this:
+	// aaah NO The specified message set is invalid.
+	// For the case where the message exists, but no flags are set, the LastResponse
+	// will contain an "OK" in the last response line. For example:
+	// ...
+	// aaah OK FETCH completed.
 	// 
 	const wchar_t *fetchFlags(int msgId, bool bUid);
 
@@ -1760,6 +1778,9 @@ class CK_VISIBLE_PUBLIC CkImapW  : public CkClassWithCallbacksW
 	// Returns a subset of the complete list of mailboxes available on the IMAP server.
 	// This method has the side-effect of setting the SeparatorChar property to the
 	// correct character used by the IMAP server, which is typically "/" or ".".
+	// 
+	// Note: The term "mailbox" and "folder" are synonymous. Whenever the word
+	// "mailbox" is used, it has the same meaning as "folder".
 	// 
 	// The reference and wildcardedMailbox parameters are passed unaltered to the IMAP
 	// LIST command:
@@ -2156,6 +2177,9 @@ class CK_VISIBLE_PUBLIC CkImapW  : public CkClassWithCallbacksW
 	// 
 	// Calling this method updates the NumMessages property.
 	// 
+	// Note: The term "mailbox" and "folder" are synonymous. Whenever the word
+	// "mailbox" is used, it has the same meaning as "folder".
+	// 
 	bool SelectMailbox(const wchar_t *mailbox);
 
 	// Creates an asynchronous task to call the SelectMailbox method with the arguments
@@ -2399,6 +2423,10 @@ class CK_VISIBLE_PUBLIC CkImapW  : public CkClassWithCallbacksW
 	CkTaskW *StoreFlagsAsync(int msgId, bool bUid, const wchar_t *flagNames, int value);
 
 	// Subscribe to an IMAP mailbox.
+	// 
+	// Note: The term "mailbox" and "folder" are synonymous. Whenever the word
+	// "mailbox" is used, it has the same meaning as "folder".
+	// 
 	bool Subscribe(const wchar_t *mailbox);
 
 	// Creates an asynchronous task to call the Subscribe method with the arguments

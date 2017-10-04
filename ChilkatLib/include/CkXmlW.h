@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkXmlW_H
 #define _CkXmlW_H
@@ -107,10 +107,12 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	void put_EmitBom(bool newVal);
 
 	// If true, then GetXml and GetXmlSb emit compact XML. The XML emitted has no
-	// unnecessary whitespace, incuding no end-of-lines (CR's and/or LF's).
+	// unnecessary whitespace, incuding no end-of-lines (CR's and/or LF's). The default
+	// value is false, which maintains backward compatibility.
 	bool get_EmitCompact(void);
 	// If true, then GetXml and GetXmlSb emit compact XML. The XML emitted has no
-	// unnecessary whitespace, incuding no end-of-lines (CR's and/or LF's).
+	// unnecessary whitespace, incuding no end-of-lines (CR's and/or LF's). The default
+	// value is false, which maintains backward compatibility.
 	void put_EmitCompact(bool newVal);
 
 	// If true, then the XML declaration is emitted for methods (such as GetXml or
@@ -281,9 +283,14 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	// byte data from a B encoded string.
 	bool BEncodeContent(const wchar_t *charset, CkByteData &inData);
 
-	// Return true if a child having a specific tag contains content that matches a
-	// wildcarded pattern.
-	bool ChildContentMatches(const wchar_t *tag, const wchar_t *pattern, bool caseSensitive);
+	// Return true if a child at the specified tagPath contains content that matches a
+	// wildcarded pattern. Otherwise returns false.
+	// 
+	// Beginning in version 9.5.0.64, the tagPath can be a tag path. A tag path is a
+	// series of tags separated by vertical bar characters. For example:
+	// "tagA|tagB|tagC".
+	// 
+	bool ChildContentMatches(const wchar_t *tagPath, const wchar_t *pattern, bool caseSensitive);
 
 	// Follows a series of commands to navigate through an XML document to return a
 	// piece of data or update the caller's reference to a new XML document node.
@@ -397,35 +404,58 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	// The caller is responsible for deleting the object returned by this method.
 	CkXmlW *ExtractChildByIndex(int index);
 
-	// Removes and returns the first child node having a tag equal to the tagName. The
-	// attributeName and attrValue may be empty or NULL, in which case the first child
-	// matching the tag is removed and returned. If attributeName is specified, then
-	// the first child having a tag equal to tagName, and an attribute with
-	// attributeName is returned. If attrValue is also specified, then only a child
-	// having a tag equal to tagName, and an attribute named attributeName, with a
-	// value equal to attrValue is returned.
+	// Removes and returns the first child node at the specified tag or tag path. The
+	// attrName and attrValue may be empty, in which case the first child matching the tag is
+	// removed and returned. If attrName is specified, then the first child having a tag
+	// equal to tagPath, and an attribute with attrName is returned. If attrValue is also
+	// specified, then only a child having a tag equal to tagPath, and an attribute named
+	// attrName, with a value equal to attrValue is returned.
+	// 
+	// Beginning in version 9.5.0.64, the tagPath can be a tag path. A tag path is a
+	// series of tags separated by vertical bar characters. For example:
+	// "tagA|tagB|tagC".
+	// 
 	// The caller is responsible for deleting the object returned by this method.
-	CkXmlW *ExtractChildByName(const wchar_t *tag, const wchar_t *attrName, const wchar_t *attrValue);
+	CkXmlW *ExtractChildByName(const wchar_t *tagPath, const wchar_t *attrName, const wchar_t *attrValue);
 
-	// Returns the child having a specified tag.
+	// Returns the child with the given tag or at the specified tag path.
+	// 
+	// Beginning in version 9.5.0.64, the tagPath can be a tag path. A tag path is a
+	// series of tags separated by vertical bar characters. For example:
+	// "tagA|tagB|tagC".
+	// 
 	// The caller is responsible for deleting the object returned by this method.
-	CkXmlW *FindChild(const wchar_t *tag);
+	CkXmlW *FindChild(const wchar_t *tagPath);
 
-	// Updates the Xml object's internal reference to point to a child with a specified
-	// tag.
-	bool FindChild2(const wchar_t *tag);
+	// Updates the Xml object's internal reference to point to a child at the specified
+	// tag or tagPath.
+	// 
+	// Beginning in version 9.5.0.64, the tagPath can be a tag path. A tag path is a
+	// series of tags separated by vertical bar characters. For example:
+	// "tagA|tagB|tagC".
+	// 
+	bool FindChild2(const wchar_t *tagPath);
 
 	// Returns the next record node where the child with a specific tag matches a
 	// wildcarded pattern. This method makes it easy to iterate over high-level
 	// records.
+	// 
+	// Beginning in version 9.5.0.64, the tagPath can be a tag path. A tag path is a
+	// series of tags separated by vertical bar characters. For example:
+	// "tagA|tagB|tagC".
+	// 
 	// The caller is responsible for deleting the object returned by this method.
-	CkXmlW *FindNextRecord(const wchar_t *tag, const wchar_t *contentPattern);
+	CkXmlW *FindNextRecord(const wchar_t *tagPath, const wchar_t *contentPattern);
 
-	// First searches for a child having a tag equal to tagName, and if found, returns
-	// it. Otherwise creates a new child, sets the tag equal to tagName, and
-	// initializes the Content to empty.
+	// First checks for a child at tagPath, and if found, returns it. Otherwise creates a
+	// new child with empty content.
+	// 
+	// Beginning in version 9.5.0.64, the tagPath can be a tag path. A tag path is a
+	// series of tags separated by vertical bar characters. For example:
+	// "tagA|tagB|tagC".
+	// 
 	// The caller is responsible for deleting the object returned by this method.
-	CkXmlW *FindOrAddNewChild(const wchar_t *tag);
+	CkXmlW *FindOrAddNewChild(const wchar_t *tagPath);
 
 	// Returns the first child. A program can step through the children by calling
 	// FirstChild, and then NextSibling repeatedly.
@@ -455,7 +485,7 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	// index 0.
 	const wchar_t *attributeValue(int index);
 
-	// Returns an attribute as an integer.
+	// Returns an attribute as an integer. Returns 0 if the attribute does not exist.
 	int GetAttributeValueInt(int index);
 
 	// Find and return the value of an attribute having a specified name.
@@ -465,7 +495,7 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	// Find and return the value of an attribute having a specified name.
 	const wchar_t *attrValue(const wchar_t *name);
 
-	// Returns an attribute as an integer.
+	// Returns an attribute as an integer. Returns 0 if the attribute does not exist.
 	int GetAttrValueInt(const wchar_t *name);
 
 	// Returns binary content of an XML node as a byte array. The content may have been
@@ -481,15 +511,38 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	bool GetChild2(int index);
 
 	// Returns false if the node's content is "0", otherwise returns true if the
-	// node contains a non-zero integer.
-	bool GetChildBoolValue(const wchar_t *tag);
+	// node contains a non-zero integer. The tagPath can be a tag or a tag path.
+	// 
+	// Beginning in version 9.5.0.64, the tagPath can be a tag path. A tag path is a
+	// series of tags separated by vertical bar characters. For example:
+	// "colors|primary|red".
+	// 
+	bool GetChildBoolValue(const wchar_t *tagPath);
 
-	// Returns the content of a child having a specified tag.
-	bool GetChildContent(const wchar_t *tag, CkString &outStr);
-	// Returns the content of a child having a specified tag.
-	const wchar_t *getChildContent(const wchar_t *tag);
-	// Returns the content of a child having a specified tag.
-	const wchar_t *childContent(const wchar_t *tag);
+	// Returns the content of a child having a specified tag. The tagPath can be a tag or
+	// a tag path.
+	// 
+	// Beginning in version 9.5.0.64, the tagPath can be a tag path. A tag path is a
+	// series of tags separated by vertical bar characters. For example:
+	// "colors|primary|red".
+	// 
+	bool GetChildContent(const wchar_t *tagPath, CkString &outStr);
+	// Returns the content of a child having a specified tag. The tagPath can be a tag or
+	// a tag path.
+	// 
+	// Beginning in version 9.5.0.64, the tagPath can be a tag path. A tag path is a
+	// series of tags separated by vertical bar characters. For example:
+	// "colors|primary|red".
+	// 
+	const wchar_t *getChildContent(const wchar_t *tagPath);
+	// Returns the content of a child having a specified tag. The tagPath can be a tag or
+	// a tag path.
+	// 
+	// Beginning in version 9.5.0.64, the tagPath can be a tag path. A tag path is a
+	// series of tags separated by vertical bar characters. For example:
+	// "colors|primary|red".
+	// 
+	const wchar_t *childContent(const wchar_t *tagPath);
 
 	// Returns the content of the Nth child node.
 	bool GetChildContentByIndex(int index, CkString &outStr);
@@ -502,8 +555,14 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	// The caller is responsible for deleting the object returned by this method.
 	CkXmlW *GetChildExact(const wchar_t *tag, const wchar_t *content);
 
-	// Returns the child integer content for a given tag.
-	int GetChildIntValue(const wchar_t *tag);
+	// Returns the child integer content for a given tag. The tagPath can be a tag or a
+	// tag path.
+	// 
+	// Beginning in version 9.5.0.64, the tagPath can be a tag path. A tag path is a
+	// series of tags separated by vertical bar characters. For example:
+	// "colors|primary|red".
+	// 
+	int GetChildIntValue(const wchar_t *tagPath);
 
 	// Returns the tag name of the Nth child node.
 	bool GetChildTag(int index, CkString &outStr);
@@ -521,16 +580,26 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 
 	// Finds and returns the XML child node having both a given tag and an attribute
 	// with a given name and value.
+	// 
+	// Beginning in version 9.5.0.64, the tagPath can be a tag path. A tag path is a
+	// series of tags separated by vertical bar characters. For example:
+	// "tagA|tagB|tagC".
+	// 
 	// The caller is responsible for deleting the object returned by this method.
-	CkXmlW *GetChildWithAttr(const wchar_t *tag, const wchar_t *attrName, const wchar_t *attrValue);
+	CkXmlW *GetChildWithAttr(const wchar_t *tagPath, const wchar_t *attrName, const wchar_t *attrValue);
 
 	// Returns the first child found having the exact content specified.
 	// The caller is responsible for deleting the object returned by this method.
 	CkXmlW *GetChildWithContent(const wchar_t *content);
 
-	// Returns the Xml child object having a tag matching tagName.
+	// Returns the child at the specified tag or tag path.
+	// 
+	// Beginning in version 9.5.0.64, the tagPath can be a tag path. A tag path is a
+	// series of tags separated by vertical bar characters. For example:
+	// "tagA|tagB|tagC".
+	// 
 	// The caller is responsible for deleting the object returned by this method.
-	CkXmlW *GetChildWithTag(const wchar_t *tag);
+	CkXmlW *GetChildWithTag(const wchar_t *tagPath);
 
 	// Returns the Nth child having a tag that matches exactly with the tagName. Use
 	// the NumChildrenHavingTag method to determine how many children have a particular
@@ -591,12 +660,23 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	// string specified.
 	bool HasChildWithContent(const wchar_t *content);
 
-	// Returns true (1 for ActiveX) if the node has a direct child with a given tag.
-	bool HasChildWithTag(const wchar_t *tag);
+	// Returns true if the node has a child with the given tag (or tag path).
+	// Otherwise returns false.
+	// 
+	// Beginning in version 9.5.0.64, the tagPath can be a tag path. A tag path is a
+	// series of tags separated by vertical bar characters. For example:
+	// "tagA|tagB|tagC".
+	// 
+	bool HasChildWithTag(const wchar_t *tagPath);
 
-	// Returns true if the node contains a direct child having the exact tag and
+	// Returns true if the node contains child with the given tag (or tag path) and
 	// content specified.
-	bool HasChildWithTagAndContent(const wchar_t *tag, const wchar_t *content);
+	// 
+	// Beginning in version 9.5.0.64, the tagPath can be a tag path. A tag path is a
+	// series of tags separated by vertical bar characters. For example:
+	// "tagA|tagB|tagC".
+	// 
+	bool HasChildWithTagAndContent(const wchar_t *tagPath, const wchar_t *content);
 
 	// Adds an entire subtree as a child. If the child was a subtree within another Xml
 	// document then the subtree is effectively transferred from one XML document to
@@ -639,13 +719,24 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	bool LoadXmlFile2(const wchar_t *fileName, bool autoTrim);
 
 	// Creates a new child having tag and content. The new child is created even if a
-	// child with a tag equal to tagName already exists. (Use FindOrAddNewChild to
-	// prevent creating children having the same tags.)
+	// child with a tag equal to tagPath already exists. (Use FindOrAddNewChild to prevent
+	// creating children having the same tags.)
+	// 
+	// Beginning in version 9.5.0.64, the tagPath can be a tag path. A tag path is a
+	// series of tags separated by vertical bar characters. For example:
+	// "colors|primary|red". See the example below for details.
+	// 
 	// The caller is responsible for deleting the object returned by this method.
-	CkXmlW *NewChild(const wchar_t *tag, const wchar_t *content);
+	CkXmlW *NewChild(const wchar_t *tagPath, const wchar_t *content);
 
-	// Creates a new child but does not return the node that is created.
-	void NewChild2(const wchar_t *tag, const wchar_t *content);
+	// Creates a new child node, but does not return the node that is created. The tagPath
+	// can be a tag or a tag path.
+	// 
+	// Beginning in version 9.5.0.64, the tagPath can be a tag path. A tag path is a
+	// series of tags separated by vertical bar characters. For example:
+	// "colors|primary|red". See the example below for details.
+	// 
+	void NewChild2(const wchar_t *tagPath, const wchar_t *content);
 
 	// Inserts a new child in a position after the Nth child node.
 	// The caller is responsible for deleting the object returned by this method.
@@ -655,8 +746,14 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	// The caller is responsible for deleting the object returned by this method.
 	CkXmlW *NewChildBefore(int index, const wchar_t *tag, const wchar_t *content);
 
-	// Inserts a new child having an integer for content.
-	void NewChildInt2(const wchar_t *tag, int value);
+	// Inserts a new child having an integer for content. The tagPath can be a tag or a
+	// tag path.
+	// 
+	// Beginning in version 9.5.0.64, the tagPath can be a tag path. A tag path is a
+	// series of tags separated by vertical bar characters. For example:
+	// "colors|primary|red". See the example below for details.
+	// 
+	void NewChildInt2(const wchar_t *tagPath, int value);
 
 	// Returns the nodes next sibling, or NULL if there are no more.
 	// The caller is responsible for deleting the object returned by this method.
@@ -698,8 +795,13 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	// Removes an attribute by name from and XML node.
 	bool RemoveAttribute(const wchar_t *name);
 
-	// Removes all direct children with a given tag.
-	void RemoveChild(const wchar_t *tag);
+	// Removes all children with a given tag or tag path.
+	// 
+	// Beginning in version 9.5.0.64, the tagPath can be a tag path. A tag path is a
+	// series of tags separated by vertical bar characters. For example:
+	// "tagA|tagB|tagC".
+	// 
+	void RemoveChild(const wchar_t *tagPath);
 
 	// Removes the Nth child from the calling node.
 	void RemoveChildByIndex(int index);
@@ -876,11 +978,22 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	// string.)
 	bool UpdateAttributeInt(const wchar_t *attrName, int value);
 
-	// Replaces the content of a child node.
-	void UpdateChildContent(const wchar_t *tag, const wchar_t *value);
+	// Replaces the content of a child node. The tagPath can be a tag or tag path.
+	// 
+	// Beginning in version 9.5.0.64, the tagPath can be a tag path. A tag path is a
+	// series of tags separated by vertical bar characters. For example:
+	// "tagA|tagB|tagC".
+	// 
+	void UpdateChildContent(const wchar_t *tagPath, const wchar_t *value);
 
-	// Replaces the content of a child node where the content is an integer.
-	void UpdateChildContentInt(const wchar_t *tag, int value);
+	// Replaces the content of a child node where the content is an integer. The tagPath
+	// can be a tag or tag path.
+	// 
+	// Beginning in version 9.5.0.64, the tagPath can be a tag path. A tag path is a
+	// series of tags separated by vertical bar characters. For example:
+	// "tagA|tagB|tagC".
+	// 
+	void UpdateChildContentInt(const wchar_t *tagPath, int value);
 
 	// Applies Zip compression to the content of an XML node and replaces the content
 	// with base64-encoded compressed data.

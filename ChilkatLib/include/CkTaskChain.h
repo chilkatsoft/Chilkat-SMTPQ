@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkTaskChain_H
 #define _CkTaskChain_H
@@ -10,10 +10,9 @@
 #include "chilkatDefs.h"
 
 #include "CkString.h"
-#include "CkClassWithCallbacks.h"
+#include "CkMultiByteBase.h"
 
 class CkTask;
-class CkBaseProgress;
 
 
 
@@ -23,7 +22,7 @@ class CkBaseProgress;
  
 
 // CLASS: CkTaskChain
-class CK_VISIBLE_PUBLIC CkTaskChain  : public CkClassWithCallbacks
+class CK_VISIBLE_PUBLIC CkTaskChain  : public CkMultiByteBase
 {
     private:
 
@@ -42,9 +41,7 @@ class CK_VISIBLE_PUBLIC CkTaskChain  : public CkClassWithCallbacks
 	// internal resources held by the object. 
 	void dispose(void);
 
-	CkBaseProgress *get_EventCallbackObject(void) const;
-	void put_EventCallbackObject(CkBaseProgress *progress);
-
+	
 
 	// BEGIN PUBLIC INTERFACE
 

@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkZipW_H
 #define _CkZipW_H
@@ -16,6 +16,7 @@ class CkZipEntryW;
 class CkByteData;
 class CkTaskW;
 class CkStringArrayW;
+class CkBinDataW;
 class CkZipProgressW;
 
 
@@ -368,16 +369,31 @@ class CK_VISIBLE_PUBLIC CkZipW  : public CkClassWithCallbacksW
 	// creating self-extracting EXEs. This property can be set to a pre-existing icon
 	// filename (.ico) that will be embedded within the to-be-created EXE and set as
 	// its default icon.
+	// 
+	// Note: This property is only possible for 32-bit applications. (Meaning that the
+	// application that is creating the self-extracting EXE must be a 32-bit
+	// application if an ExeIconFile is to be used.)
+	// 
 	void get_ExeIconFile(CkString &str);
 	// (Relevant only when running on a Microsoft Windows operating system.) Applies to
 	// creating self-extracting EXEs. This property can be set to a pre-existing icon
 	// filename (.ico) that will be embedded within the to-be-created EXE and set as
 	// its default icon.
+	// 
+	// Note: This property is only possible for 32-bit applications. (Meaning that the
+	// application that is creating the self-extracting EXE must be a 32-bit
+	// application if an ExeIconFile is to be used.)
+	// 
 	const wchar_t *exeIconFile(void);
 	// (Relevant only when running on a Microsoft Windows operating system.) Applies to
 	// creating self-extracting EXEs. This property can be set to a pre-existing icon
 	// filename (.ico) that will be embedded within the to-be-created EXE and set as
 	// its default icon.
+	// 
+	// Note: This property is only possible for 32-bit applications. (Meaning that the
+	// application that is creating the self-extracting EXE must be a 32-bit
+	// application if an ExeIconFile is to be used.)
+	// 
 	void put_ExeIconFile(const wchar_t *newVal);
 #endif
 
@@ -715,13 +731,13 @@ class CK_VISIBLE_PUBLIC CkZipW  : public CkClassWithCallbacksW
 	// If true, then files that cannot be read due to "access denied" (i.e. a file
 	// permission error) will be ignored and the call to WriteZip, WriteZipAndClose,
 	// WriteExe, etc. will return a success status. If false, then the "access
-	// denied" filesystem errors are not ignored and any occurance will cause the zip
+	// denied" filesystem errors are not ignored and any occurrence will cause the zip
 	// writing to fail. The default value is true.
 	bool get_IgnoreAccessDenied(void);
 	// If true, then files that cannot be read due to "access denied" (i.e. a file
 	// permission error) will be ignored and the call to WriteZip, WriteZipAndClose,
 	// WriteExe, etc. will return a success status. If false, then the "access
-	// denied" filesystem errors are not ignored and any occurance will cause the zip
+	// denied" filesystem errors are not ignored and any occurrence will cause the zip
 	// writing to fail. The default value is true.
 	void put_IgnoreAccessDenied(bool newVal);
 
@@ -843,10 +859,6 @@ class CK_VISIBLE_PUBLIC CkZipW  : public CkClassWithCallbacksW
 	// when unzipping ZIPX archives, Chilkat Zip automatically handles the various
 	// compression algorithms when unzipping.
 	// 
-	// Important: Unfortunately, the ability to create ZIPX archives did not yet make
-	// it into v9.4.1. This will come at a later date. Therefore, this property is
-	// ignored for now.
-	// 
 	bool get_Zipx(void);
 	// Starting in v9.4.1, Chilkat Zip will automatically unzip ZIPX files using any of
 	// the following compression methods: BZIP2, PPMd, LZMA, and Deflate64 ("Deflate64"
@@ -858,10 +870,6 @@ class CK_VISIBLE_PUBLIC CkZipW  : public CkClassWithCallbacksW
 	// when unzipping ZIPX archives, Chilkat Zip automatically handles the various
 	// compression algorithms when unzipping.
 	// 
-	// Important: Unfortunately, the ability to create ZIPX archives did not yet make
-	// it into v9.4.1. This will come at a later date. Therefore, this property is
-	// ignored for now.
-	// 
 	void put_Zipx(bool newVal);
 
 	// The default compression algorithm to be used when creating ZIPX archives. The
@@ -869,33 +877,18 @@ class CK_VISIBLE_PUBLIC CkZipW  : public CkClassWithCallbacksW
 	// and "deflate64". When writing a ZIPX archive, if the file extension does not
 	// indicate an obvious choice for the appropriate compression algorithm, then the
 	// ZipxDefaultAlg is used.
-	// 
-	// Important: Starting in v9.4.1, Chilkat Zip can automatically unzip ZIPX
-	// archives, but the ability to create ZIPX archives did not make it into v9.4.1.
-	// This feature will come at a later date. Currently, this property is ignored.
-	// 
 	void get_ZipxDefaultAlg(CkString &str);
 	// The default compression algorithm to be used when creating ZIPX archives. The
 	// default value is "deflate". Other possible values are "ppmd", "lzma", "bzip2"
 	// and "deflate64". When writing a ZIPX archive, if the file extension does not
 	// indicate an obvious choice for the appropriate compression algorithm, then the
 	// ZipxDefaultAlg is used.
-	// 
-	// Important: Starting in v9.4.1, Chilkat Zip can automatically unzip ZIPX
-	// archives, but the ability to create ZIPX archives did not make it into v9.4.1.
-	// This feature will come at a later date. Currently, this property is ignored.
-	// 
 	const wchar_t *zipxDefaultAlg(void);
 	// The default compression algorithm to be used when creating ZIPX archives. The
 	// default value is "deflate". Other possible values are "ppmd", "lzma", "bzip2"
 	// and "deflate64". When writing a ZIPX archive, if the file extension does not
 	// indicate an obvious choice for the appropriate compression algorithm, then the
 	// ZipxDefaultAlg is used.
-	// 
-	// Important: Starting in v9.4.1, Chilkat Zip can automatically unzip ZIPX
-	// archives, but the ability to create ZIPX archives did not make it into v9.4.1.
-	// This feature will come at a later date. Currently, this property is ignored.
-	// 
 	void put_ZipxDefaultAlg(const wchar_t *newVal);
 
 
@@ -1247,6 +1240,16 @@ class CK_VISIBLE_PUBLIC CkZipW  : public CkClassWithCallbacksW
 	// is set to the zipFilePath argument.
 	bool NewZip(const wchar_t *zipFilePath);
 
+	// Open a Zip contained in binData.
+	// 
+	// When a zip is opened, the PasswordProtect and Encryption properties will be
+	// appropriately set. If the zip is password protected (i.e. uses older Zip 2.0
+	// encrypion), then the PasswordProtect property will be set to true. If the zip
+	// is strong encrypted, the Encryption property will be set to a value 1 through 4,
+	// where 4 indicates WinZip compatible AES encryption.
+	// 
+	bool OpenBd(CkBinDataW &binData);
+
 #if defined(CK_SFX_INCLUDED)
 	// (Relevant only when running on a Microsoft Windows operating system.) Opens a
 	// Zip embedded in an MS Windows EXE
@@ -1291,12 +1294,12 @@ class CK_VISIBLE_PUBLIC CkZipW  : public CkClassWithCallbacksW
 	// is strong encrypted, the Encryption property will be set to a value 1 through 4,
 	// where 4 indicates WinZip compatible AES encryption.
 	// 
-	bool OpenZip(const wchar_t *ZipFileName);
+	bool OpenZip(const wchar_t *zipPath);
 
 	// Creates an asynchronous task to call the OpenZip method with the arguments
 	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *OpenZipAsync(const wchar_t *ZipFileName);
+	CkTaskW *OpenZipAsync(const wchar_t *zipPath);
 
 	// Efficiently appends additional files to an existing zip archive. QuickAppend
 	// leaves all entries in the existing .zip untouched. It operates by appending new
@@ -1339,7 +1342,7 @@ class CK_VISIBLE_PUBLIC CkZipW  : public CkClassWithCallbacksW
 
 	// Specify a collection of exclusion patterns to be used when adding files to a
 	// Zip. Each pattern in the collection can use the "*" wildcard character, where
-	// "*" indicates 0 or more occurances of any character.
+	// "*" indicates 0 or more occurrences of any character.
 	void SetExclusions(CkStringArrayW &excludePatterns);
 
 #if defined(CK_SFX_INCLUDED)
@@ -1415,6 +1418,16 @@ class CK_VISIBLE_PUBLIC CkZipW  : public CkClassWithCallbacksW
 	// Tests the current DecryptPassword setting against the currently opened zip.
 	// Returns true if the password is valid, otherwise returns false.
 	bool VerifyPassword(void);
+
+	// Same as WriteZip, but instead of writing the Zip to a file, it writes to binData.
+	// Zips that are written to binData can be opened by calling OpenBd. Note: Both
+	// WriteBd and OpenBd are added in Chilkat v9.5.0.66
+	bool WriteBd(CkBinDataW &binData);
+
+	// Creates an asynchronous task to call the WriteBd method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *WriteBdAsync(CkBinDataW &binData);
 
 #if defined(CK_SFX_INCLUDED)
 	// (Relevant only when running on a Microsoft Windows operating system.) Writes an

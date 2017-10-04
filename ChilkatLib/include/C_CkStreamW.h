@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkStreamWH
 #define _C_CkStreamWH
 #include "chilkatDefs.h"
@@ -64,6 +64,8 @@ CK_VISIBLE_PUBLIC const wchar_t *CkStreamW_version(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC int CkStreamW_getWriteFailReason(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC int CkStreamW_getWriteTimeoutMs(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC void  CkStreamW_putWriteTimeoutMs(HCkStreamW cHandle, int newVal);
+CK_VISIBLE_PUBLIC BOOL CkStreamW_ReadBd(HCkStreamW cHandle, HCkBinDataW binData);
+CK_VISIBLE_PUBLIC HCkTaskW CkStreamW_ReadBdAsync(HCkStreamW cHandle, HCkBinDataW binData);
 CK_VISIBLE_PUBLIC BOOL CkStreamW_ReadBytes(HCkStreamW cHandle, HCkByteData outBytes);
 CK_VISIBLE_PUBLIC HCkTaskW CkStreamW_ReadBytesAsync(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkStreamW_ReadBytesENC(HCkStreamW cHandle, const wchar_t *encoding, HCkString outStr);
@@ -74,6 +76,8 @@ CK_VISIBLE_PUBLIC HCkTaskW CkStreamW_ReadNBytesAsync(HCkStreamW cHandle, int num
 CK_VISIBLE_PUBLIC BOOL CkStreamW_ReadNBytesENC(HCkStreamW cHandle, int numBytes, const wchar_t *encoding, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkStreamW_readNBytesENC(HCkStreamW cHandle, int numBytes, const wchar_t *encoding);
 CK_VISIBLE_PUBLIC HCkTaskW CkStreamW_ReadNBytesENCAsync(HCkStreamW cHandle, int numBytes, const wchar_t *encoding);
+CK_VISIBLE_PUBLIC BOOL CkStreamW_ReadSb(HCkStreamW cHandle, HCkStringBuilderW sb);
+CK_VISIBLE_PUBLIC HCkTaskW CkStreamW_ReadSbAsync(HCkStreamW cHandle, HCkStringBuilderW sb);
 CK_VISIBLE_PUBLIC BOOL CkStreamW_ReadString(HCkStreamW cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkStreamW_readString(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC HCkTaskW CkStreamW_ReadStringAsync(HCkStreamW cHandle);
@@ -91,6 +95,8 @@ CK_VISIBLE_PUBLIC BOOL CkStreamW_SetSinkStream(HCkStreamW cHandle, HCkStreamW st
 CK_VISIBLE_PUBLIC BOOL CkStreamW_SetSourceBytes(HCkStreamW cHandle, HCkByteData sourceData);
 CK_VISIBLE_PUBLIC BOOL CkStreamW_SetSourceStream(HCkStreamW cHandle, HCkStreamW strm);
 CK_VISIBLE_PUBLIC BOOL CkStreamW_SetSourceString(HCkStreamW cHandle, const wchar_t *srcStr, const wchar_t *charset);
+CK_VISIBLE_PUBLIC BOOL CkStreamW_WriteBd(HCkStreamW cHandle, HCkBinDataW binData);
+CK_VISIBLE_PUBLIC HCkTaskW CkStreamW_WriteBdAsync(HCkStreamW cHandle, HCkBinDataW binData);
 CK_VISIBLE_PUBLIC BOOL CkStreamW_WriteByte(HCkStreamW cHandle, int byteVal);
 CK_VISIBLE_PUBLIC HCkTaskW CkStreamW_WriteByteAsync(HCkStreamW cHandle, int byteVal);
 CK_VISIBLE_PUBLIC BOOL CkStreamW_WriteBytes(HCkStreamW cHandle, HCkByteData byteData);
@@ -98,6 +104,8 @@ CK_VISIBLE_PUBLIC HCkTaskW CkStreamW_WriteBytesAsync(HCkStreamW cHandle, HCkByte
 CK_VISIBLE_PUBLIC BOOL CkStreamW_WriteBytesENC(HCkStreamW cHandle, const wchar_t *byteData, const wchar_t *encoding);
 CK_VISIBLE_PUBLIC HCkTaskW CkStreamW_WriteBytesENCAsync(HCkStreamW cHandle, const wchar_t *byteData, const wchar_t *encoding);
 CK_VISIBLE_PUBLIC BOOL CkStreamW_WriteClose(HCkStreamW cHandle);
+CK_VISIBLE_PUBLIC BOOL CkStreamW_WriteSb(HCkStreamW cHandle, HCkStringBuilderW sb);
+CK_VISIBLE_PUBLIC HCkTaskW CkStreamW_WriteSbAsync(HCkStreamW cHandle, HCkStringBuilderW sb);
 CK_VISIBLE_PUBLIC BOOL CkStreamW_WriteString(HCkStreamW cHandle, const wchar_t *str);
 CK_VISIBLE_PUBLIC HCkTaskW CkStreamW_WriteStringAsync(HCkStreamW cHandle, const wchar_t *str);
 #endif

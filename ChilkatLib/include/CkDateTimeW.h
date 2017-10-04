@@ -375,6 +375,18 @@ class CkDateTimeW  : public CkWideCharBase
 	 bool GetAsIso8601(const wchar_t *formatStr, bool bLocal, CkString &outStr);
 	 const wchar_t *getAsIso8601(const wchar_t *formatStr, bool bLocal);
 
+	// Loads the date/time with a string having the format as produced by the Serialize
+	// method, which is a string of SPACE separated integers containing (in this order)
+	// year, month, day, hour, minutes, seconds, and a UTC flag having the value of
+	// 1/0.
+	bool ExpiresWithin(int n, const wchar_t *units);
+
+	// Loads the date/time with a string having the format as produced by the Serialize
+	// method, which is a string of SPACE separated integers containing (in this order)
+	// year, month, day, hour, minutes, seconds, and a UTC flag having the value of
+	// 1/0.
+	bool OlderThan(int n, const wchar_t *units);
+
 	// END PUBLIC INTERFACE
 
 

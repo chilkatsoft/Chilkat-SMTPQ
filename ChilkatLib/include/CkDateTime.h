@@ -218,6 +218,18 @@ class CK_VISIBLE_PUBLIC CkDateTime  : public CkMultiByteBase
 	CkDtObj *GetDtObj(bool bLocal);
 	bool SetFromDtObj(CkDtObj &dtObj);
 
+	// Loads the date/time with a string having the format as produced by the Serialize
+	// method, which is a string of SPACE separated integers containing (in this order)
+	// year, month, day, hour, minutes, seconds, and a UTC flag having the value of
+	// 1/0.
+	bool ExpiresWithin(int n, const char *units);
+
+
+	// Loads the date/time with a string having the format as produced by the Serialize
+	// method, which is a string of SPACE separated integers containing (in this order)
+	// year, month, day, hour, minutes, seconds, and a UTC flag having the value of
+	// 1/0.
+	bool OlderThan(int n, const char *units);
 
 };
 #if !defined(__sun__) && !defined(__sun)

@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkZipEntry_H
 #define _C_CkZipEntry_H
 #include "chilkatDefs.h"
@@ -28,6 +28,7 @@ CK_VISIBLE_PUBLIC int CkZipEntry_getCrc(HCkZipEntry cHandle);
 CK_VISIBLE_PUBLIC void CkZipEntry_getDebugLogFilePath(HCkZipEntry cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkZipEntry_putDebugLogFilePath(HCkZipEntry cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkZipEntry_debugLogFilePath(HCkZipEntry cHandle);
+CK_VISIBLE_PUBLIC int CkZipEntry_getEncryptionKeyLen(HCkZipEntry cHandle);
 CK_VISIBLE_PUBLIC int CkZipEntry_getEntryID(HCkZipEntry cHandle);
 CK_VISIBLE_PUBLIC int CkZipEntry_getEntryType(HCkZipEntry cHandle);
 CK_VISIBLE_PUBLIC void CkZipEntry_getFileDateTime(HCkZipEntry cHandle, SYSTEMTIME * retval);
@@ -42,6 +43,7 @@ CK_VISIBLE_PUBLIC void CkZipEntry_getFileNameHex(HCkZipEntry cHandle, HCkString 
 CK_VISIBLE_PUBLIC const char *CkZipEntry_fileNameHex(HCkZipEntry cHandle);
 CK_VISIBLE_PUBLIC int CkZipEntry_getHeartbeatMs(HCkZipEntry cHandle);
 CK_VISIBLE_PUBLIC void CkZipEntry_putHeartbeatMs(HCkZipEntry cHandle, int newVal);
+CK_VISIBLE_PUBLIC BOOL CkZipEntry_getIsAesEncrypted(HCkZipEntry cHandle);
 CK_VISIBLE_PUBLIC BOOL CkZipEntry_getIsDirectory(HCkZipEntry cHandle);
 CK_VISIBLE_PUBLIC void CkZipEntry_getLastErrorHtml(HCkZipEntry cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkZipEntry_lastErrorHtml(HCkZipEntry cHandle);
@@ -85,6 +87,12 @@ CK_VISIBLE_PUBLIC BOOL CkZipEntry_ReplaceData(HCkZipEntry cHandle, HCkByteData i
 CK_VISIBLE_PUBLIC BOOL CkZipEntry_ReplaceString(HCkZipEntry cHandle, const char *strContent, const char *charset);
 CK_VISIBLE_PUBLIC BOOL CkZipEntry_SaveLastError(HCkZipEntry cHandle, const char *path);
 CK_VISIBLE_PUBLIC void CkZipEntry_SetDt(HCkZipEntry cHandle, HCkDateTime dt);
+CK_VISIBLE_PUBLIC BOOL CkZipEntry_UnzipToBd(HCkZipEntry cHandle, HCkBinData binData);
+CK_VISIBLE_PUBLIC HCkTask CkZipEntry_UnzipToBdAsync(HCkZipEntry cHandle, HCkBinData binData);
+CK_VISIBLE_PUBLIC BOOL CkZipEntry_UnzipToSb(HCkZipEntry cHandle, int lineEndingBehavior, const char *srcCharset, HCkStringBuilder sb);
+CK_VISIBLE_PUBLIC HCkTask CkZipEntry_UnzipToSbAsync(HCkZipEntry cHandle, int lineEndingBehavior, const char *srcCharset, HCkStringBuilder sb);
+CK_VISIBLE_PUBLIC BOOL CkZipEntry_UnzipToStream(HCkZipEntry cHandle, HCkStream toStream);
+CK_VISIBLE_PUBLIC HCkTask CkZipEntry_UnzipToStreamAsync(HCkZipEntry cHandle, HCkStream toStream);
 CK_VISIBLE_PUBLIC BOOL CkZipEntry_UnzipToString(HCkZipEntry cHandle, int lineEndingBehavior, const char *srcCharset, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkZipEntry_unzipToString(HCkZipEntry cHandle, int lineEndingBehavior, const char *srcCharset);
 CK_VISIBLE_PUBLIC HCkTask CkZipEntry_UnzipToStringAsync(HCkZipEntry cHandle, int lineEndingBehavior, const char *srcCharset);

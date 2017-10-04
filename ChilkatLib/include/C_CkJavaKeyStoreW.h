@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkJavaKeyStoreWH
 #define _C_CkJavaKeyStoreWH
 #include "chilkatDefs.h"
@@ -20,6 +20,7 @@ CK_VISIBLE_PUBLIC const wchar_t *CkJavaKeyStoreW_lastErrorXml(HCkJavaKeyStoreW c
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_getLastMethodSuccess(HCkJavaKeyStoreW cHandle);
 CK_VISIBLE_PUBLIC void  CkJavaKeyStoreW_putLastMethodSuccess(HCkJavaKeyStoreW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkJavaKeyStoreW_getNumPrivateKeys(HCkJavaKeyStoreW cHandle);
+CK_VISIBLE_PUBLIC int CkJavaKeyStoreW_getNumSecretKeys(HCkJavaKeyStoreW cHandle);
 CK_VISIBLE_PUBLIC int CkJavaKeyStoreW_getNumTrustedCerts(HCkJavaKeyStoreW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_getRequireCompleteChain(HCkJavaKeyStoreW cHandle);
 CK_VISIBLE_PUBLIC void  CkJavaKeyStoreW_putRequireCompleteChain(HCkJavaKeyStoreW cHandle, BOOL newVal);
@@ -31,6 +32,7 @@ CK_VISIBLE_PUBLIC void CkJavaKeyStoreW_getVersion(HCkJavaKeyStoreW cHandle, HCkS
 CK_VISIBLE_PUBLIC const wchar_t *CkJavaKeyStoreW_version(HCkJavaKeyStoreW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_AddPfx(HCkJavaKeyStoreW cHandle, HCkPfxW pfx, const wchar_t *alias, const wchar_t *password);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_AddPrivateKey(HCkJavaKeyStoreW cHandle, HCkCertW cert, const wchar_t *alias, const wchar_t *password);
+CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_AddSecretKey(HCkJavaKeyStoreW cHandle, const wchar_t *encodedKeyBytes, const wchar_t *encoding, const wchar_t *algorithm, const wchar_t *alias, const wchar_t *password);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_AddTrustedCert(HCkJavaKeyStoreW cHandle, HCkCertW cert, const wchar_t *alias);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_ChangePassword(HCkJavaKeyStoreW cHandle, int index, const wchar_t *oldPassword, const wchar_t *newPassword);
 CK_VISIBLE_PUBLIC HCkCertChainW CkJavaKeyStoreW_FindCertChain(HCkJavaKeyStoreW cHandle, const wchar_t *alias, BOOL caseSensitive);
@@ -40,12 +42,17 @@ CK_VISIBLE_PUBLIC HCkCertChainW CkJavaKeyStoreW_GetCertChain(HCkJavaKeyStoreW cH
 CK_VISIBLE_PUBLIC HCkPrivateKeyW CkJavaKeyStoreW_GetPrivateKey(HCkJavaKeyStoreW cHandle, const wchar_t *password, int index);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_GetPrivateKeyAlias(HCkJavaKeyStoreW cHandle, int index, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkJavaKeyStoreW_getPrivateKeyAlias(HCkJavaKeyStoreW cHandle, int index);
+CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_GetSecretKey(HCkJavaKeyStoreW cHandle, const wchar_t *password, int index, const wchar_t *encoding, HCkString outStr);
+CK_VISIBLE_PUBLIC const wchar_t *CkJavaKeyStoreW_getSecretKey(HCkJavaKeyStoreW cHandle, const wchar_t *password, int index, const wchar_t *encoding);
+CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_GetSecretKeyAlias(HCkJavaKeyStoreW cHandle, int index, HCkString outStr);
+CK_VISIBLE_PUBLIC const wchar_t *CkJavaKeyStoreW_getSecretKeyAlias(HCkJavaKeyStoreW cHandle, int index);
 CK_VISIBLE_PUBLIC HCkCertW CkJavaKeyStoreW_GetTrustedCert(HCkJavaKeyStoreW cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_GetTrustedCertAlias(HCkJavaKeyStoreW cHandle, int index, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkJavaKeyStoreW_getTrustedCertAlias(HCkJavaKeyStoreW cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_LoadBinary(HCkJavaKeyStoreW cHandle, const wchar_t *password, HCkByteData jksData);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_LoadEncoded(HCkJavaKeyStoreW cHandle, const wchar_t *password, const wchar_t *jksEncData, const wchar_t *encoding);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_LoadFile(HCkJavaKeyStoreW cHandle, const wchar_t *password, const wchar_t *path);
+CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_LoadJwkSet(HCkJavaKeyStoreW cHandle, const wchar_t *password, HCkJsonObjectW jwkSet);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_RemoveEntry(HCkJavaKeyStoreW cHandle, int entryType, int index);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_SaveLastError(HCkJavaKeyStoreW cHandle, const wchar_t *path);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_SetAlias(HCkJavaKeyStoreW cHandle, int entryType, int index, const wchar_t *alias);
@@ -53,6 +60,7 @@ CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_ToBinary(HCkJavaKeyStoreW cHandle, const 
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_ToEncodedString(HCkJavaKeyStoreW cHandle, const wchar_t *password, const wchar_t *encoding, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkJavaKeyStoreW_toEncodedString(HCkJavaKeyStoreW cHandle, const wchar_t *password, const wchar_t *encoding);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_ToFile(HCkJavaKeyStoreW cHandle, const wchar_t *password, const wchar_t *path);
+CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_ToJwkSet(HCkJavaKeyStoreW cHandle, const wchar_t *password, HCkStringBuilderW sbJwkSet);
 CK_VISIBLE_PUBLIC HCkPemW CkJavaKeyStoreW_ToPem(HCkJavaKeyStoreW cHandle, const wchar_t *password);
 CK_VISIBLE_PUBLIC HCkPfxW CkJavaKeyStoreW_ToPfx(HCkJavaKeyStoreW cHandle, const wchar_t *password);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_UnlockComponent(HCkJavaKeyStoreW cHandle, const wchar_t *unlockCode);

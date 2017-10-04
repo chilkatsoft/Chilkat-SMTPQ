@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkZip_H
 #define _C_CkZip_H
 #include "chilkatDefs.h"
@@ -199,6 +199,7 @@ CK_VISIBLE_PUBLIC BOOL CkZip_IsNoCompressExtension(HCkZip cHandle, const char *f
 CK_VISIBLE_PUBLIC BOOL CkZip_IsPasswordProtected(HCkZip cHandle, const char *zipFilename);
 CK_VISIBLE_PUBLIC BOOL CkZip_IsUnlocked(HCkZip cHandle);
 CK_VISIBLE_PUBLIC BOOL CkZip_NewZip(HCkZip cHandle, const char *zipFilePath);
+CK_VISIBLE_PUBLIC BOOL CkZip_OpenBd(HCkZip cHandle, HCkBinData binData);
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC BOOL CkZip_OpenEmbedded(HCkZip cHandle, const char *exeFilename, const char *resourceName);
 #endif
@@ -237,6 +238,8 @@ CK_VISIBLE_PUBLIC HCkTask CkZip_UnzipMatchingIntoAsync(HCkZip cHandle, const cha
 CK_VISIBLE_PUBLIC int CkZip_UnzipNewer(HCkZip cHandle, const char *dirPath);
 CK_VISIBLE_PUBLIC HCkTask CkZip_UnzipNewerAsync(HCkZip cHandle, const char *dirPath);
 CK_VISIBLE_PUBLIC BOOL CkZip_VerifyPassword(HCkZip cHandle);
+CK_VISIBLE_PUBLIC BOOL CkZip_WriteBd(HCkZip cHandle, HCkBinData binData);
+CK_VISIBLE_PUBLIC HCkTask CkZip_WriteBdAsync(HCkZip cHandle, HCkBinData binData);
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC BOOL CkZip_WriteExe(HCkZip cHandle, const char *exeFilename);
 #endif

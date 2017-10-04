@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkFtp2_H
 #define _CkFtp2_H
@@ -17,6 +17,7 @@ class CkByteData;
 class CkDateTime;
 class CkBinData;
 class CkStringBuilder;
+class CkStream;
 class CkCert;
 class CkFtp2Progress;
 
@@ -152,75 +153,35 @@ class CK_VISIBLE_PUBLIC CkFtp2  : public CkClassWithCallbacks
 	// The number of bytes received during an asynchronous FTP download. This property
 	// is updated in real-time and an application may periodically fetch and display
 	// it's value while the download is in progress.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
 	unsigned long get_AsyncBytesReceived(void);
 
 	// Same as AsyncBytesReceived, but returns the value as a 64-bit integer.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
 	__int64 get_AsyncBytesReceived64(void);
 
 	// The number of bytes received during an asynchronous FTP download. This property
 	// is updated in real-time and an application may periodically fetch and display
 	// it's value while the download is in progress.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
 	void get_AsyncBytesReceivedStr(CkString &str);
 	// The number of bytes received during an asynchronous FTP download. This property
 	// is updated in real-time and an application may periodically fetch and display
 	// it's value while the download is in progress.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
 	const char *asyncBytesReceivedStr(void);
 
 	// The number of bytes sent during an asynchronous FTP upload. This property is
 	// updated in real-time and an application may periodically fetch and display it's
 	// value while the upload is in progress.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
 	unsigned long get_AsyncBytesSent(void);
 
 	// Same as AsyncBytesSent, but returns the value as a 64-bit integer.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
 	__int64 get_AsyncBytesSent64(void);
 
 	// The number of bytes sent during an asynchronous FTP upload. This string property
 	// is updated in real-time and an application may periodically fetch and display
 	// it's value while the upload is in progress.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
 	void get_AsyncBytesSentStr(CkString &str);
 	// The number of bytes sent during an asynchronous FTP upload. This string property
 	// is updated in real-time and an application may periodically fetch and display
 	// it's value while the upload is in progress.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
 	const char *asyncBytesSentStr(void);
 
 	// Set to true if the asynchronous transfer (download or upload) is finished.
@@ -1250,17 +1211,21 @@ class CK_VISIBLE_PUBLIC CkFtp2  : public CkClassWithCallbacks
 	// true and re-calling the upload or download method.
 	void put_RestartNext(bool newVal);
 
-	// The buffer size to be used with the underlying TCP/IP socket for sending. The
-	// default value is 65536 (64K). Set it to a smaller value for more frequent
-	// percentage completion event callbacks. A larger SendBufferSize may improve
-	// performance, but at the expense not having as frequent progress monitoring
-	// callbacks (if used and if supported by your programming language).
+	// This property is now deprecated, and has no effect in Chilkat versions 9.5.0.69
+	// and greater.
+	// 
+	// In the past, it affected how often percent completion callbacks were made.
+	// Setting it to a smaller value caused more frequent percentage completion event
+	// callbacks. The default value is 65536 (64K) and should generally not be changed.
+	// 
 	int get_SendBufferSize(void);
-	// The buffer size to be used with the underlying TCP/IP socket for sending. The
-	// default value is 65536 (64K). Set it to a smaller value for more frequent
-	// percentage completion event callbacks. A larger SendBufferSize may improve
-	// performance, but at the expense not having as frequent progress monitoring
-	// callbacks (if used and if supported by your programming language).
+	// This property is now deprecated, and has no effect in Chilkat versions 9.5.0.69
+	// and greater.
+	// 
+	// In the past, it affected how often percent completion callbacks were made.
+	// Setting it to a smaller value caused more frequent percentage completion event
+	// callbacks. The default value is 65536 (64K) and should generally not be changed.
+	// 
 	void put_SendBufferSize(int newVal);
 
 	// Contains the session log if KeepSessionLog is turned on.
@@ -1328,16 +1293,10 @@ class CK_VISIBLE_PUBLIC CkFtp2  : public CkClassWithCallbacks
 	void put_SocksVersion(int newVal);
 
 	// Sets the receive buffer size socket option. Normally, this property should be
-	// left unchanged. The default value is 0, which indicates that the receive buffer
-	// size socket option should not be explicitly set (i.e. the system default value,
-	// which may vary from system to system, should be used).
+	// left unchanged. The default value is 4194304.
 	// 
-	// This property can be changed if download performance seems slow. It is
-	// recommended to be a multiple of 4096. To see the current system's default
-	// receive buffer size, examine the LastErrorText property after calling any method
-	// that establishes a connection. It should be reported under the heading
-	// "SO_RCVBUF". To boost performance, try setting it equal to 2, 3, or 4 times the
-	// default value.
+	// This property can be increased if download performance seems slow. It is
+	// recommended to be a multiple of 4096.
 	// 
 	// Note: This property only applies to FTP data connections. The FTP control
 	// connection is not used for uploading or downloading files, and is therefore not
@@ -1345,16 +1304,10 @@ class CK_VISIBLE_PUBLIC CkFtp2  : public CkClassWithCallbacks
 	// 
 	int get_SoRcvBuf(void);
 	// Sets the receive buffer size socket option. Normally, this property should be
-	// left unchanged. The default value is 0, which indicates that the receive buffer
-	// size socket option should not be explicitly set (i.e. the system default value,
-	// which may vary from system to system, should be used).
+	// left unchanged. The default value is 4194304.
 	// 
-	// This property can be changed if download performance seems slow. It is
-	// recommended to be a multiple of 4096. To see the current system's default
-	// receive buffer size, examine the LastErrorText property after calling any method
-	// that establishes a connection. It should be reported under the heading
-	// "SO_RCVBUF". To boost performance, try setting it equal to 2, 3, or 4 times the
-	// default value.
+	// This property can be increased if download performance seems slow. It is
+	// recommended to be a multiple of 4096.
 	// 
 	// Note: This property only applies to FTP data connections. The FTP control
 	// connection is not used for uploading or downloading files, and is therefore not
@@ -1363,27 +1316,27 @@ class CK_VISIBLE_PUBLIC CkFtp2  : public CkClassWithCallbacks
 	void put_SoRcvBuf(int newVal);
 
 	// Sets the send buffer size socket option. Normally, this property should be left
-	// unchanged. The default value is 0, which indicates that the send buffer size
-	// socket option should not be explicitly set (i.e. the system default value, which
-	// may vary from system to system, should be used).
+	// unchanged. The default value is 262144.
 	// 
-	// This property can be changed if upload performance seems slow. It is recommended
-	// to be a multiple of 4096. To see the current system's default send buffer size,
-	// examine the LastErrorText property after calling any method that establishes a
-	// connection. It should be reported under the heading "SO_SNDBUF". To boost
-	// performance, try setting it equal to 2, 3, or 4 times the default value.
+	// This property can be increased if upload performance seems slow. It is
+	// recommended to be a multiple of 4096. Testing with sizes such as 512K and 1MB is
+	// reasonable.
+	// 
+	// Note: This property only applies to FTP data connections. The FTP control
+	// connection is not used for uploading or downloading files, and is therefore not
+	// performance sensitive.
 	// 
 	int get_SoSndBuf(void);
 	// Sets the send buffer size socket option. Normally, this property should be left
-	// unchanged. The default value is 0, which indicates that the send buffer size
-	// socket option should not be explicitly set (i.e. the system default value, which
-	// may vary from system to system, should be used).
+	// unchanged. The default value is 262144.
 	// 
-	// This property can be changed if upload performance seems slow. It is recommended
-	// to be a multiple of 4096. To see the current system's default send buffer size,
-	// examine the LastErrorText property after calling any method that establishes a
-	// connection. It should be reported under the heading "SO_SNDBUF". To boost
-	// performance, try setting it equal to 2, 3, or 4 times the default value.
+	// This property can be increased if upload performance seems slow. It is
+	// recommended to be a multiple of 4096. Testing with sizes such as 512K and 1MB is
+	// reasonable.
+	// 
+	// Note: This property only applies to FTP data connections. The FTP control
+	// connection is not used for uploading or downloading files, and is therefore not
+	// performance sensitive.
 	// 
 	void put_SoSndBuf(int newVal);
 
@@ -2308,8 +2261,7 @@ class CK_VISIBLE_PUBLIC CkFtp2  : public CkClassWithCallbacks
 
 
 	// Recursively downloads the structure of a complete remote directory tree. Returns
-	// an XML document with the directory structure. A zero-length string is returned
-	// to indicate failure.
+	// an XML document with the directory structure.
 	// 
 	// Note: Starting in version 9.5.0.47, the SyncMustMatch and SyncMustNotMatch
 	// properties apply to this method.
@@ -2317,16 +2269,14 @@ class CK_VISIBLE_PUBLIC CkFtp2  : public CkClassWithCallbacks
 	bool DirTreeXml(CkString &outStrXml);
 
 	// Recursively downloads the structure of a complete remote directory tree. Returns
-	// an XML document with the directory structure. A zero-length string is returned
-	// to indicate failure.
+	// an XML document with the directory structure.
 	// 
 	// Note: Starting in version 9.5.0.47, the SyncMustMatch and SyncMustNotMatch
 	// properties apply to this method.
 	// 
 	const char *dirTreeXml(void);
 	// Recursively downloads the structure of a complete remote directory tree. Returns
-	// an XML document with the directory structure. A zero-length string is returned
-	// to indicate failure.
+	// an XML document with the directory structure.
 	// 
 	// Note: Starting in version 9.5.0.47, the SyncMustMatch and SyncMustNotMatch
 	// properties apply to this method.
@@ -2703,6 +2653,17 @@ class CK_VISIBLE_PUBLIC CkFtp2  : public CkClassWithCallbacks
 	// for the DirListingCharset property.
 	// 
 	CkTask *GetFileSbAsync(const char *remoteFilePath, const char *charset, CkStringBuilder &sb);
+
+
+	// Downloads a file to a stream. If called synchronously, the remoteFilePath must have a
+	// sink, such as a file or another stream object. If called asynchronously, then
+	// the foreground thread can read the stream.
+	bool GetFileToStream(const char *remoteFilePath, CkStream &toStream);
+
+	// Downloads a file to a stream. If called synchronously, the remoteFilePath must have a
+	// sink, such as a file or another stream object. If called asynchronously, then
+	// the foreground thread can read the stream.
+	CkTask *GetFileToStreamAsync(const char *remoteFilePath, CkStream &toStream);
 
 
 	// Returns group name, if available, for the Nth file. If empty, then no group

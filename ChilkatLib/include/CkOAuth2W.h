@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkOAuth2W_H
 #define _CkOAuth2W_H
@@ -394,6 +394,49 @@ class CK_VISIBLE_PUBLIC CkOAuth2W  : public CkClassWithCallbacksW
 	// 
 	void put_ListenPort(int newVal);
 
+	// If set, then an unused port will be chosen in the range from the ListenPort
+	// property to this property. Some OAuth2 services, such as Google, require that
+	// callback URL's, including port numbers, be selected in advance. This feature
+	// allows for a range of callback URL's to be specified to cope with the
+	// possibility that another application on the same computer might be using a
+	// particular port.
+	// 
+	// For example, a Google ClientID might be configured with a set of authorized
+	// callback URI's such as:
+	//     http://localhost:55110/
+	//     http://localhost:55112/
+	//     http://localhost:55113/
+	//     http://localhost:55114/
+	//     http://localhost:55115/
+	//     http://localhost:55116/
+	//     http://localhost:55117/
+	// 
+	// In which case the ListenPort property would be set to 55110, and this property
+	// would be set to 55117.
+	// 
+	int get_ListenPortRangeEnd(void);
+	// If set, then an unused port will be chosen in the range from the ListenPort
+	// property to this property. Some OAuth2 services, such as Google, require that
+	// callback URL's, including port numbers, be selected in advance. This feature
+	// allows for a range of callback URL's to be specified to cope with the
+	// possibility that another application on the same computer might be using a
+	// particular port.
+	// 
+	// For example, a Google ClientID might be configured with a set of authorized
+	// callback URI's such as:
+	//     http://localhost:55110/
+	//     http://localhost:55112/
+	//     http://localhost:55113/
+	//     http://localhost:55114/
+	//     http://localhost:55115/
+	//     http://localhost:55116/
+	//     http://localhost:55117/
+	// 
+	// In which case the ListenPort property would be set to 55110, and this property
+	// would be set to 55117.
+	// 
+	void put_ListenPortRangeEnd(int newVal);
+
 	// Defaults to "localhost". This should typically remain at the default value. It
 	// is the loopback domain or IP address used for the redirect_uri. For example,
 	// "http://localhost:2012/". (assuming 2012 was used or randomly chosen as the
@@ -487,6 +530,19 @@ class CK_VISIBLE_PUBLIC CkOAuth2W  : public CkClassWithCallbacksW
 	// }
 	// 
 	void put_RefreshToken(const wchar_t *newVal);
+
+	// This is an optional setting that defines the "resource" query parameter. For
+	// example, to call the Microsoft Graph API, set this property value to
+	// "https://graph.microsoft.com/".
+	void get_Resource(CkString &str);
+	// This is an optional setting that defines the "resource" query parameter. For
+	// example, to call the Microsoft Graph API, set this property value to
+	// "https://graph.microsoft.com/".
+	const wchar_t *resource(void);
+	// This is an optional setting that defines the "resource" query parameter. For
+	// example, to call the Microsoft Graph API, set this property value to
+	// "https://graph.microsoft.com/".
+	void put_Resource(const wchar_t *newVal);
 
 	// This is an optional setting that defines the scope of access. For example,
 	// Google API scopes are listed here:
@@ -589,8 +645,48 @@ class CK_VISIBLE_PUBLIC CkOAuth2W  : public CkClassWithCallbacksW
 	// Cancels an OAuth2 authorization flow that is in progress.
 	bool Cancel(void);
 
+	// Some OAuth2 providers can provide additional parameters in the redirect request
+	// sent to the local listener (i.e. the Chilkat background thread). One such case
+	// is for QuickBooks, It contains a realmId parameter such as the following:
+	// http://localhost:55568/?state=xxxxxxxxxxxx&code=xxxxxxxxxxxx&realmId=1234567890
+	// 
+	// After the OAuth2 authentication is completed, an application can call this
+	// method to get any of the parameter values. For example, to get the realmId
+	// value, pass "realmId" in paramName.
+	// 
+	bool GetRedirectRequestParam(const wchar_t *paramName, CkString &outStr);
+	// Some OAuth2 providers can provide additional parameters in the redirect request
+	// sent to the local listener (i.e. the Chilkat background thread). One such case
+	// is for QuickBooks, It contains a realmId parameter such as the following:
+	// http://localhost:55568/?state=xxxxxxxxxxxx&code=xxxxxxxxxxxx&realmId=1234567890
+	// 
+	// After the OAuth2 authentication is completed, an application can call this
+	// method to get any of the parameter values. For example, to get the realmId
+	// value, pass "realmId" in paramName.
+	// 
+	const wchar_t *getRedirectRequestParam(const wchar_t *paramName);
+	// Some OAuth2 providers can provide additional parameters in the redirect request
+	// sent to the local listener (i.e. the Chilkat background thread). One such case
+	// is for QuickBooks, It contains a realmId parameter such as the following:
+	// http://localhost:55568/?state=xxxxxxxxxxxx&code=xxxxxxxxxxxx&realmId=1234567890
+	// 
+	// After the OAuth2 authentication is completed, an application can call this
+	// method to get any of the parameter values. For example, to get the realmId
+	// value, pass "realmId" in paramName.
+	// 
+	const wchar_t *redirectRequestParam(const wchar_t *paramName);
+
 	// Monitors an already started OAuth2 authorization flow and returns when it is
 	// finished.
+	// 
+	// Note: It rarely makes sense to call this method. If this programming language
+	// supports callbacks, then MonitorAsync is a better choice. (See the Oauth2
+	// project repositories at https://github.com/chilkatsoft for samples.) If a
+	// programming language does not have callbacks, a better choice is to periodically
+	// check the AuthFlowState property for a value >= 3. If there is no response from
+	// the browser, the background thread (that is waiting on the browser) can be
+	// cancelled by calling the Cancel method.
+	// 
 	bool Monitor(void);
 
 	// Creates an asynchronous task to call the Monitor method with the arguments

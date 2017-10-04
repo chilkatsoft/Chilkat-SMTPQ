@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkZipEntryW_H
 #define _CkZipEntryW_H
@@ -15,6 +15,9 @@
 class CkByteData;
 class CkTaskW;
 class CkDateTimeW;
+class CkBinDataW;
+class CkStringBuilderW;
+class CkStreamW;
 class CkBaseProgressW;
 
 
@@ -98,6 +101,10 @@ class CK_VISIBLE_PUBLIC CkZipEntryW  : public CkClassWithCallbacksW
 	// (See http://www.winzip.com/aes_info.htm#CRC )
 	int get_Crc(void);
 
+	// If this entry is AES encrypted, then this property contains the AES key length
+	// (128, 192, or 256). If the entry is not AES encrypted, then the value is 0.
+	int get_EncryptionKeyLen(void);
+
 	// The unique ID assigned by Zip.NET while the object is instantiated in memory.
 	int get_EntryID(void);
 
@@ -150,6 +157,12 @@ class CK_VISIBLE_PUBLIC CkZipEntryW  : public CkClassWithCallbacksW
 	// prior to completion. If HeartbeatMs is 0 (the default), no AbortCheck event
 	// callbacks will fire.
 	void put_HeartbeatMs(int newVal);
+
+	// true if the entry is AES encrypted. This property can only be true for
+	// entries already contained in a .zip (i.e. entries obtained from a zip archive
+	// that was opened via OpenZip, OpenBd, OpenFromMemory, etc.) The property is
+	// false if the entry contained in the zip is not AES encrypted.
+	bool get_IsAesEncrypted(void);
 
 	// True if the Zip entry is a directory, false if it is a file.
 	bool get_IsDirectory(void);
@@ -301,6 +314,40 @@ class CK_VISIBLE_PUBLIC CkZipEntryW  : public CkClassWithCallbacksW
 
 	// Sets the last-modified date/time for this zip entry.
 	void SetDt(CkDateTimeW &dt);
+
+	// Unzips the entry contents into the binData.
+	bool UnzipToBd(CkBinDataW &binData);
+
+	// Creates an asynchronous task to call the UnzipToBd method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *UnzipToBdAsync(CkBinDataW &binData);
+
+	// Unzips a text file to the sb. The contents of sb are appended with the
+	// unzipped file. The lineEndingBehavior is as follows:
+	// 
+	// 0 = leave unchanged.
+	// 1 = convert all to bare LF's
+	// 2 = convert all to CRLF's
+	// 
+	// The srcCharset tells the component how to interpret the bytes of the uncompressed file
+	// -- i.e. as utf-8, utf-16, windows-1252, etc.
+	bool UnzipToSb(int lineEndingBehavior, const wchar_t *srcCharset, CkStringBuilderW &sb);
+
+	// Creates an asynchronous task to call the UnzipToSb method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *UnzipToSbAsync(int lineEndingBehavior, const wchar_t *srcCharset, CkStringBuilderW &sb);
+
+	// Unzips a file within a Zip to a stream. If called synchronously, the toStream must
+	// have a sink, such as a file or another stream object. If called asynchronously,
+	// then the foreground thread can read the stream.
+	bool UnzipToStream(CkStreamW &toStream);
+
+	// Creates an asynchronous task to call the UnzipToStream method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *UnzipToStreamAsync(CkStreamW &toStream);
 
 	// Inflate and return the uncompressed data as a string The lineEndingBehavior is as follows:
 	// 

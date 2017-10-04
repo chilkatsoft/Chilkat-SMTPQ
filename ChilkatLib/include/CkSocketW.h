@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkSocketW_H
 #define _CkSocketW_H
@@ -919,29 +919,17 @@ class CK_VISIBLE_PUBLIC CkSocketW  : public CkClassWithCallbacksW
 	void put_SocksVersion(int newVal);
 
 	// Sets the receive buffer size socket option. Normally, this property should be
-	// left unchanged. The default value is 0, which indicates that the receive buffer
-	// size socket option should not be explicitly set (i.e. the system default value,
-	// which may vary from system to system, should be used).
+	// left unchanged. The default value is 4194304.
 	// 
-	// This property can be changed if download performance seems slow. It is
-	// recommended to be a multiple of 4096. To see the current system's default
-	// receive buffer size, examine the LastErrorText property after calling any method
-	// that establishes a connection. It should be reported under the heading
-	// "SO_RCVBUF". To boost performance, try setting it equal to 2, 3, or 4 times the
-	// default value.
+	// This property can be increased if download performance seems slow. It is
+	// recommended to be a multiple of 4096.
 	// 
 	int get_SoRcvBuf(void);
 	// Sets the receive buffer size socket option. Normally, this property should be
-	// left unchanged. The default value is 0, which indicates that the receive buffer
-	// size socket option should not be explicitly set (i.e. the system default value,
-	// which may vary from system to system, should be used).
+	// left unchanged. The default value is 4194304.
 	// 
-	// This property can be changed if download performance seems slow. It is
-	// recommended to be a multiple of 4096. To see the current system's default
-	// receive buffer size, examine the LastErrorText property after calling any method
-	// that establishes a connection. It should be reported under the heading
-	// "SO_RCVBUF". To boost performance, try setting it equal to 2, 3, or 4 times the
-	// default value.
+	// This property can be increased if download performance seems slow. It is
+	// recommended to be a multiple of 4096.
 	// 
 	void put_SoRcvBuf(int newVal);
 
@@ -957,27 +945,19 @@ class CK_VISIBLE_PUBLIC CkSocketW  : public CkClassWithCallbacksW
 	void put_SoReuseAddr(bool newVal);
 
 	// Sets the send buffer size socket option. Normally, this property should be left
-	// unchanged. The default value is 0, which indicates that the send buffer size
-	// socket option should not be explicitly set (i.e. the system default value, which
-	// may vary from system to system, should be used).
+	// unchanged. The default value is 262144.
 	// 
-	// This property can be changed if upload performance seems slow. It is recommended
-	// to be a multiple of 4096. To see the current system's default send buffer size,
-	// examine the LastErrorText property after calling any method that establishes a
-	// connection. It should be reported under the heading "SO_SNDBUF". To boost
-	// performance, try setting it equal to 2, 3, or 4 times the default value.
+	// This property can be increased if upload performance seems slow. It is
+	// recommended to be a multiple of 4096. Testing with sizes such as 512K and 1MB is
+	// reasonable.
 	// 
 	int get_SoSndBuf(void);
 	// Sets the send buffer size socket option. Normally, this property should be left
-	// unchanged. The default value is 0, which indicates that the send buffer size
-	// socket option should not be explicitly set (i.e. the system default value, which
-	// may vary from system to system, should be used).
+	// unchanged. The default value is 262144.
 	// 
-	// This property can be changed if upload performance seems slow. It is recommended
-	// to be a multiple of 4096. To see the current system's default send buffer size,
-	// examine the LastErrorText property after calling any method that establishes a
-	// connection. It should be reported under the heading "SO_SNDBUF". To boost
-	// performance, try setting it equal to 2, 3, or 4 times the default value.
+	// This property can be increased if upload performance seems slow. It is
+	// recommended to be a multiple of 4096. Testing with sizes such as 512K and 1MB is
+	// reasonable.
 	// 
 	void put_SoSndBuf(int newVal);
 
@@ -1632,6 +1612,27 @@ class CK_VISIBLE_PUBLIC CkSocketW  : public CkClassWithCallbacksW
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *BindAndListenAsync(int port, int backLog);
 
+	// Binds a TCP socket to an unused port within a port range (beginPort to endPort) and
+	// configures it to listen for incoming connections. The size of the backlog is
+	// passed in endPort. The endPort is necessary when multiple connections arrive at the
+	// same time, or close enough in time such that they cannot be serviced
+	// immediately. (A typical value to use for endPort is 5.) This method should be
+	// called once prior to receiving incoming connection requests via the
+	// AcceptNextConnection method.
+	// 
+	// To bind and listen using IPv6, set the ListenIpv6 property = true prior to
+	// calling this method.
+	// 
+	// Returns the port number that was bound, or -1 if no port was available or if it
+	// failed for some other reason.
+	// 
+	int BindAndListenPortRange(int beginPort, int endPort, int backLog);
+
+	// Creates an asynchronous task to call the BindAndListenPortRange method with the
+	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *BindAndListenPortRangeAsync(int beginPort, int endPort, int backLog);
+
 	// Convenience method for building a simple HTTP GET request from a URL.
 	bool BuildHttpGetRequest(const wchar_t *url, CkString &outStr);
 	// Convenience method for building a simple HTTP GET request from a URL.
@@ -1696,6 +1697,18 @@ class CK_VISIBLE_PUBLIC CkSocketW  : public CkClassWithCallbacksW
 	// hardware firewalls, anti-virus, at either source or destination (or both) can
 	// block the connection. If the connection fails, make sure to check all potential
 	// external causes of blockage.
+	// 
+	// Question: How do I Choose the TLS version, such as 1.2? Answer: The client does
+	// not specifically choose the TLS version. In the TLS handshake (which is what
+	// occurs internally in this method), the client tells the server the version of
+	// the TLS protocol it wishes to use, which should be the highest version is
+	// supports. In this case, (at the time of this writing on 22-June-2017) it is TLS
+	// 1.2. The server then chooses the TLS version that will actually be used. In most
+	// cases it will be TLS 1.2. The client can then choose to accept or reject the
+	// connection based on the TLS version chosen by the server. By default, Chilkat
+	// will reject anything lower than SSL 3.0 (i.e. SSL 2.0 or lower is rejected). The
+	// SslProtocol property can be set to change what is accepted by Chilkat. For
+	// example, it can be set to "TLS 1.0 or higher".
 	// 
 	bool Connect(const wchar_t *hostname, int port, bool ssl, int maxWaitMs);
 
@@ -2100,12 +2113,12 @@ class CK_VISIBLE_PUBLIC CkSocketW  : public CkClassWithCallbacksW
 	// and numBytes are both 0, then the entire binData is sent. If offset is non-zero and numBytes
 	// is zero, then the bytes starting at offset until the end are sent.
 	// 
-	bool SendBd(CkBinDataW &binData, int offset, int numBytes);
+	bool SendBd(CkBinDataW &binData, unsigned long offset, unsigned long numBytes);
 
 	// Creates an asynchronous task to call the SendBd method with the arguments
 	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *SendBdAsync(CkBinDataW &binData, int offset, int numBytes);
+	CkTaskW *SendBdAsync(CkBinDataW &binData, unsigned long offset, unsigned long numBytes);
 
 	// Sends a single byte. The integer must have a value from 0 to 255.
 	bool SendByte(int value);
@@ -2195,6 +2208,24 @@ class CK_VISIBLE_PUBLIC CkSocketW  : public CkClassWithCallbacksW
 	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *SendStringAsync(const wchar_t *stringToSend);
+
+	// Sends a "Wake on Lan" magic packet to a computer. A Wake on Lan is a way to
+	// power on a computer remotely by sending a data packet known as a magic packet.
+	// For this to work, the network card must have enabled the feature: “Power on
+	// Lan” or “Power on PCI Device“, which is done by accessing the BIOS of the
+	// machine.
+	// 
+	// The macAddress is the MAC address (in hex) of the computer to wake. A MAC address
+	// should be 6 bytes in length. For example, "000102030405". The port is the port
+	// which should be 7 or 9. (Port number 9 is more commonly used.) The ipBroadcastAddr is the
+	// broadcast address of your network, which usually ends with *.255. For example:
+	// "192.168.1.255".
+	// 
+	// Your application does not call Connect prior to calling SendWakeOnLan. To use
+	// this method, it's just a matter of instantiating an instance of this socket
+	// object and then call SendWakeOnLan.
+	// 
+	bool SendWakeOnLan(const wchar_t *macAddress, int port, const wchar_t *ipBroadcastAddr);
 
 	// A client-side certificate for SSL/TLS connections is optional. It should be used
 	// only if the server demands it. This method allows the certificate to be

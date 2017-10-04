@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkTar_H
 #define _CkTar_H
@@ -91,14 +91,26 @@ class CK_VISIBLE_PUBLIC CkTar  : public CkClassWithCallbacks
 	// A prefix to be added to each file's path within the TAR archive as it is being
 	// created. For example, if this property is set to the string "subdir1", then
 	// "subdir1/" will be prepended to each file's path within the TAR.
+	// 
+	// Note: This property does not apply to files added using the AddFile2 method,
+	// which directly specifies the path-in-tar.
+	// 
 	void get_DirPrefix(CkString &str);
 	// A prefix to be added to each file's path within the TAR archive as it is being
 	// created. For example, if this property is set to the string "subdir1", then
 	// "subdir1/" will be prepended to each file's path within the TAR.
+	// 
+	// Note: This property does not apply to files added using the AddFile2 method,
+	// which directly specifies the path-in-tar.
+	// 
 	const char *dirPrefix(void);
 	// A prefix to be added to each file's path within the TAR archive as it is being
 	// created. For example, if this property is set to the string "subdir1", then
 	// "subdir1/" will be prepended to each file's path within the TAR.
+	// 
+	// Note: This property does not apply to files added using the AddFile2 method,
+	// which directly specifies the path-in-tar.
+	// 
 	void put_DirPrefix(const char *newVal);
 
 	// The file permissions to used in WriteTar* methods. The default is octal 0644.
@@ -427,6 +439,24 @@ class CK_VISIBLE_PUBLIC CkTar  : public CkClassWithCallbacks
 	bool AddFile(const char *path);
 
 
+	// Adds a local file to be included in the next call to one of the WriteTar*
+	// methods. Allows for the path within the TAR to be specified. To include multiple
+	// files or directory trees in a .tar, call AddFile/AddFile2/AddDirRoot multiple
+	// times followed by a single call to WriteTar (or WriteTarGz, or WriteTarBz2).
+	// 
+	// Note: The DirPrefix property does not apply to files added via this method
+	// because this method explicilty specifies the path-in-tar.
+	// 
+	bool AddFile2(const char *filePath, const char *pathWithinTar);
+
+
+	// Creates a .deb Debian binary package archive from a control.tar.gz and
+	// data.tar.gz. The controlPath is the path to the control.tar.gz file (or equivalent),
+	// and the dataPath is the path to the data.tar.gz file. The output file path (.deb) is
+	// specified in debPath.
+	bool CreateDeb(const char *controlPath, const char *dataPath, const char *debPath);
+
+
 	// Returns the value of the Nth directory root. For example, if an application
 	// calls AddDirRoot twice, then the NumDirRoots property would have a value of 2,
 	// and GetDirRoot(0) would return the path passed to AddDirRoot in the 1st call,
@@ -487,8 +517,8 @@ class CK_VISIBLE_PUBLIC CkTar  : public CkClassWithCallbacks
 	CkTask *UntarBz2Async(const char *tarPath);
 
 
-	// Memory-to-memory untar. The first file matching the UntarMatchPattern property
-	// is extracted and returned.
+	// Memory-to-memory untar. The first file matching a pattern in the MustMatch
+	// property is extracted and returned.
 	bool UntarFirstMatchingToMemory(CkByteData &tarFileBytes, const char *matchPattern, CkByteData &outBytes);
 
 

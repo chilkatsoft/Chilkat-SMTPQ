@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkStringBuilderW_H
 #define _CkStringBuilderW_H
@@ -100,10 +100,22 @@ class CK_VISIBLE_PUBLIC CkStringBuilderW  : public CkWideCharBase
 	// Removes all characters from the current StringBuilder instance.
 	void Clear(void);
 
-	// Returns true if the caseSensitive is contained within this object. For case sensitive
+	// Returns true if the str is contained within this object. For case sensitive
 	// matching, set caseSensitive equal to true. For case-insensitive, set caseSensitive equal to
 	// false.
 	bool Contains(const wchar_t *str, bool caseSensitive);
+
+	// Returns true if the word is contained within this object, but only if it is a
+	// whole word. This method is limited to finding whole words in strings that only
+	// contains characters in the Latin1 charset (i.e. iso-8859-1 or Windows-1252). A
+	// whole word can only contain alphanumeric chars where the alpha chars are
+	// restricted to those of the Latin1 alpha chars. (The underscore character is also
+	// considered part of a word.)
+	// 
+	// For case sensitive matching, set caseSensitive equal to true. For case-insensitive, set
+	// caseSensitive equal to false.
+	// 
+	bool ContainsWord(const wchar_t *word, bool caseSensitive);
 
 	// Returns true if the contents of this object equals the str. Returns false
 	// if unequal. For case insensitive equality, set caseSensitive equal to false.
@@ -264,9 +276,24 @@ class CK_VISIBLE_PUBLIC CkStringBuilderW  : public CkWideCharBase
 	// beginMark and endMark. Returns the number of replacements made.
 	int ReplaceBetween(const wchar_t *beginMark, const wchar_t *endMark, const wchar_t *value, const wchar_t *replacement);
 
+	// Replaces all occurrences of value with the decimal integer replacement. Returns the
+	// number of replacements.
+	int ReplaceI(const wchar_t *value, int replacement);
+
 	// Replaces all word occurrences of a specified string in this instance with
 	// another specified string. Returns the number of replacements made.
+	// 
+	// Important: This method is limited to replacing whole words in strings that only
+	// contains characters in the Latin1 charset (i.e. iso-8859-1 or Windows-1252). A
+	// whole word can only contain alphanumeric chars where the alpha chars are
+	// restricted to those of the Latin1 alpha chars. (The underscore character is also
+	// considered part of a word.)
+	// 
 	int ReplaceWord(const wchar_t *value, const wchar_t *replacement);
+
+	// Removes all characters from the current StringBuilder instance, and write zero
+	// bytes to the allocated memory before deallocating.
+	void SecureClear(void);
 
 	// Sets the Nth substring in string in a list delimted by delimiterChar. The first substring
 	// is at index 0. If exceptDoubleQuoted is true, then the delimiter char found between double

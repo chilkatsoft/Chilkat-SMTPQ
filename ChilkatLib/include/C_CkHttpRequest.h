@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkHttpRequest_H
 #define _C_CkHttpRequest_H
 #include "chilkatDefs.h"
@@ -55,6 +55,7 @@ CK_VISIBLE_PUBLIC BOOL CkHttpRequest_AddBytesForUpload2(HCkHttpRequest cHandle, 
 CK_VISIBLE_PUBLIC BOOL CkHttpRequest_AddFileForUpload(HCkHttpRequest cHandle, const char *name, const char *filePath);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequest_AddFileForUpload2(HCkHttpRequest cHandle, const char *name, const char *filePath, const char *contentType);
 CK_VISIBLE_PUBLIC void CkHttpRequest_AddHeader(HCkHttpRequest cHandle, const char *name, const char *value);
+CK_VISIBLE_PUBLIC BOOL CkHttpRequest_AddMwsSignature(HCkHttpRequest cHandle, const char *domain, const char *mwsSecretKey);
 CK_VISIBLE_PUBLIC void CkHttpRequest_AddParam(HCkHttpRequest cHandle, const char *name, const char *value);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequest_AddStringForUpload(HCkHttpRequest cHandle, const char *name, const char *filename, const char *strData, const char *charset);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequest_AddStringForUpload2(HCkHttpRequest cHandle, const char *name, const char *filename, const char *strData, const char *charset, const char *contentType);
@@ -76,8 +77,10 @@ CK_VISIBLE_PUBLIC BOOL CkHttpRequest_GetParamValue(HCkHttpRequest cHandle, int i
 CK_VISIBLE_PUBLIC const char *CkHttpRequest_getParamValue(HCkHttpRequest cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequest_GetUrlEncodedParams(HCkHttpRequest cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkHttpRequest_getUrlEncodedParams(HCkHttpRequest cHandle);
+CK_VISIBLE_PUBLIC BOOL CkHttpRequest_LoadBodyFromBd(HCkHttpRequest cHandle, HCkBinData requestBody);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequest_LoadBodyFromBytes(HCkHttpRequest cHandle, HCkByteData byteData);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequest_LoadBodyFromFile(HCkHttpRequest cHandle, const char *filePath);
+CK_VISIBLE_PUBLIC BOOL CkHttpRequest_LoadBodyFromSb(HCkHttpRequest cHandle, HCkStringBuilder requestBody, const char *charset);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequest_LoadBodyFromString(HCkHttpRequest cHandle, const char *bodyStr, const char *charset);
 CK_VISIBLE_PUBLIC void CkHttpRequest_RemoveAllParams(HCkHttpRequest cHandle);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequest_RemoveHeader(HCkHttpRequest cHandle, const char *name);

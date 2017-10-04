@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkSshTunnelW_H
 #define _CkSshTunnelW_H
@@ -497,54 +497,34 @@ class CK_VISIBLE_PUBLIC CkSshTunnelW  : public CkClassWithCallbacksW
 	void put_SocksVersion(int newVal);
 
 	// Sets the receive buffer size socket option. Normally, this property should be
-	// left unchanged. The default value is 0, which indicates that the receive buffer
-	// size socket option should not be explicitly set (i.e. the system default value,
-	// which may vary from system to system, should be used).
+	// left unchanged. The default value is 4194304.
 	// 
-	// This property can be changed if download performance seems slow. It is
-	// recommended to be a multiple of 4096. To see the current system's default
-	// receive buffer size, examine the LastErrorText property after calling any method
-	// that establishes a connection. It should be reported under the heading
-	// "SO_RCVBUF". To boost performance, try setting it equal to 2, 3, or 4 times the
-	// default value.
+	// This property can be increased if download performance seems slow. It is
+	// recommended to be a multiple of 4096.
 	// 
 	int get_SoRcvBuf(void);
 	// Sets the receive buffer size socket option. Normally, this property should be
-	// left unchanged. The default value is 0, which indicates that the receive buffer
-	// size socket option should not be explicitly set (i.e. the system default value,
-	// which may vary from system to system, should be used).
+	// left unchanged. The default value is 4194304.
 	// 
-	// This property can be changed if download performance seems slow. It is
-	// recommended to be a multiple of 4096. To see the current system's default
-	// receive buffer size, examine the LastErrorText property after calling any method
-	// that establishes a connection. It should be reported under the heading
-	// "SO_RCVBUF". To boost performance, try setting it equal to 2, 3, or 4 times the
-	// default value.
+	// This property can be increased if download performance seems slow. It is
+	// recommended to be a multiple of 4096.
 	// 
 	void put_SoRcvBuf(int newVal);
 
 	// Sets the send buffer size socket option. Normally, this property should be left
-	// unchanged. The default value is 0, which indicates that the send buffer size
-	// socket option should not be explicitly set (i.e. the system default value, which
-	// may vary from system to system, should be used).
+	// unchanged. The default value is 262144.
 	// 
-	// This property can be changed if upload performance seems slow. It is recommended
-	// to be a multiple of 4096. To see the current system's default send buffer size,
-	// examine the LastErrorText property after calling any method that establishes a
-	// connection. It should be reported under the heading "SO_SNDBUF". To boost
-	// performance, try setting it equal to 2, 3, or 4 times the default value.
+	// This property can be increased if upload performance seems slow. It is
+	// recommended to be a multiple of 4096. Testing with sizes such as 512K and 1MB is
+	// reasonable.
 	// 
 	int get_SoSndBuf(void);
 	// Sets the send buffer size socket option. Normally, this property should be left
-	// unchanged. The default value is 0, which indicates that the send buffer size
-	// socket option should not be explicitly set (i.e. the system default value, which
-	// may vary from system to system, should be used).
+	// unchanged. The default value is 262144.
 	// 
-	// This property can be changed if upload performance seems slow. It is recommended
-	// to be a multiple of 4096. To see the current system's default send buffer size,
-	// examine the LastErrorText property after calling any method that establishes a
-	// connection. It should be reported under the heading "SO_SNDBUF". To boost
-	// performance, try setting it equal to 2, 3, or 4 times the default value.
+	// This property can be increased if upload performance seems slow. It is
+	// recommended to be a multiple of 4096. Testing with sizes such as 512K and 1MB is
+	// reasonable.
 	// 
 	void put_SoSndBuf(int newVal);
 

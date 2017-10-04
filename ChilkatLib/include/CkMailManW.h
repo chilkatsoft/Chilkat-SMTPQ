@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkMailManW_H
 #define _CkMailManW_H
@@ -18,6 +18,7 @@ class CkEmailBundleW;
 class CkEmailW;
 class CkStringArrayW;
 class CkCertW;
+class CkJsonObjectW;
 class CkBinDataW;
 class CkStringBuilderW;
 class CkCspW;
@@ -550,12 +551,14 @@ class CK_VISIBLE_PUBLIC CkMailManW  : public CkClassWithCallbacksW
 	// 
 	bool get_IsSmtpConnected(void);
 
+#if defined(CK_SMTPQ_INCLUDED)
 	// The name of the file created in the SMTPQ's queue directory for the last email
 	// sent via SendQ, SendQ2, or SendMimeQ.
 	void get_LastSendQFilename(CkString &str);
 	// The name of the file created in the SMTPQ's queue directory for the last email
 	// sent via SendQ, SendQ2, or SendMimeQ.
 	const wchar_t *lastSendQFilename(void);
+#endif
 
 	// Returns the last SMTP diagnostic status code. This can be checked after sending
 	// an email. SMTP reply codes are defined by RFC 821 - Simple Mail Transfer
@@ -1191,62 +1194,34 @@ class CK_VISIBLE_PUBLIC CkMailManW  : public CkClassWithCallbacksW
 	void put_SocksVersion(int newVal);
 
 	// Sets the receive buffer size socket option. Normally, this property should be
-	// left unchanged. The default value is 0, which indicates that the receive buffer
-	// size socket option should not be explicitly set (i.e. the system default value,
-	// which may vary from system to system, should be used).
+	// left unchanged. The default value is 4194304.
 	// 
-	// This property can be changed if download performance seems slow. It is
-	// recommended to be a multiple of 4096. To see the current system's default
-	// receive buffer size, examine the LastErrorText property after calling any method
-	// that establishes a connection. It should be reported under the heading
-	// "SO_RCVBUF". To boost performance, try setting it equal to 2, 3, or 4 times the
-	// default value.
+	// This property can be increased if download performance seems slow. It is
+	// recommended to be a multiple of 4096.
 	// 
 	int get_SoRcvBuf(void);
 	// Sets the receive buffer size socket option. Normally, this property should be
-	// left unchanged. The default value is 0, which indicates that the receive buffer
-	// size socket option should not be explicitly set (i.e. the system default value,
-	// which may vary from system to system, should be used).
+	// left unchanged. The default value is 4194304.
 	// 
-	// This property can be changed if download performance seems slow. It is
-	// recommended to be a multiple of 4096. To see the current system's default
-	// receive buffer size, examine the LastErrorText property after calling any method
-	// that establishes a connection. It should be reported under the heading
-	// "SO_RCVBUF". To boost performance, try setting it equal to 2, 3, or 4 times the
-	// default value.
+	// This property can be increased if download performance seems slow. It is
+	// recommended to be a multiple of 4096.
 	// 
 	void put_SoRcvBuf(int newVal);
 
 	// Sets the send buffer size socket option. Normally, this property should be left
-	// unchanged. The default value is 0, which indicates that the send buffer size
-	// socket option should not be explicitly set (i.e. the system default value, which
-	// may vary from system to system, should be used).
+	// unchanged. The default value is 262144.
 	// 
-	// This property can be changed if upload performance seems slow. It is recommended
-	// to be a multiple of 4096. To see the current system's default send buffer size,
-	// examine the LastErrorText property after calling any method that establishes a
-	// connection. It should be reported under the heading "SO_SNDBUF". To boost
-	// performance, try setting it equal to 2, 3, or 4 times the default value.
-	// 
-	// Note: This property only applies to FTP data connections. The control connection
-	// (for sending commands and getting responses) is not typically a performance
-	// issue.
+	// This property can be increased if upload performance seems slow. It is
+	// recommended to be a multiple of 4096. Testing with sizes such as 512K and 1MB is
+	// reasonable.
 	// 
 	int get_SoSndBuf(void);
 	// Sets the send buffer size socket option. Normally, this property should be left
-	// unchanged. The default value is 0, which indicates that the send buffer size
-	// socket option should not be explicitly set (i.e. the system default value, which
-	// may vary from system to system, should be used).
+	// unchanged. The default value is 262144.
 	// 
-	// This property can be changed if upload performance seems slow. It is recommended
-	// to be a multiple of 4096. To see the current system's default send buffer size,
-	// examine the LastErrorText property after calling any method that establishes a
-	// connection. It should be reported under the heading "SO_SNDBUF". To boost
-	// performance, try setting it equal to 2, 3, or 4 times the default value.
-	// 
-	// Note: This property only applies to FTP data connections. The control connection
-	// (for sending commands and getting responses) is not typically a performance
-	// issue.
+	// This property can be increased if upload performance seems slow. It is
+	// recommended to be a multiple of 4096. Testing with sizes such as 512K and 1MB is
+	// reasonable.
 	// 
 	void put_SoSndBuf(int newVal);
 
@@ -1527,6 +1502,27 @@ class CK_VISIBLE_PUBLIC CkMailManW  : public CkClassWithCallbacksW
 	// over to a secure SSL/TLS connection prior to authenticating and sending email.
 	// The default value is false.
 	void put_StartTLS(bool newVal);
+
+	// When set to true, causes the mailman to do STARTTLS (if possible and supported
+	// by the server) to convert to a secure SSL/TLS connection prior to authenticating
+	// and sending email. The default value is true.
+	// 
+	// Note: Setting the StartTLS property = true causes STARTTLS to always be used,
+	// even if the SMTP server does not support it. This property allows for a
+	// non-encrypted connection, whereas the StartTLS property disallows non-encrypted
+	// connections.
+	// 
+	bool get_StartTLSifPossible(void);
+	// When set to true, causes the mailman to do STARTTLS (if possible and supported
+	// by the server) to convert to a secure SSL/TLS connection prior to authenticating
+	// and sending email. The default value is true.
+	// 
+	// Note: Setting the StartTLS property = true causes STARTTLS to always be used,
+	// even if the SMTP server does not support it. This property allows for a
+	// non-encrypted connection, whereas the StartTLS property disallows non-encrypted
+	// connections.
+	// 
+	void put_StartTLSifPossible(bool newVal);
 
 	// Contains the current or last negotiated TLS cipher suite. If no TLS connection
 	// has yet to be established, or if a connection as attempted and failed, then this
@@ -2083,6 +2079,13 @@ class CK_VISIBLE_PUBLIC CkMailManW  : public CkClassWithCallbacksW
 	// Returns true if the mailman is already unlocked, otherwise returns false.
 	bool IsUnlocked(void);
 
+	// Provides information about what transpired in the last method called on this
+	// object instance. For many methods, there is no information. However, for some
+	// methods, details about what occurred can be obtained by getting the LastJsonData
+	// right after the method call returns.
+	// The caller is responsible for deleting the object returned by this method.
+	CkJsonObjectW *LastJsonData(void);
+
 	// Loads an email from a .eml file. (EML files contain the MIME source of an
 	// email.) Returns a null reference on failure.
 	// 
@@ -2327,7 +2330,8 @@ class CK_VISIBLE_PUBLIC CkMailManW  : public CkClassWithCallbacksW
 	// 
 	const wchar_t *renderToMime(CkEmailW &email);
 
-	// The same as RenderToMimeBytes, except the MIME is rendered into renderedMime.
+	// The same as RenderToMimeBytes, except the MIME is rendered into renderedMime. The
+	// rendered MIME is appended to renderedMime.
 	bool RenderToMimeBd(CkEmailW &email, CkBinDataW &renderedMime);
 
 	// This method is the same as RenderToMime, but the MIME is returned in a byte
@@ -2338,7 +2342,8 @@ class CK_VISIBLE_PUBLIC CkMailManW  : public CkClassWithCallbacksW
 	// binary encoding for non-text data.
 	bool RenderToMimeBytes(CkEmailW &email, CkByteData &outBytes);
 
-	// The same as RenderToMime, except the MIME is rendered into renderedMime.
+	// The same as RenderToMime, except the MIME is rendered into renderedMime. The rendered
+	// MIME is appended to renderedMime.
 	bool RenderToMimeSb(CkEmailW &email, CkStringBuilderW &renderedMime);
 
 	// Sends a bundle of emails. This is identical to calling SendEmail for each email
@@ -2429,6 +2434,12 @@ class CK_VISIBLE_PUBLIC CkMailManW  : public CkClassWithCallbacksW
 #if defined(CK_SMTPQ_INCLUDED)
 	// Same as SendMime, except the email is written to the Chilkat SMTPQ's queue
 	// directory for background sending from the SMTPQ service.
+	// 
+	// Important: The SMTPQ functionality is deprecated and will be removed in a future
+	// version. The SMTPQ Windows Service Visual Studo project is available on GitHub
+	// at the link below. Users would need to build the project prior to using. Chilkat
+	// does not provide pre-built binaries for the SMTPQ Windows Service.
+	// 
 	bool SendMimeQ(const wchar_t *fromAddr, const wchar_t *recipients, const wchar_t *mimeSource);
 #endif
 
@@ -2462,6 +2473,11 @@ class CK_VISIBLE_PUBLIC CkMailManW  : public CkClassWithCallbacksW
 	// Note: After calling this method, the filename of the .eml that was created will
 	// be available in the LastSendQFilename property.
 	// 
+	// Important: The SMTPQ functionality is deprecated and will be removed in a future
+	// version. The SMTPQ Windows Service Visual Studo project is available on GitHub
+	// at the link below. Users would need to build the project prior to using. Chilkat
+	// does not provide pre-built binaries for the SMTPQ Windows Service.
+	// 
 	bool SendQ(CkEmailW &email);
 #endif
 
@@ -2472,6 +2488,11 @@ class CK_VISIBLE_PUBLIC CkMailManW  : public CkClassWithCallbacksW
 	// Beginning with version 9.5.0.47, the queueDir can indicate the exact output filepath
 	// to be written. If queueDir specifies only the directory, then SendQ2 will
 	// automatically generate the output filename.
+	// 
+	// Important: The SMTPQ functionality is deprecated and will be removed in a future
+	// version. The SMTPQ Windows Service Visual Studo project is available on GitHub
+	// at the link below. Users would need to build the project prior to using. Chilkat
+	// does not provide pre-built binaries for the SMTPQ Windows Service.
 	// 
 	bool SendQ2(CkEmailW &email, const wchar_t *queueDir);
 #endif
@@ -2615,19 +2636,19 @@ class CK_VISIBLE_PUBLIC CkMailManW  : public CkClassWithCallbacksW
 
 	// Authenticates with the SSH server using public-key authentication. The
 	// corresponding public key must have been installed on the SSH server for the
-	// bSmtp. Authentication will succeed if the matching sshUsername is provided.
+	// sshLogin. Authentication will succeed if the matching sshUsername is provided.
 	// 
 	// Important: When reporting problems, please send the full contents of the
 	// LastErrorText property to support@chilkatsoft.com.
 	// 
-	bool SshAuthenticatePk(const wchar_t *bSmtp, CkSshKeyW &sshUsername);
+	bool SshAuthenticatePk(const wchar_t *sshLogin, CkSshKeyW &sshUsername);
 
 	// Creates an asynchronous task to call the SshAuthenticatePk method with the
 	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *SshAuthenticatePkAsync(const wchar_t *bSmtp, CkSshKeyW &sshUsername);
+	CkTaskW *SshAuthenticatePkAsync(const wchar_t *sshLogin, CkSshKeyW &sshUsername);
 
-	// Authenticates with the SSH server using a bSmtp and sshLogin.
+	// Authenticates with the SSH server using a sshLogin and sshPassword.
 	// 
 	// An SSH tunneling (port forwarding) session always begins by first calling
 	// SshTunnel to connect to the SSH server, then calling either AuthenticatePw or
@@ -2641,12 +2662,12 @@ class CK_VISIBLE_PUBLIC CkMailManW  : public CkClassWithCallbacksW
 	// Important: When reporting problems, please send the full contents of the
 	// LastErrorText property to support@chilkatsoft.com.
 	// 
-	bool SshAuthenticatePw(const wchar_t *bSmtp, const wchar_t *sshLogin);
+	bool SshAuthenticatePw(const wchar_t *sshLogin, const wchar_t *sshPassword);
 
 	// Creates an asynchronous task to call the SshAuthenticatePw method with the
 	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *SshAuthenticatePwAsync(const wchar_t *bSmtp, const wchar_t *sshLogin);
+	CkTaskW *SshAuthenticatePwAsync(const wchar_t *sshLogin, const wchar_t *sshPassword);
 
 	// Closes the SSH tunnel for SMTP or POP3.
 	bool SshCloseTunnel(void);

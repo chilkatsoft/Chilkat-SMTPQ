@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkCertChain_H
 #define _C_CkCertChain_H
 #include "chilkatDefs.h"
@@ -30,6 +30,7 @@ CK_VISIBLE_PUBLIC void CkCertChain_getVersion(HCkCertChain cHandle, HCkString re
 CK_VISIBLE_PUBLIC const char *CkCertChain_version(HCkCertChain cHandle);
 CK_VISIBLE_PUBLIC HCkCert CkCertChain_GetCert(HCkCertChain cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkCertChain_IsRootTrusted(HCkCertChain cHandle, HCkTrustedRoots trustedRoots);
+CK_VISIBLE_PUBLIC BOOL CkCertChain_LoadX5C(HCkCertChain cHandle, HCkJsonObject jwk);
 CK_VISIBLE_PUBLIC BOOL CkCertChain_SaveLastError(HCkCertChain cHandle, const char *path);
 CK_VISIBLE_PUBLIC BOOL CkCertChain_VerifyCertSignatures(HCkCertChain cHandle);
 #endif

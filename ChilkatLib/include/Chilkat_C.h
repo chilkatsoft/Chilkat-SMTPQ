@@ -143,7 +143,9 @@ typedef void *HCkStringTable;
 typedef void *HCkCsr;
 typedef void *HCkJwe;
 typedef void *HCkJws;
-typedef void *HCkAccounts;
+typedef void *HCkAuthUtil;
+typedef void *HCkXmlDSig;
+typedef void *HCkXmlDSigGen;
 
 
 typedef void *HCkByteDataW;
@@ -263,6 +265,8 @@ typedef void *HCkStringTableW;
 typedef void *HCkCsrW;
 typedef void *HCkJweW;
 typedef void *HCkJwsW;
-typedef void *HCkAccountsW;
+typedef void *HCkAuthUtilW;
+typedef void *HCkXmlDSigW;
+typedef void *HCkXmlDSigGenW;
 
 #endif

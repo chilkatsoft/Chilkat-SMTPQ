@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkJwe_H
 #define _C_CkJwe_H
 #include "chilkatDefs.h"
@@ -8,8 +8,6 @@
 
 CK_VISIBLE_PUBLIC HCkJwe CkJwe_Create(void);
 CK_VISIBLE_PUBLIC void CkJwe_Dispose(HCkJwe handle);
-CK_VISIBLE_PUBLIC BOOL CkJwe_getCompact(HCkJwe cHandle);
-CK_VISIBLE_PUBLIC void CkJwe_putCompact(HCkJwe cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkJwe_getDebugLogFilePath(HCkJwe cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkJwe_putDebugLogFilePath(HCkJwe cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkJwe_debugLogFilePath(HCkJwe cHandle);
@@ -22,6 +20,10 @@ CK_VISIBLE_PUBLIC const char *CkJwe_lastErrorXml(HCkJwe cHandle);
 CK_VISIBLE_PUBLIC BOOL CkJwe_getLastMethodSuccess(HCkJwe cHandle);
 CK_VISIBLE_PUBLIC void CkJwe_putLastMethodSuccess(HCkJwe cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkJwe_getNumRecipients(HCkJwe cHandle);
+CK_VISIBLE_PUBLIC BOOL CkJwe_getPreferCompact(HCkJwe cHandle);
+CK_VISIBLE_PUBLIC void CkJwe_putPreferCompact(HCkJwe cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC BOOL CkJwe_getPreferFlattened(HCkJwe cHandle);
+CK_VISIBLE_PUBLIC void CkJwe_putPreferFlattened(HCkJwe cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkJwe_getUtf8(HCkJwe cHandle);
 CK_VISIBLE_PUBLIC void CkJwe_putUtf8(HCkJwe cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkJwe_getVerboseLogging(HCkJwe cHandle);
@@ -36,6 +38,7 @@ CK_VISIBLE_PUBLIC BOOL CkJwe_Encrypt(HCkJwe cHandle, const char *content, const 
 CK_VISIBLE_PUBLIC const char *CkJwe_encrypt(HCkJwe cHandle, const char *content, const char *charset);
 CK_VISIBLE_PUBLIC BOOL CkJwe_EncryptBd(HCkJwe cHandle, HCkBinData contentBd, HCkStringBuilder jweSb);
 CK_VISIBLE_PUBLIC BOOL CkJwe_EncryptSb(HCkJwe cHandle, HCkStringBuilder contentSb, const char *charset, HCkStringBuilder jweSb);
+CK_VISIBLE_PUBLIC int CkJwe_FindRecipient(HCkJwe cHandle, const char *paramName, const char *paramValue, BOOL caseSensitive);
 CK_VISIBLE_PUBLIC BOOL CkJwe_LoadJwe(HCkJwe cHandle, const char *jwe);
 CK_VISIBLE_PUBLIC BOOL CkJwe_LoadJweSb(HCkJwe cHandle, HCkStringBuilder sb);
 CK_VISIBLE_PUBLIC BOOL CkJwe_SaveLastError(HCkJwe cHandle, const char *path);

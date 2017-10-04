@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkFileAccessWH
 #define _C_CkFileAccessWH
 #include "chilkatDefs.h"
@@ -33,10 +33,10 @@ CK_VISIBLE_PUBLIC BOOL CkFileAccessW_AppendAnsi(HCkFileAccessW cHandle, const wc
 CK_VISIBLE_PUBLIC BOOL CkFileAccessW_AppendText(HCkFileAccessW cHandle, const wchar_t *str, const wchar_t *charset);
 CK_VISIBLE_PUBLIC BOOL CkFileAccessW_AppendUnicodeBOM(HCkFileAccessW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkFileAccessW_AppendUtf8BOM(HCkFileAccessW cHandle);
-CK_VISIBLE_PUBLIC BOOL CkFileAccessW_DirAutoCreate(HCkFileAccessW cHandle, const wchar_t *dirPath);
+CK_VISIBLE_PUBLIC BOOL CkFileAccessW_DirAutoCreate(HCkFileAccessW cHandle, const wchar_t *filePath);
 CK_VISIBLE_PUBLIC BOOL CkFileAccessW_DirCreate(HCkFileAccessW cHandle, const wchar_t *dirPath);
 CK_VISIBLE_PUBLIC BOOL CkFileAccessW_DirDelete(HCkFileAccessW cHandle, const wchar_t *dirPath);
-CK_VISIBLE_PUBLIC BOOL CkFileAccessW_DirEnsureExists(HCkFileAccessW cHandle, const wchar_t *filePath);
+CK_VISIBLE_PUBLIC BOOL CkFileAccessW_DirEnsureExists(HCkFileAccessW cHandle, const wchar_t *dirPath);
 CK_VISIBLE_PUBLIC void CkFileAccessW_FileClose(HCkFileAccessW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkFileAccessW_FileContentsEqual(HCkFileAccessW cHandle, const wchar_t *filePath1, const wchar_t *filePath2);
 CK_VISIBLE_PUBLIC BOOL CkFileAccessW_FileCopy(HCkFileAccessW cHandle, const wchar_t *existingFilepath, const wchar_t *newFilepath, BOOL failIfExists);
@@ -61,6 +61,7 @@ CK_VISIBLE_PUBLIC BOOL CkFileAccessW_GetFileName(HCkFileAccessW cHandle, const w
 CK_VISIBLE_PUBLIC const wchar_t *CkFileAccessW_getFileName(HCkFileAccessW cHandle, const wchar_t *path);
 CK_VISIBLE_PUBLIC BOOL CkFileAccessW_GetFileNameWithoutExtension(HCkFileAccessW cHandle, const wchar_t *path, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkFileAccessW_getFileNameWithoutExtension(HCkFileAccessW cHandle, const wchar_t *path);
+CK_VISIBLE_PUBLIC HCkDateTimeW CkFileAccessW_GetLastModified(HCkFileAccessW cHandle, const wchar_t *path);
 CK_VISIBLE_PUBLIC int CkFileAccessW_GetNumBlocks(HCkFileAccessW cHandle, int blockSize);
 CK_VISIBLE_PUBLIC BOOL CkFileAccessW_GetTempFilename(HCkFileAccessW cHandle, const wchar_t *dirPath, const wchar_t *prefix, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkFileAccessW_getTempFilename(HCkFileAccessW cHandle, const wchar_t *dirPath, const wchar_t *prefix);

@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkPublicKey_H
 #define _CkPublicKey_H
@@ -48,6 +48,9 @@ class CK_VISIBLE_PUBLIC CkPublicKey  : public CkMultiByteBase
 	// ----------------------
 	// Properties
 	// ----------------------
+	// Gets the size (in bits) of the public key. For example: 1024, 2048, etc.
+	int get_KeySize(void);
+
 	// The type of public key. Can be "empty", "rsa", "dsa", or "ecc".
 	void get_KeyType(CkString &str);
 	// The type of public key. Can be "empty", "rsa", "dsa", or "ecc".
@@ -125,6 +128,18 @@ class CK_VISIBLE_PUBLIC CkPublicKey  : public CkMultiByteBase
 	//           "y":"4Etl6SRW2YiLUrN5vfvVHuhp7x8PxltmWWlbbM4IFyM"}
 	// 
 	const char *jwk(void);
+
+
+	// Returns the JWK thumbprint for the public key. This is the thumbprint of the
+	// JSON Web Key (JWK) as per RFC 7638.
+	bool GetJwkThumbprint(const char *hashAlg, CkString &outStr);
+
+	// Returns the JWK thumbprint for the public key. This is the thumbprint of the
+	// JSON Web Key (JWK) as per RFC 7638.
+	const char *getJwkThumbprint(const char *hashAlg);
+	// Returns the JWK thumbprint for the public key. This is the thumbprint of the
+	// JSON Web Key (JWK) as per RFC 7638.
+	const char *jwkThumbprint(const char *hashAlg);
 
 
 	// This method is deprecated. Applications should call GetDer with preference for

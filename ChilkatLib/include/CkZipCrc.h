@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkZipCrc_H
 #define _CkZipCrc_H
@@ -66,7 +66,7 @@ class CK_VISIBLE_PUBLIC CkZipCrc  : public CkClassWithCallbacks
 
 	// Calculates a 32-bit CRC for in-memory byte data. This is the 32-bit CRC that
 	// would be found in a Zip file header if a file containing the data was added to a
-	// zip archive.
+	// zip archive. Returns the CRC32 of the data.
 	unsigned long CalculateCrc(CkByteData &data);
 
 
@@ -75,23 +75,26 @@ class CK_VISIBLE_PUBLIC CkZipCrc  : public CkClassWithCallbacks
 	unsigned long EndStream(void);
 
 
-	// Adds additional data to the CRC currently being calculated. (See BeginStream for
-	// more information.)
+	// Calculates the CRC32 of a file. The data contained in the file is streamed for
+	// the calculation to keep the memory footprint small and constant. Returns the
+	// CRC32 of the file.
 	unsigned long FileCrc(const char *path);
 
-	// Adds additional data to the CRC currently being calculated. (See BeginStream for
-	// more information.)
+	// Calculates the CRC32 of a file. The data contained in the file is streamed for
+	// the calculation to keep the memory footprint small and constant. Returns the
+	// CRC32 of the file.
 	CkTask *FileCrcAsync(const char *path);
 
 
-	// Converts a 32-bit integer to a hexidecimal string.
+	// Adds additional data to the CRC currently being calculated. (See BeginStream for
+	// more information.)
 	void MoreData(CkByteData &data);
 
 
-	// Converts a 32-bit integer to a hexidecimal string.
+	// Converts a 32-bit integer to a hex string.
 	bool ToHex(int crc, CkString &outStr);
 
-	// Converts a 32-bit integer to a hexidecimal string.
+	// Converts a 32-bit integer to a hex string.
 	const char *toHex(int crc);
 
 

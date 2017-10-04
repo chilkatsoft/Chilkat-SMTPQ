@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkFileAccessW_H
 #define _CkFileAccessW_H
@@ -114,8 +114,8 @@ class CK_VISIBLE_PUBLIC CkFileAccessW  : public CkWideCharBase
 
 	// Same as DirEnsureExists, except the argument is a file path (the last part of
 	// the path is a filename and not a directory). Creates all missing directories
-	// such that dirPath may be created.
-	bool DirAutoCreate(const wchar_t *dirPath);
+	// such that filePath may be created.
+	bool DirAutoCreate(const wchar_t *filePath);
 
 	// Creates a new directory specified by dirPath.
 	bool DirCreate(const wchar_t *dirPath);
@@ -123,8 +123,8 @@ class CK_VISIBLE_PUBLIC CkFileAccessW  : public CkWideCharBase
 	// Deletes the directory specified by dirPath.
 	bool DirDelete(const wchar_t *dirPath);
 
-	// Creates all directories necessary such that the entire filePath exists.
-	bool DirEnsureExists(const wchar_t *filePath);
+	// Creates all directories necessary such that the entire dirPath exists.
+	bool DirEnsureExists(const wchar_t *dirPath);
 
 	// Closes the currently open file.
 	void FileClose(void);
@@ -229,32 +229,69 @@ class CK_VISIBLE_PUBLIC CkFileAccessW  : public CkWideCharBase
 	const wchar_t *genBlockId(int index, int length, const wchar_t *encoding);
 
 	// Returns the directory information for the specified path string.
+	// GetDirectoryName('C:\MyDir\MySubDir\myfile.ext') returns 'C:\MyDir\MySubDir\'
+	// GetDirectoryName('C:\MyDir\MySubDir') returns 'C:\MyDir\'
+	// GetDirectoryName('C:\MyDir\') returns 'C:\MyDir\'
+	// GetDirectoryName('C:\MyDir') returns 'C:\'
+	// GetDirectoryName('C:\') returns 'C:\'
 	bool GetDirectoryName(const wchar_t *path, CkString &outStr);
 	// Returns the directory information for the specified path string.
+	// GetDirectoryName('C:\MyDir\MySubDir\myfile.ext') returns 'C:\MyDir\MySubDir\'
+	// GetDirectoryName('C:\MyDir\MySubDir') returns 'C:\MyDir\'
+	// GetDirectoryName('C:\MyDir\') returns 'C:\MyDir\'
+	// GetDirectoryName('C:\MyDir') returns 'C:\'
+	// GetDirectoryName('C:\') returns 'C:\'
 	const wchar_t *getDirectoryName(const wchar_t *path);
 	// Returns the directory information for the specified path string.
+	// GetDirectoryName('C:\MyDir\MySubDir\myfile.ext') returns 'C:\MyDir\MySubDir\'
+	// GetDirectoryName('C:\MyDir\MySubDir') returns 'C:\MyDir\'
+	// GetDirectoryName('C:\MyDir\') returns 'C:\MyDir\'
+	// GetDirectoryName('C:\MyDir') returns 'C:\'
+	// GetDirectoryName('C:\') returns 'C:\'
 	const wchar_t *directoryName(const wchar_t *path);
 
 	// Returns the extension of the specified path string.
+	// GetExtension('C:\mydir.old\myfile.ext') returns '.ext'
+	// GetExtension('C:\mydir.old\') returns ''
 	bool GetExtension(const wchar_t *path, CkString &outStr);
 	// Returns the extension of the specified path string.
+	// GetExtension('C:\mydir.old\myfile.ext') returns '.ext'
+	// GetExtension('C:\mydir.old\') returns ''
 	const wchar_t *getExtension(const wchar_t *path);
 	// Returns the extension of the specified path string.
+	// GetExtension('C:\mydir.old\myfile.ext') returns '.ext'
+	// GetExtension('C:\mydir.old\') returns ''
 	const wchar_t *extension(const wchar_t *path);
 
 	// Returns the file name and extension of the specified path string.
+	// GetFileName('C:\mydir\myfile.ext') returns 'myfile.ext'
+	// GetFileName('C:\mydir\') returns ''
 	bool GetFileName(const wchar_t *path, CkString &outStr);
 	// Returns the file name and extension of the specified path string.
+	// GetFileName('C:\mydir\myfile.ext') returns 'myfile.ext'
+	// GetFileName('C:\mydir\') returns ''
 	const wchar_t *getFileName(const wchar_t *path);
 	// Returns the file name and extension of the specified path string.
+	// GetFileName('C:\mydir\myfile.ext') returns 'myfile.ext'
+	// GetFileName('C:\mydir\') returns ''
 	const wchar_t *fileName(const wchar_t *path);
 
 	// Returns the file name of the specified path string without the extension.
+	// GetFileNameWithoutExtension('C:\mydir\myfile.ext') returns 'myfile'
+	// GetFileNameWithoutExtension('C:\mydir\') returns ''
 	bool GetFileNameWithoutExtension(const wchar_t *path, CkString &outStr);
 	// Returns the file name of the specified path string without the extension.
+	// GetFileNameWithoutExtension('C:\mydir\myfile.ext') returns 'myfile'
+	// GetFileNameWithoutExtension('C:\mydir\') returns ''
 	const wchar_t *getFileNameWithoutExtension(const wchar_t *path);
 	// Returns the file name of the specified path string without the extension.
+	// GetFileNameWithoutExtension('C:\mydir\myfile.ext') returns 'myfile'
+	// GetFileNameWithoutExtension('C:\mydir\') returns ''
 	const wchar_t *fileNameWithoutExtension(const wchar_t *path);
+
+	// Gets the last-modified date/time for a file.
+	// The caller is responsible for deleting the object returned by this method.
+	CkDateTimeW *GetLastModified(const wchar_t *path);
 
 	// Returns the number of blocks in the currently open file. The number of bytes per
 	// block is specified by blockSize. The number of blocks is the file size divided by the

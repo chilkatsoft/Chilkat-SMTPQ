@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkDateTimeWH
 #define _C_CkDateTimeWH
 #include "chilkatDefs.h"
@@ -29,6 +29,7 @@ CK_VISIBLE_PUBLIC BOOL CkDateTimeW_AddDays(HCkDateTimeW cHandle, int numDays);
 CK_VISIBLE_PUBLIC BOOL CkDateTimeW_AddSeconds(HCkDateTimeW cHandle, int numSeconds);
 CK_VISIBLE_PUBLIC void CkDateTimeW_DeSerialize(HCkDateTimeW cHandle, const wchar_t *serializedDateTime);
 CK_VISIBLE_PUBLIC int CkDateTimeW_DiffSeconds(HCkDateTimeW cHandle, HCkDateTimeW dateTimeArg);
+CK_VISIBLE_PUBLIC BOOL CkDateTimeW_ExpiresWithin(HCkDateTimeW cHandle, int n, const wchar_t *units);
 CK_VISIBLE_PUBLIC BOOL CkDateTimeW_GetAsDateTime(HCkDateTimeW cHandle, BOOL bLocal, SYSTEMTIME *outDate);
 CK_VISIBLE_PUBLIC __int64 CkDateTimeW_GetAsDateTimeTicks(HCkDateTimeW cHandle, BOOL bLocal);
 #if !defined(CK_USE_UINT_T)
@@ -56,6 +57,7 @@ CK_VISIBLE_PUBLIC unsigned short CkDateTimeW_GetDosDateLow(HCkDateTimeW cHandle,
 #endif
 CK_VISIBLE_PUBLIC HCkDtObjW CkDateTimeW_GetDtObj(HCkDateTimeW cHandle, BOOL bLocal);
 CK_VISIBLE_PUBLIC BOOL CkDateTimeW_LoadTaskResult(HCkDateTimeW cHandle, HCkTaskW task);
+CK_VISIBLE_PUBLIC BOOL CkDateTimeW_OlderThan(HCkDateTimeW cHandle, int n, const wchar_t *units);
 CK_VISIBLE_PUBLIC BOOL CkDateTimeW_SaveLastError(HCkDateTimeW cHandle, const wchar_t *path);
 CK_VISIBLE_PUBLIC BOOL CkDateTimeW_Serialize(HCkDateTimeW cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkDateTimeW_serialize(HCkDateTimeW cHandle);

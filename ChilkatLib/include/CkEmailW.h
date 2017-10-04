@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkEmailW_H
 #define _CkEmailW_H
@@ -416,6 +416,12 @@ class CK_VISIBLE_PUBLIC CkEmailW  : public CkWideCharBase
 	// an error condition.)
 	int get_NumDaysOld(void);
 
+	// Returns the number of message/rfc822 parts contained within the multipart/digest
+	// enclosure. If no multipart/digest enclosure exists, then this property has the
+	// value of 0. The GetDigest method is called to get the Nth digest as an email
+	// object.
+	int get_NumDigests(void);
+
 	// The number of header fields. When accessing a header field by index, the 1st
 	// header field is at index 0, and the last is at NumHeaderFields-1. (Chilkat
 	// indexing is always 0-based.)
@@ -445,6 +451,25 @@ class CK_VISIBLE_PUBLIC CkEmailW  : public CkWideCharBase
 
 	// The number of direct email recipients.
 	int get_NumTo(void);
+
+	// Selects the hash algorithm for use within OAEP padding when encrypting email
+	// using RSAES-OAEP. The valid choices are "sha1", "sha256", "sha384", "sha512",
+	void get_OaepHash(CkString &str);
+	// Selects the hash algorithm for use within OAEP padding when encrypting email
+	// using RSAES-OAEP. The valid choices are "sha1", "sha256", "sha384", "sha512",
+	const wchar_t *oaepHash(void);
+	// Selects the hash algorithm for use within OAEP padding when encrypting email
+	// using RSAES-OAEP. The valid choices are "sha1", "sha256", "sha384", "sha512",
+	void put_OaepHash(const wchar_t *newVal);
+
+	// Selects the RSA encryption scheme when encrypting email. The default value is
+	// false, which selects RSAES_PKCS1-V1_5. If set to true, then RSAES_OAEP is
+	// used.
+	bool get_OaepPadding(void);
+	// Selects the RSA encryption scheme when encrypting email. The default value is
+	// false, which selects RSAES_PKCS1-V1_5. If set to true, then RSAES_OAEP is
+	// used.
+	void put_OaepPadding(bool newVal);
 
 	// When true (the default) the methods to save email attachments and related
 	// items will overwrite files if they already exist. If false, then the methods
@@ -660,6 +685,31 @@ class CK_VISIBLE_PUBLIC CkEmailW  : public CkWideCharBase
 	// 
 	const wchar_t *signedBy(void);
 
+	// Selects the signature algorithm to be used when sending signed (PKCS7) email.
+	// The default value is "PKCS1-v1_5". This can be set to "RSASSA-PSS" (or simply
+	// "pss") to use the RSASSA-PSS signature scheme.
+	// 
+	// Note: This property only applies when signing with an RSA private key. It does
+	// not apply for ECC or DSA private keys.
+	// 
+	void get_SigningAlg(CkString &str);
+	// Selects the signature algorithm to be used when sending signed (PKCS7) email.
+	// The default value is "PKCS1-v1_5". This can be set to "RSASSA-PSS" (or simply
+	// "pss") to use the RSASSA-PSS signature scheme.
+	// 
+	// Note: This property only applies when signing with an RSA private key. It does
+	// not apply for ECC or DSA private keys.
+	// 
+	const wchar_t *signingAlg(void);
+	// Selects the signature algorithm to be used when sending signed (PKCS7) email.
+	// The default value is "PKCS1-v1_5". This can be set to "RSASSA-PSS" (or simply
+	// "pss") to use the RSASSA-PSS signature scheme.
+	// 
+	// Note: This property only applies when signing with an RSA private key. It does
+	// not apply for ECC or DSA private keys.
+	// 
+	void put_SigningAlg(const wchar_t *newVal);
+
 	// Selects the underlying hash algorithm used when sending signed (PKCS7) email.
 	// Possible values are "sha1", "sha256", "sha384", "sha512", "md5", and "md2".
 	void get_SigningHashAlg(CkString &str);
@@ -748,11 +798,11 @@ class CK_VISIBLE_PUBLIC CkEmailW  : public CkWideCharBase
 	// certificates.
 	// 
 	// Note: It is possible to send encrypted email without explicitly specifying the
-	// certificates. The Chilkat email component will automatically search the
-	// registry-based Current-User and Local-Machine certificate stores for certs
-	// matching each of the recipients (To, CC, and BCC recipients).
+	// certificates. On Windows computers, the registry-based Current-User and
+	// Local-Machine certificate stores are automatically searched for certs matching
+	// each of the recipients (To, CC, and BCC recipients).
 	// 
-	// Note: The SentEncryptCert method is equivalent to calling ClearEncryptCerts
+	// Note: The SetEncryptCert method is equivalent to calling ClearEncryptCerts
 	// followed by AddEncryptCert.
 	// 
 	bool AddEncryptCert(CkCertW &cert);
@@ -952,7 +1002,7 @@ class CK_VISIBLE_PUBLIC CkEmailW  : public CkWideCharBase
 	// that the content should first be converted to the specified charset prior to
 	// adding to the email. It should hava a value such as "iso-8859-1", "utf-8",
 	// "Shift_JIS", etc.
-	void AddRelatedString2(const wchar_t *content, const wchar_t *charset, const wchar_t *fileNameInHtml);
+	void AddRelatedString2(const wchar_t *fileNameInHtml, const wchar_t *content, const wchar_t *charset);
 
 	// Adds an attachment directly from a string in memory to the email.
 	bool AddStringAttachment(const wchar_t *path, const wchar_t *content);
@@ -1199,6 +1249,11 @@ class CK_VISIBLE_PUBLIC CkEmailW  : public CkWideCharBase
 	// to easily get the HTML or plain text alternative bodies.
 	const wchar_t *alternativeBody(int index);
 
+	// Returns contents of the Nth alternative body to binData. The 1st alternative body
+	// is at index 0. This method should only be called when the NumAlternatives
+	// property has a value greater than 0.
+	bool GetAlternativeBodyBd(int index, CkBinDataW &binData);
+
 	// Returns the alternative body by content-type, such as "text/plain", "text/html",
 	// "text/xml", etc.
 	bool GetAlternativeBodyByContentType(const wchar_t *contentType, CkString &outStr);
@@ -1257,14 +1312,56 @@ class CK_VISIBLE_PUBLIC CkEmailW  : public CkWideCharBase
 	// Returns the filename of the Nth attached (embedded) email. The filename is the
 	// "filename" attribute of the content-disposition header field found within the
 	// Nth message/rfc822 sub-part of the calling email object.
+	// 
+	// Important: The attached message filename is only present if the
+	// Content-Disposition header exists AND contains a "filename" attribute. If
+	// questions arise, one could open the email in a text editor to examine the MIME
+	// sub-header for the attached message (where the Content-Type = "message/rfc822").
+	// For example, here is a sub-header that has a filename:
+	// Content-Type: message/rfc822; name="GetAttachedMessageAttr.eml"
+	// Content-Transfer-Encoding: 7bit
+	// Content-Disposition: attachment; filename="GetAttachedMessageAttr.eml"
+	// Here is an attached message sub-header that does NOT have a filename:
+	// Content-Type: message/rfc822
+	// Content-Transfer-Encoding: 7bit
+	// Content-Disposition: attachment
+	// 
 	bool GetAttachedMessageFilename(int index, CkString &outStr);
 	// Returns the filename of the Nth attached (embedded) email. The filename is the
 	// "filename" attribute of the content-disposition header field found within the
 	// Nth message/rfc822 sub-part of the calling email object.
+	// 
+	// Important: The attached message filename is only present if the
+	// Content-Disposition header exists AND contains a "filename" attribute. If
+	// questions arise, one could open the email in a text editor to examine the MIME
+	// sub-header for the attached message (where the Content-Type = "message/rfc822").
+	// For example, here is a sub-header that has a filename:
+	// Content-Type: message/rfc822; name="GetAttachedMessageAttr.eml"
+	// Content-Transfer-Encoding: 7bit
+	// Content-Disposition: attachment; filename="GetAttachedMessageAttr.eml"
+	// Here is an attached message sub-header that does NOT have a filename:
+	// Content-Type: message/rfc822
+	// Content-Transfer-Encoding: 7bit
+	// Content-Disposition: attachment
+	// 
 	const wchar_t *getAttachedMessageFilename(int index);
 	// Returns the filename of the Nth attached (embedded) email. The filename is the
 	// "filename" attribute of the content-disposition header field found within the
 	// Nth message/rfc822 sub-part of the calling email object.
+	// 
+	// Important: The attached message filename is only present if the
+	// Content-Disposition header exists AND contains a "filename" attribute. If
+	// questions arise, one could open the email in a text editor to examine the MIME
+	// sub-header for the attached message (where the Content-Type = "message/rfc822").
+	// For example, here is a sub-header that has a filename:
+	// Content-Type: message/rfc822; name="GetAttachedMessageAttr.eml"
+	// Content-Transfer-Encoding: 7bit
+	// Content-Disposition: attachment; filename="GetAttachedMessageAttr.eml"
+	// Here is an attached message sub-header that does NOT have a filename:
+	// Content-Type: message/rfc822
+	// Content-Transfer-Encoding: 7bit
+	// Content-Disposition: attachment
+	// 
 	const wchar_t *attachedMessageFilename(int index);
 
 	// Returns a header field attribute value from the header field of the Nth
@@ -1276,6 +1373,10 @@ class CK_VISIBLE_PUBLIC CkEmailW  : public CkWideCharBase
 	// Returns a header field attribute value from the header field of the Nth
 	// attachment.
 	const wchar_t *attachmentAttr(int index, const wchar_t *fieldName, const wchar_t *attrName);
+
+	// Copies an attachment's binary data into binData. The first attachment is at index
+	// 0.
+	bool GetAttachmentBd(int index, CkBinDataW &binData);
 
 	// Returns the ContentID header field for the Nth attachment. The first attachment
 	// is at index 0.
@@ -1425,6 +1526,15 @@ class CK_VISIBLE_PUBLIC CkEmailW  : public CkWideCharBase
 	// X-Supplementary-Info: 
 	// 
 	const wchar_t *deliveryStatusInfo(const wchar_t *fieldName);
+
+	// Returns an digest contained within a multipart/digest as an email object. The
+	// 1st digest is at index 0. Use the NumDigests property to get the number of
+	// digests available.
+	// 
+	// Note: This example requires Chilkat v9.5.0.66 or greater.
+	// 
+	// The caller is responsible for deleting the object returned by this method.
+	CkEmailW *GetDigest(int index);
 
 	// If the email is a multipart/report, then it is a delivery status notification.
 	// This method can be used to get Final-Recipient values from the
@@ -1952,7 +2062,7 @@ class CK_VISIBLE_PUBLIC CkEmailW  : public CkWideCharBase
 	bool SetDecryptCert(CkCertW &cert);
 
 	// Allows for a certificate and private key to be explicity specified for
-	// decryptoin. When an email object is loaded via any method, such as LoadEml,
+	// decryption. When an email object is loaded via any method, such as LoadEml,
 	// SetFromMimeText, SetFromMimeBytes, etc., security layers (signatures and
 	// encryption) are automatically unwrapped. Decryption requires a private key. On
 	// Windows-based systems, the private key is often pre-installed and nothing need

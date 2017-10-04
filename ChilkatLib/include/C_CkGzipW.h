@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkGzipWH
 #define _C_CkGzipWH
 #include "chilkatDefs.h"
@@ -49,6 +49,8 @@ CK_VISIBLE_PUBLIC BOOL CkGzipW_getVerboseLogging(HCkGzipW cHandle);
 CK_VISIBLE_PUBLIC void  CkGzipW_putVerboseLogging(HCkGzipW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkGzipW_getVersion(HCkGzipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkGzipW_version(HCkGzipW cHandle);
+CK_VISIBLE_PUBLIC BOOL CkGzipW_CompressBd(HCkGzipW cHandle, HCkBinDataW binDat);
+CK_VISIBLE_PUBLIC HCkTaskW CkGzipW_CompressBdAsync(HCkGzipW cHandle, HCkBinDataW binDat);
 CK_VISIBLE_PUBLIC BOOL CkGzipW_CompressFile(HCkGzipW cHandle, const wchar_t *inFilename, const wchar_t *destPath);
 CK_VISIBLE_PUBLIC HCkTaskW CkGzipW_CompressFileAsync(HCkGzipW cHandle, const wchar_t *inFilename, const wchar_t *destPath);
 CK_VISIBLE_PUBLIC BOOL CkGzipW_CompressFile2(HCkGzipW cHandle, const wchar_t *inFilename, const wchar_t *embeddedFilename, const wchar_t *destPath);
@@ -79,6 +81,8 @@ CK_VISIBLE_PUBLIC BOOL CkGzipW_IsUnlocked(HCkGzipW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkGzipW_ReadFile(HCkGzipW cHandle, const wchar_t *path, HCkByteData outBytes);
 CK_VISIBLE_PUBLIC BOOL CkGzipW_SaveLastError(HCkGzipW cHandle, const wchar_t *path);
 CK_VISIBLE_PUBLIC BOOL CkGzipW_SetDt(HCkGzipW cHandle, HCkDateTimeW dt);
+CK_VISIBLE_PUBLIC BOOL CkGzipW_UncompressBd(HCkGzipW cHandle, HCkBinDataW binDat);
+CK_VISIBLE_PUBLIC HCkTaskW CkGzipW_UncompressBdAsync(HCkGzipW cHandle, HCkBinDataW binDat);
 CK_VISIBLE_PUBLIC BOOL CkGzipW_UncompressFile(HCkGzipW cHandle, const wchar_t *srcPath, const wchar_t *destPath);
 CK_VISIBLE_PUBLIC HCkTaskW CkGzipW_UncompressFileAsync(HCkGzipW cHandle, const wchar_t *srcPath, const wchar_t *destPath);
 CK_VISIBLE_PUBLIC BOOL CkGzipW_UncompressFileToMem(HCkGzipW cHandle, const wchar_t *inFilename, HCkByteData outData);

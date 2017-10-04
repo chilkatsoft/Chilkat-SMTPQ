@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkJweW_H
 #define _CkJweW_H
@@ -56,19 +56,34 @@ class CK_VISIBLE_PUBLIC CkJweW  : public CkWideCharBase
 	// ----------------------
 	// Properties
 	// ----------------------
-	// Controls whether to use JWE Compact Serialization or JWE JSON Serialization when
-	// creating JWEs. The default value is true, which is to use compact
-	// serialization. If multiple recipients are used, or if any unprotected headers
-	// exist, then JWE JSON Serialization is used regardless of this property setting.
-	bool get_Compact(void);
-	// Controls whether to use JWE Compact Serialization or JWE JSON Serialization when
-	// creating JWEs. The default value is true, which is to use compact
-	// serialization. If multiple recipients are used, or if any unprotected headers
-	// exist, then JWE JSON Serialization is used regardless of this property setting.
-	void put_Compact(bool newVal);
-
 	// The number of recipients for this JWE.
 	int get_NumRecipients(void);
+
+	// Controls whether the JWE Compact Serialization or JWE JSON Serialization is
+	// preferred when creating JWEs. The default value is true, which is to use
+	// compact serialization when possible. If multiple recipients exist, or if any
+	// unprotected headers exist, then JWE JSON Serialization is used regardless of
+	// this property setting.
+	bool get_PreferCompact(void);
+	// Controls whether the JWE Compact Serialization or JWE JSON Serialization is
+	// preferred when creating JWEs. The default value is true, which is to use
+	// compact serialization when possible. If multiple recipients exist, or if any
+	// unprotected headers exist, then JWE JSON Serialization is used regardless of
+	// this property setting.
+	void put_PreferCompact(bool newVal);
+
+	// Controls whether the flattened serialization is preferred when JWE JSON
+	// Serialization is used. The default value is true, which is to use the
+	// flattened serialization when possible. If multiple recipients exist, then the
+	// general (non-flattened) JWE JSON Serialization is used regardless of this
+	// property setting.
+	bool get_PreferFlattened(void);
+	// Controls whether the flattened serialization is preferred when JWE JSON
+	// Serialization is used. The default value is true, which is to use the
+	// flattened serialization when possible. If multiple recipients exist, then the
+	// general (non-flattened) JWE JSON Serialization is used regardless of this
+	// property setting.
+	void put_PreferFlattened(bool newVal);
 
 
 
@@ -82,6 +97,22 @@ class CK_VISIBLE_PUBLIC CkJweW  : public CkWideCharBase
 	// The index specifies which recipient key is used for decryption. (Most JWEs have
 	// only a single recipent, and thus the index is typically 0.)
 	// 
+	// Supported Algorithms:
+	//     RSAES OAEP 256 (using SHA-256 and MGF1 with SHA-256) encryption with
+	//     A128CBC-HS256, A192CBC-HS384, A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	//     RSAES OAEP (using SHA-1 and MGF1 with SHA-1) encryption with A128CBC-HS256,
+	//     A192CBC-HS384, A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	//     RSAES-PKCS1-V1_5 encryption with A128CBC-HS256, A192CBC-HS384,
+	//     A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	//     Direct symmetric key encryption with pre-shared key A128CBC-HS256,
+	//     A192CBC-HS384, A256CBC-HS512, A128GCM, A192GCM and A256GCM
+	//     A128KW, A192KW, A256KW encryption with A128CBC-HS256, A192CBC-HS384,
+	//     A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	//     A128GCMKW, A192GCMKW, A256GCMKW encryption with A128CBC-HS256,
+	//     A192CBC-HS384, A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	//     PBES2-HS256+A128KW, PBES2-HS384+A192KW, PBES2-HS512+A256KW with
+	//     A128CBC-HS256, A192CBC-HS384, A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	// 
 	bool Decrypt(int index, const wchar_t *charset, CkString &outStr);
 	// Decrypts a JWE and returns the original (decrypted) string content. The byte
 	// representation of the decrypted bytes is indicated by charset (such as "utf-8").
@@ -89,6 +120,22 @@ class CK_VISIBLE_PUBLIC CkJweW  : public CkWideCharBase
 	// 
 	// The index specifies which recipient key is used for decryption. (Most JWEs have
 	// only a single recipent, and thus the index is typically 0.)
+	// 
+	// Supported Algorithms:
+	//     RSAES OAEP 256 (using SHA-256 and MGF1 with SHA-256) encryption with
+	//     A128CBC-HS256, A192CBC-HS384, A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	//     RSAES OAEP (using SHA-1 and MGF1 with SHA-1) encryption with A128CBC-HS256,
+	//     A192CBC-HS384, A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	//     RSAES-PKCS1-V1_5 encryption with A128CBC-HS256, A192CBC-HS384,
+	//     A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	//     Direct symmetric key encryption with pre-shared key A128CBC-HS256,
+	//     A192CBC-HS384, A256CBC-HS512, A128GCM, A192GCM and A256GCM
+	//     A128KW, A192KW, A256KW encryption with A128CBC-HS256, A192CBC-HS384,
+	//     A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	//     A128GCMKW, A192GCMKW, A256GCMKW encryption with A128CBC-HS256,
+	//     A192CBC-HS384, A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	//     PBES2-HS256+A128KW, PBES2-HS384+A192KW, PBES2-HS512+A256KW with
+	//     A128CBC-HS256, A192CBC-HS384, A256CBC-HS512, A128GCM, A192GCM, A256GCM
 	// 
 	const wchar_t *decrypt(int index, const wchar_t *charset);
 
@@ -108,9 +155,43 @@ class CK_VISIBLE_PUBLIC CkJweW  : public CkWideCharBase
 
 	// Encrypts string content to produce a JWE. The byte representation of the content is
 	// indicated by charset (such as "utf-8").
+	// 
+	// Supported Algorithms:
+	//     RSAES OAEP 256 (using SHA-256 and MGF1 with SHA-256) encryption with
+	//     A128CBC-HS256, A192CBC-HS384, A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	//     RSAES OAEP (using SHA-1 and MGF1 with SHA-1) encryption with A128CBC-HS256,
+	//     A192CBC-HS384, A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	//     RSAES-PKCS1-V1_5 encryption with A128CBC-HS256, A192CBC-HS384,
+	//     A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	//     Direct symmetric key encryption with pre-shared key A128CBC-HS256,
+	//     A192CBC-HS384, A256CBC-HS512, A128GCM, A192GCM and A256GCM
+	//     A128KW, A192KW, A256KW encryption with A128CBC-HS256, A192CBC-HS384,
+	//     A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	//     A128GCMKW, A192GCMKW, A256GCMKW encryption with A128CBC-HS256,
+	//     A192CBC-HS384, A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	//     PBES2-HS256+A128KW, PBES2-HS384+A192KW, PBES2-HS512+A256KW with
+	//     A128CBC-HS256, A192CBC-HS384, A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	// 
 	bool Encrypt(const wchar_t *content, const wchar_t *charset, CkString &outStr);
 	// Encrypts string content to produce a JWE. The byte representation of the content is
 	// indicated by charset (such as "utf-8").
+	// 
+	// Supported Algorithms:
+	//     RSAES OAEP 256 (using SHA-256 and MGF1 with SHA-256) encryption with
+	//     A128CBC-HS256, A192CBC-HS384, A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	//     RSAES OAEP (using SHA-1 and MGF1 with SHA-1) encryption with A128CBC-HS256,
+	//     A192CBC-HS384, A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	//     RSAES-PKCS1-V1_5 encryption with A128CBC-HS256, A192CBC-HS384,
+	//     A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	//     Direct symmetric key encryption with pre-shared key A128CBC-HS256,
+	//     A192CBC-HS384, A256CBC-HS512, A128GCM, A192GCM and A256GCM
+	//     A128KW, A192KW, A256KW encryption with A128CBC-HS256, A192CBC-HS384,
+	//     A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	//     A128GCMKW, A192GCMKW, A256GCMKW encryption with A128CBC-HS256,
+	//     A192CBC-HS384, A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	//     PBES2-HS256+A128KW, PBES2-HS384+A192KW, PBES2-HS512+A256KW with
+	//     A128CBC-HS256, A192CBC-HS384, A256CBC-HS512, A128GCM, A192GCM, A256GCM
+	// 
 	const wchar_t *encrypt(const wchar_t *content, const wchar_t *charset);
 
 	// Encrypts the contents of contentBd to produce a JWE that is appended to the contents
@@ -121,6 +202,24 @@ class CK_VISIBLE_PUBLIC CkJweW  : public CkWideCharBase
 	// of jweSb. The byte representation of the string to be encrypted is indicated by
 	// charset (such as "utf-8").
 	bool EncryptSb(CkStringBuilderW &contentSb, const wchar_t *charset, CkStringBuilderW &jweSb);
+
+	// Finds the index of the recipient with a header parameter (paramName) equal to a
+	// specified value (paramValue). Returns -1 if no recipient contains a header with the
+	// given name/value. If caseSensitive is true, then the header param name/value
+	// comparisons are case sensitive. Otherwise it is case insensitive.
+	// 
+	// The procedure for decrypting a JWE with multiple recipients is the following:
+	//     Load the JWE via one of the Load* methods.
+	//     Find the recipient index by some identifying header paramter. The typical
+	//     case is via the "kid" header parameter. ("kid" is an arbitrary key ID
+	//     applications can assign to identify keys.)
+	//     Set the key for decryption at the found index by calling SetPrivateKey,
+	//     SetWrappingKey, or SetPassword, depending on the type of key wrapping that is
+	//     employed.
+	//     Call Decrypt, DecryptSb, or DecryptBd to decrypt for the recipient (and key)
+	//     at the given index.
+	// 
+	int FindRecipient(const wchar_t *paramName, const wchar_t *paramValue, bool caseSensitive);
 
 	// Loads the contents of a JWE.
 	bool LoadJwe(const wchar_t *jwe);

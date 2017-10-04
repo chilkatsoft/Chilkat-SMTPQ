@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkZipEntry_H
 #define _CkZipEntry_H
@@ -15,6 +15,9 @@
 class CkTask;
 class CkByteData;
 class CkDateTime;
+class CkBinData;
+class CkStringBuilder;
+class CkStream;
 class CkBaseProgress;
 
 
@@ -91,6 +94,10 @@ class CK_VISIBLE_PUBLIC CkZipEntry  : public CkClassWithCallbacks
 	// (See http://www.winzip.com/aes_info.htm#CRC )
 	int get_Crc(void);
 
+	// If this entry is AES encrypted, then this property contains the AES key length
+	// (128, 192, or 256). If the entry is not AES encrypted, then the value is 0.
+	int get_EncryptionKeyLen(void);
+
 	// The unique ID assigned by Zip.NET while the object is instantiated in memory.
 	int get_EntryID(void);
 
@@ -143,6 +150,12 @@ class CK_VISIBLE_PUBLIC CkZipEntry  : public CkClassWithCallbacks
 	// prior to completion. If HeartbeatMs is 0 (the default), no AbortCheck event
 	// callbacks will fire.
 	void put_HeartbeatMs(int newVal);
+
+	// true if the entry is AES encrypted. This property can only be true for
+	// entries already contained in a .zip (i.e. entries obtained from a zip archive
+	// that was opened via OpenZip, OpenBd, OpenFromMemory, etc.) The property is
+	// false if the entry contained in the zip is not AES encrypted.
+	bool get_IsAesEncrypted(void);
 
 	// True if the Zip entry is a directory, false if it is a file.
 	bool get_IsDirectory(void);
@@ -301,6 +314,47 @@ class CK_VISIBLE_PUBLIC CkZipEntry  : public CkClassWithCallbacks
 
 	// Sets the last-modified date/time for this zip entry.
 	void SetDt(CkDateTime &dt);
+
+
+	// Unzips the entry contents into the binData.
+	bool UnzipToBd(CkBinData &binData);
+
+	// Unzips the entry contents into the binData.
+	CkTask *UnzipToBdAsync(CkBinData &binData);
+
+
+	// Unzips a text file to the sb. The contents of sb are appended with the
+	// unzipped file. The lineEndingBehavior is as follows:
+	// 
+	// 0 = leave unchanged.
+	// 1 = convert all to bare LF's
+	// 2 = convert all to CRLF's
+	// 
+	// The srcCharset tells the component how to interpret the bytes of the uncompressed file
+	// -- i.e. as utf-8, utf-16, windows-1252, etc.
+	bool UnzipToSb(int lineEndingBehavior, const char *srcCharset, CkStringBuilder &sb);
+
+	// Unzips a text file to the sb. The contents of sb are appended with the
+	// unzipped file. The lineEndingBehavior is as follows:
+	// 
+	// 0 = leave unchanged.
+	// 1 = convert all to bare LF's
+	// 2 = convert all to CRLF's
+	// 
+	// The srcCharset tells the component how to interpret the bytes of the uncompressed file
+	// -- i.e. as utf-8, utf-16, windows-1252, etc.
+	CkTask *UnzipToSbAsync(int lineEndingBehavior, const char *srcCharset, CkStringBuilder &sb);
+
+
+	// Unzips a file within a Zip to a stream. If called synchronously, the toStream must
+	// have a sink, such as a file or another stream object. If called asynchronously,
+	// then the foreground thread can read the stream.
+	bool UnzipToStream(CkStream &toStream);
+
+	// Unzips a file within a Zip to a stream. If called synchronously, the toStream must
+	// have a sink, such as a file or another stream object. If called asynchronously,
+	// then the foreground thread can read the stream.
+	CkTask *UnzipToStreamAsync(CkStream &toStream);
 
 
 	// Inflate and return the uncompressed data as a string The lineEndingBehavior is as follows:

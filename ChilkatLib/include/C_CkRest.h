@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkRest_H
 #define _C_CkRest_H
 #include "chilkatDefs.h"
@@ -63,12 +63,14 @@ CK_VISIBLE_PUBLIC void CkRest_putVerboseLogging(HCkRest cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkRest_getVersion(HCkRest cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkRest_version(HCkRest cHandle);
 CK_VISIBLE_PUBLIC BOOL CkRest_AddHeader(HCkRest cHandle, const char *name, const char *value);
+CK_VISIBLE_PUBLIC BOOL CkRest_AddMwsSignature(HCkRest cHandle, const char *httpVerb, const char *uriPath, const char *domain, const char *mwsSecretKey);
 CK_VISIBLE_PUBLIC BOOL CkRest_AddQueryParam(HCkRest cHandle, const char *name, const char *value);
 CK_VISIBLE_PUBLIC BOOL CkRest_AddQueryParams(HCkRest cHandle, const char *queryString);
 CK_VISIBLE_PUBLIC BOOL CkRest_AddQueryParamSb(HCkRest cHandle, const char *name, HCkStringBuilder value);
 CK_VISIBLE_PUBLIC BOOL CkRest_ClearAllHeaders(HCkRest cHandle);
 CK_VISIBLE_PUBLIC BOOL CkRest_ClearAllParts(HCkRest cHandle);
 CK_VISIBLE_PUBLIC BOOL CkRest_ClearAllQueryParams(HCkRest cHandle);
+CK_VISIBLE_PUBLIC BOOL CkRest_ClearAuth(HCkRest cHandle);
 CK_VISIBLE_PUBLIC void CkRest_ClearResponseBodyStream(HCkRest cHandle);
 CK_VISIBLE_PUBLIC BOOL CkRest_Connect(HCkRest cHandle, const char *hostname, int port, BOOL tls, BOOL autoReconnect);
 CK_VISIBLE_PUBLIC HCkTask CkRest_ConnectAsync(HCkRest cHandle, const char *hostname, int port, BOOL tls, BOOL autoReconnect);

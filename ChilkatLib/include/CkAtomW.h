@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkAtomW_H
 #define _CkAtomW_H
@@ -120,7 +120,7 @@ class CK_VISIBLE_PUBLIC CkAtomW  : public CkClassWithCallbacksW
 	// NULL value may be passed.
 	void AddPerson(const wchar_t *tag, const wchar_t *name, const wchar_t *uri, const wchar_t *email);
 
-	// Removes the Nth occurance of a given element from the Atom document. Indexing
+	// Removes the Nth occurrence of a given element from the Atom document. Indexing
 	// begins at 0. For example, to remove the 2nd category, set tag = "category" and
 	// index = 1.
 	void DeleteElement(const wchar_t *tag, int index);

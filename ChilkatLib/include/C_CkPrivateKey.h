@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkPrivateKey_H
 #define _C_CkPrivateKey_H
 #include "chilkatDefs.h"
@@ -33,6 +33,8 @@ CK_VISIBLE_PUBLIC void CkPrivateKey_getVersion(HCkPrivateKey cHandle, HCkString 
 CK_VISIBLE_PUBLIC const char *CkPrivateKey_version(HCkPrivateKey cHandle);
 CK_VISIBLE_PUBLIC BOOL CkPrivateKey_GetJwk(HCkPrivateKey cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkPrivateKey_getJwk(HCkPrivateKey cHandle);
+CK_VISIBLE_PUBLIC BOOL CkPrivateKey_GetJwkThumbprint(HCkPrivateKey cHandle, const char *hashAlg, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkPrivateKey_getJwkThumbprint(HCkPrivateKey cHandle, const char *hashAlg);
 CK_VISIBLE_PUBLIC BOOL CkPrivateKey_GetPkcs1(HCkPrivateKey cHandle, HCkByteData outBytes);
 CK_VISIBLE_PUBLIC BOOL CkPrivateKey_GetPkcs1ENC(HCkPrivateKey cHandle, const char *encoding, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkPrivateKey_getPkcs1ENC(HCkPrivateKey cHandle, const char *encoding);

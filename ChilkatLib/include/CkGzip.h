@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkGzip_H
 #define _CkGzip_H
@@ -14,6 +14,7 @@
 
 class CkByteData;
 class CkTask;
+class CkBinData;
 class CkDateTime;
 class CkBaseProgress;
 
@@ -159,6 +160,13 @@ class CK_VISIBLE_PUBLIC CkGzip  : public CkClassWithCallbacks
 	// ----------------------
 	// Methods
 	// ----------------------
+	// In-place gzip the contents of binDat.
+	bool CompressBd(CkBinData &binDat);
+
+	// In-place gzip the contents of binDat.
+	CkTask *CompressBdAsync(CkBinData &binDat);
+
+
 	// Compresses a file to create a GZip compressed file (.gz).
 	bool CompressFile(const char *inFilename, const char *destPath);
 
@@ -316,6 +324,13 @@ class CK_VISIBLE_PUBLIC CkGzip  : public CkClassWithCallbacks
 	// Compress* method is called. If not explicitly set, the current system date/time
 	// is used.
 	bool SetDt(CkDateTime &dt);
+
+
+	// In-place ungzip the contents of binDat.
+	bool UncompressBd(CkBinData &binDat);
+
+	// In-place ungzip the contents of binDat.
+	CkTask *UncompressBdAsync(CkBinData &binDat);
 
 
 	// Un-Gzips a .gz file. The output filename is specified by the 2nd argument and

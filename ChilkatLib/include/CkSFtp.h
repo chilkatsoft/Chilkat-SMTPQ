@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkSFtp_H
 #define _CkSFtp_H
@@ -630,54 +630,34 @@ class CK_VISIBLE_PUBLIC CkSFtp  : public CkClassWithCallbacks
 	void put_SocksVersion(int newVal);
 
 	// Sets the receive buffer size socket option. Normally, this property should be
-	// left unchanged. The default value is 0, which indicates that the receive buffer
-	// size socket option should not be explicitly set (i.e. the system default value,
-	// which may vary from system to system, should be used).
+	// left unchanged. The default value is 4194304.
 	// 
-	// This property can be changed if download performance seems slow. It is
-	// recommended to be a multiple of 4096. To see the current system's default
-	// receive buffer size, examine the LastErrorText property after calling any method
-	// that establishes a connection. It should be reported under the heading
-	// "SO_RCVBUF". To boost performance, try setting it equal to 2, 3, or 4 times the
-	// default value.
+	// This property can be increased if download performance seems slow. It is
+	// recommended to be a multiple of 4096.
 	// 
 	int get_SoRcvBuf(void);
 	// Sets the receive buffer size socket option. Normally, this property should be
-	// left unchanged. The default value is 0, which indicates that the receive buffer
-	// size socket option should not be explicitly set (i.e. the system default value,
-	// which may vary from system to system, should be used).
+	// left unchanged. The default value is 4194304.
 	// 
-	// This property can be changed if download performance seems slow. It is
-	// recommended to be a multiple of 4096. To see the current system's default
-	// receive buffer size, examine the LastErrorText property after calling any method
-	// that establishes a connection. It should be reported under the heading
-	// "SO_RCVBUF". To boost performance, try setting it equal to 2, 3, or 4 times the
-	// default value.
+	// This property can be increased if download performance seems slow. It is
+	// recommended to be a multiple of 4096.
 	// 
 	void put_SoRcvBuf(int newVal);
 
 	// Sets the send buffer size socket option. Normally, this property should be left
-	// unchanged. The default value is 0, which indicates that the send buffer size
-	// socket option should not be explicitly set (i.e. the system default value, which
-	// may vary from system to system, should be used).
+	// unchanged. The default value is 262144.
 	// 
-	// This property can be changed if upload performance seems slow. It is recommended
-	// to be a multiple of 4096. To see the current system's default send buffer size,
-	// examine the LastErrorText property after calling any method that establishes a
-	// connection. It should be reported under the heading "SO_SNDBUF". To boost
-	// performance, try setting it equal to 2, 3, or 4 times the default value.
+	// This property can be increased if upload performance seems slow. It is
+	// recommended to be a multiple of 4096. Testing with sizes such as 512K and 1MB is
+	// reasonable.
 	// 
 	int get_SoSndBuf(void);
 	// Sets the send buffer size socket option. Normally, this property should be left
-	// unchanged. The default value is 0, which indicates that the send buffer size
-	// socket option should not be explicitly set (i.e. the system default value, which
-	// may vary from system to system, should be used).
+	// unchanged. The default value is 262144.
 	// 
-	// This property can be changed if upload performance seems slow. It is recommended
-	// to be a multiple of 4096. To see the current system's default send buffer size,
-	// examine the LastErrorText property after calling any method that establishes a
-	// connection. It should be reported under the heading "SO_SNDBUF". To boost
-	// performance, try setting it equal to 2, 3, or 4 times the default value.
+	// This property can be increased if upload performance seems slow. It is
+	// recommended to be a multiple of 4096. Testing with sizes such as 512K and 1MB is
+	// reasonable.
 	// 
 	void put_SoSndBuf(int newVal);
 
@@ -1118,6 +1098,55 @@ class CK_VISIBLE_PUBLIC CkSFtp  : public CkClassWithCallbacks
 	// Otherwise returns false. If an invalid handle is passed, a value of true is
 	// returned.
 	bool Eof(const char *handle);
+
+
+	// Returns a value to indicate whether the remote file exists or not. remotePath is the
+	// path of the remote file. If followLinks is true, then symbolic links will be followed
+	// on the server.
+	// 
+	// This method returns one of the following possible values:
+	//     -1: Unable to check. Examine the LastErrorText to determine the reason for
+	//     failure.
+	//     0: File does not exist.
+	//     1: The regular file exists.
+	//     2: It exists, but it is a directory.
+	//     3: It exists, but it is a symlink (only possible if followLinks is false)
+	//     4: It exists, but it is a special filesystem entry type.
+	//     5: It exists, but it is an unkown filesystem entry type.
+	//     6: It exists, but it is an socket filesystem entry type.
+	//     7: It exists, but it is an char device entry type.
+	//     8: It exists, but it is an block device entry type.
+	//     9: It exists, but it is an FIFO entry type.
+	// 
+	// Note: The values greater than zero correspond to the possible values as
+	// specified in the SFTP protocol specification. A given value may not make sense
+	// on all operating systems.
+	// 
+	int FileExists(const char *remotePath, bool followLinks);
+
+	// Returns a value to indicate whether the remote file exists or not. remotePath is the
+	// path of the remote file. If followLinks is true, then symbolic links will be followed
+	// on the server.
+	// 
+	// This method returns one of the following possible values:
+	//     -1: Unable to check. Examine the LastErrorText to determine the reason for
+	//     failure.
+	//     0: File does not exist.
+	//     1: The regular file exists.
+	//     2: It exists, but it is a directory.
+	//     3: It exists, but it is a symlink (only possible if followLinks is false)
+	//     4: It exists, but it is a special filesystem entry type.
+	//     5: It exists, but it is an unkown filesystem entry type.
+	//     6: It exists, but it is an socket filesystem entry type.
+	//     7: It exists, but it is an char device entry type.
+	//     8: It exists, but it is an block device entry type.
+	//     9: It exists, but it is an FIFO entry type.
+	// 
+	// Note: The values greater than zero correspond to the possible values as
+	// specified in the SFTP protocol specification. A given value may not make sense
+	// on all operating systems.
+	// 
+	CkTask *FileExistsAsync(const char *remotePath, bool followLinks);
 
 
 	// Returns the create date/time for a file. pathOrHandle may be a remote filepath or an
@@ -2150,6 +2179,21 @@ class CK_VISIBLE_PUBLIC CkSFtp  : public CkClassWithCallbacks
 	// already fully uploaded (i.e. it's size is equal to localFilePath), then no additional
 	// bytes are uploaded and true is returned.
 	CkTask *ResumeUploadFileByNameAsync(const char *remoteFilePath, const char *localFilePath);
+
+
+	// Sends an IGNORE message to the SSH server. This is one way of verifying that the
+	// connection to the SSH server is open and valid. The SSH server does not respond
+	// to an IGNORE message. It simply ignores it. IGNORE messages are not associated
+	// with a channel (i.e., you do not need to first open a channel prior to sending
+	// an IGNORE message).
+	bool SendIgnore(void);
+
+	// Sends an IGNORE message to the SSH server. This is one way of verifying that the
+	// connection to the SSH server is open and valid. The SSH server does not respond
+	// to an IGNORE message. It simply ignores it. IGNORE messages are not associated
+	// with a channel (i.e., you do not need to first open a channel prior to sending
+	// an IGNORE message).
+	CkTask *SendIgnoreAsync(void);
 
 
 	// Sets the create date/time for a file on the server. The pathOrHandle may be a filepath

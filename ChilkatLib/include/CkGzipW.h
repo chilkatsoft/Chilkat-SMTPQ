@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkGzipW_H
 #define _CkGzipW_H
@@ -13,6 +13,7 @@
 #include "CkClassWithCallbacksW.h"
 
 class CkByteData;
+class CkBinDataW;
 class CkTaskW;
 class CkDateTimeW;
 class CkBaseProgressW;
@@ -166,6 +167,14 @@ class CK_VISIBLE_PUBLIC CkGzipW  : public CkClassWithCallbacksW
 	// ----------------------
 	// Methods
 	// ----------------------
+	// In-place gzip the contents of binDat.
+	bool CompressBd(CkBinDataW &binDat);
+
+	// Creates an asynchronous task to call the CompressBd method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *CompressBdAsync(CkBinDataW &binDat);
+
 	// Compresses a file to create a GZip compressed file (.gz).
 	bool CompressFile(const wchar_t *inFilename, const wchar_t *destPath);
 
@@ -314,6 +323,14 @@ class CK_VISIBLE_PUBLIC CkGzipW  : public CkClassWithCallbacksW
 	// Compress* method is called. If not explicitly set, the current system date/time
 	// is used.
 	bool SetDt(CkDateTimeW &dt);
+
+	// In-place ungzip the contents of binDat.
+	bool UncompressBd(CkBinDataW &binDat);
+
+	// Creates an asynchronous task to call the UncompressBd method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *UncompressBdAsync(CkBinDataW &binDat);
 
 	// Un-Gzips a .gz file. The output filename is specified by the 2nd argument and
 	// not by the filename embedded within the .gz.

@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkGlobal_H
 #define _CkGlobal_H
@@ -162,6 +162,17 @@ class CK_VISIBLE_PUBLIC CkGlobal  : public CkMultiByteBase
 	//     Not unlocked. (Still in locked state.)
 	//     Unlocked with in fully-functional trial mode.
 	//     Unlocked using a valid purchased unlock code.
+	// 
+	// Note: If UnlockComponent or UnlockBundle is called with a purchased unlock code,
+	// the UnlockStatus is correctly set to the value 2. This value is intentionally
+	// sticky. If a subsequent and redundant call to UnlockComponent (or UnlockBundle)
+	// happens, it is effectively a "No-Op" because the library is already unlocked.
+	// The UnlockStatus will not change.
+	// 
+	// If however, if the 1st call resulted in UnlockStatus = 1, and THEN the unlock
+	// method is called again with a purchased unlock code, the UnlockStatus should
+	// change from 1 to 2.
+	// 
 	int get_UnlockStatus(void);
 
 
@@ -173,10 +184,17 @@ class CK_VISIBLE_PUBLIC CkGlobal  : public CkMultiByteBase
 	bool DnsClearCache(void);
 
 
-	// Called to stop and finalize all threads in the thread pool. Once the thread pool
-	// is finalized, it may not be used again. This method would only be called at the
-	// end of a program prior to exiting. Most applications, even if using async
-	// functionality, should not need to explicitly finalize the thread pool.
+	// Called to stop and finalize all threads in the thread pool, and causes the
+	// thread pool thread to exit.
+	// 
+	// The following behaviors exist in v9.5.0.64 and later:
+	//     All remaining asynchronous tasks are automatically canceled.
+	//     Restores the thread pool to it's pristine state where no background threads
+	//     are running.
+	// 
+	// It is a good idea to call this method at the very end of a program, just before
+	// it exits. This is especially true for programs written in VBScript and VB6.
+	// 
 	bool FinalizeThreadPool(void);
 
 
@@ -191,10 +209,9 @@ class CK_VISIBLE_PUBLIC CkGlobal  : public CkMultiByteBase
 	// Multiple calls to UnlockComponent are harmless. If the Chilkat API is already
 	// unlocked, the duplicate calls to UnlockComponent are no-ops.
 	// 
-	// Note: The CLASS_NAME's UnlockComponent method should only be called with a
-	// Bundle unlock code. If an individual product license was purchased, the
-	// UnlockComponent method in the specifically licensed class should be called
-	// instead.
+	// Note: The CLASS_NAME's UnlockBundle method should only be called with a Bundle
+	// unlock code. If an individual product license was purchased, the UnlockComponent
+	// method in the specifically licensed class should be called instead.
 	// 
 	bool UnlockBundle(const char *bundleUnlockCode);
 

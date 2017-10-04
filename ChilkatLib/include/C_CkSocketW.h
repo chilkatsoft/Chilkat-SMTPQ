@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkSocketWH
 #define _C_CkSocketWH
 #include "chilkatDefs.h"
@@ -208,6 +208,8 @@ CK_VISIBLE_PUBLIC BOOL CkSocketW_AsyncSendBytes(HCkSocketW cHandle, HCkByteData 
 CK_VISIBLE_PUBLIC BOOL CkSocketW_AsyncSendString(HCkSocketW cHandle, const wchar_t *stringToSend);
 CK_VISIBLE_PUBLIC BOOL CkSocketW_BindAndListen(HCkSocketW cHandle, int port, int backLog);
 CK_VISIBLE_PUBLIC HCkTaskW CkSocketW_BindAndListenAsync(HCkSocketW cHandle, int port, int backLog);
+CK_VISIBLE_PUBLIC int CkSocketW_BindAndListenPortRange(HCkSocketW cHandle, int beginPort, int endPort, int backLog);
+CK_VISIBLE_PUBLIC HCkTaskW CkSocketW_BindAndListenPortRangeAsync(HCkSocketW cHandle, int beginPort, int endPort, int backLog);
 CK_VISIBLE_PUBLIC BOOL CkSocketW_BuildHttpGetRequest(HCkSocketW cHandle, const wchar_t *url, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkSocketW_buildHttpGetRequest(HCkSocketW cHandle, const wchar_t *url);
 CK_VISIBLE_PUBLIC int CkSocketW_CheckWriteable(HCkSocketW cHandle, int maxWaitMs);
@@ -302,6 +304,7 @@ CK_VISIBLE_PUBLIC BOOL CkSocketW_SendSb(HCkSocketW cHandle, HCkStringBuilderW sb
 CK_VISIBLE_PUBLIC HCkTaskW CkSocketW_SendSbAsync(HCkSocketW cHandle, HCkStringBuilderW sb);
 CK_VISIBLE_PUBLIC BOOL CkSocketW_SendString(HCkSocketW cHandle, const wchar_t *stringToSend);
 CK_VISIBLE_PUBLIC HCkTaskW CkSocketW_SendStringAsync(HCkSocketW cHandle, const wchar_t *stringToSend);
+CK_VISIBLE_PUBLIC BOOL CkSocketW_SendWakeOnLan(HCkSocketW cHandle, const wchar_t *macAddress, int port, const wchar_t *ipBroadcastAddr);
 CK_VISIBLE_PUBLIC BOOL CkSocketW_SetSslClientCert(HCkSocketW cHandle, HCkCertW cert);
 CK_VISIBLE_PUBLIC BOOL CkSocketW_SetSslClientCertPem(HCkSocketW cHandle, const wchar_t *pemDataOrFilename, const wchar_t *pemPassword);
 CK_VISIBLE_PUBLIC BOOL CkSocketW_SetSslClientCertPfx(HCkSocketW cHandle, const wchar_t *pfxFilename, const wchar_t *pfxPassword);

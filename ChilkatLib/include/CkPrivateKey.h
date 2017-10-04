@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkPrivateKey_H
 #define _CkPrivateKey_H
@@ -139,6 +139,18 @@ class CK_VISIBLE_PUBLIC CkPrivateKey  : public CkMultiByteBase
 	//           "d":"870MB6gfuTJ4HtUnUvYMyJpr5eUZNP4Bk43bVdj3eAE"}
 	// 
 	const char *jwk(void);
+
+
+	// Returns the JWK thumbprint for the private key. This is the thumbprint of the
+	// JSON Web Key (JWK) as per RFC 7638.
+	bool GetJwkThumbprint(const char *hashAlg, CkString &outStr);
+
+	// Returns the JWK thumbprint for the private key. This is the thumbprint of the
+	// JSON Web Key (JWK) as per RFC 7638.
+	const char *getJwkThumbprint(const char *hashAlg);
+	// Returns the JWK thumbprint for the private key. This is the thumbprint of the
+	// JSON Web Key (JWK) as per RFC 7638.
+	const char *jwkThumbprint(const char *hashAlg);
 
 
 	// Gets the private key in unencrypted binary DER format, preferring PKCS1 if

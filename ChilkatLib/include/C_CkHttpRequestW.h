@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkHttpRequestWH
 #define _C_CkHttpRequestWH
 #include "chilkatDefs.h"
@@ -53,6 +53,7 @@ CK_VISIBLE_PUBLIC BOOL CkHttpRequestW_AddBytesForUpload2(HCkHttpRequestW cHandle
 CK_VISIBLE_PUBLIC BOOL CkHttpRequestW_AddFileForUpload(HCkHttpRequestW cHandle, const wchar_t *name, const wchar_t *filePath);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequestW_AddFileForUpload2(HCkHttpRequestW cHandle, const wchar_t *name, const wchar_t *filePath, const wchar_t *contentType);
 CK_VISIBLE_PUBLIC void CkHttpRequestW_AddHeader(HCkHttpRequestW cHandle, const wchar_t *name, const wchar_t *value);
+CK_VISIBLE_PUBLIC BOOL CkHttpRequestW_AddMwsSignature(HCkHttpRequestW cHandle, const wchar_t *domain, const wchar_t *mwsSecretKey);
 CK_VISIBLE_PUBLIC void CkHttpRequestW_AddParam(HCkHttpRequestW cHandle, const wchar_t *name, const wchar_t *value);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequestW_AddStringForUpload(HCkHttpRequestW cHandle, const wchar_t *name, const wchar_t *filename, const wchar_t *strData, const wchar_t *charset);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequestW_AddStringForUpload2(HCkHttpRequestW cHandle, const wchar_t *name, const wchar_t *filename, const wchar_t *strData, const wchar_t *charset, const wchar_t *contentType);
@@ -74,8 +75,10 @@ CK_VISIBLE_PUBLIC BOOL CkHttpRequestW_GetParamValue(HCkHttpRequestW cHandle, int
 CK_VISIBLE_PUBLIC const wchar_t *CkHttpRequestW_getParamValue(HCkHttpRequestW cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequestW_GetUrlEncodedParams(HCkHttpRequestW cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkHttpRequestW_getUrlEncodedParams(HCkHttpRequestW cHandle);
+CK_VISIBLE_PUBLIC BOOL CkHttpRequestW_LoadBodyFromBd(HCkHttpRequestW cHandle, HCkBinDataW requestBody);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequestW_LoadBodyFromBytes(HCkHttpRequestW cHandle, HCkByteData byteData);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequestW_LoadBodyFromFile(HCkHttpRequestW cHandle, const wchar_t *filePath);
+CK_VISIBLE_PUBLIC BOOL CkHttpRequestW_LoadBodyFromSb(HCkHttpRequestW cHandle, HCkStringBuilderW requestBody, const wchar_t *charset);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequestW_LoadBodyFromString(HCkHttpRequestW cHandle, const wchar_t *bodyStr, const wchar_t *charset);
 CK_VISIBLE_PUBLIC void CkHttpRequestW_RemoveAllParams(HCkHttpRequestW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequestW_RemoveHeader(HCkHttpRequestW cHandle, const wchar_t *name);

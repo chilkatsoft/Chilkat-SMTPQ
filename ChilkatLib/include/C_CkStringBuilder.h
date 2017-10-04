@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.66
+// This is a generated source file for Chilkat version 9.5.0.69
 #ifndef _C_CkStringBuilder_H
 #define _C_CkStringBuilder_H
 #include "chilkatDefs.h"
@@ -24,6 +24,7 @@ CK_VISIBLE_PUBLIC BOOL CkStringBuilder_AppendLine(HCkStringBuilder cHandle, cons
 CK_VISIBLE_PUBLIC BOOL CkStringBuilder_AppendSb(HCkStringBuilder cHandle, HCkStringBuilder sb);
 CK_VISIBLE_PUBLIC void CkStringBuilder_Clear(HCkStringBuilder cHandle);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilder_Contains(HCkStringBuilder cHandle, const char *str, BOOL caseSensitive);
+CK_VISIBLE_PUBLIC BOOL CkStringBuilder_ContainsWord(HCkStringBuilder cHandle, const char *word, BOOL caseSensitive);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilder_ContentsEqual(HCkStringBuilder cHandle, const char *str, BOOL caseSensitive);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilder_ContentsEqualSb(HCkStringBuilder cHandle, HCkStringBuilder sb, BOOL caseSensitive);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilder_Decode(HCkStringBuilder cHandle, const char *encoding, const char *charset);
@@ -48,7 +49,9 @@ CK_VISIBLE_PUBLIC BOOL CkStringBuilder_Prepend(HCkStringBuilder cHandle, const c
 CK_VISIBLE_PUBLIC int CkStringBuilder_Replace(HCkStringBuilder cHandle, const char *value, const char *replacement);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilder_ReplaceAllBetween(HCkStringBuilder cHandle, const char *beginMark, const char *endMark, const char *replacement, BOOL replaceMarks);
 CK_VISIBLE_PUBLIC int CkStringBuilder_ReplaceBetween(HCkStringBuilder cHandle, const char *beginMark, const char *endMark, const char *value, const char *replacement);
+CK_VISIBLE_PUBLIC int CkStringBuilder_ReplaceI(HCkStringBuilder cHandle, const char *value, int replacement);
 CK_VISIBLE_PUBLIC int CkStringBuilder_ReplaceWord(HCkStringBuilder cHandle, const char *value, const char *replacement);
+CK_VISIBLE_PUBLIC void CkStringBuilder_SecureClear(HCkStringBuilder cHandle);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilder_SetNth(HCkStringBuilder cHandle, int index, const char *value, const char *delimiterChar, BOOL exceptDoubleQuoted, BOOL exceptEscaped);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilder_SetString(HCkStringBuilder cHandle, const char *value);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilder_StartsWith(HCkStringBuilder cHandle, const char *substr, BOOL caseSensitive);

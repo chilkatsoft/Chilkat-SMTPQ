@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat v9.5.0
+// This header is generated for Chilkat 9.5.0.69
 
 #ifndef _CkSsh_H
 #define _CkSsh_H
@@ -563,54 +563,34 @@ class CK_VISIBLE_PUBLIC CkSsh  : public CkClassWithCallbacks
 	void put_SocksVersion(int newVal);
 
 	// Sets the receive buffer size socket option. Normally, this property should be
-	// left unchanged. The default value is 0, which indicates that the receive buffer
-	// size socket option should not be explicitly set (i.e. the system default value,
-	// which may vary from system to system, should be used).
+	// left unchanged. The default value is 4194304.
 	// 
-	// This property can be changed if download performance seems slow. It is
-	// recommended to be a multiple of 4096. To see the current system's default
-	// receive buffer size, examine the LastErrorText property after calling any method
-	// that establishes a connection. It should be reported under the heading
-	// "SO_RCVBUF". To boost performance, try setting it equal to 2, 3, or 4 times the
-	// default value.
+	// This property can be increased if download performance seems slow. It is
+	// recommended to be a multiple of 4096.
 	// 
 	int get_SoRcvBuf(void);
 	// Sets the receive buffer size socket option. Normally, this property should be
-	// left unchanged. The default value is 0, which indicates that the receive buffer
-	// size socket option should not be explicitly set (i.e. the system default value,
-	// which may vary from system to system, should be used).
+	// left unchanged. The default value is 4194304.
 	// 
-	// This property can be changed if download performance seems slow. It is
-	// recommended to be a multiple of 4096. To see the current system's default
-	// receive buffer size, examine the LastErrorText property after calling any method
-	// that establishes a connection. It should be reported under the heading
-	// "SO_RCVBUF". To boost performance, try setting it equal to 2, 3, or 4 times the
-	// default value.
+	// This property can be increased if download performance seems slow. It is
+	// recommended to be a multiple of 4096.
 	// 
 	void put_SoRcvBuf(int newVal);
 
 	// Sets the send buffer size socket option. Normally, this property should be left
-	// unchanged. The default value is 0, which indicates that the send buffer size
-	// socket option should not be explicitly set (i.e. the system default value, which
-	// may vary from system to system, should be used).
+	// unchanged. The default value is 262144.
 	// 
-	// This property can be changed if upload performance seems slow. It is recommended
-	// to be a multiple of 4096. To see the current system's default send buffer size,
-	// examine the LastErrorText property after calling any method that establishes a
-	// connection. It should be reported under the heading "SO_SNDBUF". To boost
-	// performance, try setting it equal to 2, 3, or 4 times the default value.
+	// This property can be increased if upload performance seems slow. It is
+	// recommended to be a multiple of 4096. Testing with sizes such as 512K and 1MB is
+	// reasonable.
 	// 
 	int get_SoSndBuf(void);
 	// Sets the send buffer size socket option. Normally, this property should be left
-	// unchanged. The default value is 0, which indicates that the send buffer size
-	// socket option should not be explicitly set (i.e. the system default value, which
-	// may vary from system to system, should be used).
+	// unchanged. The default value is 262144.
 	// 
-	// This property can be changed if upload performance seems slow. It is recommended
-	// to be a multiple of 4096. To see the current system's default send buffer size,
-	// examine the LastErrorText property after calling any method that establishes a
-	// connection. It should be reported under the heading "SO_SNDBUF". To boost
-	// performance, try setting it equal to 2, 3, or 4 times the default value.
+	// This property can be increased if upload performance seems slow. It is
+	// recommended to be a multiple of 4096. Testing with sizes such as 512K and 1MB is
+	// reasonable.
 	// 
 	void put_SoSndBuf(int newVal);
 
@@ -646,6 +626,15 @@ class CK_VISIBLE_PUBLIC CkSsh  : public CkClassWithCallbacks
 	// for most SSH servers.
 	// 
 	void put_StderrToStdout(bool newVal);
+
+	// If true, then terminal color codes are stripped from the received text. The
+	// default value of this property is true. (Color codes are non-printable escape
+	// sequences that provide information about color for text in a terminal.)
+	bool get_StripColorCodes(void);
+	// If true, then terminal color codes are stripped from the received text. The
+	// default value of this property is true. (Color codes are non-printable escape
+	// sequences that provide information about color for text in a terminal.)
+	void put_StripColorCodes(bool newVal);
 
 	// Controls whether the TCP_NODELAY socket option is used for the underlying TCP/IP
 	// socket. The default value is true. This disables the Nagle algorithm and
@@ -956,6 +945,16 @@ class CK_VISIBLE_PUBLIC CkSsh  : public CkClassWithCallbacks
 	// method may read beyond the matching text. Call GetReceivedTextS to extract only
 	// the data up-to and including the matching text.
 	// 
+	// Important Notes:
+	//     It's wise to set the ReadTimeoutMs property to a non-zero value to prevent
+	//     an infinite wait if the matchPattern never arrives.
+	//     If using a shell session and SendReqPty was called, set the termType =
+	//     "dumb". If terminal control codes get mixed into the output stream, it could
+	//     disrupt matching.
+	//     Be aware of the StderrToStdout property setting. The default value is true,
+	//     which means that stderr is mixed with stdout in the output stream. This could
+	//     disrupt matching. Set StderrToStdout to false to prevent this possibility.
+	// 
 	bool ChannelReceiveUntilMatch(int channelNum, const char *matchPattern, const char *charset, bool caseSensitive);
 
 	// Reads incoming text data on an open channel until the received data matches the
@@ -969,15 +968,33 @@ class CK_VISIBLE_PUBLIC CkSsh  : public CkClassWithCallbacks
 	// method may read beyond the matching text. Call GetReceivedTextS to extract only
 	// the data up-to and including the matching text.
 	// 
+	// Important Notes:
+	//     It's wise to set the ReadTimeoutMs property to a non-zero value to prevent
+	//     an infinite wait if the matchPattern never arrives.
+	//     If using a shell session and SendReqPty was called, set the termType =
+	//     "dumb". If terminal control codes get mixed into the output stream, it could
+	//     disrupt matching.
+	//     Be aware of the StderrToStdout property setting. The default value is true,
+	//     which means that stderr is mixed with stdout in the output stream. This could
+	//     disrupt matching. Set StderrToStdout to false to prevent this possibility.
+	// 
 	CkTask *ChannelReceiveUntilMatchAsync(int channelNum, const char *matchPattern, const char *charset, bool caseSensitive);
 
 
 	// The same as ChannelReceiveUntilMatch except that the method returns when any one
 	// of the match patterns specified in matchPatterns are received on the channel.
+	// 
+	// Important: It's wise to set the ReadTimeoutMs property to a non-zero value to
+	// prevent an infinite wait if of the matchPatterns ever arrives.
+	// 
 	bool ChannelReceiveUntilMatchN(int channelNum, CkStringArray &matchPatterns, const char *charset, bool caseSensitive);
 
 	// The same as ChannelReceiveUntilMatch except that the method returns when any one
 	// of the match patterns specified in matchPatterns are received on the channel.
+	// 
+	// Important: It's wise to set the ReadTimeoutMs property to a non-zero value to
+	// prevent an infinite wait if of the matchPatterns ever arrives.
+	// 
 	CkTask *ChannelReceiveUntilMatchNAsync(int channelNum, CkStringArray &matchPatterns, const char *charset, bool caseSensitive);
 
 
@@ -1374,23 +1391,26 @@ class CK_VISIBLE_PUBLIC CkSsh  : public CkClassWithCallbacks
 	// QuickCmdSend. Returns -1 if no commands have yet completed. The pollTimeoutMs indicates
 	// how long to wait (in milliseconds) for any command in progress (on any channel)
 	// to complete before returning -1.
+	// 
+	// Returns -2 if an error occurred (for example, if the connection to the SSH
+	// server was lost while checking for responses).
+	// 
 	int QuickCmdCheck(int pollTimeoutMs);
 
 	// Returns a channel number for a completed command that was previously sent via
 	// QuickCmdSend. Returns -1 if no commands have yet completed. The pollTimeoutMs indicates
 	// how long to wait (in milliseconds) for any command in progress (on any channel)
 	// to complete before returning -1.
+	// 
+	// Returns -2 if an error occurred (for example, if the connection to the SSH
+	// server was lost while checking for responses).
+	// 
 	CkTask *QuickCmdCheckAsync(int pollTimeoutMs);
 
 
 	// Sends a command and returns the channel number for the command that has started.
 	// This is the equivalent of calling OpenSessionChannel, followed by SendReqExec. A
 	// value of -1 is returned on failure.
-	// 
-	// The ARG2 indicates the charset of the command's output (such as "utf-8" or
-	// "ansi"). A list of supported charset values may be found on this page: Supported
-	// Charsets
-	// <http://www.chilkatsoft.com/p/p_463.asp> .
 	// 
 	// The ReqExecCharset property controls the charset used for the command that is
 	// sent.
@@ -1403,11 +1423,6 @@ class CK_VISIBLE_PUBLIC CkSsh  : public CkClassWithCallbacks
 	// Sends a command and returns the channel number for the command that has started.
 	// This is the equivalent of calling OpenSessionChannel, followed by SendReqExec. A
 	// value of -1 is returned on failure.
-	// 
-	// The ARG2 indicates the charset of the command's output (such as "utf-8" or
-	// "ansi"). A list of supported charset values may be found on this page: Supported
-	// Charsets
-	// <http://www.chilkatsoft.com/p/p_463.asp> .
 	// 
 	// The ReqExecCharset property controls the charset used for the command that is
 	// sent.
@@ -1528,15 +1543,15 @@ class CK_VISIBLE_PUBLIC CkSsh  : public CkClassWithCallbacks
 
 
 	// Sends an IGNORE message to the SSH server. This is one way of verifying that the
-	// connection to the SSH server is open and valid. The SSH server does not response
-	// it an IGNORE message, it simply ignores it. IGNORE messages are not associated
+	// connection to the SSH server is open and valid. The SSH server does not respond
+	// to an IGNORE message. It simply ignores it. IGNORE messages are not associated
 	// with a channel (in other words, you do not need to first open a channel prior to
 	// sending an IGNORE message).
 	bool SendIgnore(void);
 
 	// Sends an IGNORE message to the SSH server. This is one way of verifying that the
-	// connection to the SSH server is open and valid. The SSH server does not response
-	// it an IGNORE message, it simply ignores it. IGNORE messages are not associated
+	// connection to the SSH server is open and valid. The SSH server does not respond
+	// to an IGNORE message. It simply ignores it. IGNORE messages are not associated
 	// with a channel (in other words, you do not need to first open a channel prior to
 	// sending an IGNORE message).
 	CkTask *SendIgnoreAsync(void);
