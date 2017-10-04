@@ -33,7 +33,11 @@ The following line must be modified:
 const char *g_UnlockCode = "Anything for 30-day trial.";`
 
 
+### Important Notes:
 
+1. The **ServiceManage** and **SmtpQConfigure** apps are 100% managed C# applications.  They need to be run with administrative privileges.
+2. The **ServiceManage** and **SmtpQConfigure** apps have the "Prefer 32-bit" checkbox checked in the "Build" section of the Project Properties.  Therefore, these apps run as 32-bit applications and work with the 32-bit build of SMTPQ (i.e. ChilkatSmtpQ_32bit.exe)
+3. If you use ServiceManage to uninstall the service, and then need to re-install, exit the ServiceManage app and restart.  For some unknown reason it fails to install the service unless this happens.
 
 
 
