@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkRestWH
 #define _C_CkRestWH
 #include "chilkatDefs.h"
@@ -6,7 +6,7 @@
 #include "Chilkat_C.h"
 
 
-CK_VISIBLE_PUBLIC void CkRestW_setAbortCheck(HCkRestW cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkRestW_setAbortCheck(HCkRestW cHandle, BOOL (*fnAbortCheck)(void));
 CK_VISIBLE_PUBLIC void CkRestW_setPercentDone(HCkRestW cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkRestW_setProgressInfo(HCkRestW cHandle, void (*fnProgressInfo)(const wchar_t *name, const wchar_t *value));
 CK_VISIBLE_PUBLIC void CkRestW_setTaskCompleted(HCkRestW cHandle, void (*fnTaskCompleted)(HCkTaskW hTask));
@@ -19,54 +19,58 @@ CK_VISIBLE_PUBLIC BOOL CkRestW_getAllowHeaderQB(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC void  CkRestW_putAllowHeaderQB(HCkRestW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkRestW_getAuthorization(HCkRestW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkRestW_putAuthorization(HCkRestW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkRestW_authorization(HCkRestW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRestW_getAuthorization(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC int CkRestW_getConnectFailReason(HCkRestW cHandle);
+CK_VISIBLE_PUBLIC int CkRestW_getConnectTimeoutMs(HCkRestW cHandle);
+CK_VISIBLE_PUBLIC void  CkRestW_putConnectTimeoutMs(HCkRestW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkRestW_getDebugLogFilePath(HCkRestW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkRestW_putDebugLogFilePath(HCkRestW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkRestW_debugLogFilePath(HCkRestW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRestW_getDebugLogFilePath(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC int CkRestW_getHeartbeatMs(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC void  CkRestW_putHeartbeatMs(HCkRestW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkRestW_getHost(HCkRestW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkRestW_putHost(HCkRestW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkRestW_host(HCkRestW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRestW_getHost(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC int CkRestW_getIdleTimeoutMs(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC void  CkRestW_putIdleTimeoutMs(HCkRestW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkRestW_getLastErrorHtml(HCkRestW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkRestW_lastErrorHtml(HCkRestW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRestW_getLastErrorHtml(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC void CkRestW_getLastErrorText(HCkRestW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkRestW_lastErrorText(HCkRestW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRestW_getLastErrorText(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC void CkRestW_getLastErrorXml(HCkRestW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkRestW_lastErrorXml(HCkRestW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRestW_getLastErrorXml(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkRestW_getLastMethodSuccess(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC void  CkRestW_putLastMethodSuccess(HCkRestW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkRestW_getLastRequestHeader(HCkRestW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkRestW_lastRequestHeader(HCkRestW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRestW_getLastRequestHeader(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC void CkRestW_getLastRequestStartLine(HCkRestW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkRestW_lastRequestStartLine(HCkRestW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRestW_getLastRequestStartLine(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC int CkRestW_getNumResponseHeaders(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC void CkRestW_getPartSelector(HCkRestW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkRestW_putPartSelector(HCkRestW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkRestW_partSelector(HCkRestW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRestW_getPartSelector(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkRestW_getPercentDoneOnSend(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC void  CkRestW_putPercentDoneOnSend(HCkRestW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkRestW_getResponseHeader(HCkRestW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkRestW_responseHeader(HCkRestW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRestW_getResponseHeader(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC int CkRestW_getResponseStatusCode(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC void CkRestW_getResponseStatusText(HCkRestW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkRestW_responseStatusText(HCkRestW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRestW_getResponseStatusText(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkRestW_getStreamNonChunked(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC void  CkRestW_putStreamNonChunked(HCkRestW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkRestW_getVerboseLogging(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC void  CkRestW_putVerboseLogging(HCkRestW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkRestW_getVersion(HCkRestW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkRestW_version(HCkRestW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRestW_getVersion(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkRestW_AddHeader(HCkRestW cHandle, const wchar_t *name, const wchar_t *value);
 CK_VISIBLE_PUBLIC BOOL CkRestW_AddMwsSignature(HCkRestW cHandle, const wchar_t *httpVerb, const wchar_t *uriPath, const wchar_t *domain, const wchar_t *mwsSecretKey);
+CK_VISIBLE_PUBLIC BOOL CkRestW_AddPathParam(HCkRestW cHandle, const wchar_t *name, const wchar_t *value);
 CK_VISIBLE_PUBLIC BOOL CkRestW_AddQueryParam(HCkRestW cHandle, const wchar_t *name, const wchar_t *value);
 CK_VISIBLE_PUBLIC BOOL CkRestW_AddQueryParams(HCkRestW cHandle, const wchar_t *queryString);
 CK_VISIBLE_PUBLIC BOOL CkRestW_AddQueryParamSb(HCkRestW cHandle, const wchar_t *name, HCkStringBuilderW value);
 CK_VISIBLE_PUBLIC BOOL CkRestW_ClearAllHeaders(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkRestW_ClearAllParts(HCkRestW cHandle);
+CK_VISIBLE_PUBLIC BOOL CkRestW_ClearAllPathParams(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkRestW_ClearAllQueryParams(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkRestW_ClearAuth(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC void CkRestW_ClearResponseBodyStream(HCkRestW cHandle);
@@ -144,6 +148,7 @@ CK_VISIBLE_PUBLIC BOOL CkRestW_SetAuthAzureAD(HCkRestW cHandle, HCkAuthAzureADW 
 CK_VISIBLE_PUBLIC BOOL CkRestW_SetAuthAzureSas(HCkRestW cHandle, HCkAuthAzureSASW authProvider);
 CK_VISIBLE_PUBLIC BOOL CkRestW_SetAuthAzureStorage(HCkRestW cHandle, HCkAuthAzureStorageW authProvider);
 CK_VISIBLE_PUBLIC BOOL CkRestW_SetAuthBasic(HCkRestW cHandle, const wchar_t *username, const wchar_t *password);
+CK_VISIBLE_PUBLIC BOOL CkRestW_SetAuthBasicSecure(HCkRestW cHandle, HCkSecureStringW username, HCkSecureStringW password);
 CK_VISIBLE_PUBLIC BOOL CkRestW_SetAuthGoogle(HCkRestW cHandle, HCkAuthGoogleW authProvider);
 CK_VISIBLE_PUBLIC BOOL CkRestW_SetAuthOAuth1(HCkRestW cHandle, HCkOAuth1W authProvider, BOOL useQueryParams);
 CK_VISIBLE_PUBLIC BOOL CkRestW_SetAuthOAuth2(HCkRestW cHandle, HCkOAuth2W authProvider);

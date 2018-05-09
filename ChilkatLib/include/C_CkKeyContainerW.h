@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkKeyContainerWH
 #define _C_CkKeyContainerWH
 #include "chilkatDefs.h"
@@ -10,11 +10,11 @@ CK_VISIBLE_PUBLIC HCkKeyContainerW CkKeyContainerW_Create(void);
 CK_VISIBLE_PUBLIC void CkKeyContainerW_Dispose(HCkKeyContainerW handle);
 #if defined(CK_CRYPTOAPI_INCLUDED)
 CK_VISIBLE_PUBLIC void CkKeyContainerW_getContainerName(HCkKeyContainerW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkKeyContainerW_containerName(HCkKeyContainerW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkKeyContainerW_getContainerName(HCkKeyContainerW cHandle);
 #endif
 CK_VISIBLE_PUBLIC void CkKeyContainerW_getDebugLogFilePath(HCkKeyContainerW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkKeyContainerW_putDebugLogFilePath(HCkKeyContainerW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkKeyContainerW_debugLogFilePath(HCkKeyContainerW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkKeyContainerW_getDebugLogFilePath(HCkKeyContainerW cHandle);
 #if defined(CK_CRYPTOAPI_INCLUDED)
 CK_VISIBLE_PUBLIC BOOL CkKeyContainerW_getIsMachineKeyset(HCkKeyContainerW cHandle);
 #endif
@@ -22,17 +22,17 @@ CK_VISIBLE_PUBLIC BOOL CkKeyContainerW_getIsMachineKeyset(HCkKeyContainerW cHand
 CK_VISIBLE_PUBLIC BOOL CkKeyContainerW_getIsOpen(HCkKeyContainerW cHandle);
 #endif
 CK_VISIBLE_PUBLIC void CkKeyContainerW_getLastErrorHtml(HCkKeyContainerW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkKeyContainerW_lastErrorHtml(HCkKeyContainerW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkKeyContainerW_getLastErrorHtml(HCkKeyContainerW cHandle);
 CK_VISIBLE_PUBLIC void CkKeyContainerW_getLastErrorText(HCkKeyContainerW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkKeyContainerW_lastErrorText(HCkKeyContainerW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkKeyContainerW_getLastErrorText(HCkKeyContainerW cHandle);
 CK_VISIBLE_PUBLIC void CkKeyContainerW_getLastErrorXml(HCkKeyContainerW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkKeyContainerW_lastErrorXml(HCkKeyContainerW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkKeyContainerW_getLastErrorXml(HCkKeyContainerW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkKeyContainerW_getLastMethodSuccess(HCkKeyContainerW cHandle);
 CK_VISIBLE_PUBLIC void  CkKeyContainerW_putLastMethodSuccess(HCkKeyContainerW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkKeyContainerW_getVerboseLogging(HCkKeyContainerW cHandle);
 CK_VISIBLE_PUBLIC void  CkKeyContainerW_putVerboseLogging(HCkKeyContainerW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkKeyContainerW_getVersion(HCkKeyContainerW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkKeyContainerW_version(HCkKeyContainerW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkKeyContainerW_getVersion(HCkKeyContainerW cHandle);
 #if defined(CK_CRYPTOAPI_INCLUDED)
 CK_VISIBLE_PUBLIC void CkKeyContainerW_CloseContainer(HCkKeyContainerW cHandle);
 #endif

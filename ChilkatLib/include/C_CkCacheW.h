@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkCacheWH
 #define _C_CkCacheWH
 #include "chilkatDefs.h"
@@ -10,21 +10,21 @@ CK_VISIBLE_PUBLIC HCkCacheW CkCacheW_Create(void);
 CK_VISIBLE_PUBLIC void CkCacheW_Dispose(HCkCacheW handle);
 CK_VISIBLE_PUBLIC void CkCacheW_getDebugLogFilePath(HCkCacheW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkCacheW_putDebugLogFilePath(HCkCacheW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkCacheW_debugLogFilePath(HCkCacheW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCacheW_getDebugLogFilePath(HCkCacheW cHandle);
 CK_VISIBLE_PUBLIC void CkCacheW_getLastErrorHtml(HCkCacheW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkCacheW_lastErrorHtml(HCkCacheW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCacheW_getLastErrorHtml(HCkCacheW cHandle);
 CK_VISIBLE_PUBLIC void CkCacheW_getLastErrorText(HCkCacheW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkCacheW_lastErrorText(HCkCacheW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCacheW_getLastErrorText(HCkCacheW cHandle);
 CK_VISIBLE_PUBLIC void CkCacheW_getLastErrorXml(HCkCacheW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkCacheW_lastErrorXml(HCkCacheW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCacheW_getLastErrorXml(HCkCacheW cHandle);
 CK_VISIBLE_PUBLIC void CkCacheW_getLastEtagFetched(HCkCacheW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkCacheW_lastEtagFetched(HCkCacheW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCacheW_getLastEtagFetched(HCkCacheW cHandle);
 CK_VISIBLE_PUBLIC void CkCacheW_getLastExpirationFetched(HCkCacheW cHandle, SYSTEMTIME * retval);
 CK_VISIBLE_PUBLIC void CkCacheW_getLastExpirationFetchedStr(HCkCacheW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkCacheW_lastExpirationFetchedStr(HCkCacheW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCacheW_getLastExpirationFetchedStr(HCkCacheW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCacheW_getLastHitExpired(HCkCacheW cHandle);
 CK_VISIBLE_PUBLIC void CkCacheW_getLastKeyFetched(HCkCacheW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkCacheW_lastKeyFetched(HCkCacheW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCacheW_getLastKeyFetched(HCkCacheW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCacheW_getLastMethodSuccess(HCkCacheW cHandle);
 CK_VISIBLE_PUBLIC void  CkCacheW_putLastMethodSuccess(HCkCacheW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkCacheW_getLevel(HCkCacheW cHandle);
@@ -33,7 +33,7 @@ CK_VISIBLE_PUBLIC int CkCacheW_getNumRoots(HCkCacheW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCacheW_getVerboseLogging(HCkCacheW cHandle);
 CK_VISIBLE_PUBLIC void  CkCacheW_putVerboseLogging(HCkCacheW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkCacheW_getVersion(HCkCacheW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkCacheW_version(HCkCacheW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCacheW_getVersion(HCkCacheW cHandle);
 CK_VISIBLE_PUBLIC void CkCacheW_AddRoot(HCkCacheW cHandle, const wchar_t *path);
 CK_VISIBLE_PUBLIC int CkCacheW_DeleteAll(HCkCacheW cHandle);
 CK_VISIBLE_PUBLIC int CkCacheW_DeleteAllExpired(HCkCacheW cHandle);

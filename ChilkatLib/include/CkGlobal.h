@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkGlobal_H
 #define _CkGlobal_H
@@ -147,6 +147,23 @@ class CK_VISIBLE_PUBLIC CkGlobal  : public CkMultiByteBase
 	// the maximum.
 	void put_MaxThreads(int newVal);
 
+	// If true, then use IPv6 over IPv4 when both are supported for a particular
+	// domain. The default value of this property is false, which will choose IPv4
+	// over IPv6.
+	// 
+	// Note: Setting this property has the effect of also setting the default value of
+	// the PreferIpv6 property for other classes.
+	// 
+	bool get_PreferIpv6(void);
+	// If true, then use IPv6 over IPv4 when both are supported for a particular
+	// domain. The default value of this property is false, which will choose IPv4
+	// over IPv6.
+	// 
+	// Note: Setting this property has the effect of also setting the default value of
+	// the PreferIpv6 property for other classes.
+	// 
+	void put_PreferIpv6(bool newVal);
+
 	// If set, indicates the path of a log file to be used by the thread pool thread
 	// and each of the pool worker threads for logging async activity.
 	void get_ThreadPoolLogPath(CkString &str);
@@ -174,6 +191,19 @@ class CK_VISIBLE_PUBLIC CkGlobal  : public CkMultiByteBase
 	// change from 1 to 2.
 	// 
 	int get_UnlockStatus(void);
+
+	// This property should typically be left at the default value of false. If set
+	// to true, then Chilkat will use a constructed ASN.1 encoding for PCKS7 data.
+	// (This is an internal implementation option that normally does not matter, and
+	// should not matter. Some PKCS7 receiving systems might be picky, and this option
+	// can be used to satisfy this requirement.)
+	bool get_UsePkcsConstructedEncoding(void);
+	// This property should typically be left at the default value of false. If set
+	// to true, then Chilkat will use a constructed ASN.1 encoding for PCKS7 data.
+	// (This is an internal implementation option that normally does not matter, and
+	// should not matter. Some PKCS7 receiving systems might be picky, and this option
+	// can be used to satisfy this requirement.)
+	void put_UsePkcsConstructedEncoding(bool newVal);
 
 
 

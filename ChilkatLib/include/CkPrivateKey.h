@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkPrivateKey_H
 #define _CkPrivateKey_H
@@ -418,17 +418,17 @@ class CK_VISIBLE_PUBLIC CkPrivateKey  : public CkMultiByteBase
 
 
 	// Gets the private key in PKCS1 PEM format. This method is deprecated and is
-	// replaced by the GetPem method (given that this object may contain a non-RSA
-	// key).
+	// replaced by the GetPkcs1Pem and GetPkcs8Pem methods (given that this object may
+	// contain a non-RSA key).
 	bool GetRsaPem(CkString &outStr);
 
 	// Gets the private key in PKCS1 PEM format. This method is deprecated and is
-	// replaced by the GetPem method (given that this object may contain a non-RSA
-	// key).
+	// replaced by the GetPkcs1Pem and GetPkcs8Pem methods (given that this object may
+	// contain a non-RSA key).
 	const char *getRsaPem(void);
 	// Gets the private key in PKCS1 PEM format. This method is deprecated and is
-	// replaced by the GetPem method (given that this object may contain a non-RSA
-	// key).
+	// replaced by the GetPkcs1Pem and GetPkcs8Pem methods (given that this object may
+	// contain a non-RSA key).
 	const char *rsaPem(void);
 
 

@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkFtp2W_H
 #define _CkFtp2W_H
@@ -19,6 +19,7 @@ class CkBinDataW;
 class CkStringBuilderW;
 class CkStreamW;
 class CkCertW;
+class CkSecureStringW;
 class CkFtp2ProgressW;
 
 
@@ -1218,17 +1219,21 @@ class CK_VISIBLE_PUBLIC CkFtp2W  : public CkClassWithCallbacksW
 	// true and re-calling the upload or download method.
 	void put_RestartNext(bool newVal);
 
-	// The buffer size to be used with the underlying TCP/IP socket for sending. The
-	// default value is 65536 (64K). Set it to a smaller value for more frequent
-	// percentage completion event callbacks. A larger SendBufferSize may improve
-	// performance, but at the expense not having as frequent progress monitoring
-	// callbacks (if used and if supported by your programming language).
+	// This property is now deprecated, and has no effect in Chilkat versions 9.5.0.69
+	// and greater.
+	// 
+	// In the past, it affected how often percent completion callbacks were made.
+	// Setting it to a smaller value caused more frequent percentage completion event
+	// callbacks. The default value is 65536 (64K) and should generally not be changed.
+	// 
 	int get_SendBufferSize(void);
-	// The buffer size to be used with the underlying TCP/IP socket for sending. The
-	// default value is 65536 (64K). Set it to a smaller value for more frequent
-	// percentage completion event callbacks. A larger SendBufferSize may improve
-	// performance, but at the expense not having as frequent progress monitoring
-	// callbacks (if used and if supported by your programming language).
+	// This property is now deprecated, and has no effect in Chilkat versions 9.5.0.69
+	// and greater.
+	// 
+	// In the past, it affected how often percent completion callbacks were made.
+	// Setting it to a smaller value caused more frequent percentage completion event
+	// callbacks. The default value is 65536 (64K) and should generally not be changed.
+	// 
 	void put_SendBufferSize(int newVal);
 
 	// Contains the session log if KeepSessionLog is turned on.
@@ -3845,6 +3850,10 @@ class CK_VISIBLE_PUBLIC CkFtp2W  : public CkClassWithCallbacksW
 	// "No-Microsoft-TLS-1.2-Workaround". All options are turned off by default.
 	// 
 	bool SetOption(const wchar_t *option);
+
+	// Sets the password in a more secure way than setting the Password property.
+	// Calling this method is the equivalent of setting the Password property.
+	bool SetPassword(CkSecureStringW &password);
 
 	// Sets the last-modified date/time of a file on the FTP server. Important: Not all
 	// FTP servers support this functionality. Please see the information at the

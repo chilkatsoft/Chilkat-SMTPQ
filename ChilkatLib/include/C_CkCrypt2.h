@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkCrypt2_H
 #define _C_CkCrypt2_H
 #include "chilkatDefs.h"
@@ -6,7 +6,7 @@
 #include "Chilkat_C.h"
 
 
-CK_VISIBLE_PUBLIC void CkCrypt2_setAbortCheck(HCkCrypt2 cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkCrypt2_setAbortCheck(HCkCrypt2 cHandle, BOOL (*fnAbortCheck)(void));
 CK_VISIBLE_PUBLIC void CkCrypt2_setPercentDone(HCkCrypt2 cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkCrypt2_setProgressInfo(HCkCrypt2 cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkCrypt2_setTaskCompleted(HCkCrypt2 cHandle, void (*fnTaskCompleted)(HCkTask hTask));
@@ -83,6 +83,9 @@ CK_VISIBLE_PUBLIC int CkCrypt2_getNumSignerCerts(HCkCrypt2 cHandle);
 CK_VISIBLE_PUBLIC void CkCrypt2_getOaepHash(HCkCrypt2 cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkCrypt2_putOaepHash(HCkCrypt2 cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkCrypt2_oaepHash(HCkCrypt2 cHandle);
+CK_VISIBLE_PUBLIC void CkCrypt2_getOaepMgfHash(HCkCrypt2 cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkCrypt2_putOaepMgfHash(HCkCrypt2 cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkCrypt2_oaepMgfHash(HCkCrypt2 cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_getOaepPadding(HCkCrypt2 cHandle);
 CK_VISIBLE_PUBLIC void CkCrypt2_putOaepPadding(HCkCrypt2 cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkCrypt2_getPaddingScheme(HCkCrypt2 cHandle);
@@ -156,6 +159,7 @@ CK_VISIBLE_PUBLIC BOOL CkCrypt2_DecryptBytesENC(HCkCrypt2 cHandle, const char *s
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_DecryptEncoded(HCkCrypt2 cHandle, const char *encodedEncryptedData, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkCrypt2_decryptEncoded(HCkCrypt2 cHandle, const char *encodedEncryptedData);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_DecryptSb(HCkCrypt2 cHandle, HCkBinData bdIn, HCkStringBuilder sbOut);
+CK_VISIBLE_PUBLIC BOOL CkCrypt2_DecryptSecureENC(HCkCrypt2 cHandle, const char *cipherText, HCkSecureString secureStr);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_DecryptStream(HCkCrypt2 cHandle, HCkStream strm);
 CK_VISIBLE_PUBLIC HCkTask CkCrypt2_DecryptStreamAsync(HCkCrypt2 cHandle, HCkStream strm);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_DecryptString(HCkCrypt2 cHandle, HCkByteData data, HCkString outStr);
@@ -175,6 +179,8 @@ CK_VISIBLE_PUBLIC const char *CkCrypt2_encryptBytesENC(HCkCrypt2 cHandle, HCkByt
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_EncryptEncoded(HCkCrypt2 cHandle, const char *str, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkCrypt2_encryptEncoded(HCkCrypt2 cHandle, const char *str);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_EncryptSb(HCkCrypt2 cHandle, HCkStringBuilder sbIn, HCkBinData bdOut);
+CK_VISIBLE_PUBLIC BOOL CkCrypt2_EncryptSecureENC(HCkCrypt2 cHandle, HCkSecureString secureStr, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkCrypt2_encryptSecureENC(HCkCrypt2 cHandle, HCkSecureString secureStr);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_EncryptStream(HCkCrypt2 cHandle, HCkStream strm);
 CK_VISIBLE_PUBLIC HCkTask CkCrypt2_EncryptStreamAsync(HCkCrypt2 cHandle, HCkStream strm);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_EncryptString(HCkCrypt2 cHandle, const char *str, HCkByteData outData);
@@ -238,6 +244,7 @@ CK_VISIBLE_PUBLIC const char *CkCrypt2_inflateString(HCkCrypt2 cHandle, HCkByteD
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_InflateStringENC(HCkCrypt2 cHandle, const char *str, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkCrypt2_inflateStringENC(HCkCrypt2 cHandle, const char *str);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_IsUnlocked(HCkCrypt2 cHandle);
+CK_VISIBLE_PUBLIC HCkJsonObject CkCrypt2_LastJsonData(HCkCrypt2 cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_MacBdENC(HCkCrypt2 cHandle, HCkBinData bd, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkCrypt2_macBdENC(HCkCrypt2 cHandle, HCkBinData bd);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_MacBytes(HCkCrypt2 cHandle, HCkByteData inBytes, HCkByteData outBytes);

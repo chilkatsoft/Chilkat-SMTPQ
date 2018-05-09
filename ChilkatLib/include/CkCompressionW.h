@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkCompressionW_H
 #define _CkCompressionW_H
@@ -15,6 +15,7 @@
 class CkByteData;
 class CkTaskW;
 class CkBinDataW;
+class CkStringBuilderW;
 class CkStreamW;
 class CkBaseProgressW;
 
@@ -104,6 +105,17 @@ class CK_VISIBLE_PUBLIC CkCompressionW  : public CkClassWithCallbacksW
 	// characters. This property allows for the string to be converted to a 1-byte per
 	// char encoding prior to compression.
 	void put_Charset(const wchar_t *newVal);
+
+	// This property allows for customization of the compression level for the
+	// "deflate" and "zlib" compression algoirthms. ("zlib" is just the deflate
+	// algorithm with a zlib header.) A value of 0 = no compression, while 9 = maximum
+	// compression. The default is 6.
+	int get_DeflateLevel(void);
+	// This property allows for customization of the compression level for the
+	// "deflate" and "zlib" compression algoirthms. ("zlib" is just the deflate
+	// algorithm with a zlib header.) A value of 0 = no compression, while 9 = maximum
+	// compression. The default is 6.
+	void put_DeflateLevel(int newVal);
 
 	// Controls the encoding expected by methods ending in "ENC", such as
 	// CompressBytesENC. Valid values are "base64", "hex", "url", and
@@ -316,6 +328,14 @@ class CK_VISIBLE_PUBLIC CkCompressionW  : public CkClassWithCallbacksW
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *CompressFileAsync(const wchar_t *srcPath, const wchar_t *destPath);
 
+	// Compresses the contents of sb and appends the compressed bytes to binData.
+	bool CompressSb(CkStringBuilderW &sb, CkBinDataW &binData);
+
+	// Creates an asynchronous task to call the CompressSb method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *CompressSbAsync(CkStringBuilderW &sb, CkBinDataW &binData);
+
 	// Compresses a stream. Internally, the strm's source is read, compressed, and the
 	// compressed data written to the strm's sink. It does this in streaming fashion.
 	// Extremely large or even infinite streams can be compressed with stable ungrowing
@@ -384,6 +404,14 @@ class CK_VISIBLE_PUBLIC CkCompressionW  : public CkClassWithCallbacksW
 	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *DecompressFileAsync(const wchar_t *srcPath, const wchar_t *destPath);
+
+	// Decompresses the contents of binData and appends the decompressed string to sb.
+	bool DecompressSb(CkBinDataW &binData, CkStringBuilderW &sb);
+
+	// Creates an asynchronous task to call the DecompressSb method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *DecompressSbAsync(CkBinDataW &binData, CkStringBuilderW &sb);
 
 	// Decompresses a stream. Internally, the strm's source is read, decompressed, and
 	// the decompressed data written to the strm's sink. It does this in streaming

@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkFileAccess_H
 #define _C_CkFileAccess_H
 #include "chilkatDefs.h"
@@ -63,6 +63,7 @@ CK_VISIBLE_PUBLIC BOOL CkFileAccess_GetFileName(HCkFileAccess cHandle, const cha
 CK_VISIBLE_PUBLIC const char *CkFileAccess_getFileName(HCkFileAccess cHandle, const char *path);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_GetFileNameWithoutExtension(HCkFileAccess cHandle, const char *path, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkFileAccess_getFileNameWithoutExtension(HCkFileAccess cHandle, const char *path);
+CK_VISIBLE_PUBLIC HCkDateTime CkFileAccess_GetFileTime(HCkFileAccess cHandle, const char *path, int which);
 CK_VISIBLE_PUBLIC HCkDateTime CkFileAccess_GetLastModified(HCkFileAccess cHandle, const char *path);
 CK_VISIBLE_PUBLIC int CkFileAccess_GetNumBlocks(HCkFileAccess cHandle, int blockSize);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_GetTempFilename(HCkFileAccess cHandle, const char *dirPath, const char *prefix, HCkString outStr);

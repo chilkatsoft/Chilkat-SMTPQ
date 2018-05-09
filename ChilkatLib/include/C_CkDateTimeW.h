@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkDateTimeWH
 #define _C_CkDateTimeWH
 #include "chilkatDefs.h"
@@ -10,21 +10,21 @@ CK_VISIBLE_PUBLIC HCkDateTimeW CkDateTimeW_Create(void);
 CK_VISIBLE_PUBLIC void CkDateTimeW_Dispose(HCkDateTimeW handle);
 CK_VISIBLE_PUBLIC void CkDateTimeW_getDebugLogFilePath(HCkDateTimeW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkDateTimeW_putDebugLogFilePath(HCkDateTimeW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkDateTimeW_debugLogFilePath(HCkDateTimeW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkDateTimeW_getDebugLogFilePath(HCkDateTimeW cHandle);
 CK_VISIBLE_PUBLIC int CkDateTimeW_getIsDst(HCkDateTimeW cHandle);
 CK_VISIBLE_PUBLIC void CkDateTimeW_getLastErrorHtml(HCkDateTimeW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkDateTimeW_lastErrorHtml(HCkDateTimeW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkDateTimeW_getLastErrorHtml(HCkDateTimeW cHandle);
 CK_VISIBLE_PUBLIC void CkDateTimeW_getLastErrorText(HCkDateTimeW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkDateTimeW_lastErrorText(HCkDateTimeW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkDateTimeW_getLastErrorText(HCkDateTimeW cHandle);
 CK_VISIBLE_PUBLIC void CkDateTimeW_getLastErrorXml(HCkDateTimeW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkDateTimeW_lastErrorXml(HCkDateTimeW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkDateTimeW_getLastErrorXml(HCkDateTimeW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkDateTimeW_getLastMethodSuccess(HCkDateTimeW cHandle);
 CK_VISIBLE_PUBLIC void  CkDateTimeW_putLastMethodSuccess(HCkDateTimeW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkDateTimeW_getUtcOffset(HCkDateTimeW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkDateTimeW_getVerboseLogging(HCkDateTimeW cHandle);
 CK_VISIBLE_PUBLIC void  CkDateTimeW_putVerboseLogging(HCkDateTimeW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkDateTimeW_getVersion(HCkDateTimeW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkDateTimeW_version(HCkDateTimeW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkDateTimeW_getVersion(HCkDateTimeW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkDateTimeW_AddDays(HCkDateTimeW cHandle, int numDays);
 CK_VISIBLE_PUBLIC BOOL CkDateTimeW_AddSeconds(HCkDateTimeW cHandle, int numSeconds);
 CK_VISIBLE_PUBLIC void CkDateTimeW_DeSerialize(HCkDateTimeW cHandle, const wchar_t *serializedDateTime);

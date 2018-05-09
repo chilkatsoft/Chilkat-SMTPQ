@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkFtp2_H
 #define _C_CkFtp2_H
 #include "chilkatDefs.h"
@@ -6,7 +6,7 @@
 #include "Chilkat_C.h"
 
 
-CK_VISIBLE_PUBLIC void CkFtp2_setAbortCheck(HCkFtp2 cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkFtp2_setAbortCheck(HCkFtp2 cHandle, BOOL (*fnAbortCheck)(void));
 CK_VISIBLE_PUBLIC void CkFtp2_setPercentDone(HCkFtp2 cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkFtp2_setProgressInfo(HCkFtp2 cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkFtp2_setTaskCompleted(HCkFtp2 cHandle, void (*fnTaskCompleted)(HCkTask hTask));
@@ -422,6 +422,7 @@ CK_VISIBLE_PUBLIC HCkTask CkFtp2_SetModeZAsync(HCkFtp2 cHandle);
 CK_VISIBLE_PUBLIC void CkFtp2_SetOldestDate(HCkFtp2 cHandle, SYSTEMTIME * oldestDateTime);
 CK_VISIBLE_PUBLIC void CkFtp2_SetOldestDateStr(HCkFtp2 cHandle, const char *oldestDateTimeStr);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_SetOption(HCkFtp2 cHandle, const char *option);
+CK_VISIBLE_PUBLIC BOOL CkFtp2_SetPassword(HCkFtp2 cHandle, HCkSecureString password);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_SetRemoteFileDateTime(HCkFtp2 cHandle, SYSTEMTIME * dt, const char *remoteFilename);
 CK_VISIBLE_PUBLIC BOOL CkFtp2_SetRemoteFileDateTimeStr(HCkFtp2 cHandle, const char *dateTimeStr, const char *remoteFilename);
 CK_VISIBLE_PUBLIC HCkTask CkFtp2_SetRemoteFileDateTimeStrAsync(HCkFtp2 cHandle, const char *dateTimeStr, const char *remoteFilename);

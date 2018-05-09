@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkXmlDSigWH
 #define _C_CkXmlDSigWH
 #include "chilkatDefs.h"
@@ -10,13 +10,13 @@ CK_VISIBLE_PUBLIC HCkXmlDSigW CkXmlDSigW_Create(void);
 CK_VISIBLE_PUBLIC void CkXmlDSigW_Dispose(HCkXmlDSigW handle);
 CK_VISIBLE_PUBLIC void CkXmlDSigW_getDebugLogFilePath(HCkXmlDSigW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkXmlDSigW_putDebugLogFilePath(HCkXmlDSigW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkXmlDSigW_debugLogFilePath(HCkXmlDSigW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkXmlDSigW_getDebugLogFilePath(HCkXmlDSigW cHandle);
 CK_VISIBLE_PUBLIC void CkXmlDSigW_getLastErrorHtml(HCkXmlDSigW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkXmlDSigW_lastErrorHtml(HCkXmlDSigW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkXmlDSigW_getLastErrorHtml(HCkXmlDSigW cHandle);
 CK_VISIBLE_PUBLIC void CkXmlDSigW_getLastErrorText(HCkXmlDSigW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkXmlDSigW_lastErrorText(HCkXmlDSigW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkXmlDSigW_getLastErrorText(HCkXmlDSigW cHandle);
 CK_VISIBLE_PUBLIC void CkXmlDSigW_getLastErrorXml(HCkXmlDSigW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkXmlDSigW_lastErrorXml(HCkXmlDSigW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkXmlDSigW_getLastErrorXml(HCkXmlDSigW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkXmlDSigW_getLastMethodSuccess(HCkXmlDSigW cHandle);
 CK_VISIBLE_PUBLIC void  CkXmlDSigW_putLastMethodSuccess(HCkXmlDSigW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkXmlDSigW_getNumReferences(HCkXmlDSigW cHandle);
@@ -26,7 +26,7 @@ CK_VISIBLE_PUBLIC void  CkXmlDSigW_putSelector(HCkXmlDSigW cHandle, int newVal);
 CK_VISIBLE_PUBLIC BOOL CkXmlDSigW_getVerboseLogging(HCkXmlDSigW cHandle);
 CK_VISIBLE_PUBLIC void  CkXmlDSigW_putVerboseLogging(HCkXmlDSigW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkXmlDSigW_getVersion(HCkXmlDSigW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkXmlDSigW_version(HCkXmlDSigW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkXmlDSigW_getVersion(HCkXmlDSigW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkXmlDSigW_getWithComments(HCkXmlDSigW cHandle);
 CK_VISIBLE_PUBLIC void  CkXmlDSigW_putWithComments(HCkXmlDSigW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkXmlDSigW_CanonicalizeFragment(HCkXmlDSigW cHandle, const wchar_t *xml, const wchar_t *fragmentId, const wchar_t *version, const wchar_t *prefixList, BOOL withComments, HCkString outStr);

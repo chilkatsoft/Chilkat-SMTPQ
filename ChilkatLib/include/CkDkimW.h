@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkDkimW_H
 #define _CkDkimW_H
@@ -13,7 +13,9 @@
 #include "CkClassWithCallbacksW.h"
 
 class CkByteData;
+class CkBinDataW;
 class CkTaskW;
+class CkPrivateKeyW;
 class CkBaseProgressW;
 
 
@@ -220,25 +222,67 @@ class CK_VISIBLE_PUBLIC CkDkimW  : public CkClassWithCallbacksW
 	// this method, your program must set both the DkimDomain and DkimSelector
 	// properties, and it must load a private key by calling LoadDkimPk or
 	// LoadDkimPkFile.
+	// 
+	// Note: This method is deprecated. Use the DkimSign method instead.
+	// 
 	bool AddDkimSignature(CkByteData &mimeIn, CkByteData &outBytes);
 
 	// Constructs and prepends a DomainKey-Signature header to the MIME. Prior to
 	// calling this method, your program must set both the DomainKeyDomain and
 	// DomainKeySelector properties, and it must load a private key by calling
 	// LoadDomainKeyPk or LoadDomainKeyPkFile.
+	// 
+	// Note: This method is deprecated. Use the DomainKeySign method instead.
+	// 
 	bool AddDomainKeySignature(CkByteData &mimeIn, CkByteData &outBytes);
+
+	// Constructs and prepends a DKIM-Signature header to the MIME passed in mimeData.
+	// Prior to calling this method, your program must set both the DkimDomain and
+	// DkimSelector properties, and it must load a private key by calling
+	// SetDkimPrivateKey.
+	bool DkimSign(CkBinDataW &mimeData);
+
+	// Verifies the Nth DKIM-Signature header in the mimeData. (In most cases, there is
+	// only one signature.) The 1st signature is at sigIndex 0.
+	// 
+	// Important: Many anti-virus programs, such as AVG, will modify the MIME of an
+	// email as it is received. This will cause DKIM signature verification to fail
+	// because the body of the MIME is modified.
+	// 
+	bool DkimVerify(int sigIndex, CkBinDataW &mimeData);
+
+	// Constructs and prepends a DomainKey-Signature header to the MIME passed in mimeData.
+	// Prior to calling this method, your program must set both the DomainKeyDomain and
+	// DomainKeySelector properties, and it must load a private key by calling
+	// SetDomainKeyPrivateKey.
+	bool DomainKeySign(CkBinDataW &mimeData);
+
+	// Verifies the Nth DomainKey-Signature header in the mimeData. (In most cases, there
+	// is only one signature.) The 1st signature is at sigIndex 0.
+	// 
+	// Important: Many anti-virus programs, such as AVG, will modify the MIME of an
+	// email as it is received. This will cause DomainKey signature verification to
+	// fail because the body of the MIME is modified.
+	// 
+	bool DomainKeyVerify(int sigIndex, CkBinDataW &mimeData);
 
 	// Loads an RSA private key to be used for creating a DKIM-Signature. Any valid RSA
 	// private key format that is not binary, such as PEM or XML, may be passed to this
 	// method. This method will automatically determine the format and parse it
 	// correctly. A password is only required if key is encrypted, such as for
 	// encrypted PEM.
+	// 
+	// Note: This method is deprecated. Use the SetDkimPrivateKey method instead.
+	// 
 	bool LoadDkimPk(const wchar_t *privateKey, const wchar_t *optionalPassword);
 
 	// Loads an RSA private key to be used for creating a DKIM-Signature. Any valid RSA
 	// private key binary format, such as DER, may be passed to this method. This
 	// method will automatically determine the format and parse it correctly. A
 	// password is only required if key is encrypted.
+	// 
+	// Note: This method is deprecated. Use the SetDkimPrivateKey method instead.
+	// 
 	bool LoadDkimPkBytes(CkByteData &privateKeyDer, const wchar_t *optionalPassword);
 
 	// Loads an RSA private key file to be used for creating a DKIM-Signature. The file
@@ -246,6 +290,9 @@ class CK_VISIBLE_PUBLIC CkDkimW  : public CkClassWithCallbacksW
 	// etc. This method will automatically determine the format and parse it correctly.
 	// A password is only required if key is encrypted, such as for encrypted PEM or
 	// encrypted PKCS8.
+	// 
+	// Note: This method is deprecated. Use the SetDkimPrivateKey method instead.
+	// 
 	bool LoadDkimPkFile(const wchar_t *privateKeyFilePath, const wchar_t *optionalPassword);
 
 	// Loads an RSA private key to be used for creating a DomainKey-Signature. Any
@@ -253,12 +300,18 @@ class CK_VISIBLE_PUBLIC CkDkimW  : public CkClassWithCallbacksW
 	// passed to this method. This method will automatically determine the format and
 	// parse it correctly. A password is only required if key is encrypted, such as for
 	// encrypted PEM.
+	// 
+	// Note: This method is deprecated. Use the SetDomainKeyPrivateKey method instead.
+	// 
 	bool LoadDomainKeyPk(const wchar_t *privateKey, const wchar_t *optionalPassword);
 
 	// Loads an RSA private key to be used for creating a DomainKey-Signature. Any
 	// valid RSA private key binary format, such as DER, may be passed to this method.
 	// This method will automatically determine the format and parse it correctly. A
 	// password is only required if key is encrypted.
+	// 
+	// Note: This method is deprecated. Use the SetDomainKeyPrivateKey method instead.
+	// 
 	bool LoadDomainKeyPkBytes(CkByteData &privateKeyDer, const wchar_t *optionalPassword);
 
 	// Loads an RSA private key file to be used for creating a DomainKey-Signature. The
@@ -266,6 +319,9 @@ class CK_VISIBLE_PUBLIC CkDkimW  : public CkClassWithCallbacksW
 	// XML, etc. This method will automatically determine the format and parse it
 	// correctly. A password is only required if key is encrypted, such as for
 	// encrypted PEM or encrypted PKCS8.
+	// 
+	// Note: This method is deprecated. Use the SetDomainKeyPrivateKey method instead.
+	// 
 	bool LoadDomainKeyPkFile(const wchar_t *privateKeyFilePath, const wchar_t *optionalPassword);
 
 	// Caches a public key to be used for verifying DKIM and DomainKey signatures for a
@@ -305,6 +361,12 @@ class CK_VISIBLE_PUBLIC CkDkimW  : public CkClassWithCallbacksW
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *PrefetchPublicKeyAsync(const wchar_t *selector, const wchar_t *domain);
 
+	// Sets the private key file to be used for creating a DKIM-Signature.
+	bool SetDkimPrivateKey(CkPrivateKeyW &privateKey);
+
+	// Sets the private key file to be used for creating a DomainKey-Signature.
+	bool SetDomainKeyPrivateKey(CkPrivateKeyW &privateKey);
+
 	// Unlocks the component allowing for the full functionality to be used. If this
 	// method unexpectedly returns false, examine the contents of the LastErrorText
 	// property to determine the reason for failure.
@@ -316,6 +378,8 @@ class CK_VISIBLE_PUBLIC CkDkimW  : public CkClassWithCallbacksW
 	// Important: Many anti-virus programs, such as AVG, will modify the MIME of an
 	// email as it is received. This will cause DKIM signature verification to fail
 	// because the body of the MIME is modified.
+	// 
+	// Note: This method is deprecated. Use the DkimVerify method instead.
 	// 
 	bool VerifyDkimSignature(int sigIndex, CkByteData &mimeData);
 
@@ -330,6 +394,8 @@ class CK_VISIBLE_PUBLIC CkDkimW  : public CkClassWithCallbacksW
 	// Important: Many anti-virus programs, such as AVG, will modify the MIME of an
 	// email as it is received. This will cause DomainKey signature verification to
 	// fail because the body of the MIME is modified.
+	// 
+	// Note: This method is deprecated. Use the DomainKeyVerify method instead.
 	// 
 	bool VerifyDomainKeySignature(int sigIndex, CkByteData &mimeData);
 

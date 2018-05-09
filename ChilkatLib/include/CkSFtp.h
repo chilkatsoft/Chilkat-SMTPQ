@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkSFtp_H
 #define _CkSFtp_H
@@ -15,6 +15,7 @@
 class CkByteData;
 class CkTask;
 class CkSshKey;
+class CkSecureString;
 class CkSsh;
 class CkBinData;
 class CkStringBuilder;
@@ -298,11 +299,11 @@ class CK_VISIBLE_PUBLIC CkSFtp  : public CkClassWithCallbacks
 
 	// If set to true, forces the client to choose version 3 of the SFTP protocol,
 	// even if the server supports a higher version. The default value of this property
-	// is false.
+	// is true.
 	bool get_ForceV3(void);
 	// If set to true, forces the client to choose version 3 of the SFTP protocol,
 	// even if the server supports a higher version. The default value of this property
-	// is false.
+	// is true.
 	void put_ForceV3(bool newVal);
 
 	// This is the number of milliseconds between each AbortCheck event callback. The
@@ -566,6 +567,15 @@ class CK_VISIBLE_PUBLIC CkSFtp  : public CkClassWithCallbacks
 	// files that do not match any of these patterns.
 	void put_ReadDirMustNotMatch(const char *newVal);
 
+	// The server-identifier string received from the server during connection
+	// establishment. For example, a typical value would be similar to
+	// "SSH-2.0-OpenSSH_7.2p2 Ubuntu-4ubuntu2.2".
+	void get_ServerIdentifier(CkString &str);
+	// The server-identifier string received from the server during connection
+	// establishment. For example, a typical value would be similar to
+	// "SSH-2.0-OpenSSH_7.2p2 Ubuntu-4ubuntu2.2".
+	const char *serverIdentifier(void);
+
 	// Contains a log of the messages sent to/from the SFTP server. To enable session
 	// logging, set the KeepSessionLog property = true. Note: This property is not a
 	// filename -- it is a string property that contains the session log data.
@@ -757,6 +767,34 @@ class CK_VISIBLE_PUBLIC CkSFtp  : public CkClassWithCallbacks
 	// packets on the network.
 	void put_TcpNoDelay(bool newVal);
 
+	// This is a catch-all property to be used for uncommon needs. This property
+	// defaults to the empty string, and should typically remain empty.
+	// 
+	// As of v9.5.0.73, the only possible value is:
+	//     "KEX_DH_GEX_REQUEST_OLD" - Force the old Group Exchange message to be used.
+	//     This would be used for very old SSH server implementations that do not use the
+	//     RFC standard for diffie-hellman-group-exchange.
+	// 
+	void get_UncommonOptions(CkString &str);
+	// This is a catch-all property to be used for uncommon needs. This property
+	// defaults to the empty string, and should typically remain empty.
+	// 
+	// As of v9.5.0.73, the only possible value is:
+	//     "KEX_DH_GEX_REQUEST_OLD" - Force the old Group Exchange message to be used.
+	//     This would be used for very old SSH server implementations that do not use the
+	//     RFC standard for diffie-hellman-group-exchange.
+	// 
+	const char *uncommonOptions(void);
+	// This is a catch-all property to be used for uncommon needs. This property
+	// defaults to the empty string, and should typically remain empty.
+	// 
+	// As of v9.5.0.73, the only possible value is:
+	//     "KEX_DH_GEX_REQUEST_OLD" - Force the old Group Exchange message to be used.
+	//     This would be used for very old SSH server implementations that do not use the
+	//     RFC standard for diffie-hellman-group-exchange.
+	// 
+	void put_UncommonOptions(const char *newVal);
+
 	// The chunk size to use when uploading files via the UploadFile or
 	// UploadFileByName methods. The default value is 32000. If an upload fails because
 	// "WSAECONNABORTED An established connection was aborted by the software in your
@@ -778,6 +816,18 @@ class CK_VISIBLE_PUBLIC CkSFtp  : public CkClassWithCallbacks
 	// If true, then date/times are returned as UTC times. If false (the default)
 	// then date/times are returned as local times.
 	void put_UtcMode(bool newVal);
+
+	// The current transfer byte count for an ongoing upload or download. Programs
+	// doing asynchronous uploads or downloads can read this property in real time
+	// during the upload. For SyncTreeUpload and SyncTreeDownload operations, this is
+	// the real-time cumulative number of bytes for all files uploaded or downloaded.
+	unsigned long get_XferByteCount(void);
+
+	// The current transfer byte count for an ongoing upload or download. Programs
+	// doing asynchronous uploads or downloads can read this property in real time
+	// during the upload. For SyncTreeUpload and SyncTreeDownload operations, this is
+	// the real-time cumulative number of bytes for all files uploaded or downloaded.
+	__int64 get_XferByteCount64(void);
 
 
 
@@ -876,6 +926,24 @@ class CK_VISIBLE_PUBLIC CkSFtp  : public CkClassWithCallbacks
 	// LastErrorText property to support@chilkatsoft.com.
 	// 
 	CkTask *AuthenticatePwPkAsync(const char *username, const char *password, CkSshKey &privateKey);
+
+
+	// The same as AuthenticatePw, but the login and password are passed in secure
+	// string objects.
+	bool AuthenticateSecPw(CkSecureString &login, CkSecureString &password);
+
+	// The same as AuthenticatePw, but the login and password are passed in secure
+	// string objects.
+	CkTask *AuthenticateSecPwAsync(CkSecureString &login, CkSecureString &password);
+
+
+	// The same as AuthenticatePwPk, but the login and password are passed in secure
+	// string objects.
+	bool AuthenticateSecPwPk(CkSecureString &username, CkSecureString &password, CkSshKey &privateKey);
+
+	// The same as AuthenticatePwPk, but the login and password are passed in secure
+	// string objects.
+	CkTask *AuthenticateSecPwPkAsync(CkSecureString &username, CkSecureString &password, CkSshKey &privateKey);
 
 
 	// Clears the contents of the AccumulateBuffer property.
@@ -1149,6 +1217,25 @@ class CK_VISIBLE_PUBLIC CkSFtp  : public CkClassWithCallbacks
 	CkTask *FileExistsAsync(const char *remotePath, bool followLinks);
 
 
+	// Causes the SFTP server to do an fsync on the open file. Specifically, this is
+	// directing the SFTP server to call fsync (https://linux.die.net/man/2/fsync) on
+	// the open file.
+	// 
+	// This method uses the fsync@openssh.com and only works for servers supporting the
+	// fsync@openssh.com extension.
+	// 
+	bool Fsync(const char *handle);
+
+	// Causes the SFTP server to do an fsync on the open file. Specifically, this is
+	// directing the SFTP server to call fsync (https://linux.die.net/man/2/fsync) on
+	// the open file.
+	// 
+	// This method uses the fsync@openssh.com and only works for servers supporting the
+	// fsync@openssh.com extension.
+	// 
+	CkTask *FsyncAsync(const char *handle);
+
+
 	// Returns the create date/time for a file. pathOrHandle may be a remote filepath or an
 	// open handle string as returned by OpenFile. If pathOrHandle is a handle, then bIsHandle must
 	// be set to true, otherwise it should be false. If bFollowLinks is true, then
@@ -1412,6 +1499,15 @@ class CK_VISIBLE_PUBLIC CkSFtp  : public CkClassWithCallbacks
 	// such as ReadFileBytes64s allow for 64-bit values to be passed as strings.
 	// 
 	const char *fileSizeStr(const char *pathOrHandle, bool bFollowLinks, bool bIsHandle);
+
+
+	// Creates a hard link on the server using the hardlink@openssh.com extension. This
+	// only works for SFTP servers that support the hardlink@openssh.com extension.
+	bool HardLink(const char *oldPath, const char *newPath);
+
+	// Creates a hard link on the server using the hardlink@openssh.com extension. This
+	// only works for SFTP servers that support the hardlink@openssh.com extension.
+	CkTask *HardLinkAsync(const char *oldPath, const char *newPath);
 
 
 	// Intializes the SFTP subsystem. This should be called after connecting and
@@ -2068,6 +2164,18 @@ class CK_VISIBLE_PUBLIC CkSFtp  : public CkClassWithCallbacks
 	// 
 	const char *readFileText64s(const char *handle, const char *offset, int numBytes, const char *charset);
 
+	// Returns the target of a symbolic link on the server. The path is the path of the
+	// symbolic link on the server.
+	bool ReadLink(const char *path, CkString &outStr);
+
+	// Returns the target of a symbolic link on the server. The path is the path of the
+	// symbolic link on the server.
+	const char *readLink(const char *path);
+	// Returns the target of a symbolic link on the server. The path is the path of the
+	// symbolic link on the server.
+	CkTask *ReadLinkAsync(const char *path);
+
+
 	// This method can be used to have the server canonicalize any given path name to
 	// an absolute path. This is useful for converting path names containing ".."
 	// components or relative pathnames without a leading slash into absolute paths.
@@ -2316,6 +2424,13 @@ class CK_VISIBLE_PUBLIC CkSFtp  : public CkClassWithCallbacks
 	CkTask *SetPermissionsAsync(const char *pathOrHandle, bool isHandle, int permissions);
 
 
+	// Create a symbolic link from oldpath to newpath on the server filesystem.
+	bool SymLink(const char *oldPath, const char *newPath);
+
+	// Create a symbolic link from oldpath to newpath on the server filesystem.
+	CkTask *SymLinkAsync(const char *oldPath, const char *newPath);
+
+
 	// Downloads files from the SFTP server to a local directory tree. Synchronization
 	// modes include:
 	// 
@@ -2390,10 +2505,11 @@ class CK_VISIBLE_PUBLIC CkSFtp  : public CkClassWithCallbacks
 	// "abc123" will unlock the component for the 1st thirty days after the initial
 	// install.
 	// 
-	// A purchased unlock code for SFTP should contain the substring "SSH" (or it can
-	// be a Bundle unlock code) because SFTP is the Secure File Transfer protocol over
-	// SSH. It is a sub-system of the SSH protocol. It is not the FTP protocol. If the
-	// Chilkat FTP2 component/library should be used for the FTP protocol.
+	// A purchased unlock code for SFTP should contain the substring ".SS" or "SSH" (or
+	// it can be a Bundle unlock code) because SFTP is the Secure File Transfer
+	// protocol over SSH. It is a sub-system of the SSH protocol. It is not the FTP
+	// protocol. If the Chilkat FTP2 component/library should be used for the FTP
+	// protocol.
 	// 
 	bool UnlockComponent(const char *unlockCode);
 

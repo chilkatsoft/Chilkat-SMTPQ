@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkCsv_H
 #define _C_CkCsv_H
 #include "chilkatDefs.h"
@@ -18,6 +18,8 @@ CK_VISIBLE_PUBLIC const char *CkCsv_debugLogFilePath(HCkCsv cHandle);
 CK_VISIBLE_PUBLIC void CkCsv_getDelimiter(HCkCsv cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkCsv_putDelimiter(HCkCsv cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkCsv_delimiter(HCkCsv cHandle);
+CK_VISIBLE_PUBLIC BOOL CkCsv_getEnableQuotes(HCkCsv cHandle);
+CK_VISIBLE_PUBLIC void CkCsv_putEnableQuotes(HCkCsv cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkCsv_getEscapeBackslash(HCkCsv cHandle);
 CK_VISIBLE_PUBLIC void CkCsv_putEscapeBackslash(HCkCsv cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkCsv_getHasColumnNames(HCkCsv cHandle);

@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkImapW_H
 #define _CkImapW_H
@@ -22,6 +22,7 @@ class CkEmailBundleW;
 class CkStringArrayW;
 class CkCertW;
 class CkMailboxesW;
+class CkSecureStringW;
 class CkCspW;
 class CkPrivateKeyW;
 class CkSshKeyW;
@@ -1933,6 +1934,15 @@ class CK_VISIBLE_PUBLIC CkImapW  : public CkClassWithCallbacksW
 	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *LoginAsync(const wchar_t *loginName, const wchar_t *password);
+
+	// The same as Login, except the login name and password are passed as secure
+	// strings.
+	bool LoginSecure(CkSecureStringW &loginName, CkSecureStringW &password);
+
+	// Creates an asynchronous task to call the LoginSecure method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *LoginSecureAsync(CkSecureStringW &loginName, CkSecureStringW &password);
 
 	// Logs out of the IMAP server.
 	bool Logout(void);

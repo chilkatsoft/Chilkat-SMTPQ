@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkSshW_H
 #define _CkSshW_H
@@ -14,6 +14,7 @@
 
 class CkSshKeyW;
 class CkTaskW;
+class CkSecureStringW;
 class CkStringArrayW;
 class CkByteData;
 class CkBaseProgressW;
@@ -506,6 +507,15 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkClassWithCallbacksW
 	// method. The default is "ANSI". A likely alternate value would be "utf-8".
 	void put_ReqExecCharset(const wchar_t *newVal);
 
+	// The server-identifier string received from the server during connection
+	// establishment. For example, a typical value would be similar to
+	// "SSH-2.0-OpenSSH_7.2p2 Ubuntu-4ubuntu2.2".
+	void get_ServerIdentifier(CkString &str);
+	// The server-identifier string received from the server during connection
+	// establishment. For example, a typical value would be similar to
+	// "SSH-2.0-OpenSSH_7.2p2 Ubuntu-4ubuntu2.2".
+	const wchar_t *serverIdentifier(void);
+
 	// Contains a log of the messages sent to/from the SSH server. To enable session
 	// logging, set the KeepSessionLog property = true. Note: This property is not a
 	// filename -- it is a string property that contains the session log data.
@@ -654,6 +664,34 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkClassWithCallbacksW
 	// SSH server.
 	void put_TcpNoDelay(bool newVal);
 
+	// This is a catch-all property to be used for uncommon needs. This property
+	// defaults to the empty string, and should typically remain empty.
+	// 
+	// As of v9.5.0.73, the only possible value is:
+	//     "KEX_DH_GEX_REQUEST_OLD" - Force the old Group Exchange message to be used.
+	//     This would be used for very old SSH server implementations that do not use the
+	//     RFC standard for diffie-hellman-group-exchange.
+	// 
+	void get_UncommonOptions(CkString &str);
+	// This is a catch-all property to be used for uncommon needs. This property
+	// defaults to the empty string, and should typically remain empty.
+	// 
+	// As of v9.5.0.73, the only possible value is:
+	//     "KEX_DH_GEX_REQUEST_OLD" - Force the old Group Exchange message to be used.
+	//     This would be used for very old SSH server implementations that do not use the
+	//     RFC standard for diffie-hellman-group-exchange.
+	// 
+	const wchar_t *uncommonOptions(void);
+	// This is a catch-all property to be used for uncommon needs. This property
+	// defaults to the empty string, and should typically remain empty.
+	// 
+	// As of v9.5.0.73, the only possible value is:
+	//     "KEX_DH_GEX_REQUEST_OLD" - Force the old Group Exchange message to be used.
+	//     This would be used for very old SSH server implementations that do not use the
+	//     RFC standard for diffie-hellman-group-exchange.
+	// 
+	void put_UncommonOptions(const wchar_t *newVal);
+
 	// If a user authentication banner message is received during authentication, it
 	// will be made available here. An application can check to see if this property
 	// contains a banner string after calling StartKeyboardAuth. It is only possible
@@ -721,6 +759,24 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkClassWithCallbacksW
 	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *AuthenticatePwPkAsync(const wchar_t *username, const wchar_t *password, CkSshKeyW &privateKey);
+
+	// The same as AuthenticatePw, except the login and passwords strings are passed in
+	// secure string objects.
+	bool AuthenticateSecPw(CkSecureStringW &login, CkSecureStringW &password);
+
+	// Creates an asynchronous task to call the AuthenticateSecPw method with the
+	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *AuthenticateSecPwAsync(CkSecureStringW &login, CkSecureStringW &password);
+
+	// The same as AuthenticatePwPk, except the login and passwords strings are passed
+	// in secure string objects.
+	bool AuthenticateSecPwPk(CkSecureStringW &username, CkSecureStringW &password, CkSshKeyW &privateKey);
+
+	// Creates an asynchronous task to call the AuthenticateSecPwPk method with the
+	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *AuthenticateSecPwPkAsync(CkSecureStringW &username, CkSecureStringW &password, CkSshKeyW &privateKey);
 
 	// Returns true if the channel indicated by channelNum is open. Otherwise returns
 	// false.
@@ -951,6 +1007,20 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkClassWithCallbacksW
 	// Connects to the SSH server at domainName:port
 	// 
 	// The domainName may be a domain name or an IPv4 or IPv6 address in string format.
+	// 
+	// Internally, the following SSH connection protocol algorithms are supported:
+	//     Hostkey Types: ssh-rsa, ssh-dsa, ecdsa-sha2-nistp256, rsa-sha2-256,
+	//     rsa-sha2-512, ssh-ed25519
+	//     Key Exchange Methods: curve25519-sha256@libssh.org, ecdh-sha2-nistp256,
+	//     ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256,
+	//     diffie-hellman-group-exchange-sha1, diffie-hellman-group14-sha1,
+	//     diffie-hellman-group1-sha1
+	//     Ciphers: chacha20-poly1305@openssh.com, aes256-ctr, aes192-ctr, aes128-ctr,
+	//     aes256-cbc, aes192-cbc, aes128-cbc, twofish256-cbc, twofish128-cbc,
+	//     blowfish-cbc, 3des-cbc, arcfour128, arcfour256
+	//     MAC Algorithms: hmac-sha2-256, hmac-sha2-512, hmac-sha1, hmac-md5,
+	//     hmac-ripemd160, hmac-sha1-96
+	//     Compression: none, zlib, zlib@openssh.com
 	// 
 	// Important: All TCP-based Internet communications, regardless of the protocol
 	// (such as HTTP, FTP, SSH, IMAP, POP3, SMTP, etc.), and regardless of SSL/TLS,

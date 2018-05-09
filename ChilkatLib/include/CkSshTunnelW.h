@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkSshTunnelW_H
 #define _CkSshTunnelW_H
@@ -14,6 +14,7 @@
 
 class CkSshKeyW;
 class CkTaskW;
+class CkSecureStringW;
 class CkSshW;
 class CkBaseProgressW;
 
@@ -392,6 +393,15 @@ class CK_VISIBLE_PUBLIC CkSshTunnelW  : public CkClassWithCallbacksW
 	// set this property.)
 	void put_OutboundBindPort(int newVal);
 
+	// If true, then use IPv6 over IPv4 when both are supported for a particular
+	// domain. The default value of this property is false, which will choose IPv4
+	// over IPv6.
+	bool get_PreferIpv6(void);
+	// If true, then use IPv6 over IPv4 when both are supported for a particular
+	// domain. The default value of this property is false, which will choose IPv4
+	// over IPv6.
+	void put_PreferIpv6(bool newVal);
+
 	// The SOCKS4/SOCKS5 hostname or IPv4 address (in dotted decimal notation). This
 	// property is only used if the SocksVersion property is set to 4 or 5).
 	// 
@@ -556,6 +566,34 @@ class CK_VISIBLE_PUBLIC CkSshTunnelW  : public CkClassWithCallbacksW
 	// Set to keep a log file of the SSH tunnel thread.
 	void put_TunnelLogPath(const wchar_t *newVal);
 
+	// This is a catch-all property to be used for uncommon needs. This property
+	// defaults to the empty string, and should typically remain empty.
+	// 
+	// As of v9.5.0.73, the only possible value is:
+	//     "KEX_DH_GEX_REQUEST_OLD" - Force the old Group Exchange message to be used.
+	//     This would be used for very old SSH server implementations that do not use the
+	//     RFC standard for diffie-hellman-group-exchange.
+	// 
+	void get_UncommonOptions(CkString &str);
+	// This is a catch-all property to be used for uncommon needs. This property
+	// defaults to the empty string, and should typically remain empty.
+	// 
+	// As of v9.5.0.73, the only possible value is:
+	//     "KEX_DH_GEX_REQUEST_OLD" - Force the old Group Exchange message to be used.
+	//     This would be used for very old SSH server implementations that do not use the
+	//     RFC standard for diffie-hellman-group-exchange.
+	// 
+	const wchar_t *uncommonOptions(void);
+	// This is a catch-all property to be used for uncommon needs. This property
+	// defaults to the empty string, and should typically remain empty.
+	// 
+	// As of v9.5.0.73, the only possible value is:
+	//     "KEX_DH_GEX_REQUEST_OLD" - Force the old Group Exchange message to be used.
+	//     This would be used for very old SSH server implementations that do not use the
+	//     RFC standard for diffie-hellman-group-exchange.
+	// 
+	void put_UncommonOptions(const wchar_t *newVal);
+
 
 
 	// ----------------------
@@ -604,6 +642,24 @@ class CK_VISIBLE_PUBLIC CkSshTunnelW  : public CkClassWithCallbacksW
 	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *AuthenticatePwPkAsync(const wchar_t *username, const wchar_t *password, CkSshKeyW &privateKey);
+
+	// The same as AuthenticatePw, except the login and password strings are passed in
+	// secure string objects.
+	bool AuthenticateSecPw(CkSecureStringW &login, CkSecureStringW &password);
+
+	// Creates an asynchronous task to call the AuthenticateSecPw method with the
+	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *AuthenticateSecPwAsync(CkSecureStringW &login, CkSecureStringW &password);
+
+	// The same as AuthenticatePwPk, except the login and password strings are passed
+	// in secure string objects.
+	bool AuthenticateSecPwPk(CkSecureStringW &username, CkSecureStringW &password, CkSshKeyW &privateKey);
+
+	// Creates an asynchronous task to call the AuthenticateSecPwPk method with the
+	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *AuthenticateSecPwPkAsync(CkSecureStringW &username, CkSecureStringW &password, CkSshKeyW &privateKey);
 
 	// Starts a background thread for listening on listenPort. A new SSH tunnel is created
 	// and managed for each accepted connection. SSH tunnels are managed in a 2nd

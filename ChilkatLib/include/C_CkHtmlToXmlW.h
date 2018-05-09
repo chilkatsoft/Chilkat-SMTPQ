@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkHtmlToXmlWH
 #define _C_CkHtmlToXmlWH
 #include "chilkatDefs.h"
@@ -10,18 +10,18 @@ CK_VISIBLE_PUBLIC HCkHtmlToXmlW CkHtmlToXmlW_Create(void);
 CK_VISIBLE_PUBLIC void CkHtmlToXmlW_Dispose(HCkHtmlToXmlW handle);
 CK_VISIBLE_PUBLIC void CkHtmlToXmlW_getDebugLogFilePath(HCkHtmlToXmlW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkHtmlToXmlW_putDebugLogFilePath(HCkHtmlToXmlW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToXmlW_debugLogFilePath(HCkHtmlToXmlW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToXmlW_getDebugLogFilePath(HCkHtmlToXmlW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkHtmlToXmlW_getDropCustomTags(HCkHtmlToXmlW cHandle);
 CK_VISIBLE_PUBLIC void  CkHtmlToXmlW_putDropCustomTags(HCkHtmlToXmlW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkHtmlToXmlW_getHtml(HCkHtmlToXmlW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkHtmlToXmlW_putHtml(HCkHtmlToXmlW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToXmlW_html(HCkHtmlToXmlW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToXmlW_getHtml(HCkHtmlToXmlW cHandle);
 CK_VISIBLE_PUBLIC void CkHtmlToXmlW_getLastErrorHtml(HCkHtmlToXmlW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToXmlW_lastErrorHtml(HCkHtmlToXmlW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToXmlW_getLastErrorHtml(HCkHtmlToXmlW cHandle);
 CK_VISIBLE_PUBLIC void CkHtmlToXmlW_getLastErrorText(HCkHtmlToXmlW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToXmlW_lastErrorText(HCkHtmlToXmlW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToXmlW_getLastErrorText(HCkHtmlToXmlW cHandle);
 CK_VISIBLE_PUBLIC void CkHtmlToXmlW_getLastErrorXml(HCkHtmlToXmlW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToXmlW_lastErrorXml(HCkHtmlToXmlW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToXmlW_getLastErrorXml(HCkHtmlToXmlW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkHtmlToXmlW_getLastMethodSuccess(HCkHtmlToXmlW cHandle);
 CK_VISIBLE_PUBLIC void  CkHtmlToXmlW_putLastMethodSuccess(HCkHtmlToXmlW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkHtmlToXmlW_getNbsp(HCkHtmlToXmlW cHandle);
@@ -29,10 +29,10 @@ CK_VISIBLE_PUBLIC void  CkHtmlToXmlW_putNbsp(HCkHtmlToXmlW cHandle, int newVal);
 CK_VISIBLE_PUBLIC BOOL CkHtmlToXmlW_getVerboseLogging(HCkHtmlToXmlW cHandle);
 CK_VISIBLE_PUBLIC void  CkHtmlToXmlW_putVerboseLogging(HCkHtmlToXmlW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkHtmlToXmlW_getVersion(HCkHtmlToXmlW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToXmlW_version(HCkHtmlToXmlW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToXmlW_getVersion(HCkHtmlToXmlW cHandle);
 CK_VISIBLE_PUBLIC void CkHtmlToXmlW_getXmlCharset(HCkHtmlToXmlW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkHtmlToXmlW_putXmlCharset(HCkHtmlToXmlW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToXmlW_xmlCharset(HCkHtmlToXmlW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToXmlW_getXmlCharset(HCkHtmlToXmlW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkHtmlToXmlW_ConvertFile(HCkHtmlToXmlW cHandle, const wchar_t *inHtmlPath, const wchar_t *destXmlPath);
 CK_VISIBLE_PUBLIC void CkHtmlToXmlW_DropTagType(HCkHtmlToXmlW cHandle, const wchar_t *tagName);
 CK_VISIBLE_PUBLIC void CkHtmlToXmlW_DropTextFormattingTags(HCkHtmlToXmlW cHandle);

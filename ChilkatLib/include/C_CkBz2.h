@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkBz2_H
 #define _C_CkBz2_H
 #include "chilkatDefs.h"
@@ -6,7 +6,7 @@
 #include "Chilkat_C.h"
 
 
-CK_VISIBLE_PUBLIC void CkBz2_setAbortCheck(HCkBz2 cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkBz2_setAbortCheck(HCkBz2 cHandle, BOOL (*fnAbortCheck)(void));
 CK_VISIBLE_PUBLIC void CkBz2_setPercentDone(HCkBz2 cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkBz2_setProgressInfo(HCkBz2 cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkBz2_setTaskCompleted(HCkBz2 cHandle, void (*fnTaskCompleted)(HCkTask hTask));

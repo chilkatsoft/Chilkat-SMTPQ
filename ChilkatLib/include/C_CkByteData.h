@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkByteData_H
 #define _C_CkByteData_H
 #include "chilkatDefs.h"
@@ -8,6 +8,8 @@
 
 CK_VISIBLE_PUBLIC HCkByteData CkByteData_Create(void);
 CK_VISIBLE_PUBLIC void CkByteData_Dispose(HCkByteData handle);
+CK_VISIBLE_PUBLIC BOOL CkByteData_getSecureClear(HCkByteData cHandle);
+CK_VISIBLE_PUBLIC void CkByteData_putSecureClear(HCkByteData cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkByteData_append(HCkByteData cHandle, HCkByteData db);
 CK_VISIBLE_PUBLIC void CkByteData_append2(HCkByteData cHandle, const unsigned char *pByteData, unsigned long szByteData);
 CK_VISIBLE_PUBLIC void CkByteData_appendChar(HCkByteData cHandle, char ch);

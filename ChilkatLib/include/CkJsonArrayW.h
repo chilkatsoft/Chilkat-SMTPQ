@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkJsonArrayW_H
 #define _CkJsonArrayW_H
@@ -12,6 +12,8 @@
 #include "CkString.h"
 #include "CkWideCharBase.h"
 
+class CkDateTimeW;
+class CkDtObjW;
 class CkStringBuilderW;
 class CkJsonObjectW;
 
@@ -140,9 +142,24 @@ class CK_VISIBLE_PUBLIC CkJsonArrayW  : public CkWideCharBase
 	// member is at index 0).
 	bool BoolAt(int index);
 
+	// Fills the dateTime with the date/time string located in the Nth array element.
+	// Indexing is 0-based (the 1st member is at index 0). Auto-recognizes the
+	// following date/time string formats: ISO-8061 Timestamp (such as
+	// "2009-11-04T19:55:41Z"), RFC822 date/time format (such as "Wed, 18 Apr 2018
+	// 15:51:55 -0400"), or Unix timestamp integers.
+	bool DateAt(int index, CkDateTimeW &dateTime);
+
 	// Deletes the array element at the given index. Indexing is 0-based (the 1st member
 	// is at index 0).
 	bool DeleteAt(int index);
+
+	// Fills the dt with the date/time string located in the Nth array element. If
+	// bLocal is true, then dt is filled with the local date/time values, otherwise
+	// it is filled with the UTC/GMT values. Indexing is 0-based (the 1st member is at
+	// index 0). Auto-recognizes the following date/time string formats: ISO-8061
+	// Timestamp (such as "2009-11-04T19:55:41Z"), RFC822 date/time format (such as
+	// "Wed, 18 Apr 2018 15:51:55 -0400"), or Unix timestamp integers.
+	bool DtAt(int index, bool bLocal, CkDtObjW &dt);
 
 	// Writes the JSON array (rooted at the caller) and returns as a string.
 	// 
@@ -173,6 +190,19 @@ const wchar_t *emit(void);
 	// line-endings, set the EmitCompact and EmitCrlf properties.
 	// 
 	bool EmitSb(CkStringBuilderW &sb);
+
+	// Return the index of the first object in the array where value of the field at
+	// name matches value. name is an object member name. The value is a value pattern
+	// which can use "*" chars to indicate zero or more of any char. If caseSensitive is
+	// false, then the matching is case insenstive, otherwise it is case sensitive.
+	// Returns -1 if no matching string was found.
+	int FindObject(const wchar_t *name, const wchar_t *value, bool caseSensitive);
+
+	// Return the index of the first matching string in the array. The value is a value
+	// pattern which can use "*" chars to indicate zero or more of any char. If caseSensitive is
+	// false, then the matching is case insenstive, otherwise it is case sensitive.
+	// Returns -1 if no matching string was found.
+	int FindString(const wchar_t *value, bool caseSensitive);
 
 	// Returns the integer value of the Nth array element. Indexing is 0-based (the 1st
 	// member is at index 0).

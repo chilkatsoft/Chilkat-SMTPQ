@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkAsnWH
 #define _C_CkAsnWH
 #include "chilkatDefs.h"
@@ -13,28 +13,28 @@ CK_VISIBLE_PUBLIC void  CkAsnW_putBoolValue(HCkAsnW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkAsnW_getConstructed(HCkAsnW cHandle);
 CK_VISIBLE_PUBLIC void CkAsnW_getContentStr(HCkAsnW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkAsnW_putContentStr(HCkAsnW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkAsnW_contentStr(HCkAsnW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkAsnW_getContentStr(HCkAsnW cHandle);
 CK_VISIBLE_PUBLIC void CkAsnW_getDebugLogFilePath(HCkAsnW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkAsnW_putDebugLogFilePath(HCkAsnW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkAsnW_debugLogFilePath(HCkAsnW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkAsnW_getDebugLogFilePath(HCkAsnW cHandle);
 CK_VISIBLE_PUBLIC int CkAsnW_getIntValue(HCkAsnW cHandle);
 CK_VISIBLE_PUBLIC void  CkAsnW_putIntValue(HCkAsnW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkAsnW_getLastErrorHtml(HCkAsnW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkAsnW_lastErrorHtml(HCkAsnW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkAsnW_getLastErrorHtml(HCkAsnW cHandle);
 CK_VISIBLE_PUBLIC void CkAsnW_getLastErrorText(HCkAsnW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkAsnW_lastErrorText(HCkAsnW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkAsnW_getLastErrorText(HCkAsnW cHandle);
 CK_VISIBLE_PUBLIC void CkAsnW_getLastErrorXml(HCkAsnW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkAsnW_lastErrorXml(HCkAsnW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkAsnW_getLastErrorXml(HCkAsnW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkAsnW_getLastMethodSuccess(HCkAsnW cHandle);
 CK_VISIBLE_PUBLIC void  CkAsnW_putLastMethodSuccess(HCkAsnW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkAsnW_getNumSubItems(HCkAsnW cHandle);
 CK_VISIBLE_PUBLIC void CkAsnW_getTag(HCkAsnW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkAsnW_tag(HCkAsnW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkAsnW_getTag(HCkAsnW cHandle);
 CK_VISIBLE_PUBLIC int CkAsnW_getTagValue(HCkAsnW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkAsnW_getVerboseLogging(HCkAsnW cHandle);
 CK_VISIBLE_PUBLIC void  CkAsnW_putVerboseLogging(HCkAsnW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkAsnW_getVersion(HCkAsnW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkAsnW_version(HCkAsnW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkAsnW_getVersion(HCkAsnW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkAsnW_AppendBigInt(HCkAsnW cHandle, const wchar_t *encodedBytes, const wchar_t *encoding);
 CK_VISIBLE_PUBLIC BOOL CkAsnW_AppendBits(HCkAsnW cHandle, const wchar_t *encodedBytes, const wchar_t *encoding);
 CK_VISIBLE_PUBLIC BOOL CkAsnW_AppendBool(HCkAsnW cHandle, BOOL value);

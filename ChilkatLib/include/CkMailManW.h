@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkMailManW_H
 #define _CkMailManW_H
@@ -17,12 +17,13 @@ class CkTaskW;
 class CkEmailBundleW;
 class CkEmailW;
 class CkStringArrayW;
+class CkBinDataW;
 class CkCertW;
 class CkJsonObjectW;
-class CkBinDataW;
 class CkStringBuilderW;
 class CkCspW;
 class CkPrivateKeyW;
+class CkSecureStringW;
 class CkSshKeyW;
 class CkXmlCertVaultW;
 class CkSshW;
@@ -98,6 +99,11 @@ class CK_VISIBLE_PUBLIC CkMailManW  : public CkClassWithCallbacksW
 	// Note: An SMTP server only knows the validity of email addresses within the
 	// domain it controls.
 	// 
+	// Important: The AllOrNone property only works if SMTP pipelining is turned off.
+	// By default, the SmtpPipelining property is turned on and has the value of
+	// true. If all-or-none behavior is desired, make sure to set SmtpPipelining
+	// equal to false.
+	// 
 	bool get_AllOrNone(void);
 	// Prevents sending any email if any of the addresses in the recipient list are
 	// rejected by the SMTP server. The default value is false, which indicates that
@@ -107,6 +113,11 @@ class CK_VISIBLE_PUBLIC CkMailManW  : public CkClassWithCallbacksW
 	// 
 	// Note: An SMTP server only knows the validity of email addresses within the
 	// domain it controls.
+	// 
+	// Important: The AllOrNone property only works if SMTP pipelining is turned off.
+	// By default, the SmtpPipelining property is turned on and has the value of
+	// true. If all-or-none behavior is desired, make sure to set SmtpPipelining
+	// equal to false.
 	// 
 	void put_AllOrNone(bool newVal);
 
@@ -1842,6 +1853,14 @@ class CK_VISIBLE_PUBLIC CkMailManW  : public CkClassWithCallbacksW
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *FetchMimeAsync(const wchar_t *uidl);
 
+	// Fetches an email by UIDL and returns the MIME source of the email in uidl.
+	bool FetchMimeBd(const wchar_t *uidl, CkBinDataW &mimeData);
+
+	// Creates an asynchronous task to call the FetchMimeBd method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *FetchMimeBdAsync(const wchar_t *uidl, CkBinDataW &mimeData);
+
 	// Fetches an email by message number and returns the MIME source of the email in a
 	// byte array. WARNING: Message sequend numbers are specific to a POP3 session. If
 	// a maildrop has (for example) 10 messages, the message numbers will be 1, 2, 3,
@@ -2407,6 +2426,15 @@ class CK_VISIBLE_PUBLIC CkMailManW  : public CkClassWithCallbacksW
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *SendMimeAsync(const wchar_t *fromAddr, const wchar_t *recipients, const wchar_t *mimeSource);
 
+	// This method is the same as SendMimeBytes, except the MIME is passed in an object
+	// (mimeData) rather than explicitly passing the bytes.
+	bool SendMimeBd(const wchar_t *fromAddr, const wchar_t *recipients, CkBinDataW &mimeData);
+
+	// Creates an asynchronous task to call the SendMimeBd method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *SendMimeBdAsync(const wchar_t *fromAddr, const wchar_t *recipients, CkBinDataW &mimeData);
+
 	// This method is the same as SendMime, except the MIME is passed in a byte array.
 	// This can be important if the MIME uses a binary encoding, or if a DKIM/DomainKey
 	// signature is included.
@@ -2530,6 +2558,12 @@ class CK_VISIBLE_PUBLIC CkMailManW  : public CkClassWithCallbacksW
 	// the required cert + private key.
 	// 
 	bool SetDecryptCert2(CkCertW &cert, CkPrivateKeyW &privateKey);
+
+	// Provides a more secure way of setting either the POP3 or SMTP password. The protocol
+	// can be "pop3" or "smtp". When the protocol is "pop3", this is equivalent to setting
+	// the PopPassword property. When protocol is "smtp", this is equivalent to setting the
+	// SmtpPassword property.
+	bool SetPassword(const wchar_t *protocol, CkSecureStringW &password);
 
 	// Sets the client-side certificate to be used with SSL connections. This is
 	// typically not required, as most SSL connections are such that only the server is

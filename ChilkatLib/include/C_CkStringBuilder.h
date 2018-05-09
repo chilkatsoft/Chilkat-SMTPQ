@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkStringBuilder_H
 #define _C_CkStringBuilder_H
 #include "chilkatDefs.h"
@@ -46,7 +46,10 @@ CK_VISIBLE_PUBLIC BOOL CkStringBuilder_LastNLines(HCkStringBuilder cHandle, int 
 CK_VISIBLE_PUBLIC const char *CkStringBuilder_lastNLines(HCkStringBuilder cHandle, int numLines, BOOL bCrlf);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilder_LoadFile(HCkStringBuilder cHandle, const char *path, const char *charset);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilder_Prepend(HCkStringBuilder cHandle, const char *value);
+CK_VISIBLE_PUBLIC BOOL CkStringBuilder_PunyDecode(HCkStringBuilder cHandle);
+CK_VISIBLE_PUBLIC BOOL CkStringBuilder_PunyEncode(HCkStringBuilder cHandle);
 CK_VISIBLE_PUBLIC int CkStringBuilder_Replace(HCkStringBuilder cHandle, const char *value, const char *replacement);
+CK_VISIBLE_PUBLIC BOOL CkStringBuilder_ReplaceAfterFinal(HCkStringBuilder cHandle, const char *marker, const char *replacement);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilder_ReplaceAllBetween(HCkStringBuilder cHandle, const char *beginMark, const char *endMark, const char *replacement, BOOL replaceMarks);
 CK_VISIBLE_PUBLIC int CkStringBuilder_ReplaceBetween(HCkStringBuilder cHandle, const char *beginMark, const char *endMark, const char *value, const char *replacement);
 CK_VISIBLE_PUBLIC int CkStringBuilder_ReplaceI(HCkStringBuilder cHandle, const char *value, int replacement);
@@ -62,4 +65,5 @@ CK_VISIBLE_PUBLIC BOOL CkStringBuilder_ToUppercase(HCkStringBuilder cHandle);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilder_Trim(HCkStringBuilder cHandle);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilder_TrimInsideSpaces(HCkStringBuilder cHandle);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilder_WriteFile(HCkStringBuilder cHandle, const char *path, const char *charset, BOOL emitBom);
+CK_VISIBLE_PUBLIC BOOL CkStringBuilder_WriteFileIfModified(HCkStringBuilder cHandle, const char *path, const char *charset, BOOL emitBom);
 #endif

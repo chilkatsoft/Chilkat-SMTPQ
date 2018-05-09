@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkSsh_H
 #define _C_CkSsh_H
 #include "chilkatDefs.h"
@@ -6,7 +6,7 @@
 #include "Chilkat_C.h"
 
 
-CK_VISIBLE_PUBLIC void CkSsh_setAbortCheck(HCkSsh cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkSsh_setAbortCheck(HCkSsh cHandle, BOOL (*fnAbortCheck)(void));
 CK_VISIBLE_PUBLIC void CkSsh_setPercentDone(HCkSsh cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkSsh_setProgressInfo(HCkSsh cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkSsh_setTaskCompleted(HCkSsh cHandle, void (*fnTaskCompleted)(HCkTask hTask));
@@ -88,6 +88,8 @@ CK_VISIBLE_PUBLIC void CkSsh_putReadTimeoutMs(HCkSsh cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkSsh_getReqExecCharset(HCkSsh cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkSsh_putReqExecCharset(HCkSsh cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkSsh_reqExecCharset(HCkSsh cHandle);
+CK_VISIBLE_PUBLIC void CkSsh_getServerIdentifier(HCkSsh cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC const char *CkSsh_serverIdentifier(HCkSsh cHandle);
 CK_VISIBLE_PUBLIC void CkSsh_getSessionLog(HCkSsh cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkSsh_sessionLog(HCkSsh cHandle);
 CK_VISIBLE_PUBLIC void CkSsh_getSocksHostname(HCkSsh cHandle, HCkString retval);
@@ -113,6 +115,9 @@ CK_VISIBLE_PUBLIC BOOL CkSsh_getStripColorCodes(HCkSsh cHandle);
 CK_VISIBLE_PUBLIC void CkSsh_putStripColorCodes(HCkSsh cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkSsh_getTcpNoDelay(HCkSsh cHandle);
 CK_VISIBLE_PUBLIC void CkSsh_putTcpNoDelay(HCkSsh cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void CkSsh_getUncommonOptions(HCkSsh cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkSsh_putUncommonOptions(HCkSsh cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkSsh_uncommonOptions(HCkSsh cHandle);
 CK_VISIBLE_PUBLIC void CkSsh_getUserAuthBanner(HCkSsh cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkSsh_putUserAuthBanner(HCkSsh cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkSsh_userAuthBanner(HCkSsh cHandle);
@@ -128,6 +133,10 @@ CK_VISIBLE_PUBLIC BOOL CkSsh_AuthenticatePw(HCkSsh cHandle, const char *login, c
 CK_VISIBLE_PUBLIC HCkTask CkSsh_AuthenticatePwAsync(HCkSsh cHandle, const char *login, const char *password);
 CK_VISIBLE_PUBLIC BOOL CkSsh_AuthenticatePwPk(HCkSsh cHandle, const char *username, const char *password, HCkSshKey privateKey);
 CK_VISIBLE_PUBLIC HCkTask CkSsh_AuthenticatePwPkAsync(HCkSsh cHandle, const char *username, const char *password, HCkSshKey privateKey);
+CK_VISIBLE_PUBLIC BOOL CkSsh_AuthenticateSecPw(HCkSsh cHandle, HCkSecureString login, HCkSecureString password);
+CK_VISIBLE_PUBLIC HCkTask CkSsh_AuthenticateSecPwAsync(HCkSsh cHandle, HCkSecureString login, HCkSecureString password);
+CK_VISIBLE_PUBLIC BOOL CkSsh_AuthenticateSecPwPk(HCkSsh cHandle, HCkSecureString username, HCkSecureString password, HCkSshKey privateKey);
+CK_VISIBLE_PUBLIC HCkTask CkSsh_AuthenticateSecPwPkAsync(HCkSsh cHandle, HCkSecureString username, HCkSecureString password, HCkSshKey privateKey);
 CK_VISIBLE_PUBLIC BOOL CkSsh_ChannelIsOpen(HCkSsh cHandle, int channelNum);
 CK_VISIBLE_PUBLIC int CkSsh_ChannelPoll(HCkSsh cHandle, int channelNum, int pollTimeoutMs);
 CK_VISIBLE_PUBLIC HCkTask CkSsh_ChannelPollAsync(HCkSsh cHandle, int channelNum, int pollTimeoutMs);

@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkFileAccessWH
 #define _C_CkFileAccessWH
 #include "chilkatDefs.h"
@@ -9,26 +9,26 @@
 CK_VISIBLE_PUBLIC HCkFileAccessW CkFileAccessW_Create(void);
 CK_VISIBLE_PUBLIC void CkFileAccessW_Dispose(HCkFileAccessW handle);
 CK_VISIBLE_PUBLIC void CkFileAccessW_getCurrentDir(HCkFileAccessW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkFileAccessW_currentDir(HCkFileAccessW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkFileAccessW_getCurrentDir(HCkFileAccessW cHandle);
 CK_VISIBLE_PUBLIC void CkFileAccessW_getDebugLogFilePath(HCkFileAccessW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkFileAccessW_putDebugLogFilePath(HCkFileAccessW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkFileAccessW_debugLogFilePath(HCkFileAccessW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkFileAccessW_getDebugLogFilePath(HCkFileAccessW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkFileAccessW_getEndOfFile(HCkFileAccessW cHandle);
 CK_VISIBLE_PUBLIC int CkFileAccessW_getFileOpenError(HCkFileAccessW cHandle);
 CK_VISIBLE_PUBLIC void CkFileAccessW_getFileOpenErrorMsg(HCkFileAccessW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkFileAccessW_fileOpenErrorMsg(HCkFileAccessW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkFileAccessW_getFileOpenErrorMsg(HCkFileAccessW cHandle);
 CK_VISIBLE_PUBLIC void CkFileAccessW_getLastErrorHtml(HCkFileAccessW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkFileAccessW_lastErrorHtml(HCkFileAccessW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkFileAccessW_getLastErrorHtml(HCkFileAccessW cHandle);
 CK_VISIBLE_PUBLIC void CkFileAccessW_getLastErrorText(HCkFileAccessW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkFileAccessW_lastErrorText(HCkFileAccessW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkFileAccessW_getLastErrorText(HCkFileAccessW cHandle);
 CK_VISIBLE_PUBLIC void CkFileAccessW_getLastErrorXml(HCkFileAccessW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkFileAccessW_lastErrorXml(HCkFileAccessW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkFileAccessW_getLastErrorXml(HCkFileAccessW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkFileAccessW_getLastMethodSuccess(HCkFileAccessW cHandle);
 CK_VISIBLE_PUBLIC void  CkFileAccessW_putLastMethodSuccess(HCkFileAccessW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkFileAccessW_getVerboseLogging(HCkFileAccessW cHandle);
 CK_VISIBLE_PUBLIC void  CkFileAccessW_putVerboseLogging(HCkFileAccessW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkFileAccessW_getVersion(HCkFileAccessW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkFileAccessW_version(HCkFileAccessW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkFileAccessW_getVersion(HCkFileAccessW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkFileAccessW_AppendAnsi(HCkFileAccessW cHandle, const wchar_t *text);
 CK_VISIBLE_PUBLIC BOOL CkFileAccessW_AppendText(HCkFileAccessW cHandle, const wchar_t *str, const wchar_t *charset);
 CK_VISIBLE_PUBLIC BOOL CkFileAccessW_AppendUnicodeBOM(HCkFileAccessW cHandle);
@@ -61,6 +61,7 @@ CK_VISIBLE_PUBLIC BOOL CkFileAccessW_GetFileName(HCkFileAccessW cHandle, const w
 CK_VISIBLE_PUBLIC const wchar_t *CkFileAccessW_getFileName(HCkFileAccessW cHandle, const wchar_t *path);
 CK_VISIBLE_PUBLIC BOOL CkFileAccessW_GetFileNameWithoutExtension(HCkFileAccessW cHandle, const wchar_t *path, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkFileAccessW_getFileNameWithoutExtension(HCkFileAccessW cHandle, const wchar_t *path);
+CK_VISIBLE_PUBLIC HCkDateTimeW CkFileAccessW_GetFileTime(HCkFileAccessW cHandle, const wchar_t *path, int which);
 CK_VISIBLE_PUBLIC HCkDateTimeW CkFileAccessW_GetLastModified(HCkFileAccessW cHandle, const wchar_t *path);
 CK_VISIBLE_PUBLIC int CkFileAccessW_GetNumBlocks(HCkFileAccessW cHandle, int blockSize);
 CK_VISIBLE_PUBLIC BOOL CkFileAccessW_GetTempFilename(HCkFileAccessW cHandle, const wchar_t *dirPath, const wchar_t *prefix, HCkString outStr);

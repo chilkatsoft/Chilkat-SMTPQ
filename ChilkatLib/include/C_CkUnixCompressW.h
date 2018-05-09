@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkUnixCompressWH
 #define _C_CkUnixCompressWH
 #include "chilkatDefs.h"
@@ -6,7 +6,7 @@
 #include "Chilkat_C.h"
 
 
-CK_VISIBLE_PUBLIC void CkUnixCompressW_setAbortCheck(HCkUnixCompressW cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkUnixCompressW_setAbortCheck(HCkUnixCompressW cHandle, BOOL (*fnAbortCheck)(void));
 CK_VISIBLE_PUBLIC void CkUnixCompressW_setPercentDone(HCkUnixCompressW cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkUnixCompressW_setProgressInfo(HCkUnixCompressW cHandle, void (*fnProgressInfo)(const wchar_t *name, const wchar_t *value));
 CK_VISIBLE_PUBLIC void CkUnixCompressW_setTaskCompleted(HCkUnixCompressW cHandle, void (*fnTaskCompleted)(HCkTaskW hTask));
@@ -17,21 +17,21 @@ CK_VISIBLE_PUBLIC BOOL CkUnixCompressW_getAbortCurrent(HCkUnixCompressW cHandle)
 CK_VISIBLE_PUBLIC void  CkUnixCompressW_putAbortCurrent(HCkUnixCompressW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkUnixCompressW_getDebugLogFilePath(HCkUnixCompressW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkUnixCompressW_putDebugLogFilePath(HCkUnixCompressW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkUnixCompressW_debugLogFilePath(HCkUnixCompressW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkUnixCompressW_getDebugLogFilePath(HCkUnixCompressW cHandle);
 CK_VISIBLE_PUBLIC int CkUnixCompressW_getHeartbeatMs(HCkUnixCompressW cHandle);
 CK_VISIBLE_PUBLIC void  CkUnixCompressW_putHeartbeatMs(HCkUnixCompressW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkUnixCompressW_getLastErrorHtml(HCkUnixCompressW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkUnixCompressW_lastErrorHtml(HCkUnixCompressW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkUnixCompressW_getLastErrorHtml(HCkUnixCompressW cHandle);
 CK_VISIBLE_PUBLIC void CkUnixCompressW_getLastErrorText(HCkUnixCompressW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkUnixCompressW_lastErrorText(HCkUnixCompressW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkUnixCompressW_getLastErrorText(HCkUnixCompressW cHandle);
 CK_VISIBLE_PUBLIC void CkUnixCompressW_getLastErrorXml(HCkUnixCompressW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkUnixCompressW_lastErrorXml(HCkUnixCompressW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkUnixCompressW_getLastErrorXml(HCkUnixCompressW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkUnixCompressW_getLastMethodSuccess(HCkUnixCompressW cHandle);
 CK_VISIBLE_PUBLIC void  CkUnixCompressW_putLastMethodSuccess(HCkUnixCompressW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkUnixCompressW_getVerboseLogging(HCkUnixCompressW cHandle);
 CK_VISIBLE_PUBLIC void  CkUnixCompressW_putVerboseLogging(HCkUnixCompressW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkUnixCompressW_getVersion(HCkUnixCompressW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkUnixCompressW_version(HCkUnixCompressW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkUnixCompressW_getVersion(HCkUnixCompressW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkUnixCompressW_CompressFile(HCkUnixCompressW cHandle, const wchar_t *inFilename, const wchar_t *destPath);
 CK_VISIBLE_PUBLIC HCkTaskW CkUnixCompressW_CompressFileAsync(HCkUnixCompressW cHandle, const wchar_t *inFilename, const wchar_t *destPath);
 CK_VISIBLE_PUBLIC BOOL CkUnixCompressW_CompressFileToMem(HCkUnixCompressW cHandle, const wchar_t *inFilename, HCkByteData outData);

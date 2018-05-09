@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkStringBuilderWH
 #define _C_CkStringBuilderWH
 #include "chilkatDefs.h"
@@ -44,7 +44,10 @@ CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_LastNLines(HCkStringBuilderW cHandle, in
 CK_VISIBLE_PUBLIC const wchar_t *CkStringBuilderW_lastNLines(HCkStringBuilderW cHandle, int numLines, BOOL bCrlf);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_LoadFile(HCkStringBuilderW cHandle, const wchar_t *path, const wchar_t *charset);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_Prepend(HCkStringBuilderW cHandle, const wchar_t *value);
+CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_PunyDecode(HCkStringBuilderW cHandle);
+CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_PunyEncode(HCkStringBuilderW cHandle);
 CK_VISIBLE_PUBLIC int CkStringBuilderW_Replace(HCkStringBuilderW cHandle, const wchar_t *value, const wchar_t *replacement);
+CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_ReplaceAfterFinal(HCkStringBuilderW cHandle, const wchar_t *marker, const wchar_t *replacement);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_ReplaceAllBetween(HCkStringBuilderW cHandle, const wchar_t *beginMark, const wchar_t *endMark, const wchar_t *replacement, BOOL replaceMarks);
 CK_VISIBLE_PUBLIC int CkStringBuilderW_ReplaceBetween(HCkStringBuilderW cHandle, const wchar_t *beginMark, const wchar_t *endMark, const wchar_t *value, const wchar_t *replacement);
 CK_VISIBLE_PUBLIC int CkStringBuilderW_ReplaceI(HCkStringBuilderW cHandle, const wchar_t *value, int replacement);
@@ -60,4 +63,5 @@ CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_ToUppercase(HCkStringBuilderW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_Trim(HCkStringBuilderW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_TrimInsideSpaces(HCkStringBuilderW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_WriteFile(HCkStringBuilderW cHandle, const wchar_t *path, const wchar_t *charset, BOOL emitBom);
+CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_WriteFileIfModified(HCkStringBuilderW cHandle, const wchar_t *path, const wchar_t *charset, BOOL emitBom);
 #endif

@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkRest_H
 #define _C_CkRest_H
 #include "chilkatDefs.h"
@@ -6,7 +6,7 @@
 #include "Chilkat_C.h"
 
 
-CK_VISIBLE_PUBLIC void CkRest_setAbortCheck(HCkRest cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkRest_setAbortCheck(HCkRest cHandle, BOOL (*fnAbortCheck)(void));
 CK_VISIBLE_PUBLIC void CkRest_setPercentDone(HCkRest cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkRest_setProgressInfo(HCkRest cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkRest_setTaskCompleted(HCkRest cHandle, void (*fnTaskCompleted)(HCkTask hTask));
@@ -21,6 +21,8 @@ CK_VISIBLE_PUBLIC void CkRest_getAuthorization(HCkRest cHandle, HCkString retval
 CK_VISIBLE_PUBLIC void CkRest_putAuthorization(HCkRest cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkRest_authorization(HCkRest cHandle);
 CK_VISIBLE_PUBLIC int CkRest_getConnectFailReason(HCkRest cHandle);
+CK_VISIBLE_PUBLIC int CkRest_getConnectTimeoutMs(HCkRest cHandle);
+CK_VISIBLE_PUBLIC void CkRest_putConnectTimeoutMs(HCkRest cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkRest_getDebugLogFilePath(HCkRest cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkRest_putDebugLogFilePath(HCkRest cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkRest_debugLogFilePath(HCkRest cHandle);
@@ -64,11 +66,13 @@ CK_VISIBLE_PUBLIC void CkRest_getVersion(HCkRest cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkRest_version(HCkRest cHandle);
 CK_VISIBLE_PUBLIC BOOL CkRest_AddHeader(HCkRest cHandle, const char *name, const char *value);
 CK_VISIBLE_PUBLIC BOOL CkRest_AddMwsSignature(HCkRest cHandle, const char *httpVerb, const char *uriPath, const char *domain, const char *mwsSecretKey);
+CK_VISIBLE_PUBLIC BOOL CkRest_AddPathParam(HCkRest cHandle, const char *name, const char *value);
 CK_VISIBLE_PUBLIC BOOL CkRest_AddQueryParam(HCkRest cHandle, const char *name, const char *value);
 CK_VISIBLE_PUBLIC BOOL CkRest_AddQueryParams(HCkRest cHandle, const char *queryString);
 CK_VISIBLE_PUBLIC BOOL CkRest_AddQueryParamSb(HCkRest cHandle, const char *name, HCkStringBuilder value);
 CK_VISIBLE_PUBLIC BOOL CkRest_ClearAllHeaders(HCkRest cHandle);
 CK_VISIBLE_PUBLIC BOOL CkRest_ClearAllParts(HCkRest cHandle);
+CK_VISIBLE_PUBLIC BOOL CkRest_ClearAllPathParams(HCkRest cHandle);
 CK_VISIBLE_PUBLIC BOOL CkRest_ClearAllQueryParams(HCkRest cHandle);
 CK_VISIBLE_PUBLIC BOOL CkRest_ClearAuth(HCkRest cHandle);
 CK_VISIBLE_PUBLIC void CkRest_ClearResponseBodyStream(HCkRest cHandle);
@@ -146,6 +150,7 @@ CK_VISIBLE_PUBLIC BOOL CkRest_SetAuthAzureAD(HCkRest cHandle, HCkAuthAzureAD aut
 CK_VISIBLE_PUBLIC BOOL CkRest_SetAuthAzureSas(HCkRest cHandle, HCkAuthAzureSAS authProvider);
 CK_VISIBLE_PUBLIC BOOL CkRest_SetAuthAzureStorage(HCkRest cHandle, HCkAuthAzureStorage authProvider);
 CK_VISIBLE_PUBLIC BOOL CkRest_SetAuthBasic(HCkRest cHandle, const char *username, const char *password);
+CK_VISIBLE_PUBLIC BOOL CkRest_SetAuthBasicSecure(HCkRest cHandle, HCkSecureString username, HCkSecureString password);
 CK_VISIBLE_PUBLIC BOOL CkRest_SetAuthGoogle(HCkRest cHandle, HCkAuthGoogle authProvider);
 CK_VISIBLE_PUBLIC BOOL CkRest_SetAuthOAuth1(HCkRest cHandle, HCkOAuth1 authProvider, BOOL useQueryParams);
 CK_VISIBLE_PUBLIC BOOL CkRest_SetAuthOAuth2(HCkRest cHandle, HCkOAuth2 authProvider);

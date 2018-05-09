@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkSocketW_H
 #define _CkSocketW_H
@@ -109,6 +109,7 @@ class CK_VISIBLE_PUBLIC CkSocketW  : public CkClassWithCallbacksW
 	// 122 = Failed to process client cert URL message.
 	// 123 = Failed to process client key exchange message.
 	// 124 = Failed to process certificate verify message.
+	// 125 = Received and rejected an SSL 2.0 connection attempt.
 	// 
 	int get_AcceptFailReason(void);
 
@@ -480,6 +481,15 @@ class CK_VISIBLE_PUBLIC CkSocketW  : public CkClassWithCallbacksW
 	const wchar_t *httpProxyDomain(void);
 	// The NTLM authentication domain (optional) if NTLM authentication is used.
 	void put_HttpProxyDomain(const wchar_t *newVal);
+
+	// If this connection is effectively used to send HTTP requests, then set this
+	// property to true when using an HTTP proxy. The default value of this property
+	// is false.
+	bool get_HttpProxyForHttp(void);
+	// If this connection is effectively used to send HTTP requests, then set this
+	// property to true when using an HTTP proxy. The default value of this property
+	// is false.
+	void put_HttpProxyForHttp(bool newVal);
 
 	// If an HTTP proxy is to be used, set this property to the HTTP proxy hostname or
 	// IPv4 address (in dotted decimal notation).

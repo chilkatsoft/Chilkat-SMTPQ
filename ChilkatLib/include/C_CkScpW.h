@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkScpWH
 #define _C_CkScpWH
 #include "chilkatDefs.h"
@@ -6,7 +6,7 @@
 #include "Chilkat_C.h"
 
 
-CK_VISIBLE_PUBLIC void CkScpW_setAbortCheck(HCkScpW cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkScpW_setAbortCheck(HCkScpW cHandle, BOOL (*fnAbortCheck)(void));
 CK_VISIBLE_PUBLIC void CkScpW_setPercentDone(HCkScpW cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkScpW_setProgressInfo(HCkScpW cHandle, void (*fnProgressInfo)(const wchar_t *name, const wchar_t *value));
 CK_VISIBLE_PUBLIC void CkScpW_setTaskCompleted(HCkScpW cHandle, void (*fnTaskCompleted)(HCkTaskW hTask));
@@ -17,38 +17,38 @@ CK_VISIBLE_PUBLIC BOOL CkScpW_getAbortCurrent(HCkScpW cHandle);
 CK_VISIBLE_PUBLIC void  CkScpW_putAbortCurrent(HCkScpW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkScpW_getDebugLogFilePath(HCkScpW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkScpW_putDebugLogFilePath(HCkScpW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkScpW_debugLogFilePath(HCkScpW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkScpW_getDebugLogFilePath(HCkScpW cHandle);
 CK_VISIBLE_PUBLIC int CkScpW_getHeartbeatMs(HCkScpW cHandle);
 CK_VISIBLE_PUBLIC void  CkScpW_putHeartbeatMs(HCkScpW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkScpW_getLastErrorHtml(HCkScpW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkScpW_lastErrorHtml(HCkScpW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkScpW_getLastErrorHtml(HCkScpW cHandle);
 CK_VISIBLE_PUBLIC void CkScpW_getLastErrorText(HCkScpW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkScpW_lastErrorText(HCkScpW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkScpW_getLastErrorText(HCkScpW cHandle);
 CK_VISIBLE_PUBLIC void CkScpW_getLastErrorXml(HCkScpW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkScpW_lastErrorXml(HCkScpW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkScpW_getLastErrorXml(HCkScpW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkScpW_getLastMethodSuccess(HCkScpW cHandle);
 CK_VISIBLE_PUBLIC void  CkScpW_putLastMethodSuccess(HCkScpW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkScpW_getPercentDoneScale(HCkScpW cHandle);
 CK_VISIBLE_PUBLIC void  CkScpW_putPercentDoneScale(HCkScpW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkScpW_getSyncedFiles(HCkScpW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkScpW_putSyncedFiles(HCkScpW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkScpW_syncedFiles(HCkScpW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkScpW_getSyncedFiles(HCkScpW cHandle);
 CK_VISIBLE_PUBLIC void CkScpW_getSyncMustMatch(HCkScpW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkScpW_putSyncMustMatch(HCkScpW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkScpW_syncMustMatch(HCkScpW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkScpW_getSyncMustMatch(HCkScpW cHandle);
 CK_VISIBLE_PUBLIC void CkScpW_getSyncMustMatchDir(HCkScpW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkScpW_putSyncMustMatchDir(HCkScpW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkScpW_syncMustMatchDir(HCkScpW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkScpW_getSyncMustMatchDir(HCkScpW cHandle);
 CK_VISIBLE_PUBLIC void CkScpW_getSyncMustNotMatch(HCkScpW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkScpW_putSyncMustNotMatch(HCkScpW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkScpW_syncMustNotMatch(HCkScpW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkScpW_getSyncMustNotMatch(HCkScpW cHandle);
 CK_VISIBLE_PUBLIC void CkScpW_getSyncMustNotMatchDir(HCkScpW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkScpW_putSyncMustNotMatchDir(HCkScpW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkScpW_syncMustNotMatchDir(HCkScpW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkScpW_getSyncMustNotMatchDir(HCkScpW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkScpW_getVerboseLogging(HCkScpW cHandle);
 CK_VISIBLE_PUBLIC void  CkScpW_putVerboseLogging(HCkScpW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkScpW_getVersion(HCkScpW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkScpW_version(HCkScpW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkScpW_getVersion(HCkScpW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkScpW_DownloadBinary(HCkScpW cHandle, const wchar_t *remotePath, HCkByteData outBytes);
 CK_VISIBLE_PUBLIC HCkTaskW CkScpW_DownloadBinaryAsync(HCkScpW cHandle, const wchar_t *remotePath);
 CK_VISIBLE_PUBLIC BOOL CkScpW_DownloadBinaryEncoded(HCkScpW cHandle, const wchar_t *remotePath, const wchar_t *encoding, HCkString outStr);

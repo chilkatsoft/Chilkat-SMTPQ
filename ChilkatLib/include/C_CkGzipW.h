@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkGzipWH
 #define _C_CkGzipWH
 #include "chilkatDefs.h"
@@ -6,7 +6,7 @@
 #include "Chilkat_C.h"
 
 
-CK_VISIBLE_PUBLIC void CkGzipW_setAbortCheck(HCkGzipW cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkGzipW_setAbortCheck(HCkGzipW cHandle, BOOL (*fnAbortCheck)(void));
 CK_VISIBLE_PUBLIC void CkGzipW_setPercentDone(HCkGzipW cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkGzipW_setProgressInfo(HCkGzipW cHandle, void (*fnProgressInfo)(const wchar_t *name, const wchar_t *value));
 CK_VISIBLE_PUBLIC void CkGzipW_setTaskCompleted(HCkGzipW cHandle, void (*fnTaskCompleted)(HCkTaskW hTask));
@@ -17,38 +17,38 @@ CK_VISIBLE_PUBLIC BOOL CkGzipW_getAbortCurrent(HCkGzipW cHandle);
 CK_VISIBLE_PUBLIC void  CkGzipW_putAbortCurrent(HCkGzipW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkGzipW_getComment(HCkGzipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkGzipW_putComment(HCkGzipW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkGzipW_comment(HCkGzipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkGzipW_getComment(HCkGzipW cHandle);
 CK_VISIBLE_PUBLIC int CkGzipW_getCompressionLevel(HCkGzipW cHandle);
 CK_VISIBLE_PUBLIC void  CkGzipW_putCompressionLevel(HCkGzipW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkGzipW_getDebugLogFilePath(HCkGzipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkGzipW_putDebugLogFilePath(HCkGzipW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkGzipW_debugLogFilePath(HCkGzipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkGzipW_getDebugLogFilePath(HCkGzipW cHandle);
 CK_VISIBLE_PUBLIC void CkGzipW_getExtraData(HCkGzipW cHandle, HCkByteData retval);
 CK_VISIBLE_PUBLIC void  CkGzipW_putExtraData(HCkGzipW cHandle, HCkByteData newVal);
 CK_VISIBLE_PUBLIC void CkGzipW_getFilename(HCkGzipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkGzipW_putFilename(HCkGzipW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkGzipW_filename(HCkGzipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkGzipW_getFilename(HCkGzipW cHandle);
 CK_VISIBLE_PUBLIC int CkGzipW_getHeartbeatMs(HCkGzipW cHandle);
 CK_VISIBLE_PUBLIC void  CkGzipW_putHeartbeatMs(HCkGzipW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkGzipW_getLastErrorHtml(HCkGzipW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkGzipW_lastErrorHtml(HCkGzipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkGzipW_getLastErrorHtml(HCkGzipW cHandle);
 CK_VISIBLE_PUBLIC void CkGzipW_getLastErrorText(HCkGzipW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkGzipW_lastErrorText(HCkGzipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkGzipW_getLastErrorText(HCkGzipW cHandle);
 CK_VISIBLE_PUBLIC void CkGzipW_getLastErrorXml(HCkGzipW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkGzipW_lastErrorXml(HCkGzipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkGzipW_getLastErrorXml(HCkGzipW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkGzipW_getLastMethodSuccess(HCkGzipW cHandle);
 CK_VISIBLE_PUBLIC void  CkGzipW_putLastMethodSuccess(HCkGzipW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkGzipW_getLastMod(HCkGzipW cHandle, SYSTEMTIME * retval);
 CK_VISIBLE_PUBLIC void  CkGzipW_putLastMod(HCkGzipW cHandle, SYSTEMTIME *newVal);
 CK_VISIBLE_PUBLIC void CkGzipW_getLastModStr(HCkGzipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkGzipW_putLastModStr(HCkGzipW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkGzipW_lastModStr(HCkGzipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkGzipW_getLastModStr(HCkGzipW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkGzipW_getUseCurrentDate(HCkGzipW cHandle);
 CK_VISIBLE_PUBLIC void  CkGzipW_putUseCurrentDate(HCkGzipW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkGzipW_getVerboseLogging(HCkGzipW cHandle);
 CK_VISIBLE_PUBLIC void  CkGzipW_putVerboseLogging(HCkGzipW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkGzipW_getVersion(HCkGzipW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkGzipW_version(HCkGzipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkGzipW_getVersion(HCkGzipW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkGzipW_CompressBd(HCkGzipW cHandle, HCkBinDataW binDat);
 CK_VISIBLE_PUBLIC HCkTaskW CkGzipW_CompressBdAsync(HCkGzipW cHandle, HCkBinDataW binDat);
 CK_VISIBLE_PUBLIC BOOL CkGzipW_CompressFile(HCkGzipW cHandle, const wchar_t *inFilename, const wchar_t *destPath);

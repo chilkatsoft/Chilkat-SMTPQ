@@ -58,7 +58,6 @@ class CK_VISIBLE_PUBLIC CkZipProgress : public CkBaseProgress
 	CkZipProgress() { }
 	virtual ~CkZipProgress() { }
 
-
 	virtual void ToBeAdded(const char *filePath, 
 	    __int64 fileSize, 
 	    bool *skip) 

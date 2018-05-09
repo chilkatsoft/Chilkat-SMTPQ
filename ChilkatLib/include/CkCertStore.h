@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkCertStore_H
 #define _CkCertStore_H
@@ -112,9 +112,11 @@ class CK_VISIBLE_PUBLIC CkCertStore  : public CkMultiByteBase
 
 #endif
 
-	// Locates a certificate by its RFC 822 name and returns it if found.
+	// Locates and returns a certificate by its RFC 822 name.
 	// 
-	// Returns _NULL_ on failure.
+	// If multiple certificates match, then non-expired certificates will take
+	// precedence over expired certificates. In other words, Chilkat will aways return
+	// the non-expired certificate over the expired certificate.
 	// 
 	// The caller is responsible for deleting the object returned by this method.
 	CkCert *FindCertByRfc822Name(const char *name);

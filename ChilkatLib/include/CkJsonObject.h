@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkJsonObject_H
 #define _CkJsonObject_H
@@ -15,6 +15,8 @@
 class CkJsonArray;
 class CkStringTable;
 class CkBinData;
+class CkDateTime;
+class CkDtObj;
 class CkStringBuilder;
 class CkHashtable;
 
@@ -224,6 +226,10 @@ class CK_VISIBLE_PUBLIC CkJsonObject  : public CkMultiByteBase
 	CkJsonObject *Clone(void);
 
 
+	// Fills the dateTime with the date/time string located at jsonPath.
+	bool DateOf(const char *jsonPath, CkDateTime &dateTime);
+
+
 	// Deletes the member at having the name specified by name.
 	bool Delete(const char *name);
 
@@ -231,6 +237,12 @@ class CK_VISIBLE_PUBLIC CkJsonObject  : public CkMultiByteBase
 	// Deletes the member at index index. Indexing is 0-based (the 1st member is at
 	// index 0).
 	bool DeleteAt(int index);
+
+
+	// Fills the dt with the date/time string located at jsonPath. If bLocal is true,
+	// then dt is filled with the local date/time values, otherwise it is filled with
+	// the UTC/GMT values.
+	bool DtOf(const char *jsonPath, bool bLocal, CkDtObj &dt);
 
 
 	// Writes the JSON document (rooted at the caller) and returns as a string.

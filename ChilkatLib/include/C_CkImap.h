@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkImap_H
 #define _C_CkImap_H
 #include "chilkatDefs.h"
@@ -6,7 +6,7 @@
 #include "Chilkat_C.h"
 
 
-CK_VISIBLE_PUBLIC void CkImap_setAbortCheck(HCkImap cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkImap_setAbortCheck(HCkImap cHandle, BOOL (*fnAbortCheck)(void));
 CK_VISIBLE_PUBLIC void CkImap_setPercentDone(HCkImap cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkImap_setProgressInfo(HCkImap cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkImap_setTaskCompleted(HCkImap cHandle, void (*fnTaskCompleted)(HCkTask hTask));
@@ -267,6 +267,8 @@ CK_VISIBLE_PUBLIC HCkMailboxes CkImap_ListSubscribed(HCkImap cHandle, const char
 CK_VISIBLE_PUBLIC HCkTask CkImap_ListSubscribedAsync(HCkImap cHandle, const char *reference, const char *wildcardedMailbox);
 CK_VISIBLE_PUBLIC BOOL CkImap_Login(HCkImap cHandle, const char *loginName, const char *password);
 CK_VISIBLE_PUBLIC HCkTask CkImap_LoginAsync(HCkImap cHandle, const char *loginName, const char *password);
+CK_VISIBLE_PUBLIC BOOL CkImap_LoginSecure(HCkImap cHandle, HCkSecureString loginName, HCkSecureString password);
+CK_VISIBLE_PUBLIC HCkTask CkImap_LoginSecureAsync(HCkImap cHandle, HCkSecureString loginName, HCkSecureString password);
 CK_VISIBLE_PUBLIC BOOL CkImap_Logout(HCkImap cHandle);
 CK_VISIBLE_PUBLIC HCkTask CkImap_LogoutAsync(HCkImap cHandle);
 CK_VISIBLE_PUBLIC BOOL CkImap_MoveMessages(HCkImap cHandle, HCkMessageSet messageSet, const char *destFolder);

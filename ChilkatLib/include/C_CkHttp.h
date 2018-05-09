@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkHttp_H
 #define _C_CkHttp_H
 #include "chilkatDefs.h"
@@ -6,7 +6,7 @@
 #include "Chilkat_C.h"
 
 
-CK_VISIBLE_PUBLIC void CkHttp_setAbortCheck(HCkHttp cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkHttp_setAbortCheck(HCkHttp cHandle, BOOL (*fnAbortCheck)(void));
 CK_VISIBLE_PUBLIC void CkHttp_setPercentDone(HCkHttp cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkHttp_setProgressInfo(HCkHttp cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkHttp_setTaskCompleted(HCkHttp cHandle, void (*fnTaskCompleted)(HCkTask hTask));
@@ -414,11 +414,14 @@ CK_VISIBLE_PUBLIC HCkTask CkHttp_S3_UploadStringAsync(HCkHttp cHandle, const cha
 CK_VISIBLE_PUBLIC BOOL CkHttp_SaveLastError(HCkHttp cHandle, const char *path);
 CK_VISIBLE_PUBLIC BOOL CkHttp_SetCookieXml(HCkHttp cHandle, const char *domain, const char *cookieXml);
 CK_VISIBLE_PUBLIC BOOL CkHttp_SetOAuthRsaKey(HCkHttp cHandle, HCkPrivateKey privKey);
+CK_VISIBLE_PUBLIC BOOL CkHttp_SetPassword(HCkHttp cHandle, HCkSecureString password);
 CK_VISIBLE_PUBLIC void CkHttp_SetRequestHeader(HCkHttp cHandle, const char *headerFieldName, const char *headerFieldValue);
 CK_VISIBLE_PUBLIC BOOL CkHttp_SetSslClientCert(HCkHttp cHandle, HCkCert cert);
 CK_VISIBLE_PUBLIC BOOL CkHttp_SetSslClientCertPem(HCkHttp cHandle, const char *pemDataOrPath, const char *pemPassword);
 CK_VISIBLE_PUBLIC BOOL CkHttp_SetSslClientCertPfx(HCkHttp cHandle, const char *pfxPath, const char *pfxPassword);
 CK_VISIBLE_PUBLIC BOOL CkHttp_SetUrlVar(HCkHttp cHandle, const char *name, const char *value);
+CK_VISIBLE_PUBLIC BOOL CkHttp_SharePointOnlineAuth(HCkHttp cHandle, const char *siteUrl, const char *username, HCkSecureString password, HCkJsonObject extraInfo);
+CK_VISIBLE_PUBLIC HCkTask CkHttp_SharePointOnlineAuthAsync(HCkHttp cHandle, const char *siteUrl, const char *username, HCkSecureString password, HCkJsonObject extraInfo);
 CK_VISIBLE_PUBLIC void CkHttp_SleepMs(HCkHttp cHandle, int millisec);
 CK_VISIBLE_PUBLIC HCkHttpResponse CkHttp_SynchronousRequest(HCkHttp cHandle, const char *domain, int port, BOOL ssl, HCkHttpRequest req);
 CK_VISIBLE_PUBLIC HCkTask CkHttp_SynchronousRequestAsync(HCkHttp cHandle, const char *domain, int port, BOOL ssl, HCkHttpRequest req);

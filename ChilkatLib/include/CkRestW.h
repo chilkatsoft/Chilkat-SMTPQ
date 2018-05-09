@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkRestW_H
 #define _CkRestW_H
@@ -22,6 +22,7 @@ class CkAuthAwsW;
 class CkAuthAzureADW;
 class CkAuthAzureSASW;
 class CkAuthAzureStorageW;
+class CkSecureStringW;
 class CkAuthGoogleW;
 class CkOAuth1W;
 class CkOAuth2W;
@@ -146,6 +147,21 @@ class CK_VISIBLE_PUBLIC CkRestW  : public CkClassWithCallbacksW
 	// 116 = Server's Finished message is invalid.
 	// 
 	int get_ConnectFailReason(void);
+
+	// The maximum amount of time to wait for the connection to be accepted by the HTTP
+	// server.
+	// 
+	// Note: Suprisingly, this property was forgotten and not added until Chilkat
+	// v9.5.0.71.
+	// 
+	int get_ConnectTimeoutMs(void);
+	// The maximum amount of time to wait for the connection to be accepted by the HTTP
+	// server.
+	// 
+	// Note: Suprisingly, this property was forgotten and not added until Chilkat
+	// v9.5.0.71.
+	// 
+	void put_ConnectTimeoutMs(int newVal);
 
 	// This property is only valid in programming environment and languages that allow
 	// for event callbacks.
@@ -340,6 +356,13 @@ class CK_VISIBLE_PUBLIC CkRestW  : public CkClassWithCallbacksW
 	// 
 	bool AddMwsSignature(const wchar_t *httpVerb, const wchar_t *uriPath, const wchar_t *domain, const wchar_t *mwsSecretKey);
 
+	// Adds or replaces a path parameter. A path parameter is a string that will be
+	// replaced in any uriPath string passed to a method. For example, if name is
+	// "fileId" and value is "1R_70heIyzIAu1_u0prXbYcaIiJRVkgBl", then a uriPath
+	// argument of "/drive/v3/files/fileId" will be transformed to
+	// "/drive/v3/files/1R_70heIyzIAu1_u0prXbYcaIiJRVkgBl" in a method call.
+	bool AddPathParam(const wchar_t *name, const wchar_t *value);
+
 	// Adds a query parameter. If the query parameter already exists, then it is
 	// replaced.
 	bool AddQueryParam(const wchar_t *name, const wchar_t *value);
@@ -359,6 +382,9 @@ class CK_VISIBLE_PUBLIC CkRestW  : public CkClassWithCallbacksW
 	// Removes all sub-parts from a request. This is useful when preparing the REST
 	// object to send a new request after a multipart request has just been sent.
 	bool ClearAllParts(void);
+
+	// Clears all path parameters.
+	bool ClearAllPathParams(void);
 
 	// Clears all query parameters.
 	bool ClearAllQueryParams(void);
@@ -782,6 +808,10 @@ class CK_VISIBLE_PUBLIC CkRestW  : public CkClassWithCallbacksW
 	// REST API will support Basic authentication where the username is a client ID or
 	// account ID, and the password is a client secret or token.
 	bool SetAuthBasic(const wchar_t *username, const wchar_t *password);
+
+	// The same as SetAuthBasic, but provides a more secure means for passing the
+	// arguments as secure string objects.
+	bool SetAuthBasicSecure(CkSecureStringW &username, CkSecureStringW &password);
 
 	// Sets the authorization service provider for Google API requests.
 	bool SetAuthGoogle(CkAuthGoogleW &authProvider);

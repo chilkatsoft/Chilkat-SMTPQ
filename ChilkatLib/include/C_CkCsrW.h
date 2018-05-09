@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkCsrWH
 #define _C_CkCsrWH
 #include "chilkatDefs.h"
@@ -10,40 +10,40 @@ CK_VISIBLE_PUBLIC HCkCsrW CkCsrW_Create(void);
 CK_VISIBLE_PUBLIC void CkCsrW_Dispose(HCkCsrW handle);
 CK_VISIBLE_PUBLIC void CkCsrW_getCommonName(HCkCsrW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkCsrW_putCommonName(HCkCsrW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_commonName(HCkCsrW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_getCommonName(HCkCsrW cHandle);
 CK_VISIBLE_PUBLIC void CkCsrW_getCompany(HCkCsrW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkCsrW_putCompany(HCkCsrW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_company(HCkCsrW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_getCompany(HCkCsrW cHandle);
 CK_VISIBLE_PUBLIC void CkCsrW_getCompanyDivision(HCkCsrW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkCsrW_putCompanyDivision(HCkCsrW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_companyDivision(HCkCsrW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_getCompanyDivision(HCkCsrW cHandle);
 CK_VISIBLE_PUBLIC void CkCsrW_getCountry(HCkCsrW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkCsrW_putCountry(HCkCsrW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_country(HCkCsrW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_getCountry(HCkCsrW cHandle);
 CK_VISIBLE_PUBLIC void CkCsrW_getDebugLogFilePath(HCkCsrW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkCsrW_putDebugLogFilePath(HCkCsrW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_debugLogFilePath(HCkCsrW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_getDebugLogFilePath(HCkCsrW cHandle);
 CK_VISIBLE_PUBLIC void CkCsrW_getEmailAddress(HCkCsrW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkCsrW_putEmailAddress(HCkCsrW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_emailAddress(HCkCsrW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_getEmailAddress(HCkCsrW cHandle);
 CK_VISIBLE_PUBLIC void CkCsrW_getLastErrorHtml(HCkCsrW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_lastErrorHtml(HCkCsrW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_getLastErrorHtml(HCkCsrW cHandle);
 CK_VISIBLE_PUBLIC void CkCsrW_getLastErrorText(HCkCsrW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_lastErrorText(HCkCsrW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_getLastErrorText(HCkCsrW cHandle);
 CK_VISIBLE_PUBLIC void CkCsrW_getLastErrorXml(HCkCsrW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_lastErrorXml(HCkCsrW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_getLastErrorXml(HCkCsrW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCsrW_getLastMethodSuccess(HCkCsrW cHandle);
 CK_VISIBLE_PUBLIC void  CkCsrW_putLastMethodSuccess(HCkCsrW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkCsrW_getLocality(HCkCsrW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkCsrW_putLocality(HCkCsrW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_locality(HCkCsrW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_getLocality(HCkCsrW cHandle);
 CK_VISIBLE_PUBLIC void CkCsrW_getState(HCkCsrW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkCsrW_putState(HCkCsrW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_state(HCkCsrW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_getState(HCkCsrW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCsrW_getVerboseLogging(HCkCsrW cHandle);
 CK_VISIBLE_PUBLIC void  CkCsrW_putVerboseLogging(HCkCsrW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkCsrW_getVersion(HCkCsrW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_version(HCkCsrW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_getVersion(HCkCsrW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCsrW_GenCsrBd(HCkCsrW cHandle, HCkPrivateKeyW privKey, HCkBinDataW csrData);
 CK_VISIBLE_PUBLIC BOOL CkCsrW_GenCsrPem(HCkCsrW cHandle, HCkPrivateKeyW privKey, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkCsrW_genCsrPem(HCkCsrW cHandle, HCkPrivateKeyW privKey);

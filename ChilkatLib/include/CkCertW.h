@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkCertW_H
 #define _CkCertW_H
@@ -13,6 +13,7 @@
 #include "CkWideCharBase.h"
 
 class CkByteData;
+class CkBinDataW;
 class CkPrivateKeyW;
 class CkPublicKeyW;
 class CkCertChainW;
@@ -404,6 +405,9 @@ class CK_VISIBLE_PUBLIC CkCertW  : public CkWideCharBase
 	// Exports the digital certificate to ASN.1 DER format.
 	bool ExportCertDer(CkByteData &outData);
 
+	// Exports the digital certificate in ASN.1 DER format to a BinData object.
+	bool ExportCertDerBd(CkBinDataW &cerData);
+
 	// Exports the digital certificate to ASN.1 DER format binary file.
 	bool ExportCertDerFile(const wchar_t *path);
 
@@ -433,6 +437,11 @@ class CK_VISIBLE_PUBLIC CkCertW  : public CkWideCharBase
 	// Exports the certificate's public key.
 	// The caller is responsible for deleting the object returned by this method.
 	CkPublicKeyW *ExportPublicKey(void);
+
+	// Exports the certificate and private key (if available) to pfxData. The password is what
+	// will be required to access the PFX contents at a later time. If includeCertChain is true,
+	// then the certificates in the chain of authority are also included in the PFX.
+	bool ExportToPfxBd(const wchar_t *password, bool includeCertChain, CkBinDataW &pfxData);
 
 	// Exports the certificate and private key (if available) to an in-memory PFX
 	// image. The password is what will be required to access the PFX contents at a later
@@ -597,6 +606,9 @@ class CK_VISIBLE_PUBLIC CkCertW  : public CkWideCharBase
 	// Loads an ASN.1 or DER encoded certificate represented in a Base64 string.
 	bool LoadFromBase64(const wchar_t *encodedCert);
 
+	// Loads an X.509 certificate from the ASN.1 DER encoded bytes contained in certBytes.
+	bool LoadFromBd(CkBinDataW &certBytes);
+
 	// Loads an X.509 certificate from ASN.1 DER encoded bytes.
 	bool LoadFromBinary(CkByteData &data);
 
@@ -621,6 +633,10 @@ class CK_VISIBLE_PUBLIC CkCertW  : public CkWideCharBase
 
 	// Loads the certificate from a PEM string.
 	bool LoadPem(const wchar_t *strPem);
+
+	// Loads the certificate from the PFX contained in pfxData. Note: If the PFX contains
+	// multiple certificates, the 1st certificate in the PFX is loaded.
+	bool LoadPfxBd(CkBinDataW &pfxData, const wchar_t *password);
 
 	// Loads a PFX from an in-memory image of a PFX file. Note: If the PFX contains
 	// multiple certificates, the 1st certificate in the PFX is loaded.

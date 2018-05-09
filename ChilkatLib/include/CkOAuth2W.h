@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkOAuth2W_H
 #define _CkOAuth2W_H
@@ -120,7 +120,7 @@ class CK_VISIBLE_PUBLIC CkOAuth2W  : public CkClassWithCallbacksW
 	// 
 	// Note: Not all responses are JSON. A successful Facebook response is plain text
 	// and looks like this:
-	// access_token=EAAZALuOC1wAwBAKH6FKnxOkjfEPOIkYUlabbliyskquOfVbSkgVM3lUFtsiZDCGmT1H8TidCKWUMbQ3cOU38CZAEd82vrdOayDBJ0lYqWDTVmCsO95SiiZCX09X2lAoP5eZAdZC1RIwRIXbn2UBZBhYD5hSVBETBx6AZD&expires=5134653
+	// access_token=EAAZALuOC1wAwBAKH6FKnxOkjfEP ... UBZBhYD5hSVBETBx6AZD&expires=5134653
 	// 
 	void get_AccessTokenResponse(CkString &str);
 	// When the OAuth2 three-legged authorization has completed in the background
@@ -141,9 +141,55 @@ class CK_VISIBLE_PUBLIC CkOAuth2W  : public CkClassWithCallbacksW
 	// 
 	// Note: Not all responses are JSON. A successful Facebook response is plain text
 	// and looks like this:
-	// access_token=EAAZALuOC1wAwBAKH6FKnxOkjfEPOIkYUlabbliyskquOfVbSkgVM3lUFtsiZDCGmT1H8TidCKWUMbQ3cOU38CZAEd82vrdOayDBJ0lYqWDTVmCsO95SiiZCX09X2lAoP5eZAdZC1RIwRIXbn2UBZBhYD5hSVBETBx6AZD&expires=5134653
+	// access_token=EAAZALuOC1wAwBAKH6FKnxOkjfEP ... UBZBhYD5hSVBETBx6AZD&expires=5134653
 	// 
 	const wchar_t *accessTokenResponse(void);
+
+	// Some OAuth2 services, such as QuickBooks, do not allow for
+	// "http://localhost:port" callback URLs. When this is the case, a desktop app
+	// cannot pop up a browser and expect to get the final redirect callback. The
+	// workaround is to set this property to a URI on your web server, which sends a
+	// response to redirect back to "http://localhost:3017". Thus the callback becomes
+	// a double redirect, which ends at localhost:port, and thus completes the circuit.
+	// 
+	// If the OAuth2 service allows for "http://localhost:port" callback URLs, then
+	// leave this property empty.
+	// 
+	// As an example, one could set this property to
+	// "https://www.yourdomain.com/OAuth2.php", where the PHP source contains the
+	// following:
+	// 
+	void get_AppCallbackUrl(CkString &str);
+	// Some OAuth2 services, such as QuickBooks, do not allow for
+	// "http://localhost:port" callback URLs. When this is the case, a desktop app
+	// cannot pop up a browser and expect to get the final redirect callback. The
+	// workaround is to set this property to a URI on your web server, which sends a
+	// response to redirect back to "http://localhost:3017". Thus the callback becomes
+	// a double redirect, which ends at localhost:port, and thus completes the circuit.
+	// 
+	// If the OAuth2 service allows for "http://localhost:port" callback URLs, then
+	// leave this property empty.
+	// 
+	// As an example, one could set this property to
+	// "https://www.yourdomain.com/OAuth2.php", where the PHP source contains the
+	// following:
+	// 
+	const wchar_t *appCallbackUrl(void);
+	// Some OAuth2 services, such as QuickBooks, do not allow for
+	// "http://localhost:port" callback URLs. When this is the case, a desktop app
+	// cannot pop up a browser and expect to get the final redirect callback. The
+	// workaround is to set this property to a URI on your web server, which sends a
+	// response to redirect back to "http://localhost:3017". Thus the callback becomes
+	// a double redirect, which ends at localhost:port, and thus completes the circuit.
+	// 
+	// If the OAuth2 service allows for "http://localhost:port" callback URLs, then
+	// leave this property empty.
+	// 
+	// As an example, one could set this property to
+	// "https://www.yourdomain.com/OAuth2.php", where the PHP source contains the
+	// following:
+	// 
+	void put_AppCallbackUrl(const wchar_t *newVal);
 
 	// Indicates the current progress of the OAuth2 three-legged authorization flow.
 	// Possible values are:
@@ -636,6 +682,31 @@ class CK_VISIBLE_PUBLIC CkOAuth2W  : public CkClassWithCallbacksW
 	// property will remain empty.
 	// 
 	void put_TokenType(const wchar_t *newVal);
+
+	// If set to true, then the internal POST (on the background thread) that
+	// exchanges the code for an access token will send the client_id/client_secret in
+	// an "Authorization Basic ..." header where the client_id is the login and the
+	// client_secret is the password.
+	// 
+	// Some services, such as fitbit.com, require the client_id/client_secret to be
+	// passed in this way.
+	// 
+	// The default value of this property is false, which causes the
+	// client_id/client_secret to be sent as query params.
+	// 
+	bool get_UseBasicAuth(void);
+	// If set to true, then the internal POST (on the background thread) that
+	// exchanges the code for an access token will send the client_id/client_secret in
+	// an "Authorization Basic ..." header where the client_id is the login and the
+	// client_secret is the password.
+	// 
+	// Some services, such as fitbit.com, require the client_id/client_secret to be
+	// passed in this way.
+	// 
+	// The default value of this property is false, which causes the
+	// client_id/client_secret to be sent as query params.
+	// 
+	void put_UseBasicAuth(bool newVal);
 
 
 

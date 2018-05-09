@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkPublicKey_H
 #define _CkPublicKey_H
@@ -243,21 +243,16 @@ class CK_VISIBLE_PUBLIC CkPublicKey  : public CkMultiByteBase
 	// parts indicated by "..." are base64 encoded.
 	// 
 	// RSA public keys have this XML format:
-	// <RSAKeyValue>
-	//   <Modulus>...</Modulus>
-	//   <Exponent>...</Exponent>
-	// </RSAKeyValue>
+	//   ...  ...
 	// 
 	// DSA public keys have this XML format:
-	// <DSAPublicKey>
-	//     <P>...</P>
-	//     <Q>...</Q>
-	//     <G>...</G>
-	//     <Y>...</Y>
-	// </DSAPublicKey>
+	// 
+	// ...
+	// 
+	// .........
 	// 
 	// ECC public keys have this XML format:
-	// <ECCPublicKey curve="CURVE_NAME" x="HEX_DATA" y="HEX_DATA">...</ECCPublicKey>
+	// ...
 	// 
 	bool GetXml(CkString &outStr);
 
@@ -265,42 +260,32 @@ class CK_VISIBLE_PUBLIC CkPublicKey  : public CkMultiByteBase
 	// parts indicated by "..." are base64 encoded.
 	// 
 	// RSA public keys have this XML format:
-	// <RSAKeyValue>
-	//   <Modulus>...</Modulus>
-	//   <Exponent>...</Exponent>
-	// </RSAKeyValue>
+	//   ...  ...
 	// 
 	// DSA public keys have this XML format:
-	// <DSAPublicKey>
-	//     <P>...</P>
-	//     <Q>...</Q>
-	//     <G>...</G>
-	//     <Y>...</Y>
-	// </DSAPublicKey>
+	// 
+	// ...
+	// 
+	// .........
 	// 
 	// ECC public keys have this XML format:
-	// <ECCPublicKey curve="CURVE_NAME" x="HEX_DATA" y="HEX_DATA">...</ECCPublicKey>
+	// ...
 	// 
 	const char *getXml(void);
 	// Gets the public key in XML format. The format depends on the key type. The key
 	// parts indicated by "..." are base64 encoded.
 	// 
 	// RSA public keys have this XML format:
-	// <RSAKeyValue>
-	//   <Modulus>...</Modulus>
-	//   <Exponent>...</Exponent>
-	// </RSAKeyValue>
+	//   ...  ...
 	// 
 	// DSA public keys have this XML format:
-	// <DSAPublicKey>
-	//     <P>...</P>
-	//     <Q>...</Q>
-	//     <G>...</G>
-	//     <Y>...</Y>
-	// </DSAPublicKey>
+	// 
+	// ...
+	// 
+	// .........
 	// 
 	// ECC public keys have this XML format:
-	// <ECCPublicKey curve="CURVE_NAME" x="HEX_DATA" y="HEX_DATA">...</ECCPublicKey>
+	// ...
 	// 
 	const char *xml(void);
 

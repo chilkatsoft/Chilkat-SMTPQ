@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkJsonArrayWH
 #define _C_CkJsonArrayWH
 #include "chilkatDefs.h"
@@ -10,24 +10,24 @@ CK_VISIBLE_PUBLIC HCkJsonArrayW CkJsonArrayW_Create(void);
 CK_VISIBLE_PUBLIC void CkJsonArrayW_Dispose(HCkJsonArrayW handle);
 CK_VISIBLE_PUBLIC void CkJsonArrayW_getDebugLogFilePath(HCkJsonArrayW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkJsonArrayW_putDebugLogFilePath(HCkJsonArrayW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkJsonArrayW_debugLogFilePath(HCkJsonArrayW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJsonArrayW_getDebugLogFilePath(HCkJsonArrayW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkJsonArrayW_getEmitCompact(HCkJsonArrayW cHandle);
 CK_VISIBLE_PUBLIC void  CkJsonArrayW_putEmitCompact(HCkJsonArrayW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkJsonArrayW_getEmitCrlf(HCkJsonArrayW cHandle);
 CK_VISIBLE_PUBLIC void  CkJsonArrayW_putEmitCrlf(HCkJsonArrayW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkJsonArrayW_getLastErrorHtml(HCkJsonArrayW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkJsonArrayW_lastErrorHtml(HCkJsonArrayW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJsonArrayW_getLastErrorHtml(HCkJsonArrayW cHandle);
 CK_VISIBLE_PUBLIC void CkJsonArrayW_getLastErrorText(HCkJsonArrayW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkJsonArrayW_lastErrorText(HCkJsonArrayW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJsonArrayW_getLastErrorText(HCkJsonArrayW cHandle);
 CK_VISIBLE_PUBLIC void CkJsonArrayW_getLastErrorXml(HCkJsonArrayW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkJsonArrayW_lastErrorXml(HCkJsonArrayW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJsonArrayW_getLastErrorXml(HCkJsonArrayW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkJsonArrayW_getLastMethodSuccess(HCkJsonArrayW cHandle);
 CK_VISIBLE_PUBLIC void  CkJsonArrayW_putLastMethodSuccess(HCkJsonArrayW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkJsonArrayW_getSize(HCkJsonArrayW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkJsonArrayW_getVerboseLogging(HCkJsonArrayW cHandle);
 CK_VISIBLE_PUBLIC void  CkJsonArrayW_putVerboseLogging(HCkJsonArrayW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkJsonArrayW_getVersion(HCkJsonArrayW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkJsonArrayW_version(HCkJsonArrayW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJsonArrayW_getVersion(HCkJsonArrayW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkJsonArrayW_AddArrayAt(HCkJsonArrayW cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkJsonArrayW_AddBoolAt(HCkJsonArrayW cHandle, int index, BOOL value);
 CK_VISIBLE_PUBLIC BOOL CkJsonArrayW_AddIntAt(HCkJsonArrayW cHandle, int index, int value);
@@ -37,10 +37,14 @@ CK_VISIBLE_PUBLIC BOOL CkJsonArrayW_AddObjectAt(HCkJsonArrayW cHandle, int index
 CK_VISIBLE_PUBLIC BOOL CkJsonArrayW_AddStringAt(HCkJsonArrayW cHandle, int index, const wchar_t *value);
 CK_VISIBLE_PUBLIC HCkJsonArrayW CkJsonArrayW_ArrayAt(HCkJsonArrayW cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkJsonArrayW_BoolAt(HCkJsonArrayW cHandle, int index);
+CK_VISIBLE_PUBLIC BOOL CkJsonArrayW_DateAt(HCkJsonArrayW cHandle, int index, HCkDateTimeW dateTime);
 CK_VISIBLE_PUBLIC BOOL CkJsonArrayW_DeleteAt(HCkJsonArrayW cHandle, int index);
+CK_VISIBLE_PUBLIC BOOL CkJsonArrayW_DtAt(HCkJsonArrayW cHandle, int index, BOOL bLocal, HCkDtObjW dt);
 CK_VISIBLE_PUBLIC BOOL CkJsonArrayW_Emit(HCkJsonArrayW cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkJsonArrayW_emit(HCkJsonArrayW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkJsonArrayW_EmitSb(HCkJsonArrayW cHandle, HCkStringBuilderW sb);
+CK_VISIBLE_PUBLIC int CkJsonArrayW_FindObject(HCkJsonArrayW cHandle, const wchar_t *name, const wchar_t *value, BOOL caseSensitive);
+CK_VISIBLE_PUBLIC int CkJsonArrayW_FindString(HCkJsonArrayW cHandle, const wchar_t *value, BOOL caseSensitive);
 CK_VISIBLE_PUBLIC int CkJsonArrayW_IntAt(HCkJsonArrayW cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkJsonArrayW_IsNullAt(HCkJsonArrayW cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkJsonArrayW_Load(HCkJsonArrayW cHandle, const wchar_t *jsonArray);

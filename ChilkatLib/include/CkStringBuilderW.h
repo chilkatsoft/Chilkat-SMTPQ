@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkStringBuilderW_H
 #define _CkStringBuilderW_H
@@ -138,7 +138,7 @@ class CK_VISIBLE_PUBLIC CkStringBuilderW  : public CkWideCharBase
 	// 
 	bool Decode(const wchar_t *encoding, const wchar_t *charset);
 
-	// Encodes to base64, hex, quoted-printable, or URL-encoding. The encoding can be set
+	// Encodes to base64, hex, quoted-printable, URL encoding, etc. The encoding can be set
 	// to any of the following strings: "base64", "hex", "quoted-printable" (or "qp"),
 	// "url", "base32", "Q", "B", "url_rc1738", "url_rfc2396", "url_rfc3986",
 	// "url_oauth", "uu", "modBase64", or "html" (for HTML entity encoding). The full
@@ -264,9 +264,18 @@ class CK_VISIBLE_PUBLIC CkStringBuilderW  : public CkWideCharBase
 	// Prepends a copy of the specified string to this instance.
 	bool Prepend(const wchar_t *value);
 
+	// In-place decodes the string from punycode.
+	bool PunyDecode(void);
+
+	// In-place encodes the string to punycode.
+	bool PunyEncode(void);
+
 	// Replaces all occurrences of a specified string in this instance with another
 	// specified string. Returns the number of replacements.
 	int Replace(const wchar_t *value, const wchar_t *replacement);
+
+	// Replaces the content found after the final occurrence of marker with replacement.
+	bool ReplaceAfterFinal(const wchar_t *marker, const wchar_t *replacement);
 
 	// Replaces the first occurrence of the content found between beginMark and endMark with
 	// replacement. The beginMark and endMark are included in what is replaced if replaceMarks is true.
@@ -332,6 +341,12 @@ class CK_VISIBLE_PUBLIC CkStringBuilderW  : public CkWideCharBase
 	// preamble), is emitted for charsets that define a BOM (such as utf-8, utf-16,
 	// utf-32, etc.)
 	bool WriteFile(const wchar_t *path, const wchar_t *charset, bool emitBom);
+
+	// Writes the contents to a file, but only if it is a new file or if the contents
+	// are different than the existing file. If emitBom is true, then the BOM (also
+	// known as a preamble), is emitted for charsets that define a BOM (such as utf-8,
+	// utf-16, utf-32, etc.)
+	bool WriteFileIfModified(const wchar_t *path, const wchar_t *charset, bool emitBom);
 
 
 

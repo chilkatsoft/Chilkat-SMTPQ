@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkDtObjWH
 #define _C_CkDtObjWH
 #include "chilkatDefs.h"
@@ -12,15 +12,15 @@ CK_VISIBLE_PUBLIC int CkDtObjW_getDay(HCkDtObjW cHandle);
 CK_VISIBLE_PUBLIC void  CkDtObjW_putDay(HCkDtObjW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkDtObjW_getDebugLogFilePath(HCkDtObjW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkDtObjW_putDebugLogFilePath(HCkDtObjW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkDtObjW_debugLogFilePath(HCkDtObjW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkDtObjW_getDebugLogFilePath(HCkDtObjW cHandle);
 CK_VISIBLE_PUBLIC int CkDtObjW_getHour(HCkDtObjW cHandle);
 CK_VISIBLE_PUBLIC void  CkDtObjW_putHour(HCkDtObjW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkDtObjW_getLastErrorHtml(HCkDtObjW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkDtObjW_lastErrorHtml(HCkDtObjW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkDtObjW_getLastErrorHtml(HCkDtObjW cHandle);
 CK_VISIBLE_PUBLIC void CkDtObjW_getLastErrorText(HCkDtObjW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkDtObjW_lastErrorText(HCkDtObjW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkDtObjW_getLastErrorText(HCkDtObjW cHandle);
 CK_VISIBLE_PUBLIC void CkDtObjW_getLastErrorXml(HCkDtObjW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkDtObjW_lastErrorXml(HCkDtObjW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkDtObjW_getLastErrorXml(HCkDtObjW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkDtObjW_getLastMethodSuccess(HCkDtObjW cHandle);
 CK_VISIBLE_PUBLIC void  CkDtObjW_putLastMethodSuccess(HCkDtObjW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkDtObjW_getMinute(HCkDtObjW cHandle);
@@ -38,7 +38,7 @@ CK_VISIBLE_PUBLIC void  CkDtObjW_putUtc(HCkDtObjW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkDtObjW_getVerboseLogging(HCkDtObjW cHandle);
 CK_VISIBLE_PUBLIC void  CkDtObjW_putVerboseLogging(HCkDtObjW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkDtObjW_getVersion(HCkDtObjW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkDtObjW_version(HCkDtObjW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkDtObjW_getVersion(HCkDtObjW cHandle);
 CK_VISIBLE_PUBLIC int CkDtObjW_getYear(HCkDtObjW cHandle);
 CK_VISIBLE_PUBLIC void  CkDtObjW_putYear(HCkDtObjW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkDtObjW_DeSerialize(HCkDtObjW cHandle, const wchar_t *serializedDtObj);

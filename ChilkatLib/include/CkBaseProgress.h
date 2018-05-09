@@ -59,7 +59,7 @@ class CkTask;
 
 class CK_VISIBLE_PUBLIC CkBaseProgress : public CkObject 
 {
-    private:
+    protected:
 	void *m_impl;
 
 	// No copy constructor or assignment allowed..

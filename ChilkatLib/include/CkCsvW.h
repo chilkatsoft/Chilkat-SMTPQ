@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkCsvW_H
 #define _CkCsvW_H
@@ -82,6 +82,15 @@ class CK_VISIBLE_PUBLIC CkCsvW  : public CkWideCharBase
 	// delimiter when loading a CSV. (Semicolons are typically used in locales where
 	// the comma is used as a decimal point.)
 	void put_Delimiter(const wchar_t *newVal);
+
+	// If true, then the double-quote characters cause the quoted content, including
+	// CR's, LF's, and delimiter chars to be treated as normal text when
+	// reading/writing CSVs. The default is true.
+	bool get_EnableQuotes(void);
+	// If true, then the double-quote characters cause the quoted content, including
+	// CR's, LF's, and delimiter chars to be treated as normal text when
+	// reading/writing CSVs. The default is true.
+	void put_EnableQuotes(bool newVal);
 
 	// If true, then the backslash character is treated as an escape character when
 	// reading/writing CSVs. The default is false.

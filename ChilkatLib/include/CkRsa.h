@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkRsa_H
 #define _CkRsa_H
@@ -15,6 +15,7 @@
 class CkByteData;
 class CkPrivateKey;
 class CkPublicKey;
+class CkCert;
 
 
 
@@ -187,6 +188,22 @@ class CK_VISIBLE_PUBLIC CkRsa  : public CkMultiByteBase
 	// "sha1", "sha256", "sha384", "sha512", "md2", "md5", "haval", "ripemd128",
 	// "ripemd160","ripemd256", or "ripemd320". The default is "sha1".
 	void put_OaepHash(const char *newVal);
+
+	// Selects the MGF (mask generation) hash algorithm for use within OAEP padding.
+	// The valid choices are "sha1", "sha256", "sha384", "sha512", "md2", "md5",
+	// "haval", "ripemd128", "ripemd160","ripemd256", or "ripemd320". The default is
+	// "sha1".
+	void get_OaepMgfHash(CkString &str);
+	// Selects the MGF (mask generation) hash algorithm for use within OAEP padding.
+	// The valid choices are "sha1", "sha256", "sha384", "sha512", "md2", "md5",
+	// "haval", "ripemd128", "ripemd160","ripemd256", or "ripemd320". The default is
+	// "sha1".
+	const char *oaepMgfHash(void);
+	// Selects the MGF (mask generation) hash algorithm for use within OAEP padding.
+	// The valid choices are "sha1", "sha256", "sha384", "sha512", "md2", "md5",
+	// "haval", "ripemd128", "ripemd160","ripemd256", or "ripemd320". The default is
+	// "sha1".
+	void put_OaepMgfHash(const char *newVal);
 
 	// Controls whether Optimal Asymmetric Encryption Padding (OAEP) is used for the
 	// padding scheme (for encrypting/decrypting). If set to false, PKCS1 v1.5
@@ -503,6 +520,16 @@ class CK_VISIBLE_PUBLIC CkRsa  : public CkMultiByteBase
 	// the original data. Input data is a signature string encoded according to the
 	// EncodingMode property (base64, hex, etc.). Returns the original string.
 	const char *openSslVerifyStringENC(const char *str);
+
+	// Provides the private key indirectly through a certificate, assuming the
+	// certificate has an associated private key. This method is primarily used on
+	// Windows computers where the private key may be installed as non-exportable (such
+	// as on a hardware token).
+	// 
+	// Returns false if the certificate has no associated private key.
+	// 
+	bool SetX509Cert(CkCert &cert, bool usePrivateKey);
+
 
 	// Creates an RSA digital signature by hashing binaryData and then signing the hash. The
 	// hash algorithm is specified by hashAlgorithm, which may be "SHA-1", "MD5", "MD2",

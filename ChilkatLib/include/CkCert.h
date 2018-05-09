@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkCert_H
 #define _CkCert_H
@@ -13,6 +13,7 @@
 #include "CkMultiByteBase.h"
 
 class CkByteData;
+class CkBinData;
 class CkPrivateKey;
 class CkPublicKey;
 class CkCertChain;
@@ -402,6 +403,10 @@ class CK_VISIBLE_PUBLIC CkCert  : public CkMultiByteBase
 	bool ExportCertDer(CkByteData &outData);
 
 
+	// Exports the digital certificate in ASN.1 DER format to a BinData object.
+	bool ExportCertDerBd(CkBinData &cerData);
+
+
 	// Exports the digital certificate to ASN.1 DER format binary file.
 	bool ExportCertDerFile(const char *path);
 
@@ -436,6 +441,12 @@ class CK_VISIBLE_PUBLIC CkCert  : public CkMultiByteBase
 	// Exports the certificate's public key.
 	// The caller is responsible for deleting the object returned by this method.
 	CkPublicKey *ExportPublicKey(void);
+
+
+	// Exports the certificate and private key (if available) to pfxData. The password is what
+	// will be required to access the PFX contents at a later time. If includeCertChain is true,
+	// then the certificates in the chain of authority are also included in the PFX.
+	bool ExportToPfxBd(const char *password, bool includeCertChain, CkBinData &pfxData);
 
 
 	// Exports the certificate and private key (if available) to an in-memory PFX
@@ -621,6 +632,10 @@ class CK_VISIBLE_PUBLIC CkCert  : public CkMultiByteBase
 	bool LoadFromBase64(const char *encodedCert);
 
 
+	// Loads an X.509 certificate from the ASN.1 DER encoded bytes contained in certBytes.
+	bool LoadFromBd(CkBinData &certBytes);
+
+
 	// Loads an X.509 certificate from ASN.1 DER encoded bytes.
 	bool LoadFromBinary(CkByteData &data);
 
@@ -648,6 +663,11 @@ class CK_VISIBLE_PUBLIC CkCert  : public CkMultiByteBase
 
 	// Loads the certificate from a PEM string.
 	bool LoadPem(const char *strPem);
+
+
+	// Loads the certificate from the PFX contained in pfxData. Note: If the PFX contains
+	// multiple certificates, the 1st certificate in the PFX is loaded.
+	bool LoadPfxBd(CkBinData &pfxData, const char *password);
 
 
 	// Loads a PFX from an in-memory image of a PFX file. Note: If the PFX contains

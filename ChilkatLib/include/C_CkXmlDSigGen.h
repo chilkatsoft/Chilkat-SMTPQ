@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkXmlDSigGen_H
 #define _C_CkXmlDSigGen_H
 #include "chilkatDefs.h"
@@ -8,12 +8,21 @@
 
 CK_VISIBLE_PUBLIC HCkXmlDSigGen CkXmlDSigGen_Create(void);
 CK_VISIBLE_PUBLIC void CkXmlDSigGen_Dispose(HCkXmlDSigGen handle);
+CK_VISIBLE_PUBLIC void CkXmlDSigGen_getBehaviors(HCkXmlDSigGen cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkXmlDSigGen_putBehaviors(HCkXmlDSigGen cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkXmlDSigGen_behaviors(HCkXmlDSigGen cHandle);
 CK_VISIBLE_PUBLIC void CkXmlDSigGen_getCustomKeyInfoXml(HCkXmlDSigGen cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkXmlDSigGen_putCustomKeyInfoXml(HCkXmlDSigGen cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkXmlDSigGen_customKeyInfoXml(HCkXmlDSigGen cHandle);
 CK_VISIBLE_PUBLIC void CkXmlDSigGen_getDebugLogFilePath(HCkXmlDSigGen cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkXmlDSigGen_putDebugLogFilePath(HCkXmlDSigGen cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkXmlDSigGen_debugLogFilePath(HCkXmlDSigGen cHandle);
+CK_VISIBLE_PUBLIC void CkXmlDSigGen_getIncNamespacePrefix(HCkXmlDSigGen cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkXmlDSigGen_putIncNamespacePrefix(HCkXmlDSigGen cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkXmlDSigGen_incNamespacePrefix(HCkXmlDSigGen cHandle);
+CK_VISIBLE_PUBLIC void CkXmlDSigGen_getIncNamespaceUri(HCkXmlDSigGen cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkXmlDSigGen_putIncNamespaceUri(HCkXmlDSigGen cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkXmlDSigGen_incNamespaceUri(HCkXmlDSigGen cHandle);
 CK_VISIBLE_PUBLIC void CkXmlDSigGen_getKeyInfoKeyName(HCkXmlDSigGen cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkXmlDSigGen_putKeyInfoKeyName(HCkXmlDSigGen cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkXmlDSigGen_keyInfoKeyName(HCkXmlDSigGen cHandle);

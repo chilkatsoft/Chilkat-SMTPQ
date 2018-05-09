@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkSshTunnel_H
 #define _CkSshTunnel_H
@@ -14,6 +14,7 @@
 
 class CkTask;
 class CkSshKey;
+class CkSecureString;
 class CkSsh;
 class CkBaseProgress;
 
@@ -385,6 +386,15 @@ class CK_VISIBLE_PUBLIC CkSshTunnel  : public CkClassWithCallbacks
 	// set this property.)
 	void put_OutboundBindPort(int newVal);
 
+	// If true, then use IPv6 over IPv4 when both are supported for a particular
+	// domain. The default value of this property is false, which will choose IPv4
+	// over IPv6.
+	bool get_PreferIpv6(void);
+	// If true, then use IPv6 over IPv4 when both are supported for a particular
+	// domain. The default value of this property is false, which will choose IPv4
+	// over IPv6.
+	void put_PreferIpv6(bool newVal);
+
 	// The SOCKS4/SOCKS5 hostname or IPv4 address (in dotted decimal notation). This
 	// property is only used if the SocksVersion property is set to 4 or 5).
 	// 
@@ -549,6 +559,34 @@ class CK_VISIBLE_PUBLIC CkSshTunnel  : public CkClassWithCallbacks
 	// Set to keep a log file of the SSH tunnel thread.
 	void put_TunnelLogPath(const char *newVal);
 
+	// This is a catch-all property to be used for uncommon needs. This property
+	// defaults to the empty string, and should typically remain empty.
+	// 
+	// As of v9.5.0.73, the only possible value is:
+	//     "KEX_DH_GEX_REQUEST_OLD" - Force the old Group Exchange message to be used.
+	//     This would be used for very old SSH server implementations that do not use the
+	//     RFC standard for diffie-hellman-group-exchange.
+	// 
+	void get_UncommonOptions(CkString &str);
+	// This is a catch-all property to be used for uncommon needs. This property
+	// defaults to the empty string, and should typically remain empty.
+	// 
+	// As of v9.5.0.73, the only possible value is:
+	//     "KEX_DH_GEX_REQUEST_OLD" - Force the old Group Exchange message to be used.
+	//     This would be used for very old SSH server implementations that do not use the
+	//     RFC standard for diffie-hellman-group-exchange.
+	// 
+	const char *uncommonOptions(void);
+	// This is a catch-all property to be used for uncommon needs. This property
+	// defaults to the empty string, and should typically remain empty.
+	// 
+	// As of v9.5.0.73, the only possible value is:
+	//     "KEX_DH_GEX_REQUEST_OLD" - Force the old Group Exchange message to be used.
+	//     This would be used for very old SSH server implementations that do not use the
+	//     RFC standard for diffie-hellman-group-exchange.
+	// 
+	void put_UncommonOptions(const char *newVal);
+
 
 
 	// ----------------------
@@ -613,6 +651,24 @@ class CK_VISIBLE_PUBLIC CkSshTunnel  : public CkClassWithCallbacks
 	// LastErrorText property to support@chilkatsoft.com.
 	// 
 	CkTask *AuthenticatePwPkAsync(const char *username, const char *password, CkSshKey &privateKey);
+
+
+	// The same as AuthenticatePw, except the login and password strings are passed in
+	// secure string objects.
+	bool AuthenticateSecPw(CkSecureString &login, CkSecureString &password);
+
+	// The same as AuthenticatePw, except the login and password strings are passed in
+	// secure string objects.
+	CkTask *AuthenticateSecPwAsync(CkSecureString &login, CkSecureString &password);
+
+
+	// The same as AuthenticatePwPk, except the login and password strings are passed
+	// in secure string objects.
+	bool AuthenticateSecPwPk(CkSecureString &username, CkSecureString &password, CkSshKey &privateKey);
+
+	// The same as AuthenticatePwPk, except the login and password strings are passed
+	// in secure string objects.
+	CkTask *AuthenticateSecPwPkAsync(CkSecureString &username, CkSecureString &password, CkSshKey &privateKey);
 
 
 	// Starts a background thread for listening on listenPort. A new SSH tunnel is created

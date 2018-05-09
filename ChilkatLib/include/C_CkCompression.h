@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkCompression_H
 #define _C_CkCompression_H
 #include "chilkatDefs.h"
@@ -6,7 +6,7 @@
 #include "Chilkat_C.h"
 
 
-CK_VISIBLE_PUBLIC void CkCompression_setAbortCheck(HCkCompression cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkCompression_setAbortCheck(HCkCompression cHandle, BOOL (*fnAbortCheck)(void));
 CK_VISIBLE_PUBLIC void CkCompression_setPercentDone(HCkCompression cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkCompression_setProgressInfo(HCkCompression cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkCompression_setTaskCompleted(HCkCompression cHandle, void (*fnTaskCompleted)(HCkTask hTask));
@@ -22,6 +22,8 @@ CK_VISIBLE_PUBLIC const char *CkCompression_charset(HCkCompression cHandle);
 CK_VISIBLE_PUBLIC void CkCompression_getDebugLogFilePath(HCkCompression cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkCompression_putDebugLogFilePath(HCkCompression cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkCompression_debugLogFilePath(HCkCompression cHandle);
+CK_VISIBLE_PUBLIC int CkCompression_getDeflateLevel(HCkCompression cHandle);
+CK_VISIBLE_PUBLIC void CkCompression_putDeflateLevel(HCkCompression cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkCompression_getEncodingMode(HCkCompression cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkCompression_putEncodingMode(HCkCompression cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkCompression_encodingMode(HCkCompression cHandle);
@@ -70,6 +72,8 @@ CK_VISIBLE_PUBLIC const char *CkCompression_compressBytesENC(HCkCompression cHan
 CK_VISIBLE_PUBLIC HCkTask CkCompression_CompressBytesENCAsync(HCkCompression cHandle, HCkByteData data);
 CK_VISIBLE_PUBLIC BOOL CkCompression_CompressFile(HCkCompression cHandle, const char *srcPath, const char *destPath);
 CK_VISIBLE_PUBLIC HCkTask CkCompression_CompressFileAsync(HCkCompression cHandle, const char *srcPath, const char *destPath);
+CK_VISIBLE_PUBLIC BOOL CkCompression_CompressSb(HCkCompression cHandle, HCkStringBuilder sb, HCkBinData binData);
+CK_VISIBLE_PUBLIC HCkTask CkCompression_CompressSbAsync(HCkCompression cHandle, HCkStringBuilder sb, HCkBinData binData);
 CK_VISIBLE_PUBLIC BOOL CkCompression_CompressStream(HCkCompression cHandle, HCkStream strm);
 CK_VISIBLE_PUBLIC HCkTask CkCompression_CompressStreamAsync(HCkCompression cHandle, HCkStream strm);
 CK_VISIBLE_PUBLIC BOOL CkCompression_CompressString(HCkCompression cHandle, const char *str, HCkByteData outData);
@@ -85,6 +89,8 @@ CK_VISIBLE_PUBLIC BOOL CkCompression_DecompressBytesENC(HCkCompression cHandle, 
 CK_VISIBLE_PUBLIC HCkTask CkCompression_DecompressBytesENCAsync(HCkCompression cHandle, const char *encodedCompressedData);
 CK_VISIBLE_PUBLIC BOOL CkCompression_DecompressFile(HCkCompression cHandle, const char *srcPath, const char *destPath);
 CK_VISIBLE_PUBLIC HCkTask CkCompression_DecompressFileAsync(HCkCompression cHandle, const char *srcPath, const char *destPath);
+CK_VISIBLE_PUBLIC BOOL CkCompression_DecompressSb(HCkCompression cHandle, HCkBinData binData, HCkStringBuilder sb);
+CK_VISIBLE_PUBLIC HCkTask CkCompression_DecompressSbAsync(HCkCompression cHandle, HCkBinData binData, HCkStringBuilder sb);
 CK_VISIBLE_PUBLIC BOOL CkCompression_DecompressStream(HCkCompression cHandle, HCkStream strm);
 CK_VISIBLE_PUBLIC HCkTask CkCompression_DecompressStreamAsync(HCkCompression cHandle, HCkStream strm);
 CK_VISIBLE_PUBLIC BOOL CkCompression_DecompressString(HCkCompression cHandle, HCkByteData data, HCkString outStr);

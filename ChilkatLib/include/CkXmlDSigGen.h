@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkXmlDSigGen_H
 #define _CkXmlDSigGen_H
@@ -51,6 +51,55 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGen  : public CkMultiByteBase
 	// ----------------------
 	// Properties
 	// ----------------------
+	// A comma-separated list of keywords to specify special behaviors to work around
+	// potential oddities or special requirements needed for providing signatures to
+	// particular systems. This is an open-ended property where new behaviors can be
+	// implemented depending on the needs encountered by Chilkat customers. The
+	// possible behaviors are listed below. (At this time, there is only one special
+	// behavior.)
+	//     ForceAddEnvelopedSignatureTransform The " " is normally only added when the
+	//     Signature is contained within the XML fragment that is signed. The meaning of
+	//     this tranformation is to tell the verifier to remove the Signature from the data
+	//     prior to canonicalizing. If the Signature is not contained within the XML
+	//     fragment that was signed, then the signature was not enveloped. There would be
+	//     no need to remove the Signature because the Signature is not contained in the
+	//     XML fragment being verified. However.. some brain-dead verifiying systems
+	//     require this Transform to be present regardless of whether it makes sense. This
+	//     behavior will cause Chilkat to add the Transform regardless.
+	void get_Behaviors(CkString &str);
+	// A comma-separated list of keywords to specify special behaviors to work around
+	// potential oddities or special requirements needed for providing signatures to
+	// particular systems. This is an open-ended property where new behaviors can be
+	// implemented depending on the needs encountered by Chilkat customers. The
+	// possible behaviors are listed below. (At this time, there is only one special
+	// behavior.)
+	//     ForceAddEnvelopedSignatureTransform The " " is normally only added when the
+	//     Signature is contained within the XML fragment that is signed. The meaning of
+	//     this tranformation is to tell the verifier to remove the Signature from the data
+	//     prior to canonicalizing. If the Signature is not contained within the XML
+	//     fragment that was signed, then the signature was not enveloped. There would be
+	//     no need to remove the Signature because the Signature is not contained in the
+	//     XML fragment being verified. However.. some brain-dead verifiying systems
+	//     require this Transform to be present regardless of whether it makes sense. This
+	//     behavior will cause Chilkat to add the Transform regardless.
+	const char *behaviors(void);
+	// A comma-separated list of keywords to specify special behaviors to work around
+	// potential oddities or special requirements needed for providing signatures to
+	// particular systems. This is an open-ended property where new behaviors can be
+	// implemented depending on the needs encountered by Chilkat customers. The
+	// possible behaviors are listed below. (At this time, there is only one special
+	// behavior.)
+	//     ForceAddEnvelopedSignatureTransform The " " is normally only added when the
+	//     Signature is contained within the XML fragment that is signed. The meaning of
+	//     this tranformation is to tell the verifier to remove the Signature from the data
+	//     prior to canonicalizing. If the Signature is not contained within the XML
+	//     fragment that was signed, then the signature was not enveloped. There would be
+	//     no need to remove the Signature because the Signature is not contained in the
+	//     XML fragment being verified. However.. some brain-dead verifiying systems
+	//     require this Transform to be present regardless of whether it makes sense. This
+	//     behavior will cause Chilkat to add the Transform regardless.
+	void put_Behaviors(const char *newVal);
+
 	// Specifies custom XML to be inserted in the KeyInfo element of the Signature. A
 	// common use is to provide a wsse:SecurityTokenReference fragment of XML.
 	void get_CustomKeyInfoXml(CkString &str);
@@ -60,6 +109,47 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGen  : public CkMultiByteBase
 	// Specifies custom XML to be inserted in the KeyInfo element of the Signature. A
 	// common use is to provide a wsse:SecurityTokenReference fragment of XML.
 	void put_CustomKeyInfoXml(const char *newVal);
+
+	// The namespace prefix to use for InclusiveNamespaces elements. The default value
+	// is "ec". Set this property to the empty string to omit an InclusiveNamespaces
+	// prefix. For example, given the default values of IncNamespaceUri and
+	// IncNamespacePrefix, generated InclusiveNamespaces elements will appear like
+	// this:
+	// ... 
+	void get_IncNamespacePrefix(CkString &str);
+	// The namespace prefix to use for InclusiveNamespaces elements. The default value
+	// is "ec". Set this property to the empty string to omit an InclusiveNamespaces
+	// prefix. For example, given the default values of IncNamespaceUri and
+	// IncNamespacePrefix, generated InclusiveNamespaces elements will appear like
+	// this:
+	// ... 
+	const char *incNamespacePrefix(void);
+	// The namespace prefix to use for InclusiveNamespaces elements. The default value
+	// is "ec". Set this property to the empty string to omit an InclusiveNamespaces
+	// prefix. For example, given the default values of IncNamespaceUri and
+	// IncNamespacePrefix, generated InclusiveNamespaces elements will appear like
+	// this:
+	// ... 
+	void put_IncNamespacePrefix(const char *newVal);
+
+	// The namespace URI for any InclusiveNamespaces elements that are created. The
+	// default value is "http://www.w3.org/2001/10/xml-exc-c14n#". For example, if the
+	// IncNamespacePrefix equals "ec" and this property remains at the default value,
+	// then the generated Signature element will be:
+	// ... 
+	void get_IncNamespaceUri(CkString &str);
+	// The namespace URI for any InclusiveNamespaces elements that are created. The
+	// default value is "http://www.w3.org/2001/10/xml-exc-c14n#". For example, if the
+	// IncNamespacePrefix equals "ec" and this property remains at the default value,
+	// then the generated Signature element will be:
+	// ... 
+	const char *incNamespaceUri(void);
+	// The namespace URI for any InclusiveNamespaces elements that are created. The
+	// default value is "http://www.w3.org/2001/10/xml-exc-c14n#". For example, if the
+	// IncNamespacePrefix equals "ec" and this property remains at the default value,
+	// then the generated Signature element will be:
+	// ... 
+	void put_IncNamespaceUri(const char *newVal);
 
 	// Specifies the KeyName to be inserted in the KeyInfo element of the Signature if
 	// the KeyInfoType equals "KeyName".
@@ -138,26 +228,17 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGen  : public CkMultiByteBase
 	// An option Id attribute value for the Signature element. The default value is the
 	// empty string, which generates a Signature element with no Id attribute. For
 	// example:
-	// <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-	// If this property is set to "abc123", then the Signature element would be
-	// generated like this:
-	// <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" Id="abc123">
+	// If this property is set to "abc123", then the Signature element would be generated like this:
 	void get_SigId(CkString &str);
 	// An option Id attribute value for the Signature element. The default value is the
 	// empty string, which generates a Signature element with no Id attribute. For
 	// example:
-	// <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-	// If this property is set to "abc123", then the Signature element would be
-	// generated like this:
-	// <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" Id="abc123">
+	// If this property is set to "abc123", then the Signature element would be generated like this:
 	const char *sigId(void);
 	// An option Id attribute value for the Signature element. The default value is the
 	// empty string, which generates a Signature element with no Id attribute. For
 	// example:
-	// <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-	// If this property is set to "abc123", then the Signature element would be
-	// generated like this:
-	// <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" Id="abc123">
+	// If this property is set to "abc123", then the Signature element would be generated like this:
 	void put_SigId(const char *newVal);
 
 	// Indicates where the Signature is to be located within the XML that is signed.
@@ -169,15 +250,8 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGen  : public CkMultiByteBase
 	// For example, if we have the following SOAP XML and wish to insert the Signature
 	// at the indicated location, then the SigLocation property should be set to
 	// "SOAP-ENV:Envelope|SOAP-ENV:Header|wsse:Security".
-	// <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-	// <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
-	//     <SOAP-ENV:Header>
-	// 	<wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" SOAP-ENV:mustUnderstand="1">
-	// 		** The XML Signature is to be inserted here **
-	// 	</wsse:Security>
-	//     </SOAP-ENV:Header>
-	// ...
-	// </SOAP-ENV:Envelope>
+	// ** The XML Signature is to be inserted here **
+	// 	...
 	// 
 	void get_SigLocation(CkString &str);
 	// Indicates where the Signature is to be located within the XML that is signed.
@@ -189,15 +263,8 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGen  : public CkMultiByteBase
 	// For example, if we have the following SOAP XML and wish to insert the Signature
 	// at the indicated location, then the SigLocation property should be set to
 	// "SOAP-ENV:Envelope|SOAP-ENV:Header|wsse:Security".
-	// <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-	// <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
-	//     <SOAP-ENV:Header>
-	// 	<wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" SOAP-ENV:mustUnderstand="1">
-	// 		** The XML Signature is to be inserted here **
-	// 	</wsse:Security>
-	//     </SOAP-ENV:Header>
-	// ...
-	// </SOAP-ENV:Envelope>
+	// ** The XML Signature is to be inserted here **
+	// 	...
 	// 
 	const char *sigLocation(void);
 	// Indicates where the Signature is to be located within the XML that is signed.
@@ -209,15 +276,8 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGen  : public CkMultiByteBase
 	// For example, if we have the following SOAP XML and wish to insert the Signature
 	// at the indicated location, then the SigLocation property should be set to
 	// "SOAP-ENV:Envelope|SOAP-ENV:Header|wsse:Security".
-	// <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-	// <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
-	//     <SOAP-ENV:Header>
-	// 	<wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" SOAP-ENV:mustUnderstand="1">
-	// 		** The XML Signature is to be inserted here **
-	// 	</wsse:Security>
-	//     </SOAP-ENV:Header>
-	// ...
-	// </SOAP-ENV:Envelope>
+	// ** The XML Signature is to be inserted here **
+	// 	...
 	// 
 	void put_SigLocation(const char *newVal);
 
@@ -225,63 +285,75 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGen  : public CkMultiByteBase
 	// is "ds". Set this property to the empty string to omit a Signature namespace URI
 	// and prefix. For example, given the default values of SigNamespaceUri and
 	// SigNamespacePrefix, the generated Signature element will be:
-	// <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#"> ... </ds:Signature>
+	// ... 
 	void get_SigNamespacePrefix(CkString &str);
 	// The namespace prefix of the Signature that is to be created. The default value
 	// is "ds". Set this property to the empty string to omit a Signature namespace URI
 	// and prefix. For example, given the default values of SigNamespaceUri and
 	// SigNamespacePrefix, the generated Signature element will be:
-	// <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#"> ... </ds:Signature>
+	// ... 
 	const char *sigNamespacePrefix(void);
 	// The namespace prefix of the Signature that is to be created. The default value
 	// is "ds". Set this property to the empty string to omit a Signature namespace URI
 	// and prefix. For example, given the default values of SigNamespaceUri and
 	// SigNamespacePrefix, the generated Signature element will be:
-	// <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#"> ... </ds:Signature>
+	// ... 
 	void put_SigNamespacePrefix(const char *newVal);
 
 	// The namespace URI of the Signature that is to be created. The default value is
 	// "http://www.w3.org/2000/09/xmldsig#". For example, if the SigNamespacePrefix
 	// equals "ds" and this property remains at the default value, then the generated
 	// Signature element will be:
-	// <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#"> ... </ds:Signature>
+	// ... 
 	void get_SigNamespaceUri(CkString &str);
 	// The namespace URI of the Signature that is to be created. The default value is
 	// "http://www.w3.org/2000/09/xmldsig#". For example, if the SigNamespacePrefix
 	// equals "ds" and this property remains at the default value, then the generated
 	// Signature element will be:
-	// <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#"> ... </ds:Signature>
+	// ... 
 	const char *sigNamespaceUri(void);
 	// The namespace URI of the Signature that is to be created. The default value is
 	// "http://www.w3.org/2000/09/xmldsig#". For example, if the SigNamespacePrefix
 	// equals "ds" and this property remains at the default value, then the generated
 	// Signature element will be:
-	// <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#"> ... </ds:Signature>
+	// ... 
 	void put_SigNamespaceUri(const char *newVal);
 
 	// The canonicalization method to be used for the SignedInfo when creating the XML
 	// signature.
-	//     "C14N" -- for Inclusive Canonical XML 1.0 (without comments)
+	//     "C14N" -- for Inclusive Canonical XML (without comments)
 	//     "C14N_11" -- for Inclusive Canonical XML 1.1 (without comments)
 	//     "EXCL_C14N" -- for Exclusive Canonical XML (without comments)
+	//     "C14N_WithComments" -- for Inclusive Canonical XML (with comments)
+	//     "C14N_11_WithComments" -- for Inclusive Canonical XML 1.1 (with comments)
+	//     "EXCL_C14N_WithComments" -- for Exclusive Canonical XML (with comments)
+	//     Note: The WithComments options are available in Chilkat v9.5.0.71 and later.
 	// 
 	// The default value is "EXCL_C14N".
 	// 
 	void get_SignedInfoCanonAlg(CkString &str);
 	// The canonicalization method to be used for the SignedInfo when creating the XML
 	// signature.
-	//     "C14N" -- for Inclusive Canonical XML 1.0 (without comments)
+	//     "C14N" -- for Inclusive Canonical XML (without comments)
 	//     "C14N_11" -- for Inclusive Canonical XML 1.1 (without comments)
 	//     "EXCL_C14N" -- for Exclusive Canonical XML (without comments)
+	//     "C14N_WithComments" -- for Inclusive Canonical XML (with comments)
+	//     "C14N_11_WithComments" -- for Inclusive Canonical XML 1.1 (with comments)
+	//     "EXCL_C14N_WithComments" -- for Exclusive Canonical XML (with comments)
+	//     Note: The WithComments options are available in Chilkat v9.5.0.71 and later.
 	// 
 	// The default value is "EXCL_C14N".
 	// 
 	const char *signedInfoCanonAlg(void);
 	// The canonicalization method to be used for the SignedInfo when creating the XML
 	// signature.
-	//     "C14N" -- for Inclusive Canonical XML 1.0 (without comments)
+	//     "C14N" -- for Inclusive Canonical XML (without comments)
 	//     "C14N_11" -- for Inclusive Canonical XML 1.1 (without comments)
 	//     "EXCL_C14N" -- for Exclusive Canonical XML (without comments)
+	//     "C14N_WithComments" -- for Inclusive Canonical XML (with comments)
+	//     "C14N_11_WithComments" -- for Inclusive Canonical XML 1.1 (with comments)
+	//     "EXCL_C14N_WithComments" -- for Exclusive Canonical XML (with comments)
+	//     Note: The WithComments options are available in Chilkat v9.5.0.71 and later.
 	// 
 	// The default value is "EXCL_C14N".
 	// 
@@ -307,12 +379,7 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGen  : public CkMultiByteBase
 	// If, for example, this property is set to "wsse SOAP-ENV", then the
 	// CanonicalizationMethod part of the SignedInfo that is generated would look like
 	// this:
-	// <ds:SignedInfo>
-	//     <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
-	//       <InclusiveNamespaces xmlns="http://www.w3.org/2001/10/xml-exc-c14n#" PrefixList="wsse SOAP-ENV" />
-	//     </ds:CanonicalizationMethod>
 	// ...
-	// </ds:SignedInfo>
 	// 
 	void get_SignedInfoPrefixList(CkString &str);
 	// The inclusive namespace prefix list to be added, if any, when the
@@ -322,12 +389,7 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGen  : public CkMultiByteBase
 	// If, for example, this property is set to "wsse SOAP-ENV", then the
 	// CanonicalizationMethod part of the SignedInfo that is generated would look like
 	// this:
-	// <ds:SignedInfo>
-	//     <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
-	//       <InclusiveNamespaces xmlns="http://www.w3.org/2001/10/xml-exc-c14n#" PrefixList="wsse SOAP-ENV" />
-	//     </ds:CanonicalizationMethod>
 	// ...
-	// </ds:SignedInfo>
 	// 
 	const char *signedInfoPrefixList(void);
 	// The inclusive namespace prefix list to be added, if any, when the
@@ -337,12 +399,7 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGen  : public CkMultiByteBase
 	// If, for example, this property is set to "wsse SOAP-ENV", then the
 	// CanonicalizationMethod part of the SignedInfo that is generated would look like
 	// this:
-	// <ds:SignedInfo>
-	//     <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
-	//       <InclusiveNamespaces xmlns="http://www.w3.org/2001/10/xml-exc-c14n#" PrefixList="wsse SOAP-ENV" />
-	//     </ds:CanonicalizationMethod>
 	// ...
-	// </ds:SignedInfo>
 	// 
 	void put_SignedInfoPrefixList(const char *newVal);
 
@@ -381,6 +438,10 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGen  : public CkMultiByteBase
 	// 
 	// The default value is "Certificate".
 	// 
+	// Note: This property can be set to a comma-separated list of the keywords above.
+	// For example, If set to "SubjectName,Certificate", then both the X509SubjectName
+	// and X509Certificate parts will be added to the KeyInfo.
+	// 
 	// If Certificate, then the KeyInfo will contain the base64 encoded X.509v3
 	// certificate.
 	// 
@@ -408,6 +469,10 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGen  : public CkMultiByteBase
 	// 
 	// The default value is "Certificate".
 	// 
+	// Note: This property can be set to a comma-separated list of the keywords above.
+	// For example, If set to "SubjectName,Certificate", then both the X509SubjectName
+	// and X509Certificate parts will be added to the KeyInfo.
+	// 
 	// If Certificate, then the KeyInfo will contain the base64 encoded X.509v3
 	// certificate.
 	// 
@@ -434,6 +499,10 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGen  : public CkMultiByteBase
 	//     SKI
 	// 
 	// The default value is "Certificate".
+	// 
+	// Note: This property can be set to a comma-separated list of the keywords above.
+	// For example, If set to "SubjectName,Certificate", then both the X509SubjectName
+	// and X509Certificate parts will be added to the KeyInfo.
 	// 
 	// If Certificate, then the KeyInfo will contain the base64 encoded X.509v3
 	// certificate.
@@ -470,10 +539,14 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGen  : public CkMultiByteBase
 	// The digestMethod is the digest method and can be one of the following: "sha1", "sha256",
 	// "sha384", "sha512", "ripemd160", or "md5".
 	// 
-	// The canonMethod is the canonicalization method, and can be one of the following:
+	// The canonMethod is the canonicalization method, and can be one of the following.
 	//     "C14N" -- for Inclusive Canonical XML (without comments)
 	//     "C14N_11" -- for Inclusive Canonical XML 1.1 (without comments)
 	//     "EXCL_C14N" -- for Exclusive Canonical XML (without comments)
+	//     "C14N_WithComments" -- for Inclusive Canonical XML (with comments)
+	//     "C14N_11_WithComments" -- for Inclusive Canonical XML 1.1 (with comments)
+	//     "EXCL_C14N_WithComments" -- for Exclusive Canonical XML (with comments)
+	//     Note: The WithComments options are available in Chilkat v9.5.0.71 and later.
 	// 
 	// The refType is optional and is usually not needed. Set this to the empty string
 	// unless it is desired to add a Type attribute to the Reference that is advisory
@@ -573,12 +646,19 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGen  : public CkMultiByteBase
 	//     "C14N" -- for Inclusive Canonical XML (without comments)
 	//     "C14N_11" -- for Inclusive Canonical XML 1.1 (without comments)
 	//     "EXCL_C14N" -- for Exclusive Canonical XML (without comments)
+	//     "C14N_WithComments" -- for Inclusive Canonical XML (with comments)
+	//     "C14N_11_WithComments" -- for Inclusive Canonical XML 1.1 (with comments)
+	//     "EXCL_C14N_WithComments" -- for Exclusive Canonical XML (with comments)
+	//     Note: The WithComments options are available in Chilkat v9.5.0.71 and later.
 	// 
 	// If exclusive canonicalization is selected, then the prefixList can contain a space
 	// separated list of inclusive namespace prefixes. For inclusive canonicalization,
 	// this argument is ignored. In general, pass an empty string for this argument
 	// unless you have specific knowledge of namespace prefixes that need to be treated
 	// as inclusive when EXCL_C14N is used.
+	// 
+	// Starting in Chilkat v9.5.0.70, the prefixList can be set to the keyword "_EMPTY_" to
+	// force the generation of an empty PrefixList under the Transform. For example:
 	// 
 	// The refType is optional and is usually not needed. Set this to the empty string
 	// unless it is desired to add a Type attribute to the Reference that is advisory

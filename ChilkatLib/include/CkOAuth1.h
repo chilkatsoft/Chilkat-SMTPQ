@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkOAuth1_H
 #define _CkOAuth1_H
@@ -123,14 +123,38 @@ class CK_VISIBLE_PUBLIC CkOAuth1  : public CkMultiByteBase
 	// The OAuth URL, such as "http://echo.lab.madgex.com/echo.ashx". See
 	// http://bettiolo.github.io/oauth-reference-page/ to compare Chilkat results with
 	// another tool's results.
+	// 
+	// Note: The OAuthUrl should not include query parameters. For example, do not set
+	// the OAuthUrl equal
+	// tohttps://rest.sandbox.netsuite.com/app/site/hosting/restlet.nl?script=165&deploy
+	// =1 Instead, set OAuthUrl equal
+	// tohttps://rest.sandbox.netsuite.com/app/site/hosting/restlet.nl and then
+	// subsequently call AddParam for each query parameter.
+	// 
 	void get_OauthUrl(CkString &str);
 	// The OAuth URL, such as "http://echo.lab.madgex.com/echo.ashx". See
 	// http://bettiolo.github.io/oauth-reference-page/ to compare Chilkat results with
 	// another tool's results.
+	// 
+	// Note: The OAuthUrl should not include query parameters. For example, do not set
+	// the OAuthUrl equal
+	// tohttps://rest.sandbox.netsuite.com/app/site/hosting/restlet.nl?script=165&deploy
+	// =1 Instead, set OAuthUrl equal
+	// tohttps://rest.sandbox.netsuite.com/app/site/hosting/restlet.nl and then
+	// subsequently call AddParam for each query parameter.
+	// 
 	const char *oauthUrl(void);
 	// The OAuth URL, such as "http://echo.lab.madgex.com/echo.ashx". See
 	// http://bettiolo.github.io/oauth-reference-page/ to compare Chilkat results with
 	// another tool's results.
+	// 
+	// Note: The OAuthUrl should not include query parameters. For example, do not set
+	// the OAuthUrl equal
+	// tohttps://rest.sandbox.netsuite.com/app/site/hosting/restlet.nl?script=165&deploy
+	// =1 Instead, set OAuthUrl equal
+	// tohttps://rest.sandbox.netsuite.com/app/site/hosting/restlet.nl and then
+	// subsequently call AddParam for each query parameter.
+	// 
 	void put_OauthUrl(const char *newVal);
 
 	// The oauth_version. Defaults to "1.0". May be set to the empty string to exclude.
@@ -146,6 +170,13 @@ class CK_VISIBLE_PUBLIC CkOAuth1  : public CkMultiByteBase
 	// Contains the normalized set of request parameters that are signed. This is a
 	// read-only property made available for debugging purposes.
 	const char *queryString(void);
+
+	// The realm (optional).
+	void get_Realm(CkString &str);
+	// The realm (optional).
+	const char *realm(void);
+	// The realm (optional).
+	void put_Realm(const char *newVal);
 
 	// The generated base64 signature.
 	void get_Signature(CkString &str);

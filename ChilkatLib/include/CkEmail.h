@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkEmail_H
 #define _CkEmail_H
@@ -457,6 +457,16 @@ class CK_VISIBLE_PUBLIC CkEmail  : public CkMultiByteBase
 	// Selects the hash algorithm for use within OAEP padding when encrypting email
 	// using RSAES-OAEP. The valid choices are "sha1", "sha256", "sha384", "sha512",
 	void put_OaepHash(const char *newVal);
+
+	// Selects the MGF hash algorithm for use within OAEP padding when encrypting email
+	// using RSAES-OAEP. The valid choices are "sha1", "sha256", "sha384", "sha512",
+	void get_OaepMgfHash(CkString &str);
+	// Selects the MGF hash algorithm for use within OAEP padding when encrypting email
+	// using RSAES-OAEP. The valid choices are "sha1", "sha256", "sha384", "sha512",
+	const char *oaepMgfHash(void);
+	// Selects the MGF hash algorithm for use within OAEP padding when encrypting email
+	// using RSAES-OAEP. The valid choices are "sha1", "sha256", "sha384", "sha512",
+	void put_OaepMgfHash(const char *newVal);
 
 	// Selects the RSA encryption scheme when encrypting email. The default value is
 	// false, which selects RSAES_PKCS1-V1_5. If set to true, then RSAES_OAEP is
@@ -1071,6 +1081,20 @@ class CK_VISIBLE_PUBLIC CkEmail  : public CkMultiByteBase
 	void AppendToBody(const char *str);
 
 
+	// Sometimes emails created by other software or systems are not formatted
+	// according to typical conventions. This method provides a means to automatically
+	// fix certain problems.
+	// 
+	// The fixups set to a comma-separated list of keywords that identify the fixups to
+	// be applied. At the moment, there is only one fixup defined ("FixRelated") as
+	// described here:
+	//     FixRelated: Fixes the email so that HTML related items (images for example)
+	//     are properly located in the email MIME structure. This prevents them from being
+	//     seen as attachments.
+	// 
+	bool ApplyFixups(const char *fixups);
+
+
 	// Please see the examples at the following pages for detailed information:
 	bool AspUnpack(const char *prefix, const char *saveDir, const char *urlPath, bool cleanFiles);
 
@@ -1213,6 +1237,12 @@ class CK_VISIBLE_PUBLIC CkEmail  : public CkMultiByteBase
 	// Returns a copy of the Email object with the body and header fields changed so
 	// that the newly created email can be sent as a reply. After calling CreateReply,
 	// simply prepend additional information to the body, and call MailMan.SendEmail.
+	// 
+	// Note: Attachments are not included in the returned reply email. However,
+	// attached messages are included. If an application does not wish to include the
+	// attached messages in a reply email, they can be removed by calling
+	// RemoveAttachedMessages on the reply email object.
+	// 
 	// The caller is responsible for deleting the object returned by this method.
 	CkEmail *CreateReply(void);
 

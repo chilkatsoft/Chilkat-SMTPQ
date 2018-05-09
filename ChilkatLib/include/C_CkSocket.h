@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkSocket_H
 #define _C_CkSocket_H
 #include "chilkatDefs.h"
@@ -6,7 +6,7 @@
 #include "Chilkat_C.h"
 
 
-CK_VISIBLE_PUBLIC void CkSocket_setAbortCheck(HCkSocket cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkSocket_setAbortCheck(HCkSocket cHandle, BOOL (*fnAbortCheck)(void));
 CK_VISIBLE_PUBLIC void CkSocket_setPercentDone(HCkSocket cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkSocket_setProgressInfo(HCkSocket cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkSocket_setTaskCompleted(HCkSocket cHandle, void (*fnTaskCompleted)(HCkTask hTask));
@@ -69,6 +69,8 @@ CK_VISIBLE_PUBLIC const char *CkSocket_httpProxyAuthMethod(HCkSocket cHandle);
 CK_VISIBLE_PUBLIC void CkSocket_getHttpProxyDomain(HCkSocket cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkSocket_putHttpProxyDomain(HCkSocket cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkSocket_httpProxyDomain(HCkSocket cHandle);
+CK_VISIBLE_PUBLIC BOOL CkSocket_getHttpProxyForHttp(HCkSocket cHandle);
+CK_VISIBLE_PUBLIC void CkSocket_putHttpProxyForHttp(HCkSocket cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkSocket_getHttpProxyHostname(HCkSocket cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkSocket_putHttpProxyHostname(HCkSocket cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkSocket_httpProxyHostname(HCkSocket cHandle);

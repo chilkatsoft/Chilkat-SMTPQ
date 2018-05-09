@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkMailMan_H
 #define _CkMailMan_H
@@ -17,12 +17,13 @@ class CkTask;
 class CkEmailBundle;
 class CkEmail;
 class CkStringArray;
+class CkBinData;
 class CkCert;
 class CkJsonObject;
-class CkBinData;
 class CkStringBuilder;
 class CkCsp;
 class CkPrivateKey;
+class CkSecureString;
 class CkSshKey;
 class CkXmlCertVault;
 class CkSsh;
@@ -91,6 +92,11 @@ class CK_VISIBLE_PUBLIC CkMailMan  : public CkClassWithCallbacks
 	// Note: An SMTP server only knows the validity of email addresses within the
 	// domain it controls.
 	// 
+	// Important: The AllOrNone property only works if SMTP pipelining is turned off.
+	// By default, the SmtpPipelining property is turned on and has the value of
+	// true. If all-or-none behavior is desired, make sure to set SmtpPipelining
+	// equal to false.
+	// 
 	bool get_AllOrNone(void);
 	// Prevents sending any email if any of the addresses in the recipient list are
 	// rejected by the SMTP server. The default value is false, which indicates that
@@ -100,6 +106,11 @@ class CK_VISIBLE_PUBLIC CkMailMan  : public CkClassWithCallbacks
 	// 
 	// Note: An SMTP server only knows the validity of email addresses within the
 	// domain it controls.
+	// 
+	// Important: The AllOrNone property only works if SMTP pipelining is turned off.
+	// By default, the SmtpPipelining property is turned on and has the value of
+	// true. If all-or-none behavior is desired, make sure to set SmtpPipelining
+	// equal to false.
 	// 
 	void put_AllOrNone(bool newVal);
 
@@ -1932,6 +1943,13 @@ class CK_VISIBLE_PUBLIC CkMailMan  : public CkClassWithCallbacks
 	CkTask *FetchMimeAsync(const char *uidl);
 
 
+	// Fetches an email by UIDL and returns the MIME source of the email in uidl.
+	bool FetchMimeBd(const char *uidl, CkBinData &mimeData);
+
+	// Fetches an email by UIDL and returns the MIME source of the email in uidl.
+	CkTask *FetchMimeBdAsync(const char *uidl, CkBinData &mimeData);
+
+
 	// Fetches an email by message number and returns the MIME source of the email in a
 	// byte array. WARNING: Message sequend numbers are specific to a POP3 session. If
 	// a maildrop has (for example) 10 messages, the message numbers will be 1, 2, 3,
@@ -2639,6 +2657,15 @@ class CK_VISIBLE_PUBLIC CkMailMan  : public CkClassWithCallbacks
 	CkTask *SendMimeAsync(const char *fromAddr, const char *recipients, const char *mimeSource);
 
 
+	// This method is the same as SendMimeBytes, except the MIME is passed in an object
+	// (mimeData) rather than explicitly passing the bytes.
+	bool SendMimeBd(const char *fromAddr, const char *recipients, CkBinData &mimeData);
+
+	// This method is the same as SendMimeBytes, except the MIME is passed in an object
+	// (mimeData) rather than explicitly passing the bytes.
+	CkTask *SendMimeBdAsync(const char *fromAddr, const char *recipients, CkBinData &mimeData);
+
+
 	// This method is the same as SendMime, except the MIME is passed in a byte array.
 	// This can be important if the MIME uses a binary encoding, or if a DKIM/DomainKey
 	// signature is included.
@@ -2776,6 +2803,13 @@ class CK_VISIBLE_PUBLIC CkMailMan  : public CkClassWithCallbacks
 	// the required cert + private key.
 	// 
 	bool SetDecryptCert2(CkCert &cert, CkPrivateKey &privateKey);
+
+
+	// Provides a more secure way of setting either the POP3 or SMTP password. The protocol
+	// can be "pop3" or "smtp". When the protocol is "pop3", this is equivalent to setting
+	// the PopPassword property. When protocol is "smtp", this is equivalent to setting the
+	// SmtpPassword property.
+	bool SetPassword(const char *protocol, CkSecureString &password);
 
 
 	// Sets the client-side certificate to be used with SSL connections. This is

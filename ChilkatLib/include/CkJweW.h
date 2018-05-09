@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkJweW_H
 #define _CkJweW_H
@@ -256,6 +256,8 @@ class CK_VISIBLE_PUBLIC CkJweW  : public CkWideCharBase
 	// RSA1_5
 	// RSA-OAEP
 	// RSA-OAEP-256
+	// RSA-OAEP-384  (added in Chilkat v9.5.0.71)
+	// RSA-OAEP-512  (added in Chilkat v9.5.0.71)
 	// The index is the index of the recipient, where the 1st recipient is at index 0.
 	// (The typical use case for JWEs is for a single recipient.)
 	bool SetPrivateKey(int index, CkPrivateKeyW &privKey);

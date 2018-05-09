@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkTask_H
 #define _CkTask_H
@@ -186,6 +186,13 @@ class CK_VISIBLE_PUBLIC CkTask  : public CkMultiByteBase
 	// object. This property is only valid for those methods where the
 	// LastMethodSuccess property would be valid had the method been called
 	// synchronously.
+	// 
+	// Important: This property is only meaningful for cases where the underlying
+	// method call has a non-boolean return value (such as for methods that return
+	// strings, other Chilkat objects, or integers). If the underlying method call
+	// returns a boolean, then call the GetResultBool() method instead to get the
+	// boolean return value.
+	// 
 	bool get_TaskSuccess(void);
 
 	// An application may use this property to attach some user-specific information

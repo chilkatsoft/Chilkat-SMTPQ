@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkDkim_H
 #define _C_CkDkim_H
 #include "chilkatDefs.h"
@@ -6,7 +6,7 @@
 #include "Chilkat_C.h"
 
 
-CK_VISIBLE_PUBLIC void CkDkim_setAbortCheck(HCkDkim cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkDkim_setAbortCheck(HCkDkim cHandle, BOOL (*fnAbortCheck)(void));
 CK_VISIBLE_PUBLIC void CkDkim_setPercentDone(HCkDkim cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkDkim_setProgressInfo(HCkDkim cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkDkim_setTaskCompleted(HCkDkim cHandle, void (*fnTaskCompleted)(HCkTask hTask));
@@ -68,6 +68,10 @@ CK_VISIBLE_PUBLIC void CkDkim_getVersion(HCkDkim cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkDkim_version(HCkDkim cHandle);
 CK_VISIBLE_PUBLIC BOOL CkDkim_AddDkimSignature(HCkDkim cHandle, HCkByteData mimeIn, HCkByteData outBytes);
 CK_VISIBLE_PUBLIC BOOL CkDkim_AddDomainKeySignature(HCkDkim cHandle, HCkByteData mimeIn, HCkByteData outBytes);
+CK_VISIBLE_PUBLIC BOOL CkDkim_DkimSign(HCkDkim cHandle, HCkBinData mimeData);
+CK_VISIBLE_PUBLIC BOOL CkDkim_DkimVerify(HCkDkim cHandle, int sigIndex, HCkBinData mimeData);
+CK_VISIBLE_PUBLIC BOOL CkDkim_DomainKeySign(HCkDkim cHandle, HCkBinData mimeData);
+CK_VISIBLE_PUBLIC BOOL CkDkim_DomainKeyVerify(HCkDkim cHandle, int sigIndex, HCkBinData mimeData);
 CK_VISIBLE_PUBLIC BOOL CkDkim_LoadDkimPk(HCkDkim cHandle, const char *privateKey, const char *optionalPassword);
 CK_VISIBLE_PUBLIC BOOL CkDkim_LoadDkimPkBytes(HCkDkim cHandle, HCkByteData privateKeyDer, const char *optionalPassword);
 CK_VISIBLE_PUBLIC BOOL CkDkim_LoadDkimPkFile(HCkDkim cHandle, const char *privateKeyFilePath, const char *optionalPassword);
@@ -81,6 +85,8 @@ CK_VISIBLE_PUBLIC int CkDkim_NumDomainKeySignatures(HCkDkim cHandle, HCkByteData
 CK_VISIBLE_PUBLIC BOOL CkDkim_PrefetchPublicKey(HCkDkim cHandle, const char *selector, const char *domain);
 CK_VISIBLE_PUBLIC HCkTask CkDkim_PrefetchPublicKeyAsync(HCkDkim cHandle, const char *selector, const char *domain);
 CK_VISIBLE_PUBLIC BOOL CkDkim_SaveLastError(HCkDkim cHandle, const char *path);
+CK_VISIBLE_PUBLIC BOOL CkDkim_SetDkimPrivateKey(HCkDkim cHandle, HCkPrivateKey privateKey);
+CK_VISIBLE_PUBLIC BOOL CkDkim_SetDomainKeyPrivateKey(HCkDkim cHandle, HCkPrivateKey privateKey);
 CK_VISIBLE_PUBLIC BOOL CkDkim_UnlockComponent(HCkDkim cHandle, const char *unlockCode);
 CK_VISIBLE_PUBLIC BOOL CkDkim_VerifyDkimSignature(HCkDkim cHandle, int sigIndex, HCkByteData mimeData);
 CK_VISIBLE_PUBLIC HCkTask CkDkim_VerifyDkimSignatureAsync(HCkDkim cHandle, int sigIndex, HCkByteData mimeData);

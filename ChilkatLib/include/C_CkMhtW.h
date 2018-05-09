@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkMhtWH
 #define _C_CkMhtWH
 #include "chilkatDefs.h"
@@ -6,7 +6,7 @@
 #include "Chilkat_C.h"
 
 
-CK_VISIBLE_PUBLIC void CkMhtW_setAbortCheck(HCkMhtW cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkMhtW_setAbortCheck(HCkMhtW cHandle, BOOL (*fnAbortCheck)(void));
 CK_VISIBLE_PUBLIC void CkMhtW_setPercentDone(HCkMhtW cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkMhtW_setProgressInfo(HCkMhtW cHandle, void (*fnProgressInfo)(const wchar_t *name, const wchar_t *value));
 CK_VISIBLE_PUBLIC void CkMhtW_setTaskCompleted(HCkMhtW cHandle, void (*fnTaskCompleted)(HCkTaskW hTask));
@@ -17,18 +17,18 @@ CK_VISIBLE_PUBLIC BOOL CkMhtW_getAbortCurrent(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC void  CkMhtW_putAbortCurrent(HCkMhtW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkMhtW_getBaseUrl(HCkMhtW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkMhtW_putBaseUrl(HCkMhtW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_baseUrl(HCkMhtW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_getBaseUrl(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC int CkMhtW_getConnectTimeout(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC void  CkMhtW_putConnectTimeout(HCkMhtW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkMhtW_getDebugHtmlAfter(HCkMhtW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkMhtW_putDebugHtmlAfter(HCkMhtW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_debugHtmlAfter(HCkMhtW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_getDebugHtmlAfter(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC void CkMhtW_getDebugHtmlBefore(HCkMhtW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkMhtW_putDebugHtmlBefore(HCkMhtW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_debugHtmlBefore(HCkMhtW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_getDebugHtmlBefore(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC void CkMhtW_getDebugLogFilePath(HCkMhtW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkMhtW_putDebugLogFilePath(HCkMhtW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_debugLogFilePath(HCkMhtW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_getDebugLogFilePath(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkMhtW_getDebugTagCleaning(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC void  CkMhtW_putDebugTagCleaning(HCkMhtW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkMhtW_getEmbedImages(HCkMhtW cHandle);
@@ -44,11 +44,11 @@ CK_VISIBLE_PUBLIC void  CkMhtW_putIgnoreMustRevalidate(HCkMhtW cHandle, BOOL new
 CK_VISIBLE_PUBLIC BOOL CkMhtW_getIgnoreNoCache(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC void  CkMhtW_putIgnoreNoCache(HCkMhtW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkMhtW_getLastErrorHtml(HCkMhtW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_lastErrorHtml(HCkMhtW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_getLastErrorHtml(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC void CkMhtW_getLastErrorText(HCkMhtW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_lastErrorText(HCkMhtW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_getLastErrorText(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC void CkMhtW_getLastErrorXml(HCkMhtW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_lastErrorXml(HCkMhtW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_getLastErrorXml(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkMhtW_getLastMethodSuccess(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC void  CkMhtW_putLastMethodSuccess(HCkMhtW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkMhtW_getNoScripts(HCkMhtW cHandle);
@@ -64,28 +64,28 @@ CK_VISIBLE_PUBLIC BOOL CkMhtW_getPreferMHTScripts(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC void  CkMhtW_putPreferMHTScripts(HCkMhtW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkMhtW_getProxy(HCkMhtW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkMhtW_putProxy(HCkMhtW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_proxy(HCkMhtW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_getProxy(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC void CkMhtW_getProxyLogin(HCkMhtW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkMhtW_putProxyLogin(HCkMhtW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_proxyLogin(HCkMhtW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_getProxyLogin(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC void CkMhtW_getProxyPassword(HCkMhtW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkMhtW_putProxyPassword(HCkMhtW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_proxyPassword(HCkMhtW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_getProxyPassword(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC int CkMhtW_getReadTimeout(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC void  CkMhtW_putReadTimeout(HCkMhtW cHandle, int newVal);
 CK_VISIBLE_PUBLIC BOOL CkMhtW_getRequireSslCertVerify(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC void  CkMhtW_putRequireSslCertVerify(HCkMhtW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkMhtW_getSocksHostname(HCkMhtW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkMhtW_putSocksHostname(HCkMhtW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_socksHostname(HCkMhtW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_getSocksHostname(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC void CkMhtW_getSocksPassword(HCkMhtW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkMhtW_putSocksPassword(HCkMhtW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_socksPassword(HCkMhtW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_getSocksPassword(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC int CkMhtW_getSocksPort(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC void  CkMhtW_putSocksPort(HCkMhtW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkMhtW_getSocksUsername(HCkMhtW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkMhtW_putSocksUsername(HCkMhtW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_socksUsername(HCkMhtW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_getSocksUsername(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC int CkMhtW_getSocksVersion(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC void  CkMhtW_putSocksVersion(HCkMhtW cHandle, int newVal);
 CK_VISIBLE_PUBLIC BOOL CkMhtW_getUnpackDirect(HCkMhtW cHandle);
@@ -105,16 +105,16 @@ CK_VISIBLE_PUBLIC void  CkMhtW_putUseInline(HCkMhtW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkMhtW_getVerboseLogging(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC void  CkMhtW_putVerboseLogging(HCkMhtW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkMhtW_getVersion(HCkMhtW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_version(HCkMhtW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_getVersion(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC void CkMhtW_getWebSiteLogin(HCkMhtW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkMhtW_putWebSiteLogin(HCkMhtW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_webSiteLogin(HCkMhtW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_getWebSiteLogin(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC void CkMhtW_getWebSiteLoginDomain(HCkMhtW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkMhtW_putWebSiteLoginDomain(HCkMhtW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_webSiteLoginDomain(HCkMhtW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_getWebSiteLoginDomain(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC void CkMhtW_getWebSitePassword(HCkMhtW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkMhtW_putWebSitePassword(HCkMhtW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_webSitePassword(HCkMhtW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkMhtW_getWebSitePassword(HCkMhtW cHandle);
 CK_VISIBLE_PUBLIC void CkMhtW_AddCacheRoot(HCkMhtW cHandle, const wchar_t *dir);
 CK_VISIBLE_PUBLIC void CkMhtW_AddCustomHeader(HCkMhtW cHandle, const wchar_t *name, const wchar_t *value);
 CK_VISIBLE_PUBLIC void CkMhtW_AddExternalStyleSheet(HCkMhtW cHandle, const wchar_t *url);

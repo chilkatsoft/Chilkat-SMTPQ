@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkMimeW_H
 #define _CkMimeW_H
@@ -285,6 +285,19 @@ class CK_VISIBLE_PUBLIC CkMimeW  : public CkWideCharBase
 	// Selects the hash algorithm for use within OAEP padding when encrypting MIME
 	// using RSAES-OAEP. The valid choices are "sha1", "sha256", "sha384", "sha512",
 	void put_OaepHash(const wchar_t *newVal);
+
+	// Selects the MGF hash algorithm for use within OAEP padding when encrypting MIME
+	// using RSAES-OAEP. The valid choices are "sha1", "sha256", "sha384", "sha512",
+	// The default is "sha1".
+	void get_OaepMgfHash(CkString &str);
+	// Selects the MGF hash algorithm for use within OAEP padding when encrypting MIME
+	// using RSAES-OAEP. The valid choices are "sha1", "sha256", "sha384", "sha512",
+	// The default is "sha1".
+	const wchar_t *oaepMgfHash(void);
+	// Selects the MGF hash algorithm for use within OAEP padding when encrypting MIME
+	// using RSAES-OAEP. The valid choices are "sha1", "sha256", "sha384", "sha512",
+	// The default is "sha1".
+	void put_OaepMgfHash(const wchar_t *newVal);
 
 	// Selects the RSA encryption scheme when encrypting MIME. The default value is
 	// false, which selects RSAES_PKCS1-V1_5. If set to true, then RSAES_OAEP is

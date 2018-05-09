@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkAtomWH
 #define _C_CkAtomWH
 #include "chilkatDefs.h"
@@ -6,7 +6,7 @@
 #include "Chilkat_C.h"
 
 
-CK_VISIBLE_PUBLIC void CkAtomW_setAbortCheck(HCkAtomW cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkAtomW_setAbortCheck(HCkAtomW cHandle, BOOL (*fnAbortCheck)(void));
 CK_VISIBLE_PUBLIC void CkAtomW_setPercentDone(HCkAtomW cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkAtomW_setProgressInfo(HCkAtomW cHandle, void (*fnProgressInfo)(const wchar_t *name, const wchar_t *value));
 CK_VISIBLE_PUBLIC void CkAtomW_setTaskCompleted(HCkAtomW cHandle, void (*fnTaskCompleted)(HCkTaskW hTask));
@@ -16,20 +16,20 @@ CK_VISIBLE_PUBLIC void CkAtomW_Dispose(HCkAtomW handle);
 CK_VISIBLE_PUBLIC BOOL CkAtomW_getAbortCurrent(HCkAtomW cHandle);
 CK_VISIBLE_PUBLIC void CkAtomW_getDebugLogFilePath(HCkAtomW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkAtomW_putDebugLogFilePath(HCkAtomW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkAtomW_debugLogFilePath(HCkAtomW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkAtomW_getDebugLogFilePath(HCkAtomW cHandle);
 CK_VISIBLE_PUBLIC void CkAtomW_getLastErrorHtml(HCkAtomW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkAtomW_lastErrorHtml(HCkAtomW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkAtomW_getLastErrorHtml(HCkAtomW cHandle);
 CK_VISIBLE_PUBLIC void CkAtomW_getLastErrorText(HCkAtomW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkAtomW_lastErrorText(HCkAtomW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkAtomW_getLastErrorText(HCkAtomW cHandle);
 CK_VISIBLE_PUBLIC void CkAtomW_getLastErrorXml(HCkAtomW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkAtomW_lastErrorXml(HCkAtomW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkAtomW_getLastErrorXml(HCkAtomW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkAtomW_getLastMethodSuccess(HCkAtomW cHandle);
 CK_VISIBLE_PUBLIC void  CkAtomW_putLastMethodSuccess(HCkAtomW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkAtomW_getNumEntries(HCkAtomW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkAtomW_getVerboseLogging(HCkAtomW cHandle);
 CK_VISIBLE_PUBLIC void  CkAtomW_putVerboseLogging(HCkAtomW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkAtomW_getVersion(HCkAtomW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkAtomW_version(HCkAtomW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkAtomW_getVersion(HCkAtomW cHandle);
 CK_VISIBLE_PUBLIC int CkAtomW_AddElement(HCkAtomW cHandle, const wchar_t *tag, const wchar_t *value);
 CK_VISIBLE_PUBLIC int CkAtomW_AddElementDate(HCkAtomW cHandle, const wchar_t *tag, SYSTEMTIME * dateTime);
 CK_VISIBLE_PUBLIC int CkAtomW_AddElementDateStr(HCkAtomW cHandle, const wchar_t *tag, const wchar_t *dateTimeStr);

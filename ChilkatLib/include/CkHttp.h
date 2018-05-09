@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkHttp_H
 #define _CkHttp_H
@@ -24,6 +24,7 @@ class CkHttpRequest;
 class CkStringArray;
 class CkDateTime;
 class CkPrivateKey;
+class CkSecureString;
 class CkHttpProgress;
 
 
@@ -487,10 +488,24 @@ class CK_VISIBLE_PUBLIC CkHttp  : public CkClassWithCallbacks
 	void put_Connection(const char *newVal);
 
 	// The amount of time in seconds to wait before timing out when connecting to an
-	// HTTP server.
+	// HTTP server. The default ConnectTimeout is 30 seconds.
+	// 
+	// Note: This is the maximum number of seconds to wait for a server to accept a TCP
+	// connection. Once the connection is accepted, and bytes begin flowing
+	// back-and-forth, then it is the ReadTimeout property that applies. It is the
+	// ReadTimeout that applies when receiving data, which includes the reads that
+	// occur during a TLS handshake.
+	// 
 	int get_ConnectTimeout(void);
 	// The amount of time in seconds to wait before timing out when connecting to an
-	// HTTP server.
+	// HTTP server. The default ConnectTimeout is 30 seconds.
+	// 
+	// Note: This is the maximum number of seconds to wait for a server to accept a TCP
+	// connection. Once the connection is accepted, and bytes begin flowing
+	// back-and-forth, then it is the ReadTimeout property that applies. It is the
+	// ReadTimeout that applies when receiving data, which includes the reads that
+	// occur during a TLS handshake.
+	// 
 	void put_ConnectTimeout(int newVal);
 
 	// Specifies a directory where cookies are automatically persisted if the
@@ -1311,11 +1326,14 @@ class CK_VISIBLE_PUBLIC CkHttp  : public CkClassWithCallbacks
 	// 
 	void put_ProxyAuthMethod(const char *newVal);
 
-	// The domain name of a proxy host if an HTTP proxy is used.
+	// The domain name of a proxy host if an HTTP proxy is used. This can also be set
+	// to an IP address.
 	void get_ProxyDomain(CkString &str);
-	// The domain name of a proxy host if an HTTP proxy is used.
+	// The domain name of a proxy host if an HTTP proxy is used. This can also be set
+	// to an IP address.
 	const char *proxyDomain(void);
-	// The domain name of a proxy host if an HTTP proxy is used.
+	// The domain name of a proxy host if an HTTP proxy is used. This can also be set
+	// to an IP address.
 	void put_ProxyDomain(const char *newVal);
 
 	// If an HTTP proxy is used and it requires authentication, this property specifies
@@ -1355,12 +1373,18 @@ class CK_VISIBLE_PUBLIC CkHttp  : public CkClassWithCallbacks
 	// additional data is forthcoming. During a long download, if the data stream halts
 	// for more than this amount, it will timeout. Otherwise, there is no limit on the
 	// length of time for the entire download.
+	// 
+	// The default value is 20 seconds.
+	// 
 	int get_ReadTimeout(void);
 	// The amount of time in seconds to wait before timing out when reading from an
 	// HTTP server. The ReadTimeout is the amount of time that needs to elapse while no
 	// additional data is forthcoming. During a long download, if the data stream halts
 	// for more than this amount, it will timeout. Otherwise, there is no limit on the
 	// length of time for the entire download.
+	// 
+	// The default value is 20 seconds.
+	// 
 	void put_ReadTimeout(int newVal);
 
 	// Indicates the HTTP verb, such as GET, POST, PUT, etc. to be used for a redirect
@@ -2253,13 +2277,13 @@ class CK_VISIBLE_PUBLIC CkHttp  : public CkClassWithCallbacks
 
 	// Convenience method for extracting the META refresh URL from HTML. For example,
 	// if the htmlContent contains a META refresh tag, such as:
-	// <meta http-equiv="refresh" content="5;URL='http://example.com/'">
+	// _LT_meta http-equiv="refresh" content="5;URL='http://example.com/'"_GT_
 	// Then the return value of this method would be "http://example.com/".
 	bool ExtractMetaRefreshUrl(const char *htmlContent, CkString &outStr);
 
 	// Convenience method for extracting the META refresh URL from HTML. For example,
 	// if the htmlContent contains a META refresh tag, such as:
-	// <meta http-equiv="refresh" content="5;URL='http://example.com/'">
+	// _LT_meta http-equiv="refresh" content="5;URL='http://example.com/'"_GT_
 	// Then the return value of this method would be "http://example.com/".
 	const char *extractMetaRefreshUrl(const char *htmlContent);
 
@@ -3057,12 +3081,22 @@ class CK_VISIBLE_PUBLIC CkHttp  : public CkClassWithCallbacks
 	// S3_GenerateUrlV4 to generate AWS Signature V4 pre-signed URLs.) Requires that
 	// the AwsSecretKey and AwsAccessKey be set to valid values prior to calling this
 	// method.
+	// 
+	// Note: This method can only generate URLs that are for HTTP GET requests (i.e.
+	// URLs you can paste into a browser address bar). This method does not generate
+	// URLs for POST, PUT, DELETE, etc.
+	// 
 	bool S3_GenerateUrl(const char *bucket, const char *path, CkDateTime &expire, CkString &outStr);
 
 	// Generates a temporary pre-signed URL for Amazon S3 using AWS Signature V2. (Call
 	// S3_GenerateUrlV4 to generate AWS Signature V4 pre-signed URLs.) Requires that
 	// the AwsSecretKey and AwsAccessKey be set to valid values prior to calling this
 	// method.
+	// 
+	// Note: This method can only generate URLs that are for HTTP GET requests (i.e.
+	// URLs you can paste into a browser address bar). This method does not generate
+	// URLs for POST, PUT, DELETE, etc.
+	// 
 	const char *s3_GenerateUrl(const char *bucket, const char *path, CkDateTime &expire);
 
 	// Generates a temporary pre-signed URL for Amazon S3 using AWS Signature V4. (Call
@@ -3079,6 +3113,8 @@ class CK_VISIBLE_PUBLIC CkHttp  : public CkClassWithCallbacks
 	// 
 	// The awsService is a string naming the AWS service, such as "s3".   If useHttps is true, then the URL begins with "https://", otherwise it begins with "http://".
 	// 
+	// Note: This method can only generate URLs that are for HTTP GET requests (i.e. URLs you can paste into a browser address bar).  This method does not generate URLs for POST, PUT, DELETE, etc.
+	// 
 	bool S3_GenerateUrlV4(bool useHttps, const char *bucketName, const char *path, int numSecondsValid, const char *awsService, CkString &outStr);
 
 	// Generates a temporary pre-signed URL for Amazon S3 using AWS Signature V4. (Call
@@ -3094,6 +3130,8 @@ class CK_VISIBLE_PUBLIC CkHttp  : public CkClassWithCallbacks
 	// &X-Amz-Signature=
 	// 
 	// The awsService is a string naming the AWS service, such as "s3".   If useHttps is true, then the URL begins with "https://", otherwise it begins with "http://".
+	// 
+	// Note: This method can only generate URLs that are for HTTP GET requests (i.e. URLs you can paste into a browser address bar).  This method does not generate URLs for POST, PUT, DELETE, etc.
 	// 
 	const char *s3_GenerateUrlV4(bool useHttps, const char *bucketName, const char *path, int numSecondsValid, const char *awsService);
 
@@ -3219,6 +3257,11 @@ class CK_VISIBLE_PUBLIC CkHttp  : public CkClassWithCallbacks
 	bool SetOAuthRsaKey(CkPrivateKey &privKey);
 
 
+	// Equivalent to setting the Password property, but provides for a more secure way
+	// of passing the password in a secure string object.
+	bool SetPassword(CkSecureString &password);
+
+
 	// Adds a custom header field to any HTTP request sent by a method that does not
 	// use the HTTP request object. These methods include Download, DownloadAppend,
 	// GetHead, PostBinary, PostMime, PostXml, PutBinary, PutText, QuickDeleteStr,
@@ -3234,6 +3277,8 @@ class CK_VISIBLE_PUBLIC CkHttp  : public CkClassWithCallbacks
 	// all POST, PUT, or any other request where the Content-Length needs to be
 	// specified. (GET requests always have a 0 length body, and therefore never need a
 	// Content-Length header field.)
+	// 
+	// Note: To add more than one header, call this method once per header field.
 	// 
 	void SetRequestHeader(const char *headerFieldName, const char *headerFieldValue);
 
@@ -3256,6 +3301,39 @@ class CK_VISIBLE_PUBLIC CkHttp  : public CkClassWithCallbacks
 	// Variables can appear in URLs in the following format: {$varName}. For example:
 	// https://graph.microsoft.com/v1.0/users/{$id}
 	bool SetUrlVar(const char *name, const char *value);
+
+
+	// Authenticates with SharePoint Online, resulting in a cookie being set and used
+	// for subsequent SharePoint HTTP requests. Prior to calling this method, an
+	// application should set the CookieDir property to either "memory" or a directory
+	// path to persist the SharePoint authentication cookie to be automatically used in
+	// subsequent runs.
+	// 
+	// This method has the side-effect of setting the SaveCookies and SendCookies
+	// properties to true, because these settings are required for SharePoint Online
+	// authentication.
+	// 
+	// The siteUrl is a URL such as "https://yourdomain.sharepoint.com/". The username is an
+	// email address such as "username@yourdomain.com". The extraInfo is reserved for
+	// providing additional information as needed in the future.
+	// 
+	bool SharePointOnlineAuth(const char *siteUrl, const char *username, CkSecureString &password, CkJsonObject &extraInfo);
+
+	// Authenticates with SharePoint Online, resulting in a cookie being set and used
+	// for subsequent SharePoint HTTP requests. Prior to calling this method, an
+	// application should set the CookieDir property to either "memory" or a directory
+	// path to persist the SharePoint authentication cookie to be automatically used in
+	// subsequent runs.
+	// 
+	// This method has the side-effect of setting the SaveCookies and SendCookies
+	// properties to true, because these settings are required for SharePoint Online
+	// authentication.
+	// 
+	// The siteUrl is a URL such as "https://yourdomain.sharepoint.com/". The username is an
+	// email address such as "username@yourdomain.com". The extraInfo is reserved for
+	// providing additional information as needed in the future.
+	// 
+	CkTask *SharePointOnlineAuthAsync(const char *siteUrl, const char *username, CkSecureString &password, CkJsonObject &extraInfo);
 
 
 	// Convenience method to force the calling process to sleep for a number of

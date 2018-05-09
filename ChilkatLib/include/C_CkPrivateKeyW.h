@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkPrivateKeyWH
 #define _C_CkPrivateKeyWH
 #include "chilkatDefs.h"
@@ -11,24 +11,24 @@ CK_VISIBLE_PUBLIC void CkPrivateKeyW_Dispose(HCkPrivateKeyW handle);
 CK_VISIBLE_PUBLIC int CkPrivateKeyW_getBitLength(HCkPrivateKeyW cHandle);
 CK_VISIBLE_PUBLIC void CkPrivateKeyW_getDebugLogFilePath(HCkPrivateKeyW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkPrivateKeyW_putDebugLogFilePath(HCkPrivateKeyW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkPrivateKeyW_debugLogFilePath(HCkPrivateKeyW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkPrivateKeyW_getDebugLogFilePath(HCkPrivateKeyW cHandle);
 CK_VISIBLE_PUBLIC void CkPrivateKeyW_getKeyType(HCkPrivateKeyW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkPrivateKeyW_keyType(HCkPrivateKeyW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkPrivateKeyW_getKeyType(HCkPrivateKeyW cHandle);
 CK_VISIBLE_PUBLIC void CkPrivateKeyW_getLastErrorHtml(HCkPrivateKeyW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkPrivateKeyW_lastErrorHtml(HCkPrivateKeyW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkPrivateKeyW_getLastErrorHtml(HCkPrivateKeyW cHandle);
 CK_VISIBLE_PUBLIC void CkPrivateKeyW_getLastErrorText(HCkPrivateKeyW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkPrivateKeyW_lastErrorText(HCkPrivateKeyW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkPrivateKeyW_getLastErrorText(HCkPrivateKeyW cHandle);
 CK_VISIBLE_PUBLIC void CkPrivateKeyW_getLastErrorXml(HCkPrivateKeyW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkPrivateKeyW_lastErrorXml(HCkPrivateKeyW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkPrivateKeyW_getLastErrorXml(HCkPrivateKeyW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkPrivateKeyW_getLastMethodSuccess(HCkPrivateKeyW cHandle);
 CK_VISIBLE_PUBLIC void  CkPrivateKeyW_putLastMethodSuccess(HCkPrivateKeyW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkPrivateKeyW_getPkcs8EncryptAlg(HCkPrivateKeyW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkPrivateKeyW_putPkcs8EncryptAlg(HCkPrivateKeyW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkPrivateKeyW_pkcs8EncryptAlg(HCkPrivateKeyW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkPrivateKeyW_getPkcs8EncryptAlg(HCkPrivateKeyW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkPrivateKeyW_getVerboseLogging(HCkPrivateKeyW cHandle);
 CK_VISIBLE_PUBLIC void  CkPrivateKeyW_putVerboseLogging(HCkPrivateKeyW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkPrivateKeyW_getVersion(HCkPrivateKeyW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkPrivateKeyW_version(HCkPrivateKeyW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkPrivateKeyW_getVersion(HCkPrivateKeyW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkPrivateKeyW_GetJwk(HCkPrivateKeyW cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkPrivateKeyW_getJwk(HCkPrivateKeyW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkPrivateKeyW_GetJwkThumbprint(HCkPrivateKeyW cHandle, const wchar_t *hashAlg, HCkString outStr);

@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkRssWH
 #define _C_CkRssWH
 #include "chilkatDefs.h"
@@ -6,7 +6,7 @@
 #include "Chilkat_C.h"
 
 
-CK_VISIBLE_PUBLIC void CkRssW_setAbortCheck(HCkRssW cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkRssW_setAbortCheck(HCkRssW cHandle, BOOL (*fnAbortCheck)(void));
 CK_VISIBLE_PUBLIC void CkRssW_setPercentDone(HCkRssW cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkRssW_setProgressInfo(HCkRssW cHandle, void (*fnProgressInfo)(const wchar_t *name, const wchar_t *value));
 CK_VISIBLE_PUBLIC void CkRssW_setTaskCompleted(HCkRssW cHandle, void (*fnTaskCompleted)(HCkTaskW hTask));
@@ -15,13 +15,13 @@ CK_VISIBLE_PUBLIC HCkRssW CkRssW_Create(void);
 CK_VISIBLE_PUBLIC void CkRssW_Dispose(HCkRssW handle);
 CK_VISIBLE_PUBLIC void CkRssW_getDebugLogFilePath(HCkRssW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkRssW_putDebugLogFilePath(HCkRssW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkRssW_debugLogFilePath(HCkRssW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRssW_getDebugLogFilePath(HCkRssW cHandle);
 CK_VISIBLE_PUBLIC void CkRssW_getLastErrorHtml(HCkRssW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkRssW_lastErrorHtml(HCkRssW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRssW_getLastErrorHtml(HCkRssW cHandle);
 CK_VISIBLE_PUBLIC void CkRssW_getLastErrorText(HCkRssW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkRssW_lastErrorText(HCkRssW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRssW_getLastErrorText(HCkRssW cHandle);
 CK_VISIBLE_PUBLIC void CkRssW_getLastErrorXml(HCkRssW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkRssW_lastErrorXml(HCkRssW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRssW_getLastErrorXml(HCkRssW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkRssW_getLastMethodSuccess(HCkRssW cHandle);
 CK_VISIBLE_PUBLIC void  CkRssW_putLastMethodSuccess(HCkRssW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkRssW_getNumChannels(HCkRssW cHandle);
@@ -29,7 +29,7 @@ CK_VISIBLE_PUBLIC int CkRssW_getNumItems(HCkRssW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkRssW_getVerboseLogging(HCkRssW cHandle);
 CK_VISIBLE_PUBLIC void  CkRssW_putVerboseLogging(HCkRssW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkRssW_getVersion(HCkRssW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkRssW_version(HCkRssW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRssW_getVersion(HCkRssW cHandle);
 CK_VISIBLE_PUBLIC HCkRssW CkRssW_AddNewChannel(HCkRssW cHandle);
 CK_VISIBLE_PUBLIC HCkRssW CkRssW_AddNewImage(HCkRssW cHandle);
 CK_VISIBLE_PUBLIC HCkRssW CkRssW_AddNewItem(HCkRssW cHandle);

@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkJavaKeyStoreWH
 #define _C_CkJavaKeyStoreWH
 #include "chilkatDefs.h"
@@ -10,13 +10,13 @@ CK_VISIBLE_PUBLIC HCkJavaKeyStoreW CkJavaKeyStoreW_Create(void);
 CK_VISIBLE_PUBLIC void CkJavaKeyStoreW_Dispose(HCkJavaKeyStoreW handle);
 CK_VISIBLE_PUBLIC void CkJavaKeyStoreW_getDebugLogFilePath(HCkJavaKeyStoreW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkJavaKeyStoreW_putDebugLogFilePath(HCkJavaKeyStoreW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkJavaKeyStoreW_debugLogFilePath(HCkJavaKeyStoreW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJavaKeyStoreW_getDebugLogFilePath(HCkJavaKeyStoreW cHandle);
 CK_VISIBLE_PUBLIC void CkJavaKeyStoreW_getLastErrorHtml(HCkJavaKeyStoreW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkJavaKeyStoreW_lastErrorHtml(HCkJavaKeyStoreW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJavaKeyStoreW_getLastErrorHtml(HCkJavaKeyStoreW cHandle);
 CK_VISIBLE_PUBLIC void CkJavaKeyStoreW_getLastErrorText(HCkJavaKeyStoreW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkJavaKeyStoreW_lastErrorText(HCkJavaKeyStoreW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJavaKeyStoreW_getLastErrorText(HCkJavaKeyStoreW cHandle);
 CK_VISIBLE_PUBLIC void CkJavaKeyStoreW_getLastErrorXml(HCkJavaKeyStoreW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkJavaKeyStoreW_lastErrorXml(HCkJavaKeyStoreW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJavaKeyStoreW_getLastErrorXml(HCkJavaKeyStoreW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_getLastMethodSuccess(HCkJavaKeyStoreW cHandle);
 CK_VISIBLE_PUBLIC void  CkJavaKeyStoreW_putLastMethodSuccess(HCkJavaKeyStoreW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkJavaKeyStoreW_getNumPrivateKeys(HCkJavaKeyStoreW cHandle);
@@ -29,7 +29,7 @@ CK_VISIBLE_PUBLIC void  CkJavaKeyStoreW_putVerboseLogging(HCkJavaKeyStoreW cHand
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_getVerifyKeyedDigest(HCkJavaKeyStoreW cHandle);
 CK_VISIBLE_PUBLIC void  CkJavaKeyStoreW_putVerifyKeyedDigest(HCkJavaKeyStoreW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkJavaKeyStoreW_getVersion(HCkJavaKeyStoreW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkJavaKeyStoreW_version(HCkJavaKeyStoreW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJavaKeyStoreW_getVersion(HCkJavaKeyStoreW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_AddPfx(HCkJavaKeyStoreW cHandle, HCkPfxW pfx, const wchar_t *alias, const wchar_t *password);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_AddPrivateKey(HCkJavaKeyStoreW cHandle, HCkCertW cert, const wchar_t *alias, const wchar_t *password);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_AddSecretKey(HCkJavaKeyStoreW cHandle, const wchar_t *encodedKeyBytes, const wchar_t *encoding, const wchar_t *algorithm, const wchar_t *alias, const wchar_t *password);

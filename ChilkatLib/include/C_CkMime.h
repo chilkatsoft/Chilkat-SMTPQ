@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkMime_H
 #define _C_CkMime_H
 #include "chilkatDefs.h"
@@ -52,6 +52,9 @@ CK_VISIBLE_PUBLIC int CkMime_getNumSignerCerts(HCkMime cHandle);
 CK_VISIBLE_PUBLIC void CkMime_getOaepHash(HCkMime cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkMime_putOaepHash(HCkMime cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkMime_oaepHash(HCkMime cHandle);
+CK_VISIBLE_PUBLIC void CkMime_getOaepMgfHash(HCkMime cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkMime_putOaepMgfHash(HCkMime cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkMime_oaepMgfHash(HCkMime cHandle);
 CK_VISIBLE_PUBLIC BOOL CkMime_getOaepPadding(HCkMime cHandle);
 CK_VISIBLE_PUBLIC void CkMime_putOaepPadding(HCkMime cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkMime_getPkcs7CryptAlg(HCkMime cHandle, HCkString retval);

@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkXml_H
 #define _CkXml_H
@@ -779,7 +779,7 @@ class CK_VISIBLE_PUBLIC CkXml  : public CkMultiByteBase
 
 
 	// Same as LoadXml, but an additional argument controls whether or not
-	// leading/trailing whitespace is auto-trimmed from each node's content.
+	// leading/trailing whitespace is auto-trimmed from each leaf node's content.
 	bool LoadXml2(const char *xmlData, bool autoTrim);
 
 
@@ -789,7 +789,7 @@ class CK_VISIBLE_PUBLIC CkXml  : public CkMultiByteBase
 
 
 	// Same as LoadXmlFile, but an additional argument controls whether or not
-	// leading/trailing whitespace is auto-trimmed from each node's content.
+	// leading/trailing whitespace is auto-trimmed from each leaf node's content.
 	bool LoadXmlFile2(const char *fileName, bool autoTrim);
 
 

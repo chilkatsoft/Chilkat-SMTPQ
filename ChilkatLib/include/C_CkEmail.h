@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkEmail_H
 #define _C_CkEmail_H
 #include "chilkatDefs.h"
@@ -75,6 +75,9 @@ CK_VISIBLE_PUBLIC int CkEmail_getNumTo(HCkEmail cHandle);
 CK_VISIBLE_PUBLIC void CkEmail_getOaepHash(HCkEmail cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkEmail_putOaepHash(HCkEmail cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkEmail_oaepHash(HCkEmail cHandle);
+CK_VISIBLE_PUBLIC void CkEmail_getOaepMgfHash(HCkEmail cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkEmail_putOaepMgfHash(HCkEmail cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkEmail_oaepMgfHash(HCkEmail cHandle);
 CK_VISIBLE_PUBLIC BOOL CkEmail_getOaepPadding(HCkEmail cHandle);
 CK_VISIBLE_PUBLIC void CkEmail_putOaepPadding(HCkEmail cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkEmail_getOverwriteExisting(HCkEmail cHandle);
@@ -172,6 +175,7 @@ CK_VISIBLE_PUBLIC BOOL CkEmail_AddTo(HCkEmail cHandle, const char *friendlyName,
 CK_VISIBLE_PUBLIC BOOL CkEmail_AesDecrypt(HCkEmail cHandle, const char *password);
 CK_VISIBLE_PUBLIC BOOL CkEmail_AesEncrypt(HCkEmail cHandle, const char *password);
 CK_VISIBLE_PUBLIC void CkEmail_AppendToBody(HCkEmail cHandle, const char *str);
+CK_VISIBLE_PUBLIC BOOL CkEmail_ApplyFixups(HCkEmail cHandle, const char *fixups);
 CK_VISIBLE_PUBLIC BOOL CkEmail_AspUnpack(HCkEmail cHandle, const char *prefix, const char *saveDir, const char *urlPath, BOOL cleanFiles);
 CK_VISIBLE_PUBLIC BOOL CkEmail_AspUnpack2(HCkEmail cHandle, const char *prefix, const char *saveDir, const char *urlPath, BOOL cleanFiles, HCkByteData outHtml);
 CK_VISIBLE_PUBLIC BOOL CkEmail_AttachMessage(HCkEmail cHandle, HCkByteData mimeBytes);

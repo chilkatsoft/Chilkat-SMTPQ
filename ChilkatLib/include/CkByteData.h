@@ -35,6 +35,10 @@ class CK_VISIBLE_PUBLIC CkByteData : public CkObject
 	bool get_Utf8(void) const;
 	void put_Utf8(bool b);
 
+	// If set to true, then whenever the internal data is deallocated, the memory is first overwritten with 0 bytes.
+	bool get_SecureClear(void) const;
+	void put_SecureClear(bool b);
+
 
 	// Clears the object of data.
 	void clear(void);
@@ -155,6 +159,7 @@ class CK_VISIBLE_PUBLIC CkByteData : public CkObject
 	// Internal implementation.
 	void *m_impl;
 	bool m_utf8;	// If true, all input "const char *" parameters are utf-8, otherwise they are ANSI strings.
+	bool m_secureClear;
 	void *m_pResultData;    // For to_s(), getRange(), getRangeStr()
 
     public:

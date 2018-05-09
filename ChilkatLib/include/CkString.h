@@ -14,6 +14,7 @@
 
 
 class CkStringArray;
+class CkStringArrayW;
 
 #if !defined(__sun__) && !defined(__sun)
 #pragma pack (push, 8)
@@ -329,6 +330,13 @@ class CK_VISIBLE_PUBLIC CkString : public CkObject
 	// charset can be "ansi", "utf-8", "unicode", or anything else such as "iso-8859-1"
 	bool saveToFile(const char *path, const char *charset);
 	bool saveToFileW(const wchar_t *path, const wchar_t *charset);
+
+	CkStringArrayW *w_split(char splitChar, bool exceptDoubleQuoted, bool exceptEscaped, bool keepEmpty) const;
+	CkStringArrayW *w_split2(const char *splitCharSet, bool exceptDoubleQuoted, bool exceptEscaped, bool keepEmpty) const;
+	CkStringArrayW *w_split2W(const wchar_t *splitCharSet, bool exceptDoubleQuoted, bool exceptEscaped, bool keepEmpty) const;
+	CkStringArrayW *w_tokenize(const char *punctuation) const;
+	CkStringArrayW *w_tokenizeW(const wchar_t *punctuation) const;
+	CkStringArrayW *w_splitAtWS(void) const;
 
 	CkStringArray *split(char splitChar, bool exceptDoubleQuoted, bool exceptEscaped, bool keepEmpty) const;
 	CkStringArray *split2(const char *splitCharSet, bool exceptDoubleQuoted, bool exceptEscaped, bool keepEmpty) const;

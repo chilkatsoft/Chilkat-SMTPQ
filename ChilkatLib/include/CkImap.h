@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkImap_H
 #define _CkImap_H
@@ -22,6 +22,7 @@ class CkEmailBundle;
 class CkStringArray;
 class CkCert;
 class CkMailboxes;
+class CkSecureString;
 class CkCsp;
 class CkPrivateKey;
 class CkSshKey;
@@ -2225,6 +2226,15 @@ class CK_VISIBLE_PUBLIC CkImap  : public CkClassWithCallbacks
 	// 9.5.0.44.
 	// 
 	CkTask *LoginAsync(const char *loginName, const char *password);
+
+
+	// The same as Login, except the login name and password are passed as secure
+	// strings.
+	bool LoginSecure(CkSecureString &loginName, CkSecureString &password);
+
+	// The same as Login, except the login name and password are passed as secure
+	// strings.
+	CkTask *LoginSecureAsync(CkSecureString &loginName, CkSecureString &password);
 
 
 	// Logs out of the IMAP server.

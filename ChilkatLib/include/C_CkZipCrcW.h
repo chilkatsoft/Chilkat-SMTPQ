@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkZipCrcWH
 #define _C_CkZipCrcWH
 #include "chilkatDefs.h"
@@ -6,7 +6,7 @@
 #include "Chilkat_C.h"
 
 
-CK_VISIBLE_PUBLIC void CkZipCrcW_setAbortCheck(HCkZipCrcW cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkZipCrcW_setAbortCheck(HCkZipCrcW cHandle, BOOL (*fnAbortCheck)(void));
 CK_VISIBLE_PUBLIC void CkZipCrcW_setPercentDone(HCkZipCrcW cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkZipCrcW_setProgressInfo(HCkZipCrcW cHandle, void (*fnProgressInfo)(const wchar_t *name, const wchar_t *value));
 CK_VISIBLE_PUBLIC void CkZipCrcW_setTaskCompleted(HCkZipCrcW cHandle, void (*fnTaskCompleted)(HCkTaskW hTask));

@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkXmlDSig_H
 #define _CkXmlDSig_H
@@ -93,11 +93,21 @@ class CK_VISIBLE_PUBLIC CkXmlDSig  : public CkMultiByteBase
 	// remain at the default value of 0.
 	void put_Selector(int newVal);
 
+	// Note: This property is not actually used because the "with/without comments"
+	// behavior is passed as an argument to the CanonicalizeXml and
+	// CanonicalizeFragment methods.
+	// 
 	// Determines whether XML is canonicalized with or without comments. The default
 	// value is false. (Set to true to canonicalize with XML comments.)
+	// 
 	bool get_WithComments(void);
+	// Note: This property is not actually used because the "with/without comments"
+	// behavior is passed as an argument to the CanonicalizeXml and
+	// CanonicalizeFragment methods.
+	// 
 	// Determines whether XML is canonicalized with or without comments. The default
 	// value is false. (Set to true to canonicalize with XML comments.)
+	// 
 	void put_WithComments(bool newVal);
 
 

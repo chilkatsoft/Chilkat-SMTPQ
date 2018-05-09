@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkZip_H
 #define _CkZip_H
@@ -13,10 +13,10 @@
 #include "CkClassWithCallbacks.h"
 
 class CkZipEntry;
+class CkBinData;
 class CkByteData;
 class CkTask;
 class CkStringArray;
-class CkBinData;
 class CkZipProgress;
 
 
@@ -812,6 +812,22 @@ class CK_VISIBLE_PUBLIC CkZip  : public CkClassWithCallbacks
 	// 
 	void put_PercentDoneScale(int newVal);
 
+	// For older password-protected Zip archives (Zip 2.0 encryption), specifies the
+	// charset used for the binary representation of the decrypt password. The default
+	// value is "ansi". Other possible choices are cp850, cp437, or any of the code
+	// pages listed at the link below.
+	void get_PwdProtCharset(CkString &str);
+	// For older password-protected Zip archives (Zip 2.0 encryption), specifies the
+	// charset used for the binary representation of the decrypt password. The default
+	// value is "ansi". Other possible choices are cp850, cp437, or any of the code
+	// pages listed at the link below.
+	const char *pwdProtCharset(void);
+	// For older password-protected Zip archives (Zip 2.0 encryption), specifies the
+	// charset used for the binary representation of the decrypt password. The default
+	// value is "ansi". Other possible choices are cp850, cp437, or any of the code
+	// pages listed at the link below.
+	void put_PwdProtCharset(const char *newVal);
+
 	// The temporary directory to use when unzipping files. When running in ASP or
 	// ASP.NET, the default value of TempDir is set to the directory where the .zip is
 	// being written. Set this property to override the default.
@@ -939,6 +955,12 @@ class CK_VISIBLE_PUBLIC CkZip  : public CkClassWithCallbacks
 	CkZipEntry *AppendBase64(const char *fileName, const char *encodedCompressedData);
 
 
+	// Appends the contents of byteData as a new entry to this zip object. The zip entry
+	// object containing the data is returned.
+	// The caller is responsible for deleting the object returned by this method.
+	CkZipEntry *AppendBd(const char *pathInZip, CkBinData &byteData);
+
+
 	// Append memory data that is already Zip-compressed to the Zip object. The
 	// ZipEntry object containing the compressed data is returned. Note: This method
 	// appends the compressed data for a single zip entry. To load an entire in-memory
@@ -1010,9 +1032,10 @@ class CK_VISIBLE_PUBLIC CkZip  : public CkClassWithCallbacks
 	// "C:/temp/abc/*.txt". If saveExtraPath is true, then the absolute path will be included
 	// in the zip entry filenames as relative paths. For example, "temp/abc/xyz.txt".
 	// 
-	// The archiveOnly, archiveOnly, and includeHidden flags only apply when on the Windows operating system.
-	// These flags control whether files with the Archive, Hidden, or System attributes
-	// are included.
+	// The archiveOnly, includeHidden, and includeSystem flags only apply when on the Windows operating system.
+	// If archiveOnly is true, then only files that have the archive bit set will be
+	// included in the zip. If includeHidden is false, then hidden files are not included. If
+	// includeSystem is false, then files having the System attribute are not included.
 	// 
 	// Note: This method does not write the zip archive. It simply adds references to
 	// the files that will be included in the .zip when the WriteZip or
@@ -1033,9 +1056,10 @@ class CK_VISIBLE_PUBLIC CkZip  : public CkClassWithCallbacks
 	// "C:/temp/abc/*.txt". If saveExtraPath is true, then the absolute path will be included
 	// in the zip entry filenames as relative paths. For example, "temp/abc/xyz.txt".
 	// 
-	// The archiveOnly, archiveOnly, and includeHidden flags only apply when on the Windows operating system.
-	// These flags control whether files with the Archive, Hidden, or System attributes
-	// are included.
+	// The archiveOnly, includeHidden, and includeSystem flags only apply when on the Windows operating system.
+	// If archiveOnly is true, then only files that have the archive bit set will be
+	// included in the zip. If includeHidden is false, then hidden files are not included. If
+	// includeSystem is false, then files having the System attribute are not included.
 	// 
 	// Note: This method does not write the zip archive. It simply adds references to
 	// the files that will be included in the .zip when the WriteZip or

@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkCompression_H
 #define _CkCompression_H
@@ -15,6 +15,7 @@
 class CkTask;
 class CkByteData;
 class CkBinData;
+class CkStringBuilder;
 class CkStream;
 class CkBaseProgress;
 
@@ -97,6 +98,17 @@ class CK_VISIBLE_PUBLIC CkCompression  : public CkClassWithCallbacks
 	// characters. This property allows for the string to be converted to a 1-byte per
 	// char encoding prior to compression.
 	void put_Charset(const char *newVal);
+
+	// This property allows for customization of the compression level for the
+	// "deflate" and "zlib" compression algoirthms. ("zlib" is just the deflate
+	// algorithm with a zlib header.) A value of 0 = no compression, while 9 = maximum
+	// compression. The default is 6.
+	int get_DeflateLevel(void);
+	// This property allows for customization of the compression level for the
+	// "deflate" and "zlib" compression algoirthms. ("zlib" is just the deflate
+	// algorithm with a zlib header.) A value of 0 = no compression, while 9 = maximum
+	// compression. The default is 6.
+	void put_DeflateLevel(int newVal);
 
 	// Controls the encoding expected by methods ending in "ENC", such as
 	// CompressBytesENC. Valid values are "base64", "hex", "url", and
@@ -341,6 +353,13 @@ class CK_VISIBLE_PUBLIC CkCompression  : public CkClassWithCallbacks
 	CkTask *CompressFileAsync(const char *srcPath, const char *destPath);
 
 
+	// Compresses the contents of sb and appends the compressed bytes to binData.
+	bool CompressSb(CkStringBuilder &sb, CkBinData &binData);
+
+	// Compresses the contents of sb and appends the compressed bytes to binData.
+	CkTask *CompressSbAsync(CkStringBuilder &sb, CkBinData &binData);
+
+
 	// Compresses a stream. Internally, the strm's source is read, compressed, and the
 	// compressed data written to the strm's sink. It does this in streaming fashion.
 	// Extremely large or even infinite streams can be compressed with stable ungrowing
@@ -410,6 +429,13 @@ class CK_VISIBLE_PUBLIC CkCompression  : public CkClassWithCallbacks
 	// the file is decompressed in streaming mode which allows files of any size to be
 	// decompressed.
 	CkTask *DecompressFileAsync(const char *srcPath, const char *destPath);
+
+
+	// Decompresses the contents of binData and appends the decompressed string to sb.
+	bool DecompressSb(CkBinData &binData, CkStringBuilder &sb);
+
+	// Decompresses the contents of binData and appends the decompressed string to sb.
+	CkTask *DecompressSbAsync(CkBinData &binData, CkStringBuilder &sb);
 
 
 	// Decompresses a stream. Internally, the strm's source is read, decompressed, and

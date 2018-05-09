@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkFileAccessW_H
 #define _CkFileAccessW_H
@@ -288,6 +288,19 @@ class CK_VISIBLE_PUBLIC CkFileAccessW  : public CkWideCharBase
 	// GetFileNameWithoutExtension('C:\mydir\myfile.ext') returns 'myfile'
 	// GetFileNameWithoutExtension('C:\mydir\') returns ''
 	const wchar_t *fileNameWithoutExtension(const wchar_t *path);
+
+	// Gets one of the following date/times for a file:
+	// 0: Last-modified
+	// 1: Last-access
+	// 2: Creation
+	// The "path" argument indicates which time to return. The values can be 0, 1, or
+	// 2.
+	// 
+	// Note: Linux filesystems do not keep a file's creation date/time. In such a case,
+	// this method will return the last-modified time.
+	// 
+	// The caller is responsible for deleting the object returned by this method.
+	CkDateTimeW *GetFileTime(const wchar_t *path, int which);
 
 	// Gets the last-modified date/time for a file.
 	// The caller is responsible for deleting the object returned by this method.

@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.69
+// This is a generated source file for Chilkat version 9.5.0.73
 #ifndef _C_CkMailMan_H
 #define _C_CkMailMan_H
 #include "chilkatDefs.h"
@@ -6,7 +6,7 @@
 #include "Chilkat_C.h"
 
 
-CK_VISIBLE_PUBLIC void CkMailMan_setAbortCheck(HCkMailMan cHandle, BOOL (*fnAbortCheck)());
+CK_VISIBLE_PUBLIC void CkMailMan_setAbortCheck(HCkMailMan cHandle, BOOL (*fnAbortCheck)(void));
 CK_VISIBLE_PUBLIC void CkMailMan_setPercentDone(HCkMailMan cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkMailMan_setProgressInfo(HCkMailMan cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkMailMan_setTaskCompleted(HCkMailMan cHandle, void (*fnTaskCompleted)(HCkTask hTask));
@@ -246,6 +246,8 @@ CK_VISIBLE_PUBLIC HCkEmail CkMailMan_FetchEmail(HCkMailMan cHandle, const char *
 CK_VISIBLE_PUBLIC HCkTask CkMailMan_FetchEmailAsync(HCkMailMan cHandle, const char *uidl);
 CK_VISIBLE_PUBLIC BOOL CkMailMan_FetchMime(HCkMailMan cHandle, const char *uidl, HCkByteData outData);
 CK_VISIBLE_PUBLIC HCkTask CkMailMan_FetchMimeAsync(HCkMailMan cHandle, const char *uidl);
+CK_VISIBLE_PUBLIC BOOL CkMailMan_FetchMimeBd(HCkMailMan cHandle, const char *uidl, HCkBinData mimeData);
+CK_VISIBLE_PUBLIC HCkTask CkMailMan_FetchMimeBdAsync(HCkMailMan cHandle, const char *uidl, HCkBinData mimeData);
 CK_VISIBLE_PUBLIC BOOL CkMailMan_FetchMimeByMsgnum(HCkMailMan cHandle, int msgnum, HCkByteData outBytes);
 CK_VISIBLE_PUBLIC HCkTask CkMailMan_FetchMimeByMsgnumAsync(HCkMailMan cHandle, int msgnum);
 CK_VISIBLE_PUBLIC HCkEmailBundle CkMailMan_FetchMultiple(HCkMailMan cHandle, HCkStringArray uidlArray);
@@ -333,6 +335,8 @@ CK_VISIBLE_PUBLIC BOOL CkMailMan_SendEmail(HCkMailMan cHandle, HCkEmail email);
 CK_VISIBLE_PUBLIC HCkTask CkMailMan_SendEmailAsync(HCkMailMan cHandle, HCkEmail email);
 CK_VISIBLE_PUBLIC BOOL CkMailMan_SendMime(HCkMailMan cHandle, const char *fromAddr, const char *recipients, const char *mimeSource);
 CK_VISIBLE_PUBLIC HCkTask CkMailMan_SendMimeAsync(HCkMailMan cHandle, const char *fromAddr, const char *recipients, const char *mimeSource);
+CK_VISIBLE_PUBLIC BOOL CkMailMan_SendMimeBd(HCkMailMan cHandle, const char *fromAddr, const char *recipients, HCkBinData mimeData);
+CK_VISIBLE_PUBLIC HCkTask CkMailMan_SendMimeBdAsync(HCkMailMan cHandle, const char *fromAddr, const char *recipients, HCkBinData mimeData);
 CK_VISIBLE_PUBLIC BOOL CkMailMan_SendMimeBytes(HCkMailMan cHandle, const char *fromAddr, const char *recipients, HCkByteData mimeSource);
 CK_VISIBLE_PUBLIC HCkTask CkMailMan_SendMimeBytesAsync(HCkMailMan cHandle, const char *fromAddr, const char *recipients, HCkByteData mimeSource);
 #if defined(CK_SMTPQ_INCLUDED)
@@ -356,6 +360,7 @@ CK_VISIBLE_PUBLIC BOOL CkMailMan_SetCSP(HCkMailMan cHandle, HCkCsp csp);
 #endif
 CK_VISIBLE_PUBLIC BOOL CkMailMan_SetDecryptCert(HCkMailMan cHandle, HCkCert cert);
 CK_VISIBLE_PUBLIC BOOL CkMailMan_SetDecryptCert2(HCkMailMan cHandle, HCkCert cert, HCkPrivateKey privateKey);
+CK_VISIBLE_PUBLIC BOOL CkMailMan_SetPassword(HCkMailMan cHandle, const char *protocol, HCkSecureString password);
 CK_VISIBLE_PUBLIC BOOL CkMailMan_SetSslClientCert(HCkMailMan cHandle, HCkCert cert);
 CK_VISIBLE_PUBLIC BOOL CkMailMan_SetSslClientCertPem(HCkMailMan cHandle, const char *pemDataOrFilename, const char *pemPassword);
 CK_VISIBLE_PUBLIC BOOL CkMailMan_SetSslClientCertPfx(HCkMailMan cHandle, const char *pfxFilename, const char *pfxPassword);

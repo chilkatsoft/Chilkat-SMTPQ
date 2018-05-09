@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.69
+// This header is generated for Chilkat 9.5.0.73
 
 #ifndef _CkXmlW_H
 #define _CkXmlW_H
@@ -707,7 +707,7 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	bool LoadXml(const wchar_t *xmlData);
 
 	// Same as LoadXml, but an additional argument controls whether or not
-	// leading/trailing whitespace is auto-trimmed from each node's content.
+	// leading/trailing whitespace is auto-trimmed from each leaf node's content.
 	bool LoadXml2(const wchar_t *xmlData, bool autoTrim);
 
 	// Loads an XML document from a file and returns true if successful. The contents
@@ -715,7 +715,7 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	bool LoadXmlFile(const wchar_t *fileName);
 
 	// Same as LoadXmlFile, but an additional argument controls whether or not
-	// leading/trailing whitespace is auto-trimmed from each node's content.
+	// leading/trailing whitespace is auto-trimmed from each leaf node's content.
 	bool LoadXmlFile2(const wchar_t *fileName, bool autoTrim);
 
 	// Creates a new child having tag and content. The new child is created even if a
