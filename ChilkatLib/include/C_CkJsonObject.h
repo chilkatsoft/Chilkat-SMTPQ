@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.73
+// This is a generated source file for Chilkat version 9.5.0.75
 #ifndef _C_CkJsonObject_H
 #define _C_CkJsonObject_H
 #include "chilkatDefs.h"
@@ -114,6 +114,8 @@ CK_VISIBLE_PUBLIC int CkJsonObject_TypeAt(HCkJsonObject cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkJsonObject_UpdateBd(HCkJsonObject cHandle, const char *jsonPath, const char *encoding, HCkBinData bd);
 CK_VISIBLE_PUBLIC BOOL CkJsonObject_UpdateBool(HCkJsonObject cHandle, const char *jsonPath, BOOL value);
 CK_VISIBLE_PUBLIC BOOL CkJsonObject_UpdateInt(HCkJsonObject cHandle, const char *jsonPath, int value);
+CK_VISIBLE_PUBLIC BOOL CkJsonObject_UpdateNewArray(HCkJsonObject cHandle, const char *jsonPath);
+CK_VISIBLE_PUBLIC BOOL CkJsonObject_UpdateNewObject(HCkJsonObject cHandle, const char *jsonPath);
 CK_VISIBLE_PUBLIC BOOL CkJsonObject_UpdateNull(HCkJsonObject cHandle, const char *jsonPath);
 CK_VISIBLE_PUBLIC BOOL CkJsonObject_UpdateNumber(HCkJsonObject cHandle, const char *jsonPath, const char *numericStr);
 CK_VISIBLE_PUBLIC BOOL CkJsonObject_UpdateSb(HCkJsonObject cHandle, const char *jsonPath, HCkStringBuilder sb);

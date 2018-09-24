@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.73
+// This is a generated source file for Chilkat version 9.5.0.75
 #ifndef _C_CkJwsWH
 #define _C_CkJwsWH
 #include "chilkatDefs.h"
@@ -10,13 +10,13 @@ CK_VISIBLE_PUBLIC HCkJwsW CkJwsW_Create(void);
 CK_VISIBLE_PUBLIC void CkJwsW_Dispose(HCkJwsW handle);
 CK_VISIBLE_PUBLIC void CkJwsW_getDebugLogFilePath(HCkJwsW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkJwsW_putDebugLogFilePath(HCkJwsW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkJwsW_getDebugLogFilePath(HCkJwsW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJwsW_debugLogFilePath(HCkJwsW cHandle);
 CK_VISIBLE_PUBLIC void CkJwsW_getLastErrorHtml(HCkJwsW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkJwsW_getLastErrorHtml(HCkJwsW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJwsW_lastErrorHtml(HCkJwsW cHandle);
 CK_VISIBLE_PUBLIC void CkJwsW_getLastErrorText(HCkJwsW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkJwsW_getLastErrorText(HCkJwsW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJwsW_lastErrorText(HCkJwsW cHandle);
 CK_VISIBLE_PUBLIC void CkJwsW_getLastErrorXml(HCkJwsW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkJwsW_getLastErrorXml(HCkJwsW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJwsW_lastErrorXml(HCkJwsW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkJwsW_getLastMethodSuccess(HCkJwsW cHandle);
 CK_VISIBLE_PUBLIC void  CkJwsW_putLastMethodSuccess(HCkJwsW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkJwsW_getNumSignatures(HCkJwsW cHandle);
@@ -27,7 +27,7 @@ CK_VISIBLE_PUBLIC void  CkJwsW_putPreferFlattened(HCkJwsW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkJwsW_getVerboseLogging(HCkJwsW cHandle);
 CK_VISIBLE_PUBLIC void  CkJwsW_putVerboseLogging(HCkJwsW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkJwsW_getVersion(HCkJwsW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkJwsW_getVersion(HCkJwsW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJwsW_version(HCkJwsW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkJwsW_CreateJws(HCkJwsW cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkJwsW_createJws(HCkJwsW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkJwsW_CreateJwsSb(HCkJwsW cHandle, HCkStringBuilderW sbJws);

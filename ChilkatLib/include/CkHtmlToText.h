@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.73
+// This header is generated for Chilkat 9.5.0.75
 
 #ifndef _CkHtmlToText_H
 #define _CkHtmlToText_H

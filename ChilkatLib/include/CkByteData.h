@@ -11,6 +11,7 @@
 #include "CkObject.h"
 #include "CkString.h"
 
+
 // The CkByteData class is a convenient class for holding a block of
 // binary data, or non-null terminated text data.
 
@@ -39,6 +40,10 @@ class CK_VISIBLE_PUBLIC CkByteData : public CkObject
 	bool get_SecureClear(void) const;
 	void put_SecureClear(bool b);
 
+	// Take the data from the passed-in object (does not copy, but simply takes the internal data pointer)
+	// After the method call, the srcData will be empty, and this CkByteData will contain
+	// exactly what srcData contained.  
+	void takeByteData(CkByteData &srcData);
 
 	// Clears the object of data.
 	void clear(void);

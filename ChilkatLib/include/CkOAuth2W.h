@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.73
+// This header is generated for Chilkat 9.5.0.75
 
 #ifndef _CkOAuth2W_H
 #define _CkOAuth2W_H
@@ -579,15 +579,18 @@ class CK_VISIBLE_PUBLIC CkOAuth2W  : public CkClassWithCallbacksW
 
 	// This is an optional setting that defines the "resource" query parameter. For
 	// example, to call the Microsoft Graph API, set this property value to
-	// "https://graph.microsoft.com/".
+	// "https://graph.microsoft.com/". The Microsoft Dynamics CRM OAuth authentication
+	// also requires the Resource property.
 	void get_Resource(CkString &str);
 	// This is an optional setting that defines the "resource" query parameter. For
 	// example, to call the Microsoft Graph API, set this property value to
-	// "https://graph.microsoft.com/".
+	// "https://graph.microsoft.com/". The Microsoft Dynamics CRM OAuth authentication
+	// also requires the Resource property.
 	const wchar_t *resource(void);
 	// This is an optional setting that defines the "resource" query parameter. For
 	// example, to call the Microsoft Graph API, set this property value to
-	// "https://graph.microsoft.com/".
+	// "https://graph.microsoft.com/". The Microsoft Dynamics CRM OAuth authentication
+	// also requires the Resource property.
 	void put_Resource(const wchar_t *newVal);
 
 	// This is an optional setting that defines the scope of access. For example,

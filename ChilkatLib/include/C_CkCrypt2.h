@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.73
+// This is a generated source file for Chilkat version 9.5.0.75
 #ifndef _C_CkCrypt2_H
 #define _C_CkCrypt2_H
 #include "chilkatDefs.h"
@@ -108,6 +108,9 @@ CK_VISIBLE_PUBLIC void CkCrypt2_putSecretKey(HCkCrypt2 cHandle, HCkByteData newV
 CK_VISIBLE_PUBLIC void CkCrypt2_getSigningAlg(HCkCrypt2 cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkCrypt2_putSigningAlg(HCkCrypt2 cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkCrypt2_signingAlg(HCkCrypt2 cHandle);
+CK_VISIBLE_PUBLIC void CkCrypt2_getSigningAttributes(HCkCrypt2 cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkCrypt2_putSigningAttributes(HCkCrypt2 cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkCrypt2_signingAttributes(HCkCrypt2 cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_getUtf8(HCkCrypt2 cHandle);
 CK_VISIBLE_PUBLIC void CkCrypt2_putUtf8(HCkCrypt2 cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkCrypt2_getUuFilename(HCkCrypt2 cHandle, HCkString retval);
@@ -208,6 +211,7 @@ CK_VISIBLE_PUBLIC HCkCert CkCrypt2_GetLastCert(HCkCrypt2 cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_GetSignatureSigningTime(HCkCrypt2 cHandle, int index, SYSTEMTIME *outSysTime);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_GetSignatureSigningTimeStr(HCkCrypt2 cHandle, int index, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkCrypt2_getSignatureSigningTimeStr(HCkCrypt2 cHandle, int index);
+CK_VISIBLE_PUBLIC BOOL CkCrypt2_GetSignedAttributes(HCkCrypt2 cHandle, int signerIndex, HCkBinData pkcs7Der, HCkStringBuilder sbJson);
 CK_VISIBLE_PUBLIC HCkCert CkCrypt2_GetSignerCert(HCkCrypt2 cHandle, int index);
 CK_VISIBLE_PUBLIC HCkCertChain CkCrypt2_GetSignerCertChain(HCkCrypt2 cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_HashBdENC(HCkCrypt2 cHandle, HCkBinData bd, HCkString outStr);

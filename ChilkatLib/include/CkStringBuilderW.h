@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.73
+// This header is generated for Chilkat 9.5.0.75
 
 #ifndef _CkStringBuilderW_H
 #define _CkStringBuilderW_H
@@ -277,8 +277,8 @@ class CK_VISIBLE_PUBLIC CkStringBuilderW  : public CkWideCharBase
 	// Replaces the content found after the final occurrence of marker with replacement.
 	bool ReplaceAfterFinal(const wchar_t *marker, const wchar_t *replacement);
 
-	// Replaces the first occurrence of the content found between beginMark and endMark with
-	// replacement. The beginMark and endMark are included in what is replaced if replaceMarks is true.
+	// Replaces the first occurrence of ALL the content found between beginMark and endMark
+	// with replacement. The beginMark and endMark are included in what is replaced if replaceMarks is true.
 	bool ReplaceAllBetween(const wchar_t *beginMark, const wchar_t *endMark, const wchar_t *replacement, bool replaceMarks);
 
 	// Replaces all occurrences of value with replacement, but only where value is found between

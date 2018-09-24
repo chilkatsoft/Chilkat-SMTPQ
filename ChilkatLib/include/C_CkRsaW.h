@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.73
+// This is a generated source file for Chilkat version 9.5.0.75
 #ifndef _C_CkRsaWH
 #define _C_CkRsaWH
 #include "chilkatDefs.h"
@@ -10,19 +10,19 @@ CK_VISIBLE_PUBLIC HCkRsaW CkRsaW_Create(void);
 CK_VISIBLE_PUBLIC void CkRsaW_Dispose(HCkRsaW handle);
 CK_VISIBLE_PUBLIC void CkRsaW_getCharset(HCkRsaW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkRsaW_putCharset(HCkRsaW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_getCharset(HCkRsaW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_charset(HCkRsaW cHandle);
 CK_VISIBLE_PUBLIC void CkRsaW_getDebugLogFilePath(HCkRsaW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkRsaW_putDebugLogFilePath(HCkRsaW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_getDebugLogFilePath(HCkRsaW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_debugLogFilePath(HCkRsaW cHandle);
 CK_VISIBLE_PUBLIC void CkRsaW_getEncodingMode(HCkRsaW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkRsaW_putEncodingMode(HCkRsaW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_getEncodingMode(HCkRsaW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_encodingMode(HCkRsaW cHandle);
 CK_VISIBLE_PUBLIC void CkRsaW_getLastErrorHtml(HCkRsaW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_getLastErrorHtml(HCkRsaW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_lastErrorHtml(HCkRsaW cHandle);
 CK_VISIBLE_PUBLIC void CkRsaW_getLastErrorText(HCkRsaW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_getLastErrorText(HCkRsaW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_lastErrorText(HCkRsaW cHandle);
 CK_VISIBLE_PUBLIC void CkRsaW_getLastErrorXml(HCkRsaW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_getLastErrorXml(HCkRsaW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_lastErrorXml(HCkRsaW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_getLastMethodSuccess(HCkRsaW cHandle);
 CK_VISIBLE_PUBLIC void  CkRsaW_putLastMethodSuccess(HCkRsaW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_getLittleEndian(HCkRsaW cHandle);
@@ -32,16 +32,16 @@ CK_VISIBLE_PUBLIC void  CkRsaW_putNoUnpad(HCkRsaW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkRsaW_getNumBits(HCkRsaW cHandle);
 CK_VISIBLE_PUBLIC void CkRsaW_getOaepHash(HCkRsaW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkRsaW_putOaepHash(HCkRsaW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_getOaepHash(HCkRsaW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_oaepHash(HCkRsaW cHandle);
 CK_VISIBLE_PUBLIC void CkRsaW_getOaepMgfHash(HCkRsaW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkRsaW_putOaepMgfHash(HCkRsaW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_getOaepMgfHash(HCkRsaW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_oaepMgfHash(HCkRsaW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_getOaepPadding(HCkRsaW cHandle);
 CK_VISIBLE_PUBLIC void  CkRsaW_putOaepPadding(HCkRsaW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_getVerboseLogging(HCkRsaW cHandle);
 CK_VISIBLE_PUBLIC void  CkRsaW_putVerboseLogging(HCkRsaW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkRsaW_getVersion(HCkRsaW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_getVersion(HCkRsaW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_version(HCkRsaW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_DecryptBytes(HCkRsaW cHandle, HCkByteData inData, BOOL usePrivateKey, HCkByteData outData);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_DecryptBytesENC(HCkRsaW cHandle, const wchar_t *str, BOOL bUsePrivateKey, HCkByteData outData);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_DecryptString(HCkRsaW cHandle, HCkByteData binarySig, BOOL usePrivateKey, HCkString outStr);

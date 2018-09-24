@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.73
+// This header is generated for Chilkat 9.5.0.75
 
 #ifndef _CkRest_H
 #define _CkRest_H
@@ -956,6 +956,13 @@ class CK_VISIBLE_PUBLIC CkRest  : public CkClassWithCallbacks
 	// If autoSetStreamCharset is true, then the expectedStatus's StringCharset property will automatically get
 	// set based on the charset, if any, indicated in the response header. If the
 	// response is binary, then autoSetStreamCharset is ignored.
+	// 
+	// Starting in v9.5.0.75, the expectedStatus may be passed as a negative number to specify a
+	// range of expected (success) status codes. For example:
+	//     -200: Allow status codes 200 - 299
+	//     -210: Allow status codes 210 - 219
+	//     -220: Allow status codes 220 - 229
+	//     etc.
 	// 
 	bool SetResponseBodyStream(int expectedStatus, bool autoSetStreamCharset, CkStream &responseStream);
 

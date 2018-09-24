@@ -47,24 +47,24 @@ typedef uint32_t ckUInt32;
 #endif
 
 // Determine if Windows-based Cryptographic Service Provider (CSP) functionality is available
-#if defined(CK_WINDOWS) && !defined(CK_LIBWINPHONE) && !defined(__MINGW32__) && !defined(CK_LIBWINSTORE) && !defined(WINCE)
+#if defined(CK_WINDOWS) && !defined(CK_LIBWINPHONE) && !defined(CK_LIBWINSTORE) && !defined(WINCE)
 #define CK_CSP_INCLUDED
 #endif
 
 // Determine if Windows-based CryptoAPI related functionality is available
 // These are methods that entirely depend on an underlying MS Crypto API implementation.
-#if defined(CK_WINDOWS) && !defined(__MINGW32__) && !defined(CK_LIBWINPHONE) && !defined(CK_LIBWINSTORE) && !defined(WINCE)
+#if defined(CK_WINDOWS) && !defined(CK_LIBWINPHONE) && !defined(CK_LIBWINSTORE) && !defined(WINCE)
 #define CK_CRYPTOAPI_INCLUDED
 #endif
 
 // Determine if methods relating to the Windows registry-based certificate stores are included.
-#if defined(CK_WINDOWS) && !defined(__MINGW32__) && !defined(CK_LIBWINPHONE) && !defined(CK_LIBWINSTORE) && !defined(WINCE)
+#if defined(CK_WINDOWS) && !defined(CK_LIBWINPHONE) && !defined(CK_LIBWINSTORE) && !defined(WINCE)
 #define CK_WINCERTSTORE_INCLUDED
 #endif
 
 // Determine if MX DNS lookups are available.
 // -We are missing MX DNS lookups on the following systems:
-#if !defined(WINCE) && !defined(__MINGW32__) && !defined(CK_LIBWINPHONE) && !defined(CK_LIBWINSTORE)
+#if !defined(WINCE) && !defined(CK_LIBWINPHONE) && !defined(CK_LIBWINSTORE)
 #define CK_MX_INCLUDED
 #endif
 

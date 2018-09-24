@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.73
+// This header is generated for Chilkat 9.5.0.75
 
 #ifndef _CkPrivateKey_H
 #define _CkPrivateKey_H
@@ -14,6 +14,7 @@
 
 class CkByteData;
 class CkPublicKey;
+class CkBinData;
 
 
 
@@ -436,29 +437,21 @@ class CK_VISIBLE_PUBLIC CkPrivateKey  : public CkMultiByteBase
 	// and the parts are base64 encoded.
 	// 
 	// RSA keys have this XML format:
-	// <RSAKeyValue>
-	//   <Modulus>...</Modulus>
-	//   <Exponent>...</Exponent>
-	//   <P>...</P>
-	//   <Q>...</Q>
-	//   <DP>...</DP>
-	//   <DQ>...</DQ>
-	//   <InverseQ>...</InverseQ>
-	//   <D>...</D>
-	// </RSAKeyValue>
+	//   ...  ...  
+	// 
+	// ...
+	// 
+	//   ...  ...  ...  ...  ...
 	// 
 	// DSA keys have this XML format:
-	// <DSAKeyValue>
-	// 	<P>...</P>
-	// 	<Q>...</Q>
-	// 	<G>...</G>
-	// 	<Y>...</Y>
-	// 	<X>...</X>
-	// </DSAKeyValue>
+	// 
+	// ...
+	// 
+	// ............
 	// 
 	// ECC keys have this XML format. The CURVE_NAME could be one of secp256r1,
 	// secp384r1, secp521r1, secp256k1 (or others as new curves are supported.)
-	// <ECCKeyValue curve="CURVE_NAME">...</ECCKeyValue>
+	// ...
 	// 
 	bool GetXml(CkString &outStr);
 
@@ -466,60 +459,50 @@ class CK_VISIBLE_PUBLIC CkPrivateKey  : public CkMultiByteBase
 	// and the parts are base64 encoded.
 	// 
 	// RSA keys have this XML format:
-	// <RSAKeyValue>
-	//   <Modulus>...</Modulus>
-	//   <Exponent>...</Exponent>
-	//   <P>...</P>
-	//   <Q>...</Q>
-	//   <DP>...</DP>
-	//   <DQ>...</DQ>
-	//   <InverseQ>...</InverseQ>
-	//   <D>...</D>
-	// </RSAKeyValue>
+	//   ...  ...  
+	// 
+	// ...
+	// 
+	//   ...  ...  ...  ...  ...
 	// 
 	// DSA keys have this XML format:
-	// <DSAKeyValue>
-	// 	<P>...</P>
-	// 	<Q>...</Q>
-	// 	<G>...</G>
-	// 	<Y>...</Y>
-	// 	<X>...</X>
-	// </DSAKeyValue>
+	// 
+	// ...
+	// 
+	// ............
 	// 
 	// ECC keys have this XML format. The CURVE_NAME could be one of secp256r1,
 	// secp384r1, secp521r1, secp256k1 (or others as new curves are supported.)
-	// <ECCKeyValue curve="CURVE_NAME">...</ECCKeyValue>
+	// ...
 	// 
 	const char *getXml(void);
 	// Returns the private key in XML format. The private key is returned unencrypted
 	// and the parts are base64 encoded.
 	// 
 	// RSA keys have this XML format:
-	// <RSAKeyValue>
-	//   <Modulus>...</Modulus>
-	//   <Exponent>...</Exponent>
-	//   <P>...</P>
-	//   <Q>...</Q>
-	//   <DP>...</DP>
-	//   <DQ>...</DQ>
-	//   <InverseQ>...</InverseQ>
-	//   <D>...</D>
-	// </RSAKeyValue>
+	//   ...  ...  
+	// 
+	// ...
+	// 
+	//   ...  ...  ...  ...  ...
 	// 
 	// DSA keys have this XML format:
-	// <DSAKeyValue>
-	// 	<P>...</P>
-	// 	<Q>...</Q>
-	// 	<G>...</G>
-	// 	<Y>...</Y>
-	// 	<X>...</X>
-	// </DSAKeyValue>
+	// 
+	// ...
+	// 
+	// ............
 	// 
 	// ECC keys have this XML format. The CURVE_NAME could be one of secp256r1,
 	// secp384r1, secp521r1, secp256k1 (or others as new curves are supported.)
-	// <ECCKeyValue curve="CURVE_NAME">...</ECCKeyValue>
+	// ...
 	// 
 	const char *xml(void);
+
+
+	// Loads a private key from any format (PKCS1, PKCS8, PEM, JWK, PVK, etc.). The
+	// contents of the key (binary or text) is passed in privKeyData. The password is optional and
+	// should be specified if needed.
+	bool LoadAnyFormat(CkBinData &privKeyData, const char *password);
 
 
 	// Loads the private key from an in-memory encrypted PEM string. An encrypted PEM
@@ -779,29 +762,21 @@ class CK_VISIBLE_PUBLIC CkPrivateKey  : public CkMultiByteBase
 	// Loads a private key from an XML string.
 	// 
 	// RSA keys have this XML format:
-	// <RSAKeyValue>
-	//   <Modulus>...</Modulus>
-	//   <Exponent>...</Exponent>
-	//   <P>...</P>
-	//   <Q>...</Q>
-	//   <DP>...</DP>
-	//   <DQ>...</DQ>
-	//   <InverseQ>...</InverseQ>
-	//   <D>...</D>
-	// </RSAKeyValue>
+	//   ...  ...  
+	// 
+	// ...
+	// 
+	//   ...  ...  ...  ...  ...
 	// 
 	// DSA keys have this XML format:
-	// <DSAKeyValue>
-	// 	<P>...</P>
-	// 	<Q>...</Q>
-	// 	<G>...</G>
-	// 	<Y>...</Y>
-	// 	<X>...</X>
-	// </DSAKeyValue>
+	// 
+	// ...
+	// 
+	// ............
 	// 
 	// ECC keys have this XML format. The CURVE_NAME could be one of secp256r1,
 	// secp384r1, secp521r1, secp256k1 (or others as new curves are supported.)
-	// <ECCKeyValue curve="CURVE_NAME">...</ECCKeyValue>
+	// ...
 	// 
 	// Note: Each of the private key Load* methods willl auto-recognize the content and
 	// will parse appropriately. The private key should be successfully loaded even

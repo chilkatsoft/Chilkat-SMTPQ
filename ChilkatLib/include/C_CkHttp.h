@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.73
+// This is a generated source file for Chilkat version 9.5.0.75
 #ifndef _C_CkHttp_H
 #define _C_CkHttp_H
 #include "chilkatDefs.h"
@@ -286,6 +286,8 @@ CK_VISIBLE_PUBLIC void CkHttp_ClearInMemoryCookies(HCkHttp cHandle);
 CK_VISIBLE_PUBLIC void CkHttp_ClearUrlVars(HCkHttp cHandle);
 CK_VISIBLE_PUBLIC BOOL CkHttp_CloseAllConnections(HCkHttp cHandle);
 CK_VISIBLE_PUBLIC HCkTask CkHttp_CloseAllConnectionsAsync(HCkHttp cHandle);
+CK_VISIBLE_PUBLIC BOOL CkHttp_CreateOcspRequest(HCkHttp cHandle, HCkJsonObject requestDetails, HCkBinData ocspRequest);
+CK_VISIBLE_PUBLIC BOOL CkHttp_CreateTimestampRequest(HCkHttp cHandle, const char *hashAlg, const char *hashVal, const char *reqPolicyOid, BOOL addNonce, BOOL reqTsaCert, HCkBinData tmestampToken);
 CK_VISIBLE_PUBLIC void CkHttp_DnsCacheClear(HCkHttp cHandle);
 CK_VISIBLE_PUBLIC BOOL CkHttp_Download(HCkHttp cHandle, const char *url, const char *localFilePath);
 CK_VISIBLE_PUBLIC HCkTask CkHttp_DownloadAsync(HCkHttp cHandle, const char *url, const char *localFilePath);
@@ -328,6 +330,7 @@ CK_VISIBLE_PUBLIC BOOL CkHttp_GetUrlPath(HCkHttp cHandle, const char *url, HCkSt
 CK_VISIBLE_PUBLIC const char *CkHttp_getUrlPath(HCkHttp cHandle, const char *url);
 CK_VISIBLE_PUBLIC BOOL CkHttp_HasRequestHeader(HCkHttp cHandle, const char *name);
 CK_VISIBLE_PUBLIC BOOL CkHttp_IsUnlocked(HCkHttp cHandle);
+CK_VISIBLE_PUBLIC int CkHttp_ParseOcspReply(HCkHttp cHandle, HCkBinData ocspReply, HCkJsonObject replyData);
 CK_VISIBLE_PUBLIC HCkHttpResponse CkHttp_PBinary(HCkHttp cHandle, const char *verb, const char *url, HCkByteData byteData, const char *contentType, BOOL md5, BOOL gzip);
 CK_VISIBLE_PUBLIC HCkTask CkHttp_PBinaryAsync(HCkHttp cHandle, const char *verb, const char *url, HCkByteData byteData, const char *contentType, BOOL md5, BOOL gzip);
 CK_VISIBLE_PUBLIC HCkHttpResponse CkHttp_PBinaryBd(HCkHttp cHandle, const char *verb, const char *url, HCkBinData data, const char *contentType, BOOL md5, BOOL gzip);
@@ -378,6 +381,8 @@ CK_VISIBLE_PUBLIC BOOL CkHttp_RenderGet(HCkHttp cHandle, const char *url, HCkStr
 CK_VISIBLE_PUBLIC const char *CkHttp_renderGet(HCkHttp cHandle, const char *url);
 CK_VISIBLE_PUBLIC BOOL CkHttp_ResumeDownload(HCkHttp cHandle, const char *url, const char *targetFilename);
 CK_VISIBLE_PUBLIC HCkTask CkHttp_ResumeDownloadAsync(HCkHttp cHandle, const char *url, const char *targetFilename);
+CK_VISIBLE_PUBLIC BOOL CkHttp_ResumeDownloadBd(HCkHttp cHandle, const char *url, HCkBinData binData);
+CK_VISIBLE_PUBLIC HCkTask CkHttp_ResumeDownloadBdAsync(HCkHttp cHandle, const char *url, HCkBinData binData);
 CK_VISIBLE_PUBLIC BOOL CkHttp_S3_CreateBucket(HCkHttp cHandle, const char *bucketPath);
 CK_VISIBLE_PUBLIC HCkTask CkHttp_S3_CreateBucketAsync(HCkHttp cHandle, const char *bucketPath);
 CK_VISIBLE_PUBLIC BOOL CkHttp_S3_DeleteBucket(HCkHttp cHandle, const char *bucketPath);
@@ -430,6 +435,7 @@ CK_VISIBLE_PUBLIC BOOL CkHttp_UrlDecode(HCkHttp cHandle, const char *str, HCkStr
 CK_VISIBLE_PUBLIC const char *CkHttp_urlDecode(HCkHttp cHandle, const char *str);
 CK_VISIBLE_PUBLIC BOOL CkHttp_UrlEncode(HCkHttp cHandle, const char *str, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkHttp_urlEncode(HCkHttp cHandle, const char *str);
+CK_VISIBLE_PUBLIC int CkHttp_VerifyTimestampReply(HCkHttp cHandle, HCkBinData timestampReply, HCkCert tsaCert);
 CK_VISIBLE_PUBLIC BOOL CkHttp_XmlRpc(HCkHttp cHandle, const char *urlEndpoint, const char *xmlIn, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkHttp_xmlRpc(HCkHttp cHandle, const char *urlEndpoint, const char *xmlIn);
 CK_VISIBLE_PUBLIC HCkTask CkHttp_XmlRpcAsync(HCkHttp cHandle, const char *urlEndpoint, const char *xmlIn);

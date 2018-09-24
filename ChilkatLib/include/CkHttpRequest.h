@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.73
+// This header is generated for Chilkat 9.5.0.75
 
 #ifndef _CkHttpRequest_H
 #define _CkHttpRequest_H
@@ -94,8 +94,8 @@ class CK_VISIBLE_PUBLIC CkHttpRequest  : public CkMultiByteBase
 	//         
 	// application/x-www-form-urlencoded    
 	// multipart/form-data    
-	// text/xml    
-	// application/jsonrequest    
+	// application/json    
+	// application/xml    
 	//     
 	// 
 	// If ContentType is set equal to the empty string, then no Content-Type header is
@@ -107,8 +107,8 @@ class CK_VISIBLE_PUBLIC CkHttpRequest  : public CkMultiByteBase
 	//         
 	// application/x-www-form-urlencoded    
 	// multipart/form-data    
-	// text/xml    
-	// application/jsonrequest    
+	// application/json    
+	// application/xml    
 	//     
 	// 
 	// If ContentType is set equal to the empty string, then no Content-Type header is
@@ -120,8 +120,8 @@ class CK_VISIBLE_PUBLIC CkHttpRequest  : public CkMultiByteBase
 	//         
 	// application/x-www-form-urlencoded    
 	// multipart/form-data    
-	// text/xml    
-	// application/jsonrequest    
+	// application/json    
+	// application/xml    
 	//     
 	// 
 	// If ContentType is set equal to the empty string, then no Content-Type header is
@@ -373,20 +373,20 @@ class CK_VISIBLE_PUBLIC CkHttpRequest  : public CkMultiByteBase
 	// would be sent if the ContentType property was
 	// application/x-www-form-urlencoded). For example, if a request has two params:
 	// param1="abc 123" and param2="abc-123", then GetUrlEncodedParams would return
-	// "abc+123<param2=abc%2D123"
+	// "abc+123
 	bool GetUrlEncodedParams(CkString &outStr);
 
 	// Returns the request parameters in URL encoded form (i.e. in the exact form that
 	// would be sent if the ContentType property was
 	// application/x-www-form-urlencoded). For example, if a request has two params:
 	// param1="abc 123" and param2="abc-123", then GetUrlEncodedParams would return
-	// "abc+123<param2=abc%2D123"
+	// "abc+123
 	const char *getUrlEncodedParams(void);
 	// Returns the request parameters in URL encoded form (i.e. in the exact form that
 	// would be sent if the ContentType property was
 	// application/x-www-form-urlencoded). For example, if a request has two params:
 	// param1="abc 123" and param2="abc-123", then GetUrlEncodedParams would return
-	// "abc+123<param2=abc%2D123"
+	// "abc+123
 	const char *urlEncodedParams(void);
 
 

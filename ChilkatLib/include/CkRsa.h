@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.73
+// This header is generated for Chilkat 9.5.0.75
 
 #ifndef _CkRsa_H
 #define _CkRsa_H
@@ -60,6 +60,8 @@ class CK_VISIBLE_PUBLIC CkRsa  : public CkMultiByteBase
 	// returning strings always return Unicode (2 bytes/char). Java strings are utf-8.
 	// Chilkat C++ strings are ANSI or utf-8. .NET strings are Unicode.
 	// 
+	// The default value of this property is the ANSI charset of the local computer.
+	// 
 	// When signing string data, the input string is first converted to this charset
 	// before being hashed and signed. When verifying the signature for string data,
 	// the input string is first converted to this charset before the verification
@@ -75,6 +77,8 @@ class CK_VISIBLE_PUBLIC CkRsa  : public CkMultiByteBase
 	// returning strings always return Unicode (2 bytes/char). Java strings are utf-8.
 	// Chilkat C++ strings are ANSI or utf-8. .NET strings are Unicode.
 	// 
+	// The default value of this property is the ANSI charset of the local computer.
+	// 
 	// When signing string data, the input string is first converted to this charset
 	// before being hashed and signed. When verifying the signature for string data,
 	// the input string is first converted to this charset before the verification
@@ -89,6 +93,8 @@ class CK_VISIBLE_PUBLIC CkRsa  : public CkMultiByteBase
 	// encoding and converted to the appropriate return. For example, ActiveX's
 	// returning strings always return Unicode (2 bytes/char). Java strings are utf-8.
 	// Chilkat C++ strings are ANSI or utf-8. .NET strings are Unicode.
+	// 
+	// The default value of this property is the ANSI charset of the local computer.
 	// 
 	// When signing string data, the input string is first converted to this charset
 	// before being hashed and signed. When verifying the signature for string data,
@@ -521,13 +527,9 @@ class CK_VISIBLE_PUBLIC CkRsa  : public CkMultiByteBase
 	// EncodingMode property (base64, hex, etc.). Returns the original string.
 	const char *openSslVerifyStringENC(const char *str);
 
-	// Provides the private key indirectly through a certificate, assuming the
-	// certificate has an associated private key. This method is primarily used on
-	// Windows computers where the private key may be installed as non-exportable (such
-	// as on a hardware token).
-	// 
-	// Returns false if the certificate has no associated private key.
-	// 
+	// Provides the private or public key indirectly through a certificate. This method
+	// is especially useful on Windows computers where the private key is installed as
+	// non-exportable (such as on a hardware token).
 	bool SetX509Cert(CkCert &cert, bool usePrivateKey);
 
 

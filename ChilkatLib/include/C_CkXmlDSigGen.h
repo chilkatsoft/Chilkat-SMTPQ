@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.73
+// This is a generated source file for Chilkat version 9.5.0.75
 #ifndef _C_CkXmlDSigGen_H
 #define _C_CkXmlDSigGen_H
 #include "chilkatDefs.h"
@@ -23,6 +23,9 @@ CK_VISIBLE_PUBLIC const char *CkXmlDSigGen_incNamespacePrefix(HCkXmlDSigGen cHan
 CK_VISIBLE_PUBLIC void CkXmlDSigGen_getIncNamespaceUri(HCkXmlDSigGen cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkXmlDSigGen_putIncNamespaceUri(HCkXmlDSigGen cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkXmlDSigGen_incNamespaceUri(HCkXmlDSigGen cHandle);
+CK_VISIBLE_PUBLIC void CkXmlDSigGen_getKeyInfoId(HCkXmlDSigGen cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkXmlDSigGen_putKeyInfoId(HCkXmlDSigGen cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkXmlDSigGen_keyInfoId(HCkXmlDSigGen cHandle);
 CK_VISIBLE_PUBLIC void CkXmlDSigGen_getKeyInfoKeyName(HCkXmlDSigGen cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkXmlDSigGen_putKeyInfoKeyName(HCkXmlDSigGen cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkXmlDSigGen_keyInfoKeyName(HCkXmlDSigGen cHandle);
@@ -55,12 +58,18 @@ CK_VISIBLE_PUBLIC const char *CkXmlDSigGen_signedInfoCanonAlg(HCkXmlDSigGen cHan
 CK_VISIBLE_PUBLIC void CkXmlDSigGen_getSignedInfoDigestMethod(HCkXmlDSigGen cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkXmlDSigGen_putSignedInfoDigestMethod(HCkXmlDSigGen cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkXmlDSigGen_signedInfoDigestMethod(HCkXmlDSigGen cHandle);
+CK_VISIBLE_PUBLIC void CkXmlDSigGen_getSignedInfoId(HCkXmlDSigGen cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkXmlDSigGen_putSignedInfoId(HCkXmlDSigGen cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkXmlDSigGen_signedInfoId(HCkXmlDSigGen cHandle);
 CK_VISIBLE_PUBLIC void CkXmlDSigGen_getSignedInfoPrefixList(HCkXmlDSigGen cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkXmlDSigGen_putSignedInfoPrefixList(HCkXmlDSigGen cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkXmlDSigGen_signedInfoPrefixList(HCkXmlDSigGen cHandle);
 CK_VISIBLE_PUBLIC void CkXmlDSigGen_getSigningAlg(HCkXmlDSigGen cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkXmlDSigGen_putSigningAlg(HCkXmlDSigGen cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkXmlDSigGen_signingAlg(HCkXmlDSigGen cHandle);
+CK_VISIBLE_PUBLIC void CkXmlDSigGen_getSigValueId(HCkXmlDSigGen cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkXmlDSigGen_putSigValueId(HCkXmlDSigGen cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkXmlDSigGen_sigValueId(HCkXmlDSigGen cHandle);
 CK_VISIBLE_PUBLIC BOOL CkXmlDSigGen_getUtf8(HCkXmlDSigGen cHandle);
 CK_VISIBLE_PUBLIC void CkXmlDSigGen_putUtf8(HCkXmlDSigGen cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkXmlDSigGen_getVerboseLogging(HCkXmlDSigGen cHandle);
@@ -75,12 +84,18 @@ CK_VISIBLE_PUBLIC BOOL CkXmlDSigGen_AddExternalBinaryRef(HCkXmlDSigGen cHandle, 
 CK_VISIBLE_PUBLIC BOOL CkXmlDSigGen_AddExternalFileRef(HCkXmlDSigGen cHandle, const char *uri, const char *localFilePath, const char *digestMethod, const char *refType);
 CK_VISIBLE_PUBLIC BOOL CkXmlDSigGen_AddExternalTextRef(HCkXmlDSigGen cHandle, const char *uri, HCkStringBuilder content, const char *charset, BOOL includeBom, const char *digestMethod, const char *refType);
 CK_VISIBLE_PUBLIC BOOL CkXmlDSigGen_AddExternalXmlRef(HCkXmlDSigGen cHandle, const char *uri, HCkStringBuilder content, const char *digestMethod, const char *canonMethod, const char *refType);
+CK_VISIBLE_PUBLIC BOOL CkXmlDSigGen_AddObject(HCkXmlDSigGen cHandle, const char *id, const char *content, const char *mimeType, const char *encoding);
+CK_VISIBLE_PUBLIC BOOL CkXmlDSigGen_AddObjectRef(HCkXmlDSigGen cHandle, const char *id, const char *digestMethod, const char *canonMethod, const char *prefixList, const char *refType);
 CK_VISIBLE_PUBLIC BOOL CkXmlDSigGen_AddSameDocRef(HCkXmlDSigGen cHandle, const char *id, const char *digestMethod, const char *canonMethod, const char *prefixList, const char *refType);
+CK_VISIBLE_PUBLIC BOOL CkXmlDSigGen_AddSignatureNamespace(HCkXmlDSigGen cHandle, const char *nsPrefix, const char *nsUri);
+CK_VISIBLE_PUBLIC BOOL CkXmlDSigGen_ConstructSignedInfo(HCkXmlDSigGen cHandle, HCkStringBuilder sbXml, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkXmlDSigGen_constructSignedInfo(HCkXmlDSigGen cHandle, HCkStringBuilder sbXml);
 CK_VISIBLE_PUBLIC BOOL CkXmlDSigGen_CreateXmlDSig(HCkXmlDSigGen cHandle, const char *inXml, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkXmlDSigGen_createXmlDSig(HCkXmlDSigGen cHandle, const char *inXml);
 CK_VISIBLE_PUBLIC BOOL CkXmlDSigGen_CreateXmlDSigSb(HCkXmlDSigGen cHandle, HCkStringBuilder sbXml);
 CK_VISIBLE_PUBLIC BOOL CkXmlDSigGen_SaveLastError(HCkXmlDSigGen cHandle, const char *path);
 CK_VISIBLE_PUBLIC BOOL CkXmlDSigGen_SetHmacKey(HCkXmlDSigGen cHandle, const char *key, const char *encoding);
 CK_VISIBLE_PUBLIC BOOL CkXmlDSigGen_SetPrivateKey(HCkXmlDSigGen cHandle, HCkPrivateKey privKey);
+CK_VISIBLE_PUBLIC BOOL CkXmlDSigGen_SetRefIdAttr(HCkXmlDSigGen cHandle, const char *uri_or_id, const char *value);
 CK_VISIBLE_PUBLIC BOOL CkXmlDSigGen_SetX509Cert(HCkXmlDSigGen cHandle, HCkCert cert, BOOL usePrivateKey);
 #endif

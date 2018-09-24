@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.73
+// This is a generated source file for Chilkat version 9.5.0.75
 #ifndef _C_CkStreamWH
 #define _C_CkStreamWH
 #include "chilkatDefs.h"
@@ -20,17 +20,17 @@ CK_VISIBLE_PUBLIC BOOL CkStreamW_getCanWrite(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkStreamW_getDataAvailable(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC void CkStreamW_getDebugLogFilePath(HCkStreamW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkStreamW_putDebugLogFilePath(HCkStreamW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkStreamW_getDebugLogFilePath(HCkStreamW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkStreamW_debugLogFilePath(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC int CkStreamW_getDefaultChunkSize(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC void  CkStreamW_putDefaultChunkSize(HCkStreamW cHandle, int newVal);
 CK_VISIBLE_PUBLIC BOOL CkStreamW_getEndOfStream(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkStreamW_getIsWriteClosed(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC void CkStreamW_getLastErrorHtml(HCkStreamW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkStreamW_getLastErrorHtml(HCkStreamW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkStreamW_lastErrorHtml(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC void CkStreamW_getLastErrorText(HCkStreamW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkStreamW_getLastErrorText(HCkStreamW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkStreamW_lastErrorText(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC void CkStreamW_getLastErrorXml(HCkStreamW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkStreamW_getLastErrorXml(HCkStreamW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkStreamW_lastErrorXml(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkStreamW_getLastMethodSuccess(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC void  CkStreamW_putLastMethodSuccess(HCkStreamW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC __int64 CkStreamW_getLength(HCkStreamW cHandle);
@@ -44,10 +44,10 @@ CK_VISIBLE_PUBLIC int CkStreamW_getReadTimeoutMs(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC void  CkStreamW_putReadTimeoutMs(HCkStreamW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkStreamW_getSinkFile(HCkStreamW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkStreamW_putSinkFile(HCkStreamW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkStreamW_getSinkFile(HCkStreamW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkStreamW_sinkFile(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC void CkStreamW_getSourceFile(HCkStreamW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkStreamW_putSourceFile(HCkStreamW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkStreamW_getSourceFile(HCkStreamW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkStreamW_sourceFile(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC int CkStreamW_getSourceFilePart(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC void  CkStreamW_putSourceFilePart(HCkStreamW cHandle, int newVal);
 CK_VISIBLE_PUBLIC int CkStreamW_getSourceFilePartSize(HCkStreamW cHandle);
@@ -56,11 +56,11 @@ CK_VISIBLE_PUBLIC BOOL CkStreamW_getStringBom(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC void  CkStreamW_putStringBom(HCkStreamW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkStreamW_getStringCharset(HCkStreamW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkStreamW_putStringCharset(HCkStreamW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkStreamW_getStringCharset(HCkStreamW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkStreamW_stringCharset(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkStreamW_getVerboseLogging(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC void  CkStreamW_putVerboseLogging(HCkStreamW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkStreamW_getVersion(HCkStreamW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkStreamW_getVersion(HCkStreamW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkStreamW_version(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC int CkStreamW_getWriteFailReason(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC int CkStreamW_getWriteTimeoutMs(HCkStreamW cHandle);
 CK_VISIBLE_PUBLIC void  CkStreamW_putWriteTimeoutMs(HCkStreamW cHandle, int newVal);

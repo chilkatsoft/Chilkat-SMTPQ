@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.73
+// This header is generated for Chilkat 9.5.0.75
 
 #ifndef _CkCrypt2_H
 #define _CkCrypt2_H
@@ -1123,6 +1123,49 @@ class CK_VISIBLE_PUBLIC CkCrypt2  : public CkClassWithCallbacks
 	// 
 	void put_SigningAlg(const char *newVal);
 
+	// Contains JSON to specify the authenticated (signed) attributes that are to be
+	// included in PKCS7 signatures. The default value is:
+	// {
+	//     "contentType": 1,
+	//     "signingTime": 1,
+	//     "messageDigest": 1,
+	//     "sMIMECapabilities": 1,
+	//     "microsoftRecipientInfo": 1,
+	//     "encrypKeyPref": 1
+	//     ] 
+	// }
+	// Contact Chilkat (support@chilkatsoft.com) about other signed attributes that may
+	// be needed for CAdes signatures.
+	void get_SigningAttributes(CkString &str);
+	// Contains JSON to specify the authenticated (signed) attributes that are to be
+	// included in PKCS7 signatures. The default value is:
+	// {
+	//     "contentType": 1,
+	//     "signingTime": 1,
+	//     "messageDigest": 1,
+	//     "sMIMECapabilities": 1,
+	//     "microsoftRecipientInfo": 1,
+	//     "encrypKeyPref": 1
+	//     ] 
+	// }
+	// Contact Chilkat (support@chilkatsoft.com) about other signed attributes that may
+	// be needed for CAdes signatures.
+	const char *signingAttributes(void);
+	// Contains JSON to specify the authenticated (signed) attributes that are to be
+	// included in PKCS7 signatures. The default value is:
+	// {
+	//     "contentType": 1,
+	//     "signingTime": 1,
+	//     "messageDigest": 1,
+	//     "sMIMECapabilities": 1,
+	//     "microsoftRecipientInfo": 1,
+	//     "encrypKeyPref": 1
+	//     ] 
+	// }
+	// Contact Chilkat (support@chilkatsoft.com) about other signed attributes that may
+	// be needed for CAdes signatures.
+	void put_SigningAttributes(const char *newVal);
+
 	// When UU encoding, this is the filename to be embedded in UU encoded output. The
 	// default is "file.dat". When UU decoding, this is the filename found in the UU
 	// encoded input.
@@ -1979,6 +2022,16 @@ class CK_VISIBLE_PUBLIC CkCrypt2  : public CkClassWithCallbacks
 	// The same as GetSignatureSigningTime, except the date/time is returned in RFC822
 	// string format.
 	const char *signatureSigningTimeStr(int index);
+
+
+	// Extracts the signed (authenticated) attributes for the Nth signer. In most
+	// cases, a signature has only one signer, and the signerIndex should equal 0 to specify
+	// the 1st (and only) signer.
+	// 
+	// The binary PKCS7 is passed in pkcs7Der. On success, the sbJson will contain the signed
+	// attributes in JSON format.
+	// 
+	bool GetSignedAttributes(int signerIndex, CkBinData &pkcs7Der, CkStringBuilder &sbJson);
 
 
 	// Gets the Nth certificate used for signing. This method can be called after

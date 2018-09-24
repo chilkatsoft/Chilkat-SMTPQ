@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.73
+// This is a generated source file for Chilkat version 9.5.0.75
 #ifndef _C_CkHtmlToTextWH
 #define _C_CkHtmlToTextWH
 #include "chilkatDefs.h"
@@ -10,15 +10,15 @@ CK_VISIBLE_PUBLIC HCkHtmlToTextW CkHtmlToTextW_Create(void);
 CK_VISIBLE_PUBLIC void CkHtmlToTextW_Dispose(HCkHtmlToTextW handle);
 CK_VISIBLE_PUBLIC void CkHtmlToTextW_getDebugLogFilePath(HCkHtmlToTextW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkHtmlToTextW_putDebugLogFilePath(HCkHtmlToTextW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToTextW_getDebugLogFilePath(HCkHtmlToTextW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToTextW_debugLogFilePath(HCkHtmlToTextW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkHtmlToTextW_getDecodeHtmlEntities(HCkHtmlToTextW cHandle);
 CK_VISIBLE_PUBLIC void  CkHtmlToTextW_putDecodeHtmlEntities(HCkHtmlToTextW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkHtmlToTextW_getLastErrorHtml(HCkHtmlToTextW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToTextW_getLastErrorHtml(HCkHtmlToTextW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToTextW_lastErrorHtml(HCkHtmlToTextW cHandle);
 CK_VISIBLE_PUBLIC void CkHtmlToTextW_getLastErrorText(HCkHtmlToTextW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToTextW_getLastErrorText(HCkHtmlToTextW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToTextW_lastErrorText(HCkHtmlToTextW cHandle);
 CK_VISIBLE_PUBLIC void CkHtmlToTextW_getLastErrorXml(HCkHtmlToTextW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToTextW_getLastErrorXml(HCkHtmlToTextW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToTextW_lastErrorXml(HCkHtmlToTextW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkHtmlToTextW_getLastMethodSuccess(HCkHtmlToTextW cHandle);
 CK_VISIBLE_PUBLIC void  CkHtmlToTextW_putLastMethodSuccess(HCkHtmlToTextW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkHtmlToTextW_getRightMargin(HCkHtmlToTextW cHandle);
@@ -28,7 +28,7 @@ CK_VISIBLE_PUBLIC void  CkHtmlToTextW_putSuppressLinks(HCkHtmlToTextW cHandle, B
 CK_VISIBLE_PUBLIC BOOL CkHtmlToTextW_getVerboseLogging(HCkHtmlToTextW cHandle);
 CK_VISIBLE_PUBLIC void  CkHtmlToTextW_putVerboseLogging(HCkHtmlToTextW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkHtmlToTextW_getVersion(HCkHtmlToTextW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToTextW_getVersion(HCkHtmlToTextW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToTextW_version(HCkHtmlToTextW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkHtmlToTextW_IsUnlocked(HCkHtmlToTextW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkHtmlToTextW_ReadFileToString(HCkHtmlToTextW cHandle, const wchar_t *filename, const wchar_t *srcCharset, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkHtmlToTextW_readFileToString(HCkHtmlToTextW cHandle, const wchar_t *filename, const wchar_t *srcCharset);

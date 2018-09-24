@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.73
+// This is a generated source file for Chilkat version 9.5.0.75
 #ifndef _C_CkWebSocketWH
 #define _C_CkWebSocketWH
 #include "chilkatDefs.h"
@@ -16,26 +16,26 @@ CK_VISIBLE_PUBLIC void CkWebSocketW_Dispose(HCkWebSocketW handle);
 CK_VISIBLE_PUBLIC BOOL CkWebSocketW_getCloseAutoRespond(HCkWebSocketW cHandle);
 CK_VISIBLE_PUBLIC void  CkWebSocketW_putCloseAutoRespond(HCkWebSocketW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkWebSocketW_getCloseReason(HCkWebSocketW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkWebSocketW_getCloseReason(HCkWebSocketW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkWebSocketW_closeReason(HCkWebSocketW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkWebSocketW_getCloseReceived(HCkWebSocketW cHandle);
 CK_VISIBLE_PUBLIC int CkWebSocketW_getCloseStatusCode(HCkWebSocketW cHandle);
 CK_VISIBLE_PUBLIC void CkWebSocketW_getDebugLogFilePath(HCkWebSocketW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkWebSocketW_putDebugLogFilePath(HCkWebSocketW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkWebSocketW_getDebugLogFilePath(HCkWebSocketW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkWebSocketW_debugLogFilePath(HCkWebSocketW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkWebSocketW_getFinalFrame(HCkWebSocketW cHandle);
 CK_VISIBLE_PUBLIC int CkWebSocketW_getFrameDataLen(HCkWebSocketW cHandle);
 CK_VISIBLE_PUBLIC void CkWebSocketW_getFrameOpcode(HCkWebSocketW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkWebSocketW_getFrameOpcode(HCkWebSocketW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkWebSocketW_frameOpcode(HCkWebSocketW cHandle);
 CK_VISIBLE_PUBLIC int CkWebSocketW_getFrameOpcodeInt(HCkWebSocketW cHandle);
 CK_VISIBLE_PUBLIC int CkWebSocketW_getIdleTimeoutMs(HCkWebSocketW cHandle);
 CK_VISIBLE_PUBLIC void  CkWebSocketW_putIdleTimeoutMs(HCkWebSocketW cHandle, int newVal);
 CK_VISIBLE_PUBLIC BOOL CkWebSocketW_getIsConnected(HCkWebSocketW cHandle);
 CK_VISIBLE_PUBLIC void CkWebSocketW_getLastErrorHtml(HCkWebSocketW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkWebSocketW_getLastErrorHtml(HCkWebSocketW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkWebSocketW_lastErrorHtml(HCkWebSocketW cHandle);
 CK_VISIBLE_PUBLIC void CkWebSocketW_getLastErrorText(HCkWebSocketW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkWebSocketW_getLastErrorText(HCkWebSocketW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkWebSocketW_lastErrorText(HCkWebSocketW cHandle);
 CK_VISIBLE_PUBLIC void CkWebSocketW_getLastErrorXml(HCkWebSocketW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkWebSocketW_getLastErrorXml(HCkWebSocketW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkWebSocketW_lastErrorXml(HCkWebSocketW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkWebSocketW_getLastMethodSuccess(HCkWebSocketW cHandle);
 CK_VISIBLE_PUBLIC void  CkWebSocketW_putLastMethodSuccess(HCkWebSocketW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkWebSocketW_getNeedSendPong(HCkWebSocketW cHandle);
@@ -48,7 +48,7 @@ CK_VISIBLE_PUBLIC int CkWebSocketW_getReadFrameFailReason(HCkWebSocketW cHandle)
 CK_VISIBLE_PUBLIC BOOL CkWebSocketW_getVerboseLogging(HCkWebSocketW cHandle);
 CK_VISIBLE_PUBLIC void  CkWebSocketW_putVerboseLogging(HCkWebSocketW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkWebSocketW_getVersion(HCkWebSocketW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkWebSocketW_getVersion(HCkWebSocketW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkWebSocketW_version(HCkWebSocketW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkWebSocketW_AddClientHeaders(HCkWebSocketW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkWebSocketW_CloseConnection(HCkWebSocketW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkWebSocketW_GetFrameData(HCkWebSocketW cHandle, HCkString outStr);

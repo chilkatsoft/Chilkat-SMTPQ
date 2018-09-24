@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.73
+// This is a generated source file for Chilkat version 9.5.0.75
 #ifndef _C_CkStringTableWH
 #define _C_CkStringTableWH
 #include "chilkatDefs.h"
@@ -11,19 +11,19 @@ CK_VISIBLE_PUBLIC void CkStringTableW_Dispose(HCkStringTableW handle);
 CK_VISIBLE_PUBLIC int CkStringTableW_getCount(HCkStringTableW cHandle);
 CK_VISIBLE_PUBLIC void CkStringTableW_getDebugLogFilePath(HCkStringTableW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkStringTableW_putDebugLogFilePath(HCkStringTableW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkStringTableW_getDebugLogFilePath(HCkStringTableW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkStringTableW_debugLogFilePath(HCkStringTableW cHandle);
 CK_VISIBLE_PUBLIC void CkStringTableW_getLastErrorHtml(HCkStringTableW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkStringTableW_getLastErrorHtml(HCkStringTableW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkStringTableW_lastErrorHtml(HCkStringTableW cHandle);
 CK_VISIBLE_PUBLIC void CkStringTableW_getLastErrorText(HCkStringTableW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkStringTableW_getLastErrorText(HCkStringTableW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkStringTableW_lastErrorText(HCkStringTableW cHandle);
 CK_VISIBLE_PUBLIC void CkStringTableW_getLastErrorXml(HCkStringTableW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkStringTableW_getLastErrorXml(HCkStringTableW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkStringTableW_lastErrorXml(HCkStringTableW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkStringTableW_getLastMethodSuccess(HCkStringTableW cHandle);
 CK_VISIBLE_PUBLIC void  CkStringTableW_putLastMethodSuccess(HCkStringTableW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkStringTableW_getVerboseLogging(HCkStringTableW cHandle);
 CK_VISIBLE_PUBLIC void  CkStringTableW_putVerboseLogging(HCkStringTableW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkStringTableW_getVersion(HCkStringTableW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkStringTableW_getVersion(HCkStringTableW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkStringTableW_version(HCkStringTableW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkStringTableW_Append(HCkStringTableW cHandle, const wchar_t *value);
 CK_VISIBLE_PUBLIC BOOL CkStringTableW_AppendFromFile(HCkStringTableW cHandle, int maxLineLen, const wchar_t *charset, const wchar_t *path);
 CK_VISIBLE_PUBLIC BOOL CkStringTableW_AppendFromSb(HCkStringTableW cHandle, HCkStringBuilderW sb);

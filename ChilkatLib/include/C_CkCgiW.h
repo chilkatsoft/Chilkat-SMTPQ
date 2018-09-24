@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.73
+// This is a generated source file for Chilkat version 9.5.0.75
 #ifndef _C_CkCgiWH
 #define _C_CkCgiWH
 #include "chilkatDefs.h"
@@ -14,17 +14,17 @@ CK_VISIBLE_PUBLIC int CkCgiW_getAsyncPostSize(HCkCgiW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCgiW_getAsyncSuccess(HCkCgiW cHandle);
 CK_VISIBLE_PUBLIC void CkCgiW_getDebugLogFilePath(HCkCgiW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkCgiW_putDebugLogFilePath(HCkCgiW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkCgiW_getDebugLogFilePath(HCkCgiW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCgiW_debugLogFilePath(HCkCgiW cHandle);
 CK_VISIBLE_PUBLIC int CkCgiW_getHeartbeatMs(HCkCgiW cHandle);
 CK_VISIBLE_PUBLIC void  CkCgiW_putHeartbeatMs(HCkCgiW cHandle, int newVal);
 CK_VISIBLE_PUBLIC int CkCgiW_getIdleTimeoutMs(HCkCgiW cHandle);
 CK_VISIBLE_PUBLIC void  CkCgiW_putIdleTimeoutMs(HCkCgiW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkCgiW_getLastErrorHtml(HCkCgiW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkCgiW_getLastErrorHtml(HCkCgiW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCgiW_lastErrorHtml(HCkCgiW cHandle);
 CK_VISIBLE_PUBLIC void CkCgiW_getLastErrorText(HCkCgiW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkCgiW_getLastErrorText(HCkCgiW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCgiW_lastErrorText(HCkCgiW cHandle);
 CK_VISIBLE_PUBLIC void CkCgiW_getLastErrorXml(HCkCgiW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkCgiW_getLastErrorXml(HCkCgiW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCgiW_lastErrorXml(HCkCgiW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCgiW_getLastMethodSuccess(HCkCgiW cHandle);
 CK_VISIBLE_PUBLIC void  CkCgiW_putLastMethodSuccess(HCkCgiW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkCgiW_getNumParams(HCkCgiW cHandle);
@@ -37,11 +37,11 @@ CK_VISIBLE_PUBLIC BOOL CkCgiW_getStreamToUploadDir(HCkCgiW cHandle);
 CK_VISIBLE_PUBLIC void  CkCgiW_putStreamToUploadDir(HCkCgiW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkCgiW_getUploadDir(HCkCgiW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkCgiW_putUploadDir(HCkCgiW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkCgiW_getUploadDir(HCkCgiW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCgiW_uploadDir(HCkCgiW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCgiW_getVerboseLogging(HCkCgiW cHandle);
 CK_VISIBLE_PUBLIC void  CkCgiW_putVerboseLogging(HCkCgiW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkCgiW_getVersion(HCkCgiW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkCgiW_getVersion(HCkCgiW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkCgiW_version(HCkCgiW cHandle);
 CK_VISIBLE_PUBLIC void CkCgiW_AbortAsync(HCkCgiW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCgiW_GetEnv(HCkCgiW cHandle, const wchar_t *varName, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkCgiW_getEnv(HCkCgiW cHandle, const wchar_t *varName);

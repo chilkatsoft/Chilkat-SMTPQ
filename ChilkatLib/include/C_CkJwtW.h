@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.73
+// This is a generated source file for Chilkat version 9.5.0.75
 #ifndef _C_CkJwtWH
 #define _C_CkJwtWH
 #include "chilkatDefs.h"
@@ -12,19 +12,19 @@ CK_VISIBLE_PUBLIC BOOL CkJwtW_getAutoCompact(HCkJwtW cHandle);
 CK_VISIBLE_PUBLIC void  CkJwtW_putAutoCompact(HCkJwtW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkJwtW_getDebugLogFilePath(HCkJwtW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkJwtW_putDebugLogFilePath(HCkJwtW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkJwtW_getDebugLogFilePath(HCkJwtW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJwtW_debugLogFilePath(HCkJwtW cHandle);
 CK_VISIBLE_PUBLIC void CkJwtW_getLastErrorHtml(HCkJwtW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkJwtW_getLastErrorHtml(HCkJwtW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJwtW_lastErrorHtml(HCkJwtW cHandle);
 CK_VISIBLE_PUBLIC void CkJwtW_getLastErrorText(HCkJwtW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkJwtW_getLastErrorText(HCkJwtW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJwtW_lastErrorText(HCkJwtW cHandle);
 CK_VISIBLE_PUBLIC void CkJwtW_getLastErrorXml(HCkJwtW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkJwtW_getLastErrorXml(HCkJwtW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJwtW_lastErrorXml(HCkJwtW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkJwtW_getLastMethodSuccess(HCkJwtW cHandle);
 CK_VISIBLE_PUBLIC void  CkJwtW_putLastMethodSuccess(HCkJwtW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkJwtW_getVerboseLogging(HCkJwtW cHandle);
 CK_VISIBLE_PUBLIC void  CkJwtW_putVerboseLogging(HCkJwtW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkJwtW_getVersion(HCkJwtW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkJwtW_getVersion(HCkJwtW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJwtW_version(HCkJwtW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkJwtW_CreateJwt(HCkJwtW cHandle, const wchar_t *header, const wchar_t *payload, const wchar_t *password, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkJwtW_createJwt(HCkJwtW cHandle, const wchar_t *header, const wchar_t *payload, const wchar_t *password);
 CK_VISIBLE_PUBLIC BOOL CkJwtW_CreateJwtPk(HCkJwtW cHandle, const wchar_t *header, const wchar_t *payload, HCkPrivateKeyW key, HCkString outStr);

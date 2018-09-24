@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.73
+// This is a generated source file for Chilkat version 9.5.0.75
 #ifndef _C_CkCert_H
 #define _C_CkCert_H
 #include "chilkatDefs.h"
@@ -61,12 +61,17 @@ CK_VISIBLE_PUBLIC BOOL CkCert_getRevoked(HCkCert cHandle);
 CK_VISIBLE_PUBLIC void CkCert_getRfc822Name(HCkCert cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkCert_rfc822Name(HCkCert cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCert_getSelfSigned(HCkCert cHandle);
+CK_VISIBLE_PUBLIC void CkCert_getSerialDecimal(HCkCert cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC const char *CkCert_serialDecimal(HCkCert cHandle);
 CK_VISIBLE_PUBLIC void CkCert_getSerialNumber(HCkCert cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkCert_serialNumber(HCkCert cHandle);
 CK_VISIBLE_PUBLIC void CkCert_getSha1Thumbprint(HCkCert cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkCert_sha1Thumbprint(HCkCert cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCert_getSignatureVerified(HCkCert cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCert_getSilent(HCkCert cHandle);
+CK_VISIBLE_PUBLIC void CkCert_getSmartCardPin(HCkCert cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkCert_putSmartCardPin(HCkCert cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkCert_smartCardPin(HCkCert cHandle);
 CK_VISIBLE_PUBLIC void CkCert_getSubjectC(HCkCert cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkCert_subjectC(HCkCert cHandle);
 CK_VISIBLE_PUBLIC void CkCert_getSubjectCN(HCkCert cHandle, HCkString retval);
@@ -124,6 +129,8 @@ CK_VISIBLE_PUBLIC BOOL CkCert_GetSpkiFingerprint(HCkCert cHandle, const char *ha
 CK_VISIBLE_PUBLIC const char *CkCert_getSpkiFingerprint(HCkCert cHandle, const char *hashAlg, const char *encoding);
 CK_VISIBLE_PUBLIC HCkDateTime CkCert_GetValidFromDt(HCkCert cHandle);
 CK_VISIBLE_PUBLIC HCkDateTime CkCert_GetValidToDt(HCkCert cHandle);
+CK_VISIBLE_PUBLIC BOOL CkCert_HashOf(HCkCert cHandle, const char *part, const char *hashAlg, const char *encoding, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkCert_hashOf(HCkCert cHandle, const char *part, const char *hashAlg, const char *encoding);
 CK_VISIBLE_PUBLIC BOOL CkCert_HasPrivateKey(HCkCert cHandle);
 #if defined(CK_CRYPTOAPI_INCLUDED)
 CK_VISIBLE_PUBLIC BOOL CkCert_LinkPrivateKey(HCkCert cHandle, const char *keyContainerName, BOOL bMachineKeyset, BOOL bForSigning);

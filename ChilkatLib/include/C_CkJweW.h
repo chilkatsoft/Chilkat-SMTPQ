@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.73
+// This is a generated source file for Chilkat version 9.5.0.75
 #ifndef _C_CkJweWH
 #define _C_CkJweWH
 #include "chilkatDefs.h"
@@ -10,13 +10,13 @@ CK_VISIBLE_PUBLIC HCkJweW CkJweW_Create(void);
 CK_VISIBLE_PUBLIC void CkJweW_Dispose(HCkJweW handle);
 CK_VISIBLE_PUBLIC void CkJweW_getDebugLogFilePath(HCkJweW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkJweW_putDebugLogFilePath(HCkJweW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkJweW_getDebugLogFilePath(HCkJweW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJweW_debugLogFilePath(HCkJweW cHandle);
 CK_VISIBLE_PUBLIC void CkJweW_getLastErrorHtml(HCkJweW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkJweW_getLastErrorHtml(HCkJweW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJweW_lastErrorHtml(HCkJweW cHandle);
 CK_VISIBLE_PUBLIC void CkJweW_getLastErrorText(HCkJweW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkJweW_getLastErrorText(HCkJweW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJweW_lastErrorText(HCkJweW cHandle);
 CK_VISIBLE_PUBLIC void CkJweW_getLastErrorXml(HCkJweW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkJweW_getLastErrorXml(HCkJweW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJweW_lastErrorXml(HCkJweW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkJweW_getLastMethodSuccess(HCkJweW cHandle);
 CK_VISIBLE_PUBLIC void  CkJweW_putLastMethodSuccess(HCkJweW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkJweW_getNumRecipients(HCkJweW cHandle);
@@ -27,7 +27,7 @@ CK_VISIBLE_PUBLIC void  CkJweW_putPreferFlattened(HCkJweW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkJweW_getVerboseLogging(HCkJweW cHandle);
 CK_VISIBLE_PUBLIC void  CkJweW_putVerboseLogging(HCkJweW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkJweW_getVersion(HCkJweW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkJweW_getVersion(HCkJweW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkJweW_version(HCkJweW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkJweW_Decrypt(HCkJweW cHandle, int index, const wchar_t *charset, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkJweW_decrypt(HCkJweW cHandle, int index, const wchar_t *charset);
 CK_VISIBLE_PUBLIC BOOL CkJweW_DecryptBd(HCkJweW cHandle, int index, HCkBinDataW bd);

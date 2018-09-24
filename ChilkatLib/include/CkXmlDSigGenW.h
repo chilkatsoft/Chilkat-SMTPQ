@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.73
+// This header is generated for Chilkat 9.5.0.75
 
 #ifndef _CkXmlDSigGenW_H
 #define _CkXmlDSigGenW_H
@@ -59,49 +59,91 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGenW  : public CkWideCharBase
 	// potential oddities or special requirements needed for providing signatures to
 	// particular systems. This is an open-ended property where new behaviors can be
 	// implemented depending on the needs encountered by Chilkat customers. The
-	// possible behaviors are listed below. (At this time, there is only one special
-	// behavior.)
-	//     ForceAddEnvelopedSignatureTransform The " " is normally only added when the
-	//     Signature is contained within the XML fragment that is signed. The meaning of
-	//     this tranformation is to tell the verifier to remove the Signature from the data
-	//     prior to canonicalizing. If the Signature is not contained within the XML
-	//     fragment that was signed, then the signature was not enveloped. There would be
-	//     no need to remove the Signature because the Signature is not contained in the
-	//     XML fragment being verified. However.. some brain-dead verifiying systems
-	//     require this Transform to be present regardless of whether it makes sense. This
-	//     behavior will cause Chilkat to add the Transform regardless.
+	// possible behaviors are listed below.
+	//     ForceAddEnvelopedSignatureTransform The "_LT_Transform
+	//     Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /> " is
+	//     normally only added when the Signature is contained within the XML fragment that
+	//     is signed. The meaning of this tranformation is to tell the verifier to remove
+	//     the Signature from the data prior to canonicalizing. If the Signature is not
+	//     contained within the XML fragment that was signed, then the signature was not
+	//     enveloped. There would be no need to remove the Signature because the Signature
+	//     is not contained in the XML fragment being verified. However.. some brain-dead
+	//     verifiying systems require this Transform to be present regardless of whether it
+	//     makes sense. This behavior will cause Chilkat to add the Transform regardless.
+	//     ebXmlTransform (introduced in v9.5.0.73) Causes the following tranform to be
+	//     added for ebXml messages:    
+	// _LT_Transform Algorithm="http://www.w3.org/TR/1999/REC-xpath-19991116">    
+	//     _LT_XPath xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">not(ancestor-or-self::node()[@SOAP-ENV:actor="urn:oasis:names:tc:ebxml-msg:actor:nextMSH"]    
+	//          | ancestor-or-self::node()[@SOAP-ENV:actor="http://schemas.xmlsoap.org/soap/actor/next"])_LT_/XPath>    
+	// _LT_/Transform>    
+	//     CompactSignedXml (introduced in v9.5.0.73) The passed-in XML to be signed is
+	//     first reformatted to a compact representation by removing all CR's, LF's, and
+	//     unnecessary whitespace so that the XML to be signed is on a single line. The
+	//     resulting XML (with signature) is also entirely contained on a single line. (If
+	//     an XML declarator is present, then it will remain on it's own line.)
+	//     IndentedSignature (introduced in v9.5.0.73) Causes the XML Signature to be
+	//     produced on multiple lines with indentation for easier human readability. The
+	//     CompactSignedXml behavior takes precedence over this behavior.
 	void get_Behaviors(CkString &str);
 	// A comma-separated list of keywords to specify special behaviors to work around
 	// potential oddities or special requirements needed for providing signatures to
 	// particular systems. This is an open-ended property where new behaviors can be
 	// implemented depending on the needs encountered by Chilkat customers. The
-	// possible behaviors are listed below. (At this time, there is only one special
-	// behavior.)
-	//     ForceAddEnvelopedSignatureTransform The " " is normally only added when the
-	//     Signature is contained within the XML fragment that is signed. The meaning of
-	//     this tranformation is to tell the verifier to remove the Signature from the data
-	//     prior to canonicalizing. If the Signature is not contained within the XML
-	//     fragment that was signed, then the signature was not enveloped. There would be
-	//     no need to remove the Signature because the Signature is not contained in the
-	//     XML fragment being verified. However.. some brain-dead verifiying systems
-	//     require this Transform to be present regardless of whether it makes sense. This
-	//     behavior will cause Chilkat to add the Transform regardless.
+	// possible behaviors are listed below.
+	//     ForceAddEnvelopedSignatureTransform The "_LT_Transform
+	//     Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /> " is
+	//     normally only added when the Signature is contained within the XML fragment that
+	//     is signed. The meaning of this tranformation is to tell the verifier to remove
+	//     the Signature from the data prior to canonicalizing. If the Signature is not
+	//     contained within the XML fragment that was signed, then the signature was not
+	//     enveloped. There would be no need to remove the Signature because the Signature
+	//     is not contained in the XML fragment being verified. However.. some brain-dead
+	//     verifiying systems require this Transform to be present regardless of whether it
+	//     makes sense. This behavior will cause Chilkat to add the Transform regardless.
+	//     ebXmlTransform (introduced in v9.5.0.73) Causes the following tranform to be
+	//     added for ebXml messages:    
+	// _LT_Transform Algorithm="http://www.w3.org/TR/1999/REC-xpath-19991116">    
+	//     _LT_XPath xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">not(ancestor-or-self::node()[@SOAP-ENV:actor="urn:oasis:names:tc:ebxml-msg:actor:nextMSH"]    
+	//          | ancestor-or-self::node()[@SOAP-ENV:actor="http://schemas.xmlsoap.org/soap/actor/next"])_LT_/XPath>    
+	// _LT_/Transform>    
+	//     CompactSignedXml (introduced in v9.5.0.73) The passed-in XML to be signed is
+	//     first reformatted to a compact representation by removing all CR's, LF's, and
+	//     unnecessary whitespace so that the XML to be signed is on a single line. The
+	//     resulting XML (with signature) is also entirely contained on a single line. (If
+	//     an XML declarator is present, then it will remain on it's own line.)
+	//     IndentedSignature (introduced in v9.5.0.73) Causes the XML Signature to be
+	//     produced on multiple lines with indentation for easier human readability. The
+	//     CompactSignedXml behavior takes precedence over this behavior.
 	const wchar_t *behaviors(void);
 	// A comma-separated list of keywords to specify special behaviors to work around
 	// potential oddities or special requirements needed for providing signatures to
 	// particular systems. This is an open-ended property where new behaviors can be
 	// implemented depending on the needs encountered by Chilkat customers. The
-	// possible behaviors are listed below. (At this time, there is only one special
-	// behavior.)
-	//     ForceAddEnvelopedSignatureTransform The " " is normally only added when the
-	//     Signature is contained within the XML fragment that is signed. The meaning of
-	//     this tranformation is to tell the verifier to remove the Signature from the data
-	//     prior to canonicalizing. If the Signature is not contained within the XML
-	//     fragment that was signed, then the signature was not enveloped. There would be
-	//     no need to remove the Signature because the Signature is not contained in the
-	//     XML fragment being verified. However.. some brain-dead verifiying systems
-	//     require this Transform to be present regardless of whether it makes sense. This
-	//     behavior will cause Chilkat to add the Transform regardless.
+	// possible behaviors are listed below.
+	//     ForceAddEnvelopedSignatureTransform The "_LT_Transform
+	//     Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /> " is
+	//     normally only added when the Signature is contained within the XML fragment that
+	//     is signed. The meaning of this tranformation is to tell the verifier to remove
+	//     the Signature from the data prior to canonicalizing. If the Signature is not
+	//     contained within the XML fragment that was signed, then the signature was not
+	//     enveloped. There would be no need to remove the Signature because the Signature
+	//     is not contained in the XML fragment being verified. However.. some brain-dead
+	//     verifiying systems require this Transform to be present regardless of whether it
+	//     makes sense. This behavior will cause Chilkat to add the Transform regardless.
+	//     ebXmlTransform (introduced in v9.5.0.73) Causes the following tranform to be
+	//     added for ebXml messages:    
+	// _LT_Transform Algorithm="http://www.w3.org/TR/1999/REC-xpath-19991116">    
+	//     _LT_XPath xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">not(ancestor-or-self::node()[@SOAP-ENV:actor="urn:oasis:names:tc:ebxml-msg:actor:nextMSH"]    
+	//          | ancestor-or-self::node()[@SOAP-ENV:actor="http://schemas.xmlsoap.org/soap/actor/next"])_LT_/XPath>    
+	// _LT_/Transform>    
+	//     CompactSignedXml (introduced in v9.5.0.73) The passed-in XML to be signed is
+	//     first reformatted to a compact representation by removing all CR's, LF's, and
+	//     unnecessary whitespace so that the XML to be signed is on a single line. The
+	//     resulting XML (with signature) is also entirely contained on a single line. (If
+	//     an XML declarator is present, then it will remain on it's own line.)
+	//     IndentedSignature (introduced in v9.5.0.73) Causes the XML Signature to be
+	//     produced on multiple lines with indentation for easier human readability. The
+	//     CompactSignedXml behavior takes precedence over this behavior.
 	void put_Behaviors(const wchar_t *newVal);
 
 	// Specifies custom XML to be inserted in the KeyInfo element of the Signature. A
@@ -155,6 +197,40 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGenW  : public CkWideCharBase
 	// ... 
 	void put_IncNamespaceUri(const wchar_t *newVal);
 
+	// If set, causes the generated KeyInfo element to include an Id attribute with
+	// this value. For example:
+	// ...
+	//    _LT_ds:KeyInfo Id="KeyInfo"_GT_
+	//       _LT_ds:X509Data_GT_
+	//          _LT_ds:X509SubjectName_GT_CERTIFICADO DE ABC_LT_/ds:X509SubjectName_GT_
+	//          _LT_ds:X509Certificate_GT_MIIITTCC....fIsIZeZOeQ=_LT_/ds:X509Certificate_GT_
+	//       _LT_/ds:X509Data_GT_
+	//    _LT_/ds:KeyInfo_GT_
+	// ...
+	void get_KeyInfoId(CkString &str);
+	// If set, causes the generated KeyInfo element to include an Id attribute with
+	// this value. For example:
+	// ...
+	//    _LT_ds:KeyInfo Id="KeyInfo"_GT_
+	//       _LT_ds:X509Data_GT_
+	//          _LT_ds:X509SubjectName_GT_CERTIFICADO DE ABC_LT_/ds:X509SubjectName_GT_
+	//          _LT_ds:X509Certificate_GT_MIIITTCC....fIsIZeZOeQ=_LT_/ds:X509Certificate_GT_
+	//       _LT_/ds:X509Data_GT_
+	//    _LT_/ds:KeyInfo_GT_
+	// ...
+	const wchar_t *keyInfoId(void);
+	// If set, causes the generated KeyInfo element to include an Id attribute with
+	// this value. For example:
+	// ...
+	//    _LT_ds:KeyInfo Id="KeyInfo"_GT_
+	//       _LT_ds:X509Data_GT_
+	//          _LT_ds:X509SubjectName_GT_CERTIFICADO DE ABC_LT_/ds:X509SubjectName_GT_
+	//          _LT_ds:X509Certificate_GT_MIIITTCC....fIsIZeZOeQ=_LT_/ds:X509Certificate_GT_
+	//       _LT_/ds:X509Data_GT_
+	//    _LT_/ds:KeyInfo_GT_
+	// ...
+	void put_KeyInfoId(const wchar_t *newVal);
+
 	// Specifies the KeyName to be inserted in the KeyInfo element of the Signature if
 	// the KeyInfoType equals "KeyName".
 	void get_KeyInfoKeyName(CkString &str);
@@ -171,9 +247,11 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGenW  : public CkWideCharBase
 	//     KeyName
 	//     KeyValue
 	//     X509Data
+	//     X509Data+KeyValue
 	//     Custom
 	// 
-	// The default value is "KeyValue".
+	// The default value is "KeyValue". The "X509Data+KeyValue" option was added in
+	// Chilkat v9.5.0.73.
 	// 
 	// If None, then no KeyInfo element is added to the Signature when generated.
 	// 
@@ -192,9 +270,11 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGenW  : public CkWideCharBase
 	//     KeyName
 	//     KeyValue
 	//     X509Data
+	//     X509Data+KeyValue
 	//     Custom
 	// 
-	// The default value is "KeyValue".
+	// The default value is "KeyValue". The "X509Data+KeyValue" option was added in
+	// Chilkat v9.5.0.73.
 	// 
 	// If None, then no KeyInfo element is added to the Signature when generated.
 	// 
@@ -213,9 +293,11 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGenW  : public CkWideCharBase
 	//     KeyName
 	//     KeyValue
 	//     X509Data
+	//     X509Data+KeyValue
 	//     Custom
 	// 
-	// The default value is "KeyValue".
+	// The default value is "KeyValue". The "X509Data+KeyValue" option was added in
+	// Chilkat v9.5.0.73.
 	// 
 	// If None, then no KeyInfo element is added to the Signature when generated.
 	// 
@@ -376,6 +458,19 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGenW  : public CkWideCharBase
 	// "sha256".
 	void put_SignedInfoDigestMethod(const wchar_t *newVal);
 
+	// Optional Id attribute to be added to the SignedInfo element. The default value
+	// is the empty string, meaning that the SignedInfo is generated without an Id
+	// attribute.
+	void get_SignedInfoId(CkString &str);
+	// Optional Id attribute to be added to the SignedInfo element. The default value
+	// is the empty string, meaning that the SignedInfo is generated without an Id
+	// attribute.
+	const wchar_t *signedInfoId(void);
+	// Optional Id attribute to be added to the SignedInfo element. The default value
+	// is the empty string, meaning that the SignedInfo is generated without an Id
+	// attribute.
+	void put_SignedInfoId(const wchar_t *newVal);
+
 	// The inclusive namespace prefix list to be added, if any, when the
 	// SignedInfoCanonAlg is equal to "EXCL_C14N". The defautl value is the empty
 	// string. If namespaces are listed, they are separated by space characters.
@@ -431,6 +526,31 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGenW  : public CkWideCharBase
 	// not apply for ECC or DSA private keys.
 	// 
 	void put_SigningAlg(const wchar_t *newVal);
+
+	// An option Id attribute value for the SignatureValue element. The default value
+	// is the empty string, which generates a SignatureValue element with no Id
+	// attribute. For example:
+	// _LT_ds:SignatureValue_GT_
+	// If this property is set to "value-id-7d4a", then the Signature element would be
+	// generated like this:
+	// _LT_ds:SignatureValue  Id="value-id-7d4a"_GT_
+	void get_SigValueId(CkString &str);
+	// An option Id attribute value for the SignatureValue element. The default value
+	// is the empty string, which generates a SignatureValue element with no Id
+	// attribute. For example:
+	// _LT_ds:SignatureValue_GT_
+	// If this property is set to "value-id-7d4a", then the Signature element would be
+	// generated like this:
+	// _LT_ds:SignatureValue  Id="value-id-7d4a"_GT_
+	const wchar_t *sigValueId(void);
+	// An option Id attribute value for the SignatureValue element. The default value
+	// is the empty string, which generates a SignatureValue element with no Id
+	// attribute. For example:
+	// _LT_ds:SignatureValue_GT_
+	// If this property is set to "value-id-7d4a", then the Signature element would be
+	// generated like this:
+	// _LT_ds:SignatureValue  Id="value-id-7d4a"_GT_
+	void put_SigValueId(const wchar_t *newVal);
 
 	// Specifies the kind of X.509 certificate information is provided in the KeyInfo
 	// element when the KeyInfoType equals "X509Data". Possible values are:
@@ -631,8 +751,28 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGenW  : public CkWideCharBase
 	// 
 	bool AddExternalXmlRef(const wchar_t *uri, CkStringBuilderW &content, const wchar_t *digestMethod, const wchar_t *canonMethod, const wchar_t *refType);
 
+	// Specifies an Object to be added to the Signature.
+	//     The id is the value of the Object element's Id attribute.
+	//     The content contains the content of the Object element, which may be XML or
+	//     plain text.
+	//     The mimeType is the value of the Object element's MimeType attribute
+	//     The encoding is the value of the Object element's Encoding attribute
+	// In most cases, the mimeType and encoding are empty strings which cause the MimeType and
+	// Encoding attributes to be omitted.
+	bool AddObject(const wchar_t *id, const wchar_t *content, const wchar_t *mimeType, const wchar_t *encoding);
+
+	// This is the same as the AddSameDocRef method, except the reference is to content
+	// within an Object previously added via the AddObject method. The id must be an
+	// Id equal to the Id attribute of an Object, or the Id attribute of an element
+	// within the Object.
+	// 
+	// Note: The canonMethod can be set to "Base64" to use the
+	// http://www.w3.org/2000/09/xmldsig#base64 transform.
+	// 
+	bool AddObjectRef(const wchar_t *id, const wchar_t *digestMethod, const wchar_t *canonMethod, const wchar_t *prefixList, const wchar_t *refType);
+
 	// Specifies a same document Reference to be added to the Signature when generated.
-	// An same document Reference can be the entire XML document, or a fragment of the
+	// A same document Reference can be the entire XML document, or a fragment of the
 	// XML document.
 	// 
 	// The id can be the empty string to sign the entire XML document, or it can be
@@ -665,6 +805,35 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGenW  : public CkWideCharBase
 	// 
 	bool AddSameDocRef(const wchar_t *id, const wchar_t *digestMethod, const wchar_t *canonMethod, const wchar_t *prefixList, const wchar_t *refType);
 
+	// Can be called one or more times to add additional namespaces to the Signature
+	// element.
+	bool AddSignatureNamespace(const wchar_t *nsPrefix, const wchar_t *nsUri);
+
+	// This method will construct and return the canonicalized SignedInfo XML. The
+	// digests of each Reference are computed and included in the SignedInfo. This
+	// method is provided for certain special circumstances where one wants to get the
+	// exact canonicalized SignedInfo that would be signed using the private key.
+	// 
+	// Note: Properties such as SigLocation, SigningAlg, etc. and references must be
+	// set exactly as if an XML signature was to be actually generated because they
+	// determine the content of the SignedInfo.
+	// 
+	// Note, the sbXml is not signed by this method. It is not modified.
+	// 
+	bool ConstructSignedInfo(CkStringBuilderW &sbXml, CkString &outStr);
+	// This method will construct and return the canonicalized SignedInfo XML. The
+	// digests of each Reference are computed and included in the SignedInfo. This
+	// method is provided for certain special circumstances where one wants to get the
+	// exact canonicalized SignedInfo that would be signed using the private key.
+	// 
+	// Note: Properties such as SigLocation, SigningAlg, etc. and references must be
+	// set exactly as if an XML signature was to be actually generated because they
+	// determine the content of the SignedInfo.
+	// 
+	// Note, the sbXml is not signed by this method. It is not modified.
+	// 
+	const wchar_t *constructSignedInfo(CkStringBuilderW &sbXml);
+
 	// Creates an XML Digital Signature. The application passes in the XML to be
 	// signed, and the signed XML is returned. If creating an enveloping signature
 	// where the Signature element is the root, then the inXml may be the empty string.
@@ -689,6 +858,9 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGenW  : public CkWideCharBase
 	// Sets the private key to be used for creating the XML signature. The private key
 	// may be an RSA key, a DSA key, or an ECDSA key.
 	bool SetPrivateKey(CkPrivateKeyW &privKey);
+
+	// Sets the "Id" attribute for a Reference.
+	bool SetRefIdAttr(const wchar_t *uri_or_id, const wchar_t *value);
 
 	// Specifies the X.509 certificate to be used for the KeyInfo element when the
 	// KeyInfoType equals "X509Data". If usePrivateKey is true, then the private key will also

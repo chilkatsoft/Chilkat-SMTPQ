@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.73
+// This header is generated for Chilkat 9.5.0.75
 
 #ifndef _CkCert_H
 #define _CkCert_H
@@ -263,6 +263,11 @@ class CK_VISIBLE_PUBLIC CkCert  : public CkMultiByteBase
 	// true if this is a self-signed certificate, otherwise false.
 	bool get_SelfSigned(void);
 
+	// The certificate's serial number as a decimal string.
+	void get_SerialDecimal(CkString &str);
+	// The certificate's serial number as a decimal string.
+	const char *serialDecimal(void);
+
 	// The certificate's serial number as a hexidecimal string.
 	void get_SerialNumber(CkString &str);
 	// The certificate's serial number as a hexidecimal string.
@@ -288,6 +293,16 @@ class CK_VISIBLE_PUBLIC CkCert  : public CkMultiByteBase
 	// provide information about the key container and private key: CspName,
 	// KeyContainerName, MachineKeyset, and Silent.
 	bool get_Silent(void);
+
+	// Can be set to the PIN value for a certificate / private key stored on a smart
+	// card.
+	void get_SmartCardPin(CkString &str);
+	// Can be set to the PIN value for a certificate / private key stored on a smart
+	// card.
+	const char *smartCardPin(void);
+	// Can be set to the PIN value for a certificate / private key stored on a smart
+	// card.
+	void put_SmartCardPin(const char *newVal);
 
 	// The certificate subject's country.
 	void get_SubjectC(CkString &str);
@@ -586,6 +601,32 @@ class CK_VISIBLE_PUBLIC CkCert  : public CkMultiByteBase
 	// The caller is responsible for deleting the object returned by this method.
 	CkDateTime *GetValidToDt(void);
 
+
+	// Returns an encoded hash of a particular part of the certificate. The part may be
+	// one of the following:
+	//     IssuerDN
+	//     IssuerPublicKey
+	//     SubjectDN
+	//     SubjectPublicKey
+	// 
+	// The hashAlg is the name of the hash algorithm, such as "sha1", "sha256", "sha384",
+	// "sha512", "md5", etc. The encoding is the format to return, such as "hex", "base64",
+	// etc.
+	// 
+	bool HashOf(const char *part, const char *hashAlg, const char *encoding, CkString &outStr);
+
+	// Returns an encoded hash of a particular part of the certificate. The part may be
+	// one of the following:
+	//     IssuerDN
+	//     IssuerPublicKey
+	//     SubjectDN
+	//     SubjectPublicKey
+	// 
+	// The hashAlg is the name of the hash algorithm, such as "sha1", "sha256", "sha384",
+	// "sha512", "md5", etc. The encoding is the format to return, such as "hex", "base64",
+	// etc.
+	// 
+	const char *hashOf(const char *part, const char *hashAlg, const char *encoding);
 
 	// Returns true if the private key is installed on the local system for the
 	// certificate.

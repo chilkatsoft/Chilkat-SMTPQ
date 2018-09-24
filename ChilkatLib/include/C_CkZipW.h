@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.73
+// This is a generated source file for Chilkat version 9.5.0.75
 #ifndef _C_CkZipWH
 #define _C_CkZipWH
 #include "chilkatDefs.h"
@@ -17,16 +17,16 @@ CK_VISIBLE_PUBLIC BOOL CkZipW_getAbortCurrent(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC void  CkZipW_putAbortCurrent(HCkZipW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkZipW_getAppendFromDir(HCkZipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkZipW_putAppendFromDir(HCkZipW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipW_getAppendFromDir(HCkZipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipW_appendFromDir(HCkZipW cHandle);
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZipW_getAutoRun(HCkZipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkZipW_putAutoRun(HCkZipW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipW_getAutoRun(HCkZipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipW_autoRun(HCkZipW cHandle);
 #endif
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZipW_getAutoRunParams(HCkZipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkZipW_putAutoRunParams(HCkZipW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipW_getAutoRunParams(HCkZipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipW_autoRunParams(HCkZipW cHandle);
 #endif
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC BOOL CkZipW_getAutoTemp(HCkZipW cHandle);
@@ -40,13 +40,13 @@ CK_VISIBLE_PUBLIC BOOL CkZipW_getClearReadOnlyAttr(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC void  CkZipW_putClearReadOnlyAttr(HCkZipW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkZipW_getComment(HCkZipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkZipW_putComment(HCkZipW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipW_getComment(HCkZipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipW_comment(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC void CkZipW_getDebugLogFilePath(HCkZipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkZipW_putDebugLogFilePath(HCkZipW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipW_getDebugLogFilePath(HCkZipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipW_debugLogFilePath(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC void CkZipW_getDecryptPassword(HCkZipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkZipW_putDecryptPassword(HCkZipW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipW_getDecryptPassword(HCkZipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipW_decryptPassword(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkZipW_getDiscardPaths(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC void  CkZipW_putDiscardPaths(HCkZipW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkZipW_getEncryption(HCkZipW cHandle);
@@ -55,11 +55,11 @@ CK_VISIBLE_PUBLIC int CkZipW_getEncryptKeyLength(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC void  CkZipW_putEncryptKeyLength(HCkZipW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkZipW_getEncryptPassword(HCkZipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkZipW_putEncryptPassword(HCkZipW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipW_getEncryptPassword(HCkZipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipW_encryptPassword(HCkZipW cHandle);
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZipW_getExeDefaultDir(HCkZipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkZipW_putExeDefaultDir(HCkZipW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipW_getExeDefaultDir(HCkZipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipW_exeDefaultDir(HCkZipW cHandle);
 #endif
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC BOOL CkZipW_getExeFinishNotifier(HCkZipW cHandle);
@@ -68,7 +68,7 @@ CK_VISIBLE_PUBLIC void  CkZipW_putExeFinishNotifier(HCkZipW cHandle, BOOL newVal
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZipW_getExeIconFile(HCkZipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkZipW_putExeIconFile(HCkZipW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipW_getExeIconFile(HCkZipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipW_exeIconFile(HCkZipW cHandle);
 #endif
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC BOOL CkZipW_getExeNoInterface(HCkZipW cHandle);
@@ -81,17 +81,17 @@ CK_VISIBLE_PUBLIC void  CkZipW_putExeSilentProgress(HCkZipW cHandle, BOOL newVal
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZipW_getExeTitle(HCkZipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkZipW_putExeTitle(HCkZipW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipW_getExeTitle(HCkZipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipW_exeTitle(HCkZipW cHandle);
 #endif
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZipW_getExeUnzipCaption(HCkZipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkZipW_putExeUnzipCaption(HCkZipW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipW_getExeUnzipCaption(HCkZipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipW_exeUnzipCaption(HCkZipW cHandle);
 #endif
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZipW_getExeUnzipDir(HCkZipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkZipW_putExeUnzipDir(HCkZipW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipW_getExeUnzipDir(HCkZipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipW_exeUnzipDir(HCkZipW cHandle);
 #endif
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC BOOL CkZipW_getExeWaitForSetup(HCkZipW cHandle);
@@ -100,23 +100,23 @@ CK_VISIBLE_PUBLIC void  CkZipW_putExeWaitForSetup(HCkZipW cHandle, BOOL newVal);
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC void CkZipW_getExeXmlConfig(HCkZipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkZipW_putExeXmlConfig(HCkZipW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipW_getExeXmlConfig(HCkZipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipW_exeXmlConfig(HCkZipW cHandle);
 #endif
 CK_VISIBLE_PUBLIC int CkZipW_getFileCount(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC void CkZipW_getFileName(HCkZipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkZipW_putFileName(HCkZipW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipW_getFileName(HCkZipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipW_fileName(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkZipW_getHasZipFormatErrors(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC int CkZipW_getHeartbeatMs(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC void  CkZipW_putHeartbeatMs(HCkZipW cHandle, int newVal);
 CK_VISIBLE_PUBLIC BOOL CkZipW_getIgnoreAccessDenied(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC void  CkZipW_putIgnoreAccessDenied(HCkZipW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkZipW_getLastErrorHtml(HCkZipW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipW_getLastErrorHtml(HCkZipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipW_lastErrorHtml(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC void CkZipW_getLastErrorText(HCkZipW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipW_getLastErrorText(HCkZipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipW_lastErrorText(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC void CkZipW_getLastErrorXml(HCkZipW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipW_getLastErrorXml(HCkZipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipW_lastErrorXml(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkZipW_getLastMethodSuccess(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC void  CkZipW_putLastMethodSuccess(HCkZipW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkZipW_getNumEntries(HCkZipW cHandle);
@@ -128,26 +128,26 @@ CK_VISIBLE_PUBLIC BOOL CkZipW_getPasswordProtect(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC void  CkZipW_putPasswordProtect(HCkZipW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkZipW_getPathPrefix(HCkZipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkZipW_putPathPrefix(HCkZipW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipW_getPathPrefix(HCkZipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipW_pathPrefix(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC int CkZipW_getPercentDoneScale(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC void  CkZipW_putPercentDoneScale(HCkZipW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkZipW_getPwdProtCharset(HCkZipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkZipW_putPwdProtCharset(HCkZipW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipW_getPwdProtCharset(HCkZipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipW_pwdProtCharset(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC void CkZipW_getTempDir(HCkZipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkZipW_putTempDir(HCkZipW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipW_getTempDir(HCkZipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipW_tempDir(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkZipW_getTextFlag(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC void  CkZipW_putTextFlag(HCkZipW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkZipW_getVerboseLogging(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC void  CkZipW_putVerboseLogging(HCkZipW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkZipW_getVersion(HCkZipW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipW_getVersion(HCkZipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipW_version(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkZipW_getZipx(HCkZipW cHandle);
 CK_VISIBLE_PUBLIC void  CkZipW_putZipx(HCkZipW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkZipW_getZipxDefaultAlg(HCkZipW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkZipW_putZipxDefaultAlg(HCkZipW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipW_getZipxDefaultAlg(HCkZipW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipW_zipxDefaultAlg(HCkZipW cHandle);
 #if defined(CK_SFX_INCLUDED)
 CK_VISIBLE_PUBLIC BOOL CkZipW_AddEmbedded(HCkZipW cHandle, const wchar_t *exeFilename, const wchar_t *resourceName, const wchar_t *zipFilename);
 #endif

@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.73
+// This is a generated source file for Chilkat version 9.5.0.75
 #ifndef _C_CkSecureStringWH
 #define _C_CkSecureStringWH
 #include "chilkatDefs.h"
@@ -12,7 +12,7 @@ CK_VISIBLE_PUBLIC BOOL CkSecureStringW_getLastMethodSuccess(HCkSecureStringW cHa
 CK_VISIBLE_PUBLIC void  CkSecureStringW_putLastMethodSuccess(HCkSecureStringW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkSecureStringW_getMaintainHash(HCkSecureStringW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkSecureStringW_putMaintainHash(HCkSecureStringW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkSecureStringW_getMaintainHash(HCkSecureStringW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkSecureStringW_maintainHash(HCkSecureStringW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSecureStringW_getReadOnly(HCkSecureStringW cHandle);
 CK_VISIBLE_PUBLIC void  CkSecureStringW_putReadOnly(HCkSecureStringW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkSecureStringW_Access(HCkSecureStringW cHandle, HCkString outStr);

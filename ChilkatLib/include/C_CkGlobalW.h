@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.73
+// This is a generated source file for Chilkat version 9.5.0.75
 #ifndef _C_CkGlobalWH
 #define _C_CkGlobalWH
 #include "chilkatDefs.h"
@@ -12,7 +12,7 @@ CK_VISIBLE_PUBLIC int CkGlobalW_getAnsiCodePage(HCkGlobalW cHandle);
 CK_VISIBLE_PUBLIC void  CkGlobalW_putAnsiCodePage(HCkGlobalW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkGlobalW_getDebugLogFilePath(HCkGlobalW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkGlobalW_putDebugLogFilePath(HCkGlobalW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkGlobalW_getDebugLogFilePath(HCkGlobalW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkGlobalW_debugLogFilePath(HCkGlobalW cHandle);
 CK_VISIBLE_PUBLIC int CkGlobalW_getDefaultNtlmVersion(HCkGlobalW cHandle);
 CK_VISIBLE_PUBLIC void  CkGlobalW_putDefaultNtlmVersion(HCkGlobalW cHandle, int newVal);
 CK_VISIBLE_PUBLIC BOOL CkGlobalW_getDefaultUtf8(HCkGlobalW cHandle);
@@ -22,11 +22,11 @@ CK_VISIBLE_PUBLIC void  CkGlobalW_putDnsTimeToLive(HCkGlobalW cHandle, int newVa
 CK_VISIBLE_PUBLIC BOOL CkGlobalW_getEnableDnsCaching(HCkGlobalW cHandle);
 CK_VISIBLE_PUBLIC void  CkGlobalW_putEnableDnsCaching(HCkGlobalW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkGlobalW_getLastErrorHtml(HCkGlobalW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkGlobalW_getLastErrorHtml(HCkGlobalW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkGlobalW_lastErrorHtml(HCkGlobalW cHandle);
 CK_VISIBLE_PUBLIC void CkGlobalW_getLastErrorText(HCkGlobalW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkGlobalW_getLastErrorText(HCkGlobalW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkGlobalW_lastErrorText(HCkGlobalW cHandle);
 CK_VISIBLE_PUBLIC void CkGlobalW_getLastErrorXml(HCkGlobalW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkGlobalW_getLastErrorXml(HCkGlobalW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkGlobalW_lastErrorXml(HCkGlobalW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkGlobalW_getLastMethodSuccess(HCkGlobalW cHandle);
 CK_VISIBLE_PUBLIC void  CkGlobalW_putLastMethodSuccess(HCkGlobalW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkGlobalW_getMaxThreads(HCkGlobalW cHandle);
@@ -35,14 +35,14 @@ CK_VISIBLE_PUBLIC BOOL CkGlobalW_getPreferIpv6(HCkGlobalW cHandle);
 CK_VISIBLE_PUBLIC void  CkGlobalW_putPreferIpv6(HCkGlobalW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkGlobalW_getThreadPoolLogPath(HCkGlobalW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkGlobalW_putThreadPoolLogPath(HCkGlobalW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkGlobalW_getThreadPoolLogPath(HCkGlobalW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkGlobalW_threadPoolLogPath(HCkGlobalW cHandle);
 CK_VISIBLE_PUBLIC int CkGlobalW_getUnlockStatus(HCkGlobalW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkGlobalW_getUsePkcsConstructedEncoding(HCkGlobalW cHandle);
 CK_VISIBLE_PUBLIC void  CkGlobalW_putUsePkcsConstructedEncoding(HCkGlobalW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkGlobalW_getVerboseLogging(HCkGlobalW cHandle);
 CK_VISIBLE_PUBLIC void  CkGlobalW_putVerboseLogging(HCkGlobalW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkGlobalW_getVersion(HCkGlobalW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkGlobalW_getVersion(HCkGlobalW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkGlobalW_version(HCkGlobalW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkGlobalW_DnsClearCache(HCkGlobalW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkGlobalW_FinalizeThreadPool(HCkGlobalW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkGlobalW_SaveLastError(HCkGlobalW cHandle, const wchar_t *path);

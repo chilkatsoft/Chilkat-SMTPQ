@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.73
+// This is a generated source file for Chilkat version 9.5.0.75
 #ifndef _C_CkSsh_H
 #define _C_CkSsh_H
 #include "chilkatDefs.h"
@@ -27,6 +27,8 @@ CK_VISIBLE_PUBLIC const char *CkSsh_clientIdentifier(HCkSsh cHandle);
 CK_VISIBLE_PUBLIC void CkSsh_getClientIpAddress(HCkSsh cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkSsh_putClientIpAddress(HCkSsh cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkSsh_clientIpAddress(HCkSsh cHandle);
+CK_VISIBLE_PUBLIC int CkSsh_getClientPort(HCkSsh cHandle);
+CK_VISIBLE_PUBLIC void CkSsh_putClientPort(HCkSsh cHandle, int newVal);
 CK_VISIBLE_PUBLIC int CkSsh_getConnectTimeoutMs(HCkSsh cHandle);
 CK_VISIBLE_PUBLIC void CkSsh_putConnectTimeoutMs(HCkSsh cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkSsh_getDebugLogFilePath(HCkSsh cHandle, HCkString retval);

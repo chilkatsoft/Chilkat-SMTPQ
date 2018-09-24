@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.73
+// This header is generated for Chilkat 9.5.0.75
 
 #ifndef _CkFtp2W_H
 #define _CkFtp2W_H
@@ -3649,13 +3649,7 @@ class CK_VISIBLE_PUBLIC CkFtp2W  : public CkClassWithCallbacksW
 	// "subDir/*.xml", etc.
 	// 
 	// The format of the XML returned is:
-	// <nlst>
-	// <e>filename_or_dir_1</e>
-	// <e>filename_or_dir_2</e>
-	// <e>filename_or_dir_3</e>
-	// <e>filename_or_dir_4</e>
-	// ...
-	// </nlst>
+	// filename_or_dir_1filename_or_dir_2filename_or_dir_3filename_or_dir_4...
 	// 
 	bool NlstXml(const wchar_t *remoteDirPattern, CkString &outStr);
 	// Sends an NLST command to the FTP server and returns the results in XML format.
@@ -3664,13 +3658,7 @@ class CK_VISIBLE_PUBLIC CkFtp2W  : public CkClassWithCallbacksW
 	// "subDir/*.xml", etc.
 	// 
 	// The format of the XML returned is:
-	// <nlst>
-	// <e>filename_or_dir_1</e>
-	// <e>filename_or_dir_2</e>
-	// <e>filename_or_dir_3</e>
-	// <e>filename_or_dir_4</e>
-	// ...
-	// </nlst>
+	// filename_or_dir_1filename_or_dir_2filename_or_dir_3filename_or_dir_4...
 	// 
 	const wchar_t *nlstXml(const wchar_t *remoteDirPattern);
 

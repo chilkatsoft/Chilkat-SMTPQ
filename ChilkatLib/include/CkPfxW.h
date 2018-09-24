@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.73
+// This header is generated for Chilkat 9.5.0.75
 
 #ifndef _CkPfxW_H
 #define _CkPfxW_H
@@ -224,8 +224,7 @@ class CK_VISIBLE_PUBLIC CkPfxW  : public CkWideCharBase
 	// encrypted, then password is the password to be used. Otherwise, password may be left
 	// empty. For example:
 	// Bag Attributes
-	//     Microsoft Local Key set: <No Values>
-	//     localKeyID: 01 00 00 00 
+	//     Microsoft Local Key set: localKeyID: 01 00 00 00 
 	//     friendlyName: le-2b09a3d2-9037-4a05-95cc-4d44518e8607
 	//     Microsoft CSP Name: Microsoft RSA SChannel Cryptographic Provider
 	// Key Attributes
@@ -272,8 +271,7 @@ class CK_VISIBLE_PUBLIC CkPfxW  : public CkWideCharBase
 	// encrypted, then password is the password to be used. Otherwise, password may be left
 	// empty. For example:
 	// Bag Attributes
-	//     Microsoft Local Key set: <No Values>
-	//     localKeyID: 01 00 00 00 
+	//     Microsoft Local Key set: localKeyID: 01 00 00 00 
 	//     friendlyName: le-2b09a3d2-9037-4a05-95cc-4d44518e8607
 	//     Microsoft CSP Name: Microsoft RSA SChannel Cryptographic Provider
 	// Key Attributes

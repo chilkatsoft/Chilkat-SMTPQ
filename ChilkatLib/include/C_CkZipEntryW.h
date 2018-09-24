@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.73
+// This is a generated source file for Chilkat version 9.5.0.75
 #ifndef _C_CkZipEntryWH
 #define _C_CkZipEntryWH
 #include "chilkatDefs.h"
@@ -15,11 +15,11 @@ CK_VISIBLE_PUBLIC HCkZipEntryW CkZipEntryW_Create(void);
 CK_VISIBLE_PUBLIC void CkZipEntryW_Dispose(HCkZipEntryW handle);
 CK_VISIBLE_PUBLIC void CkZipEntryW_getComment(HCkZipEntryW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkZipEntryW_putComment(HCkZipEntryW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipEntryW_getComment(HCkZipEntryW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipEntryW_comment(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC unsigned long CkZipEntryW_getCompressedLength(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC __int64 CkZipEntryW_getCompressedLength64(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC void CkZipEntryW_getCompressedLengthStr(HCkZipEntryW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipEntryW_getCompressedLengthStr(HCkZipEntryW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipEntryW_compressedLengthStr(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC int CkZipEntryW_getCompressionLevel(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC void  CkZipEntryW_putCompressionLevel(HCkZipEntryW cHandle, int newVal);
 CK_VISIBLE_PUBLIC int CkZipEntryW_getCompressionMethod(HCkZipEntryW cHandle);
@@ -27,7 +27,7 @@ CK_VISIBLE_PUBLIC void  CkZipEntryW_putCompressionMethod(HCkZipEntryW cHandle, i
 CK_VISIBLE_PUBLIC int CkZipEntryW_getCrc(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC void CkZipEntryW_getDebugLogFilePath(HCkZipEntryW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkZipEntryW_putDebugLogFilePath(HCkZipEntryW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipEntryW_getDebugLogFilePath(HCkZipEntryW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipEntryW_debugLogFilePath(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC int CkZipEntryW_getEncryptionKeyLen(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC int CkZipEntryW_getEntryID(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC int CkZipEntryW_getEntryType(HCkZipEntryW cHandle);
@@ -35,22 +35,22 @@ CK_VISIBLE_PUBLIC void CkZipEntryW_getFileDateTime(HCkZipEntryW cHandle, SYSTEMT
 CK_VISIBLE_PUBLIC void  CkZipEntryW_putFileDateTime(HCkZipEntryW cHandle, SYSTEMTIME *newVal);
 CK_VISIBLE_PUBLIC void CkZipEntryW_getFileDateTimeStr(HCkZipEntryW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkZipEntryW_putFileDateTimeStr(HCkZipEntryW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipEntryW_getFileDateTimeStr(HCkZipEntryW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipEntryW_fileDateTimeStr(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC void CkZipEntryW_getFileName(HCkZipEntryW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkZipEntryW_putFileName(HCkZipEntryW cHandle, const wchar_t *newVal);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipEntryW_getFileName(HCkZipEntryW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipEntryW_fileName(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC void CkZipEntryW_getFileNameHex(HCkZipEntryW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipEntryW_getFileNameHex(HCkZipEntryW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipEntryW_fileNameHex(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC int CkZipEntryW_getHeartbeatMs(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC void  CkZipEntryW_putHeartbeatMs(HCkZipEntryW cHandle, int newVal);
 CK_VISIBLE_PUBLIC BOOL CkZipEntryW_getIsAesEncrypted(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkZipEntryW_getIsDirectory(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC void CkZipEntryW_getLastErrorHtml(HCkZipEntryW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipEntryW_getLastErrorHtml(HCkZipEntryW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipEntryW_lastErrorHtml(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC void CkZipEntryW_getLastErrorText(HCkZipEntryW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipEntryW_getLastErrorText(HCkZipEntryW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipEntryW_lastErrorText(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC void CkZipEntryW_getLastErrorXml(HCkZipEntryW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipEntryW_getLastErrorXml(HCkZipEntryW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipEntryW_lastErrorXml(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkZipEntryW_getLastMethodSuccess(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC void  CkZipEntryW_putLastMethodSuccess(HCkZipEntryW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkZipEntryW_getTextFlag(HCkZipEntryW cHandle);
@@ -58,11 +58,11 @@ CK_VISIBLE_PUBLIC void  CkZipEntryW_putTextFlag(HCkZipEntryW cHandle, BOOL newVa
 CK_VISIBLE_PUBLIC unsigned long CkZipEntryW_getUncompressedLength(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC __int64 CkZipEntryW_getUncompressedLength64(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC void CkZipEntryW_getUncompressedLengthStr(HCkZipEntryW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipEntryW_getUncompressedLengthStr(HCkZipEntryW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipEntryW_uncompressedLengthStr(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkZipEntryW_getVerboseLogging(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC void  CkZipEntryW_putVerboseLogging(HCkZipEntryW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkZipEntryW_getVersion(HCkZipEntryW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkZipEntryW_getVersion(HCkZipEntryW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkZipEntryW_version(HCkZipEntryW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkZipEntryW_AppendData(HCkZipEntryW cHandle, HCkByteData inData);
 CK_VISIBLE_PUBLIC HCkTaskW CkZipEntryW_AppendDataAsync(HCkZipEntryW cHandle, HCkByteData inData);
 CK_VISIBLE_PUBLIC BOOL CkZipEntryW_AppendString(HCkZipEntryW cHandle, const wchar_t *strContent, const wchar_t *charset);

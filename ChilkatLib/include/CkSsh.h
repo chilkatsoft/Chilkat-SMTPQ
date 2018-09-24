@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.73
+// This header is generated for Chilkat 9.5.0.75
 
 #ifndef _CkSsh_H
 #define _CkSsh_H
@@ -222,6 +222,25 @@ class CK_VISIBLE_PUBLIC CkSsh  : public CkClassWithCallbacks
 	// names, such as "165.164.55.124".
 	// 
 	void put_ClientIpAddress(const char *newVal);
+
+	// Normally left at the default value of 0, in which case a unique port is assigned
+	// with a value between 1024 and 5000. This property would only be changed if it is
+	// specifically required. For example, one customer's requirements are as follows:
+	// 
+	//     "I have to connect to a Siemens PLC IP server on a technical network. This
+	//     machine expects that I connect to its server from a specific IP address using a
+	//     specific port otherwise the build in security disconnect the IP connection."
+	// 
+	int get_ClientPort(void);
+	// Normally left at the default value of 0, in which case a unique port is assigned
+	// with a value between 1024 and 5000. This property would only be changed if it is
+	// specifically required. For example, one customer's requirements are as follows:
+	// 
+	//     "I have to connect to a Siemens PLC IP server on a technical network. This
+	//     machine expects that I connect to its server from a specific IP address using a
+	//     specific port otherwise the build in security disconnect the IP connection."
+	// 
+	void put_ClientPort(int newVal);
 
 	// Maximum number of milliseconds to wait when connecting to an SSH server.
 	int get_ConnectTimeoutMs(void);

@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.73
+// This header is generated for Chilkat 9.5.0.75
 
 #ifndef _CkZipCrc_H
 #define _CkZipCrc_H
@@ -13,6 +13,8 @@
 #include "CkClassWithCallbacks.h"
 
 class CkByteData;
+class CkBinData;
+class CkStringBuilder;
 class CkTask;
 class CkBaseProgress;
 
@@ -68,6 +70,24 @@ class CK_VISIBLE_PUBLIC CkZipCrc  : public CkClassWithCallbacks
 	// would be found in a Zip file header if a file containing the data was added to a
 	// zip archive. Returns the CRC32 of the data.
 	unsigned long CalculateCrc(CkByteData &data);
+
+
+	// Calculates a CRC32 for the bytes contained in bd.
+	unsigned long CrcBd(CkBinData &bd);
+
+
+	// Calculates a CRC32 for the string contained in sb. The charset is the byte
+	// representation to be used for the sb when calculating the CRC32. It can be
+	// utf-8, utf-16, windows-1252, iso-8859-1, or any of the character encodings
+	// (charsets) listed at the link below.
+	unsigned long CrcSb(CkStringBuilder &sb, const char *charset);
+
+
+	// Calculates a CRC32 for a string. The charset is the byte representation to be used
+	// for the str when calculating the CRC32. It can be utf-8, utf-16, windows-1252,
+	// iso-8859-1, or any of the character encodings (charsets) listed at the link
+	// below.
+	unsigned long CrcString(const char *str, const char *charset);
 
 
 	// Finalizes and returns the Zip CRC value calculated by calling BeginStream

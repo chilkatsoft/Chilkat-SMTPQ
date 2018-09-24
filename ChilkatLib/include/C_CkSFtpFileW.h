@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.73
+// This is a generated source file for Chilkat version 9.5.0.75
 #ifndef _C_CkSFtpFileWH
 #define _C_CkSFtpFileWH
 #include "chilkatDefs.h"
@@ -10,14 +10,14 @@ CK_VISIBLE_PUBLIC HCkSFtpFileW CkSFtpFileW_Create(void);
 CK_VISIBLE_PUBLIC void CkSFtpFileW_Dispose(HCkSFtpFileW handle);
 CK_VISIBLE_PUBLIC void CkSFtpFileW_getCreateTime(HCkSFtpFileW cHandle, SYSTEMTIME * retval);
 CK_VISIBLE_PUBLIC void CkSFtpFileW_getCreateTimeStr(HCkSFtpFileW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkSFtpFileW_getCreateTimeStr(HCkSFtpFileW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkSFtpFileW_createTimeStr(HCkSFtpFileW cHandle);
 CK_VISIBLE_PUBLIC void CkSFtpFileW_getFilename(HCkSFtpFileW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkSFtpFileW_getFilename(HCkSFtpFileW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkSFtpFileW_filename(HCkSFtpFileW cHandle);
 CK_VISIBLE_PUBLIC void CkSFtpFileW_getFileType(HCkSFtpFileW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkSFtpFileW_getFileType(HCkSFtpFileW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkSFtpFileW_fileType(HCkSFtpFileW cHandle);
 CK_VISIBLE_PUBLIC int CkSFtpFileW_getGid(HCkSFtpFileW cHandle);
 CK_VISIBLE_PUBLIC void CkSFtpFileW_getGroup(HCkSFtpFileW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkSFtpFileW_getGroup(HCkSFtpFileW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkSFtpFileW_group(HCkSFtpFileW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSFtpFileW_getIsAppendOnly(HCkSFtpFileW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSFtpFileW_getIsArchive(HCkSFtpFileW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSFtpFileW_getIsCaseInsensitive(HCkSFtpFileW cHandle);
@@ -34,19 +34,19 @@ CK_VISIBLE_PUBLIC BOOL CkSFtpFileW_getIsSync(HCkSFtpFileW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSFtpFileW_getIsSystem(HCkSFtpFileW cHandle);
 CK_VISIBLE_PUBLIC void CkSFtpFileW_getLastAccessTime(HCkSFtpFileW cHandle, SYSTEMTIME * retval);
 CK_VISIBLE_PUBLIC void CkSFtpFileW_getLastAccessTimeStr(HCkSFtpFileW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkSFtpFileW_getLastAccessTimeStr(HCkSFtpFileW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkSFtpFileW_lastAccessTimeStr(HCkSFtpFileW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSFtpFileW_getLastMethodSuccess(HCkSFtpFileW cHandle);
 CK_VISIBLE_PUBLIC void  CkSFtpFileW_putLastMethodSuccess(HCkSFtpFileW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkSFtpFileW_getLastModifiedTime(HCkSFtpFileW cHandle, SYSTEMTIME * retval);
 CK_VISIBLE_PUBLIC void CkSFtpFileW_getLastModifiedTimeStr(HCkSFtpFileW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkSFtpFileW_getLastModifiedTimeStr(HCkSFtpFileW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkSFtpFileW_lastModifiedTimeStr(HCkSFtpFileW cHandle);
 CK_VISIBLE_PUBLIC void CkSFtpFileW_getOwner(HCkSFtpFileW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkSFtpFileW_getOwner(HCkSFtpFileW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkSFtpFileW_owner(HCkSFtpFileW cHandle);
 CK_VISIBLE_PUBLIC int CkSFtpFileW_getPermissions(HCkSFtpFileW cHandle);
 CK_VISIBLE_PUBLIC int CkSFtpFileW_getSize32(HCkSFtpFileW cHandle);
 CK_VISIBLE_PUBLIC __int64 CkSFtpFileW_getSize64(HCkSFtpFileW cHandle);
 CK_VISIBLE_PUBLIC void CkSFtpFileW_getSizeStr(HCkSFtpFileW cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkSFtpFileW_getSizeStr(HCkSFtpFileW cHandle);
+CK_VISIBLE_PUBLIC const wchar_t *CkSFtpFileW_sizeStr(HCkSFtpFileW cHandle);
 CK_VISIBLE_PUBLIC int CkSFtpFileW_getUid(HCkSFtpFileW cHandle);
 CK_VISIBLE_PUBLIC HCkDateTimeW CkSFtpFileW_GetCreateDt(HCkSFtpFileW cHandle);
 CK_VISIBLE_PUBLIC HCkDateTimeW CkSFtpFileW_GetLastAccessDt(HCkSFtpFileW cHandle);

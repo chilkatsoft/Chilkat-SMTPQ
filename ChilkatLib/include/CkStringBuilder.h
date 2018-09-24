@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.73
+// This header is generated for Chilkat 9.5.0.75
 
 #ifndef _CkStringBuilder_H
 #define _CkStringBuilder_H
@@ -307,8 +307,8 @@ class CK_VISIBLE_PUBLIC CkStringBuilder  : public CkMultiByteBase
 	bool ReplaceAfterFinal(const char *marker, const char *replacement);
 
 
-	// Replaces the first occurrence of the content found between beginMark and endMark with
-	// replacement. The beginMark and endMark are included in what is replaced if replaceMarks is true.
+	// Replaces the first occurrence of ALL the content found between beginMark and endMark
+	// with replacement. The beginMark and endMark are included in what is replaced if replaceMarks is true.
 	bool ReplaceAllBetween(const char *beginMark, const char *endMark, const char *replacement, bool replaceMarks);
 
 
