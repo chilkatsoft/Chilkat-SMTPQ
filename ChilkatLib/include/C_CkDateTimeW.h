@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkDateTimeWH
 #define _C_CkDateTimeWH
 #include "chilkatDefs.h"
@@ -43,7 +43,9 @@ CK_VISIBLE_PUBLIC const wchar_t *CkDateTimeW_getAsRfc822(HCkDateTimeW cHandle, B
 CK_VISIBLE_PUBLIC BOOL CkDateTimeW_GetAsSystemTime(HCkDateTimeW cHandle, BOOL bLocal, SYSTEMTIME *outSysTime);
 CK_VISIBLE_PUBLIC BOOL CkDateTimeW_GetAsTimestamp(HCkDateTimeW cHandle, BOOL bLocal, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkDateTimeW_getAsTimestamp(HCkDateTimeW cHandle, BOOL bLocal);
+#if !defined(CK_GO_LANG)
 CK_VISIBLE_PUBLIC void CkDateTimeW_GetAsTmStruct(HCkDateTimeW cHandle, BOOL bLocal, struct tm * tmbuf);
+#endif
 CK_VISIBLE_PUBLIC unsigned long CkDateTimeW_GetAsUnixTime(HCkDateTimeW cHandle, BOOL bLocal);
 CK_VISIBLE_PUBLIC __int64 CkDateTimeW_GetAsUnixTime64(HCkDateTimeW cHandle, BOOL bLocal);
 CK_VISIBLE_PUBLIC double CkDateTimeW_GetAsUnixTimeDbl(HCkDateTimeW cHandle, BOOL bLocal);
@@ -75,7 +77,9 @@ CK_VISIBLE_PUBLIC BOOL CkDateTimeW_SetFromOleDate(HCkDateTimeW cHandle, BOOL bLo
 CK_VISIBLE_PUBLIC BOOL CkDateTimeW_SetFromRfc822(HCkDateTimeW cHandle, const wchar_t *rfc822Str);
 CK_VISIBLE_PUBLIC BOOL CkDateTimeW_SetFromSystemTime(HCkDateTimeW cHandle, BOOL bLocal, SYSTEMTIME * sysTime);
 CK_VISIBLE_PUBLIC BOOL CkDateTimeW_SetFromTimestamp(HCkDateTimeW cHandle, const wchar_t *timestamp);
+#if !defined(CK_GO_LANG)
 CK_VISIBLE_PUBLIC BOOL CkDateTimeW_SetFromTmStruct(HCkDateTimeW cHandle, BOOL bLocal, struct tm * tmbuf);
+#endif
 CK_VISIBLE_PUBLIC BOOL CkDateTimeW_SetFromUnixTime(HCkDateTimeW cHandle, BOOL bLocal, unsigned long t);
 CK_VISIBLE_PUBLIC BOOL CkDateTimeW_SetFromUnixTime64(HCkDateTimeW cHandle, BOOL bLocal, __int64 t);
 CK_VISIBLE_PUBLIC BOOL CkDateTimeW_SetFromUnixTimeDbl(HCkDateTimeW cHandle, BOOL bLocal, double d);

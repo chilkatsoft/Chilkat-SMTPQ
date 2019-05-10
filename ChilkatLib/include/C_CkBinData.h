@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkBinData_H
 #define _C_CkBinData_H
 #include "chilkatDefs.h"
@@ -16,8 +16,11 @@ CK_VISIBLE_PUBLIC void CkBinData_putUtf8(HCkBinData cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkBinData_AppendBd(HCkBinData cHandle, HCkBinData binData);
 CK_VISIBLE_PUBLIC BOOL CkBinData_AppendBinary(HCkBinData cHandle, HCkByteData data);
 CK_VISIBLE_PUBLIC BOOL CkBinData_AppendBom(HCkBinData cHandle, const char *charset);
+CK_VISIBLE_PUBLIC BOOL CkBinData_AppendByte(HCkBinData cHandle, int byteValue);
 CK_VISIBLE_PUBLIC BOOL CkBinData_AppendEncoded(HCkBinData cHandle, const char *encData, const char *encoding);
 CK_VISIBLE_PUBLIC BOOL CkBinData_AppendEncodedSb(HCkBinData cHandle, HCkStringBuilder sb, const char *encoding);
+CK_VISIBLE_PUBLIC BOOL CkBinData_AppendInt2(HCkBinData cHandle, int value, BOOL littleEndian);
+CK_VISIBLE_PUBLIC BOOL CkBinData_AppendInt4(HCkBinData cHandle, int value, BOOL littleEndian);
 CK_VISIBLE_PUBLIC BOOL CkBinData_AppendSb(HCkBinData cHandle, HCkStringBuilder sb, const char *charset);
 CK_VISIBLE_PUBLIC BOOL CkBinData_AppendString(HCkBinData cHandle, const char *str, const char *charset);
 CK_VISIBLE_PUBLIC BOOL CkBinData_Clear(HCkBinData cHandle);

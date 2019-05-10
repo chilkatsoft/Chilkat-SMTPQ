@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkSshTunnelW_H
 #define _CkSshTunnelW_H
@@ -573,6 +573,9 @@ class CK_VISIBLE_PUBLIC CkSshTunnelW  : public CkClassWithCallbacksW
 	//     "KEX_DH_GEX_REQUEST_OLD" - Force the old Group Exchange message to be used.
 	//     This would be used for very old SSH server implementations that do not use the
 	//     RFC standard for diffie-hellman-group-exchange.
+	//     "NoKeepAliveIgnoreMsg" - (Added in v9.5.0.76) Prevents the default behavior
+	//     of the SSH tunnel sending an "ignore" message every 20 seconds to keep an unused
+	//     connection alive.
 	// 
 	void get_UncommonOptions(CkString &str);
 	// This is a catch-all property to be used for uncommon needs. This property
@@ -582,6 +585,9 @@ class CK_VISIBLE_PUBLIC CkSshTunnelW  : public CkClassWithCallbacksW
 	//     "KEX_DH_GEX_REQUEST_OLD" - Force the old Group Exchange message to be used.
 	//     This would be used for very old SSH server implementations that do not use the
 	//     RFC standard for diffie-hellman-group-exchange.
+	//     "NoKeepAliveIgnoreMsg" - (Added in v9.5.0.76) Prevents the default behavior
+	//     of the SSH tunnel sending an "ignore" message every 20 seconds to keep an unused
+	//     connection alive.
 	// 
 	const wchar_t *uncommonOptions(void);
 	// This is a catch-all property to be used for uncommon needs. This property
@@ -591,6 +597,9 @@ class CK_VISIBLE_PUBLIC CkSshTunnelW  : public CkClassWithCallbacksW
 	//     "KEX_DH_GEX_REQUEST_OLD" - Force the old Group Exchange message to be used.
 	//     This would be used for very old SSH server implementations that do not use the
 	//     RFC standard for diffie-hellman-group-exchange.
+	//     "NoKeepAliveIgnoreMsg" - (Added in v9.5.0.76) Prevents the default behavior
+	//     of the SSH tunnel sending an "ignore" message every 20 seconds to keep an unused
+	//     connection alive.
 	// 
 	void put_UncommonOptions(const wchar_t *newVal);
 
@@ -672,6 +681,9 @@ class CK_VISIBLE_PUBLIC CkSshTunnelW  : public CkClassWithCallbacksW
 	// and then examine the IsAccepting property. If it is false, then BeginAccepting
 	// failed.
 	// 
+	// Important: The listenPort must be a port number that nothing else on the local
+	// computer is listening on.
+	// 
 	bool BeginAccepting(int listenPort);
 
 	// Creates an asynchronous task to call the BeginAccepting method with the
@@ -706,6 +718,74 @@ class CK_VISIBLE_PUBLIC CkSshTunnelW  : public CkClassWithCallbacksW
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *ConnectThroughSshAsync(CkSshW &ssh, const wchar_t *hostname, int port);
 
+	// Continues keyboard-interactive authentication with the SSH server. The response is
+	// typically the password. If multiple responses are required (because there were
+	// multiple prompts in the infoRequest XML returned by StartKeyboardAuth), then the
+	// response should be formatted as XML (as shown below) otherwise the response simply
+	// contains the single response string.
+	// _LT_response_GT_
+	//     _LT_response1_GT_response to first prompt_LT_/response1_GT_
+	//     _LT_response2_GT_response to second prompt_LT_/response2_GT_
+	//     ...
+	//     _LT_responseN_GT_response to Nth prompt_LT_/responseN_GT_
+	// _LT_/response_GT_
+	// 
+	// If the interactive authentication completed with success or failure, the XML
+	// response will be:
+	// _LT_success_GT_success_message_LT_/success_GT_
+	// 
+	// or
+	// 
+	// _LT_error_GT_error_message_LT_/error_GT_
+	// If additional steps are required to complete the interactive authentication,
+	// then an XML string that provides the name, instruction, and prompts is returned.
+	// The XML has the following format:
+	//  	_LT_infoRequest numPrompts="N"_GT_
+	// 	    _LT_name_GT_name_string_LT_/name_GT_
+	// 	    _LT_instruction_GT_instruction_string_LT_/instruction_GT_
+	// 	    _LT_prompt1 echo="1_or_0"_GT_prompt_string_LT_/prompt1_GT_
+	// 	    ...
+	// 	    _LT_promptN echo="1_or_0"_GT_prompt_string_LT_/promptN_GT_
+	// 	_LT_/infoRequest_GT_
+	// 
+	bool ContinueKeyboardAuth(const wchar_t *response, CkString &outStr);
+	// Continues keyboard-interactive authentication with the SSH server. The response is
+	// typically the password. If multiple responses are required (because there were
+	// multiple prompts in the infoRequest XML returned by StartKeyboardAuth), then the
+	// response should be formatted as XML (as shown below) otherwise the response simply
+	// contains the single response string.
+	// _LT_response_GT_
+	//     _LT_response1_GT_response to first prompt_LT_/response1_GT_
+	//     _LT_response2_GT_response to second prompt_LT_/response2_GT_
+	//     ...
+	//     _LT_responseN_GT_response to Nth prompt_LT_/responseN_GT_
+	// _LT_/response_GT_
+	// 
+	// If the interactive authentication completed with success or failure, the XML
+	// response will be:
+	// _LT_success_GT_success_message_LT_/success_GT_
+	// 
+	// or
+	// 
+	// _LT_error_GT_error_message_LT_/error_GT_
+	// If additional steps are required to complete the interactive authentication,
+	// then an XML string that provides the name, instruction, and prompts is returned.
+	// The XML has the following format:
+	//  	_LT_infoRequest numPrompts="N"_GT_
+	// 	    _LT_name_GT_name_string_LT_/name_GT_
+	// 	    _LT_instruction_GT_instruction_string_LT_/instruction_GT_
+	// 	    _LT_prompt1 echo="1_or_0"_GT_prompt_string_LT_/prompt1_GT_
+	// 	    ...
+	// 	    _LT_promptN echo="1_or_0"_GT_prompt_string_LT_/promptN_GT_
+	// 	_LT_/infoRequest_GT_
+	// 
+	const wchar_t *continueKeyboardAuth(const wchar_t *response);
+
+	// Creates an asynchronous task to call the ContinueKeyboardAuth method with the
+	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *ContinueKeyboardAuthAsync(const wchar_t *response);
+
 	// Disconnects all clients, keeping the SSH tunnel open. If waitForThreads is true, the
 	// method will wait for the client threads to exit before returning.
 	bool DisconnectAllClients(bool waitForThreads);
@@ -720,6 +800,52 @@ class CK_VISIBLE_PUBLIC CkSshTunnelW  : public CkClassWithCallbacksW
 	// Returns true if connected to the SSH server. Returns false if the connection
 	// has been lost (or was never established).
 	bool IsSshConnected(void);
+
+	// Begins keyboard-interactive authentication with the SSH server. Returns an XML
+	// string providing the name, instruction, and prompts. The XML has the following
+	// format:
+	//  	_LT_infoRequest numPrompts="N"_GT_
+	// 	    _LT_name_GT_name_string_LT_/name_GT_
+	// 	    _LT_instruction_GT_instruction_string_LT_/instruction_GT_
+	// 	    _LT_prompt1 echo="1_or_0"_GT_prompt_string_LT_/prompt1_GT_
+	// 	    ...
+	// 	    _LT_promptN echo="1_or_0"_GT_prompt_string_LT_/promptN_GT_
+	// 	_LT_/infoRequest_GT_
+	// 
+	// If the authentication immediately succeeds because no password is required, or
+	// immediately fails, the XML response can be:
+	// _LT_success_GT_success_message_LT_/success_GT_
+	// 
+	// or
+	// 
+	// _LT_error_GT_error_message_LT_/error_GT_
+	// 
+	bool StartKeyboardAuth(const wchar_t *login, CkString &outStr);
+	// Begins keyboard-interactive authentication with the SSH server. Returns an XML
+	// string providing the name, instruction, and prompts. The XML has the following
+	// format:
+	//  	_LT_infoRequest numPrompts="N"_GT_
+	// 	    _LT_name_GT_name_string_LT_/name_GT_
+	// 	    _LT_instruction_GT_instruction_string_LT_/instruction_GT_
+	// 	    _LT_prompt1 echo="1_or_0"_GT_prompt_string_LT_/prompt1_GT_
+	// 	    ...
+	// 	    _LT_promptN echo="1_or_0"_GT_prompt_string_LT_/promptN_GT_
+	// 	_LT_/infoRequest_GT_
+	// 
+	// If the authentication immediately succeeds because no password is required, or
+	// immediately fails, the XML response can be:
+	// _LT_success_GT_success_message_LT_/success_GT_
+	// 
+	// or
+	// 
+	// _LT_error_GT_error_message_LT_/error_GT_
+	// 
+	const wchar_t *startKeyboardAuth(const wchar_t *login);
+
+	// Creates an asynchronous task to call the StartKeyboardAuth method with the
+	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *StartKeyboardAuthAsync(const wchar_t *login);
 
 	// Stops the listen background thread. It is possible to continue accepting
 	// connections by re-calling BeginAccepting. If waitForThread is true, the method will

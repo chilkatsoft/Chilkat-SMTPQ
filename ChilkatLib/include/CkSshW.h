@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkSshW_H
 #define _CkSshW_H
@@ -1141,6 +1141,42 @@ class CK_VISIBLE_PUBLIC CkSshW  : public CkClassWithCallbacksW
 
 	// Disconnects from the SSH server.
 	void Disconnect(void);
+
+	// Queries the SSH server to find out which authentication methods it supports.
+	// Returns a string such as "publickey,password,keyboard-interactive".
+	// 
+	// This method should be called after connecting, but prior to authenticating. The
+	// method intentionally disconnects from the server after getting the
+	// authentication methods. An application may then connect again and authentication
+	// with a chosen method. (In most cases, an application knows in advance the type
+	// of authentication to be used, and this method is never called.)
+	// 
+	bool GetAuthMethods(CkString &outStr);
+	// Queries the SSH server to find out which authentication methods it supports.
+	// Returns a string such as "publickey,password,keyboard-interactive".
+	// 
+	// This method should be called after connecting, but prior to authenticating. The
+	// method intentionally disconnects from the server after getting the
+	// authentication methods. An application may then connect again and authentication
+	// with a chosen method. (In most cases, an application knows in advance the type
+	// of authentication to be used, and this method is never called.)
+	// 
+	const wchar_t *getAuthMethods(void);
+	// Queries the SSH server to find out which authentication methods it supports.
+	// Returns a string such as "publickey,password,keyboard-interactive".
+	// 
+	// This method should be called after connecting, but prior to authenticating. The
+	// method intentionally disconnects from the server after getting the
+	// authentication methods. An application may then connect again and authentication
+	// with a chosen method. (In most cases, an application knows in advance the type
+	// of authentication to be used, and this method is never called.)
+	// 
+	const wchar_t *authMethods(void);
+
+	// Creates an asynchronous task to call the GetAuthMethods method with the
+	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *GetAuthMethodsAsync(void);
 
 	// Returns the exit status code for a channel. This method should only be called if
 	// an exit status has been received. You may check to see if the exit status was

@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkCrypt2_H
 #define _C_CkCrypt2_H
 #include "chilkatDefs.h"
@@ -10,6 +10,15 @@ CK_VISIBLE_PUBLIC void CkCrypt2_setAbortCheck(HCkCrypt2 cHandle, BOOL (*fnAbortC
 CK_VISIBLE_PUBLIC void CkCrypt2_setPercentDone(HCkCrypt2 cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkCrypt2_setProgressInfo(HCkCrypt2 cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkCrypt2_setTaskCompleted(HCkCrypt2 cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
+CK_VISIBLE_PUBLIC void CkCrypt2_setAbortCheck2(HCkCrypt2 cHandle, BOOL (*fnAbortCheck2)(void *pContext));
+CK_VISIBLE_PUBLIC void CkCrypt2_setPercentDone2(HCkCrypt2 cHandle, BOOL (*fnPercentDone2)(int pctDone, void *pContext));
+CK_VISIBLE_PUBLIC void CkCrypt2_setProgressInfo2(HCkCrypt2 cHandle, void (*fnProgressInfo2)(const char *name, const char *value, void *pContext));
+CK_VISIBLE_PUBLIC void CkCrypt2_setTaskCompleted2(HCkCrypt2 cHandle, void (*fnTaskCompleted2)(HCkTask hTask, void *pContext));
+
+// setExternalProgress is for C callback functions defined in the external programming language (such as Go)
+CK_VISIBLE_PUBLIC void CkCrypt2_setExternalProgress(HCkCrypt2 cHandle, BOOL on);
+CK_VISIBLE_PUBLIC void CkCrypt2_setCallbackContext(HCkCrypt2 cHandle, void *pContext);
 
 CK_VISIBLE_PUBLIC HCkCrypt2 CkCrypt2_Create(void);
 CK_VISIBLE_PUBLIC void CkCrypt2_Dispose(HCkCrypt2 handle);
@@ -35,6 +44,9 @@ CK_VISIBLE_PUBLIC const char *CkCrypt2_charset(HCkCrypt2 cHandle);
 CK_VISIBLE_PUBLIC void CkCrypt2_getCipherMode(HCkCrypt2 cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkCrypt2_putCipherMode(HCkCrypt2 cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkCrypt2_cipherMode(HCkCrypt2 cHandle);
+CK_VISIBLE_PUBLIC void CkCrypt2_getCmsOptions(HCkCrypt2 cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkCrypt2_putCmsOptions(HCkCrypt2 cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkCrypt2_cmsOptions(HCkCrypt2 cHandle);
 CK_VISIBLE_PUBLIC void CkCrypt2_getCompressionAlgorithm(HCkCrypt2 cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkCrypt2_putCompressionAlgorithm(HCkCrypt2 cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkCrypt2_compressionAlgorithm(HCkCrypt2 cHandle);
@@ -152,7 +164,9 @@ CK_VISIBLE_PUBLIC unsigned long CkCrypt2_CrcFile(HCkCrypt2 cHandle, const char *
 CK_VISIBLE_PUBLIC HCkTask CkCrypt2_CrcFileAsync(HCkCrypt2 cHandle, const char *crcAlg, const char *path);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_CreateDetachedSignature(HCkCrypt2 cHandle, const char *inFilePath, const char *sigFilePath);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_CreateP7M(HCkCrypt2 cHandle, const char *inFilename, const char *p7mPath);
+CK_VISIBLE_PUBLIC HCkTask CkCrypt2_CreateP7MAsync(HCkCrypt2 cHandle, const char *inFilename, const char *p7mPath);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_CreateP7S(HCkCrypt2 cHandle, const char *inFilename, const char *p7sPath);
+CK_VISIBLE_PUBLIC HCkTask CkCrypt2_CreateP7SAsync(HCkCrypt2 cHandle, const char *inFilename, const char *p7sPath);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_Decode(HCkCrypt2 cHandle, const char *str, const char *encoding, HCkByteData outData);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_DecodeString(HCkCrypt2 cHandle, const char *inStr, const char *charset, const char *encoding, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkCrypt2_decodeString(HCkCrypt2 cHandle, const char *inStr, const char *charset, const char *encoding);
@@ -173,6 +187,8 @@ CK_VISIBLE_PUBLIC BOOL CkCrypt2_Encode(HCkCrypt2 cHandle, HCkByteData byteData, 
 CK_VISIBLE_PUBLIC const char *CkCrypt2_encode(HCkCrypt2 cHandle, HCkByteData byteData, const char *encoding);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_EncodeBytes(HCkCrypt2 cHandle, const unsigned char *pByteData, unsigned long szByteData, const char *encoding, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkCrypt2_encodeBytes(HCkCrypt2 cHandle, const unsigned char *pByteData, unsigned long szByteData, const char *encoding);
+CK_VISIBLE_PUBLIC BOOL CkCrypt2_EncodeInt(HCkCrypt2 cHandle, int value, int numBytes, BOOL littleEndian, const char *encoding, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkCrypt2_encodeInt(HCkCrypt2 cHandle, int value, int numBytes, BOOL littleEndian, const char *encoding);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_EncodeString(HCkCrypt2 cHandle, const char *strToEncode, const char *charsetName, const char *toEncodingName, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkCrypt2_encodeString(HCkCrypt2 cHandle, const char *strToEncode, const char *charsetName, const char *toEncodingName);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_EncryptBd(HCkCrypt2 cHandle, HCkBinData bd);
@@ -241,6 +257,8 @@ CK_VISIBLE_PUBLIC const char *CkCrypt2_hmacBytesENC(HCkCrypt2 cHandle, HCkByteDa
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_HmacString(HCkCrypt2 cHandle, const char *inText, HCkByteData outHmac);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_HmacStringENC(HCkCrypt2 cHandle, const char *inText, HCkString outEncodedHmac);
 CK_VISIBLE_PUBLIC const char *CkCrypt2_hmacStringENC(HCkCrypt2 cHandle, const char *inText);
+CK_VISIBLE_PUBLIC BOOL CkCrypt2_Hotp(HCkCrypt2 cHandle, const char *secret, const char *secretEnc, const char *counterHex, int numDigits, int truncOffset, const char *hashAlg, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkCrypt2_hotp(HCkCrypt2 cHandle, const char *secret, const char *secretEnc, const char *counterHex, int numDigits, int truncOffset, const char *hashAlg);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_InflateBytes(HCkCrypt2 cHandle, HCkByteData data, HCkByteData outData);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_InflateBytesENC(HCkCrypt2 cHandle, const char *str, HCkByteData outData);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_InflateString(HCkCrypt2 cHandle, HCkByteData data, HCkString outStr);
@@ -262,12 +280,17 @@ CK_VISIBLE_PUBLIC const char *CkCrypt2_mySqlAesDecrypt(HCkCrypt2 cHandle, const 
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_MySqlAesEncrypt(HCkCrypt2 cHandle, const char *strData, const char *strPassword, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkCrypt2_mySqlAesEncrypt(HCkCrypt2 cHandle, const char *strData, const char *strPassword);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_OpaqueSignBd(HCkCrypt2 cHandle, HCkBinData bd);
+CK_VISIBLE_PUBLIC HCkTask CkCrypt2_OpaqueSignBdAsync(HCkCrypt2 cHandle, HCkBinData bd);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_OpaqueSignBytes(HCkCrypt2 cHandle, HCkByteData data, HCkByteData outData);
+CK_VISIBLE_PUBLIC HCkTask CkCrypt2_OpaqueSignBytesAsync(HCkCrypt2 cHandle, HCkByteData data);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_OpaqueSignBytesENC(HCkCrypt2 cHandle, HCkByteData data, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkCrypt2_opaqueSignBytesENC(HCkCrypt2 cHandle, HCkByteData data);
+CK_VISIBLE_PUBLIC HCkTask CkCrypt2_OpaqueSignBytesENCAsync(HCkCrypt2 cHandle, HCkByteData data);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_OpaqueSignString(HCkCrypt2 cHandle, const char *str, HCkByteData outData);
+CK_VISIBLE_PUBLIC HCkTask CkCrypt2_OpaqueSignStringAsync(HCkCrypt2 cHandle, const char *str);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_OpaqueSignStringENC(HCkCrypt2 cHandle, const char *str, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkCrypt2_opaqueSignStringENC(HCkCrypt2 cHandle, const char *str);
+CK_VISIBLE_PUBLIC HCkTask CkCrypt2_OpaqueSignStringENCAsync(HCkCrypt2 cHandle, const char *str);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_OpaqueVerifyBd(HCkCrypt2 cHandle, HCkBinData bd);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_OpaqueVerifyBytes(HCkCrypt2 cHandle, HCkByteData p7s, HCkByteData outOriginal);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_OpaqueVerifyBytesENC(HCkCrypt2 cHandle, const char *p7s, HCkByteData outOriginal);
@@ -309,18 +332,27 @@ CK_VISIBLE_PUBLIC void CkCrypt2_SetSecretKey(HCkCrypt2 cHandle, const unsigned c
 CK_VISIBLE_PUBLIC void CkCrypt2_SetSecretKeyViaPassword(HCkCrypt2 cHandle, const char *password);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_SetSigningCert(HCkCrypt2 cHandle, HCkCert cert);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_SetSigningCert2(HCkCrypt2 cHandle, HCkCert cert, HCkPrivateKey privateKey);
+CK_VISIBLE_PUBLIC void CkCrypt2_SetTsaHttpObj(HCkCrypt2 cHandle, HCkHttp http);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_SetVerifyCert(HCkCrypt2 cHandle, HCkCert cert);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_SignBdENC(HCkCrypt2 cHandle, HCkBinData dataToSign, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkCrypt2_signBdENC(HCkCrypt2 cHandle, HCkBinData dataToSign);
+CK_VISIBLE_PUBLIC HCkTask CkCrypt2_SignBdENCAsync(HCkCrypt2 cHandle, HCkBinData dataToSign);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_SignBytes(HCkCrypt2 cHandle, HCkByteData data, HCkByteData outData);
+CK_VISIBLE_PUBLIC HCkTask CkCrypt2_SignBytesAsync(HCkCrypt2 cHandle, HCkByteData data);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_SignBytesENC(HCkCrypt2 cHandle, HCkByteData data, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkCrypt2_signBytesENC(HCkCrypt2 cHandle, HCkByteData data);
+CK_VISIBLE_PUBLIC HCkTask CkCrypt2_SignBytesENCAsync(HCkCrypt2 cHandle, HCkByteData data);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_SignSbENC(HCkCrypt2 cHandle, HCkStringBuilder sb, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkCrypt2_signSbENC(HCkCrypt2 cHandle, HCkStringBuilder sb);
+CK_VISIBLE_PUBLIC HCkTask CkCrypt2_SignSbENCAsync(HCkCrypt2 cHandle, HCkStringBuilder sb);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_SignString(HCkCrypt2 cHandle, const char *str, HCkByteData outData);
+CK_VISIBLE_PUBLIC HCkTask CkCrypt2_SignStringAsync(HCkCrypt2 cHandle, const char *str);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_SignStringENC(HCkCrypt2 cHandle, const char *str, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkCrypt2_signStringENC(HCkCrypt2 cHandle, const char *str);
+CK_VISIBLE_PUBLIC HCkTask CkCrypt2_SignStringENCAsync(HCkCrypt2 cHandle, const char *str);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_StringToBytes(HCkCrypt2 cHandle, const char *inStr, const char *charset, HCkByteData outBytes);
+CK_VISIBLE_PUBLIC BOOL CkCrypt2_Totp(HCkCrypt2 cHandle, const char *secret, const char *secretEnc, const char *t0, const char *tNow, int tStep, int numDigits, int truncOffset, const char *hashAlg, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkCrypt2_totp(HCkCrypt2 cHandle, const char *secret, const char *secretEnc, const char *t0, const char *tNow, int tStep, int numDigits, int truncOffset, const char *hashAlg);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_TrimEndingWith(HCkCrypt2 cHandle, const char *inStr, const char *ending, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkCrypt2_trimEndingWith(HCkCrypt2 cHandle, const char *inStr, const char *ending);
 CK_VISIBLE_PUBLIC BOOL CkCrypt2_UnlockComponent(HCkCrypt2 cHandle, const char *unlockCode);

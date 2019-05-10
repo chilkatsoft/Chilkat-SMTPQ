@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkAtom_H
 #define _C_CkAtom_H
 #include "chilkatDefs.h"
@@ -10,6 +10,15 @@ CK_VISIBLE_PUBLIC void CkAtom_setAbortCheck(HCkAtom cHandle, BOOL (*fnAbortCheck
 CK_VISIBLE_PUBLIC void CkAtom_setPercentDone(HCkAtom cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkAtom_setProgressInfo(HCkAtom cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkAtom_setTaskCompleted(HCkAtom cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
+CK_VISIBLE_PUBLIC void CkAtom_setAbortCheck2(HCkAtom cHandle, BOOL (*fnAbortCheck2)(void *pContext));
+CK_VISIBLE_PUBLIC void CkAtom_setPercentDone2(HCkAtom cHandle, BOOL (*fnPercentDone2)(int pctDone, void *pContext));
+CK_VISIBLE_PUBLIC void CkAtom_setProgressInfo2(HCkAtom cHandle, void (*fnProgressInfo2)(const char *name, const char *value, void *pContext));
+CK_VISIBLE_PUBLIC void CkAtom_setTaskCompleted2(HCkAtom cHandle, void (*fnTaskCompleted2)(HCkTask hTask, void *pContext));
+
+// setExternalProgress is for C callback functions defined in the external programming language (such as Go)
+CK_VISIBLE_PUBLIC void CkAtom_setExternalProgress(HCkAtom cHandle, BOOL on);
+CK_VISIBLE_PUBLIC void CkAtom_setCallbackContext(HCkAtom cHandle, void *pContext);
 
 CK_VISIBLE_PUBLIC HCkAtom CkAtom_Create(void);
 CK_VISIBLE_PUBLIC void CkAtom_Dispose(HCkAtom handle);

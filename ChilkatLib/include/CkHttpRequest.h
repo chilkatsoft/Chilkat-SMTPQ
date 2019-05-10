@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkHttpRequest_H
 #define _CkHttpRequest_H
@@ -12,8 +12,8 @@
 #include "CkString.h"
 #include "CkMultiByteBase.h"
 
-class CkByteData;
 class CkBinData;
+class CkByteData;
 class CkStringBuilder;
 
 
@@ -168,13 +168,73 @@ class CK_VISIBLE_PUBLIC CkHttpRequest  : public CkMultiByteBase
 	int get_NumParams(void);
 
 	// The path of the resource requested. A path of "/" indicates the default document
-	// for a domain.
+	// of a domain.
+	// 
+	// Explaining the Parts of a URL
+	// 
+	// http://example.com:8042/over/there?name=ferret#nose
+	// \__/   \______________/\_________/ \________/ \__/
+	//  |           |            |            |        |
+	// scheme   domain+port     path        query   fragment
+	// 
+	// This property should be set to the path part of the URL. You may also include
+	// the query part in this property value. If the Content-Type of the request is NOT
+	// application/x-www-form-urlencoded, then you would definitely want to include
+	// query parameters in the path. If the Content-Type of the request IS
+	// application/x-www-form-urlencoded, the query parameters are passed in the body
+	// of the request. It is also possible to pass some query parameters via the path,
+	// and some in the body of a application/x-www-form-urlencoded request, but you
+	// shouldn't include the same parameter in both places. You would never need to
+	// include the fragment part. The fragment is nothing more than an instruction for
+	// a browser to automatically navigate to a particular location in the HTML page
+	// (assuming the request returns HTML, otherwise a fragment makes no sense).
+	// 
 	void get_Path(CkString &str);
 	// The path of the resource requested. A path of "/" indicates the default document
-	// for a domain.
+	// of a domain.
+	// 
+	// Explaining the Parts of a URL
+	// 
+	// http://example.com:8042/over/there?name=ferret#nose
+	// \__/   \______________/\_________/ \________/ \__/
+	//  |           |            |            |        |
+	// scheme   domain+port     path        query   fragment
+	// 
+	// This property should be set to the path part of the URL. You may also include
+	// the query part in this property value. If the Content-Type of the request is NOT
+	// application/x-www-form-urlencoded, then you would definitely want to include
+	// query parameters in the path. If the Content-Type of the request IS
+	// application/x-www-form-urlencoded, the query parameters are passed in the body
+	// of the request. It is also possible to pass some query parameters via the path,
+	// and some in the body of a application/x-www-form-urlencoded request, but you
+	// shouldn't include the same parameter in both places. You would never need to
+	// include the fragment part. The fragment is nothing more than an instruction for
+	// a browser to automatically navigate to a particular location in the HTML page
+	// (assuming the request returns HTML, otherwise a fragment makes no sense).
+	// 
 	const char *path(void);
 	// The path of the resource requested. A path of "/" indicates the default document
-	// for a domain.
+	// of a domain.
+	// 
+	// Explaining the Parts of a URL
+	// 
+	// http://example.com:8042/over/there?name=ferret#nose
+	// \__/   \______________/\_________/ \________/ \__/
+	//  |           |            |            |        |
+	// scheme   domain+port     path        query   fragment
+	// 
+	// This property should be set to the path part of the URL. You may also include
+	// the query part in this property value. If the Content-Type of the request is NOT
+	// application/x-www-form-urlencoded, then you would definitely want to include
+	// query parameters in the path. If the Content-Type of the request IS
+	// application/x-www-form-urlencoded, the query parameters are passed in the body
+	// of the request. It is also possible to pass some query parameters via the path,
+	// and some in the body of a application/x-www-form-urlencoded request, but you
+	// shouldn't include the same parameter in both places. You would never need to
+	// include the fragment part. The fragment is nothing more than an instruction for
+	// a browser to automatically navigate to a particular location in the HTML page
+	// (assuming the request returns HTML, otherwise a fragment makes no sense).
+	// 
 	void put_Path(const char *newVal);
 
 	// Controls whether the charset is explicitly included in the content-type header
@@ -189,6 +249,19 @@ class CK_VISIBLE_PUBLIC CkHttpRequest  : public CkMultiByteBase
 	// ----------------------
 	// Methods
 	// ----------------------
+	// Adds a file to an upload request where the contents of the file come from byteData.
+	// 
+	// name is an arbitrary name. (In HTML, it is the form field name of the input
+	// tag.)
+	// remoteFilename is the name of the file to be created on the HTTP server.
+	// byteData contains the bytes to be uploaded.
+	// contentType contains is the value of the Content-Type header. An empty string may be
+	// passed to allow Chilkat to automatically determine the Content-Type based on the
+	// filename extension.
+	// 
+	bool AddBdForUpload(const char *name, const char *remoteFilename, CkBinData &byteData, const char *contentType);
+
+
 	// Adds a file to an upload request where the contents of the file come from an
 	// in-memory byte array. To create a file upload request, call UseUpload and then
 	// call AddBytesForUpload, AddStringForUpload, or AddFileForUpload for each file to
@@ -249,6 +322,11 @@ class CK_VISIBLE_PUBLIC CkHttpRequest  : public CkMultiByteBase
 	// parameter to the request. This method should be called for all Amazon
 	// Marketplace Web Service (Amazon MWS) HTTP requests. It should be called after
 	// all request parameters have been added.
+	// 
+	// Important: The Chilkat v9.5.0.75 release accidentally breaks Amazon MWS (not
+	// AWS) authentication. If you need MWS with 9.5.0.75, send email to
+	// support@chilkatsoft.com for a hotfix, or revert back to v9.5.0.73, or update to
+	// a version after 9.5.0.75.
 	// 
 	// The domain should be the domain of the request, such as one of the following:
 	//     mws.amazonservices.com

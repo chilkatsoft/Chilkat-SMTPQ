@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkMime_H
 #define _C_CkMime_H
 #include "chilkatDefs.h"
@@ -14,6 +14,9 @@ CK_VISIBLE_PUBLIC const char *CkMime_boundary(HCkMime cHandle);
 CK_VISIBLE_PUBLIC void CkMime_getCharset(HCkMime cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkMime_putCharset(HCkMime cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkMime_charset(HCkMime cHandle);
+CK_VISIBLE_PUBLIC void CkMime_getCmsOptions(HCkMime cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkMime_putCmsOptions(HCkMime cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkMime_cmsOptions(HCkMime cHandle);
 CK_VISIBLE_PUBLIC void CkMime_getContentType(HCkMime cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkMime_putContentType(HCkMime cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkMime_contentType(HCkMime cHandle);

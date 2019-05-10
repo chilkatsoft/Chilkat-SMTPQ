@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkGlobal_H
 #define _C_CkGlobal_H
 #include "chilkatDefs.h"
@@ -43,10 +43,13 @@ CK_VISIBLE_PUBLIC BOOL CkGlobal_getUtf8(HCkGlobal cHandle);
 CK_VISIBLE_PUBLIC void CkGlobal_putUtf8(HCkGlobal cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkGlobal_getVerboseLogging(HCkGlobal cHandle);
 CK_VISIBLE_PUBLIC void CkGlobal_putVerboseLogging(HCkGlobal cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC BOOL CkGlobal_getVerboseTls(HCkGlobal cHandle);
+CK_VISIBLE_PUBLIC void CkGlobal_putVerboseTls(HCkGlobal cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkGlobal_getVersion(HCkGlobal cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkGlobal_version(HCkGlobal cHandle);
 CK_VISIBLE_PUBLIC BOOL CkGlobal_DnsClearCache(HCkGlobal cHandle);
 CK_VISIBLE_PUBLIC BOOL CkGlobal_FinalizeThreadPool(HCkGlobal cHandle);
 CK_VISIBLE_PUBLIC BOOL CkGlobal_SaveLastError(HCkGlobal cHandle, const char *path);
+CK_VISIBLE_PUBLIC BOOL CkGlobal_ThreadPoolLogLine(HCkGlobal cHandle, const char *str);
 CK_VISIBLE_PUBLIC BOOL CkGlobal_UnlockBundle(HCkGlobal cHandle, const char *bundleUnlockCode);
 #endif

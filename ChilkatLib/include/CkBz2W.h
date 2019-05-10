@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkBz2W_H
 #define _CkBz2W_H
@@ -76,9 +76,15 @@ class CK_VISIBLE_PUBLIC CkBz2W  : public CkClassWithCallbacksW
 	// setting this property from a separate thread.)
 	void put_AbortCurrent(bool newVal);
 
-
+	// This is the number of milliseconds between each AbortCheck event callback. The
+	// AbortCheck callback allows an application to abort any compress or decompress
+	// operation prior to completion. If HeartbeatMs is 0, no AbortCheck event
+	// callbacks will occur.
 	int get_HeartbeatMs(void);
-
+	// This is the number of milliseconds between each AbortCheck event callback. The
+	// AbortCheck callback allows an application to abort any compress or decompress
+	// operation prior to completion. If HeartbeatMs is 0, no AbortCheck event
+	// callbacks will occur.
 	void put_HeartbeatMs(int newVal);
 
 
@@ -87,6 +93,11 @@ class CK_VISIBLE_PUBLIC CkBz2W  : public CkClassWithCallbacksW
 	// Methods
 	// ----------------------
 	// Compresses a file to create a BZip2 compressed file (.bz2).
+	// 
+	// Note: Both inFilename and toPath should be relative or absolute file paths (not just a
+	// path to a directory). For example "someDir1/someDir2/myFile.txt" or
+	// "c:/someDir1/myFile.bz2".
+	// 
 	bool CompressFile(const wchar_t *inFilename, const wchar_t *toPath);
 
 	// Creates an asynchronous task to call the CompressFile method with the arguments

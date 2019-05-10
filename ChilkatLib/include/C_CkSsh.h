@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkSsh_H
 #define _C_CkSsh_H
 #include "chilkatDefs.h"
@@ -10,6 +10,15 @@ CK_VISIBLE_PUBLIC void CkSsh_setAbortCheck(HCkSsh cHandle, BOOL (*fnAbortCheck)(
 CK_VISIBLE_PUBLIC void CkSsh_setPercentDone(HCkSsh cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkSsh_setProgressInfo(HCkSsh cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkSsh_setTaskCompleted(HCkSsh cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
+CK_VISIBLE_PUBLIC void CkSsh_setAbortCheck2(HCkSsh cHandle, BOOL (*fnAbortCheck2)(void *pContext));
+CK_VISIBLE_PUBLIC void CkSsh_setPercentDone2(HCkSsh cHandle, BOOL (*fnPercentDone2)(int pctDone, void *pContext));
+CK_VISIBLE_PUBLIC void CkSsh_setProgressInfo2(HCkSsh cHandle, void (*fnProgressInfo2)(const char *name, const char *value, void *pContext));
+CK_VISIBLE_PUBLIC void CkSsh_setTaskCompleted2(HCkSsh cHandle, void (*fnTaskCompleted2)(HCkTask hTask, void *pContext));
+
+// setExternalProgress is for C callback functions defined in the external programming language (such as Go)
+CK_VISIBLE_PUBLIC void CkSsh_setExternalProgress(HCkSsh cHandle, BOOL on);
+CK_VISIBLE_PUBLIC void CkSsh_setCallbackContext(HCkSsh cHandle, void *pContext);
 
 CK_VISIBLE_PUBLIC HCkSsh CkSsh_Create(void);
 CK_VISIBLE_PUBLIC void CkSsh_Dispose(HCkSsh handle);
@@ -176,6 +185,9 @@ CK_VISIBLE_PUBLIC BOOL CkSsh_ContinueKeyboardAuth(HCkSsh cHandle, const char *re
 CK_VISIBLE_PUBLIC const char *CkSsh_continueKeyboardAuth(HCkSsh cHandle, const char *response);
 CK_VISIBLE_PUBLIC HCkTask CkSsh_ContinueKeyboardAuthAsync(HCkSsh cHandle, const char *response);
 CK_VISIBLE_PUBLIC void CkSsh_Disconnect(HCkSsh cHandle);
+CK_VISIBLE_PUBLIC BOOL CkSsh_GetAuthMethods(HCkSsh cHandle, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkSsh_getAuthMethods(HCkSsh cHandle);
+CK_VISIBLE_PUBLIC HCkTask CkSsh_GetAuthMethodsAsync(HCkSsh cHandle);
 CK_VISIBLE_PUBLIC int CkSsh_GetChannelExitStatus(HCkSsh cHandle, int channelNum);
 CK_VISIBLE_PUBLIC int CkSsh_GetChannelNumber(HCkSsh cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkSsh_GetChannelType(HCkSsh cHandle, int index, HCkString outStr);

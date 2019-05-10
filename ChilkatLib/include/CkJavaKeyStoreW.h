@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkJavaKeyStoreW_H
 #define _CkJavaKeyStoreW_H
@@ -16,6 +16,7 @@ class CkPfxW;
 class CkCertW;
 class CkCertChainW;
 class CkPrivateKeyW;
+class CkBinDataW;
 class CkByteData;
 class CkJsonObjectW;
 class CkStringBuilderW;
@@ -237,6 +238,9 @@ class CK_VISIBLE_PUBLIC CkJavaKeyStoreW  : public CkWideCharBase
 	// Returns the Nth trusted certificate alias contained within the keystore. The 1st
 	// certificate is at index 0.
 	const wchar_t *trustedCertAlias(int index);
+
+	// Loads a Java keystore from the contents of bd.
+	bool LoadBd(const wchar_t *password, CkBinDataW &bd);
 
 	// Loads a Java keystore from in-memory byte data.
 	bool LoadBinary(const wchar_t *password, CkByteData &jksData);

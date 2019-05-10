@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkHtmlToXml_H
 #define _C_CkHtmlToXml_H
 #include "chilkatDefs.h"
@@ -43,10 +43,12 @@ CK_VISIBLE_PUBLIC BOOL CkHtmlToXml_ReadFile(HCkHtmlToXml cHandle, const char *pa
 CK_VISIBLE_PUBLIC BOOL CkHtmlToXml_ReadFileToString(HCkHtmlToXml cHandle, const char *filename, const char *srcCharset, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkHtmlToXml_readFileToString(HCkHtmlToXml cHandle, const char *filename, const char *srcCharset);
 CK_VISIBLE_PUBLIC BOOL CkHtmlToXml_SaveLastError(HCkHtmlToXml cHandle, const char *path);
+CK_VISIBLE_PUBLIC BOOL CkHtmlToXml_SetHtmlBd(HCkHtmlToXml cHandle, HCkBinData bd);
 CK_VISIBLE_PUBLIC void CkHtmlToXml_SetHtmlBytes(HCkHtmlToXml cHandle, HCkByteData inData);
 CK_VISIBLE_PUBLIC BOOL CkHtmlToXml_SetHtmlFromFile(HCkHtmlToXml cHandle, const char *filename);
 CK_VISIBLE_PUBLIC BOOL CkHtmlToXml_ToXml(HCkHtmlToXml cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkHtmlToXml_toXml(HCkHtmlToXml cHandle);
+CK_VISIBLE_PUBLIC BOOL CkHtmlToXml_ToXmlSb(HCkHtmlToXml cHandle, HCkStringBuilder sb);
 CK_VISIBLE_PUBLIC void CkHtmlToXml_UndropTagType(HCkHtmlToXml cHandle, const char *tagName);
 CK_VISIBLE_PUBLIC void CkHtmlToXml_UndropTextFormattingTags(HCkHtmlToXml cHandle);
 CK_VISIBLE_PUBLIC BOOL CkHtmlToXml_UnlockComponent(HCkHtmlToXml cHandle, const char *unlockCode);

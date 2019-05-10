@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkGzip_H
 #define _CkGzip_H
@@ -186,16 +186,36 @@ class CK_VISIBLE_PUBLIC CkGzip  : public CkClassWithCallbacks
 
 
 	// Gzip compresses a file to an in-memory image of a .gz file.
+	// 
+	// Note: There is a 4GB size limitation. The compressed size of the file cannot be
+	// more than 4GB. Chilkat will be working to alleviate this limitation in the
+	// future.
+	// 
 	bool CompressFileToMem(const char *inFilename, CkByteData &outData);
 
 	// Gzip compresses a file to an in-memory image of a .gz file.
+	// 
+	// Note: There is a 4GB size limitation. The compressed size of the file cannot be
+	// more than 4GB. Chilkat will be working to alleviate this limitation in the
+	// future.
+	// 
 	CkTask *CompressFileToMemAsync(const char *inFilename);
 
 
 	// Compresses in-memory data to an in-memory image of a .gz file.
+	// 
+	// Note: There is a 4GB uncompressed size limitation. The uncompressed size of the
+	// file cannot be more than 4GB. Chilkat will be working to alleviate this
+	// limitation in the future.
+	// 
 	bool CompressMemory(CkByteData &inData, CkByteData &outData);
 
 	// Compresses in-memory data to an in-memory image of a .gz file.
+	// 
+	// Note: There is a 4GB uncompressed size limitation. The uncompressed size of the
+	// file cannot be more than 4GB. Chilkat will be working to alleviate this
+	// limitation in the future.
+	// 
 	CkTask *CompressMemoryAsync(CkByteData &inData);
 
 
@@ -343,9 +363,19 @@ class CK_VISIBLE_PUBLIC CkGzip  : public CkClassWithCallbacks
 
 
 	// Un-Gzips a .gz file directly to memory.
+	// 
+	// Note: There is a 4GB uncompressed size limitation. The uncompressed size of the
+	// file cannot be more than 4GB. Chilkat will be working to alleviate this
+	// limitation in the future.
+	// 
 	bool UncompressFileToMem(const char *inFilename, CkByteData &outData);
 
 	// Un-Gzips a .gz file directly to memory.
+	// 
+	// Note: There is a 4GB uncompressed size limitation. The uncompressed size of the
+	// file cannot be more than 4GB. Chilkat will be working to alleviate this
+	// limitation in the future.
+	// 
 	CkTask *UncompressFileToMemAsync(const char *inFilename);
 
 
@@ -368,9 +398,19 @@ class CK_VISIBLE_PUBLIC CkGzip  : public CkClassWithCallbacks
 
 
 	// Un-Gzips from an in-memory image of a .gz file directly into memory.
+	// 
+	// Note: There is a 4GB uncompressed size limitation. The uncompressed size of the
+	// file cannot be more than 4GB. Chilkat will be working to alleviate this
+	// limitation in the future.
+	// 
 	bool UncompressMemory(CkByteData &inData, CkByteData &outData);
 
 	// Un-Gzips from an in-memory image of a .gz file directly into memory.
+	// 
+	// Note: There is a 4GB uncompressed size limitation. The uncompressed size of the
+	// file cannot be more than 4GB. Chilkat will be working to alleviate this
+	// limitation in the future.
+	// 
 	CkTask *UncompressMemoryAsync(CkByteData &inData);
 
 

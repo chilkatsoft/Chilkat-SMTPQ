@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkCsp_H
 #define _C_CkCsp_H
 #include "chilkatDefs.h"
@@ -48,9 +48,11 @@ CK_VISIBLE_PUBLIC void CkCsp_putVerboseLogging(HCkCsp cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkCsp_getVersion(HCkCsp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkCsp_version(HCkCsp cHandle);
 CK_VISIBLE_PUBLIC HCkStringArray CkCsp_GetKeyContainerNames(HCkCsp cHandle);
+CK_VISIBLE_PUBLIC BOOL CkCsp_GetProviders(HCkCsp cHandle, HCkStringTable providerNames);
 CK_VISIBLE_PUBLIC BOOL CkCsp_HasEncryptAlgorithm(HCkCsp cHandle, const char *name, int numBits);
 CK_VISIBLE_PUBLIC BOOL CkCsp_HasHashAlgorithm(HCkCsp cHandle, const char *name, int numBits);
 CK_VISIBLE_PUBLIC BOOL CkCsp_Initialize(HCkCsp cHandle);
+CK_VISIBLE_PUBLIC BOOL CkCsp_LoadSmartcardCert(HCkCsp cHandle, HCkCert cert);
 CK_VISIBLE_PUBLIC BOOL CkCsp_NthEncryptionAlgorithm(HCkCsp cHandle, int index, HCkString outName);
 CK_VISIBLE_PUBLIC const char *CkCsp_nthEncryptionAlgorithm(HCkCsp cHandle, int index);
 CK_VISIBLE_PUBLIC int CkCsp_NthEncryptionNumBits(HCkCsp cHandle, int index);

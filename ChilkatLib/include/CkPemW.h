@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkPemW_H
 #define _CkPemW_H
@@ -88,6 +88,9 @@ class CK_VISIBLE_PUBLIC CkPemW  : public CkClassWithCallbacksW
 	// The number of certificates in the loaded PEM. To get the 1st certificate, call
 	// GetCert(0).
 	int get_NumCerts(void);
+
+	// The number of certificate revocation lists (CRLs) in the loaded PEM.
+	int get_NumCrls(void);
 
 	// The number of certificate signing requests (CSRs) in the loaded PEM.
 	int get_NumCsrs(void);
@@ -333,8 +336,7 @@ class CK_VISIBLE_PUBLIC CkPemW  : public CkClassWithCallbacksW
 	// encrypted, then password is the password to be used. Otherwise, password may be left
 	// empty. For example:
 	// Bag Attributes
-	//     Microsoft Local Key set: <No Values>
-	//     localKeyID: 01 00 00 00 
+	//     Microsoft Local Key set: localKeyID: 01 00 00 00 
 	//     friendlyName: le-2b09a3d2-9037-4a05-95cc-4d44518e8607
 	//     Microsoft CSP Name: Microsoft RSA SChannel Cryptographic Provider
 	// Key Attributes
@@ -381,8 +383,7 @@ class CK_VISIBLE_PUBLIC CkPemW  : public CkClassWithCallbacksW
 	// encrypted, then password is the password to be used. Otherwise, password may be left
 	// empty. For example:
 	// Bag Attributes
-	//     Microsoft Local Key set: <No Values>
-	//     localKeyID: 01 00 00 00 
+	//     Microsoft Local Key set: localKeyID: 01 00 00 00 
 	//     friendlyName: le-2b09a3d2-9037-4a05-95cc-4d44518e8607
 	//     Microsoft CSP Name: Microsoft RSA SChannel Cryptographic Provider
 	// Key Attributes

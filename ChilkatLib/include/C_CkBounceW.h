@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkBounceWH
 #define _C_CkBounceWH
 #include "chilkatDefs.h"

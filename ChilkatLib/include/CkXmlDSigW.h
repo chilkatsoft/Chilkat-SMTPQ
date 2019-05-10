@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkXmlDSigW_H
 #define _CkXmlDSigW_H
@@ -12,6 +12,7 @@
 #include "CkString.h"
 #include "CkWideCharBase.h"
 
+class CkStringArrayW;
 class CkXmlW;
 class CkPublicKeyW;
 class CkBinDataW;
@@ -56,6 +57,45 @@ class CK_VISIBLE_PUBLIC CkXmlDSigW  : public CkWideCharBase
 	// ----------------------
 	// Properties
 	// ----------------------
+	// May contain a set of directory paths specifying where referenced external files
+	// are located. Directory paths should be separated using a semicolon character.
+	// The default value of this property is the empty string which means no
+	// directories are automatically searched.
+	// 
+	// This property can be used if the external file referenced in the XML signature
+	// has the same filename as the file in the local filesystem.
+	// 
+	void get_ExternalRefDirs(CkString &str);
+	// May contain a set of directory paths specifying where referenced external files
+	// are located. Directory paths should be separated using a semicolon character.
+	// The default value of this property is the empty string which means no
+	// directories are automatically searched.
+	// 
+	// This property can be used if the external file referenced in the XML signature
+	// has the same filename as the file in the local filesystem.
+	// 
+	const wchar_t *externalRefDirs(void);
+	// May contain a set of directory paths specifying where referenced external files
+	// are located. Directory paths should be separated using a semicolon character.
+	// The default value of this property is the empty string which means no
+	// directories are automatically searched.
+	// 
+	// This property can be used if the external file referenced in the XML signature
+	// has the same filename as the file in the local filesystem.
+	// 
+	void put_ExternalRefDirs(const wchar_t *newVal);
+
+	// If true, then ignore failures caused by external references not being
+	// available. This allows for the XML signature to be at least partially validated
+	// if the external referenced files are not available. The default value of this
+	// property is false.
+	bool get_IgnoreExternalRefs(void);
+	// If true, then ignore failures caused by external references not being
+	// available. This allows for the XML signature to be at least partially validated
+	// if the external referenced files are not available. The default value of this
+	// property is false.
+	void put_IgnoreExternalRefs(bool newVal);
+
 	// The number of data objects referenced in the XML digital signature. A data
 	// object may be self-contained within the loaded XML signature, or it may be an
 	// external URI reference. An application can check each reference to see if it's
@@ -85,6 +125,19 @@ class CK_VISIBLE_PUBLIC CkXmlDSigW  : public CkWideCharBase
 	// validating or calling other methods or properties.
 	// 
 	int get_NumSignatures(void);
+
+	// Indicates the failure reason for the last call to VerifyReferenceDigest.
+	// Possible values are:
+	//     0: No failure, the reference digest was valid.
+	//     1: The computed digest differs from the digest stored in the XML.
+	//     2: An external file is referenced, but it is unavailable for computing the
+	//     digest.
+	//     3: The index argument passed to VerifyReferenceDigest was out of range.
+	//     4: Unable to find the Signature.
+	//     5: A transformation specified some sort of XML canonicalization that is not
+	//     supported.
+	//     99: Unknown. (Should never get this value.)
+	int get_RefFailReason(void);
 
 	// If the loaded XML contains multiple signatures, this property can be set to
 	// specify which signature is in effect when calling other methods or properties.
@@ -170,6 +223,10 @@ class CK_VISIBLE_PUBLIC CkXmlDSigW  : public CkWideCharBase
 	// false, then XML comments are excluded from the output.
 	// 
 	const wchar_t *canonicalizeXml(const wchar_t *xml, const wchar_t *version, bool withComments);
+
+	// Returns the certificates found in the signature indicated by the Selector
+	// property. The base64 representation of each certificate is returned.
+	bool GetCerts(CkStringArrayW &sa);
 
 	// Returns the KeyInfo XML for the signature indicated by the Selector property.
 	// Returns _NULL_ if no KeyInfo exists.

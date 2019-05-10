@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkStringTable_H
 #define _CkStringTable_H
@@ -73,6 +73,13 @@ class CK_VISIBLE_PUBLIC CkStringTable  : public CkMultiByteBase
 
 	// Removes all the strings from the table.
 	void Clear(void);
+
+
+	// Return the index of the first string in the table containing substr. Begins
+	// searching strings starting at startIndex. If caseSensitive is true, then the search is case
+	// sensitive. If caseSensitive is false then the search is case insensitive. Returns -1 if
+	// the substr is not found.
+	int FindSubstring(int startIndex, const char *substr, bool caseSensitive);
 
 
 	// Returns the Nth string in the table, converted to an integer value. The index is

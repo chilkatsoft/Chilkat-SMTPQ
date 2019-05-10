@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkOAuth2_H
 #define _CkOAuth2_H
@@ -408,6 +408,13 @@ class CK_VISIBLE_PUBLIC CkOAuth2  : public CkClassWithCallbacks
 	// starts (i.e. when StartAuth is called).
 	const char *failureInfo(void);
 
+	// Optional. Set this to true to send a nonce with the authorization request. The
+	// default value is false.
+	bool get_IncludeNonce(void);
+	// Optional. Set this to true to send a nonce with the authorization request. The
+	// default value is false.
+	void put_IncludeNonce(bool newVal);
+
 	// The port number to listen for the redirect URI request sent by the browser. If
 	// set to 0, then a random unused port is used. The default value of this property
 	// is 0.
@@ -585,6 +592,29 @@ class CK_VISIBLE_PUBLIC CkOAuth2  : public CkClassWithCallbacks
 	// "https://graph.microsoft.com/". The Microsoft Dynamics CRM OAuth authentication
 	// also requires the Resource property.
 	void put_Resource(const char *newVal);
+
+	// Can be set to "form_post" to include a "response_mode=form_post" in the
+	// authorization request. The default value is the empty string to omit the
+	// "response_mode" query param.
+	void get_ResponseMode(CkString &str);
+	// Can be set to "form_post" to include a "response_mode=form_post" in the
+	// authorization request. The default value is the empty string to omit the
+	// "response_mode" query param.
+	const char *responseMode(void);
+	// Can be set to "form_post" to include a "response_mode=form_post" in the
+	// authorization request. The default value is the empty string to omit the
+	// "response_mode" query param.
+	void put_ResponseMode(const char *newVal);
+
+	// The default value is "code". Can be set to "id_token+code" for cases where
+	// "response_type=id_token+code" is required in the authorization request.
+	void get_ResponseType(CkString &str);
+	// The default value is "code". Can be set to "id_token+code" for cases where
+	// "response_type=id_token+code" is required in the authorization request.
+	const char *responseType(void);
+	// The default value is "code". Can be set to "id_token+code" for cases where
+	// "response_type=id_token+code" is required in the authorization request.
+	void put_ResponseType(const char *newVal);
 
 	// This is an optional setting that defines the scope of access. For example,
 	// Google API scopes are listed here:
@@ -792,6 +822,29 @@ class CK_VISIBLE_PUBLIC CkOAuth2  : public CkClassWithCallbacks
 	CkTask *RefreshAccessTokenAsync(void);
 
 
+	// Provides for the ability to add HTTP request headers for the request sent by the
+	// RefreshAccesToken method. For example, if the "Accept: application/json" header
+	// needs to be sent, then add it by calling this method with name = "Accept" and
+	// value = "application/json".
+	// 
+	// Multiple headers may be added by calling this method once for each. To remove a
+	// header, call this method with name equal to the header name, and with an empty
+	// string for value.
+	// 
+	bool SetRefreshHeader(const char *name, const char *value);
+
+	// Provides for the ability to add HTTP request headers for the request sent by the
+	// RefreshAccesToken method. For example, if the "Accept: application/json" header
+	// needs to be sent, then add it by calling this method with name = "Accept" and
+	// value = "application/json".
+	// 
+	// Multiple headers may be added by calling this method once for each. To remove a
+	// header, call this method with name equal to the header name, and with an empty
+	// string for value.
+	// 
+	CkTask *SetRefreshHeaderAsync(const char *name, const char *value);
+
+
 	// Convenience method to force the calling thread to sleep for a number of
 	// milliseconds.
 	void SleepMs(int millisec);
@@ -811,6 +864,12 @@ class CK_VISIBLE_PUBLIC CkOAuth2  : public CkClassWithCallbacks
 	// The return value is the URL to be loaded (navigated to) in a popup or embedded
 	// browser.
 	// 
+	// Note: It's best not to call StartAuth if a previous call to StartAuth is in a
+	// non-completed state. However, starting in v9.5.0.76, if a background thread from
+	// a previous call to StartAuth is still running, it will be automatically
+	// canceled. However,rather than relying on this automatic behavior, your
+	// application should explicity Cancel the previous StartAuth before calling again.
+	// 
 	bool StartAuth(CkString &outStr);
 
 	// Initiates the three-legged OAuth2 flow. The various properties, such as
@@ -826,6 +885,12 @@ class CK_VISIBLE_PUBLIC CkOAuth2  : public CkClassWithCallbacks
 	//     application controls this behavior by setting the various properties beforehand.
 	// The return value is the URL to be loaded (navigated to) in a popup or embedded
 	// browser.
+	// 
+	// Note: It's best not to call StartAuth if a previous call to StartAuth is in a
+	// non-completed state. However, starting in v9.5.0.76, if a background thread from
+	// a previous call to StartAuth is still running, it will be automatically
+	// canceled. However,rather than relying on this automatic behavior, your
+	// application should explicity Cancel the previous StartAuth before calling again.
 	// 
 	const char *startAuth(void);
 

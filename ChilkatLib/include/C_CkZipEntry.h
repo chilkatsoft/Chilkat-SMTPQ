@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkZipEntry_H
 #define _C_CkZipEntry_H
 #include "chilkatDefs.h"
@@ -10,6 +10,15 @@ CK_VISIBLE_PUBLIC void CkZipEntry_setAbortCheck(HCkZipEntry cHandle, BOOL (*fnAb
 CK_VISIBLE_PUBLIC void CkZipEntry_setPercentDone(HCkZipEntry cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkZipEntry_setProgressInfo(HCkZipEntry cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkZipEntry_setTaskCompleted(HCkZipEntry cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
+CK_VISIBLE_PUBLIC void CkZipEntry_setAbortCheck2(HCkZipEntry cHandle, BOOL (*fnAbortCheck2)(void *pContext));
+CK_VISIBLE_PUBLIC void CkZipEntry_setPercentDone2(HCkZipEntry cHandle, BOOL (*fnPercentDone2)(int pctDone, void *pContext));
+CK_VISIBLE_PUBLIC void CkZipEntry_setProgressInfo2(HCkZipEntry cHandle, void (*fnProgressInfo2)(const char *name, const char *value, void *pContext));
+CK_VISIBLE_PUBLIC void CkZipEntry_setTaskCompleted2(HCkZipEntry cHandle, void (*fnTaskCompleted2)(HCkTask hTask, void *pContext));
+
+// setExternalProgress is for C callback functions defined in the external programming language (such as Go)
+CK_VISIBLE_PUBLIC void CkZipEntry_setExternalProgress(HCkZipEntry cHandle, BOOL on);
+CK_VISIBLE_PUBLIC void CkZipEntry_setCallbackContext(HCkZipEntry cHandle, void *pContext);
 
 CK_VISIBLE_PUBLIC HCkZipEntry CkZipEntry_Create(void);
 CK_VISIBLE_PUBLIC void CkZipEntry_Dispose(HCkZipEntry handle);

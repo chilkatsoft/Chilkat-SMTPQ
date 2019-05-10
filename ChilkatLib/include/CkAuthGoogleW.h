@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkAuthGoogleW_H
 #define _CkAuthGoogleW_H
@@ -96,6 +96,25 @@ class CK_VISIBLE_PUBLIC CkAuthGoogleW  : public CkClassWithCallbacksW
 	// maximum value is 1 hour (3600 seconds). The default value is 3600.
 	void put_ExpireNumSeconds(int newVal);
 
+	// This property can be set to override the default current date/time value for the
+	// "iat" claim of the JWT. It can be set to a value indicating the number of
+	// seconds from 1970-01-01T00:00:00Z UTC.
+	// 
+	// The default value is 0, which indicates to use the iat value for the current
+	// system date/time. Unless explicitly needed, always leave this property at the
+	// default value.
+	// 
+	int get_Iat(void);
+	// This property can be set to override the default current date/time value for the
+	// "iat" claim of the JWT. It can be set to a value indicating the number of
+	// seconds from 1970-01-01T00:00:00Z UTC.
+	// 
+	// The default value is 0, which indicates to use the iat value for the current
+	// system date/time. Unless explicitly needed, always leave this property at the
+	// default value.
+	// 
+	void put_Iat(int newVal);
+
 	// The JSON key for obtaining an access token. An application must set either the
 	// P12 or JSON private key, but not both.
 	void get_JsonKey(CkString &str);
@@ -144,6 +163,13 @@ class CK_VISIBLE_PUBLIC CkAuthGoogleW  : public CkClassWithCallbacksW
 	// Sends the HTTP request to fetch the access token. When this method completes
 	// successfully, the access token is available in the AccessToken property. The
 	// connection is an existing connection to www.googleapis.com.
+	// 
+	// Important: Make sure your computer's date/time is accurately set to the current
+	// date/time, otherwise you'll get a 400 response status code with this error:
+	// "Invalid JWT: Token must be a short-lived token (60 minutes) and in a reasonable
+	// timeframe. Check your iat and exp values and use a clock with skew to account
+	// for clock differences between systems.".
+	// 
 	bool ObtainAccessToken(CkSocketW &connection);
 
 	// Creates an asynchronous task to call the ObtainAccessToken method with the

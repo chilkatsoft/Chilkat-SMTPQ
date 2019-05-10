@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkCertStoreWH
 #define _C_CkCertStoreWH
 #include "chilkatDefs.h"
@@ -41,6 +41,7 @@ CK_VISIBLE_PUBLIC BOOL CkCertStoreW_CreateMemoryStore(HCkCertStoreW cHandle);
 #if defined(CK_WINCERTSTORE_INCLUDED)
 CK_VISIBLE_PUBLIC BOOL CkCertStoreW_CreateRegistryStore(HCkCertStoreW cHandle, const wchar_t *regRoot, const wchar_t *regPath);
 #endif
+CK_VISIBLE_PUBLIC HCkCertW CkCertStoreW_FindCertByKeyContainer(HCkCertStoreW cHandle, const wchar_t *name);
 CK_VISIBLE_PUBLIC HCkCertW CkCertStoreW_FindCertByRfc822Name(HCkCertStoreW cHandle, const wchar_t *name);
 CK_VISIBLE_PUBLIC HCkCertW CkCertStoreW_FindCertBySerial(HCkCertStoreW cHandle, const wchar_t *str);
 CK_VISIBLE_PUBLIC HCkCertW CkCertStoreW_FindCertBySha1Thumbprint(HCkCertStoreW cHandle, const wchar_t *str);

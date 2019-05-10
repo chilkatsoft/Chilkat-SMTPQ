@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkJsonArray_H
 #define _CkJsonArray_H
@@ -147,6 +147,10 @@ class CK_VISIBLE_PUBLIC CkJsonArray  : public CkMultiByteBase
 	bool BoolAt(int index);
 
 
+	// Deletes all array elements.
+	void Clear(void);
+
+
 	// Fills the dateTime with the date/time string located in the Nth array element.
 	// Indexing is 0-based (the 1st member is at index 0). Auto-recognizes the
 	// following date/time string formats: ISO-8061 Timestamp (such as
@@ -285,6 +289,10 @@ const char *emit(void);
 	// Returns the string value of the Nth array element. Indexing is 0-based (the 1st
 	// member is at index 0).
 	const char *stringAt(int index);
+
+	// Swaps the items at positions index1 and index2.
+	bool Swap(int index1, int index2);
+
 
 	// Returns the type of data at the given index. Possible return values are:
 	//     string

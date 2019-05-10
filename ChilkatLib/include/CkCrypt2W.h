@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkCrypt2W_H
 #define _CkCrypt2W_H
@@ -23,6 +23,7 @@ class CkCertChainW;
 class CkJsonObjectW;
 class CkCspW;
 class CkPrivateKeyW;
+class CkHttpW;
 class CkXmlCertVaultW;
 class CkBaseProgressW;
 
@@ -559,6 +560,16 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// PaddingScheme property is unused because no padding occurs.
 	// 
 	void put_CipherMode(const wchar_t *newVal);
+
+	// A JSON string for controlling extra CMS (PKCS7) signature and validation
+	// options.
+	void get_CmsOptions(CkString &str);
+	// A JSON string for controlling extra CMS (PKCS7) signature and validation
+	// options.
+	const wchar_t *cmsOptions(void);
+	// A JSON string for controlling extra CMS (PKCS7) signature and validation
+	// options.
+	void put_CmsOptions(const wchar_t *newVal);
 
 	// This property is deprecated. The only possible value is "BZIP2". The compression
 	// functionality in Crypt2 is legacy and existed long before the general
@@ -1130,47 +1141,62 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// 
 	void put_SigningAlg(const wchar_t *newVal);
 
-	// Contains JSON to specify the authenticated (signed) attributes that are to be
-	// included in PKCS7 signatures. The default value is:
+	// Contains JSON to specify the authenticated (signed) attributes or
+	// unauthenticated (unsigned) attributes that are to be included in CMS signatures.
+	// The default value is:
 	// {
 	//     "contentType": 1,
 	//     "signingTime": 1,
-	//     "messageDigest": 1,
-	//     "sMIMECapabilities": 1,
-	//     "microsoftRecipientInfo": 1,
-	//     "encrypKeyPref": 1
-	//     ] 
+	//     "messageDigest": 1
 	// }
-	// Contact Chilkat (support@chilkatsoft.com) about other signed attributes that may
-	// be needed for CAdes signatures.
+	// 
+	// Other possible values that can be added are:
+	//     signingCertificateV2
+	//     signingCertificate
+	//     sMIMECapabilities
+	//     microsoftRecipientInfo
+	//     encrypKeyPref
+	// Contact Chilkat (support@chilkatsoft.com) about other signed/unsigned attributes
+	// that may be needed for CAdES signatures.
+	// 
 	void get_SigningAttributes(CkString &str);
-	// Contains JSON to specify the authenticated (signed) attributes that are to be
-	// included in PKCS7 signatures. The default value is:
+	// Contains JSON to specify the authenticated (signed) attributes or
+	// unauthenticated (unsigned) attributes that are to be included in CMS signatures.
+	// The default value is:
 	// {
 	//     "contentType": 1,
 	//     "signingTime": 1,
-	//     "messageDigest": 1,
-	//     "sMIMECapabilities": 1,
-	//     "microsoftRecipientInfo": 1,
-	//     "encrypKeyPref": 1
-	//     ] 
+	//     "messageDigest": 1
 	// }
-	// Contact Chilkat (support@chilkatsoft.com) about other signed attributes that may
-	// be needed for CAdes signatures.
+	// 
+	// Other possible values that can be added are:
+	//     signingCertificateV2
+	//     signingCertificate
+	//     sMIMECapabilities
+	//     microsoftRecipientInfo
+	//     encrypKeyPref
+	// Contact Chilkat (support@chilkatsoft.com) about other signed/unsigned attributes
+	// that may be needed for CAdES signatures.
+	// 
 	const wchar_t *signingAttributes(void);
-	// Contains JSON to specify the authenticated (signed) attributes that are to be
-	// included in PKCS7 signatures. The default value is:
+	// Contains JSON to specify the authenticated (signed) attributes or
+	// unauthenticated (unsigned) attributes that are to be included in CMS signatures.
+	// The default value is:
 	// {
 	//     "contentType": 1,
 	//     "signingTime": 1,
-	//     "messageDigest": 1,
-	//     "sMIMECapabilities": 1,
-	//     "microsoftRecipientInfo": 1,
-	//     "encrypKeyPref": 1
-	//     ] 
+	//     "messageDigest": 1
 	// }
-	// Contact Chilkat (support@chilkatsoft.com) about other signed attributes that may
-	// be needed for CAdes signatures.
+	// 
+	// Other possible values that can be added are:
+	//     signingCertificateV2
+	//     signingCertificate
+	//     sMIMECapabilities
+	//     microsoftRecipientInfo
+	//     encrypKeyPref
+	// Contact Chilkat (support@chilkatsoft.com) about other signed/unsigned attributes
+	// that may be needed for CAdES signatures.
+	// 
 	void put_SigningAttributes(const wchar_t *newVal);
 
 	// When UU encoding, this is the filename to be embedded in UU encoded output. The
@@ -1306,9 +1332,19 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 
 	// Computes and returns a bcrypt hash of the password. The number of rounds of hashing
 	// is determined by the BCryptWorkFactor property.
+	// 
+	// Starting in v9.5.0.76, if the password is prefixed with "$2b$" then the output will
+	// use the $2b version of bcrypt. For example, to create a "$2b$" bcrypt has for
+	// the password "secret", pass in the string "$2b$secret" for password.
+	// 
 	bool BCryptHash(const wchar_t *password, CkString &outStr);
 	// Computes and returns a bcrypt hash of the password. The number of rounds of hashing
 	// is determined by the BCryptWorkFactor property.
+	// 
+	// Starting in v9.5.0.76, if the password is prefixed with "$2b$" then the output will
+	// use the $2b version of bcrypt. For example, to create a "$2b$" bcrypt has for
+	// the password "secret", pass in the string "$2b$secret" for password.
+	// 
 	const wchar_t *bCryptHash(const wchar_t *password);
 
 	// Verifies the password against a previously computed BCrypt hash. Returns true if
@@ -1424,7 +1460,16 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// hash algorithms for signing are "sha256", "sha1", "sha384", "sha512", "md5", and
 	// "md2".
 	// 
+	// Note: The CreateP7M method creates an opaque signature. To do the same thing
+	// entirely in memory, your application would call any of the OpaqueSign* methods,
+	// such as OpaqueSignBd, OpaqueSignString, OpaqueSignStringENC, etc.
+	// 
 	bool CreateP7M(const wchar_t *inFilename, const wchar_t *p7mPath);
+
+	// Creates an asynchronous task to call the CreateP7M method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *CreateP7MAsync(const wchar_t *inFilename, const wchar_t *p7mPath);
 
 	// Digitally signs a file and creates a .p7s (PKCS #7 Signature) signature file.
 	// The input file (inFilename) is unmodified. The output file (p7sPath) contains only the
@@ -1435,7 +1480,16 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// hash algorithms for signing are "sha256", "sha1", "sha384", "sha512", "md5", and
 	// "md2".
 	// 
+	// Note: The CreateP7S method creates a detached signature. To do the same thing
+	// entirely in memory, your application would call any of the Sign* methods, such
+	// as SignBdENC, SignString, SignStringENC, SignSbENC, etc.
+	// 
 	bool CreateP7S(const wchar_t *inFilename, const wchar_t *p7sPath);
+
+	// Creates an asynchronous task to call the CreateP7S method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *CreateP7SAsync(const wchar_t *inFilename, const wchar_t *p7sPath);
 
 	// Decode binary data from an encoded string. The encoding can be set to any of the
 	// following strings: "base64", "hex", "quoted-printable", "url", "base32", "Q",
@@ -1569,6 +1623,15 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// bytes to encode.
 	// 
 	const wchar_t *encodeBytes(const void *pByteData, unsigned long szByteData, const wchar_t *encoding);
+
+	// Encodes an integer to N bytes and returns in the specified encoding. If littleEndian is
+	// true, then little endian byte ordering is used. Otherwise big-endian byte
+	// order is used.
+	bool EncodeInt(int value, int numBytes, bool littleEndian, const wchar_t *encoding, CkString &outStr);
+	// Encodes an integer to N bytes and returns in the specified encoding. If littleEndian is
+	// true, then little endian byte ordering is used. Otherwise big-endian byte
+	// order is used.
+	const wchar_t *encodeInt(int value, int numBytes, bool littleEndian, const wchar_t *encoding);
 
 	// Encodes a string. The toEncodingName can be set to any of the following strings: "base64",
 	// "hex", "quoted-printable", "url", "base32", "Q", "B", "url_rc1738",
@@ -1971,6 +2034,28 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// The binary PKCS7 is passed in pkcs7Der. On success, the sbJson will contain the signed
 	// attributes in JSON format.
 	// 
+	// Sample JSON output:
+	// {
+	//   "signedAttributes": [
+	//     {
+	//       "oid": "1.2.840.113549.1.9.3",
+	//       "name": "Content Type"
+	//     },
+	//     {
+	//       "oid": "1.2.840.113549.1.9.5",
+	//       "name": "Signing Time"
+	//     },
+	//     {
+	//       "oid": "1.2.840.113549.1.9.4",
+	//       "name": "Message Digest"
+	//     },
+	//     {
+	//       "oid": "1.2.840.113549.1.9.16.2.47",
+	//       "name": "Signing Certificate V2"
+	//     }
+	//   ]
+	// }
+	// 
 	bool GetSignedAttributes(int signerIndex, CkBinDataW &pkcs7Der, CkStringBuilderW &sbJson);
 
 	// Gets the Nth certificate used for signing. This method can be called after
@@ -2242,6 +2327,31 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// 
 	const wchar_t *hmacStringENC(const wchar_t *inText);
 
+	// Implements RFC 4226: HOTP: An HMAC-Based One-Time Password Algorithm. The
+	// arguments to this method are:
+	//     secret: The shared secret in an enocded representation such as base64, hex,
+	//     ascii, etc.
+	//     secretEnc: The encoding of the shared secret, such as "base64"
+	//     counterHex: The 8-byte counter in hexidecimal format.
+	//     numDigits: The number of decimal digits to return.
+	//     truncOffset: Normally set this to -1 for dynamic truncation. Otherwise can be set
+	//     in the range 0..15.
+	//     hashAlg: Normally set to "sha1". Can be set to other hash algorithms such as
+	//     "sha256", "sha512", etc.
+	bool Hotp(const wchar_t *secret, const wchar_t *secretEnc, const wchar_t *counterHex, int numDigits, int truncOffset, const wchar_t *hashAlg, CkString &outStr);
+	// Implements RFC 4226: HOTP: An HMAC-Based One-Time Password Algorithm. The
+	// arguments to this method are:
+	//     secret: The shared secret in an enocded representation such as base64, hex,
+	//     ascii, etc.
+	//     secretEnc: The encoding of the shared secret, such as "base64"
+	//     counterHex: The 8-byte counter in hexidecimal format.
+	//     numDigits: The number of decimal digits to return.
+	//     truncOffset: Normally set this to -1 for dynamic truncation. Otherwise can be set
+	//     in the range 0..15.
+	//     hashAlg: Normally set to "sha1". Can be set to other hash algorithms such as
+	//     "sha256", "sha512", etc.
+	const wchar_t *hotp(const wchar_t *secret, const wchar_t *secretEnc, const wchar_t *counterHex, int numDigits, int truncOffset, const wchar_t *hashAlg);
+
 	// Decompresses data that was compressed with CompressBytes.
 	// 
 	// This is a legacy method that should not be used in new development. It will not
@@ -2339,10 +2449,20 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// PKCS7/CMS format signature that embeds the data that was signed.
 	bool OpaqueSignBd(CkBinDataW &bd);
 
+	// Creates an asynchronous task to call the OpaqueSignBd method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *OpaqueSignBdAsync(CkBinDataW &bd);
+
 	// Digitally signs a byte array and returns a PKCS7/CMS format signature. This is a
 	// signature that contains both the original data as well as the signature. A
 	// certificate must be set by calling SetSigningCert prior to calling this method.
 	bool OpaqueSignBytes(CkByteData &data, CkByteData &outData);
+
+	// Creates an asynchronous task to call the OpaqueSignBytes method with the
+	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *OpaqueSignBytesAsync(CkByteData &data);
 
 	// Digitally signs a byte array and returns a PKCS7/CMS format signature in encoded
 	// string format (such as Base64 or hex). This is a signature that contains both
@@ -2359,6 +2479,11 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// EncodingMode property.)
 	const wchar_t *opaqueSignBytesENC(CkByteData &data);
 
+	// Creates an asynchronous task to call the OpaqueSignBytesENC method with the
+	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *OpaqueSignBytesENCAsync(CkByteData &data);
+
 	// Digitally signs a string and returns a PKCS7/CMS format signature. This is a
 	// signature that contains both the original data as well as the signature. A
 	// certificate must be set by calling SetSigningCert prior to calling this method.
@@ -2370,6 +2495,11 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// property to the name of the charset before signing. The complete list of
 	// charsets is listed in the EncryptString method description.
 	bool OpaqueSignString(const wchar_t *str, CkByteData &outData);
+
+	// Creates an asynchronous task to call the OpaqueSignString method with the
+	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *OpaqueSignStringAsync(const wchar_t *str);
 
 	// Digitally signs a string and returns a PKCS7/CMS format signature in encoded
 	// string format (such as base64 or hex). This is a signature that contains both
@@ -2401,6 +2531,11 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// "QP","Hex", etc. (See the EncodingMode property.)
 	// 
 	const wchar_t *opaqueSignStringENC(const wchar_t *str);
+
+	// Creates an asynchronous task to call the OpaqueSignStringENC method with the
+	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *OpaqueSignStringENCAsync(const wchar_t *str);
 
 	// In-place verifies and unwraps the PKCS7/CMS contents of bd. If the signature
 	// is verified, the contents of bd will be replaced with the original data, and
@@ -2717,6 +2852,12 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// digital signatures.
 	bool SetSigningCert2(CkCertW &cert, CkPrivateKeyW &privateKey);
 
+	// Sets the timestamp authority (TSA) options for cases where a CAdES-T signature
+	// is to be created. The http is used to send the requests, and it allows for
+	// connection related settings and timeouts to be set. For example, if HTTP or
+	// SOCKS proxies are required, these features can be specified on the http.
+	void SetTsaHttpObj(CkHttpW &http);
+
 	// Sets the digital certificate to be used in verifying a signature.
 	bool SetVerifyCert(CkCertW &cert);
 
@@ -2727,9 +2868,19 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// in an encoded string (according to the EncodingMode property setting).
 	const wchar_t *signBdENC(CkBinDataW &dataToSign);
 
+	// Creates an asynchronous task to call the SignBdENC method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *SignBdENCAsync(CkBinDataW &dataToSign);
+
 	// Digitally signs a byte array and returns the detached digital signature. A
 	// certificate must be set by calling SetSigningCert prior to calling this method.
 	bool SignBytes(CkByteData &data, CkByteData &outData);
+
+	// Creates an asynchronous task to call the SignBytes method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *SignBytesAsync(CkByteData &data);
 
 	// Digitally signs a byte array and returns the detached digital signature encoded
 	// as a printable string. A certificate must be set by calling SetSigningCert prior
@@ -2742,12 +2893,22 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// which can be "Base64", "QP", or "Hex".
 	const wchar_t *signBytesENC(CkByteData &data);
 
+	// Creates an asynchronous task to call the SignBytesENC method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *SignBytesENCAsync(CkByteData &data);
+
 	// Digitally signs a the contents of sb and returns the PKCS7 detached digital
 	// signature as an encoded string according to the EncodingMode property setting.
 	bool SignSbENC(CkStringBuilderW &sb, CkString &outStr);
 	// Digitally signs a the contents of sb and returns the PKCS7 detached digital
 	// signature as an encoded string according to the EncodingMode property setting.
 	const wchar_t *signSbENC(CkStringBuilderW &sb);
+
+	// Creates an asynchronous task to call the SignSbENC method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *SignSbENCAsync(CkStringBuilderW &sb);
 
 	// Digitally signs a string and returns the detached digital signature. A
 	// certificate must be set by calling SetSigningCert prior to calling this method.
@@ -2759,6 +2920,11 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// property to the name of the charset before signing. The complete list of
 	// charsets is listed in the EncryptString method description.
 	bool SignString(const wchar_t *str, CkByteData &outData);
+
+	// Creates an asynchronous task to call the SignString method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *SignStringAsync(const wchar_t *str);
 
 	// Digitally signs a string and returns the PKCS7 detached digital signature as an
 	// encoded string. A certificate must be set by calling SetSigningCert prior to
@@ -2789,9 +2955,51 @@ class CK_VISIBLE_PUBLIC CkCrypt2W  : public CkClassWithCallbacksW
 	// 
 	const wchar_t *signStringENC(const wchar_t *str);
 
+	// Creates an asynchronous task to call the SignStringENC method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *SignStringENCAsync(const wchar_t *str);
+
 	// Convert a string to a byte array where the characters are encoded according to
 	// the charset specified.
 	bool StringToBytes(const wchar_t *inStr, const wchar_t *charset, CkByteData &outBytes);
+
+	// Implements RFC 6238: TOTP: Time-Based One-Time Password Algorithm. The arguments
+	// to this method are:
+	//     secret: The shared secret in an enocded representation such as base64, hex,
+	//     ascii, etc.
+	//     secretEnc: The encoding of the shared secret, such as "base64"
+	//     t0: The Unix time to start counting time steps. It is a number in decimal
+	//     string form. A Unix time is the number of seconds elapsed since midnight UTC of
+	//     January 1, 1970. "0" is a typical value used for this argument.
+	//     tNow: The current Unix time in decimal string form. To use the current
+	//     system date/time, pass an empty string for this argument.
+	//     tStep: The time step in seconds. A typical value is 30. Note: Both client and
+	//     server must pre-agree on the secret, the t0, and the tStep.
+	//     numDigits: The number of decimal digits to return.
+	//     truncOffset: Normally set this to -1 for dynamic truncation. Otherwise can be set
+	//     in the range 0..15.
+	//     hashAlg: Normally set to "sha1". Can be set to other hash algorithms such as
+	//     "sha256", "sha512", etc.
+	bool Totp(const wchar_t *secret, const wchar_t *secretEnc, const wchar_t *t0, const wchar_t *tNow, int tStep, int numDigits, int truncOffset, const wchar_t *hashAlg, CkString &outStr);
+	// Implements RFC 6238: TOTP: Time-Based One-Time Password Algorithm. The arguments
+	// to this method are:
+	//     secret: The shared secret in an enocded representation such as base64, hex,
+	//     ascii, etc.
+	//     secretEnc: The encoding of the shared secret, such as "base64"
+	//     t0: The Unix time to start counting time steps. It is a number in decimal
+	//     string form. A Unix time is the number of seconds elapsed since midnight UTC of
+	//     January 1, 1970. "0" is a typical value used for this argument.
+	//     tNow: The current Unix time in decimal string form. To use the current
+	//     system date/time, pass an empty string for this argument.
+	//     tStep: The time step in seconds. A typical value is 30. Note: Both client and
+	//     server must pre-agree on the secret, the t0, and the tStep.
+	//     numDigits: The number of decimal digits to return.
+	//     truncOffset: Normally set this to -1 for dynamic truncation. Otherwise can be set
+	//     in the range 0..15.
+	//     hashAlg: Normally set to "sha1". Can be set to other hash algorithms such as
+	//     "sha256", "sha512", etc.
+	const wchar_t *totp(const wchar_t *secret, const wchar_t *secretEnc, const wchar_t *t0, const wchar_t *tNow, int tStep, int numDigits, int truncOffset, const wchar_t *hashAlg);
 
 	// Trim a string ending with a specific substring until the string no longer ends
 	// with that substring.

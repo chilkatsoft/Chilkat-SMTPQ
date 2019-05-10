@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkSsh_H
 #define _CkSsh_H
@@ -1307,6 +1307,50 @@ class CK_VISIBLE_PUBLIC CkSsh  : public CkClassWithCallbacks
 
 	// Disconnects from the SSH server.
 	void Disconnect(void);
+
+
+	// Queries the SSH server to find out which authentication methods it supports.
+	// Returns a string such as "publickey,password,keyboard-interactive".
+	// 
+	// This method should be called after connecting, but prior to authenticating. The
+	// method intentionally disconnects from the server after getting the
+	// authentication methods. An application may then connect again and authentication
+	// with a chosen method. (In most cases, an application knows in advance the type
+	// of authentication to be used, and this method is never called.)
+	// 
+	bool GetAuthMethods(CkString &outStr);
+
+	// Queries the SSH server to find out which authentication methods it supports.
+	// Returns a string such as "publickey,password,keyboard-interactive".
+	// 
+	// This method should be called after connecting, but prior to authenticating. The
+	// method intentionally disconnects from the server after getting the
+	// authentication methods. An application may then connect again and authentication
+	// with a chosen method. (In most cases, an application knows in advance the type
+	// of authentication to be used, and this method is never called.)
+	// 
+	const char *getAuthMethods(void);
+	// Queries the SSH server to find out which authentication methods it supports.
+	// Returns a string such as "publickey,password,keyboard-interactive".
+	// 
+	// This method should be called after connecting, but prior to authenticating. The
+	// method intentionally disconnects from the server after getting the
+	// authentication methods. An application may then connect again and authentication
+	// with a chosen method. (In most cases, an application knows in advance the type
+	// of authentication to be used, and this method is never called.)
+	// 
+	const char *authMethods(void);
+
+	// Queries the SSH server to find out which authentication methods it supports.
+	// Returns a string such as "publickey,password,keyboard-interactive".
+	// 
+	// This method should be called after connecting, but prior to authenticating. The
+	// method intentionally disconnects from the server after getting the
+	// authentication methods. An application may then connect again and authentication
+	// with a chosen method. (In most cases, an application knows in advance the type
+	// of authentication to be used, and this method is never called.)
+	// 
+	CkTask *GetAuthMethodsAsync(void);
 
 
 	// Returns the exit status code for a channel. This method should only be called if

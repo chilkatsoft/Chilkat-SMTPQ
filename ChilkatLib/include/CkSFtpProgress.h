@@ -22,10 +22,10 @@
 	...
     };
 */
+
 #define CK_SFTPPROGRESS_API \
 	void UploadRate(__int64 byteCount, unsigned long bytesPerSec);\
 	void DownloadRate(__int64 byteCount, unsigned long bytesPerSec);
-
 
 #if !defined(__sun__) && !defined(__sun)
 #pragma pack (push, 8)

@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkCsp_H
 #define _CkCsp_H
@@ -13,6 +13,8 @@
 #include "CkMultiByteBase.h"
 
 class CkStringArray;
+class CkStringTable;
+class CkCert;
 
 
 
@@ -141,6 +143,11 @@ class CK_VISIBLE_PUBLIC CkCsp  : public CkMultiByteBase
 	CkStringArray *GetKeyContainerNames(void);
 
 
+	// Returns the names of the CSP's (Cryptographic Service Providers) that are
+	// registered on the Windows system.
+	bool GetProviders(CkStringTable &providerNames);
+
+
 	// Returns true if the currently selected CSP contains an encryption algorithm
 	// matching the name and key length. Otherwise returns false.
 	bool HasEncryptAlgorithm(const char *name, int numBits);
@@ -153,6 +160,11 @@ class CK_VISIBLE_PUBLIC CkCsp  : public CkMultiByteBase
 
 	// Intializes the Csp with the selected ProviderName.
 	bool Initialize(void);
+
+
+	// Loads the cert with the certificate currently in the smartcard reader, or the
+	// USB token that is currently inserted.
+	bool LoadSmartcardCert(CkCert &cert);
 
 
 	// Returns the name of the Nth encryption algorithm provided by the currently

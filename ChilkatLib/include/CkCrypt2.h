@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkCrypt2_H
 #define _CkCrypt2_H
@@ -23,6 +23,7 @@ class CkCertChain;
 class CkJsonObject;
 class CkCsp;
 class CkPrivateKey;
+class CkHttp;
 class CkXmlCertVault;
 class CkBaseProgress;
 
@@ -552,6 +553,16 @@ class CK_VISIBLE_PUBLIC CkCrypt2  : public CkClassWithCallbacks
 	// PaddingScheme property is unused because no padding occurs.
 	// 
 	void put_CipherMode(const char *newVal);
+
+	// A JSON string for controlling extra CMS (PKCS7) signature and validation
+	// options.
+	void get_CmsOptions(CkString &str);
+	// A JSON string for controlling extra CMS (PKCS7) signature and validation
+	// options.
+	const char *cmsOptions(void);
+	// A JSON string for controlling extra CMS (PKCS7) signature and validation
+	// options.
+	void put_CmsOptions(const char *newVal);
 
 	// This property is deprecated. The only possible value is "BZIP2". The compression
 	// functionality in Crypt2 is legacy and existed long before the general
@@ -1123,47 +1134,62 @@ class CK_VISIBLE_PUBLIC CkCrypt2  : public CkClassWithCallbacks
 	// 
 	void put_SigningAlg(const char *newVal);
 
-	// Contains JSON to specify the authenticated (signed) attributes that are to be
-	// included in PKCS7 signatures. The default value is:
+	// Contains JSON to specify the authenticated (signed) attributes or
+	// unauthenticated (unsigned) attributes that are to be included in CMS signatures.
+	// The default value is:
 	// {
 	//     "contentType": 1,
 	//     "signingTime": 1,
-	//     "messageDigest": 1,
-	//     "sMIMECapabilities": 1,
-	//     "microsoftRecipientInfo": 1,
-	//     "encrypKeyPref": 1
-	//     ] 
+	//     "messageDigest": 1
 	// }
-	// Contact Chilkat (support@chilkatsoft.com) about other signed attributes that may
-	// be needed for CAdes signatures.
+	// 
+	// Other possible values that can be added are:
+	//     signingCertificateV2
+	//     signingCertificate
+	//     sMIMECapabilities
+	//     microsoftRecipientInfo
+	//     encrypKeyPref
+	// Contact Chilkat (support@chilkatsoft.com) about other signed/unsigned attributes
+	// that may be needed for CAdES signatures.
+	// 
 	void get_SigningAttributes(CkString &str);
-	// Contains JSON to specify the authenticated (signed) attributes that are to be
-	// included in PKCS7 signatures. The default value is:
+	// Contains JSON to specify the authenticated (signed) attributes or
+	// unauthenticated (unsigned) attributes that are to be included in CMS signatures.
+	// The default value is:
 	// {
 	//     "contentType": 1,
 	//     "signingTime": 1,
-	//     "messageDigest": 1,
-	//     "sMIMECapabilities": 1,
-	//     "microsoftRecipientInfo": 1,
-	//     "encrypKeyPref": 1
-	//     ] 
+	//     "messageDigest": 1
 	// }
-	// Contact Chilkat (support@chilkatsoft.com) about other signed attributes that may
-	// be needed for CAdes signatures.
+	// 
+	// Other possible values that can be added are:
+	//     signingCertificateV2
+	//     signingCertificate
+	//     sMIMECapabilities
+	//     microsoftRecipientInfo
+	//     encrypKeyPref
+	// Contact Chilkat (support@chilkatsoft.com) about other signed/unsigned attributes
+	// that may be needed for CAdES signatures.
+	// 
 	const char *signingAttributes(void);
-	// Contains JSON to specify the authenticated (signed) attributes that are to be
-	// included in PKCS7 signatures. The default value is:
+	// Contains JSON to specify the authenticated (signed) attributes or
+	// unauthenticated (unsigned) attributes that are to be included in CMS signatures.
+	// The default value is:
 	// {
 	//     "contentType": 1,
 	//     "signingTime": 1,
-	//     "messageDigest": 1,
-	//     "sMIMECapabilities": 1,
-	//     "microsoftRecipientInfo": 1,
-	//     "encrypKeyPref": 1
-	//     ] 
+	//     "messageDigest": 1
 	// }
-	// Contact Chilkat (support@chilkatsoft.com) about other signed attributes that may
-	// be needed for CAdes signatures.
+	// 
+	// Other possible values that can be added are:
+	//     signingCertificateV2
+	//     signingCertificate
+	//     sMIMECapabilities
+	//     microsoftRecipientInfo
+	//     encrypKeyPref
+	// Contact Chilkat (support@chilkatsoft.com) about other signed/unsigned attributes
+	// that may be needed for CAdES signatures.
+	// 
 	void put_SigningAttributes(const char *newVal);
 
 	// When UU encoding, this is the filename to be embedded in UU encoded output. The
@@ -1304,10 +1330,20 @@ class CK_VISIBLE_PUBLIC CkCrypt2  : public CkClassWithCallbacks
 
 	// Computes and returns a bcrypt hash of the password. The number of rounds of hashing
 	// is determined by the BCryptWorkFactor property.
+	// 
+	// Starting in v9.5.0.76, if the password is prefixed with "$2b$" then the output will
+	// use the $2b version of bcrypt. For example, to create a "$2b$" bcrypt has for
+	// the password "secret", pass in the string "$2b$secret" for password.
+	// 
 	bool BCryptHash(const char *password, CkString &outStr);
 
 	// Computes and returns a bcrypt hash of the password. The number of rounds of hashing
 	// is determined by the BCryptWorkFactor property.
+	// 
+	// Starting in v9.5.0.76, if the password is prefixed with "$2b$" then the output will
+	// use the $2b version of bcrypt. For example, to create a "$2b$" bcrypt has for
+	// the password "secret", pass in the string "$2b$secret" for password.
+	// 
 	const char *bCryptHash(const char *password);
 
 	// Verifies the password against a previously computed BCrypt hash. Returns true if
@@ -1438,7 +1474,26 @@ class CK_VISIBLE_PUBLIC CkCrypt2  : public CkClassWithCallbacks
 	// hash algorithms for signing are "sha256", "sha1", "sha384", "sha512", "md5", and
 	// "md2".
 	// 
+	// Note: The CreateP7M method creates an opaque signature. To do the same thing
+	// entirely in memory, your application would call any of the OpaqueSign* methods,
+	// such as OpaqueSignBd, OpaqueSignString, OpaqueSignStringENC, etc.
+	// 
 	bool CreateP7M(const char *inFilename, const char *p7mPath);
+
+	// Digitally signs a file and creates a .p7m (PKCS #7 Message) file that contains
+	// both the signature and original file content. The input file (inFilename) is
+	// unmodified. A certificate for signing must be specified by calling
+	// SetSigningCert or SetSigningCert2 prior to calling this method.
+	// 
+	// To sign with a particular hash algorithm, set the HashAlgorithm property. Valid
+	// hash algorithms for signing are "sha256", "sha1", "sha384", "sha512", "md5", and
+	// "md2".
+	// 
+	// Note: The CreateP7M method creates an opaque signature. To do the same thing
+	// entirely in memory, your application would call any of the OpaqueSign* methods,
+	// such as OpaqueSignBd, OpaqueSignString, OpaqueSignStringENC, etc.
+	// 
+	CkTask *CreateP7MAsync(const char *inFilename, const char *p7mPath);
 
 
 	// Digitally signs a file and creates a .p7s (PKCS #7 Signature) signature file.
@@ -1450,7 +1505,26 @@ class CK_VISIBLE_PUBLIC CkCrypt2  : public CkClassWithCallbacks
 	// hash algorithms for signing are "sha256", "sha1", "sha384", "sha512", "md5", and
 	// "md2".
 	// 
+	// Note: The CreateP7S method creates a detached signature. To do the same thing
+	// entirely in memory, your application would call any of the Sign* methods, such
+	// as SignBdENC, SignString, SignStringENC, SignSbENC, etc.
+	// 
 	bool CreateP7S(const char *inFilename, const char *p7sPath);
+
+	// Digitally signs a file and creates a .p7s (PKCS #7 Signature) signature file.
+	// The input file (inFilename) is unmodified. The output file (p7sPath) contains only the
+	// signature and not the original data. A certificate for signing must be specified
+	// by calling SetSigningCert or SetSigningCert2 prior to calling this method.
+	// 
+	// To sign with a particular hash algorithm, set the HashAlgorithm property. Valid
+	// hash algorithms for signing are "sha256", "sha1", "sha384", "sha512", "md5", and
+	// "md2".
+	// 
+	// Note: The CreateP7S method creates a detached signature. To do the same thing
+	// entirely in memory, your application would call any of the Sign* methods, such
+	// as SignBdENC, SignString, SignStringENC, SignSbENC, etc.
+	// 
+	CkTask *CreateP7SAsync(const char *inFilename, const char *p7sPath);
 
 
 	// Decode binary data from an encoded string. The encoding can be set to any of the
@@ -1599,6 +1673,16 @@ class CK_VISIBLE_PUBLIC CkCrypt2  : public CkClassWithCallbacks
 	// bytes to encode.
 	// 
 	const char *encodeBytes(const void *pByteData, unsigned long szByteData, const char *encoding);
+
+	// Encodes an integer to N bytes and returns in the specified encoding. If littleEndian is
+	// true, then little endian byte ordering is used. Otherwise big-endian byte
+	// order is used.
+	bool EncodeInt(int value, int numBytes, bool littleEndian, const char *encoding, CkString &outStr);
+
+	// Encodes an integer to N bytes and returns in the specified encoding. If littleEndian is
+	// true, then little endian byte ordering is used. Otherwise big-endian byte
+	// order is used.
+	const char *encodeInt(int value, int numBytes, bool littleEndian, const char *encoding);
 
 	// Encodes a string. The toEncodingName can be set to any of the following strings: "base64",
 	// "hex", "quoted-printable", "url", "base32", "Q", "B", "url_rc1738",
@@ -2031,6 +2115,28 @@ class CK_VISIBLE_PUBLIC CkCrypt2  : public CkClassWithCallbacks
 	// The binary PKCS7 is passed in pkcs7Der. On success, the sbJson will contain the signed
 	// attributes in JSON format.
 	// 
+	// Sample JSON output:
+	// {
+	//   "signedAttributes": [
+	//     {
+	//       "oid": "1.2.840.113549.1.9.3",
+	//       "name": "Content Type"
+	//     },
+	//     {
+	//       "oid": "1.2.840.113549.1.9.5",
+	//       "name": "Signing Time"
+	//     },
+	//     {
+	//       "oid": "1.2.840.113549.1.9.4",
+	//       "name": "Message Digest"
+	//     },
+	//     {
+	//       "oid": "1.2.840.113549.1.9.16.2.47",
+	//       "name": "Signing Certificate V2"
+	//     }
+	//   ]
+	// }
+	// 
 	bool GetSignedAttributes(int signerIndex, CkBinData &pkcs7Der, CkStringBuilder &sbJson);
 
 
@@ -2333,6 +2439,32 @@ class CK_VISIBLE_PUBLIC CkCrypt2  : public CkClassWithCallbacks
 	// 
 	const char *hmacStringENC(const char *inText);
 
+	// Implements RFC 4226: HOTP: An HMAC-Based One-Time Password Algorithm. The
+	// arguments to this method are:
+	//     secret: The shared secret in an enocded representation such as base64, hex,
+	//     ascii, etc.
+	//     secretEnc: The encoding of the shared secret, such as "base64"
+	//     counterHex: The 8-byte counter in hexidecimal format.
+	//     numDigits: The number of decimal digits to return.
+	//     truncOffset: Normally set this to -1 for dynamic truncation. Otherwise can be set
+	//     in the range 0..15.
+	//     hashAlg: Normally set to "sha1". Can be set to other hash algorithms such as
+	//     "sha256", "sha512", etc.
+	bool Hotp(const char *secret, const char *secretEnc, const char *counterHex, int numDigits, int truncOffset, const char *hashAlg, CkString &outStr);
+
+	// Implements RFC 4226: HOTP: An HMAC-Based One-Time Password Algorithm. The
+	// arguments to this method are:
+	//     secret: The shared secret in an enocded representation such as base64, hex,
+	//     ascii, etc.
+	//     secretEnc: The encoding of the shared secret, such as "base64"
+	//     counterHex: The 8-byte counter in hexidecimal format.
+	//     numDigits: The number of decimal digits to return.
+	//     truncOffset: Normally set this to -1 for dynamic truncation. Otherwise can be set
+	//     in the range 0..15.
+	//     hashAlg: Normally set to "sha1". Can be set to other hash algorithms such as
+	//     "sha256", "sha512", etc.
+	const char *hotp(const char *secret, const char *secretEnc, const char *counterHex, int numDigits, int truncOffset, const char *hashAlg);
+
 	// Decompresses data that was compressed with CompressBytes.
 	// 
 	// This is a legacy method that should not be used in new development. It will not
@@ -2443,11 +2575,20 @@ class CK_VISIBLE_PUBLIC CkCrypt2  : public CkClassWithCallbacks
 	// PKCS7/CMS format signature that embeds the data that was signed.
 	bool OpaqueSignBd(CkBinData &bd);
 
+	// In-place signs the contents of bd. The contents of bd is replaced with the
+	// PKCS7/CMS format signature that embeds the data that was signed.
+	CkTask *OpaqueSignBdAsync(CkBinData &bd);
+
 
 	// Digitally signs a byte array and returns a PKCS7/CMS format signature. This is a
 	// signature that contains both the original data as well as the signature. A
 	// certificate must be set by calling SetSigningCert prior to calling this method.
 	bool OpaqueSignBytes(CkByteData &data, CkByteData &outData);
+
+	// Digitally signs a byte array and returns a PKCS7/CMS format signature. This is a
+	// signature that contains both the original data as well as the signature. A
+	// certificate must be set by calling SetSigningCert prior to calling this method.
+	CkTask *OpaqueSignBytesAsync(CkByteData &data);
 
 
 	// Digitally signs a byte array and returns a PKCS7/CMS format signature in encoded
@@ -2465,6 +2606,14 @@ class CK_VISIBLE_PUBLIC CkCrypt2  : public CkClassWithCallbacks
 	// the output encoding, which can be "Base64", "QP","Hex", etc. (See the
 	// EncodingMode property.)
 	const char *opaqueSignBytesENC(CkByteData &data);
+	// Digitally signs a byte array and returns a PKCS7/CMS format signature in encoded
+	// string format (such as Base64 or hex). This is a signature that contains both
+	// the original data as well as the signature. A certificate must be set by calling
+	// SetSigningCert prior to calling this method. The EncodingMode property controls
+	// the output encoding, which can be "Base64", "QP","Hex", etc. (See the
+	// EncodingMode property.)
+	CkTask *OpaqueSignBytesENCAsync(CkByteData &data);
+
 
 	// Digitally signs a string and returns a PKCS7/CMS format signature. This is a
 	// signature that contains both the original data as well as the signature. A
@@ -2477,6 +2626,18 @@ class CK_VISIBLE_PUBLIC CkCrypt2  : public CkClassWithCallbacks
 	// property to the name of the charset before signing. The complete list of
 	// charsets is listed in the EncryptString method description.
 	bool OpaqueSignString(const char *str, CkByteData &outData);
+
+	// Digitally signs a string and returns a PKCS7/CMS format signature. This is a
+	// signature that contains both the original data as well as the signature. A
+	// certificate must be set by calling SetSigningCert prior to calling this method.
+	// The Charset property controls the character encoding of the string that is
+	// signed. (Languages such as VB.NET, C#, and Visual Basic work with Unicode
+	// strings.) To sign Unicode data (2 bytes per char), set the Charset property to
+	// "Unicode". To implicitly convert the string to a mutlibyte charset such as
+	// "iso-8859-1", "Shift_JIS", "utf-8", or something else, then set the Charset
+	// property to the name of the charset before signing. The complete list of
+	// charsets is listed in the EncryptString method description.
+	CkTask *OpaqueSignStringAsync(const char *str);
 
 
 	// Digitally signs a string and returns a PKCS7/CMS format signature in encoded
@@ -2510,6 +2671,22 @@ class CK_VISIBLE_PUBLIC CkCrypt2  : public CkClassWithCallbacks
 	// "QP","Hex", etc. (See the EncodingMode property.)
 	// 
 	const char *opaqueSignStringENC(const char *str);
+	// Digitally signs a string and returns a PKCS7/CMS format signature in encoded
+	// string format (such as base64 or hex). This is a signature that contains both
+	// the original data as well as the signature. A certificate must be set by calling
+	// SetSigningCert prior to calling this method. The Charset property controls the
+	// character encoding of the string that is signed. (Languages such as VB.NET, C#,
+	// and Visual Basic work with Unicode strings.) To sign Unicode data (2 bytes per
+	// char), set the Charset property to "Unicode". To implicitly convert the string
+	// to a mutlibyte charset such as "iso-8859-1", "Shift_JIS", "utf-8", or something
+	// else, then set the Charset property to the name of the charset before signing.
+	// The complete list of charsets is listed in the EncryptString method description.
+	// 
+	// The EncodingMode property controls the output encoding, which can be "Base64",
+	// "QP","Hex", etc. (See the EncodingMode property.)
+	// 
+	CkTask *OpaqueSignStringENCAsync(const char *str);
+
 
 	// In-place verifies and unwraps the PKCS7/CMS contents of bd. If the signature
 	// is verified, the contents of bd will be replaced with the original data, and
@@ -2858,6 +3035,13 @@ class CK_VISIBLE_PUBLIC CkCrypt2  : public CkClassWithCallbacks
 	bool SetSigningCert2(CkCert &cert, CkPrivateKey &privateKey);
 
 
+	// Sets the timestamp authority (TSA) options for cases where a CAdES-T signature
+	// is to be created. The http is used to send the requests, and it allows for
+	// connection related settings and timeouts to be set. For example, if HTTP or
+	// SOCKS proxies are required, these features can be specified on the http.
+	void SetTsaHttpObj(CkHttp &http);
+
+
 	// Sets the digital certificate to be used in verifying a signature.
 	bool SetVerifyCert(CkCert &cert);
 
@@ -2869,10 +3053,18 @@ class CK_VISIBLE_PUBLIC CkCrypt2  : public CkClassWithCallbacks
 	// Digitally signs the contents of dataToSign and returns the detached digital signature
 	// in an encoded string (according to the EncodingMode property setting).
 	const char *signBdENC(CkBinData &dataToSign);
+	// Digitally signs the contents of dataToSign and returns the detached digital signature
+	// in an encoded string (according to the EncodingMode property setting).
+	CkTask *SignBdENCAsync(CkBinData &dataToSign);
+
 
 	// Digitally signs a byte array and returns the detached digital signature. A
 	// certificate must be set by calling SetSigningCert prior to calling this method.
 	bool SignBytes(CkByteData &data, CkByteData &outData);
+
+	// Digitally signs a byte array and returns the detached digital signature. A
+	// certificate must be set by calling SetSigningCert prior to calling this method.
+	CkTask *SignBytesAsync(CkByteData &data);
 
 
 	// Digitally signs a byte array and returns the detached digital signature encoded
@@ -2886,6 +3078,12 @@ class CK_VISIBLE_PUBLIC CkCrypt2  : public CkClassWithCallbacks
 	// to calling this method. The EncodingMode property controls the output encoding,
 	// which can be "Base64", "QP", or "Hex".
 	const char *signBytesENC(CkByteData &data);
+	// Digitally signs a byte array and returns the detached digital signature encoded
+	// as a printable string. A certificate must be set by calling SetSigningCert prior
+	// to calling this method. The EncodingMode property controls the output encoding,
+	// which can be "Base64", "QP", or "Hex".
+	CkTask *SignBytesENCAsync(CkByteData &data);
+
 
 	// Digitally signs a the contents of sb and returns the PKCS7 detached digital
 	// signature as an encoded string according to the EncodingMode property setting.
@@ -2894,6 +3092,10 @@ class CK_VISIBLE_PUBLIC CkCrypt2  : public CkClassWithCallbacks
 	// Digitally signs a the contents of sb and returns the PKCS7 detached digital
 	// signature as an encoded string according to the EncodingMode property setting.
 	const char *signSbENC(CkStringBuilder &sb);
+	// Digitally signs a the contents of sb and returns the PKCS7 detached digital
+	// signature as an encoded string according to the EncodingMode property setting.
+	CkTask *SignSbENCAsync(CkStringBuilder &sb);
+
 
 	// Digitally signs a string and returns the detached digital signature. A
 	// certificate must be set by calling SetSigningCert prior to calling this method.
@@ -2905,6 +3107,17 @@ class CK_VISIBLE_PUBLIC CkCrypt2  : public CkClassWithCallbacks
 	// property to the name of the charset before signing. The complete list of
 	// charsets is listed in the EncryptString method description.
 	bool SignString(const char *str, CkByteData &outData);
+
+	// Digitally signs a string and returns the detached digital signature. A
+	// certificate must be set by calling SetSigningCert prior to calling this method.
+	// The Charset property controls the character encoding of the string that is
+	// signed. (Languages such as VB.NET, C#, and Visual Basic work with Unicode
+	// strings.) To sign Unicode data (2 bytes per char), set the Charset property to
+	// "Unicode". To implicitly convert the string to a mutlibyte charset such as
+	// "iso-8859-1", "Shift_JIS", "utf-8", or something else, then set the Charset
+	// property to the name of the charset before signing. The complete list of
+	// charsets is listed in the EncryptString method description.
+	CkTask *SignStringAsync(const char *str);
 
 
 	// Digitally signs a string and returns the PKCS7 detached digital signature as an
@@ -2936,11 +3149,64 @@ class CK_VISIBLE_PUBLIC CkCrypt2  : public CkClassWithCallbacks
 	// which can be set to "Base64", "QP", or "Hex".
 	// 
 	const char *signStringENC(const char *str);
+	// Digitally signs a string and returns the PKCS7 detached digital signature as an
+	// encoded string. A certificate must be set by calling SetSigningCert prior to
+	// calling this method. The Charset property controls the character encoding of the
+	// string that is signed. (Languages such as VB.NET, C#, and Visual Basic work with
+	// Unicode strings.) To sign Unicode data (2 bytes per char), set the Charset
+	// property to "Unicode". To implicitly convert the string to a mutlibyte charset
+	// such as "iso-8859-1", "Shift_JIS", "utf-8", or something else, then set the
+	// Charset property to the name of the charset before signing. The complete list of
+	// charsets is listed in the EncryptString method description.
+	// 
+	// The encoding of the output string is controlled by the EncodingMode property,
+	// which can be set to "Base64", "QP", or "Hex".
+	// 
+	CkTask *SignStringENCAsync(const char *str);
+
 
 	// Convert a string to a byte array where the characters are encoded according to
 	// the charset specified.
 	bool StringToBytes(const char *inStr, const char *charset, CkByteData &outBytes);
 
+
+	// Implements RFC 6238: TOTP: Time-Based One-Time Password Algorithm. The arguments
+	// to this method are:
+	//     secret: The shared secret in an enocded representation such as base64, hex,
+	//     ascii, etc.
+	//     secretEnc: The encoding of the shared secret, such as "base64"
+	//     t0: The Unix time to start counting time steps. It is a number in decimal
+	//     string form. A Unix time is the number of seconds elapsed since midnight UTC of
+	//     January 1, 1970. "0" is a typical value used for this argument.
+	//     tNow: The current Unix time in decimal string form. To use the current
+	//     system date/time, pass an empty string for this argument.
+	//     tStep: The time step in seconds. A typical value is 30. Note: Both client and
+	//     server must pre-agree on the secret, the t0, and the tStep.
+	//     numDigits: The number of decimal digits to return.
+	//     truncOffset: Normally set this to -1 for dynamic truncation. Otherwise can be set
+	//     in the range 0..15.
+	//     hashAlg: Normally set to "sha1". Can be set to other hash algorithms such as
+	//     "sha256", "sha512", etc.
+	bool Totp(const char *secret, const char *secretEnc, const char *t0, const char *tNow, int tStep, int numDigits, int truncOffset, const char *hashAlg, CkString &outStr);
+
+	// Implements RFC 6238: TOTP: Time-Based One-Time Password Algorithm. The arguments
+	// to this method are:
+	//     secret: The shared secret in an enocded representation such as base64, hex,
+	//     ascii, etc.
+	//     secretEnc: The encoding of the shared secret, such as "base64"
+	//     t0: The Unix time to start counting time steps. It is a number in decimal
+	//     string form. A Unix time is the number of seconds elapsed since midnight UTC of
+	//     January 1, 1970. "0" is a typical value used for this argument.
+	//     tNow: The current Unix time in decimal string form. To use the current
+	//     system date/time, pass an empty string for this argument.
+	//     tStep: The time step in seconds. A typical value is 30. Note: Both client and
+	//     server must pre-agree on the secret, the t0, and the tStep.
+	//     numDigits: The number of decimal digits to return.
+	//     truncOffset: Normally set this to -1 for dynamic truncation. Otherwise can be set
+	//     in the range 0..15.
+	//     hashAlg: Normally set to "sha1". Can be set to other hash algorithms such as
+	//     "sha256", "sha512", etc.
+	const char *totp(const char *secret, const char *secretEnc, const char *t0, const char *tNow, int tStep, int numDigits, int truncOffset, const char *hashAlg);
 
 	// Trim a string ending with a specific substring until the string no longer ends
 	// with that substring.

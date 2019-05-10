@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkAuthGoogleWH
 #define _C_CkAuthGoogleWH
 #include "chilkatDefs.h"
@@ -24,6 +24,8 @@ CK_VISIBLE_PUBLIC void  CkAuthGoogleW_putEmailAddress(HCkAuthGoogleW cHandle, co
 CK_VISIBLE_PUBLIC const wchar_t *CkAuthGoogleW_emailAddress(HCkAuthGoogleW cHandle);
 CK_VISIBLE_PUBLIC int CkAuthGoogleW_getExpireNumSeconds(HCkAuthGoogleW cHandle);
 CK_VISIBLE_PUBLIC void  CkAuthGoogleW_putExpireNumSeconds(HCkAuthGoogleW cHandle, int newVal);
+CK_VISIBLE_PUBLIC int CkAuthGoogleW_getIat(HCkAuthGoogleW cHandle);
+CK_VISIBLE_PUBLIC void  CkAuthGoogleW_putIat(HCkAuthGoogleW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkAuthGoogleW_getJsonKey(HCkAuthGoogleW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkAuthGoogleW_putJsonKey(HCkAuthGoogleW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkAuthGoogleW_jsonKey(HCkAuthGoogleW cHandle);

@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkMimeWH
 #define _C_CkMimeWH
 #include "chilkatDefs.h"
@@ -14,6 +14,9 @@ CK_VISIBLE_PUBLIC const wchar_t *CkMimeW_boundary(HCkMimeW cHandle);
 CK_VISIBLE_PUBLIC void CkMimeW_getCharset(HCkMimeW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkMimeW_putCharset(HCkMimeW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkMimeW_charset(HCkMimeW cHandle);
+CK_VISIBLE_PUBLIC void CkMimeW_getCmsOptions(HCkMimeW cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void  CkMimeW_putCmsOptions(HCkMimeW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC const wchar_t *CkMimeW_cmsOptions(HCkMimeW cHandle);
 CK_VISIBLE_PUBLIC void CkMimeW_getContentType(HCkMimeW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkMimeW_putContentType(HCkMimeW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkMimeW_contentType(HCkMimeW cHandle);

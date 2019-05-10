@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkImap_H
 #define _C_CkImap_H
 #include "chilkatDefs.h"
@@ -10,6 +10,15 @@ CK_VISIBLE_PUBLIC void CkImap_setAbortCheck(HCkImap cHandle, BOOL (*fnAbortCheck
 CK_VISIBLE_PUBLIC void CkImap_setPercentDone(HCkImap cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkImap_setProgressInfo(HCkImap cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkImap_setTaskCompleted(HCkImap cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
+CK_VISIBLE_PUBLIC void CkImap_setAbortCheck2(HCkImap cHandle, BOOL (*fnAbortCheck2)(void *pContext));
+CK_VISIBLE_PUBLIC void CkImap_setPercentDone2(HCkImap cHandle, BOOL (*fnPercentDone2)(int pctDone, void *pContext));
+CK_VISIBLE_PUBLIC void CkImap_setProgressInfo2(HCkImap cHandle, void (*fnProgressInfo2)(const char *name, const char *value, void *pContext));
+CK_VISIBLE_PUBLIC void CkImap_setTaskCompleted2(HCkImap cHandle, void (*fnTaskCompleted2)(HCkTask hTask, void *pContext));
+
+// setExternalProgress is for C callback functions defined in the external programming language (such as Go)
+CK_VISIBLE_PUBLIC void CkImap_setExternalProgress(HCkImap cHandle, BOOL on);
+CK_VISIBLE_PUBLIC void CkImap_setCallbackContext(HCkImap cHandle, void *pContext);
 
 CK_VISIBLE_PUBLIC HCkImap CkImap_Create(void);
 CK_VISIBLE_PUBLIC void CkImap_Dispose(HCkImap handle);
@@ -227,6 +236,8 @@ CK_VISIBLE_PUBLIC const char *CkImap_fetchSingleAsMime(HCkImap cHandle, int msgI
 CK_VISIBLE_PUBLIC HCkTask CkImap_FetchSingleAsMimeAsync(HCkImap cHandle, int msgId, BOOL bUid);
 CK_VISIBLE_PUBLIC BOOL CkImap_FetchSingleAsMimeSb(HCkImap cHandle, int msgId, BOOL bUid, HCkStringBuilder sbMime);
 CK_VISIBLE_PUBLIC HCkTask CkImap_FetchSingleAsMimeSbAsync(HCkImap cHandle, int msgId, BOOL bUid, HCkStringBuilder sbMime);
+CK_VISIBLE_PUBLIC BOOL CkImap_FetchSingleBd(HCkImap cHandle, int msgId, BOOL bUid, HCkBinData mimeData);
+CK_VISIBLE_PUBLIC HCkTask CkImap_FetchSingleBdAsync(HCkImap cHandle, int msgId, BOOL bUid, HCkBinData mimeData);
 CK_VISIBLE_PUBLIC HCkEmail CkImap_FetchSingleHeader(HCkImap cHandle, int msgId, BOOL bUid);
 CK_VISIBLE_PUBLIC HCkTask CkImap_FetchSingleHeaderAsync(HCkImap cHandle, int msgId, BOOL bUid);
 CK_VISIBLE_PUBLIC BOOL CkImap_FetchSingleHeaderAsMime(HCkImap cHandle, int msgId, BOOL bUID, HCkString outStr);
@@ -307,6 +318,8 @@ CK_VISIBLE_PUBLIC HCkTask CkImap_SetQuotaAsync(HCkImap cHandle, const char *quot
 CK_VISIBLE_PUBLIC BOOL CkImap_SetSslClientCert(HCkImap cHandle, HCkCert cert);
 CK_VISIBLE_PUBLIC BOOL CkImap_SetSslClientCertPem(HCkImap cHandle, const char *pemDataOrFilename, const char *pemPassword);
 CK_VISIBLE_PUBLIC BOOL CkImap_SetSslClientCertPfx(HCkImap cHandle, const char *pfxFilename, const char *pfxPassword);
+CK_VISIBLE_PUBLIC HCkMessageSet CkImap_Sort(HCkImap cHandle, const char *sortCriteria, const char *charset, const char *searchCriteria, BOOL bUid);
+CK_VISIBLE_PUBLIC HCkTask CkImap_SortAsync(HCkImap cHandle, const char *sortCriteria, const char *charset, const char *searchCriteria, BOOL bUid);
 CK_VISIBLE_PUBLIC BOOL CkImap_SshAuthenticatePk(HCkImap cHandle, const char *sshLogin, HCkSshKey privateKey);
 CK_VISIBLE_PUBLIC HCkTask CkImap_SshAuthenticatePkAsync(HCkImap cHandle, const char *sshLogin, HCkSshKey privateKey);
 CK_VISIBLE_PUBLIC BOOL CkImap_SshAuthenticatePw(HCkImap cHandle, const char *sshLogin, const char *sshPassword);
@@ -319,6 +332,8 @@ CK_VISIBLE_PUBLIC BOOL CkImap_StoreFlags(HCkImap cHandle, int msgId, BOOL bUid, 
 CK_VISIBLE_PUBLIC HCkTask CkImap_StoreFlagsAsync(HCkImap cHandle, int msgId, BOOL bUid, const char *flagNames, int value);
 CK_VISIBLE_PUBLIC BOOL CkImap_Subscribe(HCkImap cHandle, const char *mailbox);
 CK_VISIBLE_PUBLIC HCkTask CkImap_SubscribeAsync(HCkImap cHandle, const char *mailbox);
+CK_VISIBLE_PUBLIC HCkJsonObject CkImap_ThreadCmd(HCkImap cHandle, const char *threadAlg, const char *charset, const char *searchCriteria, BOOL bUid);
+CK_VISIBLE_PUBLIC HCkTask CkImap_ThreadCmdAsync(HCkImap cHandle, const char *threadAlg, const char *charset, const char *searchCriteria, BOOL bUid);
 CK_VISIBLE_PUBLIC BOOL CkImap_UnlockComponent(HCkImap cHandle, const char *unlockCode);
 CK_VISIBLE_PUBLIC BOOL CkImap_Unsubscribe(HCkImap cHandle, const char *mailbox);
 CK_VISIBLE_PUBLIC HCkTask CkImap_UnsubscribeAsync(HCkImap cHandle, const char *mailbox);

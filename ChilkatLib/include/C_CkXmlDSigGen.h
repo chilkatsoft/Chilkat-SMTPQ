@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkXmlDSigGen_H
 #define _C_CkXmlDSigGen_H
 #include "chilkatDefs.h"
@@ -46,6 +46,8 @@ CK_VISIBLE_PUBLIC const char *CkXmlDSigGen_sigId(HCkXmlDSigGen cHandle);
 CK_VISIBLE_PUBLIC void CkXmlDSigGen_getSigLocation(HCkXmlDSigGen cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkXmlDSigGen_putSigLocation(HCkXmlDSigGen cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkXmlDSigGen_sigLocation(HCkXmlDSigGen cHandle);
+CK_VISIBLE_PUBLIC int CkXmlDSigGen_getSigLocationMod(HCkXmlDSigGen cHandle);
+CK_VISIBLE_PUBLIC void CkXmlDSigGen_putSigLocationMod(HCkXmlDSigGen cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkXmlDSigGen_getSigNamespacePrefix(HCkXmlDSigGen cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkXmlDSigGen_putSigNamespacePrefix(HCkXmlDSigGen cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkXmlDSigGen_sigNamespacePrefix(HCkXmlDSigGen cHandle);

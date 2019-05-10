@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkBinData_H
 #define _CkBinData_H
@@ -72,6 +72,10 @@ class CK_VISIBLE_PUBLIC CkBinData  : public CkMultiByteBase
 	bool AppendBom(const char *charset);
 
 
+	// Appends a single byte. The byteValue should be a value from 0 to 255.
+	bool AppendByte(int byteValue);
+
+
 	// Appends encoded binary data to the current data. The encoding may be "Base64",
 	// "modBase64", "base64Url", "Base32", "Base58", "QP" (for quoted-printable), "URL"
 	// (for url-encoding), "Hex", or any of the encodings found at Chilkat Binary
@@ -86,6 +90,18 @@ class CK_VISIBLE_PUBLIC CkBinData  : public CkMultiByteBase
 	// found at Chilkat Binary Encodings List
 	// <http://cknotes.com/chilkat-binary-encoding-list/> .
 	bool AppendEncodedSb(CkStringBuilder &sb, const char *encoding);
+
+
+	// Appends a 16-bit integer (2 bytes). If littleEndian is true, then the integer bytes
+	// are appended in little-endian byte order, otherwise big-endian byte order is
+	// used.
+	bool AppendInt2(int value, bool littleEndian);
+
+
+	// Appends a 32-bit integer (4 bytes). If littleEndian is true, then the integer bytes
+	// are appended in little-endian byte order, otherwise big-endian byte order is
+	// used.
+	bool AppendInt4(int value, bool littleEndian);
 
 
 	// Appends the contents of a StringBuilder to this object.

@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkXmlW_H
 #define _CkXmlW_H
@@ -14,6 +14,7 @@
 
 class CkByteData;
 class CkStringBuilderW;
+class CkBinDataW;
 
 
 
@@ -170,6 +171,12 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	// for "i" in "[i]". See the example below..
 	void put_I(int newVal);
 
+	// Returns true if the content contains only those characters allowed in the
+	// base64 encoding. A base64 string is composed of characters 'A'..'Z', 'a'..'z',
+	// '0'..'9', '+', '/' and it is often padded at the end with up to two '=', to make
+	// the length a multiple of 4. Whitespace is ignored.
+	bool get_IsBase64(void);
+
 	// Used in tagPaths (and ChilkatPath). The value of this property is substituted
 	// for "j" in "[j]". See the example below..
 	int get_J(void);
@@ -207,12 +214,39 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	// _LT_?xml ... standalone="yes">
 	void put_Standalone(bool newVal);
 
-	// The XML node's tag.
+	// The XML node's tag, including the namespace prefix.
 	void get_Tag(CkString &str);
-	// The XML node's tag.
+	// The XML node's tag, including the namespace prefix.
 	const wchar_t *tag(void);
-	// The XML node's tag.
+	// The XML node's tag, including the namespace prefix.
 	void put_Tag(const wchar_t *newVal);
+
+	// The node's namespace prefix, if present. For example, if the tag is
+	// "soapenv:Envelope", then this property will return "soapenv".
+	void get_TagNsPrefix(CkString &str);
+	// The node's namespace prefix, if present. For example, if the tag is
+	// "soapenv:Envelope", then this property will return "soapenv".
+	const wchar_t *tagNsPrefix(void);
+	// The node's namespace prefix, if present. For example, if the tag is
+	// "soapenv:Envelope", then this property will return "soapenv".
+	void put_TagNsPrefix(const wchar_t *newVal);
+
+	// Returns the path to reach this element from the XML document root. If the caller
+	// is the document root, then the empty string is returned.
+	void get_TagPath(CkString &str);
+	// Returns the path to reach this element from the XML document root. If the caller
+	// is the document root, then the empty string is returned.
+	const wchar_t *tagPath(void);
+
+	// The node's tag without the namespace prefix. For example, if the tag is
+	// "soapenv:Envelope", then this property will return "Envelope".
+	void get_TagUnprefixed(CkString &str);
+	// The node's tag without the namespace prefix. For example, if the tag is
+	// "soapenv:Envelope", then this property will return "Envelope".
+	const wchar_t *tagUnprefixed(void);
+	// The node's tag without the namespace prefix. For example, if the tag is
+	// "soapenv:Envelope", then this property will return "Envelope".
+	void put_TagUnprefixed(const wchar_t *newVal);
 
 	// Each tree (or XML document) has a unique TreeId. This is the ID of the tree, and
 	// can be used to determine if two Xml objects belong to the same tree.
@@ -304,7 +338,10 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	// A command can be any of the following:
 	//     TagName -- Navigate to the 1st direct child with the given tag.
 	//     TagName[n] -- Navigate to the Nth direct child with the given tag.
-	//     .. -- Navigate up to the parent
+	//     ".." -- Navigate up to the parent.
+	//     "++" -- Navigate to the next sibling. (next/previous sibling feature added
+	//     in v9.5.0.76)
+	//     "--" -- Navigate to the previous sibling.
 	//     TagName{Content} -- Navigate to the 1st direct child with the given tag
 	//     having the exact content.
 	//     /T/TagName -- Traverse the XML DOM tree (rooted at the caller) and navigate
@@ -341,7 +378,10 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	// A command can be any of the following:
 	//     TagName -- Navigate to the 1st direct child with the given tag.
 	//     TagName[n] -- Navigate to the Nth direct child with the given tag.
-	//     .. -- Navigate up to the parent
+	//     ".." -- Navigate up to the parent.
+	//     "++" -- Navigate to the next sibling. (next/previous sibling feature added
+	//     in v9.5.0.76)
+	//     "--" -- Navigate to the previous sibling.
 	//     TagName{Content} -- Navigate to the 1st direct child with the given tag
 	//     having the exact content.
 	//     /T/TagName -- Traverse the XML DOM tree (rooted at the caller) and navigate
@@ -510,6 +550,16 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	// Updates the calling object's internal reference to the Nth child node.
 	bool GetChild2(int index);
 
+	// Returns the content of a descendant child having a specified attribute. The tagPath
+	// can be a tag or a tag path.
+	bool GetChildAttrValue(const wchar_t *tagPath, const wchar_t *attrName, CkString &outStr);
+	// Returns the content of a descendant child having a specified attribute. The tagPath
+	// can be a tag or a tag path.
+	const wchar_t *getChildAttrValue(const wchar_t *tagPath, const wchar_t *attrName);
+	// Returns the content of a descendant child having a specified attribute. The tagPath
+	// can be a tag or a tag path.
+	const wchar_t *childAttrValue(const wchar_t *tagPath, const wchar_t *attrName);
+
 	// Returns false if the node's content is "0", otherwise returns true if the
 	// node contains a non-zero integer. The tagPath can be a tag or a tag path.
 	// 
@@ -550,6 +600,10 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	const wchar_t *getChildContentByIndex(int index);
 	// Returns the content of the Nth child node.
 	const wchar_t *childContentByIndex(int index);
+
+	// Returns the content of the XML element at the tagPath. The XML element's content is
+	// appended to the sb.
+	bool GetChildContentSb(const wchar_t *tagPath, CkStringBuilderW &sb);
 
 	// Returns the child having the exact tag and content.
 	// The caller is responsible for deleting the object returned by this method.
@@ -646,6 +700,9 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	// Otherwise, it is not included.
 	const wchar_t *xml(void);
 
+	// Emits (appends) the XML to the contents of bd.
+	bool GetXmlBd(CkBinDataW &bd);
+
 	// Emits the XML to a StringBuilder object. (Appends to the existing contents of
 	// sb.)
 	bool GetXmlSb(CkStringBuilderW &sb);
@@ -697,6 +754,10 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 
 	// Updates the internal reference of the caller to its last child.
 	bool LastChild2(void);
+
+	// Loads XML from the contents of bd. If autoTrim is true, then each element's text
+	// content is trimmed of leading and trailing whitespace.
+	bool LoadBd(CkBinDataW &bd, bool autoTrim);
 
 	// Loads XML from the contents of a StringBuilder object.
 	bool LoadSb(CkStringBuilderW &sb, bool autoTrim);
@@ -755,6 +816,15 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	// 
 	void NewChildInt2(const wchar_t *tagPath, int value);
 
+	// Updates to Xml object's internal reference to the next node in a depth-first
+	// traversal. (This method name, NextInTraversal2, ends with "2" to signify that
+	// the internal reference is updated. There is no "NextInTraversal" method.)
+	// 
+	// The sbState contains the current state of the traversal. sbState should be empty when
+	// beginning a traversal.
+	// 
+	bool NextInTraversal2(CkStringBuilderW &sbState);
+
 	// Returns the nodes next sibling, or NULL if there are no more.
 	// The caller is responsible for deleting the object returned by this method.
 	CkXmlW *NextSibling(void);
@@ -776,6 +846,15 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 
 	// Updates the internal reference of the caller to its previous sibling.
 	bool PreviousSibling2(void);
+
+	// Recursively descends the XML from this node and removes all occurrences of the
+	// specified attribute. Returns the number of attribute occurrences removed.
+	int PruneAttribute(const wchar_t *attrName);
+
+	// Recursively descends the XML from this node and removes all occurrences of the
+	// specified tag, including all descendents of each removed node. Returns the
+	// number of tag occurrences removed.
+	int PruneTag(const wchar_t *tag);
 
 	// Sets the node's content with 8bit data that is in a specified multibyte
 	// character encoding such as utf-8, shift-jis, big5, etc. The data is first
@@ -813,12 +892,34 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 	// root of its own tree.
 	void RemoveFromTree(void);
 
+	// Removes all XML stylesheets having an attribute with attrName equal to attrValue. Returns
+	// the number of stylesheets removed, or -1 if there was an error.
+	int RemoveStyleSheet(const wchar_t *attrName, const wchar_t *attrValue);
+
 	// Saves a node's binary content to a file.
 	bool SaveBinaryContent(const wchar_t *filename, bool unzipFlag, bool decryptFlag, const wchar_t *password);
 
 	// Generates XML representing the tree or subtree rooted at this node and writes it
 	// to a file.
 	bool SaveXml(const wchar_t *fileName);
+
+	// Recursively traverses the XML rooted at the caller and scrubs according to the
+	// instructions in the comma separated directives. The currently defined directives are:
+	//     "AttrTrimEnds" - Leading and trailing whitespace removed from attribute
+	//     values.
+	//     "AttrTrimInside" - Replace all tabs, CR's, and LF's with SPACE chars, and
+	//     removes extra SPACE chars so that no more than one SPACE char in a row exists.
+	//     "ContentTrimEnds" - Same as AttrTrimEnds but for content.
+	//     "ContentTrimInside" - Same as AttrTrimInside but for content.
+	//     "LowercaseAttrs" - Convert all attribute names to lowercase.
+	//     "LowercaseTags" - Convert all tags to lowercase.
+	//     "RemoveCtrl" - Remove non-printable us-ascii control chars (us-ascii values
+	// 
+	// If you have other ideas for useful XML scrubbing directives, send email to
+	// support@chilkatsoft.com. It must be general enough such that many developers
+	// will find it useful.
+	// 
+	void Scrub(const wchar_t *directives);
 
 	// Returns the first node having content matching the contentPattern. The contentPattern is a
 	// case-sensitive string that may contain any number of '*'s, each representing 0
@@ -953,6 +1054,17 @@ class CK_VISIBLE_PUBLIC CkXmlW  : public CkWideCharBase
 
 	// Returns true if the node's tag equals the specified string.
 	bool TagEquals(const wchar_t *tag);
+
+	// Returns the index of the XML node with the given tag. Returns -1 if no node
+	// having the specified tag is found at the tagPath.
+	int TagIndex(const wchar_t *tagPath);
+
+	// Returns true if the node's tag namespace prefix equals the specified ns.
+	bool TagNsEquals(const wchar_t *ns);
+
+	// Returns true if the node's unprefixed tag equals the specified string. For
+	// example, if the tag is "soapenv:Body", the unprefixed tag is "Body".
+	bool TagUnpEquals(const wchar_t *unprefixedTag);
 
 	// Unzip the content of the XML node replacing it's content with the decompressed
 	// data.

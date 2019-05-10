@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkScp_H
 #define _C_CkScp_H
 #include "chilkatDefs.h"
@@ -10,6 +10,15 @@ CK_VISIBLE_PUBLIC void CkScp_setAbortCheck(HCkScp cHandle, BOOL (*fnAbortCheck)(
 CK_VISIBLE_PUBLIC void CkScp_setPercentDone(HCkScp cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkScp_setProgressInfo(HCkScp cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkScp_setTaskCompleted(HCkScp cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
+CK_VISIBLE_PUBLIC void CkScp_setAbortCheck2(HCkScp cHandle, BOOL (*fnAbortCheck2)(void *pContext));
+CK_VISIBLE_PUBLIC void CkScp_setPercentDone2(HCkScp cHandle, BOOL (*fnPercentDone2)(int pctDone, void *pContext));
+CK_VISIBLE_PUBLIC void CkScp_setProgressInfo2(HCkScp cHandle, void (*fnProgressInfo2)(const char *name, const char *value, void *pContext));
+CK_VISIBLE_PUBLIC void CkScp_setTaskCompleted2(HCkScp cHandle, void (*fnTaskCompleted2)(HCkTask hTask, void *pContext));
+
+// setExternalProgress is for C callback functions defined in the external programming language (such as Go)
+CK_VISIBLE_PUBLIC void CkScp_setExternalProgress(HCkScp cHandle, BOOL on);
+CK_VISIBLE_PUBLIC void CkScp_setCallbackContext(HCkScp cHandle, void *pContext);
 
 CK_VISIBLE_PUBLIC HCkScp CkScp_Create(void);
 CK_VISIBLE_PUBLIC void CkScp_Dispose(HCkScp handle);
@@ -45,12 +54,20 @@ CK_VISIBLE_PUBLIC const char *CkScp_syncMustNotMatch(HCkScp cHandle);
 CK_VISIBLE_PUBLIC void CkScp_getSyncMustNotMatchDir(HCkScp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkScp_putSyncMustNotMatchDir(HCkScp cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkScp_syncMustNotMatchDir(HCkScp cHandle);
+CK_VISIBLE_PUBLIC void CkScp_getUncommonOptions(HCkScp cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkScp_putUncommonOptions(HCkScp cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkScp_uncommonOptions(HCkScp cHandle);
+CK_VISIBLE_PUBLIC void CkScp_getUnixPermOverride(HCkScp cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkScp_putUnixPermOverride(HCkScp cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkScp_unixPermOverride(HCkScp cHandle);
 CK_VISIBLE_PUBLIC BOOL CkScp_getUtf8(HCkScp cHandle);
 CK_VISIBLE_PUBLIC void CkScp_putUtf8(HCkScp cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkScp_getVerboseLogging(HCkScp cHandle);
 CK_VISIBLE_PUBLIC void CkScp_putVerboseLogging(HCkScp cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkScp_getVersion(HCkScp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkScp_version(HCkScp cHandle);
+CK_VISIBLE_PUBLIC BOOL CkScp_DownloadBd(HCkScp cHandle, const char *remotePath, HCkBinData bd);
+CK_VISIBLE_PUBLIC HCkTask CkScp_DownloadBdAsync(HCkScp cHandle, const char *remotePath, HCkBinData bd);
 CK_VISIBLE_PUBLIC BOOL CkScp_DownloadBinary(HCkScp cHandle, const char *remotePath, HCkByteData outBytes);
 CK_VISIBLE_PUBLIC HCkTask CkScp_DownloadBinaryAsync(HCkScp cHandle, const char *remotePath);
 CK_VISIBLE_PUBLIC BOOL CkScp_DownloadBinaryEncoded(HCkScp cHandle, const char *remotePath, const char *encoding, HCkString outStr);
@@ -66,6 +83,8 @@ CK_VISIBLE_PUBLIC BOOL CkScp_SyncTreeDownload(HCkScp cHandle, const char *remote
 CK_VISIBLE_PUBLIC HCkTask CkScp_SyncTreeDownloadAsync(HCkScp cHandle, const char *remoteRoot, const char *localRoot, int mode, BOOL bRecurse);
 CK_VISIBLE_PUBLIC BOOL CkScp_SyncTreeUpload(HCkScp cHandle, const char *localBaseDir, const char *remoteBaseDir, int mode, BOOL bRecurse);
 CK_VISIBLE_PUBLIC HCkTask CkScp_SyncTreeUploadAsync(HCkScp cHandle, const char *localBaseDir, const char *remoteBaseDir, int mode, BOOL bRecurse);
+CK_VISIBLE_PUBLIC BOOL CkScp_UploadBd(HCkScp cHandle, const char *remotePath, HCkBinData bd);
+CK_VISIBLE_PUBLIC HCkTask CkScp_UploadBdAsync(HCkScp cHandle, const char *remotePath, HCkBinData bd);
 CK_VISIBLE_PUBLIC BOOL CkScp_UploadBinary(HCkScp cHandle, const char *remotePath, HCkByteData binData);
 CK_VISIBLE_PUBLIC HCkTask CkScp_UploadBinaryAsync(HCkScp cHandle, const char *remotePath, HCkByteData binData);
 CK_VISIBLE_PUBLIC BOOL CkScp_UploadBinaryEncoded(HCkScp cHandle, const char *remotePath, const char *encodedData, const char *encoding);

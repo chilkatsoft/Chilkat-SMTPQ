@@ -26,6 +26,133 @@
 // Use typedefs so we can explicitly see the kind of object pointed
 // to by "void *"
 	
+#ifdef CK_GO_LANG
+#define HCkByteData void *
+#define HCkString void *
+#define HCkCert void *
+#define HCkEmail void *
+#define HCkEmailBundle void *
+#define HCkMailMan void *
+#define HCkMailProgress void *
+#define HCkPrivateKey void *
+#define HCkPublicKey void *
+#define HCkCsp void *
+#define HCkMime void *
+#define HCkKeyContainer void *
+#define HCkCertStore void *
+#define HCkCreateCS void *
+#define HCkBounce void *
+#define HCkCharset void *
+#define HCkCrypt2 void *
+#define HCkCrypt2Progress void *
+#define HCkFtp2 void *
+#define HCkFtpProgress void *
+#define HCkHtmlToXml void *
+#define HCkHtmlToText void *
+#define HCkHttp void *
+#define HCkHttpProgress void *
+#define HCkHttpRequest void *
+#define HCkHttpResponse void *
+#define HCkImap void *
+#define HCkImapProgress void *
+#define HCkMailboxes void *
+#define HCkMessageSet void *
+#define HCkMht void *
+#define HCkMhtProgress void *
+#define HCkRar void *
+#define HCkRarEntry void *
+#define HCkRsa void *
+#define HCkSocket void *
+#define HCkSocketProgress void *
+#define HCkSpider void *
+#define HCkSpiderProgress void *
+#define HCkUpload void *
+#define HCkCgi void *
+#define HCkSettings void *
+#define HCkStringArray void *
+#define HCkXml void *
+#define HCkAtom void *
+#define HCkAtomProgress void *
+#define HCkRss void *
+#define HCkRssProgress void *
+#define HCkZip void *
+#define HCkZipProgress void *
+#define HCkZipEntry void *
+#define HCkZipCrc void *
+#define HCkCompression void *
+#define HCkGzip void *
+#define HCkUnixCompress void *
+#define HCkSsh void *
+#define HCkSshProgress void *
+#define HCkSFtp void *
+#define HCkSFtpProgress void *
+#define HCkSFtpDir void *
+#define HCkSFtpFile void *
+#define HCkSshKey void *
+#define HCkTar void *
+#define HCkTarProgress void *
+#define HCkBz2 void *
+#define HCkBz2Progress void *
+#define HCkDh void *
+#define HCkDhProgress void *
+#define HCkDsa void *
+#define HCkDsaProgress void *
+#define HCkXmp void *
+#define HCkCache void *
+#define HCkDkim void *
+#define HCkDkimProgress void *
+#define HCkFileAccess void *
+#define HCkDateTime void *
+#define HCkCsv void *
+#define HCkSshTunnel void *
+#define HCkOmaDrm void *
+#define HCkNtlm void *
+#define HCkDirTree void *
+#define HCkDtObj void *
+#define HCkTrustedRoots void *
+#define HCkCertChain void *
+#define HCkPfx void *
+#define HCkXmlCertVault void *
+#define HCkLog void *
+#define HCkJavaKeyStore void *
+#define HCkAsn void *
+#define HCkPem void *
+#define HCkUrl void *
+#define HCkGlobal void *
+#define HCkScp void *
+#define HCkHashtable void *
+#define HCkTask void *
+#define HCkTaskChain void *
+#define HCkPrng void *
+#define HCkEcc void *
+#define HCkOAuth1 void *
+#define HCkJsonObject void *
+#define HCkJsonArray void *
+#define HCkStream void *
+#define HCkAuthAws void *
+#define HCkAuthGoogle void *
+#define HCkAuthAzureStorage void *
+#define HCkAuthAzureAD void *
+#define HCkAuthAzureSAS void *
+#define HCkRest void *
+#define HCkStringBuilder void *
+#define HCkJwt void *
+#define HCkServerSentEvent void *
+#define HCkOAuth2 void *
+#define HCkBinData void *
+#define HCkStringTable void *
+#define HCkCsr void *
+#define HCkJwe void *
+#define HCkJws void *
+#define HCkAuthUtil void *
+#define HCkXmlDSig void *
+#define HCkXmlDSigGen void *
+#define HCkWebSocket void *
+#define HCkSecureString void *
+#define HCkPdf void *
+#define HCkSaml void *
+
+#else
 typedef void *HCkByteData;
 typedef void *HCkString;
 typedef void *HCkCert;
@@ -148,6 +275,8 @@ typedef void *HCkXmlDSig;
 typedef void *HCkXmlDSigGen;
 typedef void *HCkWebSocket;
 typedef void *HCkSecureString;
+typedef void *HCkPdf;
+typedef void *HCkSaml;
 
 
 typedef void *HCkByteDataW;
@@ -272,5 +401,8 @@ typedef void *HCkXmlDSigW;
 typedef void *HCkXmlDSigGenW;
 typedef void *HCkWebSocketW;
 typedef void *HCkSecureStringW;
+typedef void *HCkPdfW;
+typedef void *HCkSamlW;
+#endif
 
 #endif

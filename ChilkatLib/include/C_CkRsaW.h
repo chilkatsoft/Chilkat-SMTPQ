@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkRsaWH
 #define _C_CkRsaWH
 #include "chilkatDefs.h"
@@ -42,12 +42,14 @@ CK_VISIBLE_PUBLIC BOOL CkRsaW_getVerboseLogging(HCkRsaW cHandle);
 CK_VISIBLE_PUBLIC void  CkRsaW_putVerboseLogging(HCkRsaW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkRsaW_getVersion(HCkRsaW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_version(HCkRsaW cHandle);
+CK_VISIBLE_PUBLIC BOOL CkRsaW_DecryptBd(HCkRsaW cHandle, HCkBinDataW bd, BOOL usePrivateKey);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_DecryptBytes(HCkRsaW cHandle, HCkByteData inData, BOOL usePrivateKey, HCkByteData outData);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_DecryptBytesENC(HCkRsaW cHandle, const wchar_t *str, BOOL bUsePrivateKey, HCkByteData outData);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_DecryptString(HCkRsaW cHandle, HCkByteData binarySig, BOOL usePrivateKey, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_decryptString(HCkRsaW cHandle, HCkByteData binarySig, BOOL usePrivateKey);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_DecryptStringENC(HCkRsaW cHandle, const wchar_t *encodedSig, BOOL usePrivateKey, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_decryptStringENC(HCkRsaW cHandle, const wchar_t *encodedSig, BOOL usePrivateKey);
+CK_VISIBLE_PUBLIC BOOL CkRsaW_EncryptBd(HCkRsaW cHandle, HCkBinDataW bd, BOOL usePrivateKey);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_EncryptBytes(HCkRsaW cHandle, HCkByteData binaryData, BOOL usePrivateKey, HCkByteData outData);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_EncryptBytesENC(HCkRsaW cHandle, HCkByteData data, BOOL bUsePrivateKey, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_encryptBytesENC(HCkRsaW cHandle, HCkByteData data, BOOL bUsePrivateKey);
@@ -65,12 +67,14 @@ CK_VISIBLE_PUBLIC BOOL CkRsaW_ImportPrivateKey(HCkRsaW cHandle, const wchar_t *x
 CK_VISIBLE_PUBLIC BOOL CkRsaW_ImportPrivateKeyObj(HCkRsaW cHandle, HCkPrivateKeyW key);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_ImportPublicKey(HCkRsaW cHandle, const wchar_t *xmlKey);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_ImportPublicKeyObj(HCkRsaW cHandle, HCkPublicKeyW key);
+CK_VISIBLE_PUBLIC BOOL CkRsaW_OpenSslSignBd(HCkRsaW cHandle, HCkBinDataW bd);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_OpenSslSignBytes(HCkRsaW cHandle, HCkByteData data, HCkByteData outBytes);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_OpenSslSignBytesENC(HCkRsaW cHandle, HCkByteData data, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_openSslSignBytesENC(HCkRsaW cHandle, HCkByteData data);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_OpenSslSignString(HCkRsaW cHandle, const wchar_t *str, HCkByteData outBytes);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_OpenSslSignStringENC(HCkRsaW cHandle, const wchar_t *str, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_openSslSignStringENC(HCkRsaW cHandle, const wchar_t *str);
+CK_VISIBLE_PUBLIC BOOL CkRsaW_OpenSslVerifyBd(HCkRsaW cHandle, HCkBinDataW bd);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_OpenSslVerifyBytes(HCkRsaW cHandle, HCkByteData signature, HCkByteData outBytes);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_OpenSslVerifyBytesENC(HCkRsaW cHandle, const wchar_t *str, HCkByteData outBytes);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_OpenSslVerifyString(HCkRsaW cHandle, HCkByteData data, HCkString outStr);
@@ -79,6 +83,7 @@ CK_VISIBLE_PUBLIC BOOL CkRsaW_OpenSslVerifyStringENC(HCkRsaW cHandle, const wcha
 CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_openSslVerifyStringENC(HCkRsaW cHandle, const wchar_t *str);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_SaveLastError(HCkRsaW cHandle, const wchar_t *path);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_SetX509Cert(HCkRsaW cHandle, HCkCertW cert, BOOL usePrivateKey);
+CK_VISIBLE_PUBLIC BOOL CkRsaW_SignBd(HCkRsaW cHandle, HCkBinDataW bdData, const wchar_t *hashAlgorithm, HCkBinDataW bdSig);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_SignBytes(HCkRsaW cHandle, HCkByteData binaryData, const wchar_t *hashAlgorithm, HCkByteData outData);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_SignBytesENC(HCkRsaW cHandle, HCkByteData binaryData, const wchar_t *hashAlgorithm, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_signBytesENC(HCkRsaW cHandle, HCkByteData binaryData, const wchar_t *hashAlgorithm);
@@ -91,6 +96,7 @@ CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_signStringENC(HCkRsaW cHandle, const wch
 CK_VISIBLE_PUBLIC BOOL CkRsaW_SnkToXml(HCkRsaW cHandle, const wchar_t *filename, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkRsaW_snkToXml(HCkRsaW cHandle, const wchar_t *filename);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_UnlockComponent(HCkRsaW cHandle, const wchar_t *unlockCode);
+CK_VISIBLE_PUBLIC BOOL CkRsaW_VerifyBd(HCkRsaW cHandle, HCkBinDataW bdData, const wchar_t *hashAlgorithm, HCkBinDataW bdSig);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_VerifyBytes(HCkRsaW cHandle, HCkByteData originalData, const wchar_t *hashAlgorithm, HCkByteData signatureBytes);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_VerifyBytesENC(HCkRsaW cHandle, HCkByteData originalData, const wchar_t *hashAlgorithm, const wchar_t *encodedSig);
 CK_VISIBLE_PUBLIC BOOL CkRsaW_VerifyHash(HCkRsaW cHandle, HCkByteData hashBytes, const wchar_t *hashAlg, HCkByteData sigBytes);

@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkHttpW_H
 #define _CkHttpW_H
@@ -12,14 +12,14 @@
 #include "CkString.h"
 #include "CkClassWithCallbacksW.h"
 
-class CkByteData;
-class CkHttpResponseW;
 class CkTaskW;
 class CkJsonObjectW;
 class CkBinDataW;
 class CkStringBuilderW;
 class CkCertW;
 class CkHashtableW;
+class CkHttpResponseW;
+class CkByteData;
 class CkHttpRequestW;
 class CkStringArrayW;
 class CkDateTimeW;
@@ -97,26 +97,26 @@ class CK_VISIBLE_PUBLIC CkHttpW  : public CkClassWithCallbacksW
 	// QuickGet or QuickGetStr. The default value is "*/*".
 	void put_Accept(const wchar_t *newVal);
 
-	// The AcceptCharset header field to be automatically included with GET requests
+	// The Accept-Charset header field to be automatically included with GET requests
 	// issued by QuickGet or QuickGetStr. The default value is
 	// "ISO-8859-1,utf-8;q=0.7,*;q=0.7".
 	void get_AcceptCharset(CkString &str);
-	// The AcceptCharset header field to be automatically included with GET requests
+	// The Accept-Charset header field to be automatically included with GET requests
 	// issued by QuickGet or QuickGetStr. The default value is
 	// "ISO-8859-1,utf-8;q=0.7,*;q=0.7".
 	const wchar_t *acceptCharset(void);
-	// The AcceptCharset header field to be automatically included with GET requests
+	// The Accept-Charset header field to be automatically included with GET requests
 	// issued by QuickGet or QuickGetStr. The default value is
 	// "ISO-8859-1,utf-8;q=0.7,*;q=0.7".
 	void put_AcceptCharset(const wchar_t *newVal);
 
-	// The AcceptLanguage header field to be automatically included with GET requests
+	// The Accept-Language header field to be automatically included with GET requests
 	// issued by QuickGet or QuickGetStr. The default value is "en-us,en;q=0.5".
 	void get_AcceptLanguage(CkString &str);
-	// The AcceptLanguage header field to be automatically included with GET requests
+	// The Accept-Language header field to be automatically included with GET requests
 	// issued by QuickGet or QuickGetStr. The default value is "en-us,en;q=0.5".
 	const wchar_t *acceptLanguage(void);
-	// The AcceptLanguage header field to be automatically included with GET requests
+	// The Accept-Language header field to be automatically included with GET requests
 	// issued by QuickGet or QuickGetStr. The default value is "en-us,en;q=0.5".
 	void put_AcceptLanguage(const wchar_t *newVal);
 
@@ -215,10 +215,10 @@ class CK_VISIBLE_PUBLIC CkHttpW  : public CkClassWithCallbacksW
 	// The AWS Secret Key to be used with the Amazon S3 methods listed below.
 	void put_AwsSecretKey(const wchar_t *newVal);
 
-	// Selects the AWS Signature Version algorithm. The default value is 2. May be set
+	// Selects the AWS Signature Version algorithm. The default value is 4. May be set
 	// to 4 to select AWS Signature Version 4.
 	int get_AwsSignatureVersion(void);
-	// Selects the AWS Signature Version algorithm. The default value is 2. May be set
+	// Selects the AWS Signature Version algorithm. The default value is 4. May be set
 	// to 4 to select AWS Signature Version 4.
 	void put_AwsSignatureVersion(int newVal);
 
@@ -321,103 +321,6 @@ class CK_VISIBLE_PUBLIC CkHttpW  : public CkClassWithCallbacksW
 	// 
 	void put_BasicAuth(bool newVal);
 
-	// When a background-enabled method is run asynchronously in a background thread,
-	// the last-error information is saved here and not in the LastErrorText property.
-	// If the background method fails, this will contain information about what
-	// transpired. (This property also contains information when the background method
-	// succeeds.)
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	void get_BgLastErrorText(CkString &str);
-	// When a background-enabled method is run asynchronously in a background thread,
-	// the last-error information is saved here and not in the LastErrorText property.
-	// If the background method fails, this will contain information about what
-	// transpired. (This property also contains information when the background method
-	// succeeds.)
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	const wchar_t *bgLastErrorText(void);
-
-	// The integer percent completed for a background HTTP method call. The value will
-	// be between 0 and 100 while a background method call is in progress. Otherwise,
-	// the value is meaningless. The BgPercentDone only applies in cases where it is
-	// possible to track completion by a percentage. If an HTTP response is chunked,
-	// then there is no way of knowing how much response data is forthcoming, and
-	// therefore it is not possible to track the percentage completed.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	int get_BgPercentDone(void);
-
-	// If a backgrounded method returns a byte array, the returned data is found here.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	void get_BgResultData(CkByteData &outBytes);
-
-	// If a backgrounded method returns an integer, the return value is found here.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	int get_BgResultInt(void);
-
-	// If a backgrounded method returns a string, the return value is found here.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	void get_BgResultString(CkString &str);
-	// If a backgrounded method returns a string, the return value is found here.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	const wchar_t *bgResultString(void);
-
-	// Becomes true when the background method completes. Your application would
-	// periodically check for this condition.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool get_BgTaskFinished(void);
-
-	// If true then the object instance already has a backgrounded method running.
-	// Another backgrounded method cannot be started until the 1st completes. (Multiple
-	// simultaneous background methods may run by using multiple object instances.)
-	// 
-	// If false, then no method is currently running in a background thread.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool get_BgTaskRunning(void);
-
-	// This property's value is only meaningful (true or false) after a
-	// backgrounded method completes.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool get_BgTaskSuccess(void);
-
 	// The IP address to use for computers with multiple network interfaces or IP
 	// addresses. For computers with a single network interface (i.e. most computers),
 	// this property should not be set. For multihoming computers, the default IP
@@ -473,6 +376,7 @@ class CK_VISIBLE_PUBLIC CkHttpW  : public CkClassWithCallbacksW
 	// 105 = Unexpected TLS protocol version.
 	// 106 = Server certificate verify failed (the server certificate is expired or the cert's signature verification failed).
 	// 107 = Unacceptable TLS protocol version.
+	// 108 = App-defined server certificate requirements failure.
 	// 109 = Failed to read handshake messages.
 	// 110 = Failed to send client certificate handshake message.
 	// 111 = Failed to send client key exchange handshake message.
@@ -481,6 +385,7 @@ class CK_VISIBLE_PUBLIC CkHttpW  : public CkClassWithCallbacksW
 	// 114 = Failed to send change cipher spec handshake message.
 	// 115 = Failed to send finished handshake message.
 	// 116 = Server's Finished message is invalid.
+	// 125 = TLS Pin Set Mismatch.
 	// 
 	int get_ConnectFailReason(void);
 
@@ -550,18 +455,6 @@ class CK_VISIBLE_PUBLIC CkHttpW  : public CkClassWithCallbacksW
 	// Setting this property to true causes the HTTP component to use digest
 	// authentication. The default value is false.
 	void put_DigestAuth(bool newVal);
-
-	// If the KeepEventLog property is set to true, then this property will contain
-	// the number of events that have accumulated in the in-memory event log. The
-	// events are indexed from 0 to EventLogCount-1. The ClearEventLog method may be
-	// called to clear the event log. The name and value of each event can be retrieved
-	// via the EventLogName and EventLogValue methods.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	int get_EventLogCount(void);
 
 	// Set to true if pages should be fetched from cache when possible. Only HTTP GET
 	// requests are cached. HTTP responses that include Set-Cookie headers are not
@@ -673,243 +566,6 @@ class CK_VISIBLE_PUBLIC CkHttpW  : public CkClassWithCallbacksW
 	// The default value of this property is false.
 	// 
 	void put_IgnoreNoCache(bool newVal);
-
-	// If true, an in-memory event log is kept for any method that communicates with
-	// an HTTP server (such as Download, PostUrlEncoded, QuickGetStr,
-	// SynchronousRequest, etc.). When HTTP methods are called asynchronously, the
-	// event log can be checked while the HTTP operation is in in progress. This is
-	// done by examining the EventLogCount property and then fetching each event's name
-	// and value via the EventLogName and EventLogValue methods. See this example:
-	// Asynchronous HTTP
-	// <http://www.cknotes.com/?p=271> .
-	// 
-	// The ClearBgEventLog method may be called to clear the in-memory event log.
-	// 
-	// Important: If event logging is enabled, make sure to clear the event log after
-	// each HTTP method call. Otherwise the log will continue to grow without bounds.
-	// 
-	// The default value of this property is false.
-	// 
-	// The following items may be found in the event log:
-	// Name
-	// Value
-	// 
-	// SocketConnect
-	// hostname:port, called when initiating a connection.
-	// 
-	// SocketConnected
-	// hostname:port, called after successfully connected.
-	// 
-	// HttpProxyConnect
-	// hostname:port
-	// 
-	// SslHandshake
-	// "Starting"/"Finished"
-	// 
-	// HttpGetBegin
-	// URL
-	// 
-	// HttpCacheHit
-	// "Returning page from cache."
-	// 
-	// HttpInfo
-	// various conditions...
-	// "Begin reading response" -- called when beginning to read the response.
-	// "Finished reading response"
-	// "Existing connection with HTTP server no longer open, restarting GET with new
-	// connection."
-	// "Reading chunked response."
-	// "UnGzipping response data"
-	// "Connection:close header is present"
-	// 
-	// GetRequest
-	// the full HTTP GET request to be sent to the server.
-	// 
-	// ResponseHeader
-	// the header of the HTTP response.
-	// 
-	// HttpStatusCode
-	// HTTP response status code (integer)
-	// 
-	// ChunkSize
-	// Size (in bytes) of next chunk in response.
-	// 
-	// ResponseContentLength
-	// Non-chunked response size in bytes.
-	// 
-	// UnGzippedLength
-	// If the response was gzip compressed, this is the uncompressed size.
-	// 
-	// HostnameResolve
-	// hostname, Called when starting to resolve a hostname (to an IP address)
-	// 
-	// ResolvedToIp
-	// dotted IP address, called after hostname is resolved.
-	// 
-	// HttpAuth
-	// one of the following strings:
-	// "Starting Negotiate Authentication"
-	// "Starting NTLM Authentication"
-	// "Adding Basic Authentication Header"
-	// "Adding Proxy Authentication Header"
-	// "Starting Proxy NTLM Authentication"
-	// "Starting Digest Authentication"
-	// 
-	// CookieToSend
-	// Value of a Set-Cookie header field to be added to the outgoing request.
-	// 
-	// SavingCookie
-	// XML of cookie being persisted.
-	// 
-	// HttpRedirect
-	// Redirect URL
-	// 
-	// Socks4Connect
-	// domain:port
-	// 
-	// Socks5Connect
-	// domain:port
-	// 
-	// HttpRequestBegin
-	// Verb (such as POST, GET, PUT), domain:port/path
-	// 
-	// RequestHeader
-	// The full HTTP request header to be sent.
-	// 
-	// StartSendingRequest
-	// Size of entire request, including header, in number of bytes. (Not called for
-	// QuickGet) For uploads, this is the size of the entire upload (headers and all
-	// files combined)
-	// 
-	// SubPartHeader
-	// The header for one of the parts within a multipart request.
-	// 
-	// UploadFilename
-	// The file about to be uploaded (streamed from file to socket..)
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool get_KeepEventLog(void);
-	// If true, an in-memory event log is kept for any method that communicates with
-	// an HTTP server (such as Download, PostUrlEncoded, QuickGetStr,
-	// SynchronousRequest, etc.). When HTTP methods are called asynchronously, the
-	// event log can be checked while the HTTP operation is in in progress. This is
-	// done by examining the EventLogCount property and then fetching each event's name
-	// and value via the EventLogName and EventLogValue methods. See this example:
-	// Asynchronous HTTP
-	// <http://www.cknotes.com/?p=271> .
-	// 
-	// The ClearBgEventLog method may be called to clear the in-memory event log.
-	// 
-	// Important: If event logging is enabled, make sure to clear the event log after
-	// each HTTP method call. Otherwise the log will continue to grow without bounds.
-	// 
-	// The default value of this property is false.
-	// 
-	// The following items may be found in the event log:
-	// Name
-	// Value
-	// 
-	// SocketConnect
-	// hostname:port, called when initiating a connection.
-	// 
-	// SocketConnected
-	// hostname:port, called after successfully connected.
-	// 
-	// HttpProxyConnect
-	// hostname:port
-	// 
-	// SslHandshake
-	// "Starting"/"Finished"
-	// 
-	// HttpGetBegin
-	// URL
-	// 
-	// HttpCacheHit
-	// "Returning page from cache."
-	// 
-	// HttpInfo
-	// various conditions...
-	// "Begin reading response" -- called when beginning to read the response.
-	// "Finished reading response"
-	// "Existing connection with HTTP server no longer open, restarting GET with new
-	// connection."
-	// "Reading chunked response."
-	// "UnGzipping response data"
-	// "Connection:close header is present"
-	// 
-	// GetRequest
-	// the full HTTP GET request to be sent to the server.
-	// 
-	// ResponseHeader
-	// the header of the HTTP response.
-	// 
-	// HttpStatusCode
-	// HTTP response status code (integer)
-	// 
-	// ChunkSize
-	// Size (in bytes) of next chunk in response.
-	// 
-	// ResponseContentLength
-	// Non-chunked response size in bytes.
-	// 
-	// UnGzippedLength
-	// If the response was gzip compressed, this is the uncompressed size.
-	// 
-	// HostnameResolve
-	// hostname, Called when starting to resolve a hostname (to an IP address)
-	// 
-	// ResolvedToIp
-	// dotted IP address, called after hostname is resolved.
-	// 
-	// HttpAuth
-	// one of the following strings:
-	// "Starting Negotiate Authentication"
-	// "Starting NTLM Authentication"
-	// "Adding Basic Authentication Header"
-	// "Adding Proxy Authentication Header"
-	// "Starting Proxy NTLM Authentication"
-	// "Starting Digest Authentication"
-	// 
-	// CookieToSend
-	// Value of a Set-Cookie header field to be added to the outgoing request.
-	// 
-	// SavingCookie
-	// XML of cookie being persisted.
-	// 
-	// HttpRedirect
-	// Redirect URL
-	// 
-	// Socks4Connect
-	// domain:port
-	// 
-	// Socks5Connect
-	// domain:port
-	// 
-	// HttpRequestBegin
-	// Verb (such as POST, GET, PUT), domain:port/path
-	// 
-	// RequestHeader
-	// The full HTTP request header to be sent.
-	// 
-	// StartSendingRequest
-	// Size of entire request, including header, in number of bytes. (Not called for
-	// QuickGet) For uploads, this is the size of the entire upload (headers and all
-	// files combined)
-	// 
-	// SubPartHeader
-	// The header for one of the parts within a multipart request.
-	// 
-	// UploadFilename
-	// The file about to be uploaded (streamed from file to socket..)
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	void put_KeepEventLog(bool newVal);
 
 	// If true, then the response body, if text, is saved to the LastResponseBody
 	// property for all methods that do not return an HttpResponse object. The default
@@ -1234,16 +890,13 @@ class CK_VISIBLE_PUBLIC CkHttpW  : public CkClassWithCallbacksW
 	void put_OAuthSigMethod(const wchar_t *newVal);
 
 	// The OAuth1 token to be used in the Authorization header. Note: This is for
-	// OAuth1. It is not the way to add an OAuth2 access token to the request. To add
-	// an OAuth2 access token to the request, set the AuthToken property.
+	// OAuth1. Use the AuthToken property for OAuth2.
 	void get_OAuthToken(CkString &str);
 	// The OAuth1 token to be used in the Authorization header. Note: This is for
-	// OAuth1. It is not the way to add an OAuth2 access token to the request. To add
-	// an OAuth2 access token to the request, set the AuthToken property.
+	// OAuth1. Use the AuthToken property for OAuth2.
 	const wchar_t *oAuthToken(void);
 	// The OAuth1 token to be used in the Authorization header. Note: This is for
-	// OAuth1. It is not the way to add an OAuth2 access token to the request. To add
-	// an OAuth2 access token to the request, set the AuthToken property.
+	// OAuth1. Use the AuthToken property for OAuth2.
 	void put_OAuthToken(const wchar_t *newVal);
 
 	// The OAuth token secret to be used in computing the Authorization header.
@@ -1408,7 +1061,8 @@ class CK_VISIBLE_PUBLIC CkHttpW  : public CkClassWithCallbacksW
 	// for more than this amount, it will timeout. Otherwise, there is no limit on the
 	// length of time for the entire download.
 	// 
-	// The default value is 20 seconds.
+	// The default value is 60 seconds. Note: Prior to v9.5.0.76, the default was 20
+	// seconds.
 	// 
 	int get_ReadTimeout(void);
 	// The amount of time in seconds to wait before timing out when reading from an
@@ -1417,7 +1071,8 @@ class CK_VISIBLE_PUBLIC CkHttpW  : public CkClassWithCallbacksW
 	// for more than this amount, it will timeout. Otherwise, there is no limit on the
 	// length of time for the entire download.
 	// 
-	// The default value is 20 seconds.
+	// The default value is 60 seconds. Note: Prior to v9.5.0.76, the default was 20
+	// seconds.
 	// 
 	void put_ReadTimeout(int newVal);
 
@@ -2007,71 +1662,37 @@ class CK_VISIBLE_PUBLIC CkHttpW  : public CkClassWithCallbacksW
 	// 1.1", and "TLS 1.2".
 	const wchar_t *tlsVersion(void);
 
+	// This is a catch-all property to be used for uncommon needs. This property
+	// defaults to the empty string and should typically remain empty.
+	// 
+	// As of v9.5.0.77, the only possible value is:
+	//     "QuickDisconnect" - In the call to CloseAllConnections, do not disconnect
+	//     cleanly. Instead just disconnect as quickly as possible.
+	// 
+	void get_UncommonOptions(CkString &str);
+	// This is a catch-all property to be used for uncommon needs. This property
+	// defaults to the empty string and should typically remain empty.
+	// 
+	// As of v9.5.0.77, the only possible value is:
+	//     "QuickDisconnect" - In the call to CloseAllConnections, do not disconnect
+	//     cleanly. Instead just disconnect as quickly as possible.
+	// 
+	const wchar_t *uncommonOptions(void);
+	// This is a catch-all property to be used for uncommon needs. This property
+	// defaults to the empty string and should typically remain empty.
+	// 
+	// As of v9.5.0.77, the only possible value is:
+	//     "QuickDisconnect" - In the call to CloseAllConnections, do not disconnect
+	//     cleanly. Instead just disconnect as quickly as possible.
+	// 
+	void put_UncommonOptions(const wchar_t *newVal);
+
 	// Controls whether the cache is automatically updated with the responses from HTTP
 	// GET requests.
 	bool get_UpdateCache(void);
 	// Controls whether the cache is automatically updated with the responses from HTTP
 	// GET requests.
 	void put_UpdateCache(bool newVal);
-
-	// If true, then background-enabled methods will run in a background thread.
-	// Normally, a method will return after its work is completed. However, when
-	// UseBgThread is true, the method will return immediately and a background thread
-	// is started to carry out the method's task.
-	// 
-	// Background-enabled HTTP methods are:
-	//     Download
-	//     DownloadAppend
-	//     GetHead
-	//     PostBinary
-	//     PostMime
-	//     PostUrlEncoded
-	//     PostXml
-	//     PutText
-	//     QuickDeleteStr
-	//     QuickGet
-	//     QuickGetObj
-	//     QuickGetStr
-	//     QuickPutStr
-	//     ResumeDownload
-	//     SynchronousRequest
-	//     XmlRpc
-	//     XmlRpcPut
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool get_UseBgThread(void);
-	// If true, then background-enabled methods will run in a background thread.
-	// Normally, a method will return after its work is completed. However, when
-	// UseBgThread is true, the method will return immediately and a background thread
-	// is started to carry out the method's task.
-	// 
-	// Background-enabled HTTP methods are:
-	//     Download
-	//     DownloadAppend
-	//     GetHead
-	//     PostBinary
-	//     PostMime
-	//     PostUrlEncoded
-	//     PostXml
-	//     PutText
-	//     QuickDeleteStr
-	//     QuickGet
-	//     QuickGetObj
-	//     QuickGetStr
-	//     QuickPutStr
-	//     ResumeDownload
-	//     SynchronousRequest
-	//     XmlRpc
-	//     XmlRpcPut
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	void put_UseBgThread(bool newVal);
 
 	// If true, the proxy host/port used by Internet Explorer will also be used by
 	// Chilkat HTTP.
@@ -2120,48 +1741,8 @@ class CK_VISIBLE_PUBLIC CkHttpW  : public CkClassWithCallbacksW
 	// directory path on a separate disk drive.
 	void AddCacheRoot(const wchar_t *dir);
 
-	// Adds a custom header field to any HTTP request sent by a method that does not
-	// use the HTTP request object. These methods include Download, DownloadAppend,
-	// GetHead, PostBinary, PostMime, PostXml, PutBinary, PutText, QuickDeleteStr,
-	// QuickGet, QuickGetObj, QuickGetStr, QuickPutStr, XmlRpc, and XmlRpcPut.
-	// 
-	// Cookies may be explictly added by calling this method passing "Cookie" for the
-	// headerFieldName.
-	// 
-	// The RemoveQuickHeader method can be called to remove a custom header.
-	// 
-	// * Note: This method is deprecated. It is identical to the SetRequestHeader
-	// method. The SetRequestHeader method should be called instead because
-	// AddQuickHeader will be removed in a future version.
-	// 
-	bool AddQuickHeader(const wchar_t *headerFieldName, const wchar_t *headerFieldValue);
-
-	// If a backgrounded method returns an Http response object, it may be retrieved by
-	// calling this method.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	// The caller is responsible for deleting the object returned by this method.
-	CkHttpResponseW *BgResponseObject(void);
-
-	// Call this to force the currently running backgrounded method to abort.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	void BgTaskAbort(void);
-
-	// Clears the in-memory event log (which is enabled by setting the KeepEventLog
-	// property = true).
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	void ClearBgEventLog(void);
+	// Removes all headers added via the SetRequestHeader method.
+	void ClearHeaders(void);
 
 	// Clears all cookies cached in memory. Calling this only makes sense if the
 	// CookieDir property is set to the string "memory".
@@ -2272,42 +1853,6 @@ class CK_VISIBLE_PUBLIC CkHttpW  : public CkClassWithCallbacksW
 	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *DownloadSbAsync(const wchar_t *url, const wchar_t *charset, CkStringBuilderW &sb);
-
-	// Returns the name of the Nth event in the in-memory event log. Refer to the
-	// documentation for the KeepEventLog property for the full list of event names.
-	// Indexing is from 0 to EventLogCount-1.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool EventLogName(int index, CkString &outStr);
-	// Returns the name of the Nth event in the in-memory event log. Refer to the
-	// documentation for the KeepEventLog property for the full list of event names.
-	// Indexing is from 0 to EventLogCount-1.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	const wchar_t *eventLogName(int index);
-
-	// Returns the value of the Nth event in the in-memory event log. Indexing is from
-	// 0 to EventLogCount-1.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool EventLogValue(int index, CkString &outStr);
-	// Returns the value of the Nth event in the in-memory event log. Indexing is from
-	// 0 to EventLogCount-1.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	const wchar_t *eventLogValue(int index);
 
 	// Convenience method for extracting the META refresh URL from HTML. For example,
 	// if the htmlContent contains a META refresh tag, such as:
@@ -2562,9 +2107,9 @@ class CK_VISIBLE_PUBLIC CkHttpW  : public CkClassWithCallbacksW
 
 	// A simplified way of sending a JSON POST and receiving the JSON response. The
 	// HTTP response is returned in an HTTP response object. The content type of the
-	// HTTP request is "applicatoin/jsonrequest". To send a JSON POST using
-	// "application/json", call the PostJson2 method where the content type can be
-	// explicitly provided.
+	// HTTP request is "application/json". To send a JSON POST using a different
+	// content-type, call the PostJson2 method where the content type can be explicitly
+	// specified.
 	// The caller is responsible for deleting the object returned by this method.
 	CkHttpResponseW *PostJson(const wchar_t *url, const wchar_t *jsonText);
 
@@ -2859,16 +2404,17 @@ class CK_VISIBLE_PUBLIC CkHttpW  : public CkClassWithCallbacksW
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *QuickPutStrAsync(const wchar_t *url);
 
-	// Removes a header from the internal list of custom header field name/value pairs
-	// to be automatically added when HTTP requests are sent via methods that do not
-	// use the HTTP request object. (The AddQuickHeader method is called to add custom
-	// header fields.)
-	// 
-	// * Note: This method is deprecated. It is identical to the RemoveRequestHeader
-	// method. The RemoveRequestHeader method should be called instead because this
-	// method will be removed in a future version.
-	// 
-	bool RemoveQuickHeader(const wchar_t *headerFieldName);
+	// Sends an HTTP GET request for a URL and returns the response object. If the
+	// SendCookies property is true, matching cookies previously persisted to the
+	// CookiesDir are automatically included in the request. If the FetchFromCache
+	// property is true, the page could be fetched directly from cache.
+	// The caller is responsible for deleting the object returned by this method.
+	CkHttpResponseW *QuickRequest(const wchar_t *verb, const wchar_t *url);
+
+	// Creates an asynchronous task to call the QuickRequest method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *QuickRequestAsync(const wchar_t *verb, const wchar_t *url);
 
 	// Removes a header from the internal list of custom header field name/value pairs
 	// to be automatically added when HTTP requests are sent via methods that do not
@@ -2950,6 +2496,14 @@ class CK_VISIBLE_PUBLIC CkHttpW  : public CkClassWithCallbacksW
 	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *S3_DeleteObjectAsync(const wchar_t *bucketPath, const wchar_t *objectName);
+
+	// The same as DownloadFile, except the downloaded file data is appended to bd.
+	bool S3_DownloadBd(const wchar_t *bucketPath, const wchar_t *objectName, CkBinDataW &bd);
+
+	// Creates an asynchronous task to call the S3_DownloadBd method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *S3_DownloadBdAsync(const wchar_t *bucketPath, const wchar_t *objectName, CkBinDataW &bd);
 
 	// The same as DownloadFile, except the file data is returned directly in-memory
 	// instead of being written to a local file.
@@ -3090,6 +2644,20 @@ class CK_VISIBLE_PUBLIC CkHttpW  : public CkClassWithCallbacksW
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *S3_ListBucketsAsync(void);
 
+	// The same as S3_UploadFile, except the contents of the file come from bd
+	// instead of a local file.
+	// 
+	// Note: x-amz-* headers, including metadata, can be added to any S3 request by
+	// adding each header with a call to SetRequestHeader. This applies to all S3
+	// methods, even if not explicitly stated.
+	// 
+	bool S3_UploadBd(CkBinDataW &bd, const wchar_t *contentType, const wchar_t *bucketPath, const wchar_t *objectName);
+
+	// Creates an asynchronous task to call the S3_UploadBd method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *S3_UploadBdAsync(CkBinDataW &bd, const wchar_t *contentType, const wchar_t *bucketPath, const wchar_t *objectName);
+
 	// The same as S3_UploadFile, except the contents of the file come from contentBytes
 	// instead of a local file.
 	// 
@@ -3145,6 +2713,11 @@ class CK_VISIBLE_PUBLIC CkHttpW  : public CkClassWithCallbacksW
 
 	// Equivalent to setting the Password property, but provides for a more secure way
 	// of passing the password in a secure string object.
+	// 
+	// Note: Starting in v9.5.0.76, this method has been copied to SetSecurePassword.
+	// Applications should call SetSecurePassword instead because this method is now
+	// deprecated.
+	// 
 	bool SetPassword(CkSecureStringW &password);
 
 	// Adds a custom header field to any HTTP request sent by a method that does not
@@ -3166,6 +2739,10 @@ class CK_VISIBLE_PUBLIC CkHttpW  : public CkClassWithCallbacksW
 	// Note: To add more than one header, call this method once per header field.
 	// 
 	void SetRequestHeader(const wchar_t *headerFieldName, const wchar_t *headerFieldValue);
+
+	// Equivalent to setting the Password property, but provides for a more secure way
+	// of passing the password in a secure string object.
+	bool SetSecurePassword(CkSecureStringW &password);
 
 	// Allows for a client-side certificate to be used for an SSL connection.
 	bool SetSslClientCert(CkCertW &cert);
@@ -3218,6 +2795,12 @@ class CK_VISIBLE_PUBLIC CkHttpW  : public CkClassWithCallbacksW
 	// NOT pass "https://www.somedomain.com/" in the 1st argument. Instead, pass
 	// "www.somedomain.com".
 	// 
+	// The Parts of a URL
+	// 
+	// http://example.com:8042/over/there?name=ferret#nose
+	// \__/   \______________/\_________/ \________/ \__/
+	//  |           |            |            |        |
+	// scheme   domain+port     path        query   fragment
 	// The caller is responsible for deleting the object returned by this method.
 	CkHttpResponseW *SynchronousRequest(const wchar_t *domain, int port, bool ssl, CkHttpRequestW &req);
 

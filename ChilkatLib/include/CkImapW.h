@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkImapW_H
 #define _CkImapW_H
@@ -26,6 +26,7 @@ class CkSecureStringW;
 class CkCspW;
 class CkPrivateKeyW;
 class CkSshKeyW;
+class CkJsonObjectW;
 class CkXmlCertVaultW;
 class CkSshW;
 class CkSocketW;
@@ -1472,9 +1473,9 @@ class CK_VISIBLE_PUBLIC CkImapW  : public CkClassWithCallbacksW
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *FetchSequenceHeadersAsync(int startSeqNum, int numMessages);
 
-	// Retrieves a single message from the IMAP server. If the method fails, it may
-	// return a NULL reference. If bUid is true, then msgID represents a UID. If bUid
-	// is false, then msgID represents a sequence number.
+	// Retrieves a single message from the IMAP server, including attachments if the
+	// AutoDownloadAttachments property is true. If bUid is true, then msgId
+	// represents a UID. If bUid is false, then msgId represents a sequence number.
 	// The caller is responsible for deleting the object returned by this method.
 	CkEmailW *FetchSingle(int msgId, bool bUid);
 
@@ -1484,14 +1485,14 @@ class CK_VISIBLE_PUBLIC CkImapW  : public CkClassWithCallbacksW
 	CkTaskW *FetchSingleAsync(int msgId, bool bUid);
 
 	// Retrieves a single message from the IMAP server and returns a string containing
-	// the complete MIME source of the email. If the method fails, it returns a NULL
-	// reference. If bUid is true, then msgID represents a UID. If bUid is false, then
-	// msgID represents a sequence number.
+	// the complete MIME source of the email, including attachments if the
+	// AutoDownloadAttachments property is true. If bUid is true, then msgId
+	// represents a UID. If bUid is false, then msgId represents a sequence number.
 	bool FetchSingleAsMime(int msgId, bool bUid, CkString &outStrMime);
 	// Retrieves a single message from the IMAP server and returns a string containing
-	// the complete MIME source of the email. If the method fails, it returns a NULL
-	// reference. If bUid is true, then msgID represents a UID. If bUid is false, then
-	// msgID represents a sequence number.
+	// the complete MIME source of the email, including attachments if the
+	// AutoDownloadAttachments property is true. If bUid is true, then msgId
+	// represents a UID. If bUid is false, then msgId represents a sequence number.
 	const wchar_t *fetchSingleAsMime(int msgId, bool bUid);
 
 	// Creates an asynchronous task to call the FetchSingleAsMime method with the
@@ -1499,16 +1500,27 @@ class CK_VISIBLE_PUBLIC CkImapW  : public CkClassWithCallbacksW
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *FetchSingleAsMimeAsync(int msgId, bool bUid);
 
-	// Retrieves a single message from the IMAP server and returns a StringBuilder
-	// object containing the complete MIME source of the email. If the method fails, it
-	// returns a NULL reference. If bUid is true, then msgID represents a UID. If bUid
-	// is false, then msgID represents a sequence number.
+	// Retrieves a single message from the IMAP server into the sbMime object. If bUid is
+	// true, then msgId represents a UID. If bUid is false, then msgId represents a
+	// sequence number. If successful, the sbMime will contain the complete MIME of the
+	// email, including attachments if the AutoDownloadAttachments property is true.
 	bool FetchSingleAsMimeSb(int msgId, bool bUid, CkStringBuilderW &sbMime);
 
 	// Creates an asynchronous task to call the FetchSingleAsMimeSb method with the
 	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *FetchSingleAsMimeSbAsync(int msgId, bool bUid, CkStringBuilderW &sbMime);
+
+	// Retrieves a single message from the IMAP server into the mimeData object.. If bUid
+	// is true, then msgId represents a UID. If bUid is false, then msgId represents
+	// a sequence number. If successful, the mimeData will contain the complete MIME of the
+	// email, including attachments if the AutoDownloadAttachments property is true.
+	bool FetchSingleBd(int msgId, bool bUid, CkBinDataW &mimeData);
+
+	// Creates an asynchronous task to call the FetchSingleBd method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *FetchSingleBdAsync(int msgId, bool bUid, CkBinDataW &mimeData);
 
 	// Retrieves a single message header from the IMAP server. If the method fails, it
 	// may return a NULL reference. The following methods are useful for retrieving
@@ -1993,10 +2005,11 @@ class CK_VISIBLE_PUBLIC CkImapW  : public CkClassWithCallbacksW
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *RenameMailboxAsync(const wchar_t *fromMailbox, const wchar_t *toMailbox);
 
-	// Searches the selected mailbox for messages that meet a given criteria and
-	// returns a message set of all matching messages. If bUid is true, then UIDs are
-	// returned in the message set, otherwise sequence numbers are returned. The
-	// criteria is passed through to the low-level IMAP protocol unmodified, so the
+	// Searches the already selected mailbox for messages that match criteria and returns a
+	// message set of all matching messages. If bUid is true, then UIDs are returned
+	// in the message set, otherwise sequence numbers are returned.
+	// 
+	// The criteria is passed through to the low-level IMAP protocol unmodified, so the
 	// rules for the IMAP SEARCH command (RFC 3501) apply and are reproduced here:
 	// FROM RFC 3501 (IMAP Protocol)
 	// 
@@ -2342,6 +2355,39 @@ class CK_VISIBLE_PUBLIC CkImapW  : public CkClassWithCallbacksW
 	// certificate is an additional means to indentify the client to the server.
 	bool SetSslClientCertPfx(const wchar_t *pfxFilename, const wchar_t *pfxPassword);
 
+	// Searches the already selected mailbox for messages that match searchCriteria and returns a
+	// message set of all matching messages in the order specified by sortCriteria. If bUid is
+	// true, then UIDs are returned in the message set, otherwise sequence numbers
+	// are returned.
+	// 
+	// The sortCriteria is a string of SPACE separated keywords to indicate sort order (default
+	// is ascending). The keyword "REVERSE" can precede a keyword to reverse the sort
+	// order (i.e. make it descending). Possible sort keywords are:
+	//     ARRIVAL
+	//     CC
+	//     DATE
+	//     FROM
+	//     SIZE
+	//     SUBJECT
+	//     TO
+	// 
+	// Some examples of sortCriteria are:
+	//     "SUBJECT REVERSE DATE"
+	//     "REVERSE SIZE"
+	//     "ARRIVAL"
+	// 
+	// The searchCriteria is passed through to the low-level IMAP protocol unmodified, and
+	// therefore the rules for the IMAP SEARCH command (RFC 3501) apply. See the
+	// documentation for the Search method for more details (and also see RFC 3501).
+	// 
+	// The caller is responsible for deleting the object returned by this method.
+	CkMessageSetW *Sort(const wchar_t *sortCriteria, const wchar_t *charset, const wchar_t *searchCriteria, bool bUid);
+
+	// Creates an asynchronous task to call the Sort method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *SortAsync(const wchar_t *sortCriteria, const wchar_t *charset, const wchar_t *searchCriteria, bool bUid);
+
 	// Authenticates with the SSH server using public-key authentication. The
 	// corresponding public key must have been installed on the SSH server for the
 	// sshLogin. Authentication will succeed if the matching privateKey is provided.
@@ -2443,6 +2489,78 @@ class CK_VISIBLE_PUBLIC CkImapW  : public CkClassWithCallbacksW
 	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *SubscribeAsync(const wchar_t *mailbox);
+
+	// Sends the THREAD command to search the already selected mailbox for messages
+	// that match searchCriteria.
+	// 
+	// The following explanation is from RFC 5256
+	// <https://tools.ietf.org/html/rfc5256> :
+	// 
+	// The THREAD command is a variant of SEARCH with threading semantics 
+	// for the results.  Thread has two arguments before the searching 
+	// criteria argument: a threading algorithm and the searching 
+	// charset.
+	// 
+	// The THREAD command first searches the mailbox for messages that
+	// match the given searching criteria using the charset argument for
+	// the interpretation of strings in the searching criteria.  It then
+	// returns the matching messages in an untagged THREAD response,
+	// threaded according to the specified threading algorithm.
+	// 
+	// All collation is in ascending order.  Earlier dates collate before
+	// later dates and strings are collated according to ascending values.
+	// 
+	// The defined threading algorithms are as follows:
+	// 
+	//       ORDEREDSUBJECT
+	// 
+	//          The ORDEREDSUBJECT threading algorithm is also referred to as
+	//          "poor man's threading".  The searched messages are sorted by
+	//          base subject and then by the sent date.  The messages are then
+	//          split into separate threads, with each thread containing
+	//          messages with the same base subject text.  Finally, the threads
+	//          are sorted by the sent date of the first message in the thread.
+	// 
+	//          The top level or "root" in ORDEREDSUBJECT threading contains
+	//          the first message of every thread.  All messages in the root
+	//          are siblings of each other.  The second message of a thread is
+	//          the child of the first message, and subsequent messages of the
+	//          thread are siblings of the second message and hence children of
+	//          the message at the root.  Hence, there are no grandchildren in
+	//          ORDEREDSUBJECT threading.
+	// 
+	//          Children in ORDEREDSUBJECT threading do not have descendents.
+	//          Client implementations SHOULD treat descendents of a child in a
+	//          server response as being siblings of that child.
+	// 
+	//       REFERENCES
+	// 
+	//          The REFERENCES threading algorithm threads the searched
+	//          messages by grouping them together in parent/child
+	//          relationships based on which messages are replies to others.
+	//          The parent/child relationships are built using two methods:
+	//          reconstructing a message's ancestry using the references
+	//          contained within it; and checking the original (not base)
+	//          subject of a message to see if it is a reply to (or forward of)
+	//          another message.
+	// 
+	// See RFC 5256
+	// <https://tools.ietf.org/html/rfc5256> for more details:
+	// 
+	// The searchCriteria is passed through to the low-level IMAP protocol unmodified, and
+	// therefore the rules for the IMAP SEARCH command (RFC 3501) apply. See the
+	// documentation for the Search method for more details (and also see RFC 3501).
+	// 
+	// The results are returned in a JSON object to make it easy to parse the
+	// parent/child relationships. See the example below for details.
+	// 
+	// The caller is responsible for deleting the object returned by this method.
+	CkJsonObjectW *ThreadCmd(const wchar_t *threadAlg, const wchar_t *charset, const wchar_t *searchCriteria, bool bUid);
+
+	// Creates an asynchronous task to call the ThreadCmd method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *ThreadCmdAsync(const wchar_t *threadAlg, const wchar_t *charset, const wchar_t *searchCriteria, bool bUid);
 
 	// Unlocks the component. This must be called once at the beginning of your program
 	// to unlock the component. A purchased unlock code is provided when the IMAP

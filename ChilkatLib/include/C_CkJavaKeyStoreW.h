@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkJavaKeyStoreWH
 #define _C_CkJavaKeyStoreWH
 #include "chilkatDefs.h"
@@ -49,6 +49,7 @@ CK_VISIBLE_PUBLIC const wchar_t *CkJavaKeyStoreW_getSecretKeyAlias(HCkJavaKeySto
 CK_VISIBLE_PUBLIC HCkCertW CkJavaKeyStoreW_GetTrustedCert(HCkJavaKeyStoreW cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_GetTrustedCertAlias(HCkJavaKeyStoreW cHandle, int index, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkJavaKeyStoreW_getTrustedCertAlias(HCkJavaKeyStoreW cHandle, int index);
+CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_LoadBd(HCkJavaKeyStoreW cHandle, const wchar_t *password, HCkBinDataW bd);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_LoadBinary(HCkJavaKeyStoreW cHandle, const wchar_t *password, HCkByteData jksData);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_LoadEncoded(HCkJavaKeyStoreW cHandle, const wchar_t *password, const wchar_t *jksEncData, const wchar_t *encoding);
 CK_VISIBLE_PUBLIC BOOL CkJavaKeyStoreW_LoadFile(HCkJavaKeyStoreW cHandle, const wchar_t *password, const wchar_t *path);

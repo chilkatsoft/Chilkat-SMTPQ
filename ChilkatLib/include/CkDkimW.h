@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkDkimW_H
 #define _CkDkimW_H
@@ -213,6 +213,31 @@ class CK_VISIBLE_PUBLIC CkDkimW  : public CkClassWithCallbacksW
 	// will fire.
 	void put_HeartbeatMs(int newVal);
 
+	// Contains JSON with information about the last DKIM or DomainKey signature
+	// verified (or verification failure). The JSON will contain information like this:
+	// {
+	//   "domain": "amazonses.com",
+	//   "selector": "7v7vs6w47njt4pimodk5mmttbegzsi6n",
+	//   "publicKey": "MIGfMA0GCSq...z6uqeQIDAQAB",
+	//   "canonicalization": "relaxed/simple",
+	//   "algorithm": "rsa-sha256",
+	//   "signedHeaders": "Subject:From:To:Date:Mime-Version:Content-Type:References:Message-Id:Feedback-ID",
+	//   "verified": "yes"
+	// }
+	void get_VerifyInfo(CkString &str);
+	// Contains JSON with information about the last DKIM or DomainKey signature
+	// verified (or verification failure). The JSON will contain information like this:
+	// {
+	//   "domain": "amazonses.com",
+	//   "selector": "7v7vs6w47njt4pimodk5mmttbegzsi6n",
+	//   "publicKey": "MIGfMA0GCSq...z6uqeQIDAQAB",
+	//   "canonicalization": "relaxed/simple",
+	//   "algorithm": "rsa-sha256",
+	//   "signedHeaders": "Subject:From:To:Date:Mime-Version:Content-Type:References:Message-Id:Feedback-ID",
+	//   "verified": "yes"
+	// }
+	const wchar_t *verifyInfo(void);
+
 
 
 	// ----------------------
@@ -245,9 +270,8 @@ class CK_VISIBLE_PUBLIC CkDkimW  : public CkClassWithCallbacksW
 	// Verifies the Nth DKIM-Signature header in the mimeData. (In most cases, there is
 	// only one signature.) The 1st signature is at sigIndex 0.
 	// 
-	// Important: Many anti-virus programs, such as AVG, will modify the MIME of an
-	// email as it is received. This will cause DKIM signature verification to fail
-	// because the body of the MIME is modified.
+	// On return, the VerifyInfo property will contain additional information about the
+	// DKIM-Signature that was verified (or not verified).
 	// 
 	bool DkimVerify(int sigIndex, CkBinDataW &mimeData);
 
@@ -260,9 +284,8 @@ class CK_VISIBLE_PUBLIC CkDkimW  : public CkClassWithCallbacksW
 	// Verifies the Nth DomainKey-Signature header in the mimeData. (In most cases, there
 	// is only one signature.) The 1st signature is at sigIndex 0.
 	// 
-	// Important: Many anti-virus programs, such as AVG, will modify the MIME of an
-	// email as it is received. This will cause DomainKey signature verification to
-	// fail because the body of the MIME is modified.
+	// On return, the VerifyInfo property will contain additional information about the
+	// DKIM-Signature that was verified (or not verified).
 	// 
 	bool DomainKeyVerify(int sigIndex, CkBinDataW &mimeData);
 
@@ -342,8 +365,14 @@ class CK_VISIBLE_PUBLIC CkDkimW  : public CkClassWithCallbacksW
 	// Returns the number of DKIM-Signature header fields found in mimeData.
 	int NumDkimSignatures(CkByteData &mimeData);
 
+	// Returns the number of DKIM-Signature header fields found in mimeData.
+	int NumDkimSigs(CkBinDataW &mimeData);
+
 	// Returns the number of DomainKey-Signature header fields found in mimeData.
 	int NumDomainKeySignatures(CkByteData &mimeData);
+
+	// Returns the number of DomainKey-Signature header fields found in mimeData.
+	int NumDomainKeySigs(CkBinDataW &mimeData);
 
 	// Useful if your application is going to verify many emails from a single domain
 	// (or a few domains). This eliminates the need to do a DNS lookup to fetch the

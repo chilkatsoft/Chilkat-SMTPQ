@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkCertStore_H
 #define _CkCertStore_H
@@ -111,6 +111,11 @@ class CK_VISIBLE_PUBLIC CkCertStore  : public CkMultiByteBase
 	bool CreateRegistryStore(const char *regRoot, const char *regPath);
 
 #endif
+
+	// Finds a certificate by it's key container name.
+	// The caller is responsible for deleting the object returned by this method.
+	CkCert *FindCertByKeyContainer(const char *name);
+
 
 	// Locates and returns a certificate by its RFC 822 name.
 	// 

@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkSshWH
 #define _C_CkSshWH
 #include "chilkatDefs.h"
@@ -174,6 +174,9 @@ CK_VISIBLE_PUBLIC BOOL CkSshW_ContinueKeyboardAuth(HCkSshW cHandle, const wchar_
 CK_VISIBLE_PUBLIC const wchar_t *CkSshW_continueKeyboardAuth(HCkSshW cHandle, const wchar_t *response);
 CK_VISIBLE_PUBLIC HCkTaskW CkSshW_ContinueKeyboardAuthAsync(HCkSshW cHandle, const wchar_t *response);
 CK_VISIBLE_PUBLIC void CkSshW_Disconnect(HCkSshW cHandle);
+CK_VISIBLE_PUBLIC BOOL CkSshW_GetAuthMethods(HCkSshW cHandle, HCkString outStr);
+CK_VISIBLE_PUBLIC const wchar_t *CkSshW_getAuthMethods(HCkSshW cHandle);
+CK_VISIBLE_PUBLIC HCkTaskW CkSshW_GetAuthMethodsAsync(HCkSshW cHandle);
 CK_VISIBLE_PUBLIC int CkSshW_GetChannelExitStatus(HCkSshW cHandle, int channelNum);
 CK_VISIBLE_PUBLIC int CkSshW_GetChannelNumber(HCkSshW cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkSshW_GetChannelType(HCkSshW cHandle, int index, HCkString outStr);

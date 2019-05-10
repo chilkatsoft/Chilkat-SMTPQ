@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkAsn_H
 #define _C_CkAsn_H
 #include "chilkatDefs.h"
@@ -65,10 +65,12 @@ CK_VISIBLE_PUBLIC const char *CkAsn_getEncodedDer(HCkAsn cHandle, const char *en
 CK_VISIBLE_PUBLIC HCkAsn CkAsn_GetLastSubItem(HCkAsn cHandle);
 CK_VISIBLE_PUBLIC HCkAsn CkAsn_GetSubItem(HCkAsn cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkAsn_LoadAsnXml(HCkAsn cHandle, const char *xmlStr);
+CK_VISIBLE_PUBLIC BOOL CkAsn_LoadBd(HCkAsn cHandle, HCkBinData bd);
 CK_VISIBLE_PUBLIC BOOL CkAsn_LoadBinary(HCkAsn cHandle, HCkByteData derBytes);
 CK_VISIBLE_PUBLIC BOOL CkAsn_LoadBinaryFile(HCkAsn cHandle, const char *path);
 CK_VISIBLE_PUBLIC BOOL CkAsn_LoadEncoded(HCkAsn cHandle, const char *asnContent, const char *encoding);
 CK_VISIBLE_PUBLIC BOOL CkAsn_SaveLastError(HCkAsn cHandle, const char *path);
 CK_VISIBLE_PUBLIC BOOL CkAsn_SetEncodedContent(HCkAsn cHandle, const char *encodedBytes, const char *encoding);
+CK_VISIBLE_PUBLIC BOOL CkAsn_WriteBd(HCkAsn cHandle, HCkBinData bd);
 CK_VISIBLE_PUBLIC BOOL CkAsn_WriteBinaryDer(HCkAsn cHandle, const char *path);
 #endif

@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkXmlDSigGenW_H
 #define _CkXmlDSigGenW_H
@@ -76,6 +76,11 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGenW  : public CkWideCharBase
 	//     _LT_XPath xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">not(ancestor-or-self::node()[@SOAP-ENV:actor="urn:oasis:names:tc:ebxml-msg:actor:nextMSH"]    
 	//          | ancestor-or-self::node()[@SOAP-ENV:actor="http://schemas.xmlsoap.org/soap/actor/next"])_LT_/XPath>    
 	// _LT_/Transform>    
+	//     TransformSignatureXPath (introduced in v9.5.0.75) Causes the following
+	//     tranform to be added:    
+	// _LT_ds:Transform Algorithm="http://www.w3.org/TR/1999/REC-xpath-19991116"_GT_    
+	//    _LT_ds:XPath_GT_not(ancestor-or-self::ds:Signature)_LT_/ds:XPath_GT_    
+	// _LT_/ds:Transform_GT_    
 	//     CompactSignedXml (introduced in v9.5.0.73) The passed-in XML to be signed is
 	//     first reformatted to a compact representation by removing all CR's, LF's, and
 	//     unnecessary whitespace so that the XML to be signed is on a single line. The
@@ -84,6 +89,24 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGenW  : public CkWideCharBase
 	//     IndentedSignature (introduced in v9.5.0.73) Causes the XML Signature to be
 	//     produced on multiple lines with indentation for easier human readability. The
 	//     CompactSignedXml behavior takes precedence over this behavior.
+	//     FullLocalSigningTime (introduced in v9.5.0.76) Causes the signing time to be
+	//     formatted like this: 2017-05-20T19:16:05.649+01:00.nnn, where the ".nnn" is
+	//     added to indicate milliseconds.
+	//     LocalSigningTime (introduced in v9.5.0.76) Causes the signing time to be
+	//     formatted using a local time (with a timezone offset such as "+01:00" rather
+	//     than "Z" to signify GMT).
+	//     DnReverseOrder (introduced in v9.5.0.77) Causes DN's (certificate
+	//     Distinguished Names) to be written in reverse order. Reverse order leads with
+	//     "CN", such as "CN=..., O=..., OU=..., C=...", whereas normal order ends with
+	//     "CN", such as "C=..., OU=..., O=..., CN=..."
+	//     IssuerSerialHex (introduced in v9.5.0.77) Causes the issuer serial number
+	//     located in SignedProperties.SignedSignatureProperties.SigningCertificate to be
+	//     emitted as uppercase hex instead of decimal. (Also, when signing XML for
+	//     e-dokumenty.mf.gov.pl, Chilkat automatically recognizes it and uses
+	//     IssuerSerialHex.)
+	//     IssuerSerialHexLower (introduced in v9.5.0.77) Causes the issuer serial
+	//     number located in SignedProperties.SignedSignatureProperties.SigningCertificate
+	//     to be emitted as lowercase hex instead of decimal.
 	void get_Behaviors(CkString &str);
 	// A comma-separated list of keywords to specify special behaviors to work around
 	// potential oddities or special requirements needed for providing signatures to
@@ -106,6 +129,11 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGenW  : public CkWideCharBase
 	//     _LT_XPath xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">not(ancestor-or-self::node()[@SOAP-ENV:actor="urn:oasis:names:tc:ebxml-msg:actor:nextMSH"]    
 	//          | ancestor-or-self::node()[@SOAP-ENV:actor="http://schemas.xmlsoap.org/soap/actor/next"])_LT_/XPath>    
 	// _LT_/Transform>    
+	//     TransformSignatureXPath (introduced in v9.5.0.75) Causes the following
+	//     tranform to be added:    
+	// _LT_ds:Transform Algorithm="http://www.w3.org/TR/1999/REC-xpath-19991116"_GT_    
+	//    _LT_ds:XPath_GT_not(ancestor-or-self::ds:Signature)_LT_/ds:XPath_GT_    
+	// _LT_/ds:Transform_GT_    
 	//     CompactSignedXml (introduced in v9.5.0.73) The passed-in XML to be signed is
 	//     first reformatted to a compact representation by removing all CR's, LF's, and
 	//     unnecessary whitespace so that the XML to be signed is on a single line. The
@@ -114,6 +142,24 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGenW  : public CkWideCharBase
 	//     IndentedSignature (introduced in v9.5.0.73) Causes the XML Signature to be
 	//     produced on multiple lines with indentation for easier human readability. The
 	//     CompactSignedXml behavior takes precedence over this behavior.
+	//     FullLocalSigningTime (introduced in v9.5.0.76) Causes the signing time to be
+	//     formatted like this: 2017-05-20T19:16:05.649+01:00.nnn, where the ".nnn" is
+	//     added to indicate milliseconds.
+	//     LocalSigningTime (introduced in v9.5.0.76) Causes the signing time to be
+	//     formatted using a local time (with a timezone offset such as "+01:00" rather
+	//     than "Z" to signify GMT).
+	//     DnReverseOrder (introduced in v9.5.0.77) Causes DN's (certificate
+	//     Distinguished Names) to be written in reverse order. Reverse order leads with
+	//     "CN", such as "CN=..., O=..., OU=..., C=...", whereas normal order ends with
+	//     "CN", such as "C=..., OU=..., O=..., CN=..."
+	//     IssuerSerialHex (introduced in v9.5.0.77) Causes the issuer serial number
+	//     located in SignedProperties.SignedSignatureProperties.SigningCertificate to be
+	//     emitted as uppercase hex instead of decimal. (Also, when signing XML for
+	//     e-dokumenty.mf.gov.pl, Chilkat automatically recognizes it and uses
+	//     IssuerSerialHex.)
+	//     IssuerSerialHexLower (introduced in v9.5.0.77) Causes the issuer serial
+	//     number located in SignedProperties.SignedSignatureProperties.SigningCertificate
+	//     to be emitted as lowercase hex instead of decimal.
 	const wchar_t *behaviors(void);
 	// A comma-separated list of keywords to specify special behaviors to work around
 	// potential oddities or special requirements needed for providing signatures to
@@ -136,6 +182,11 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGenW  : public CkWideCharBase
 	//     _LT_XPath xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">not(ancestor-or-self::node()[@SOAP-ENV:actor="urn:oasis:names:tc:ebxml-msg:actor:nextMSH"]    
 	//          | ancestor-or-self::node()[@SOAP-ENV:actor="http://schemas.xmlsoap.org/soap/actor/next"])_LT_/XPath>    
 	// _LT_/Transform>    
+	//     TransformSignatureXPath (introduced in v9.5.0.75) Causes the following
+	//     tranform to be added:    
+	// _LT_ds:Transform Algorithm="http://www.w3.org/TR/1999/REC-xpath-19991116"_GT_    
+	//    _LT_ds:XPath_GT_not(ancestor-or-self::ds:Signature)_LT_/ds:XPath_GT_    
+	// _LT_/ds:Transform_GT_    
 	//     CompactSignedXml (introduced in v9.5.0.73) The passed-in XML to be signed is
 	//     first reformatted to a compact representation by removing all CR's, LF's, and
 	//     unnecessary whitespace so that the XML to be signed is on a single line. The
@@ -144,6 +195,24 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGenW  : public CkWideCharBase
 	//     IndentedSignature (introduced in v9.5.0.73) Causes the XML Signature to be
 	//     produced on multiple lines with indentation for easier human readability. The
 	//     CompactSignedXml behavior takes precedence over this behavior.
+	//     FullLocalSigningTime (introduced in v9.5.0.76) Causes the signing time to be
+	//     formatted like this: 2017-05-20T19:16:05.649+01:00.nnn, where the ".nnn" is
+	//     added to indicate milliseconds.
+	//     LocalSigningTime (introduced in v9.5.0.76) Causes the signing time to be
+	//     formatted using a local time (with a timezone offset such as "+01:00" rather
+	//     than "Z" to signify GMT).
+	//     DnReverseOrder (introduced in v9.5.0.77) Causes DN's (certificate
+	//     Distinguished Names) to be written in reverse order. Reverse order leads with
+	//     "CN", such as "CN=..., O=..., OU=..., C=...", whereas normal order ends with
+	//     "CN", such as "C=..., OU=..., O=..., CN=..."
+	//     IssuerSerialHex (introduced in v9.5.0.77) Causes the issuer serial number
+	//     located in SignedProperties.SignedSignatureProperties.SigningCertificate to be
+	//     emitted as uppercase hex instead of decimal. (Also, when signing XML for
+	//     e-dokumenty.mf.gov.pl, Chilkat automatically recognizes it and uses
+	//     IssuerSerialHex.)
+	//     IssuerSerialHexLower (introduced in v9.5.0.77) Causes the issuer serial
+	//     number located in SignedProperties.SignedSignatureProperties.SigningCertificate
+	//     to be emitted as lowercase hex instead of decimal.
 	void put_Behaviors(const wchar_t *newVal);
 
 	// Specifies custom XML to be inserted in the KeyInfo element of the Signature. A
@@ -366,6 +435,25 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGenW  : public CkWideCharBase
 	// 	...
 	// 
 	void put_SigLocation(const wchar_t *newVal);
+
+	// Modifies the placement of the signature at the location specified by
+	// SigLocation. Possible values are:
+	//     0: Insert the Signature as the last child of the element at SigLocation.
+	//     This is the default.
+	//     1: Insert the Signature as a sibling directly after the element at
+	//     SigLocation.
+	//     2: Insert the Signature as a sibling directly before the element at
+	//     SigLocation.
+	int get_SigLocationMod(void);
+	// Modifies the placement of the signature at the location specified by
+	// SigLocation. Possible values are:
+	//     0: Insert the Signature as the last child of the element at SigLocation.
+	//     This is the default.
+	//     1: Insert the Signature as a sibling directly after the element at
+	//     SigLocation.
+	//     2: Insert the Signature as a sibling directly before the element at
+	//     SigLocation.
+	void put_SigLocationMod(int newVal);
 
 	// The namespace prefix of the Signature that is to be created. The default value
 	// is "ds". Set this property to the empty string to omit a Signature namespace URI
@@ -744,6 +832,14 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGenW  : public CkWideCharBase
 	//     "C14N" -- for Inclusive Canonical XML (without comments)
 	//     "C14N_11" -- for Inclusive Canonical XML 1.1 (without comments)
 	//     "EXCL_C14N" -- for Exclusive Canonical XML (without comments)
+	//     "C14N_WithComments" -- for Inclusive Canonical XML (with comments)
+	//     "C14N_11_WithComments" -- for Inclusive Canonical XML 1.1 (with comments)
+	//     "EXCL_C14N_WithComments" -- for Exclusive Canonical XML (with comments)
+	//     "" -- An empty string indicates that no transformation should be included /
+	//     applied for this reference.
+	//     Note: The WithComments options are available in Chilkat v9.5.0.71 and later.
+	//     Note: The empty-string canonMethod is available in Chilkat v9.5.0.75 and
+	//     later.
 	// 
 	// The refType is optional and is usually not needed. Set this to the empty string
 	// unless it is desired to add a Type attribute to the Reference that is advisory
@@ -788,7 +884,11 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGenW  : public CkWideCharBase
 	//     "C14N_WithComments" -- for Inclusive Canonical XML (with comments)
 	//     "C14N_11_WithComments" -- for Inclusive Canonical XML 1.1 (with comments)
 	//     "EXCL_C14N_WithComments" -- for Exclusive Canonical XML (with comments)
+	//     "" -- An empty string indicates that no transformation should be included /
+	//     applied for this reference.
 	//     Note: The WithComments options are available in Chilkat v9.5.0.71 and later.
+	//     Note: The empty-string canonMethod is available in Chilkat v9.5.0.75 and
+	//     later.
 	// 
 	// If exclusive canonicalization is selected, then the prefixList can contain a space
 	// separated list of inclusive namespace prefixes. For inclusive canonicalization,
@@ -837,10 +937,18 @@ class CK_VISIBLE_PUBLIC CkXmlDSigGenW  : public CkWideCharBase
 	// Creates an XML Digital Signature. The application passes in the XML to be
 	// signed, and the signed XML is returned. If creating an enveloping signature
 	// where the Signature element is the root, then the inXml may be the empty string.
+	// 
+	//     Chilkat v9.5.0.76 or greater is required for XML signatures for
+	//     www.csioz.gov.pl
+	// 
 	bool CreateXmlDSig(const wchar_t *inXml, CkString &outStr);
 	// Creates an XML Digital Signature. The application passes in the XML to be
 	// signed, and the signed XML is returned. If creating an enveloping signature
 	// where the Signature element is the root, then the inXml may be the empty string.
+	// 
+	//     Chilkat v9.5.0.76 or greater is required for XML signatures for
+	//     www.csioz.gov.pl
+	// 
 	const wchar_t *createXmlDSig(const wchar_t *inXml);
 
 	// Creates an XML Digital Signature. The application passes the XML to be signed in

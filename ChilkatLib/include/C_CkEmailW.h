@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkEmailWH
 #define _C_CkEmailWH
 #include "chilkatDefs.h"
@@ -181,6 +181,7 @@ CK_VISIBLE_PUBLIC BOOL CkEmailW_BEncodeBytes(HCkEmailW cHandle, HCkByteData inDa
 CK_VISIBLE_PUBLIC const wchar_t *CkEmailW_bEncodeBytes(HCkEmailW cHandle, HCkByteData inData, const wchar_t *charset);
 CK_VISIBLE_PUBLIC BOOL CkEmailW_BEncodeString(HCkEmailW cHandle, const wchar_t *str, const wchar_t *charset, HCkString outEncodedStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkEmailW_bEncodeString(HCkEmailW cHandle, const wchar_t *str, const wchar_t *charset);
+CK_VISIBLE_PUBLIC void CkEmailW_Clear(HCkEmailW cHandle);
 CK_VISIBLE_PUBLIC void CkEmailW_ClearBcc(HCkEmailW cHandle);
 CK_VISIBLE_PUBLIC void CkEmailW_ClearCC(HCkEmailW cHandle);
 CK_VISIBLE_PUBLIC void CkEmailW_ClearEncryptCerts(HCkEmailW cHandle);
@@ -190,6 +191,7 @@ CK_VISIBLE_PUBLIC BOOL CkEmailW_ComputeGlobalKey(HCkEmailW cHandle, const wchar_
 CK_VISIBLE_PUBLIC const wchar_t *CkEmailW_computeGlobalKey(HCkEmailW cHandle, const wchar_t *encoding, BOOL bFold);
 CK_VISIBLE_PUBLIC BOOL CkEmailW_ComputeGlobalKey2(HCkEmailW cHandle, const wchar_t *encoding, BOOL bFold, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkEmailW_computeGlobalKey2(HCkEmailW cHandle, const wchar_t *encoding, BOOL bFold);
+CK_VISIBLE_PUBLIC BOOL CkEmailW_ConvertInlineImages(HCkEmailW cHandle);
 CK_VISIBLE_PUBLIC HCkEmailW CkEmailW_CreateDsn(HCkEmailW cHandle, const wchar_t *humanReadableMessage, const wchar_t *xmlStatusFields, BOOL bHeaderOnly);
 CK_VISIBLE_PUBLIC HCkEmailW CkEmailW_CreateForward(HCkEmailW cHandle);
 CK_VISIBLE_PUBLIC HCkEmailW CkEmailW_CreateMdn(HCkEmailW cHandle, const wchar_t *humanReadableMessage, const wchar_t *xmlStatusFields, BOOL bHeaderOnly);

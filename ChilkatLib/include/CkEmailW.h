@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkEmailW_H
 #define _CkEmailW_H
@@ -168,7 +168,8 @@ class CK_VISIBLE_PUBLIC CkEmailW  : public CkWideCharBase
 	void put_Charset(const wchar_t *newVal);
 
 	// true if the email arrived encrypted and was successfully decrypted, otherwise
-	// false.
+	// false. This property is only meaningful when the ReceivedEncrypted property is
+	// equal to true.
 	bool get_Decrypted(void);
 
 	// The date/time from the "Date" header in UTC/GMT standard time. Use the LocalDate
@@ -671,7 +672,8 @@ class CK_VISIBLE_PUBLIC CkEmailW  : public CkWideCharBase
 
 	// true if the email was received with one or more digital signatures, and if all
 	// the signatures were validated indicating that the email was not altered.
-	// Otherwise this property is set to false.
+	// Otherwise this property is set to false. (This property is only meaningful
+	// when the ReceivedSigned property is equal to true.)
 	bool get_SignaturesValid(void);
 
 	// If the email was received digitally signed, this property contains the fields of
@@ -731,6 +733,11 @@ class CK_VISIBLE_PUBLIC CkEmailW  : public CkWideCharBase
 	void put_SigningHashAlg(const wchar_t *newVal);
 
 	// The size in bytes of the email, including all parts and attachments.
+	// 
+	// Note: This property is only valid if the full email was downloaded. If only the
+	// header was downloaded, then this property will contain the size of just the
+	// header.
+	// 
 	int get_Size(void);
 
 	// The email subject.
@@ -1089,6 +1096,11 @@ class CK_VISIBLE_PUBLIC CkEmailW  : public CkWideCharBase
 	// Unicode string.
 	const wchar_t *bEncodeString(const wchar_t *str, const wchar_t *charset);
 
+	// Clears the email object of all information to the state as if the object was
+	// just created, which will have default headers such as Mime-Version, Date,
+	// Message-ID, Content-Type, Content-Transfer-Encoding, and X-Priority.
+	void Clear(void);
+
 	// Clears the list of blind carbon-copy recipients.
 	void ClearBcc(void);
 
@@ -1169,6 +1181,10 @@ class CK_VISIBLE_PUBLIC CkEmailW  : public CkWideCharBase
 	// encoding: base64, hex, url, etc. If bFold is true, then the 16-byte MD5 hash is
 	// folded to 8 bytes with an XOR to produce a shorter key.
 	const wchar_t *computeGlobalKey2(const wchar_t *encoding, bool bFold);
+
+	// Converts images embedded inline within HTML to multipart/related MIME parts
+	// referenced from the HTML by CID.
+	bool ConvertInlineImages(void);
 
 	// Creates a new DSN (Delivery Status Notification) email having the format as
 	// specified in RFC 3464. See the example (below) for more detailed information.
@@ -1449,13 +1465,19 @@ class CK_VISIBLE_PUBLIC CkEmailW  : public CkWideCharBase
 	int GetAttachmentSize(int index);
 
 	// Retrieves an attachment's data as a String. All CRLF sequences will be
-	// translated to single newline characters.
+	// translated to single newline characters. The charset indicates how to interpret the
+	// bytes of the attachment. For example, if the attachment is a text file using the
+	// utf-8 byte representation for characters, pass "utf-8".
 	bool GetAttachmentString(int index, const wchar_t *charset, CkString &outStr);
 	// Retrieves an attachment's data as a String. All CRLF sequences will be
-	// translated to single newline characters.
+	// translated to single newline characters. The charset indicates how to interpret the
+	// bytes of the attachment. For example, if the attachment is a text file using the
+	// utf-8 byte representation for characters, pass "utf-8".
 	const wchar_t *getAttachmentString(int index, const wchar_t *charset);
 	// Retrieves an attachment's data as a String. All CRLF sequences will be
-	// translated to single newline characters.
+	// translated to single newline characters. The charset indicates how to interpret the
+	// bytes of the attachment. For example, if the attachment is a text file using the
+	// utf-8 byte representation for characters, pass "utf-8".
 	const wchar_t *attachmentString(int index, const wchar_t *charset);
 
 	// Retrieves an attachment's data as a String. All end-of-lines will be translated

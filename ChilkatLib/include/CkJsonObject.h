@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkJsonObject_H
 #define _CkJsonObject_H
@@ -115,6 +115,28 @@ class CK_VISIBLE_PUBLIC CkJsonObject  : public CkMultiByteBase
 	int get_K(void);
 	// The value of the "k" index to be used when evaluating a JSON path.
 	void put_K(int newVal);
+
+	// A prefix string that is automatically added to the JSON path passed in the first
+	// argument for other methods (such as StringOf, UpdateString, SetBoolOf,
+	// SizeOfArray, etc.)
+	// 
+	// The default value is the empty string.
+	// 
+	void get_PathPrefix(CkString &str);
+	// A prefix string that is automatically added to the JSON path passed in the first
+	// argument for other methods (such as StringOf, UpdateString, SetBoolOf,
+	// SizeOfArray, etc.)
+	// 
+	// The default value is the empty string.
+	// 
+	const char *pathPrefix(void);
+	// A prefix string that is automatically added to the JSON path passed in the first
+	// argument for other methods (such as StringOf, UpdateString, SetBoolOf,
+	// SizeOfArray, etc.)
+	// 
+	// The default value is the empty string.
+	// 
+	void put_PathPrefix(const char *newVal);
 
 	// The number of name/value members in this JSON object.
 	int get_Size(void);
@@ -242,6 +264,11 @@ class CK_VISIBLE_PUBLIC CkJsonObject  : public CkMultiByteBase
 	bool BytesOf(const char *jsonPath, const char *encoding, CkBinData &bd);
 
 
+	// Clears the contents of the JSON object. This is the equivalent of calling
+	// jsonObject.Load("{}")
+	void Clear(void);
+
+
 	// Returns a copy of this JSON object.
 	// The caller is responsible for deleting the object returned by this method.
 	CkJsonObject *Clone(void);
@@ -285,6 +312,10 @@ const char *emit(void);
 const char *emit(void);
 #endif
 
+
+
+	// Emits (appends) to the contents of bd.
+	bool EmitBd(CkBinData &bd);
 
 
 	// Appends the JSON to a StringBuilder object.
@@ -396,6 +427,10 @@ const char *emit(void);
 	// Parses a JSON string and loads it into this JSON object to provide DOM-style
 	// access.
 	bool Load(const char *json);
+
+
+	// Loads the contents of bd.
+	bool LoadBd(CkBinData &bd);
 
 
 	// Loads a JSON file into this JSON object. The path is the file path to the JSON
@@ -513,6 +548,10 @@ const char *emit(void);
 	bool StringOfSb(const char *jsonPath, CkStringBuilder &sb);
 
 
+	// Swaps the positions of members at index1 and index2.
+	bool Swap(int index1, int index2);
+
+
 	// Returns the type of data at the given index. Possible return values are:
 	//     string
 	//     number
@@ -575,6 +614,10 @@ const char *emit(void);
 	// present. Version 9.5.0.68 fixes the problem.
 	// 
 	bool UpdateString(const char *jsonPath, const char *value);
+
+
+	// Saves the JSON to a file.
+	bool WriteFile(const char *path);
 
 
 

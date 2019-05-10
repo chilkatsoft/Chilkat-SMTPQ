@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkScpW_H
 #define _CkScpW_H
@@ -12,8 +12,9 @@
 #include "CkString.h"
 #include "CkClassWithCallbacksW.h"
 
-class CkByteData;
+class CkBinDataW;
 class CkTaskW;
+class CkByteData;
 class CkSshW;
 class CkBaseProgressW;
 
@@ -197,11 +198,78 @@ class CK_VISIBLE_PUBLIC CkScpW  : public CkClassWithCallbacksW
 	// of these patterns.
 	void put_SyncMustNotMatchDir(const wchar_t *newVal);
 
+	// This is a catch-all property to be used for uncommon needs. The default value is
+	// the empty string.
+	// 
+	// As of v9.5.0.77, there is only one uncommon option:
+	//     FilenameOnly Set this property to the keyword "FilenameOnly" if only the
+	//     filename should be used in the "scp -t" command. (LANCOM routers using SCP seem
+	//     to need it.)
+	// 
+	void get_UncommonOptions(CkString &str);
+	// This is a catch-all property to be used for uncommon needs. The default value is
+	// the empty string.
+	// 
+	// As of v9.5.0.77, there is only one uncommon option:
+	//     FilenameOnly Set this property to the keyword "FilenameOnly" if only the
+	//     filename should be used in the "scp -t" command. (LANCOM routers using SCP seem
+	//     to need it.)
+	// 
+	const wchar_t *uncommonOptions(void);
+	// This is a catch-all property to be used for uncommon needs. The default value is
+	// the empty string.
+	// 
+	// As of v9.5.0.77, there is only one uncommon option:
+	//     FilenameOnly Set this property to the keyword "FilenameOnly" if only the
+	//     filename should be used in the "scp -t" command. (LANCOM routers using SCP seem
+	//     to need it.)
+	// 
+	void put_UncommonOptions(const wchar_t *newVal);
+
+	// When Chilkat uploads a file by SCP, the UNIX permissions of the remote file are
+	// set based on the permissions of the local file being uploaded. Usually this is
+	// OK, but in some cases the access permissions of the local file are not what is
+	// wanted for the remote file. This property can be set to an octal permissions
+	// string, such as "0644", to force the remote file permissions to this value.
+	// 
+	// The default value of this property is the empty string (remote files permissions
+	// mirror the permissions of the local file being uploaded).
+	// 
+	void get_UnixPermOverride(CkString &str);
+	// When Chilkat uploads a file by SCP, the UNIX permissions of the remote file are
+	// set based on the permissions of the local file being uploaded. Usually this is
+	// OK, but in some cases the access permissions of the local file are not what is
+	// wanted for the remote file. This property can be set to an octal permissions
+	// string, such as "0644", to force the remote file permissions to this value.
+	// 
+	// The default value of this property is the empty string (remote files permissions
+	// mirror the permissions of the local file being uploaded).
+	// 
+	const wchar_t *unixPermOverride(void);
+	// When Chilkat uploads a file by SCP, the UNIX permissions of the remote file are
+	// set based on the permissions of the local file being uploaded. Usually this is
+	// OK, but in some cases the access permissions of the local file are not what is
+	// wanted for the remote file. This property can be set to an octal permissions
+	// string, such as "0644", to force the remote file permissions to this value.
+	// 
+	// The default value of this property is the empty string (remote files permissions
+	// mirror the permissions of the local file being uploaded).
+	// 
+	void put_UnixPermOverride(const wchar_t *newVal);
+
 
 
 	// ----------------------
 	// Methods
 	// ----------------------
+	// Downloads a binary file from the SSH server and appends to the contents of bd.
+	bool DownloadBd(const wchar_t *remotePath, CkBinDataW &bd);
+
+	// Creates an asynchronous task to call the DownloadBd method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *DownloadBdAsync(const wchar_t *remotePath, CkBinDataW &bd);
+
 	// Downloads a binary file from the SSH server and returns the contents.
 	bool DownloadBinary(const wchar_t *remotePath, CkByteData &outBytes);
 
@@ -276,6 +344,14 @@ class CK_VISIBLE_PUBLIC CkScpW  : public CkClassWithCallbacksW
 	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *SyncTreeUploadAsync(const wchar_t *localBaseDir, const wchar_t *remoteBaseDir, int mode, bool bRecurse);
+
+	// Uploads the contents of bd to a file on the SSH server.
+	bool UploadBd(const wchar_t *remotePath, CkBinDataW &bd);
+
+	// Creates an asynchronous task to call the UploadBd method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *UploadBdAsync(const wchar_t *remotePath, CkBinDataW &bd);
 
 	// Uploads binary data to a file on the SSH server.
 	bool UploadBinary(const wchar_t *remotePath, CkByteData &binData);

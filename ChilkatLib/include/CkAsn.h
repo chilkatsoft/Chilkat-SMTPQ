@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkAsn_H
 #define _CkAsn_H
@@ -13,6 +13,7 @@
 #include "CkMultiByteBase.h"
 
 class CkByteData;
+class CkBinData;
 
 
 
@@ -317,6 +318,10 @@ class CK_VISIBLE_PUBLIC CkAsn  : public CkMultiByteBase
 	bool LoadAsnXml(const char *xmlStr);
 
 
+	// Loads ASN.1 from the binary DER contained in bd.
+	bool LoadBd(CkBinData &bd);
+
+
 	// Loads ASN.1 from binary DER.
 	bool LoadBinary(CkByteData &derBytes);
 
@@ -336,6 +341,10 @@ class CK_VISIBLE_PUBLIC CkAsn  : public CkMultiByteBase
 	// "url_rfc1738", "url_rfc2396", and "url_rfc3986". The encoding name is case
 	// insensitive (for example, both "Base64" and "base64" are treated the same).
 	bool SetEncodedContent(const char *encodedBytes, const char *encoding);
+
+
+	// Appends the ASN.1 in binary DER format to bd.
+	bool WriteBd(CkBinData &bd);
 
 
 	// Writes the ASN.1 in binary DER form to a file.

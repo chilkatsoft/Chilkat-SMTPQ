@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkOAuth2_H
 #define _C_CkOAuth2_H
 #include "chilkatDefs.h"
@@ -10,6 +10,15 @@ CK_VISIBLE_PUBLIC void CkOAuth2_setAbortCheck(HCkOAuth2 cHandle, BOOL (*fnAbortC
 CK_VISIBLE_PUBLIC void CkOAuth2_setPercentDone(HCkOAuth2 cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkOAuth2_setProgressInfo(HCkOAuth2 cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkOAuth2_setTaskCompleted(HCkOAuth2 cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
+CK_VISIBLE_PUBLIC void CkOAuth2_setAbortCheck2(HCkOAuth2 cHandle, BOOL (*fnAbortCheck2)(void *pContext));
+CK_VISIBLE_PUBLIC void CkOAuth2_setPercentDone2(HCkOAuth2 cHandle, BOOL (*fnPercentDone2)(int pctDone, void *pContext));
+CK_VISIBLE_PUBLIC void CkOAuth2_setProgressInfo2(HCkOAuth2 cHandle, void (*fnProgressInfo2)(const char *name, const char *value, void *pContext));
+CK_VISIBLE_PUBLIC void CkOAuth2_setTaskCompleted2(HCkOAuth2 cHandle, void (*fnTaskCompleted2)(HCkTask hTask, void *pContext));
+
+// setExternalProgress is for C callback functions defined in the external programming language (such as Go)
+CK_VISIBLE_PUBLIC void CkOAuth2_setExternalProgress(HCkOAuth2 cHandle, BOOL on);
+CK_VISIBLE_PUBLIC void CkOAuth2_setCallbackContext(HCkOAuth2 cHandle, void *pContext);
 
 CK_VISIBLE_PUBLIC HCkOAuth2 CkOAuth2_Create(void);
 CK_VISIBLE_PUBLIC void CkOAuth2_Dispose(HCkOAuth2 handle);
@@ -41,6 +50,8 @@ CK_VISIBLE_PUBLIC void CkOAuth2_putDebugLogFilePath(HCkOAuth2 cHandle, const cha
 CK_VISIBLE_PUBLIC const char *CkOAuth2_debugLogFilePath(HCkOAuth2 cHandle);
 CK_VISIBLE_PUBLIC void CkOAuth2_getFailureInfo(HCkOAuth2 cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkOAuth2_failureInfo(HCkOAuth2 cHandle);
+CK_VISIBLE_PUBLIC BOOL CkOAuth2_getIncludeNonce(HCkOAuth2 cHandle);
+CK_VISIBLE_PUBLIC void CkOAuth2_putIncludeNonce(HCkOAuth2 cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkOAuth2_getLastErrorHtml(HCkOAuth2 cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkOAuth2_lastErrorHtml(HCkOAuth2 cHandle);
 CK_VISIBLE_PUBLIC void CkOAuth2_getLastErrorText(HCkOAuth2 cHandle, HCkString retval);
@@ -68,6 +79,12 @@ CK_VISIBLE_PUBLIC const char *CkOAuth2_refreshToken(HCkOAuth2 cHandle);
 CK_VISIBLE_PUBLIC void CkOAuth2_getResource(HCkOAuth2 cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkOAuth2_putResource(HCkOAuth2 cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkOAuth2_resource(HCkOAuth2 cHandle);
+CK_VISIBLE_PUBLIC void CkOAuth2_getResponseMode(HCkOAuth2 cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkOAuth2_putResponseMode(HCkOAuth2 cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkOAuth2_responseMode(HCkOAuth2 cHandle);
+CK_VISIBLE_PUBLIC void CkOAuth2_getResponseType(HCkOAuth2 cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkOAuth2_putResponseType(HCkOAuth2 cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkOAuth2_responseType(HCkOAuth2 cHandle);
 CK_VISIBLE_PUBLIC void CkOAuth2_getScope(HCkOAuth2 cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkOAuth2_putScope(HCkOAuth2 cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkOAuth2_scope(HCkOAuth2 cHandle);
@@ -93,6 +110,8 @@ CK_VISIBLE_PUBLIC HCkTask CkOAuth2_MonitorAsync(HCkOAuth2 cHandle);
 CK_VISIBLE_PUBLIC BOOL CkOAuth2_RefreshAccessToken(HCkOAuth2 cHandle);
 CK_VISIBLE_PUBLIC HCkTask CkOAuth2_RefreshAccessTokenAsync(HCkOAuth2 cHandle);
 CK_VISIBLE_PUBLIC BOOL CkOAuth2_SaveLastError(HCkOAuth2 cHandle, const char *path);
+CK_VISIBLE_PUBLIC BOOL CkOAuth2_SetRefreshHeader(HCkOAuth2 cHandle, const char *name, const char *value);
+CK_VISIBLE_PUBLIC HCkTask CkOAuth2_SetRefreshHeaderAsync(HCkOAuth2 cHandle, const char *name, const char *value);
 CK_VISIBLE_PUBLIC void CkOAuth2_SleepMs(HCkOAuth2 cHandle, int millisec);
 CK_VISIBLE_PUBLIC BOOL CkOAuth2_StartAuth(HCkOAuth2 cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkOAuth2_startAuth(HCkOAuth2 cHandle);

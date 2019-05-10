@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkFileAccess_H
 #define _CkFileAccess_H
@@ -12,8 +12,9 @@
 #include "CkString.h"
 #include "CkMultiByteBase.h"
 
-class CkByteData;
 class CkBinData;
+class CkStringBuilder;
+class CkByteData;
 class CkDateTime;
 
 
@@ -99,6 +100,15 @@ class CK_VISIBLE_PUBLIC CkFileAccess  : public CkMultiByteBase
 	bool AppendAnsi(const char *text);
 
 
+	// Appends the contents of bd to the currently open file.
+	bool AppendBd(CkBinData &bd);
+
+
+	// Appends the contents of sb using the character encoding (such as "utf-8")
+	// specified by charset to the currently open file.
+	bool AppendSb(CkStringBuilder &sb, const char *charset);
+
+
 	// Appends a string using the character encoding specified by str to the currently
 	// open file.
 	bool AppendText(const char *str, const char *charset);
@@ -122,7 +132,8 @@ class CK_VISIBLE_PUBLIC CkFileAccess  : public CkMultiByteBase
 	bool DirCreate(const char *dirPath);
 
 
-	// Deletes the directory specified by dirPath.
+	// Deletes the directory specified by dirPath. It is only possible to delete a
+	// directory if it contains no files or subdirectories.
 	bool DirDelete(const char *dirPath);
 
 
@@ -219,6 +230,22 @@ class CK_VISIBLE_PUBLIC CkFileAccess  : public CkMultiByteBase
 
 	// Returns the size, in bytes, of a file. Returns -1 for failure.
 	int FileSize(const char *filePath);
+
+
+	// Examines the file at path and returns one of the following values:
+	// 
+	// -1 = Unable to check because of directory permissions or some error preventing
+	// the ability to obtain the information.
+	// 0 = File does not exist.
+	// 1 = Regular file.
+	// 2 = Directory.
+	// 3 = Symbolic link.
+	// 4 = Windows Shortcut.
+	// 99 = Something else.
+	// 
+	// Additional file types may be added in the future as needed.
+	// 
+	int FileType(const char *path);
 
 
 	// Writes bytes to the currently open file.
@@ -452,6 +479,28 @@ class CK_VISIBLE_PUBLIC CkFileAccess  : public CkMultiByteBase
 	// Splits a file into chunks. Please refer to the example below:
 	bool SplitFile(const char *fileToSplit, const char *partPrefix, const char *partExtension, int partSize, const char *destDir);
 
+
+	// Creates a symbolic link.
+	// 
+	// Note: On Windows systems, this is not the same as creating a shortcut. A Windows
+	// symbolic link and a Windows shortcut are two different things. Shortcut files
+	// are common on Windows, but not symbolic links. Creating a symbolic link requires
+	// a special privilege, unless running as administrator. To be able to create
+	// symbolic links, your user account or group needs to be listed in secpol.msc →
+	// Security Settings → Local Policies → User Rights Assignment → Create
+	// symbolic links. However the special setting is not needed when running within
+	// the development environment, such as from Visual Studio.
+	// 
+	bool SymlinkCreate(const char *targetPath, const char *linkPath);
+
+
+	// Returns the full pathname of the file at the end of the linkPath. Also handles
+	// Windows shortcut files by returning the absolute path of the target.
+	bool SymlinkTarget(const char *linkPath, CkString &outStr);
+
+	// Returns the full pathname of the file at the end of the linkPath. Also handles
+	// Windows shortcut files by returning the absolute path of the target.
+	const char *symlinkTarget(const char *linkPath);
 
 	// Deletes an entire directory tree (all files and sub-directories).
 	bool TreeDelete(const char *path);

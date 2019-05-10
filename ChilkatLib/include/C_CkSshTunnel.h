@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkSshTunnel_H
 #define _C_CkSshTunnel_H
 #include "chilkatDefs.h"
@@ -10,6 +10,15 @@ CK_VISIBLE_PUBLIC void CkSshTunnel_setAbortCheck(HCkSshTunnel cHandle, BOOL (*fn
 CK_VISIBLE_PUBLIC void CkSshTunnel_setPercentDone(HCkSshTunnel cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkSshTunnel_setProgressInfo(HCkSshTunnel cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkSshTunnel_setTaskCompleted(HCkSshTunnel cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
+CK_VISIBLE_PUBLIC void CkSshTunnel_setAbortCheck2(HCkSshTunnel cHandle, BOOL (*fnAbortCheck2)(void *pContext));
+CK_VISIBLE_PUBLIC void CkSshTunnel_setPercentDone2(HCkSshTunnel cHandle, BOOL (*fnPercentDone2)(int pctDone, void *pContext));
+CK_VISIBLE_PUBLIC void CkSshTunnel_setProgressInfo2(HCkSshTunnel cHandle, void (*fnProgressInfo2)(const char *name, const char *value, void *pContext));
+CK_VISIBLE_PUBLIC void CkSshTunnel_setTaskCompleted2(HCkSshTunnel cHandle, void (*fnTaskCompleted2)(HCkTask hTask, void *pContext));
+
+// setExternalProgress is for C callback functions defined in the external programming language (such as Go)
+CK_VISIBLE_PUBLIC void CkSshTunnel_setExternalProgress(HCkSshTunnel cHandle, BOOL on);
+CK_VISIBLE_PUBLIC void CkSshTunnel_setCallbackContext(HCkSshTunnel cHandle, void *pContext);
 
 CK_VISIBLE_PUBLIC HCkSshTunnel CkSshTunnel_Create(void);
 CK_VISIBLE_PUBLIC void CkSshTunnel_Dispose(HCkSshTunnel handle);
@@ -135,11 +144,17 @@ CK_VISIBLE_PUBLIC BOOL CkSshTunnel_Connect(HCkSshTunnel cHandle, const char *hos
 CK_VISIBLE_PUBLIC HCkTask CkSshTunnel_ConnectAsync(HCkSshTunnel cHandle, const char *hostname, int port);
 CK_VISIBLE_PUBLIC BOOL CkSshTunnel_ConnectThroughSsh(HCkSshTunnel cHandle, HCkSsh ssh, const char *hostname, int port);
 CK_VISIBLE_PUBLIC HCkTask CkSshTunnel_ConnectThroughSshAsync(HCkSshTunnel cHandle, HCkSsh ssh, const char *hostname, int port);
+CK_VISIBLE_PUBLIC BOOL CkSshTunnel_ContinueKeyboardAuth(HCkSshTunnel cHandle, const char *response, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkSshTunnel_continueKeyboardAuth(HCkSshTunnel cHandle, const char *response);
+CK_VISIBLE_PUBLIC HCkTask CkSshTunnel_ContinueKeyboardAuthAsync(HCkSshTunnel cHandle, const char *response);
 CK_VISIBLE_PUBLIC BOOL CkSshTunnel_DisconnectAllClients(HCkSshTunnel cHandle, BOOL waitForThreads);
 CK_VISIBLE_PUBLIC BOOL CkSshTunnel_GetCurrentState(HCkSshTunnel cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkSshTunnel_getCurrentState(HCkSshTunnel cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSshTunnel_IsSshConnected(HCkSshTunnel cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSshTunnel_SaveLastError(HCkSshTunnel cHandle, const char *path);
+CK_VISIBLE_PUBLIC BOOL CkSshTunnel_StartKeyboardAuth(HCkSshTunnel cHandle, const char *login, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkSshTunnel_startKeyboardAuth(HCkSshTunnel cHandle, const char *login);
+CK_VISIBLE_PUBLIC HCkTask CkSshTunnel_StartKeyboardAuthAsync(HCkSshTunnel cHandle, const char *login);
 CK_VISIBLE_PUBLIC BOOL CkSshTunnel_StopAccepting(HCkSshTunnel cHandle, BOOL waitForThread);
 CK_VISIBLE_PUBLIC BOOL CkSshTunnel_UnlockComponent(HCkSshTunnel cHandle, const char *unlockCode);
 #endif

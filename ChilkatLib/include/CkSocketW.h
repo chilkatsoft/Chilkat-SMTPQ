@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkSocketW_H
 #define _CkSocketW_H
@@ -12,10 +12,10 @@
 #include "CkString.h"
 #include "CkClassWithCallbacksW.h"
 
-class CkByteData;
 class CkTaskW;
 class CkCertW;
 class CkBinDataW;
+class CkByteData;
 class CkStringBuilderW;
 class CkSshKeyW;
 class CkSshW;
@@ -113,215 +113,6 @@ class CK_VISIBLE_PUBLIC CkSocketW  : public CkClassWithCallbacksW
 	// 
 	int get_AcceptFailReason(void);
 
-	// Set to true when an asynchronous accept operation completes. Once the
-	// asynchronous accept has finished, the success/failure is available in the
-	// AsyncAcceptSuccess boolean property.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool get_AsyncAcceptFinished(void);
-
-	// Contains the last-error information for an asynchronous accept operation.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	void get_AsyncAcceptLog(CkString &str);
-	// Contains the last-error information for an asynchronous accept operation.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	const wchar_t *asyncAcceptLog(void);
-
-	// Set to true when an asynchronous accept operation completes and is successful.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool get_AsyncAcceptSuccess(void);
-
-	// Set to true when an asynchronous connect operation completes. Once the
-	// asynchronous connect has finished, the success/failure is available in the
-	// AsyncConnectSuccess boolean property.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool get_AsyncConnectFinished(void);
-
-	// Contains the last-error information for an asynchronous connect operation.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	void get_AsyncConnectLog(CkString &str);
-	// Contains the last-error information for an asynchronous connect operation.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	const wchar_t *asyncConnectLog(void);
-
-	// Set to true when an asynchronous connect operation completes and is
-	// successful.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool get_AsyncConnectSuccess(void);
-
-	// Set to true when an asynchronous DNS query completes. The success status is
-	// available in the AsyncDnsSuccess property.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool get_AsyncDnsFinished(void);
-
-	// Contains the last-error information for an asynchronous DNS query.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	void get_AsyncDnsLog(CkString &str);
-	// Contains the last-error information for an asynchronous DNS query.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	const wchar_t *asyncDnsLog(void);
-
-	// The IP address of the last asynchronous DNS query completed. The IP address is
-	// in nnn.nnn.nnn.nnn string form.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	void get_AsyncDnsResult(CkString &str);
-	// The IP address of the last asynchronous DNS query completed. The IP address is
-	// in nnn.nnn.nnn.nnn string form.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	const wchar_t *asyncDnsResult(void);
-
-	// Set to true when an asynchronous DNS query completes and is successful.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool get_AsyncDnsSuccess(void);
-
-	// Contains the data received in an asynchronous receive operation (when receiving
-	// bytes asynchronously).
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	void get_AsyncReceivedBytes(CkByteData &outBytes);
-
-	// Contains the string received in an asynchronous receive operation (when
-	// receiving a string asynchronously).
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	void get_AsyncReceivedString(CkString &str);
-	// Contains the string received in an asynchronous receive operation (when
-	// receiving a string asynchronously).
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	const wchar_t *asyncReceivedString(void);
-
-	// Set to true when an asynchronous receive operation completes. Once the
-	// asynchronous receive has finished, the success/failure is available in the
-	// AsyncReceiveSuccess boolean property.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool get_AsyncReceiveFinished(void);
-
-	// Contains the last-error information for an asynchronous receive operation.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	void get_AsyncReceiveLog(CkString &str);
-	// Contains the last-error information for an asynchronous receive operation.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	const wchar_t *asyncReceiveLog(void);
-
-	// Set to true when an asynchronous receive operation completes and is
-	// successful.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool get_AsyncReceiveSuccess(void);
-
-	// Set to true when an asynchronous send operation completes. Once the
-	// asynchronous send has finished, the success/failure is available in the
-	// AsyncSendSuccess boolean property.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool get_AsyncSendFinished(void);
-
-	// Contains the last-error information for an asynchronous send operation.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	void get_AsyncSendLog(CkString &str);
-	// Contains the last-error information for an asynchronous send operation.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	const wchar_t *asyncSendLog(void);
-
-	// Set to true when an asynchronous send operation completes and is successful.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool get_AsyncSendSuccess(void);
-
 	// If non-zero, limits (throttles) the receiving bandwidth to approximately this
 	// maximum number of bytes per second. The default value of this property is 0.
 	int get_BandwidthThrottleDown(void);
@@ -416,6 +207,7 @@ class CK_VISIBLE_PUBLIC CkSocketW  : public CkClassWithCallbacksW
 	// 105 = Unexpected TLS protocol version.
 	// 106 = Server certificate verify failed (the server certificate is expired or the cert's signature verification failed).
 	// 107 = Unacceptable TLS protocol version.
+	// 108 = App-defined server certificate requirements failure.
 	// 109 = Failed to read handshake messages.
 	// 110 = Failed to send client certificate handshake message.
 	// 111 = Failed to send client key exchange handshake message.
@@ -426,28 +218,6 @@ class CK_VISIBLE_PUBLIC CkSocketW  : public CkClassWithCallbacksW
 	// 116 = Server's Finished message is invalid.
 	// 
 	int get_ConnectFailReason(void);
-
-	// Used to simulate a long wait when connecting to a remote server. If your
-	// application wishes to test for the handling of timeouts, you may set this value
-	// to a number of milliseconds greater than max-wait specified in the Connect
-	// method call. The default value is 0.
-	int get_DebugConnectDelayMs(void);
-	// Used to simulate a long wait when connecting to a remote server. If your
-	// application wishes to test for the handling of timeouts, you may set this value
-	// to a number of milliseconds greater than max-wait specified in the Connect
-	// method call. The default value is 0.
-	void put_DebugConnectDelayMs(int newVal);
-
-	// Used to simulate a long wait when doing a DNS lookup. If your application wishes
-	// to test for the handling of timeouts, you may set this value to a number of
-	// milliseconds greater than max-wait specified in the DnsLookup method call. The
-	// default value is 0.
-	int get_DebugDnsDelayMs(void);
-	// Used to simulate a long wait when doing a DNS lookup. If your application wishes
-	// to test for the handling of timeouts, you may set this value to a number of
-	// milliseconds greater than max-wait specified in the DnsLookup method call. The
-	// default value is 0.
-	void put_DebugDnsDelayMs(int newVal);
 
 	// Contains the number of seconds since the last call to StartTiming, otherwise
 	// contains 0. (The StartTiming method and ElapsedSeconds property is provided for
@@ -686,6 +456,15 @@ class CK_VISIBLE_PUBLIC CkSocketW  : public CkClassWithCallbacksW
 	// over IPv6.
 	void put_PreferIpv6(bool newVal);
 
+	// Returns the cumulative receive rate in bytes per second. The measurement
+	// includes the overhead bytes for protocols such as TLS or SSH tunneling. For
+	// example, if 1000 application bytes are received, the actual number of raw bytes
+	// received on a TLS connection is greater. This property measures the actual
+	// number of raw bytes received in a given time period. The ResetPerf method can be
+	// called to reset this property value and to begin the performance measurement
+	// afresh.
+	int get_RcvBytesPerSec(void);
+
 	// Any method that receives data will increase the value of this property by the
 	// number of bytes received. The application may reset this property to 0 at any
 	// point. It is provided as a way to keep count of the total number of bytes
@@ -797,6 +576,14 @@ class CK_VISIBLE_PUBLIC CkSocketW  : public CkClassWithCallbacksW
 	// more sockets are ready for writing, this property is used to select the socket
 	// in the "ready set" for writing.
 	void put_SelectorWriteIndex(int newVal);
+
+	// Returns the cumulative send rate in bytes per second. The measurement includes
+	// the overhead bytes for protocols such as TLS or SSH tunneling. For example, if
+	// 1000 application bytes are sent, the actual number of raw bytes sent on a TLS
+	// connection is greater. This property measures the actual number of raw bytes
+	// sent in a given time period. The ResetPerf method can be called to reset this
+	// property value and to begin the performance measurement afresh.
+	int get_SendBytesPerSec(void);
 
 	// If a Send method fails, this property can be checked to determine the reason for
 	// failure.
@@ -1413,190 +1200,6 @@ class CK_VISIBLE_PUBLIC CkSocketW  : public CkClassWithCallbacksW
 	// 
 	bool AddSslAcceptableClientCaDn(const wchar_t *certAuthDN);
 
-	// Call this to abort an asynchronous socket connect that is running in a
-	// background thread. Asynchronous connects are initiated by calling
-	// AsyncAcceptStart.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	void AsyncAcceptAbort(void);
-
-	// Returns the socket object for the connection accepted asynchronously in a
-	// background thread (via AsyncAcceptStart). The connected socket can only be
-	// retrieved once. A subsequent call to AsyncAcceptSocket will return a NULL
-	// reference until another connection is accepted asynchronously.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	// The caller is responsible for deleting the object returned by this method.
-	CkSocketW *AsyncAcceptSocket(void);
-
-	// Initiates a background thread to wait for and accept the next incoming TCP
-	// connection. The method will fail if an asynchronous operation is already in
-	// progress. The timeout (in milliseconds) is passed in maxWaitMs. To wait indefinitely,
-	// set maxWaitMs to 0. Asynchronous accept operations can be aborted by calling
-	// AsyncAcceptAbort. When the async accept operation completes, the
-	// AsyncAcceptFinished property will become true. If the accept was successful,
-	// the AsyncAcceptSuccess property is set to true and the connected socket can be
-	// retrieved via the AsyncAcceptSocket method. A debug log is available in the
-	// AsyncAcceptLog property.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool AsyncAcceptStart(int maxWaitMs);
-
-	// Aborts an asynchronous connect operation running in a background thread (started
-	// by calling AsyncConnectStart).
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	void AsyncConnectAbort(void);
-
-	// Initiates a background thread to establish a TCP connection with a remote
-	// host:port. The method will fail if an asynchronous operation is already in
-	// progress, or if the timeout expired. The timeout (in milliseconds) is passed in
-	// maxWaitMs. To wait indefinitely, set maxWaitMs to 0. Set ssl = true to esablish an SSL
-	// connection. Asynchronous connect operations can be aborted by calling
-	// AsyncConnectAbort. When the async connect operation completes, the
-	// AsyncConnectFinished property will become true. If the connect was successful,
-	// the AsyncConnectSuccess property is set to true. A debug log is available in
-	// the AsyncConnectLog property.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool AsyncConnectStart(const wchar_t *hostname, int port, bool ssl, int maxWaitMs);
-
-	// Aborts an asynchronous DNS lookup running in a background thread (started via
-	// the AsyncDnsStart method).
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	void AsyncDnsAbort(void);
-
-	// Initiates a background thread to do a DNS query (i.e. to resolve a hostname to
-	// an IP address). The method will fail if an asynchronous operation is already in
-	// progress, or if the timeout expired. The timeout (in milliseconds) is passed in
-	// maxWaitMs. To wait indefinitely, set maxWaitMs to 0. Asynchronous DNS lookups can be
-	// aborted by calling AsyncDnsAbort. When the async DNS operation completes, the
-	// AsyncDnsFinished property will become true. If the DNS query was successful,
-	// the AsyncDnsSuccess property is set to true. A debug log is available in the
-	// AsyncDnsLog property. Finally, the DNS query result (i.e. IP address) is
-	// available in nnn.nnn.nnn.nnn string form in the AsyncDnsResult property.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool AsyncDnsStart(const wchar_t *hostname, int maxWaitMs);
-
-	// Aborts an asynchronous receive running in a background thread (started via one
-	// of the AsyncReceive* methods).
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	void AsyncReceiveAbort(void);
-
-	// Initiates a background thread to receive bytes on an already-connected socket
-	// (ssl or non-ssl).
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool AsyncReceiveBytes(void);
-
-	// Initiates a background thread to receive exactly numBytes bytes on an
-	// already-connected socket (ssl or non-ssl).
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool AsyncReceiveBytesN(unsigned long numBytes);
-
-	// Initiates a background thread to receive text on an already-connected socket
-	// (ssl or non-ssl). The component interprets the received bytes according to the
-	// charset specified in the StringCharset property.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool AsyncReceiveString(void);
-
-	// Initiates a background thread to receive text on an already-connected socket
-	// (ssl or non-ssl). The asynchronous receive does not complete until a CRLF is
-	// received. The component interprets the received bytes according to the charset
-	// specified in the StringCharset property.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool AsyncReceiveToCRLF(void);
-
-	// Initiates a background thread to receive text on an already-connected socket
-	// (ssl or non-ssl). The asynchronous receive does not complete until the exact
-	// string specified by matchStr is received. The component interprets the received
-	// bytes according to the charset specified in the StringCharset property.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool AsyncReceiveUntilMatch(const wchar_t *matchStr);
-
-	// Aborts an asynchronous send running in a background thread (started via one of
-	// the AsyncSend* methods).
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	void AsyncSendAbort(void);
-
-	// Initiates a background thread to send bytes on an already-connected socket
-	// (SSL/TLS or unencrypted). This method is redundant and identical to SendBytes.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool AsyncSendByteData(CkByteData &data);
-
-	// Initiates a background thread to send bytes on an already-connected socket (ssl
-	// or non-ssl).
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool AsyncSendBytes(CkByteData &byteData);
-
-	// Initiates a background thread to send text on an already-connected socket (ssl
-	// or non-ssl). Before sending, the stringToSend is first converted (if necessary) to the
-	// charset specified by the StringCharset property.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool AsyncSendString(const wchar_t *stringToSend);
-
 	// Binds a TCP socket to a port and configures it to listen for incoming
 	// connections. The size of the backlog is passed in backLog. The backLog is necessary
 	// when multiple connections arrive at the same time, or close enough in time such
@@ -2055,6 +1658,16 @@ class CK_VISIBLE_PUBLIC CkSocketW  : public CkClassWithCallbacksW
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *ReceiveUntilByteAsync(int lookForByte);
 
+	// Receives bytes on the TCP/IP or SSL socket until a specific 1-byte value is
+	// read. Returns all the bytes up to and including the lookForByte. The received bytes are
+	// appended to bd.
+	bool ReceiveUntilByteBd(int lookForByte, CkBinDataW &bd);
+
+	// Creates an asynchronous task to call the ReceiveUntilByteBd method with the
+	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *ReceiveUntilByteBdAsync(int lookForByte, CkBinDataW &bd);
+
 	// Reads text from the connected TCP/IP or SSL socket until a matching string
 	// (matchStr) is received. Returns the text up to and including the matching string. As
 	// an example, to one might read the header of an HTTP request or a MIME message by
@@ -2072,6 +1685,11 @@ class CK_VISIBLE_PUBLIC CkSocketW  : public CkClassWithCallbacksW
 	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *ReceiveUntilMatchAsync(const wchar_t *matchStr);
+
+	// Resets the performance measurements for either receiving or sending. If rcvPerf is
+	// true, then the receive performance monitoring is reset. If rcvPerf is false,
+	// then the sending performance monitoring is reset.
+	void ResetPerf(bool rcvPerf);
 
 	// Wait for data to arrive on this socket, or any of the contained sockets if the
 	// caller is a "socket set". (see the example at the link below for more detailed
@@ -2237,6 +1855,13 @@ class CK_VISIBLE_PUBLIC CkSocketW  : public CkClassWithCallbacksW
 	// 
 	bool SendWakeOnLan(const wchar_t *macAddress, int port, const wchar_t *ipBroadcastAddr);
 
+	// The same as SendWakeOnLan, but includes an additional argument to specify a
+	// SecureOn password. The password should be a hexidecimal string representing 4 or 6
+	// bytes. (See https://wiki.wireshark.org/WakeOnLAN) Sending a WakeOnLAN (WOL) to
+	// an IPv4 address would need a 4-byte SecureOn password, whereas an IPv6 address
+	// would need a 6-byte SecureOn password.
+	bool SendWakeOnLan2(const wchar_t *macAddress, int port, const wchar_t *ipBroadcastAddr, const wchar_t *password);
+
 	// A client-side certificate for SSL/TLS connections is optional. It should be used
 	// only if the server demands it. This method allows the certificate to be
 	// specified using a certificate object.
@@ -2323,6 +1948,11 @@ class CK_VISIBLE_PUBLIC CkSocketW  : public CkClassWithCallbacksW
 	// number of seconds since the last call to this method. (The StartTiming method
 	// and ElapsedSeconds property is provided for convenience.)
 	void StartTiming(void);
+
+	// Takes the connection from sock. If the caller of this method had an open
+	// connection, then it will be closed. This method is different than the TakeSocket
+	// method because the caller does not become a "socket set".
+	bool TakeConnection(CkSocketW &sock);
 
 	// Takes ownership of the sock. sock is added to the internal set of connected
 	// sockets. The caller object is now effectively a "socket set", i.e. a collection

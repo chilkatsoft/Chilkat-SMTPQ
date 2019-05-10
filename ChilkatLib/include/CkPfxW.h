@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkPfxW_H
 #define _CkPfxW_H
@@ -119,15 +119,40 @@ class CK_VISIBLE_PUBLIC CkPfxW  : public CkWideCharBase
 	bool LoadPem(const wchar_t *pemStr, const wchar_t *password);
 
 	// Loads a PFX from in-memory bytes.
+	// 
+	// If the .pfx/.p12 uses different passwords for integrity and private keys, then
+	// the password argument may contain JSON to specify the passwords. See the LoadPfxFile
+	// method (below) for details.
+	// 
 	bool LoadPfxBytes(CkByteData &pfxData, const wchar_t *password);
 
 	// Loads a PFX from encoded byte data. The encoding can by any encoding, such as
 	// "Base64", "modBase64", "Base32", "UU", "QP" (for quoted-printable), "URL" (for
 	// url-encoding), "Hex", "Q", "B", "url_oath", "url_rfc1738", "url_rfc2396", and
 	// "url_rfc3986".
+	// 
+	// If the .pfx/.p12 uses different passwords for integrity and private keys, then
+	// the encoding argument may contain JSON to specify the passwords. See the LoadPfxFile
+	// method (below) for details.
+	// 
 	bool LoadPfxEncoded(const wchar_t *encodedData, const wchar_t *encoding, const wchar_t *password);
 
 	// Loads a PFX from a file.
+	// 
+	// Starting in v9.5.0.75, a .pfx/.p12 file with different passwords for integrity
+	// and private keys can be loaded by passing the following JSON for the password.
+	//     {
+	//       "integrity": "password1",
+	//       "privKeys": "password2",
+	//      }
+	// If it is desired to open the .pfx/.p12 without access to the private keys, then
+	// add "skipPrivateKeys" like this:
+	//     {
+	//       "integrity": "password1",
+	//       "privKeys": "not used",
+	//        "skipPrivateKeys": true
+	//      }
+	// 
 	bool LoadPfxFile(const wchar_t *path, const wchar_t *password);
 
 	// Write the PFX to in-memory bytes.

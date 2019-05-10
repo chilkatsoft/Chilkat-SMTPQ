@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkSpider_H
 #define _C_CkSpider_H
 #include "chilkatDefs.h"
@@ -10,6 +10,15 @@ CK_VISIBLE_PUBLIC void CkSpider_setAbortCheck(HCkSpider cHandle, BOOL (*fnAbortC
 CK_VISIBLE_PUBLIC void CkSpider_setPercentDone(HCkSpider cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkSpider_setProgressInfo(HCkSpider cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkSpider_setTaskCompleted(HCkSpider cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
+CK_VISIBLE_PUBLIC void CkSpider_setAbortCheck2(HCkSpider cHandle, BOOL (*fnAbortCheck2)(void *pContext));
+CK_VISIBLE_PUBLIC void CkSpider_setPercentDone2(HCkSpider cHandle, BOOL (*fnPercentDone2)(int pctDone, void *pContext));
+CK_VISIBLE_PUBLIC void CkSpider_setProgressInfo2(HCkSpider cHandle, void (*fnProgressInfo2)(const char *name, const char *value, void *pContext));
+CK_VISIBLE_PUBLIC void CkSpider_setTaskCompleted2(HCkSpider cHandle, void (*fnTaskCompleted2)(HCkTask hTask, void *pContext));
+
+// setExternalProgress is for C callback functions defined in the external programming language (such as Go)
+CK_VISIBLE_PUBLIC void CkSpider_setExternalProgress(HCkSpider cHandle, BOOL on);
+CK_VISIBLE_PUBLIC void CkSpider_setCallbackContext(HCkSpider cHandle, void *pContext);
 
 CK_VISIBLE_PUBLIC HCkSpider CkSpider_Create(void);
 CK_VISIBLE_PUBLIC void CkSpider_Dispose(HCkSpider handle);

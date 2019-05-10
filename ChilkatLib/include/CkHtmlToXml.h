@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkHtmlToXml_H
 #define _CkHtmlToXml_H
@@ -13,6 +13,8 @@
 #include "CkMultiByteBase.h"
 
 class CkByteData;
+class CkBinData;
+class CkStringBuilder;
 
 
 
@@ -135,6 +137,10 @@ class CK_VISIBLE_PUBLIC CkHtmlToXml  : public CkMultiByteBase
 	// <http://blog.chilkatsoft.com/?p=463> .
 	const char *readFileToString(const char *filename, const char *srcCharset);
 
+	// Sets the Html property from the contents of bd.
+	bool SetHtmlBd(CkBinData &bd);
+
+
 	// Sets the Html property from a byte array.
 	void SetHtmlBytes(CkByteData &inData);
 
@@ -148,6 +154,10 @@ class CK_VISIBLE_PUBLIC CkHtmlToXml  : public CkMultiByteBase
 
 	// Converts the HTML in the "Html" property to XML and returns the XML string.
 	const char *toXml(void);
+
+	// Converts the HTML in the "Html" property to XML and appends the XML to sb.
+	bool ToXmlSb(CkStringBuilder &sb);
+
 
 	// Causes a specified type of tag to NOT be dropped in the output XML.
 	void UndropTagType(const char *tagName);

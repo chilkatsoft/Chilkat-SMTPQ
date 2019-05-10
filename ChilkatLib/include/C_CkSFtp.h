@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkSFtp_H
 #define _C_CkSFtp_H
 #include "chilkatDefs.h"
@@ -10,6 +10,15 @@ CK_VISIBLE_PUBLIC void CkSFtp_setAbortCheck(HCkSFtp cHandle, BOOL (*fnAbortCheck
 CK_VISIBLE_PUBLIC void CkSFtp_setPercentDone(HCkSFtp cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkSFtp_setProgressInfo(HCkSFtp cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkSFtp_setTaskCompleted(HCkSFtp cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
+CK_VISIBLE_PUBLIC void CkSFtp_setAbortCheck2(HCkSFtp cHandle, BOOL (*fnAbortCheck2)(void *pContext));
+CK_VISIBLE_PUBLIC void CkSFtp_setPercentDone2(HCkSFtp cHandle, BOOL (*fnPercentDone2)(int pctDone, void *pContext));
+CK_VISIBLE_PUBLIC void CkSFtp_setProgressInfo2(HCkSFtp cHandle, void (*fnProgressInfo2)(const char *name, const char *value, void *pContext));
+CK_VISIBLE_PUBLIC void CkSFtp_setTaskCompleted2(HCkSFtp cHandle, void (*fnTaskCompleted2)(HCkTask hTask, void *pContext));
+
+// setExternalProgress is for C callback functions defined in the external programming language (such as Go)
+CK_VISIBLE_PUBLIC void CkSFtp_setExternalProgress(HCkSFtp cHandle, BOOL on);
+CK_VISIBLE_PUBLIC void CkSFtp_setCallbackContext(HCkSFtp cHandle, void *pContext);
 
 CK_VISIBLE_PUBLIC HCkSFtp CkSFtp_Create(void);
 CK_VISIBLE_PUBLIC void CkSFtp_Dispose(HCkSFtp handle);
@@ -126,6 +135,8 @@ CK_VISIBLE_PUBLIC int CkSFtp_getSoRcvBuf(HCkSFtp cHandle);
 CK_VISIBLE_PUBLIC void CkSFtp_putSoRcvBuf(HCkSFtp cHandle, int newVal);
 CK_VISIBLE_PUBLIC int CkSFtp_getSoSndBuf(HCkSFtp cHandle);
 CK_VISIBLE_PUBLIC void CkSFtp_putSoSndBuf(HCkSFtp cHandle, int newVal);
+CK_VISIBLE_PUBLIC BOOL CkSFtp_getSyncCreateAllLocalDirs(HCkSFtp cHandle);
+CK_VISIBLE_PUBLIC void CkSFtp_putSyncCreateAllLocalDirs(HCkSFtp cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkSFtp_getSyncDirectives(HCkSFtp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkSFtp_putSyncDirectives(HCkSFtp cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkSFtp_syncDirectives(HCkSFtp cHandle);
@@ -135,9 +146,15 @@ CK_VISIBLE_PUBLIC const char *CkSFtp_syncedFiles(HCkSFtp cHandle);
 CK_VISIBLE_PUBLIC void CkSFtp_getSyncMustMatch(HCkSFtp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkSFtp_putSyncMustMatch(HCkSFtp cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkSFtp_syncMustMatch(HCkSFtp cHandle);
+CK_VISIBLE_PUBLIC void CkSFtp_getSyncMustMatchDir(HCkSFtp cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkSFtp_putSyncMustMatchDir(HCkSFtp cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkSFtp_syncMustMatchDir(HCkSFtp cHandle);
 CK_VISIBLE_PUBLIC void CkSFtp_getSyncMustNotMatch(HCkSFtp cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkSFtp_putSyncMustNotMatch(HCkSFtp cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkSFtp_syncMustNotMatch(HCkSFtp cHandle);
+CK_VISIBLE_PUBLIC void CkSFtp_getSyncMustNotMatchDir(HCkSFtp cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void CkSFtp_putSyncMustNotMatchDir(HCkSFtp cHandle, const char *newVal);
+CK_VISIBLE_PUBLIC const char *CkSFtp_syncMustNotMatchDir(HCkSFtp cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSFtp_getTcpNoDelay(HCkSFtp cHandle);
 CK_VISIBLE_PUBLIC void CkSFtp_putTcpNoDelay(HCkSFtp cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkSFtp_getUncommonOptions(HCkSFtp cHandle, HCkString retval);
@@ -240,6 +257,8 @@ CK_VISIBLE_PUBLIC const char *CkSFtp_openFile(HCkSFtp cHandle, const char *remot
 CK_VISIBLE_PUBLIC HCkTask CkSFtp_OpenFileAsync(HCkSFtp cHandle, const char *remotePath, const char *access, const char *createDisposition);
 CK_VISIBLE_PUBLIC HCkSFtpDir CkSFtp_ReadDir(HCkSFtp cHandle, const char *handle);
 CK_VISIBLE_PUBLIC HCkTask CkSFtp_ReadDirAsync(HCkSFtp cHandle, const char *handle);
+CK_VISIBLE_PUBLIC BOOL CkSFtp_ReadFileBd(HCkSFtp cHandle, const char *handle, int numBytes, HCkBinData bd);
+CK_VISIBLE_PUBLIC HCkTask CkSFtp_ReadFileBdAsync(HCkSFtp cHandle, const char *handle, int numBytes, HCkBinData bd);
 CK_VISIBLE_PUBLIC BOOL CkSFtp_ReadFileBytes(HCkSFtp cHandle, const char *handle, int numBytes, HCkByteData outBytes);
 CK_VISIBLE_PUBLIC HCkTask CkSFtp_ReadFileBytesAsync(HCkSFtp cHandle, const char *handle, int numBytes);
 CK_VISIBLE_PUBLIC BOOL CkSFtp_ReadFileBytes32(HCkSFtp cHandle, const char *handle, int offset, int numBytes, HCkByteData outBytes);
@@ -301,12 +320,14 @@ CK_VISIBLE_PUBLIC HCkTask CkSFtp_SyncTreeUploadAsync(HCkSFtp cHandle, const char
 CK_VISIBLE_PUBLIC BOOL CkSFtp_UnlockComponent(HCkSFtp cHandle, const char *unlockCode);
 CK_VISIBLE_PUBLIC BOOL CkSFtp_UploadBd(HCkSFtp cHandle, HCkBinData binData, const char *remoteFilePath);
 CK_VISIBLE_PUBLIC HCkTask CkSFtp_UploadBdAsync(HCkSFtp cHandle, HCkBinData binData, const char *remoteFilePath);
-CK_VISIBLE_PUBLIC BOOL CkSFtp_UploadFile(HCkSFtp cHandle, const char *handle, const char *fromFilename);
-CK_VISIBLE_PUBLIC HCkTask CkSFtp_UploadFileAsync(HCkSFtp cHandle, const char *handle, const char *fromFilename);
+CK_VISIBLE_PUBLIC BOOL CkSFtp_UploadFile(HCkSFtp cHandle, const char *handle, const char *fromLocalFilePath);
+CK_VISIBLE_PUBLIC HCkTask CkSFtp_UploadFileAsync(HCkSFtp cHandle, const char *handle, const char *fromLocalFilePath);
 CK_VISIBLE_PUBLIC BOOL CkSFtp_UploadFileByName(HCkSFtp cHandle, const char *remoteFilePath, const char *localFilePath);
 CK_VISIBLE_PUBLIC HCkTask CkSFtp_UploadFileByNameAsync(HCkSFtp cHandle, const char *remoteFilePath, const char *localFilePath);
 CK_VISIBLE_PUBLIC BOOL CkSFtp_UploadSb(HCkSFtp cHandle, HCkStringBuilder sb, const char *remoteFilePath, const char *charset, BOOL includeBom);
 CK_VISIBLE_PUBLIC HCkTask CkSFtp_UploadSbAsync(HCkSFtp cHandle, HCkStringBuilder sb, const char *remoteFilePath, const char *charset, BOOL includeBom);
+CK_VISIBLE_PUBLIC BOOL CkSFtp_WriteFileBd(HCkSFtp cHandle, const char *handle, HCkBinData bd);
+CK_VISIBLE_PUBLIC HCkTask CkSFtp_WriteFileBdAsync(HCkSFtp cHandle, const char *handle, HCkBinData bd);
 CK_VISIBLE_PUBLIC BOOL CkSFtp_WriteFileBytes(HCkSFtp cHandle, const char *handle, HCkByteData byteData);
 CK_VISIBLE_PUBLIC HCkTask CkSFtp_WriteFileBytesAsync(HCkSFtp cHandle, const char *handle, HCkByteData byteData);
 CK_VISIBLE_PUBLIC BOOL CkSFtp_WriteFileBytes32(HCkSFtp cHandle, const char *handle, int offset, HCkByteData data);

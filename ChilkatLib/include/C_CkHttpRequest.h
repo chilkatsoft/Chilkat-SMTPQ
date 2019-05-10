@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkHttpRequest_H
 #define _C_CkHttpRequest_H
 #include "chilkatDefs.h"
@@ -50,6 +50,7 @@ CK_VISIBLE_PUBLIC BOOL CkHttpRequest_getVerboseLogging(HCkHttpRequest cHandle);
 CK_VISIBLE_PUBLIC void CkHttpRequest_putVerboseLogging(HCkHttpRequest cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkHttpRequest_getVersion(HCkHttpRequest cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkHttpRequest_version(HCkHttpRequest cHandle);
+CK_VISIBLE_PUBLIC BOOL CkHttpRequest_AddBdForUpload(HCkHttpRequest cHandle, const char *name, const char *remoteFilename, HCkBinData byteData, const char *contentType);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequest_AddBytesForUpload(HCkHttpRequest cHandle, const char *name, const char *remoteFileName, HCkByteData byteData);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequest_AddBytesForUpload2(HCkHttpRequest cHandle, const char *name, const char *remoteFileName, HCkByteData byteData, const char *contentType);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequest_AddFileForUpload(HCkHttpRequest cHandle, const char *name, const char *filePath);

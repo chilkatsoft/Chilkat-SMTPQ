@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkZipEntryW_H
 #define _CkZipEntryW_H
@@ -274,7 +274,9 @@ class CK_VISIBLE_PUBLIC CkZipEntryW  : public CkClassWithCallbacksW
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *ExtractAsync(const wchar_t *dirPath);
 
-	// Unzip a file into a specific directory
+	// Unzip a file into a specific directory. If this entry is a directory, then
+	// nothing occurs. (An application can check the IsDirectory property and instead
+	// call Extract if it is desired to create the directory. )
 	bool ExtractInto(const wchar_t *dirPath);
 
 	// Creates an asynchronous task to call the ExtractInto method with the arguments

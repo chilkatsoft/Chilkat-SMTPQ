@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkCsr_H
 #define _C_CkCsr_H
 #include "chilkatDefs.h"
@@ -49,6 +49,7 @@ CK_VISIBLE_PUBLIC const char *CkCsr_version(HCkCsr cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCsr_GenCsrBd(HCkCsr cHandle, HCkPrivateKey privKey, HCkBinData csrData);
 CK_VISIBLE_PUBLIC BOOL CkCsr_GenCsrPem(HCkCsr cHandle, HCkPrivateKey privKey, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkCsr_genCsrPem(HCkCsr cHandle, HCkPrivateKey privKey);
+CK_VISIBLE_PUBLIC BOOL CkCsr_GetPublicKey(HCkCsr cHandle, HCkPublicKey pubkey);
 CK_VISIBLE_PUBLIC BOOL CkCsr_GetSubjectField(HCkCsr cHandle, const char *oid, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkCsr_getSubjectField(HCkCsr cHandle, const char *oid);
 CK_VISIBLE_PUBLIC BOOL CkCsr_LoadCsrPem(HCkCsr cHandle, const char *csrPemStr);

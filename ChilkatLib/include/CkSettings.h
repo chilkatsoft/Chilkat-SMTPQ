@@ -1,4 +1,4 @@
-// This C++ header is for Chilkat v9.5.0.75
+// This C++ header is for Chilkat v9.5.0.78
 // This source file is not generated.
 
 #if !defined(_CKSETTINGS_H_INCLUDED_)
@@ -45,6 +45,7 @@ public:
 	// If set to true, then all LastErrorText's will be verbose w.r.t. MIME parsing internals.
 	// The default is false.
 	static bool m_verboseMime;
+	static bool m_verboseMimeFields;
 
 	// If set to true, then log the certs examined when searching..
 	// The default is false.

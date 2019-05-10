@@ -10,10 +10,13 @@
 
 class CkString;
 
+
+#define VALID_CK_OBJECT 0x81F0CA3B
+
+
 class CK_VISIBLE_PUBLIC CkMultiByteBase : public CkObject
 {
     private:
-	unsigned int m_validCkObject;
 
 	// Disallow assignment or copying this object.
 	CkMultiByteBase(const CkMultiByteBase &);
@@ -33,6 +36,9 @@ class CK_VISIBLE_PUBLIC CkMultiByteBase : public CkObject
 	const char *rtnMbString(CkString *pStrObj);	
 
     public:
+	// Set to 0x81F0CA3B for a valid non-destructed Chilkat object.
+	// Cleared to 0 when the object is destructed.
+	unsigned int m_validCkObject;
 	    
 	CkMultiByteBase(void);
 	virtual ~CkMultiByteBase(void);

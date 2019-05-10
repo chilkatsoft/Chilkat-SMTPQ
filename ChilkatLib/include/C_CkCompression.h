@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkCompression_H
 #define _C_CkCompression_H
 #include "chilkatDefs.h"
@@ -10,6 +10,15 @@ CK_VISIBLE_PUBLIC void CkCompression_setAbortCheck(HCkCompression cHandle, BOOL 
 CK_VISIBLE_PUBLIC void CkCompression_setPercentDone(HCkCompression cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkCompression_setProgressInfo(HCkCompression cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkCompression_setTaskCompleted(HCkCompression cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
+CK_VISIBLE_PUBLIC void CkCompression_setAbortCheck2(HCkCompression cHandle, BOOL (*fnAbortCheck2)(void *pContext));
+CK_VISIBLE_PUBLIC void CkCompression_setPercentDone2(HCkCompression cHandle, BOOL (*fnPercentDone2)(int pctDone, void *pContext));
+CK_VISIBLE_PUBLIC void CkCompression_setProgressInfo2(HCkCompression cHandle, void (*fnProgressInfo2)(const char *name, const char *value, void *pContext));
+CK_VISIBLE_PUBLIC void CkCompression_setTaskCompleted2(HCkCompression cHandle, void (*fnTaskCompleted2)(HCkTask hTask, void *pContext));
+
+// setExternalProgress is for C callback functions defined in the external programming language (such as Go)
+CK_VISIBLE_PUBLIC void CkCompression_setExternalProgress(HCkCompression cHandle, BOOL on);
+CK_VISIBLE_PUBLIC void CkCompression_setCallbackContext(HCkCompression cHandle, void *pContext);
 
 CK_VISIBLE_PUBLIC HCkCompression CkCompression_Create(void);
 CK_VISIBLE_PUBLIC void CkCompression_Dispose(HCkCompression handle);

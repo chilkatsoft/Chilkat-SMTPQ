@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkRsaW_H
 #define _CkRsaW_H
@@ -12,6 +12,7 @@
 #include "CkString.h"
 #include "CkWideCharBase.h"
 
+class CkBinDataW;
 class CkByteData;
 class CkPrivateKeyW;
 class CkPublicKeyW;
@@ -251,6 +252,15 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// ----------------------
 	// Methods
 	// ----------------------
+	// RSA decrypts the contents of bd. usePrivateKey should be set to true if the private
+	// key is to be used for decrypting. Otherwise it should be set to false if the
+	// public key is to be used for decrypting.
+	// 
+	// Important: If trying to match OpenSSL results, set the LittleEndian property =
+	// false.
+	// 
+	bool DecryptBd(CkBinDataW &bd, bool usePrivateKey);
+
 	// Decrypts byte data using the RSA encryption algorithm. usePrivateKey should be set to
 	// true if the private key is to be used for decrypting. Otherwise it should be
 	// set to false if the public key is to be used for decrypting.
@@ -313,12 +323,33 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// 
 	const wchar_t *decryptStringENC(const wchar_t *encodedSig, bool usePrivateKey);
 
+	// RSA encrypts the contents of bd. usePrivateKey should be set to true if the private
+	// key is to be used for encrypting. Otherwise it should be set to false if the
+	// public key is to be used for encrypting.
+	// 
+	// Important: If trying to match OpenSSL results, set the LittleEndian property =
+	// false.
+	// 
+	// Note: Except for special situations, the public key should always be used for
+	// encrypting, and the private key for decrypting. This makes sense because an
+	// encrypted message is sent to a recipient, and the recipient is the only one in
+	// possession of the private key, and therefore the only one that can decrypt and
+	// read the message.
+	// 
+	bool EncryptBd(CkBinDataW &bd, bool usePrivateKey);
+
 	// Encrypts byte data using the RSA encryption algorithm. usePrivateKey should be set to
 	// true if the private key is to be used for encrypting. Otherwise it should be
 	// set to false if the public key is to be used for encrypting.
 	// 
 	// Important: If trying to match OpenSSL results, set the LittleEndian property =
 	// false.
+	// 
+	// Note: Except for special situations, the public key should always be used for
+	// encrypting, and the private key for decrypting. This makes sense because an
+	// encrypted message is sent to a recipient, and the recipient is the only one in
+	// possession of the private key, and therefore the only one that can decrypt and
+	// read the message.
 	// 
 	bool EncryptBytes(CkByteData &binaryData, bool usePrivateKey, CkByteData &outData);
 
@@ -329,6 +360,12 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// Important: If trying to match OpenSSL results, set the LittleEndian property =
 	// false.
 	// 
+	// Note: Except for special situations, the public key should always be used for
+	// encrypting, and the private key for decrypting. This makes sense because an
+	// encrypted message is sent to a recipient, and the recipient is the only one in
+	// possession of the private key, and therefore the only one that can decrypt and
+	// read the message.
+	// 
 	bool EncryptBytesENC(CkByteData &data, bool bUsePrivateKey, CkString &outStr);
 	// Same as EncryptBytes, except the output is an encoded string. The encoding is
 	// specified by the EncodingMode property, which can have values such as "base64",
@@ -336,6 +373,12 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// 
 	// Important: If trying to match OpenSSL results, set the LittleEndian property =
 	// false.
+	// 
+	// Note: Except for special situations, the public key should always be used for
+	// encrypting, and the private key for decrypting. This makes sense because an
+	// encrypted message is sent to a recipient, and the recipient is the only one in
+	// possession of the private key, and therefore the only one that can decrypt and
+	// read the message.
 	// 
 	const wchar_t *encryptBytesENC(CkByteData &data, bool bUsePrivateKey);
 
@@ -348,6 +391,12 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// Important: If trying to match OpenSSL results, set the LittleEndian property =
 	// false.
 	// 
+	// Note: Except for special situations, the public key should always be used for
+	// encrypting, and the private key for decrypting. This makes sense because an
+	// encrypted message is sent to a recipient, and the recipient is the only one in
+	// possession of the private key, and therefore the only one that can decrypt and
+	// read the message.
+	// 
 	bool EncryptString(const wchar_t *stringToEncrypt, bool usePrivateKey, CkByteData &outData);
 
 	// Same as EncryptString, except the output is an encoded string. The encoding is
@@ -357,6 +406,12 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// Important: If trying to match OpenSSL results, set the LittleEndian property =
 	// false.
 	// 
+	// Note: Except for special situations, the public key should always be used for
+	// encrypting, and the private key for decrypting. This makes sense because an
+	// encrypted message is sent to a recipient, and the recipient is the only one in
+	// possession of the private key, and therefore the only one that can decrypt and
+	// read the message.
+	// 
 	bool EncryptStringENC(const wchar_t *str, bool bUsePrivateKey, CkString &outStr);
 	// Same as EncryptString, except the output is an encoded string. The encoding is
 	// specified by the EncodingMode property, which can have values such as "base64",
@@ -364,6 +419,12 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// 
 	// Important: If trying to match OpenSSL results, set the LittleEndian property =
 	// false.
+	// 
+	// Note: Except for special situations, the public key should always be used for
+	// encrypting, and the private key for decrypting. This makes sense because an
+	// encrypted message is sent to a recipient, and the recipient is the only one in
+	// possession of the private key, and therefore the only one that can decrypt and
+	// read the message.
 	// 
 	const wchar_t *encryptStringENC(const wchar_t *str, bool bUsePrivateKey);
 
@@ -452,6 +513,11 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// in methods that encrypt data or verify signatures.
 	bool ImportPublicKeyObj(CkPublicKeyW &key);
 
+	// Duplicates OpenSSL's rsautl utility for creating RSA signatures. The contents of
+	// bd are signed. If successful, the result is that bd contains the RSA
+	// signature that itself contains (embeds) the original data.
+	bool OpenSslSignBd(CkBinDataW &bd);
+
 	// Duplicates OpenSSL's rsautl utility for creating RSA signatures. Input data
 	// consists of binary bytes, and returns the signature bytes.
 	bool OpenSslSignBytes(CkByteData &data, CkByteData &outBytes);
@@ -477,6 +543,12 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// string, and returns the signature as a string encoded according to the
 	// EncodingMode property (base64, hex, etc.).
 	const wchar_t *openSslSignStringENC(const wchar_t *str);
+
+	// Duplicates OpenSSL's rsautl utility for verifying RSA signatures and recovering
+	// the original data. On input, the bd contains the RSA signature that embeds the
+	// original data. If successful (i.e. the signature was verified), then the bd is
+	// transformed to contain just the original data.
+	bool OpenSslVerifyBd(CkBinDataW &bd);
 
 	// Duplicates OpenSSL's rsautl utility for verifying RSA signatures and recovering
 	// the original data. Input data consists of the raw signature bytes and returns
@@ -510,6 +582,19 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// is especially useful on Windows computers where the private key is installed as
 	// non-exportable (such as on a hardware token).
 	bool SetX509Cert(CkCertW &cert, bool usePrivateKey);
+
+	// Creates an RSA digital signature by hashing the contents of bdData and then
+	// signing the hash. The hash algorithm is specified by hashAlgorithm, which may be "SHA-1",
+	// "MD5", "MD2", "SHA-256", "SHA-384", or "SHA-512". The resulting signature is
+	// returned in bdSig.
+	// 
+	// Important: If trying to match OpenSSL results, set the LittleEndian property =
+	// false. (The LittleEndian property should also be set to false to match
+	// Amazon web services, such as CloudFront.)
+	// 
+	// A private key is required to create digital signatures.
+	// 
+	bool SignBd(CkBinDataW &bdData, const wchar_t *hashAlgorithm, CkBinDataW &bdSig);
 
 	// Creates an RSA digital signature by hashing binaryData and then signing the hash. The
 	// hash algorithm is specified by hashAlgorithm, which may be "SHA-1", "MD5", "MD2",
@@ -620,6 +705,11 @@ class CK_VISIBLE_PUBLIC CkRsaW  : public CkWideCharBase
 	// Unlocks the component. This must be called once prior to calling any other
 	// method.
 	bool UnlockComponent(const wchar_t *unlockCode);
+
+	// Verifies an RSA digital signature. Returns true if the signature in bdSig is
+	// valid an confirms that the original data in bdData has not been modified. The hashAlgorithm
+	// may be "SHA-1", "MD5", "MD2", "SHA-256", "SHA-384", or "SHA-512".
+	bool VerifyBd(CkBinDataW &bdData, const wchar_t *hashAlgorithm, CkBinDataW &bdSig);
 
 	// Verifies an RSA digital signature. Returns true if the signature is valid for
 	// the originalData. The hashAlgorithm may be "SHA-1", "MD5", "MD2", "SHA-256", "SHA-384", or

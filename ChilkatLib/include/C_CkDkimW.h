@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkDkimWH
 #define _C_CkDkimWH
 #include "chilkatDefs.h"
@@ -62,6 +62,8 @@ CK_VISIBLE_PUBLIC BOOL CkDkimW_getLastMethodSuccess(HCkDkimW cHandle);
 CK_VISIBLE_PUBLIC void  CkDkimW_putLastMethodSuccess(HCkDkimW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkDkimW_getVerboseLogging(HCkDkimW cHandle);
 CK_VISIBLE_PUBLIC void  CkDkimW_putVerboseLogging(HCkDkimW cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void CkDkimW_getVerifyInfo(HCkDkimW cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC const wchar_t *CkDkimW_verifyInfo(HCkDkimW cHandle);
 CK_VISIBLE_PUBLIC void CkDkimW_getVersion(HCkDkimW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkDkimW_version(HCkDkimW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkDkimW_AddDkimSignature(HCkDkimW cHandle, HCkByteData mimeIn, HCkByteData outBytes);
@@ -79,7 +81,9 @@ CK_VISIBLE_PUBLIC BOOL CkDkimW_LoadDomainKeyPkFile(HCkDkimW cHandle, const wchar
 CK_VISIBLE_PUBLIC BOOL CkDkimW_LoadPublicKey(HCkDkimW cHandle, const wchar_t *selector, const wchar_t *domain, const wchar_t *publicKey);
 CK_VISIBLE_PUBLIC BOOL CkDkimW_LoadPublicKeyFile(HCkDkimW cHandle, const wchar_t *selector, const wchar_t *domain, const wchar_t *publicKeyFilepath);
 CK_VISIBLE_PUBLIC int CkDkimW_NumDkimSignatures(HCkDkimW cHandle, HCkByteData mimeData);
+CK_VISIBLE_PUBLIC int CkDkimW_NumDkimSigs(HCkDkimW cHandle, HCkBinDataW mimeData);
 CK_VISIBLE_PUBLIC int CkDkimW_NumDomainKeySignatures(HCkDkimW cHandle, HCkByteData mimeData);
+CK_VISIBLE_PUBLIC int CkDkimW_NumDomainKeySigs(HCkDkimW cHandle, HCkBinDataW mimeData);
 CK_VISIBLE_PUBLIC BOOL CkDkimW_PrefetchPublicKey(HCkDkimW cHandle, const wchar_t *selector, const wchar_t *domain);
 CK_VISIBLE_PUBLIC HCkTaskW CkDkimW_PrefetchPublicKeyAsync(HCkDkimW cHandle, const wchar_t *selector, const wchar_t *domain);
 CK_VISIBLE_PUBLIC BOOL CkDkimW_SaveLastError(HCkDkimW cHandle, const wchar_t *path);

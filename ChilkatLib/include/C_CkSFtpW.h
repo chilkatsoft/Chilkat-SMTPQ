@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkSFtpWH
 #define _C_CkSFtpWH
 #include "chilkatDefs.h"
@@ -126,6 +126,8 @@ CK_VISIBLE_PUBLIC int CkSFtpW_getSoRcvBuf(HCkSFtpW cHandle);
 CK_VISIBLE_PUBLIC void  CkSFtpW_putSoRcvBuf(HCkSFtpW cHandle, int newVal);
 CK_VISIBLE_PUBLIC int CkSFtpW_getSoSndBuf(HCkSFtpW cHandle);
 CK_VISIBLE_PUBLIC void  CkSFtpW_putSoSndBuf(HCkSFtpW cHandle, int newVal);
+CK_VISIBLE_PUBLIC BOOL CkSFtpW_getSyncCreateAllLocalDirs(HCkSFtpW cHandle);
+CK_VISIBLE_PUBLIC void  CkSFtpW_putSyncCreateAllLocalDirs(HCkSFtpW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkSFtpW_getSyncDirectives(HCkSFtpW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkSFtpW_putSyncDirectives(HCkSFtpW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkSFtpW_syncDirectives(HCkSFtpW cHandle);
@@ -135,9 +137,15 @@ CK_VISIBLE_PUBLIC const wchar_t *CkSFtpW_syncedFiles(HCkSFtpW cHandle);
 CK_VISIBLE_PUBLIC void CkSFtpW_getSyncMustMatch(HCkSFtpW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkSFtpW_putSyncMustMatch(HCkSFtpW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkSFtpW_syncMustMatch(HCkSFtpW cHandle);
+CK_VISIBLE_PUBLIC void CkSFtpW_getSyncMustMatchDir(HCkSFtpW cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void  CkSFtpW_putSyncMustMatchDir(HCkSFtpW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC const wchar_t *CkSFtpW_syncMustMatchDir(HCkSFtpW cHandle);
 CK_VISIBLE_PUBLIC void CkSFtpW_getSyncMustNotMatch(HCkSFtpW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkSFtpW_putSyncMustNotMatch(HCkSFtpW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkSFtpW_syncMustNotMatch(HCkSFtpW cHandle);
+CK_VISIBLE_PUBLIC void CkSFtpW_getSyncMustNotMatchDir(HCkSFtpW cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void  CkSFtpW_putSyncMustNotMatchDir(HCkSFtpW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC const wchar_t *CkSFtpW_syncMustNotMatchDir(HCkSFtpW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSFtpW_getTcpNoDelay(HCkSFtpW cHandle);
 CK_VISIBLE_PUBLIC void  CkSFtpW_putTcpNoDelay(HCkSFtpW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkSFtpW_getUncommonOptions(HCkSFtpW cHandle, HCkString retval);
@@ -238,6 +246,8 @@ CK_VISIBLE_PUBLIC const wchar_t *CkSFtpW_openFile(HCkSFtpW cHandle, const wchar_
 CK_VISIBLE_PUBLIC HCkTaskW CkSFtpW_OpenFileAsync(HCkSFtpW cHandle, const wchar_t *remotePath, const wchar_t *access, const wchar_t *createDisposition);
 CK_VISIBLE_PUBLIC HCkSFtpDirW CkSFtpW_ReadDir(HCkSFtpW cHandle, const wchar_t *handle);
 CK_VISIBLE_PUBLIC HCkTaskW CkSFtpW_ReadDirAsync(HCkSFtpW cHandle, const wchar_t *handle);
+CK_VISIBLE_PUBLIC BOOL CkSFtpW_ReadFileBd(HCkSFtpW cHandle, const wchar_t *handle, int numBytes, HCkBinDataW bd);
+CK_VISIBLE_PUBLIC HCkTaskW CkSFtpW_ReadFileBdAsync(HCkSFtpW cHandle, const wchar_t *handle, int numBytes, HCkBinDataW bd);
 CK_VISIBLE_PUBLIC BOOL CkSFtpW_ReadFileBytes(HCkSFtpW cHandle, const wchar_t *handle, int numBytes, HCkByteData outBytes);
 CK_VISIBLE_PUBLIC HCkTaskW CkSFtpW_ReadFileBytesAsync(HCkSFtpW cHandle, const wchar_t *handle, int numBytes);
 CK_VISIBLE_PUBLIC BOOL CkSFtpW_ReadFileBytes32(HCkSFtpW cHandle, const wchar_t *handle, int offset, int numBytes, HCkByteData outBytes);
@@ -299,12 +309,14 @@ CK_VISIBLE_PUBLIC HCkTaskW CkSFtpW_SyncTreeUploadAsync(HCkSFtpW cHandle, const w
 CK_VISIBLE_PUBLIC BOOL CkSFtpW_UnlockComponent(HCkSFtpW cHandle, const wchar_t *unlockCode);
 CK_VISIBLE_PUBLIC BOOL CkSFtpW_UploadBd(HCkSFtpW cHandle, HCkBinDataW binData, const wchar_t *remoteFilePath);
 CK_VISIBLE_PUBLIC HCkTaskW CkSFtpW_UploadBdAsync(HCkSFtpW cHandle, HCkBinDataW binData, const wchar_t *remoteFilePath);
-CK_VISIBLE_PUBLIC BOOL CkSFtpW_UploadFile(HCkSFtpW cHandle, const wchar_t *handle, const wchar_t *fromFilename);
-CK_VISIBLE_PUBLIC HCkTaskW CkSFtpW_UploadFileAsync(HCkSFtpW cHandle, const wchar_t *handle, const wchar_t *fromFilename);
+CK_VISIBLE_PUBLIC BOOL CkSFtpW_UploadFile(HCkSFtpW cHandle, const wchar_t *handle, const wchar_t *fromLocalFilePath);
+CK_VISIBLE_PUBLIC HCkTaskW CkSFtpW_UploadFileAsync(HCkSFtpW cHandle, const wchar_t *handle, const wchar_t *fromLocalFilePath);
 CK_VISIBLE_PUBLIC BOOL CkSFtpW_UploadFileByName(HCkSFtpW cHandle, const wchar_t *remoteFilePath, const wchar_t *localFilePath);
 CK_VISIBLE_PUBLIC HCkTaskW CkSFtpW_UploadFileByNameAsync(HCkSFtpW cHandle, const wchar_t *remoteFilePath, const wchar_t *localFilePath);
 CK_VISIBLE_PUBLIC BOOL CkSFtpW_UploadSb(HCkSFtpW cHandle, HCkStringBuilderW sb, const wchar_t *remoteFilePath, const wchar_t *charset, BOOL includeBom);
 CK_VISIBLE_PUBLIC HCkTaskW CkSFtpW_UploadSbAsync(HCkSFtpW cHandle, HCkStringBuilderW sb, const wchar_t *remoteFilePath, const wchar_t *charset, BOOL includeBom);
+CK_VISIBLE_PUBLIC BOOL CkSFtpW_WriteFileBd(HCkSFtpW cHandle, const wchar_t *handle, HCkBinDataW bd);
+CK_VISIBLE_PUBLIC HCkTaskW CkSFtpW_WriteFileBdAsync(HCkSFtpW cHandle, const wchar_t *handle, HCkBinDataW bd);
 CK_VISIBLE_PUBLIC BOOL CkSFtpW_WriteFileBytes(HCkSFtpW cHandle, const wchar_t *handle, HCkByteData byteData);
 CK_VISIBLE_PUBLIC HCkTaskW CkSFtpW_WriteFileBytesAsync(HCkSFtpW cHandle, const wchar_t *handle, HCkByteData byteData);
 CK_VISIBLE_PUBLIC BOOL CkSFtpW_WriteFileBytes32(HCkSFtpW cHandle, const wchar_t *handle, int offset, HCkByteData data);

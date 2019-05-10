@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkAuthGoogle_H
 #define _C_CkAuthGoogle_H
 #include "chilkatDefs.h"
@@ -10,6 +10,15 @@ CK_VISIBLE_PUBLIC void CkAuthGoogle_setAbortCheck(HCkAuthGoogle cHandle, BOOL (*
 CK_VISIBLE_PUBLIC void CkAuthGoogle_setPercentDone(HCkAuthGoogle cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkAuthGoogle_setProgressInfo(HCkAuthGoogle cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkAuthGoogle_setTaskCompleted(HCkAuthGoogle cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
+CK_VISIBLE_PUBLIC void CkAuthGoogle_setAbortCheck2(HCkAuthGoogle cHandle, BOOL (*fnAbortCheck2)(void *pContext));
+CK_VISIBLE_PUBLIC void CkAuthGoogle_setPercentDone2(HCkAuthGoogle cHandle, BOOL (*fnPercentDone2)(int pctDone, void *pContext));
+CK_VISIBLE_PUBLIC void CkAuthGoogle_setProgressInfo2(HCkAuthGoogle cHandle, void (*fnProgressInfo2)(const char *name, const char *value, void *pContext));
+CK_VISIBLE_PUBLIC void CkAuthGoogle_setTaskCompleted2(HCkAuthGoogle cHandle, void (*fnTaskCompleted2)(HCkTask hTask, void *pContext));
+
+// setExternalProgress is for C callback functions defined in the external programming language (such as Go)
+CK_VISIBLE_PUBLIC void CkAuthGoogle_setExternalProgress(HCkAuthGoogle cHandle, BOOL on);
+CK_VISIBLE_PUBLIC void CkAuthGoogle_setCallbackContext(HCkAuthGoogle cHandle, void *pContext);
 
 CK_VISIBLE_PUBLIC HCkAuthGoogle CkAuthGoogle_Create(void);
 CK_VISIBLE_PUBLIC void CkAuthGoogle_Dispose(HCkAuthGoogle handle);
@@ -24,6 +33,8 @@ CK_VISIBLE_PUBLIC void CkAuthGoogle_putEmailAddress(HCkAuthGoogle cHandle, const
 CK_VISIBLE_PUBLIC const char *CkAuthGoogle_emailAddress(HCkAuthGoogle cHandle);
 CK_VISIBLE_PUBLIC int CkAuthGoogle_getExpireNumSeconds(HCkAuthGoogle cHandle);
 CK_VISIBLE_PUBLIC void CkAuthGoogle_putExpireNumSeconds(HCkAuthGoogle cHandle, int newVal);
+CK_VISIBLE_PUBLIC int CkAuthGoogle_getIat(HCkAuthGoogle cHandle);
+CK_VISIBLE_PUBLIC void CkAuthGoogle_putIat(HCkAuthGoogle cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkAuthGoogle_getJsonKey(HCkAuthGoogle cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkAuthGoogle_putJsonKey(HCkAuthGoogle cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkAuthGoogle_jsonKey(HCkAuthGoogle cHandle);

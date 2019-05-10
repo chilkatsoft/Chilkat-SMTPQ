@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkCertWH
 #define _C_CkCertWH
 #include "chilkatDefs.h"
@@ -69,6 +69,8 @@ CK_VISIBLE_PUBLIC void CkCertW_getSha1Thumbprint(HCkCertW cHandle, HCkString ret
 CK_VISIBLE_PUBLIC const wchar_t *CkCertW_sha1Thumbprint(HCkCertW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCertW_getSignatureVerified(HCkCertW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCertW_getSilent(HCkCertW cHandle);
+CK_VISIBLE_PUBLIC BOOL CkCertW_getSmartCardNoDialog(HCkCertW cHandle);
+CK_VISIBLE_PUBLIC void  CkCertW_putSmartCardNoDialog(HCkCertW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkCertW_getSmartCardPin(HCkCertW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkCertW_putSmartCardPin(HCkCertW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkCertW_smartCardPin(HCkCertW cHandle);
@@ -102,6 +104,7 @@ CK_VISIBLE_PUBLIC void  CkCertW_putVerboseLogging(HCkCertW cHandle, BOOL newVal)
 CK_VISIBLE_PUBLIC void CkCertW_getVersion(HCkCertW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkCertW_version(HCkCertW cHandle);
 CK_VISIBLE_PUBLIC int CkCertW_CheckRevoked(HCkCertW cHandle);
+CK_VISIBLE_PUBLIC int CkCertW_CheckSmartCardPin(HCkCertW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkCertW_ExportCertDer(HCkCertW cHandle, HCkByteData outData);
 CK_VISIBLE_PUBLIC BOOL CkCertW_ExportCertDerBd(HCkCertW cHandle, HCkBinDataW cerData);
 CK_VISIBLE_PUBLIC BOOL CkCertW_ExportCertDerFile(HCkCertW cHandle, const wchar_t *path);
@@ -143,6 +146,7 @@ CK_VISIBLE_PUBLIC BOOL CkCertW_LoadFromBinary(HCkCertW cHandle, HCkByteData data
 CK_VISIBLE_PUBLIC BOOL CkCertW_LoadFromBinary2(HCkCertW cHandle, const unsigned char *pByteData, unsigned long szByteData);
 #endif
 CK_VISIBLE_PUBLIC BOOL CkCertW_LoadFromFile(HCkCertW cHandle, const wchar_t *path);
+CK_VISIBLE_PUBLIC BOOL CkCertW_LoadFromSmartcard(HCkCertW cHandle, const wchar_t *csp);
 CK_VISIBLE_PUBLIC BOOL CkCertW_LoadPem(HCkCertW cHandle, const wchar_t *strPem);
 CK_VISIBLE_PUBLIC BOOL CkCertW_LoadPfxBd(HCkCertW cHandle, HCkBinDataW pfxData, const wchar_t *password);
 CK_VISIBLE_PUBLIC BOOL CkCertW_LoadPfxData(HCkCertW cHandle, HCkByteData pfxData, const wchar_t *password);
@@ -159,4 +163,6 @@ CK_VISIBLE_PUBLIC BOOL CkCertW_SetPrivateKey(HCkCertW cHandle, HCkPrivateKeyW pr
 CK_VISIBLE_PUBLIC BOOL CkCertW_SetPrivateKeyPem(HCkCertW cHandle, const wchar_t *privKeyPem);
 CK_VISIBLE_PUBLIC BOOL CkCertW_UseCertVault(HCkCertW cHandle, HCkXmlCertVaultW vault);
 CK_VISIBLE_PUBLIC BOOL CkCertW_VerifySignature(HCkCertW cHandle);
+CK_VISIBLE_PUBLIC BOOL CkCertW_X509PKIPathv1(HCkCertW cHandle, HCkString outStr);
+CK_VISIBLE_PUBLIC const wchar_t *CkCertW_x509PKIPathv1(HCkCertW cHandle);
 #endif

@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkSFtpW_H
 #define _CkSFtpW_H
@@ -161,8 +161,18 @@ class CK_VISIBLE_PUBLIC CkSFtpW  : public CkClassWithCallbacksW
 	void put_ClientIpAddress(const wchar_t *newVal);
 
 	// Maximum number of milliseconds to wait when connecting to an SSH server.
+	// 
+	// To clarify: This property determines how long to wait for the SSH server to
+	// accept the TCP connection. Once the connection is made, it is the IdleTimeoutMs
+	// property that applies to receiving data and responses.
+	// 
 	int get_ConnectTimeoutMs(void);
 	// Maximum number of milliseconds to wait when connecting to an SSH server.
+	// 
+	// To clarify: This property determines how long to wait for the SSH server to
+	// accept the TCP connection. Once the connection is made, it is the IdleTimeoutMs
+	// property that applies to receiving data and responses.
+	// 
 	void put_ConnectTimeoutMs(int newVal);
 
 	// If the SSH/SFTP server sent a DISCONNECT message when closing the connection,
@@ -225,7 +235,7 @@ class CK_VISIBLE_PUBLIC CkSFtpW  : public CkClassWithCallbacksW
 	void put_EnableCache(bool newVal);
 
 	// Enables or disables the use of compression w/ the SSH connection. The default
-	// value is true, meaning that compression is used if the server supports it.
+	// value is false.
 	// 
 	// Some older SSH servers have been found that claim to support compression, but
 	// actually fail when compression is used. PuTTY does not enable compression by
@@ -235,7 +245,7 @@ class CK_VISIBLE_PUBLIC CkSFtpW  : public CkClassWithCallbacksW
 	// 
 	bool get_EnableCompression(void);
 	// Enables or disables the use of compression w/ the SSH connection. The default
-	// value is true, meaning that compression is used if the server supports it.
+	// value is false.
 	// 
 	// Some older SSH servers have been found that claim to support compression, but
 	// actually fail when compression is used. PuTTY does not enable compression by
@@ -445,6 +455,37 @@ class CK_VISIBLE_PUBLIC CkSFtpW  : public CkClassWithCallbacksW
 	// Returns true if connected to the SSH server. Note: This does not mean
 	// authentication has happened or InitializeSftp has already succeeded. It only
 	// means that the connection has been established by calling Connect.
+	// 
+	// Understanding the IsConnected property: The IsConnected property is the last
+	// known state of the TCP connection (either connected or disconnected). This
+	// requires some explanation because most developer have incorrect assumptions
+	// about TCP connections.
+	//     If a TCP connection is established, and neither side is reading or writing
+	//     the socket (i.e. both sides are doing nothing), then you can disconnect the
+	//     network cable from the computer for any length of time, and then re-connect, and
+	//     the TCP connection is not affected.
+	//     A TCP connection only becomes disconnected when an attempt is made to
+	//     read/write while a network problem exists. If no attempts to read/write occur, a
+	//     network problem may arise and then become resolved without affecting the TCP
+	//     connection.
+	//     If the peer chooses to close its side of the TCP connection, your
+	//     application won't magically know about it until you try to do something with the
+	//     TCP socket (such as read or write).
+	//     A Chilkat API property (as opposed to a method) CANNOT and should not do
+	//     something that would cause an application to timeout, hang, etc. Therefore, it
+	//     is not appropriate for the IsConnected property to attempt any kind of socket
+	//     operation (read/write/peek) on the socket. It simply returns the last known
+	//     state of the connection. It may very well be that your network cable is
+	//     unplugged and IsConnected returns true because technically, if neither peer is
+	//     trying to read/write, the network cable could be plugged back in without
+	//     affecting the connection. IsConnected could also return true if the peer has
+	//     already closed its side of the connection, because the state of the connection
+	//     is only updated after trying to read/write/peek.
+	//     To truly know the current connected state (as opposed to the last known
+	//     connection state), your application should attempt a network operation that is
+	//     appropriate to the protocol. For SFTP, an application could call SendIgnore, and
+	//     then check IsConnected.
+	// 
 	bool get_IsConnected(void);
 
 	// Controls whether communications to/from the SFTP server are saved to the
@@ -678,6 +719,21 @@ class CK_VISIBLE_PUBLIC CkSFtpW  : public CkClassWithCallbacksW
 	// 
 	void put_SoSndBuf(int newVal);
 
+	// If true, then empty directories on the server are created locally when doing a
+	// download synchronization. If false, then only directories containing files
+	// that are downloaded are auto-created.
+	// 
+	// The default value of this property is true.
+	// 
+	bool get_SyncCreateAllLocalDirs(void);
+	// If true, then empty directories on the server are created locally when doing a
+	// download synchronization. If false, then only directories containing files
+	// that are downloaded are auto-created.
+	// 
+	// The default value of this property is true.
+	// 
+	void put_SyncCreateAllLocalDirs(bool newVal);
+
 	// A property that can contain a list of comma-separated keywords to control
 	// certain aspects of an upload or download synchronization (for the SyncTreeUpload
 	// and SyncTreeDownload methods). At this time there is only one possible
@@ -713,16 +769,31 @@ class CK_VISIBLE_PUBLIC CkSFtpW  : public CkClassWithCallbacksW
 	// or SyncDownloadTree. The paths are listed one per line. In both cases (for
 	// upload and download) each line contains the paths relative to the root synced
 	// directory.
+	// 
+	// Note: For SyncTreeDownload, some of entires can be the paths of local
+	// directories that were created. Starting in v9.5.0.77, local directory paths will
+	// be terminated with a "/" char (to disinguish a directory from an actual file).
+	// 
 	void get_SyncedFiles(CkString &str);
 	// The paths of the files uploaded or downloaded in the last call to SyncUploadTree
 	// or SyncDownloadTree. The paths are listed one per line. In both cases (for
 	// upload and download) each line contains the paths relative to the root synced
 	// directory.
+	// 
+	// Note: For SyncTreeDownload, some of entires can be the paths of local
+	// directories that were created. Starting in v9.5.0.77, local directory paths will
+	// be terminated with a "/" char (to disinguish a directory from an actual file).
+	// 
 	const wchar_t *syncedFiles(void);
 	// The paths of the files uploaded or downloaded in the last call to SyncUploadTree
 	// or SyncDownloadTree. The paths are listed one per line. In both cases (for
 	// upload and download) each line contains the paths relative to the root synced
 	// directory.
+	// 
+	// Note: For SyncTreeDownload, some of entires can be the paths of local
+	// directories that were created. Starting in v9.5.0.77, local directory paths will
+	// be terminated with a "/" char (to disinguish a directory from an actual file).
+	// 
 	void put_SyncedFiles(const wchar_t *newVal);
 
 	// Can contain a wildcarded list of file patterns separated by semicolons. For
@@ -745,6 +816,19 @@ class CK_VISIBLE_PUBLIC CkSFtpW  : public CkClassWithCallbacksW
 	void put_SyncMustMatch(const wchar_t *newVal);
 
 	// Can contain a wildcarded list of file patterns separated by semicolons. For
+	// example, "xml; txt; data_*". If set, the SyncTreeUpload and SyncTreeDownload
+	// methods will only enter directories that match any one of these patterns.
+	void get_SyncMustMatchDir(CkString &str);
+	// Can contain a wildcarded list of file patterns separated by semicolons. For
+	// example, "xml; txt; data_*". If set, the SyncTreeUpload and SyncTreeDownload
+	// methods will only enter directories that match any one of these patterns.
+	const wchar_t *syncMustMatchDir(void);
+	// Can contain a wildcarded list of file patterns separated by semicolons. For
+	// example, "xml; txt; data_*". If set, the SyncTreeUpload and SyncTreeDownload
+	// methods will only enter directories that match any one of these patterns.
+	void put_SyncMustMatchDir(const wchar_t *newVal);
+
+	// Can contain a wildcarded list of file patterns separated by semicolons. For
 	// example, "*.xml; *.txt; *.csv". If set, the SyncTreeUpload and SyncTreeDownload
 	// methods will not transfer files that match any one of these patterns. This
 	// property only applies to files. It does not apply to sub-directory names when
@@ -762,6 +846,19 @@ class CK_VISIBLE_PUBLIC CkSFtpW  : public CkClassWithCallbacksW
 	// property only applies to files. It does not apply to sub-directory names when
 	// recursively traversing a directory tree.
 	void put_SyncMustNotMatch(const wchar_t *newVal);
+
+	// Can contain a wildcarded list of file patterns separated by semicolons. For
+	// example, "xml; txt; data_*". If set, the SyncTreeUpload and SyncTreeDownload
+	// methods will not enter directories that match any one of these patterns.
+	void get_SyncMustNotMatchDir(CkString &str);
+	// Can contain a wildcarded list of file patterns separated by semicolons. For
+	// example, "xml; txt; data_*". If set, the SyncTreeUpload and SyncTreeDownload
+	// methods will not enter directories that match any one of these patterns.
+	const wchar_t *syncMustNotMatchDir(void);
+	// Can contain a wildcarded list of file patterns separated by semicolons. For
+	// example, "xml; txt; data_*". If set, the SyncTreeUpload and SyncTreeDownload
+	// methods will not enter directories that match any one of these patterns.
+	void put_SyncMustNotMatchDir(const wchar_t *newVal);
 
 	// This property controls the use of the internal TCP_NODELAY socket option (which
 	// disables the Nagle algorithm). The default value of this property is false.
@@ -1499,18 +1596,21 @@ class CK_VISIBLE_PUBLIC CkSFtpW  : public CkClassWithCallbacksW
 	// Data is always written at the end of the file. Data MUST be written atomically
 	// so that there is no chance that multiple appenders can collide and result in
 	// data being lost.
+	// (Only supported in SFTP protocol versions 5 and later. See the note below.)
 	// 
 	// textMode
 	// Indicates that the server should treat the file as text and convert it to the
 	// canonical newline convention in use. When a file is opened with this flag, data
 	// is always appended to the end of the file. Servers MUST process multiple,
 	// parallel reads and writes correctly in this mode.
+	// (Only supported in SFTP protocol versions 5 and later. See the note below.)
 	// 
 	// blockRead
 	// The server MUST guarantee that no other handle has been opened with read access,
 	// and that no other handle will be opened with read access until the client closes
 	// the handle. (This MUST apply both to other clients and to other processes on the
 	// server.) In a nutshell, this opens the file in non-sharing mode.
+	// (Only supported in SFTP protocol versions 5 and later. See the note below.)
 	// 
 	// blockWrite
 	// The server MUST guarantee that no other handle has been opened with write
@@ -1518,11 +1618,13 @@ class CK_VISIBLE_PUBLIC CkSFtpW  : public CkClassWithCallbacksW
 	// client closes the handle. (This MUST apply both to other clients and to other
 	// processes on the server.) In a nutshell, this opens the file in non-sharing
 	// mode.
+	// (Only supported in SFTP protocol versions 5 and later. See the note below.)
 	// 
 	// blockDelete
 	// The server MUST guarantee that the file itself is not deleted in any other way
 	// until the client closes the handle. No other client or process is allowed to
 	// open the file with delete access.
+	// (Only supported in SFTP protocol versions 5 and later. See the note below.)
 	// 
 	// blockAdvisory
 	// If set, the above "block" modes are advisory. In advisory mode, only other
@@ -1530,24 +1632,29 @@ class CK_VISIBLE_PUBLIC CkSFtpW  : public CkClassWithCallbacksW
 	// the "block" can be granted, and the server need not prevent I/O operations that
 	// violate the block mode. The server MAY perform mandatory locking even if the
 	// blockAdvisory flag is set.
+	// (Only supported in SFTP protocol versions 5 and later. See the note below.)
 	// 
 	// noFollow
 	// If the final component of the path is a symlink, then the open MUST fail.
+	// (Only supported in SFTP protocol versions 5 and later. See the note below.)
 	// 
 	// deleteOnClose
 	// The file should be deleted when the last handle to it is closed. (The last
 	// handle may not be an sftp-handle.) This MAY be emulated by a server if the OS
 	// doesn't support it by deleting the file when this handle is closed.
+	// (Only supported in SFTP protocol versions 5 and later. See the note below.)
 	// 
 	// accessAuditAlarmInfo
 	// The client wishes the server to enable any privileges or extra capabilities that
 	// the user may have in to allow the reading and writing of AUDIT or ALARM access
 	// control entries.
+	// (Only supported in SFTP protocol versions 5 and later. See the note below.)
 	// 
 	// accessBackup
 	// The client wishes the server to enable any privileges or extra capabilities that
 	// the user may have in order to bypass normal access checks for the purpose of
 	// backing up or restoring files.
+	// (Only supported in SFTP protocol versions 5 and later. See the note below.)
 	// 
 	// backupStream
 	// This flag indicates that the client wishes to read or write a backup stream. A
@@ -1557,10 +1664,18 @@ class CK_VISIBLE_PUBLIC CkSFtpW  : public CkClassWithCallbacksW
 	// to write it to the same server to a file also opened using the backupStream
 	// flag. However, if the server has a well defined backup stream format, there may
 	// be other uses for this data outside the scope of this protocol.
+	// (Only supported in SFTP protocol versions 5 and later. See the note below.)
 	// 
 	// IMPORANT: If remotePath is a filename with no path, such as "test.txt", and the server
 	// responds with a "Folder not found" error, then try prepending "./" to the remotePath.
 	// For example, instead of passing "test.txt", try "./test.txt".
+	// 
+	// IMPORTANT note about createDisposition: Many of the options, such as textMode, are not
+	// implemented in the SFTP protocol versions 3 and 4. Only SFTP servers at protocol
+	// version 5 or later support these options. You can find out the protocol version
+	// of your server by examining the value of the ProtocolVersion property after
+	// calling InitializeSftp. Also, make sure the ForceV3 property is set to false
+	// (the default value is true)
 	// 
 	bool OpenFile(const wchar_t *remotePath, const wchar_t *access, const wchar_t *createDisposition, CkString &outStr);
 	// Opens or creates a file on the remote system. Returns a handle which may be
@@ -1602,18 +1717,21 @@ class CK_VISIBLE_PUBLIC CkSFtpW  : public CkClassWithCallbacksW
 	// Data is always written at the end of the file. Data MUST be written atomically
 	// so that there is no chance that multiple appenders can collide and result in
 	// data being lost.
+	// (Only supported in SFTP protocol versions 5 and later. See the note below.)
 	// 
 	// textMode
 	// Indicates that the server should treat the file as text and convert it to the
 	// canonical newline convention in use. When a file is opened with this flag, data
 	// is always appended to the end of the file. Servers MUST process multiple,
 	// parallel reads and writes correctly in this mode.
+	// (Only supported in SFTP protocol versions 5 and later. See the note below.)
 	// 
 	// blockRead
 	// The server MUST guarantee that no other handle has been opened with read access,
 	// and that no other handle will be opened with read access until the client closes
 	// the handle. (This MUST apply both to other clients and to other processes on the
 	// server.) In a nutshell, this opens the file in non-sharing mode.
+	// (Only supported in SFTP protocol versions 5 and later. See the note below.)
 	// 
 	// blockWrite
 	// The server MUST guarantee that no other handle has been opened with write
@@ -1621,11 +1739,13 @@ class CK_VISIBLE_PUBLIC CkSFtpW  : public CkClassWithCallbacksW
 	// client closes the handle. (This MUST apply both to other clients and to other
 	// processes on the server.) In a nutshell, this opens the file in non-sharing
 	// mode.
+	// (Only supported in SFTP protocol versions 5 and later. See the note below.)
 	// 
 	// blockDelete
 	// The server MUST guarantee that the file itself is not deleted in any other way
 	// until the client closes the handle. No other client or process is allowed to
 	// open the file with delete access.
+	// (Only supported in SFTP protocol versions 5 and later. See the note below.)
 	// 
 	// blockAdvisory
 	// If set, the above "block" modes are advisory. In advisory mode, only other
@@ -1633,24 +1753,29 @@ class CK_VISIBLE_PUBLIC CkSFtpW  : public CkClassWithCallbacksW
 	// the "block" can be granted, and the server need not prevent I/O operations that
 	// violate the block mode. The server MAY perform mandatory locking even if the
 	// blockAdvisory flag is set.
+	// (Only supported in SFTP protocol versions 5 and later. See the note below.)
 	// 
 	// noFollow
 	// If the final component of the path is a symlink, then the open MUST fail.
+	// (Only supported in SFTP protocol versions 5 and later. See the note below.)
 	// 
 	// deleteOnClose
 	// The file should be deleted when the last handle to it is closed. (The last
 	// handle may not be an sftp-handle.) This MAY be emulated by a server if the OS
 	// doesn't support it by deleting the file when this handle is closed.
+	// (Only supported in SFTP protocol versions 5 and later. See the note below.)
 	// 
 	// accessAuditAlarmInfo
 	// The client wishes the server to enable any privileges or extra capabilities that
 	// the user may have in to allow the reading and writing of AUDIT or ALARM access
 	// control entries.
+	// (Only supported in SFTP protocol versions 5 and later. See the note below.)
 	// 
 	// accessBackup
 	// The client wishes the server to enable any privileges or extra capabilities that
 	// the user may have in order to bypass normal access checks for the purpose of
 	// backing up or restoring files.
+	// (Only supported in SFTP protocol versions 5 and later. See the note below.)
 	// 
 	// backupStream
 	// This flag indicates that the client wishes to read or write a backup stream. A
@@ -1660,10 +1785,18 @@ class CK_VISIBLE_PUBLIC CkSFtpW  : public CkClassWithCallbacksW
 	// to write it to the same server to a file also opened using the backupStream
 	// flag. However, if the server has a well defined backup stream format, there may
 	// be other uses for this data outside the scope of this protocol.
+	// (Only supported in SFTP protocol versions 5 and later. See the note below.)
 	// 
 	// IMPORANT: If remotePath is a filename with no path, such as "test.txt", and the server
 	// responds with a "Folder not found" error, then try prepending "./" to the remotePath.
 	// For example, instead of passing "test.txt", try "./test.txt".
+	// 
+	// IMPORTANT note about createDisposition: Many of the options, such as textMode, are not
+	// implemented in the SFTP protocol versions 3 and 4. Only SFTP servers at protocol
+	// version 5 or later support these options. You can find out the protocol version
+	// of your server by examining the value of the ProtocolVersion property after
+	// calling InitializeSftp. Also, make sure the ForceV3 property is set to false
+	// (the default value is true)
 	// 
 	const wchar_t *openFile(const wchar_t *remotePath, const wchar_t *access, const wchar_t *createDisposition);
 
@@ -1681,6 +1814,22 @@ class CK_VISIBLE_PUBLIC CkSFtpW  : public CkClassWithCallbacksW
 	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *ReadDirAsync(const wchar_t *handle);
+
+	// Reads file data from a remote file on the SSH server. The handle is a file handle
+	// returned by the OpenFile method. The numBytes is the maximum number of bytes to
+	// read. If the end-of-file is reached prior to reading the number of requested
+	// bytes, then fewer bytes may be returned. The received bytes are appended to the
+	// contents of bd.
+	// 
+	// To read an entire file, one may call ReadFileBd repeatedly until Eof(handle)
+	// returns true.
+	// 
+	bool ReadFileBd(const wchar_t *handle, int numBytes, CkBinDataW &bd);
+
+	// Creates an asynchronous task to call the ReadFileBd method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *ReadFileBdAsync(const wchar_t *handle, int numBytes, CkBinDataW &bd);
 
 	// Reads file data from a remote file on the SSH server. The handle is a file handle
 	// returned by the OpenFile method. The numBytes is the maximum number of bytes to
@@ -2150,14 +2299,14 @@ class CK_VISIBLE_PUBLIC CkSFtpW  : public CkClassWithCallbacksW
 	CkTaskW *UploadBdAsync(CkBinDataW &binData, const wchar_t *remoteFilePath);
 
 	// Uploads a file from the local filesystem to the SFTP server. handle is a handle of
-	// a currently open file (obtained by calling the OpenFile method). fromFilename is the
+	// a currently open file (obtained by calling the OpenFile method). fromLocalFilePath is the
 	// local file path of the file to be uploaded.
-	bool UploadFile(const wchar_t *handle, const wchar_t *fromFilename);
+	bool UploadFile(const wchar_t *handle, const wchar_t *fromLocalFilePath);
 
 	// Creates an asynchronous task to call the UploadFile method with the arguments
 	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
-	CkTaskW *UploadFileAsync(const wchar_t *handle, const wchar_t *fromFilename);
+	CkTaskW *UploadFileAsync(const wchar_t *handle, const wchar_t *fromLocalFilePath);
 
 	// Simplified method for uploading a file to the SFTP/SSH server.
 	// 
@@ -2179,6 +2328,15 @@ class CK_VISIBLE_PUBLIC CkSFtpW  : public CkClassWithCallbacksW
 	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *UploadSbAsync(CkStringBuilderW &sb, const wchar_t *remoteFilePath, const wchar_t *charset, bool includeBom);
+
+	// Appends the contents of bd to an open file. The handle is a file handle returned
+	// by the OpenFile method.
+	bool WriteFileBd(const wchar_t *handle, CkBinDataW &bd);
+
+	// Creates an asynchronous task to call the WriteFileBd method with the arguments
+	// provided. (Async methods are available starting in Chilkat v9.5.0.52.)
+	// The caller is responsible for deleting the object returned by this method.
+	CkTaskW *WriteFileBdAsync(const wchar_t *handle, CkBinDataW &bd);
 
 	// Appends byte data to an open file. The handle is a file handle returned by the
 	// OpenFile method.

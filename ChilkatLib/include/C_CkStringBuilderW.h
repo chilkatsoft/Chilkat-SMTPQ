@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkStringBuilderWH
 #define _C_CkStringBuilderWH
 #include "chilkatDefs.h"
@@ -10,6 +10,7 @@ CK_VISIBLE_PUBLIC HCkStringBuilderW CkStringBuilderW_Create(void);
 CK_VISIBLE_PUBLIC void CkStringBuilderW_Dispose(HCkStringBuilderW handle);
 CK_VISIBLE_PUBLIC int CkStringBuilderW_getIntValue(HCkStringBuilderW cHandle);
 CK_VISIBLE_PUBLIC void  CkStringBuilderW_putIntValue(HCkStringBuilderW cHandle, int newVal);
+CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_getIsBase64(HCkStringBuilderW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_getLastMethodSuccess(HCkStringBuilderW cHandle);
 CK_VISIBLE_PUBLIC void  CkStringBuilderW_putLastMethodSuccess(HCkStringBuilderW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkStringBuilderW_getLength(HCkStringBuilderW cHandle);
@@ -31,8 +32,12 @@ CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_EndsWith(HCkStringBuilderW cHandle, cons
 CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_EntityDecode(HCkStringBuilderW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_GetAfterBetween(HCkStringBuilderW cHandle, const wchar_t *searchAfter, const wchar_t *beginMark, const wchar_t *endMark, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkStringBuilderW_getAfterBetween(HCkStringBuilderW cHandle, const wchar_t *searchAfter, const wchar_t *beginMark, const wchar_t *endMark);
+CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_GetAfterFinal(HCkStringBuilderW cHandle, const wchar_t *marker, BOOL removeFlag, HCkString outStr);
+CK_VISIBLE_PUBLIC const wchar_t *CkStringBuilderW_getAfterFinal(HCkStringBuilderW cHandle, const wchar_t *marker, BOOL removeFlag);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_GetAsString(HCkStringBuilderW cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkStringBuilderW_getAsString(HCkStringBuilderW cHandle);
+CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_GetBefore(HCkStringBuilderW cHandle, const wchar_t *marker, BOOL removeFlag, HCkString outStr);
+CK_VISIBLE_PUBLIC const wchar_t *CkStringBuilderW_getBefore(HCkStringBuilderW cHandle, const wchar_t *marker, BOOL removeFlag);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_GetBetween(HCkStringBuilderW cHandle, const wchar_t *beginMark, const wchar_t *endMark, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkStringBuilderW_getBetween(HCkStringBuilderW cHandle, const wchar_t *beginMark, const wchar_t *endMark);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_GetDecoded(HCkStringBuilderW cHandle, const wchar_t *encoding, HCkByteData outBytes);
@@ -46,10 +51,13 @@ CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_LoadFile(HCkStringBuilderW cHandle, cons
 CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_Prepend(HCkStringBuilderW cHandle, const wchar_t *value);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_PunyDecode(HCkStringBuilderW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_PunyEncode(HCkStringBuilderW cHandle);
+CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_RemoveAfterFinal(HCkStringBuilderW cHandle, const wchar_t *marker);
+CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_RemoveBefore(HCkStringBuilderW cHandle, const wchar_t *marker);
 CK_VISIBLE_PUBLIC int CkStringBuilderW_Replace(HCkStringBuilderW cHandle, const wchar_t *value, const wchar_t *replacement);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_ReplaceAfterFinal(HCkStringBuilderW cHandle, const wchar_t *marker, const wchar_t *replacement);
 CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_ReplaceAllBetween(HCkStringBuilderW cHandle, const wchar_t *beginMark, const wchar_t *endMark, const wchar_t *replacement, BOOL replaceMarks);
 CK_VISIBLE_PUBLIC int CkStringBuilderW_ReplaceBetween(HCkStringBuilderW cHandle, const wchar_t *beginMark, const wchar_t *endMark, const wchar_t *value, const wchar_t *replacement);
+CK_VISIBLE_PUBLIC BOOL CkStringBuilderW_ReplaceFirst(HCkStringBuilderW cHandle, const wchar_t *value, const wchar_t *replacement);
 CK_VISIBLE_PUBLIC int CkStringBuilderW_ReplaceI(HCkStringBuilderW cHandle, const wchar_t *value, int replacement);
 CK_VISIBLE_PUBLIC int CkStringBuilderW_ReplaceWord(HCkStringBuilderW cHandle, const wchar_t *value, const wchar_t *replacement);
 CK_VISIBLE_PUBLIC void CkStringBuilderW_SecureClear(HCkStringBuilderW cHandle);

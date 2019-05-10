@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkSshTunnelWH
 #define _C_CkSshTunnelWH
 #include "chilkatDefs.h"
@@ -133,11 +133,17 @@ CK_VISIBLE_PUBLIC BOOL CkSshTunnelW_Connect(HCkSshTunnelW cHandle, const wchar_t
 CK_VISIBLE_PUBLIC HCkTaskW CkSshTunnelW_ConnectAsync(HCkSshTunnelW cHandle, const wchar_t *hostname, int port);
 CK_VISIBLE_PUBLIC BOOL CkSshTunnelW_ConnectThroughSsh(HCkSshTunnelW cHandle, HCkSshW ssh, const wchar_t *hostname, int port);
 CK_VISIBLE_PUBLIC HCkTaskW CkSshTunnelW_ConnectThroughSshAsync(HCkSshTunnelW cHandle, HCkSshW ssh, const wchar_t *hostname, int port);
+CK_VISIBLE_PUBLIC BOOL CkSshTunnelW_ContinueKeyboardAuth(HCkSshTunnelW cHandle, const wchar_t *response, HCkString outStr);
+CK_VISIBLE_PUBLIC const wchar_t *CkSshTunnelW_continueKeyboardAuth(HCkSshTunnelW cHandle, const wchar_t *response);
+CK_VISIBLE_PUBLIC HCkTaskW CkSshTunnelW_ContinueKeyboardAuthAsync(HCkSshTunnelW cHandle, const wchar_t *response);
 CK_VISIBLE_PUBLIC BOOL CkSshTunnelW_DisconnectAllClients(HCkSshTunnelW cHandle, BOOL waitForThreads);
 CK_VISIBLE_PUBLIC BOOL CkSshTunnelW_GetCurrentState(HCkSshTunnelW cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkSshTunnelW_getCurrentState(HCkSshTunnelW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSshTunnelW_IsSshConnected(HCkSshTunnelW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkSshTunnelW_SaveLastError(HCkSshTunnelW cHandle, const wchar_t *path);
+CK_VISIBLE_PUBLIC BOOL CkSshTunnelW_StartKeyboardAuth(HCkSshTunnelW cHandle, const wchar_t *login, HCkString outStr);
+CK_VISIBLE_PUBLIC const wchar_t *CkSshTunnelW_startKeyboardAuth(HCkSshTunnelW cHandle, const wchar_t *login);
+CK_VISIBLE_PUBLIC HCkTaskW CkSshTunnelW_StartKeyboardAuthAsync(HCkSshTunnelW cHandle, const wchar_t *login);
 CK_VISIBLE_PUBLIC BOOL CkSshTunnelW_StopAccepting(HCkSshTunnelW cHandle, BOOL waitForThread);
 CK_VISIBLE_PUBLIC BOOL CkSshTunnelW_UnlockComponent(HCkSshTunnelW cHandle, const wchar_t *unlockCode);
 #endif

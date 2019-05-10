@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkStringTableWH
 #define _C_CkStringTableWH
 #include "chilkatDefs.h"
@@ -28,6 +28,7 @@ CK_VISIBLE_PUBLIC BOOL CkStringTableW_Append(HCkStringTableW cHandle, const wcha
 CK_VISIBLE_PUBLIC BOOL CkStringTableW_AppendFromFile(HCkStringTableW cHandle, int maxLineLen, const wchar_t *charset, const wchar_t *path);
 CK_VISIBLE_PUBLIC BOOL CkStringTableW_AppendFromSb(HCkStringTableW cHandle, HCkStringBuilderW sb);
 CK_VISIBLE_PUBLIC void CkStringTableW_Clear(HCkStringTableW cHandle);
+CK_VISIBLE_PUBLIC int CkStringTableW_FindSubstring(HCkStringTableW cHandle, int startIndex, const wchar_t *substr, BOOL caseSensitive);
 CK_VISIBLE_PUBLIC int CkStringTableW_IntAt(HCkStringTableW cHandle, int index);
 CK_VISIBLE_PUBLIC BOOL CkStringTableW_SaveLastError(HCkStringTableW cHandle, const wchar_t *path);
 CK_VISIBLE_PUBLIC BOOL CkStringTableW_SaveToFile(HCkStringTableW cHandle, const wchar_t *charset, BOOL bCrlf, const wchar_t *path);

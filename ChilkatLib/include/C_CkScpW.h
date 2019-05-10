@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkScpWH
 #define _C_CkScpWH
 #include "chilkatDefs.h"
@@ -45,10 +45,18 @@ CK_VISIBLE_PUBLIC const wchar_t *CkScpW_syncMustNotMatch(HCkScpW cHandle);
 CK_VISIBLE_PUBLIC void CkScpW_getSyncMustNotMatchDir(HCkScpW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkScpW_putSyncMustNotMatchDir(HCkScpW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkScpW_syncMustNotMatchDir(HCkScpW cHandle);
+CK_VISIBLE_PUBLIC void CkScpW_getUncommonOptions(HCkScpW cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void  CkScpW_putUncommonOptions(HCkScpW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC const wchar_t *CkScpW_uncommonOptions(HCkScpW cHandle);
+CK_VISIBLE_PUBLIC void CkScpW_getUnixPermOverride(HCkScpW cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void  CkScpW_putUnixPermOverride(HCkScpW cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC const wchar_t *CkScpW_unixPermOverride(HCkScpW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkScpW_getVerboseLogging(HCkScpW cHandle);
 CK_VISIBLE_PUBLIC void  CkScpW_putVerboseLogging(HCkScpW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkScpW_getVersion(HCkScpW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkScpW_version(HCkScpW cHandle);
+CK_VISIBLE_PUBLIC BOOL CkScpW_DownloadBd(HCkScpW cHandle, const wchar_t *remotePath, HCkBinDataW bd);
+CK_VISIBLE_PUBLIC HCkTaskW CkScpW_DownloadBdAsync(HCkScpW cHandle, const wchar_t *remotePath, HCkBinDataW bd);
 CK_VISIBLE_PUBLIC BOOL CkScpW_DownloadBinary(HCkScpW cHandle, const wchar_t *remotePath, HCkByteData outBytes);
 CK_VISIBLE_PUBLIC HCkTaskW CkScpW_DownloadBinaryAsync(HCkScpW cHandle, const wchar_t *remotePath);
 CK_VISIBLE_PUBLIC BOOL CkScpW_DownloadBinaryEncoded(HCkScpW cHandle, const wchar_t *remotePath, const wchar_t *encoding, HCkString outStr);
@@ -64,6 +72,8 @@ CK_VISIBLE_PUBLIC BOOL CkScpW_SyncTreeDownload(HCkScpW cHandle, const wchar_t *r
 CK_VISIBLE_PUBLIC HCkTaskW CkScpW_SyncTreeDownloadAsync(HCkScpW cHandle, const wchar_t *remoteRoot, const wchar_t *localRoot, int mode, BOOL bRecurse);
 CK_VISIBLE_PUBLIC BOOL CkScpW_SyncTreeUpload(HCkScpW cHandle, const wchar_t *localBaseDir, const wchar_t *remoteBaseDir, int mode, BOOL bRecurse);
 CK_VISIBLE_PUBLIC HCkTaskW CkScpW_SyncTreeUploadAsync(HCkScpW cHandle, const wchar_t *localBaseDir, const wchar_t *remoteBaseDir, int mode, BOOL bRecurse);
+CK_VISIBLE_PUBLIC BOOL CkScpW_UploadBd(HCkScpW cHandle, const wchar_t *remotePath, HCkBinDataW bd);
+CK_VISIBLE_PUBLIC HCkTaskW CkScpW_UploadBdAsync(HCkScpW cHandle, const wchar_t *remotePath, HCkBinDataW bd);
 CK_VISIBLE_PUBLIC BOOL CkScpW_UploadBinary(HCkScpW cHandle, const wchar_t *remotePath, HCkByteData binData);
 CK_VISIBLE_PUBLIC HCkTaskW CkScpW_UploadBinaryAsync(HCkScpW cHandle, const wchar_t *remotePath, HCkByteData binData);
 CK_VISIBLE_PUBLIC BOOL CkScpW_UploadBinaryEncoded(HCkScpW cHandle, const wchar_t *remotePath, const wchar_t *encodedData, const wchar_t *encoding);

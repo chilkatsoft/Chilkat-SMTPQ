@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkBz2_H
 #define _C_CkBz2_H
 #include "chilkatDefs.h"
@@ -10,6 +10,15 @@ CK_VISIBLE_PUBLIC void CkBz2_setAbortCheck(HCkBz2 cHandle, BOOL (*fnAbortCheck)(
 CK_VISIBLE_PUBLIC void CkBz2_setPercentDone(HCkBz2 cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkBz2_setProgressInfo(HCkBz2 cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkBz2_setTaskCompleted(HCkBz2 cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
+CK_VISIBLE_PUBLIC void CkBz2_setAbortCheck2(HCkBz2 cHandle, BOOL (*fnAbortCheck2)(void *pContext));
+CK_VISIBLE_PUBLIC void CkBz2_setPercentDone2(HCkBz2 cHandle, BOOL (*fnPercentDone2)(int pctDone, void *pContext));
+CK_VISIBLE_PUBLIC void CkBz2_setProgressInfo2(HCkBz2 cHandle, void (*fnProgressInfo2)(const char *name, const char *value, void *pContext));
+CK_VISIBLE_PUBLIC void CkBz2_setTaskCompleted2(HCkBz2 cHandle, void (*fnTaskCompleted2)(HCkTask hTask, void *pContext));
+
+// setExternalProgress is for C callback functions defined in the external programming language (such as Go)
+CK_VISIBLE_PUBLIC void CkBz2_setExternalProgress(HCkBz2 cHandle, BOOL on);
+CK_VISIBLE_PUBLIC void CkBz2_setCallbackContext(HCkBz2 cHandle, void *pContext);
 
 CK_VISIBLE_PUBLIC HCkBz2 CkBz2_Create(void);
 CK_VISIBLE_PUBLIC void CkBz2_Dispose(HCkBz2 handle);

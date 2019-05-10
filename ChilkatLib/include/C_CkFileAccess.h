@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkFileAccess_H
 #define _C_CkFileAccess_H
 #include "chilkatDefs.h"
@@ -32,6 +32,8 @@ CK_VISIBLE_PUBLIC void CkFileAccess_putVerboseLogging(HCkFileAccess cHandle, BOO
 CK_VISIBLE_PUBLIC void CkFileAccess_getVersion(HCkFileAccess cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkFileAccess_version(HCkFileAccess cHandle);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_AppendAnsi(HCkFileAccess cHandle, const char *text);
+CK_VISIBLE_PUBLIC BOOL CkFileAccess_AppendBd(HCkFileAccess cHandle, HCkBinData bd);
+CK_VISIBLE_PUBLIC BOOL CkFileAccess_AppendSb(HCkFileAccess cHandle, HCkStringBuilder sb, const char *charset);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_AppendText(HCkFileAccess cHandle, const char *str, const char *charset);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_AppendUnicodeBOM(HCkFileAccess cHandle);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_AppendUtf8BOM(HCkFileAccess cHandle);
@@ -51,6 +53,7 @@ CK_VISIBLE_PUBLIC BOOL CkFileAccess_FileReadBd(HCkFileAccess cHandle, int maxNum
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_FileRename(HCkFileAccess cHandle, const char *existingFilepath, const char *newFilepath);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_FileSeek(HCkFileAccess cHandle, int offset, int origin);
 CK_VISIBLE_PUBLIC int CkFileAccess_FileSize(HCkFileAccess cHandle, const char *filePath);
+CK_VISIBLE_PUBLIC int CkFileAccess_FileType(HCkFileAccess cHandle, const char *path);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_FileWrite(HCkFileAccess cHandle, HCkByteData data);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_FileWriteBd(HCkFileAccess cHandle, HCkBinData binData, int offset, int numBytes);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_GenBlockId(HCkFileAccess cHandle, int index, int length, const char *encoding, HCkString outStr);
@@ -85,6 +88,9 @@ CK_VISIBLE_PUBLIC BOOL CkFileAccess_SetCurrentDir(HCkFileAccess cHandle, const c
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_SetFileTimes(HCkFileAccess cHandle, const char *filePath, HCkDateTime createTime, HCkDateTime lastAccessTime, HCkDateTime lastModTime);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_SetLastModified(HCkFileAccess cHandle, const char *filePath, HCkDateTime lastModified);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_SplitFile(HCkFileAccess cHandle, const char *fileToSplit, const char *partPrefix, const char *partExtension, int partSize, const char *destDir);
+CK_VISIBLE_PUBLIC BOOL CkFileAccess_SymlinkCreate(HCkFileAccess cHandle, const char *targetPath, const char *linkPath);
+CK_VISIBLE_PUBLIC BOOL CkFileAccess_SymlinkTarget(HCkFileAccess cHandle, const char *linkPath, HCkString outStr);
+CK_VISIBLE_PUBLIC const char *CkFileAccess_symlinkTarget(HCkFileAccess cHandle, const char *linkPath);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_TreeDelete(HCkFileAccess cHandle, const char *path);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_WriteEntireFile(HCkFileAccess cHandle, const char *filePath, HCkByteData fileData);
 CK_VISIBLE_PUBLIC BOOL CkFileAccess_WriteEntireTextFile(HCkFileAccess cHandle, const char *filePath, const char *textData, const char *charset, BOOL includedPreamble);

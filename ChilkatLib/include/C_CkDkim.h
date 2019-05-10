@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkDkim_H
 #define _C_CkDkim_H
 #include "chilkatDefs.h"
@@ -10,6 +10,15 @@ CK_VISIBLE_PUBLIC void CkDkim_setAbortCheck(HCkDkim cHandle, BOOL (*fnAbortCheck
 CK_VISIBLE_PUBLIC void CkDkim_setPercentDone(HCkDkim cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkDkim_setProgressInfo(HCkDkim cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkDkim_setTaskCompleted(HCkDkim cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
+CK_VISIBLE_PUBLIC void CkDkim_setAbortCheck2(HCkDkim cHandle, BOOL (*fnAbortCheck2)(void *pContext));
+CK_VISIBLE_PUBLIC void CkDkim_setPercentDone2(HCkDkim cHandle, BOOL (*fnPercentDone2)(int pctDone, void *pContext));
+CK_VISIBLE_PUBLIC void CkDkim_setProgressInfo2(HCkDkim cHandle, void (*fnProgressInfo2)(const char *name, const char *value, void *pContext));
+CK_VISIBLE_PUBLIC void CkDkim_setTaskCompleted2(HCkDkim cHandle, void (*fnTaskCompleted2)(HCkTask hTask, void *pContext));
+
+// setExternalProgress is for C callback functions defined in the external programming language (such as Go)
+CK_VISIBLE_PUBLIC void CkDkim_setExternalProgress(HCkDkim cHandle, BOOL on);
+CK_VISIBLE_PUBLIC void CkDkim_setCallbackContext(HCkDkim cHandle, void *pContext);
 
 CK_VISIBLE_PUBLIC HCkDkim CkDkim_Create(void);
 CK_VISIBLE_PUBLIC void CkDkim_Dispose(HCkDkim handle);
@@ -64,6 +73,8 @@ CK_VISIBLE_PUBLIC BOOL CkDkim_getUtf8(HCkDkim cHandle);
 CK_VISIBLE_PUBLIC void CkDkim_putUtf8(HCkDkim cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkDkim_getVerboseLogging(HCkDkim cHandle);
 CK_VISIBLE_PUBLIC void CkDkim_putVerboseLogging(HCkDkim cHandle, BOOL newVal);
+CK_VISIBLE_PUBLIC void CkDkim_getVerifyInfo(HCkDkim cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC const char *CkDkim_verifyInfo(HCkDkim cHandle);
 CK_VISIBLE_PUBLIC void CkDkim_getVersion(HCkDkim cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const char *CkDkim_version(HCkDkim cHandle);
 CK_VISIBLE_PUBLIC BOOL CkDkim_AddDkimSignature(HCkDkim cHandle, HCkByteData mimeIn, HCkByteData outBytes);
@@ -81,7 +92,9 @@ CK_VISIBLE_PUBLIC BOOL CkDkim_LoadDomainKeyPkFile(HCkDkim cHandle, const char *p
 CK_VISIBLE_PUBLIC BOOL CkDkim_LoadPublicKey(HCkDkim cHandle, const char *selector, const char *domain, const char *publicKey);
 CK_VISIBLE_PUBLIC BOOL CkDkim_LoadPublicKeyFile(HCkDkim cHandle, const char *selector, const char *domain, const char *publicKeyFilepath);
 CK_VISIBLE_PUBLIC int CkDkim_NumDkimSignatures(HCkDkim cHandle, HCkByteData mimeData);
+CK_VISIBLE_PUBLIC int CkDkim_NumDkimSigs(HCkDkim cHandle, HCkBinData mimeData);
 CK_VISIBLE_PUBLIC int CkDkim_NumDomainKeySignatures(HCkDkim cHandle, HCkByteData mimeData);
+CK_VISIBLE_PUBLIC int CkDkim_NumDomainKeySigs(HCkDkim cHandle, HCkBinData mimeData);
 CK_VISIBLE_PUBLIC BOOL CkDkim_PrefetchPublicKey(HCkDkim cHandle, const char *selector, const char *domain);
 CK_VISIBLE_PUBLIC HCkTask CkDkim_PrefetchPublicKeyAsync(HCkDkim cHandle, const char *selector, const char *domain);
 CK_VISIBLE_PUBLIC BOOL CkDkim_SaveLastError(HCkDkim cHandle, const char *path);

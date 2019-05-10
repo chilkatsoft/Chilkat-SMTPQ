@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkRest_H
 #define _CkRest_H
@@ -155,6 +155,15 @@ class CK_VISIBLE_PUBLIC CkRest  : public CkClassWithCallbacks
 	// v9.5.0.71.
 	// 
 	void put_ConnectTimeoutMs(int newVal);
+
+	// If true then all calls to Send* or FullRequest* methods will not actually send
+	// a request. Instead, the request will be written to a memory buffer which can
+	// then be retrieved by calling GetLastDebugRequest.
+	bool get_DebugMode(void);
+	// If true then all calls to Send* or FullRequest* methods will not actually send
+	// a request. Instead, the request will be written to a memory buffer which can
+	// then be retrieved by calling GetLastDebugRequest.
+	void put_DebugMode(bool newVal);
 
 	// This property is only valid in programming environment and languages that allow
 	// for event callbacks.
@@ -333,6 +342,11 @@ class CK_VISIBLE_PUBLIC CkRest  : public CkClassWithCallbacks
 	// Marketplace Web Service (Amazon MWS) HTTP requests. It should be called after
 	// all request parameters have been added.
 	// 
+	// Important: The Chilkat v9.5.0.75 release accidentally breaks Amazon MWS (not
+	// AWS) authentication. If you need MWS with 9.5.0.75, send email to
+	// support@chilkatsoft.com for a hotfix, or revert back to v9.5.0.73, or update to
+	// a version after 9.5.0.75.
+	// 
 	// The domain should be the domain of the request, such as one of the following:
 	//     mws.amazonservices.com
 	//     mws-eu.amazonservices.com
@@ -396,7 +410,7 @@ class CK_VISIBLE_PUBLIC CkRest  : public CkClassWithCallbacks
 	bool ClearAuth(void);
 
 
-	// Clears the response body stream set by calling SetResponseBodyStream.
+	// Clears the response body stream.
 	void ClearResponseBodyStream(void);
 
 
@@ -645,6 +659,11 @@ class CK_VISIBLE_PUBLIC CkRest  : public CkClassWithCallbacks
 	// SendReqStringBody, ReadResponseHeader, ReadRespBodyString.
 	// 
 	CkTask *FullRequestStringAsync(const char *httpVerb, const char *uriPath, const char *bodyText);
+
+
+	// Returns the fully composed HTTP request that would've been sent had the
+	// DebugMode been turned off. The request is returned in bd.
+	bool GetLastDebugRequest(CkBinData &bd);
 
 
 	// Reads the response body. Should only be called after ReadResponseHeader has been

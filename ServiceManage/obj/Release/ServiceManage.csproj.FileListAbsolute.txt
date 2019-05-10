@@ -1,7 +1,6 @@
 C:\ckGitHubProjects\Chilkat-SMTPQ\bin\ServiceManage.exe.config
 C:\ckGitHubProjects\Chilkat-SMTPQ\bin\ServiceManage.exe
 C:\ckGitHubProjects\Chilkat-SMTPQ\bin\ServiceManage.pdb
-C:\ckGitHubProjects\Chilkat-SMTPQ\ServiceManage\obj\Release\ServiceManage.csprojResolveAssemblyReference.cache
 C:\ckGitHubProjects\Chilkat-SMTPQ\ServiceManage\obj\Release\ServiceManage.Form1.resources
 C:\ckGitHubProjects\Chilkat-SMTPQ\ServiceManage\obj\Release\ServiceManage.Properties.Resources.resources
 C:\ckGitHubProjects\Chilkat-SMTPQ\ServiceManage\obj\Release\ServiceManage.csproj.GenerateResource.Cache

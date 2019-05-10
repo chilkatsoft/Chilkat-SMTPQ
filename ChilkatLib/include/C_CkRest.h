@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkRest_H
 #define _C_CkRest_H
 #include "chilkatDefs.h"
@@ -10,6 +10,15 @@ CK_VISIBLE_PUBLIC void CkRest_setAbortCheck(HCkRest cHandle, BOOL (*fnAbortCheck
 CK_VISIBLE_PUBLIC void CkRest_setPercentDone(HCkRest cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkRest_setProgressInfo(HCkRest cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkRest_setTaskCompleted(HCkRest cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
+CK_VISIBLE_PUBLIC void CkRest_setAbortCheck2(HCkRest cHandle, BOOL (*fnAbortCheck2)(void *pContext));
+CK_VISIBLE_PUBLIC void CkRest_setPercentDone2(HCkRest cHandle, BOOL (*fnPercentDone2)(int pctDone, void *pContext));
+CK_VISIBLE_PUBLIC void CkRest_setProgressInfo2(HCkRest cHandle, void (*fnProgressInfo2)(const char *name, const char *value, void *pContext));
+CK_VISIBLE_PUBLIC void CkRest_setTaskCompleted2(HCkRest cHandle, void (*fnTaskCompleted2)(HCkTask hTask, void *pContext));
+
+// setExternalProgress is for C callback functions defined in the external programming language (such as Go)
+CK_VISIBLE_PUBLIC void CkRest_setExternalProgress(HCkRest cHandle, BOOL on);
+CK_VISIBLE_PUBLIC void CkRest_setCallbackContext(HCkRest cHandle, void *pContext);
 
 CK_VISIBLE_PUBLIC HCkRest CkRest_Create(void);
 CK_VISIBLE_PUBLIC void CkRest_Dispose(HCkRest handle);
@@ -26,6 +35,8 @@ CK_VISIBLE_PUBLIC void CkRest_putConnectTimeoutMs(HCkRest cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkRest_getDebugLogFilePath(HCkRest cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void CkRest_putDebugLogFilePath(HCkRest cHandle, const char *newVal);
 CK_VISIBLE_PUBLIC const char *CkRest_debugLogFilePath(HCkRest cHandle);
+CK_VISIBLE_PUBLIC BOOL CkRest_getDebugMode(HCkRest cHandle);
+CK_VISIBLE_PUBLIC void CkRest_putDebugMode(HCkRest cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkRest_getHeartbeatMs(HCkRest cHandle);
 CK_VISIBLE_PUBLIC void CkRest_putHeartbeatMs(HCkRest cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkRest_getHost(HCkRest cHandle, HCkString retval);
@@ -106,6 +117,7 @@ CK_VISIBLE_PUBLIC HCkTask CkRest_FullRequestStreamAsync(HCkRest cHandle, const c
 CK_VISIBLE_PUBLIC BOOL CkRest_FullRequestString(HCkRest cHandle, const char *httpVerb, const char *uriPath, const char *bodyText, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkRest_fullRequestString(HCkRest cHandle, const char *httpVerb, const char *uriPath, const char *bodyText);
 CK_VISIBLE_PUBLIC HCkTask CkRest_FullRequestStringAsync(HCkRest cHandle, const char *httpVerb, const char *uriPath, const char *bodyText);
+CK_VISIBLE_PUBLIC BOOL CkRest_GetLastDebugRequest(HCkRest cHandle, HCkBinData bd);
 CK_VISIBLE_PUBLIC BOOL CkRest_ReadRespBd(HCkRest cHandle, HCkBinData responseBody);
 CK_VISIBLE_PUBLIC HCkTask CkRest_ReadRespBdAsync(HCkRest cHandle, HCkBinData responseBody);
 CK_VISIBLE_PUBLIC BOOL CkRest_ReadRespBodyBinary(HCkRest cHandle, HCkByteData outBytes);

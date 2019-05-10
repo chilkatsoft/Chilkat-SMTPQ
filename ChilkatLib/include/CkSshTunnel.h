@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkSshTunnel_H
 #define _CkSshTunnel_H
@@ -566,6 +566,9 @@ class CK_VISIBLE_PUBLIC CkSshTunnel  : public CkClassWithCallbacks
 	//     "KEX_DH_GEX_REQUEST_OLD" - Force the old Group Exchange message to be used.
 	//     This would be used for very old SSH server implementations that do not use the
 	//     RFC standard for diffie-hellman-group-exchange.
+	//     "NoKeepAliveIgnoreMsg" - (Added in v9.5.0.76) Prevents the default behavior
+	//     of the SSH tunnel sending an "ignore" message every 20 seconds to keep an unused
+	//     connection alive.
 	// 
 	void get_UncommonOptions(CkString &str);
 	// This is a catch-all property to be used for uncommon needs. This property
@@ -575,6 +578,9 @@ class CK_VISIBLE_PUBLIC CkSshTunnel  : public CkClassWithCallbacks
 	//     "KEX_DH_GEX_REQUEST_OLD" - Force the old Group Exchange message to be used.
 	//     This would be used for very old SSH server implementations that do not use the
 	//     RFC standard for diffie-hellman-group-exchange.
+	//     "NoKeepAliveIgnoreMsg" - (Added in v9.5.0.76) Prevents the default behavior
+	//     of the SSH tunnel sending an "ignore" message every 20 seconds to keep an unused
+	//     connection alive.
 	// 
 	const char *uncommonOptions(void);
 	// This is a catch-all property to be used for uncommon needs. This property
@@ -584,6 +590,9 @@ class CK_VISIBLE_PUBLIC CkSshTunnel  : public CkClassWithCallbacks
 	//     "KEX_DH_GEX_REQUEST_OLD" - Force the old Group Exchange message to be used.
 	//     This would be used for very old SSH server implementations that do not use the
 	//     RFC standard for diffie-hellman-group-exchange.
+	//     "NoKeepAliveIgnoreMsg" - (Added in v9.5.0.76) Prevents the default behavior
+	//     of the SSH tunnel sending an "ignore" message every 20 seconds to keep an unused
+	//     connection alive.
 	// 
 	void put_UncommonOptions(const char *newVal);
 
@@ -682,6 +691,9 @@ class CK_VISIBLE_PUBLIC CkSshTunnel  : public CkClassWithCallbacks
 	// and then examine the IsAccepting property. If it is false, then BeginAccepting
 	// failed.
 	// 
+	// Important: The listenPort must be a port number that nothing else on the local
+	// computer is listening on.
+	// 
 	bool BeginAccepting(int listenPort);
 
 	// Starts a background thread for listening on listenPort. A new SSH tunnel is created
@@ -694,6 +706,9 @@ class CK_VISIBLE_PUBLIC CkSshTunnel  : public CkClassWithCallbacks
 	// to see if BeginAccepting succeeds by waiting a short time (perhaps 50 millisec)
 	// and then examine the IsAccepting property. If it is false, then BeginAccepting
 	// failed.
+	// 
+	// Important: The listenPort must be a port number that nothing else on the local
+	// computer is listening on.
 	// 
 	CkTask *BeginAcceptingAsync(int listenPort);
 
@@ -731,6 +746,102 @@ class CK_VISIBLE_PUBLIC CkSshTunnel  : public CkClassWithCallbacks
 	CkTask *ConnectThroughSshAsync(CkSsh &ssh, const char *hostname, int port);
 
 
+	// Continues keyboard-interactive authentication with the SSH server. The response is
+	// typically the password. If multiple responses are required (because there were
+	// multiple prompts in the infoRequest XML returned by StartKeyboardAuth), then the
+	// response should be formatted as XML (as shown below) otherwise the response simply
+	// contains the single response string.
+	// _LT_response_GT_
+	//     _LT_response1_GT_response to first prompt_LT_/response1_GT_
+	//     _LT_response2_GT_response to second prompt_LT_/response2_GT_
+	//     ...
+	//     _LT_responseN_GT_response to Nth prompt_LT_/responseN_GT_
+	// _LT_/response_GT_
+	// 
+	// If the interactive authentication completed with success or failure, the XML
+	// response will be:
+	// _LT_success_GT_success_message_LT_/success_GT_
+	// 
+	// or
+	// 
+	// _LT_error_GT_error_message_LT_/error_GT_
+	// If additional steps are required to complete the interactive authentication,
+	// then an XML string that provides the name, instruction, and prompts is returned.
+	// The XML has the following format:
+	//  	_LT_infoRequest numPrompts="N"_GT_
+	// 	    _LT_name_GT_name_string_LT_/name_GT_
+	// 	    _LT_instruction_GT_instruction_string_LT_/instruction_GT_
+	// 	    _LT_prompt1 echo="1_or_0"_GT_prompt_string_LT_/prompt1_GT_
+	// 	    ...
+	// 	    _LT_promptN echo="1_or_0"_GT_prompt_string_LT_/promptN_GT_
+	// 	_LT_/infoRequest_GT_
+	// 
+	bool ContinueKeyboardAuth(const char *response, CkString &outStr);
+
+	// Continues keyboard-interactive authentication with the SSH server. The response is
+	// typically the password. If multiple responses are required (because there were
+	// multiple prompts in the infoRequest XML returned by StartKeyboardAuth), then the
+	// response should be formatted as XML (as shown below) otherwise the response simply
+	// contains the single response string.
+	// _LT_response_GT_
+	//     _LT_response1_GT_response to first prompt_LT_/response1_GT_
+	//     _LT_response2_GT_response to second prompt_LT_/response2_GT_
+	//     ...
+	//     _LT_responseN_GT_response to Nth prompt_LT_/responseN_GT_
+	// _LT_/response_GT_
+	// 
+	// If the interactive authentication completed with success or failure, the XML
+	// response will be:
+	// _LT_success_GT_success_message_LT_/success_GT_
+	// 
+	// or
+	// 
+	// _LT_error_GT_error_message_LT_/error_GT_
+	// If additional steps are required to complete the interactive authentication,
+	// then an XML string that provides the name, instruction, and prompts is returned.
+	// The XML has the following format:
+	//  	_LT_infoRequest numPrompts="N"_GT_
+	// 	    _LT_name_GT_name_string_LT_/name_GT_
+	// 	    _LT_instruction_GT_instruction_string_LT_/instruction_GT_
+	// 	    _LT_prompt1 echo="1_or_0"_GT_prompt_string_LT_/prompt1_GT_
+	// 	    ...
+	// 	    _LT_promptN echo="1_or_0"_GT_prompt_string_LT_/promptN_GT_
+	// 	_LT_/infoRequest_GT_
+	// 
+	const char *continueKeyboardAuth(const char *response);
+	// Continues keyboard-interactive authentication with the SSH server. The response is
+	// typically the password. If multiple responses are required (because there were
+	// multiple prompts in the infoRequest XML returned by StartKeyboardAuth), then the
+	// response should be formatted as XML (as shown below) otherwise the response simply
+	// contains the single response string.
+	// _LT_response_GT_
+	//     _LT_response1_GT_response to first prompt_LT_/response1_GT_
+	//     _LT_response2_GT_response to second prompt_LT_/response2_GT_
+	//     ...
+	//     _LT_responseN_GT_response to Nth prompt_LT_/responseN_GT_
+	// _LT_/response_GT_
+	// 
+	// If the interactive authentication completed with success or failure, the XML
+	// response will be:
+	// _LT_success_GT_success_message_LT_/success_GT_
+	// 
+	// or
+	// 
+	// _LT_error_GT_error_message_LT_/error_GT_
+	// If additional steps are required to complete the interactive authentication,
+	// then an XML string that provides the name, instruction, and prompts is returned.
+	// The XML has the following format:
+	//  	_LT_infoRequest numPrompts="N"_GT_
+	// 	    _LT_name_GT_name_string_LT_/name_GT_
+	// 	    _LT_instruction_GT_instruction_string_LT_/instruction_GT_
+	// 	    _LT_prompt1 echo="1_or_0"_GT_prompt_string_LT_/prompt1_GT_
+	// 	    ...
+	// 	    _LT_promptN echo="1_or_0"_GT_prompt_string_LT_/promptN_GT_
+	// 	_LT_/infoRequest_GT_
+	// 
+	CkTask *ContinueKeyboardAuthAsync(const char *response);
+
+
 	// Disconnects all clients, keeping the SSH tunnel open. If waitForThreads is true, the
 	// method will wait for the client threads to exit before returning.
 	bool DisconnectAllClients(bool waitForThreads);
@@ -748,6 +859,69 @@ class CK_VISIBLE_PUBLIC CkSshTunnel  : public CkClassWithCallbacks
 	// Returns true if connected to the SSH server. Returns false if the connection
 	// has been lost (or was never established).
 	bool IsSshConnected(void);
+
+
+	// Begins keyboard-interactive authentication with the SSH server. Returns an XML
+	// string providing the name, instruction, and prompts. The XML has the following
+	// format:
+	//  	_LT_infoRequest numPrompts="N"_GT_
+	// 	    _LT_name_GT_name_string_LT_/name_GT_
+	// 	    _LT_instruction_GT_instruction_string_LT_/instruction_GT_
+	// 	    _LT_prompt1 echo="1_or_0"_GT_prompt_string_LT_/prompt1_GT_
+	// 	    ...
+	// 	    _LT_promptN echo="1_or_0"_GT_prompt_string_LT_/promptN_GT_
+	// 	_LT_/infoRequest_GT_
+	// 
+	// If the authentication immediately succeeds because no password is required, or
+	// immediately fails, the XML response can be:
+	// _LT_success_GT_success_message_LT_/success_GT_
+	// 
+	// or
+	// 
+	// _LT_error_GT_error_message_LT_/error_GT_
+	// 
+	bool StartKeyboardAuth(const char *login, CkString &outStr);
+
+	// Begins keyboard-interactive authentication with the SSH server. Returns an XML
+	// string providing the name, instruction, and prompts. The XML has the following
+	// format:
+	//  	_LT_infoRequest numPrompts="N"_GT_
+	// 	    _LT_name_GT_name_string_LT_/name_GT_
+	// 	    _LT_instruction_GT_instruction_string_LT_/instruction_GT_
+	// 	    _LT_prompt1 echo="1_or_0"_GT_prompt_string_LT_/prompt1_GT_
+	// 	    ...
+	// 	    _LT_promptN echo="1_or_0"_GT_prompt_string_LT_/promptN_GT_
+	// 	_LT_/infoRequest_GT_
+	// 
+	// If the authentication immediately succeeds because no password is required, or
+	// immediately fails, the XML response can be:
+	// _LT_success_GT_success_message_LT_/success_GT_
+	// 
+	// or
+	// 
+	// _LT_error_GT_error_message_LT_/error_GT_
+	// 
+	const char *startKeyboardAuth(const char *login);
+	// Begins keyboard-interactive authentication with the SSH server. Returns an XML
+	// string providing the name, instruction, and prompts. The XML has the following
+	// format:
+	//  	_LT_infoRequest numPrompts="N"_GT_
+	// 	    _LT_name_GT_name_string_LT_/name_GT_
+	// 	    _LT_instruction_GT_instruction_string_LT_/instruction_GT_
+	// 	    _LT_prompt1 echo="1_or_0"_GT_prompt_string_LT_/prompt1_GT_
+	// 	    ...
+	// 	    _LT_promptN echo="1_or_0"_GT_prompt_string_LT_/promptN_GT_
+	// 	_LT_/infoRequest_GT_
+	// 
+	// If the authentication immediately succeeds because no password is required, or
+	// immediately fails, the XML response can be:
+	// _LT_success_GT_success_message_LT_/success_GT_
+	// 
+	// or
+	// 
+	// _LT_error_GT_error_message_LT_/error_GT_
+	// 
+	CkTask *StartKeyboardAuthAsync(const char *login);
 
 
 	// Stops the listen background thread. It is possible to continue accepting

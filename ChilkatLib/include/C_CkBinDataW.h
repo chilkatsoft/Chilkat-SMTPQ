@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkBinDataWH
 #define _C_CkBinDataWH
 #include "chilkatDefs.h"
@@ -14,8 +14,11 @@ CK_VISIBLE_PUBLIC int CkBinDataW_getNumBytes(HCkBinDataW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkBinDataW_AppendBd(HCkBinDataW cHandle, HCkBinDataW binData);
 CK_VISIBLE_PUBLIC BOOL CkBinDataW_AppendBinary(HCkBinDataW cHandle, HCkByteData data);
 CK_VISIBLE_PUBLIC BOOL CkBinDataW_AppendBom(HCkBinDataW cHandle, const wchar_t *charset);
+CK_VISIBLE_PUBLIC BOOL CkBinDataW_AppendByte(HCkBinDataW cHandle, int byteValue);
 CK_VISIBLE_PUBLIC BOOL CkBinDataW_AppendEncoded(HCkBinDataW cHandle, const wchar_t *encData, const wchar_t *encoding);
 CK_VISIBLE_PUBLIC BOOL CkBinDataW_AppendEncodedSb(HCkBinDataW cHandle, HCkStringBuilderW sb, const wchar_t *encoding);
+CK_VISIBLE_PUBLIC BOOL CkBinDataW_AppendInt2(HCkBinDataW cHandle, int value, BOOL littleEndian);
+CK_VISIBLE_PUBLIC BOOL CkBinDataW_AppendInt4(HCkBinDataW cHandle, int value, BOOL littleEndian);
 CK_VISIBLE_PUBLIC BOOL CkBinDataW_AppendSb(HCkBinDataW cHandle, HCkStringBuilderW sb, const wchar_t *charset);
 CK_VISIBLE_PUBLIC BOOL CkBinDataW_AppendString(HCkBinDataW cHandle, const wchar_t *str, const wchar_t *charset);
 CK_VISIBLE_PUBLIC BOOL CkBinDataW_Clear(HCkBinDataW cHandle);

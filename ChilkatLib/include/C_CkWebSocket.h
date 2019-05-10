@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkWebSocket_H
 #define _C_CkWebSocket_H
 #include "chilkatDefs.h"
@@ -10,6 +10,15 @@ CK_VISIBLE_PUBLIC void CkWebSocket_setAbortCheck(HCkWebSocket cHandle, BOOL (*fn
 CK_VISIBLE_PUBLIC void CkWebSocket_setPercentDone(HCkWebSocket cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkWebSocket_setProgressInfo(HCkWebSocket cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkWebSocket_setTaskCompleted(HCkWebSocket cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
+CK_VISIBLE_PUBLIC void CkWebSocket_setAbortCheck2(HCkWebSocket cHandle, BOOL (*fnAbortCheck2)(void *pContext));
+CK_VISIBLE_PUBLIC void CkWebSocket_setPercentDone2(HCkWebSocket cHandle, BOOL (*fnPercentDone2)(int pctDone, void *pContext));
+CK_VISIBLE_PUBLIC void CkWebSocket_setProgressInfo2(HCkWebSocket cHandle, void (*fnProgressInfo2)(const char *name, const char *value, void *pContext));
+CK_VISIBLE_PUBLIC void CkWebSocket_setTaskCompleted2(HCkWebSocket cHandle, void (*fnTaskCompleted2)(HCkTask hTask, void *pContext));
+
+// setExternalProgress is for C callback functions defined in the external programming language (such as Go)
+CK_VISIBLE_PUBLIC void CkWebSocket_setExternalProgress(HCkWebSocket cHandle, BOOL on);
+CK_VISIBLE_PUBLIC void CkWebSocket_setCallbackContext(HCkWebSocket cHandle, void *pContext);
 
 CK_VISIBLE_PUBLIC HCkWebSocket CkWebSocket_Create(void);
 CK_VISIBLE_PUBLIC void CkWebSocket_Dispose(HCkWebSocket handle);

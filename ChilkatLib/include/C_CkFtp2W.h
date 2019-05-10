@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkFtp2WH
 #define _C_CkFtp2WH
 #include "chilkatDefs.h"
@@ -34,11 +34,6 @@ CK_VISIBLE_PUBLIC unsigned long CkFtp2W_getAsyncBytesSent(HCkFtp2W cHandle);
 CK_VISIBLE_PUBLIC __int64 CkFtp2W_getAsyncBytesSent64(HCkFtp2W cHandle);
 CK_VISIBLE_PUBLIC void CkFtp2W_getAsyncBytesSentStr(HCkFtp2W cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkFtp2W_asyncBytesSentStr(HCkFtp2W cHandle);
-CK_VISIBLE_PUBLIC BOOL CkFtp2W_getAsyncFinished(HCkFtp2W cHandle);
-CK_VISIBLE_PUBLIC void CkFtp2W_getAsyncLog(HCkFtp2W cHandle, HCkString retval);
-CK_VISIBLE_PUBLIC const wchar_t *CkFtp2W_asyncLog(HCkFtp2W cHandle);
-CK_VISIBLE_PUBLIC unsigned long CkFtp2W_getAsyncPercentDone(HCkFtp2W cHandle);
-CK_VISIBLE_PUBLIC BOOL CkFtp2W_getAsyncSuccess(HCkFtp2W cHandle);
 CK_VISIBLE_PUBLIC BOOL CkFtp2W_getAuthSsl(HCkFtp2W cHandle);
 CK_VISIBLE_PUBLIC void  CkFtp2W_putAuthSsl(HCkFtp2W cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkFtp2W_getAuthTls(HCkFtp2W cHandle);
@@ -172,12 +167,8 @@ CK_VISIBLE_PUBLIC BOOL CkFtp2W_getRequireSslCertVerify(HCkFtp2W cHandle);
 CK_VISIBLE_PUBLIC void  CkFtp2W_putRequireSslCertVerify(HCkFtp2W cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC BOOL CkFtp2W_getRestartNext(HCkFtp2W cHandle);
 CK_VISIBLE_PUBLIC void  CkFtp2W_putRestartNext(HCkFtp2W cHandle, BOOL newVal);
-CK_VISIBLE_PUBLIC int CkFtp2W_getSendBufferSize(HCkFtp2W cHandle);
-CK_VISIBLE_PUBLIC void  CkFtp2W_putSendBufferSize(HCkFtp2W cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkFtp2W_getSessionLog(HCkFtp2W cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkFtp2W_sessionLog(HCkFtp2W cHandle);
-CK_VISIBLE_PUBLIC BOOL CkFtp2W_getSkipFinalReply(HCkFtp2W cHandle);
-CK_VISIBLE_PUBLIC void  CkFtp2W_putSkipFinalReply(HCkFtp2W cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkFtp2W_getSocksHostname(HCkFtp2W cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkFtp2W_putSocksHostname(HCkFtp2W cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkFtp2W_socksHostname(HCkFtp2W cHandle);
@@ -204,15 +195,23 @@ CK_VISIBLE_PUBLIC void CkFtp2W_getSslProtocol(HCkFtp2W cHandle, HCkString retval
 CK_VISIBLE_PUBLIC void  CkFtp2W_putSslProtocol(HCkFtp2W cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkFtp2W_sslProtocol(HCkFtp2W cHandle);
 CK_VISIBLE_PUBLIC BOOL CkFtp2W_getSslServerCertVerified(HCkFtp2W cHandle);
+CK_VISIBLE_PUBLIC BOOL CkFtp2W_getSyncCreateAllLocalDirs(HCkFtp2W cHandle);
+CK_VISIBLE_PUBLIC void  CkFtp2W_putSyncCreateAllLocalDirs(HCkFtp2W cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkFtp2W_getSyncedFiles(HCkFtp2W cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkFtp2W_putSyncedFiles(HCkFtp2W cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkFtp2W_syncedFiles(HCkFtp2W cHandle);
 CK_VISIBLE_PUBLIC void CkFtp2W_getSyncMustMatch(HCkFtp2W cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkFtp2W_putSyncMustMatch(HCkFtp2W cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkFtp2W_syncMustMatch(HCkFtp2W cHandle);
+CK_VISIBLE_PUBLIC void CkFtp2W_getSyncMustMatchDir(HCkFtp2W cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void  CkFtp2W_putSyncMustMatchDir(HCkFtp2W cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC const wchar_t *CkFtp2W_syncMustMatchDir(HCkFtp2W cHandle);
 CK_VISIBLE_PUBLIC void CkFtp2W_getSyncMustNotMatch(HCkFtp2W cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkFtp2W_putSyncMustNotMatch(HCkFtp2W cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkFtp2W_syncMustNotMatch(HCkFtp2W cHandle);
+CK_VISIBLE_PUBLIC void CkFtp2W_getSyncMustNotMatchDir(HCkFtp2W cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void  CkFtp2W_putSyncMustNotMatchDir(HCkFtp2W cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC const wchar_t *CkFtp2W_syncMustNotMatchDir(HCkFtp2W cHandle);
 CK_VISIBLE_PUBLIC void CkFtp2W_getSyncPreview(HCkFtp2W cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkFtp2W_syncPreview(HCkFtp2W cHandle);
 CK_VISIBLE_PUBLIC void CkFtp2W_getTlsCipherSuite(HCkFtp2W cHandle, HCkString retval);
@@ -222,6 +221,9 @@ CK_VISIBLE_PUBLIC void  CkFtp2W_putTlsPinSet(HCkFtp2W cHandle, const wchar_t *ne
 CK_VISIBLE_PUBLIC const wchar_t *CkFtp2W_tlsPinSet(HCkFtp2W cHandle);
 CK_VISIBLE_PUBLIC void CkFtp2W_getTlsVersion(HCkFtp2W cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkFtp2W_tlsVersion(HCkFtp2W cHandle);
+CK_VISIBLE_PUBLIC void CkFtp2W_getUncommonOptions(HCkFtp2W cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void  CkFtp2W_putUncommonOptions(HCkFtp2W cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC const wchar_t *CkFtp2W_uncommonOptions(HCkFtp2W cHandle);
 CK_VISIBLE_PUBLIC int CkFtp2W_getUploadTransferRate(HCkFtp2W cHandle);
 CK_VISIBLE_PUBLIC BOOL CkFtp2W_getUseEpsv(HCkFtp2W cHandle);
 CK_VISIBLE_PUBLIC void  CkFtp2W_putUseEpsv(HCkFtp2W cHandle, BOOL newVal);
@@ -238,10 +240,6 @@ CK_VISIBLE_PUBLIC BOOL CkFtp2W_AppendFileFromBinaryData(HCkFtp2W cHandle, const 
 CK_VISIBLE_PUBLIC HCkTaskW CkFtp2W_AppendFileFromBinaryDataAsync(HCkFtp2W cHandle, const wchar_t *remoteFilename, HCkByteData content);
 CK_VISIBLE_PUBLIC BOOL CkFtp2W_AppendFileFromTextData(HCkFtp2W cHandle, const wchar_t *remoteFilename, const wchar_t *textData, const wchar_t *charset);
 CK_VISIBLE_PUBLIC HCkTaskW CkFtp2W_AppendFileFromTextDataAsync(HCkFtp2W cHandle, const wchar_t *remoteFilename, const wchar_t *textData, const wchar_t *charset);
-CK_VISIBLE_PUBLIC void CkFtp2W_AsyncAbort(HCkFtp2W cHandle);
-CK_VISIBLE_PUBLIC BOOL CkFtp2W_AsyncAppendFileStart(HCkFtp2W cHandle, const wchar_t *localFilename, const wchar_t *remoteFilename);
-CK_VISIBLE_PUBLIC BOOL CkFtp2W_AsyncGetFileStart(HCkFtp2W cHandle, const wchar_t *remoteFilename, const wchar_t *localFilename);
-CK_VISIBLE_PUBLIC BOOL CkFtp2W_AsyncPutFileStart(HCkFtp2W cHandle, const wchar_t *localFilename, const wchar_t *remoteFilename);
 CK_VISIBLE_PUBLIC BOOL CkFtp2W_ChangeRemoteDir(HCkFtp2W cHandle, const wchar_t *remoteDirPath);
 CK_VISIBLE_PUBLIC HCkTaskW CkFtp2W_ChangeRemoteDirAsync(HCkFtp2W cHandle, const wchar_t *remoteDirPath);
 CK_VISIBLE_PUBLIC BOOL CkFtp2W_CheckConnection(HCkFtp2W cHandle);
@@ -426,6 +424,7 @@ CK_VISIBLE_PUBLIC BOOL CkFtp2W_SetRemoteFileDateTimeStr(HCkFtp2W cHandle, const 
 CK_VISIBLE_PUBLIC HCkTaskW CkFtp2W_SetRemoteFileDateTimeStrAsync(HCkFtp2W cHandle, const wchar_t *dateTimeStr, const wchar_t *remoteFilename);
 CK_VISIBLE_PUBLIC BOOL CkFtp2W_SetRemoteFileDt(HCkFtp2W cHandle, HCkDateTimeW dt, const wchar_t *remoteFilename);
 CK_VISIBLE_PUBLIC HCkTaskW CkFtp2W_SetRemoteFileDtAsync(HCkFtp2W cHandle, HCkDateTimeW dt, const wchar_t *remoteFilename);
+CK_VISIBLE_PUBLIC BOOL CkFtp2W_SetSecurePassword(HCkFtp2W cHandle, HCkSecureStringW password);
 CK_VISIBLE_PUBLIC void CkFtp2W_SetSslCertRequirement(HCkFtp2W cHandle, const wchar_t *reqName, const wchar_t *reqValue);
 CK_VISIBLE_PUBLIC BOOL CkFtp2W_SetSslClientCert(HCkFtp2W cHandle, HCkCertW cert);
 CK_VISIBLE_PUBLIC BOOL CkFtp2W_SetSslClientCertPem(HCkFtp2W cHandle, const wchar_t *pemDataOrFilename, const wchar_t *pemPassword);

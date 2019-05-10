@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkMimeW_H
 #define _CkMimeW_H
@@ -116,6 +116,16 @@ class CK_VISIBLE_PUBLIC CkMimeW  : public CkWideCharBase
 	// Content-Type: text/plain; charset="iso-8859-1"
 	// then the value of the Charset property is "iso-8859-1".
 	void put_Charset(const wchar_t *newVal);
+
+	// A JSON string for controlling extra CMS (PKCS7) signature and validation
+	// options.
+	void get_CmsOptions(CkString &str);
+	// A JSON string for controlling extra CMS (PKCS7) signature and validation
+	// options.
+	const wchar_t *cmsOptions(void);
+	// A JSON string for controlling extra CMS (PKCS7) signature and validation
+	// options.
+	void put_CmsOptions(const wchar_t *newVal);
 
 	// The MIME content type, such as "text/plain", "text/html", "image/gif",
 	// "multipart/alternative", "multipart/mixed", etc.

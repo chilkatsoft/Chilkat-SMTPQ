@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkCsrW_H
 #define _CkCsrW_H
@@ -14,6 +14,7 @@
 
 class CkPrivateKeyW;
 class CkBinDataW;
+class CkPublicKeyW;
 
 
 
@@ -252,6 +253,9 @@ class CK_VISIBLE_PUBLIC CkCsrW  : public CkWideCharBase
 	bool GenCsrPem(CkPrivateKeyW &privKey, CkString &outStr);
 	// Generate a CSR and return it as a PEM string.
 	const wchar_t *genCsrPem(CkPrivateKeyW &privKey);
+
+	// Returns the CSR's public key in the pubkey.
+	bool GetPublicKey(CkPublicKeyW &pubkey);
 
 	// Gets a subject field by OID, such as "2.5.4.9". See
 	// http://www.alvestrand.no/objectid/2.5.4.html for OID values and meanings.

@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkStream_H
 #define _C_CkStream_H
 #include "chilkatDefs.h"
@@ -10,6 +10,15 @@ CK_VISIBLE_PUBLIC void CkStream_setAbortCheck(HCkStream cHandle, BOOL (*fnAbortC
 CK_VISIBLE_PUBLIC void CkStream_setPercentDone(HCkStream cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkStream_setProgressInfo(HCkStream cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkStream_setTaskCompleted(HCkStream cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
+CK_VISIBLE_PUBLIC void CkStream_setAbortCheck2(HCkStream cHandle, BOOL (*fnAbortCheck2)(void *pContext));
+CK_VISIBLE_PUBLIC void CkStream_setPercentDone2(HCkStream cHandle, BOOL (*fnPercentDone2)(int pctDone, void *pContext));
+CK_VISIBLE_PUBLIC void CkStream_setProgressInfo2(HCkStream cHandle, void (*fnProgressInfo2)(const char *name, const char *value, void *pContext));
+CK_VISIBLE_PUBLIC void CkStream_setTaskCompleted2(HCkStream cHandle, void (*fnTaskCompleted2)(HCkTask hTask, void *pContext));
+
+// setExternalProgress is for C callback functions defined in the external programming language (such as Go)
+CK_VISIBLE_PUBLIC void CkStream_setExternalProgress(HCkStream cHandle, BOOL on);
+CK_VISIBLE_PUBLIC void CkStream_setCallbackContext(HCkStream cHandle, void *pContext);
 
 CK_VISIBLE_PUBLIC HCkStream CkStream_Create(void);
 CK_VISIBLE_PUBLIC void CkStream_Dispose(HCkStream handle);

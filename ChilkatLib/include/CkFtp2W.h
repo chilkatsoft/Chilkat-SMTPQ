@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkFtp2W_H
 #define _CkFtp2W_H
@@ -192,47 +192,6 @@ class CK_VISIBLE_PUBLIC CkFtp2W  : public CkClassWithCallbacksW
 	// it's value while the upload is in progress.
 	const wchar_t *asyncBytesSentStr(void);
 
-	// Set to true if the asynchronous transfer (download or upload) is finished.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool get_AsyncFinished(void);
-
-	// The last-error information for an asynchronous (background) file transfer.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	void get_AsyncLog(CkString &str);
-	// The last-error information for an asynchronous (background) file transfer.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	const wchar_t *asyncLog(void);
-
-	// The current percentage completed of an asynchronous FTP upload or download. This
-	// property is updated in real-time and an application may periodically fetch and
-	// display it's value while the asynchronous data transfer is in progress.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	unsigned long get_AsyncPercentDone(void);
-
-	// Set to true if the asynchronous file transfer succeeded.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool get_AsyncSuccess(void);
-
 	// Same as AuthTls, except the command sent to the FTP server is "AUTH SSL" instead
 	// of "AUTH TLS". Most FTP servers accept either. AuthTls is more commonly used. If
 	// a particular server has trouble with AuthTls, try AuthSsl instead.
@@ -242,21 +201,21 @@ class CK_VISIBLE_PUBLIC CkFtp2W  : public CkClassWithCallbacksW
 	// a particular server has trouble with AuthTls, try AuthSsl instead.
 	void put_AuthSsl(bool newVal);
 
-	// Set this to true to switch to a TLS 1.0 encrypted channel. This property
-	// should be set prior to connecting. If this property is set, the port typically
-	// remains at it's default (21) and the Ssl property should *not* be set. When
-	// AuthTls is used, all control and data transmissions are encrypted. If your FTP
-	// client is behind a network-address-translating router, you may need to call
+	// Set this to true to switch to a TLS encrypted channel. This property should be
+	// set prior to connecting. If this property is set, the port typically remains at
+	// it's default (21) and the Ssl property should *not* be set. When AuthTls is
+	// used, all control and data transmissions are encrypted. If your FTP client is
+	// behind a network-address-translating router, you may need to call
 	// ClearControlChannel after connecting and authenticating (i.e. after calling the
 	// Connect method). This keeps all data transmissions encrypted, but clears the
 	// control channel so that commands are sent unencrypted, thus allowing the router
 	// to translate network IP numbers in FTP commands.
 	bool get_AuthTls(void);
-	// Set this to true to switch to a TLS 1.0 encrypted channel. This property
-	// should be set prior to connecting. If this property is set, the port typically
-	// remains at it's default (21) and the Ssl property should *not* be set. When
-	// AuthTls is used, all control and data transmissions are encrypted. If your FTP
-	// client is behind a network-address-translating router, you may need to call
+	// Set this to true to switch to a TLS encrypted channel. This property should be
+	// set prior to connecting. If this property is set, the port typically remains at
+	// it's default (21) and the Ssl property should *not* be set. When AuthTls is
+	// used, all control and data transmissions are encrypted. If your FTP client is
+	// behind a network-address-translating router, you may need to call
 	// ClearControlChannel after connecting and authenticating (i.e. after calling the
 	// Connect method). This keeps all data transmissions encrypted, but clears the
 	// control channel so that commands are sent unencrypted, thus allowing the router
@@ -412,6 +371,15 @@ class CK_VISIBLE_PUBLIC CkFtp2W  : public CkClassWithCallbacksW
 	// bandwidth throttle a 1-byte download???) As the downloaded file size gets
 	// larger, the transfer rate will better approximate this property's setting.
 	// 
+	// Also note: When downloading, the FTP server has no knowledge of the client's
+	// desire for throttling, and is always sending data as fast as possible. (There's
+	// nothing in the FTP protocol to request throttling.) Therefore, any throttling
+	// for a download on the client side is simply to allow system socket buffers
+	// (outgoing buffers on the sender, and incoming buffers on the client) to fill to
+	// 100% capacity, and this also poses the threat of causing a data connection to
+	// become broken. It's probably not worthwhile to attempt to throttle downloads. It
+	// may have been better that this property never existed.
+	// 
 	int get_BandwidthThrottleDown(void);
 	// If set to a non-zero value, the FTP2 component will bandwidth throttle all
 	// downloads to this value.
@@ -422,6 +390,15 @@ class CK_VISIBLE_PUBLIC CkFtp2W  : public CkClassWithCallbacksW
 	// Note: It is difficult to throttle very small downloads. (For example, how do you
 	// bandwidth throttle a 1-byte download???) As the downloaded file size gets
 	// larger, the transfer rate will better approximate this property's setting.
+	// 
+	// Also note: When downloading, the FTP server has no knowledge of the client's
+	// desire for throttling, and is always sending data as fast as possible. (There's
+	// nothing in the FTP protocol to request throttling.) Therefore, any throttling
+	// for a download on the client side is simply to allow system socket buffers
+	// (outgoing buffers on the sender, and incoming buffers on the client) to fill to
+	// 100% capacity, and this also poses the threat of causing a data connection to
+	// become broken. It's probably not worthwhile to attempt to throttle downloads. It
+	// may have been better that this property never existed.
 	// 
 	void put_BandwidthThrottleDown(int newVal);
 
@@ -1219,32 +1196,10 @@ class CK_VISIBLE_PUBLIC CkFtp2W  : public CkClassWithCallbacksW
 	// true and re-calling the upload or download method.
 	void put_RestartNext(bool newVal);
 
-	// This property is now deprecated, and has no effect in Chilkat versions 9.5.0.69
-	// and greater.
-	// 
-	// In the past, it affected how often percent completion callbacks were made.
-	// Setting it to a smaller value caused more frequent percentage completion event
-	// callbacks. The default value is 65536 (64K) and should generally not be changed.
-	// 
-	int get_SendBufferSize(void);
-	// This property is now deprecated, and has no effect in Chilkat versions 9.5.0.69
-	// and greater.
-	// 
-	// In the past, it affected how often percent completion callbacks were made.
-	// Setting it to a smaller value caused more frequent percentage completion event
-	// callbacks. The default value is 65536 (64K) and should generally not be changed.
-	// 
-	void put_SendBufferSize(int newVal);
-
 	// Contains the session log if KeepSessionLog is turned on.
 	void get_SessionLog(CkString &str);
 	// Contains the session log if KeepSessionLog is turned on.
 	const wchar_t *sessionLog(void);
-
-	// This property is deprecated and has no effect.
-	bool get_SkipFinalReply(void);
-	// This property is deprecated and has no effect.
-	void put_SkipFinalReply(bool newVal);
 
 	// The SOCKS4/SOCKS5 hostname or IPv4 address (in dotted decimal notation). This
 	// property is only used if the SocksVersion property is set to 4 or 5).
@@ -1630,6 +1585,21 @@ class CK_VISIBLE_PUBLIC CkFtp2W  : public CkClassWithCallbacksW
 	// was verified when connecting via SSL / TLS.
 	bool get_SslServerCertVerified(void);
 
+	// If true, then empty directories on the server are created locally when doing a
+	// download synchronization. If false, then only directories containing files
+	// that are downloaded are auto-created.
+	// 
+	// The default value of this property is true.
+	// 
+	bool get_SyncCreateAllLocalDirs(void);
+	// If true, then empty directories on the server are created locally when doing a
+	// download synchronization. If false, then only directories containing files
+	// that are downloaded are auto-created.
+	// 
+	// The default value of this property is true.
+	// 
+	void put_SyncCreateAllLocalDirs(bool newVal);
+
 	// The paths of the files uploaded or downloaded in the last call to
 	// SyncDeleteTree, SyncLocalDir, SyncLocalTree, SyncRemoteTree, or SyncRemoteTree2.
 	// The paths are listed one per line. In both cases (for upload and download) each
@@ -1675,6 +1645,22 @@ class CK_VISIBLE_PUBLIC CkFtp2W  : public CkClassWithCallbacksW
 	void put_SyncMustMatch(const wchar_t *newVal);
 
 	// Can contain a wildcarded list of file patterns separated by semicolons. For
+	// example, "xml; txt; data_*". If set, the Sync* upload and download methods will
+	// only enter directories that match any one of these patterns. Pattern matching is
+	// case-insensitive.
+	void get_SyncMustMatchDir(CkString &str);
+	// Can contain a wildcarded list of file patterns separated by semicolons. For
+	// example, "xml; txt; data_*". If set, the Sync* upload and download methods will
+	// only enter directories that match any one of these patterns. Pattern matching is
+	// case-insensitive.
+	const wchar_t *syncMustMatchDir(void);
+	// Can contain a wildcarded list of file patterns separated by semicolons. For
+	// example, "xml; txt; data_*". If set, the Sync* upload and download methods will
+	// only enter directories that match any one of these patterns. Pattern matching is
+	// case-insensitive.
+	void put_SyncMustMatchDir(const wchar_t *newVal);
+
+	// Can contain a wildcarded list of file patterns separated by semicolons. For
 	// example, "*.xml; *.txt; *.csv". If set, the Sync* upload and download methods
 	// will not transfer files that match any one of these patterns. Pattern matching
 	// is case-insensitive.
@@ -1701,6 +1687,22 @@ class CK_VISIBLE_PUBLIC CkFtp2W  : public CkClassWithCallbacksW
 	// DownloadTree and DirTreeXml methods.
 	// 
 	void put_SyncMustNotMatch(const wchar_t *newVal);
+
+	// Can contain a wildcarded list of file patterns separated by semicolons. For
+	// example, "xml; txt; data_*". If set, the Sync* upload and download methods will
+	// enter directories that match any one of these patterns. Pattern matching is
+	// case-insensitive.
+	void get_SyncMustNotMatchDir(CkString &str);
+	// Can contain a wildcarded list of file patterns separated by semicolons. For
+	// example, "xml; txt; data_*". If set, the Sync* upload and download methods will
+	// enter directories that match any one of these patterns. Pattern matching is
+	// case-insensitive.
+	const wchar_t *syncMustNotMatchDir(void);
+	// Can contain a wildcarded list of file patterns separated by semicolons. For
+	// example, "xml; txt; data_*". If set, the Sync* upload and download methods will
+	// enter directories that match any one of these patterns. Pattern matching is
+	// case-insensitive.
+	void put_SyncMustNotMatchDir(const wchar_t *newVal);
 
 	// Contains the list of files that would be transferred in a call to
 	// SyncRemoteTree2 when the previewOnly argument is set to true. This string
@@ -1792,6 +1794,34 @@ class CK_VISIBLE_PUBLIC CkFtp2W  : public CkClassWithCallbacksW
 	// 1.1", and "TLS 1.2".
 	const wchar_t *tlsVersion(void);
 
+	// This is a catch-all property to be used for uncommon needs. This property
+	// defaults to the empty string and should typically remain empty.
+	// 
+	// As of v9.5.0.78, the only possible value is:
+	//     "OpenNonExclusive" - When downloading files on Windows systems, open the
+	//     local file with non-exclusive access to allow other programs the ability to
+	//     access the file as it's being downloaded.
+	// 
+	void get_UncommonOptions(CkString &str);
+	// This is a catch-all property to be used for uncommon needs. This property
+	// defaults to the empty string and should typically remain empty.
+	// 
+	// As of v9.5.0.78, the only possible value is:
+	//     "OpenNonExclusive" - When downloading files on Windows systems, open the
+	//     local file with non-exclusive access to allow other programs the ability to
+	//     access the file as it's being downloaded.
+	// 
+	const wchar_t *uncommonOptions(void);
+	// This is a catch-all property to be used for uncommon needs. This property
+	// defaults to the empty string and should typically remain empty.
+	// 
+	// As of v9.5.0.78, the only possible value is:
+	//     "OpenNonExclusive" - When downloading files on Windows systems, open the
+	//     local file with non-exclusive access to allow other programs the ability to
+	//     access the file as it's being downloaded.
+	// 
+	void put_UncommonOptions(const wchar_t *newVal);
+
 	// The average upload rate in bytes/second. This property is updated in real-time
 	// during any FTP upload (asynchronous or synchronous).
 	int get_UploadTransferRate(void);
@@ -1866,67 +1896,6 @@ class CK_VISIBLE_PUBLIC CkFtp2W  : public CkClassWithCallbacksW
 	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *AppendFileFromTextDataAsync(const wchar_t *remoteFilename, const wchar_t *textData, const wchar_t *charset);
-
-	// Causes an asynchronous Get or Put to abort.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	void AsyncAbort(void);
-
-	// Initiates an asynchronous append. The file is uploaded and appended to an
-	// existing file on the FTP server. The append happens in a background thread and
-	// can be aborted by calling AsyncAbort. The AsyncFinished property can be checked
-	// periodically to determine when the background transfer is finished. The status
-	// of the transfer is available in the AsyncSuccess property. The last-error
-	// information is available in the AsyncLog property. The AsyncBytesSent property
-	// is updated in real time to reflect the current number of bytes sent while the
-	// transfer is in progress. The UploadRate is also updated with the current upload
-	// rate in bytes/second. While a transfer is in progress, a program may
-	// periodically read the UploadRate and AsyncBytesSent properties to display
-	// progress.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool AsyncAppendFileStart(const wchar_t *localFilename, const wchar_t *remoteFilename);
-
-	// Initiates an asynchronous file download. The download happens in a background
-	// thread and can be aborted by calling AsyncAbort. The AsyncFinished property can
-	// be checked periodically to determine when the background transfer is finished.
-	// The status of the transfer is available in the AsyncSuccess property. The
-	// last-error information is available in the AsyncLog property. The
-	// AsyncBytesReceived property is updated in real time to reflect the current
-	// number of bytes received while the transfer is in progress. The DownloadRate is
-	// also updated with the current download rate in bytes/second. While a transfer is
-	// in progress, a program may periodically read the DownloadRate and
-	// AsyncBytesReceived properties to display progress.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool AsyncGetFileStart(const wchar_t *remoteFilename, const wchar_t *localFilename);
-
-	// Initiates an asynchronous file upload. The file is uploaded and creates a new
-	// file on the FTP server, or overwrites an existing file. The upload happens in a
-	// background thread and can be aborted by calling AsyncAbort. The AsyncFinished
-	// property can be checked periodically to determine when the background transfer
-	// is finished. The status of the transfer is available in the AsyncSuccess
-	// property. The last-error information is available in the AsyncLog property. The
-	// AsyncBytesSent property is updated in real time to reflect the current number of
-	// bytes sent while the transfer is in progress. The UploadRate is also updated
-	// with the current upload rate in bytes/second. While a transfer is in progress, a
-	// program may periodically read the UploadRate and AsyncBytesSent properties to
-	// display progress.
-	// 
-	// This functionality is replaced by the new model for asynchronous programming
-	// introduced in Chilkat v9.5.0.52. Applications should use the new model, which is
-	// identified by methods having names ending with "Async" and return a task object.
-	// 
-	bool AsyncPutFileStart(const wchar_t *localFilename, const wchar_t *remoteFilename);
 
 	// Changes the current remote directory. The remoteDirPath should be relative to the current
 	// remote directory, which is initially the HOME directory of the FTP user account.
@@ -3841,6 +3810,11 @@ class CK_VISIBLE_PUBLIC CkFtp2W  : public CkClassWithCallbacksW
 
 	// Sets the password in a more secure way than setting the Password property.
 	// Calling this method is the equivalent of setting the Password property.
+	// 
+	// Note: Starting in v9.5.0.76, this method has been copied to SetSecurePassword.
+	// Applications should call SetSecurePassword instead because this method is now
+	// deprecated.
+	// 
 	bool SetPassword(CkSecureStringW &password);
 
 	// Sets the last-modified date/time of a file on the FTP server. Important: Not all
@@ -3871,6 +3845,10 @@ class CK_VISIBLE_PUBLIC CkFtp2W  : public CkClassWithCallbacksW
 	// arguments provided. (Async methods are available starting in Chilkat v9.5.0.52.)
 	// The caller is responsible for deleting the object returned by this method.
 	CkTaskW *SetRemoteFileDtAsync(CkDateTimeW &dt, const wchar_t *remoteFilename);
+
+	// Sets the password in a more secure way than setting the Password property.
+	// Calling this method is the equivalent of setting the Password property.
+	bool SetSecurePassword(CkSecureStringW &password);
 
 	// Enforces a requirement on the FTP server's certificate. The reqName can be
 	// "SubjectDN", "SubjectCN", "IssuerDN", or "IssuerCN". The reqName specifies the part

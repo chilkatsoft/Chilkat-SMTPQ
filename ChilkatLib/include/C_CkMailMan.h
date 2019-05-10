@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkMailMan_H
 #define _C_CkMailMan_H
 #include "chilkatDefs.h"
@@ -10,6 +10,15 @@ CK_VISIBLE_PUBLIC void CkMailMan_setAbortCheck(HCkMailMan cHandle, BOOL (*fnAbor
 CK_VISIBLE_PUBLIC void CkMailMan_setPercentDone(HCkMailMan cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkMailMan_setProgressInfo(HCkMailMan cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkMailMan_setTaskCompleted(HCkMailMan cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
+CK_VISIBLE_PUBLIC void CkMailMan_setAbortCheck2(HCkMailMan cHandle, BOOL (*fnAbortCheck2)(void *pContext));
+CK_VISIBLE_PUBLIC void CkMailMan_setPercentDone2(HCkMailMan cHandle, BOOL (*fnPercentDone2)(int pctDone, void *pContext));
+CK_VISIBLE_PUBLIC void CkMailMan_setProgressInfo2(HCkMailMan cHandle, void (*fnProgressInfo2)(const char *name, const char *value, void *pContext));
+CK_VISIBLE_PUBLIC void CkMailMan_setTaskCompleted2(HCkMailMan cHandle, void (*fnTaskCompleted2)(HCkTask hTask, void *pContext));
+
+// setExternalProgress is for C callback functions defined in the external programming language (such as Go)
+CK_VISIBLE_PUBLIC void CkMailMan_setExternalProgress(HCkMailMan cHandle, BOOL on);
+CK_VISIBLE_PUBLIC void CkMailMan_setCallbackContext(HCkMailMan cHandle, void *pContext);
 
 CK_VISIBLE_PUBLIC HCkMailMan CkMailMan_Create(void);
 CK_VISIBLE_PUBLIC void CkMailMan_Dispose(HCkMailMan handle);

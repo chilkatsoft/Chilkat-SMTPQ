@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkCert_H
 #define _CkCert_H
@@ -273,9 +273,11 @@ class CK_VISIBLE_PUBLIC CkCert  : public CkMultiByteBase
 	// The certificate's serial number as a hexidecimal string.
 	const char *serialNumber(void);
 
-	// Hexidecimal string of the SHA-1 thumbprint for the certificate.
+	// Hexidecimal string of the SHA-1 thumbprint for the certificate. (This is the
+	// SHA1 hash of the binary DER representation of the entire X.509 certificate.)
 	void get_Sha1Thumbprint(CkString &str);
-	// Hexidecimal string of the SHA-1 thumbprint for the certificate.
+	// Hexidecimal string of the SHA-1 thumbprint for the certificate. (This is the
+	// SHA1 hash of the binary DER representation of the entire X.509 certificate.)
 	const char *sha1Thumbprint(void);
 
 	// Returns true if the certificate and all certificates in the chain of authority
@@ -293,6 +295,17 @@ class CK_VISIBLE_PUBLIC CkCert  : public CkMultiByteBase
 	// provide information about the key container and private key: CspName,
 	// KeyContainerName, MachineKeyset, and Silent.
 	bool get_Silent(void);
+
+	// If set to true, then no dialog will automatically popup if the SmartCardPin is
+	// incorrect. Instead, the method requiring the private key on the smart card will
+	// fail. The default value of this property is false, which means that if the
+	// SmartCardPin property is incorrect, a dialog with prompt will be displayed.
+	bool get_SmartCardNoDialog(void);
+	// If set to true, then no dialog will automatically popup if the SmartCardPin is
+	// incorrect. Instead, the method requiring the private key on the smart card will
+	// fail. The default value of this property is false, which means that if the
+	// SmartCardPin property is incorrect, a dialog with prompt will be displayed.
+	void put_SmartCardNoDialog(bool newVal);
 
 	// Can be set to the PIN value for a certificate / private key stored on a smart
 	// card.
@@ -411,7 +424,22 @@ class CK_VISIBLE_PUBLIC CkCert  : public CkMultiByteBase
 	// ----------------------
 	// Returns 1 if the certificate has been revoked, 0 if not revoked, and -1 if
 	// unable to check the revocation status.
+	// 
+	// Note: This method is only implemented on Windows systems. It uses the underlying
+	// Microsoft CertVerifyRevocation Platform SDK function to check the revocation
+	// status of a certificate. (Search "CertVerifyRevocation" to get information about
+	// it.)
+	// 
+	// Non-Windows (and Windows) applications can send an OCSP request as shown in the
+	// example below.
+	// 
 	int CheckRevoked(void);
+
+
+	// Verifies that the SmartCardPin property setting is correct. Returns 1 if
+	// correct, 0 if incorrect, and -1 if unable to check because the underlying CSP
+	// does not support the functionality.
+	int CheckSmartCardPin(void);
 
 
 	// Exports the digital certificate to ASN.1 DER format.
@@ -500,6 +528,18 @@ class CK_VISIBLE_PUBLIC CkCert  : public CkMultiByteBase
 	// 
 	// On Windows systems, the registry-based certificate stores are automatically
 	// consulted if needed to locate intermediate or root certificates in the chain.
+	// Chilkat searches certificate stores in the following order. See System Store
+	// Locations
+	// <https://docs.microsoft.com/en-us/windows/desktop/seccrypto/system-store-location
+	// s> for more information.
+	//     Current-User "CA" Certificate Store
+	//     Local-Machine "CA" Certificate Store
+	//     Current-User "Root" Certificate Store
+	//     Local-Machine "Root" Certificate Store
+	//     Current-User "MY" Certificate Store
+	//     Local-Machine "MY" Certificate Store
+	//     Current-User "ADDRESSBOOK" Certificate Store (if it exists)
+	//     Local-Machine "ADDRESSBOOK" Certificate Store (if it exists)
 	// 
 	// The caller is responsible for deleting the object returned by this method.
 	CkCertChain *GetCertChain(void);
@@ -702,6 +742,39 @@ class CK_VISIBLE_PUBLIC CkCert  : public CkMultiByteBase
 	bool LoadFromFile(const char *path);
 
 
+	// Loads the X.509 certificate from the smartcard currently in the reader, or from
+	// a USB token.
+	// 
+	// The csp can be set to the name of the CSP (Cryptographic Service Provider) that
+	// should be used. If csp is an empty string, then the 1st CSP found matching one
+	// of the following names will be used:
+	// 
+	//     Microsoft Base Smart Card Crypto Provider
+	//     Bit4id Universal Middleware Provider
+	//     eToken Base Cryptographic Provider
+	//     FTSafe ePass1000 RSA Cryptographic Service Provider
+	//     SecureStoreCSP
+	//     EnterSafe ePass2003 CSP v2.0
+	//     Gemalto Classic Card CSP
+	//     PROXKey CSP India V1.0
+	//     PROXKey CSP India V2.0
+	//     TRUST KEY CSP V1.0
+	//     Watchdata Brazil CSP V1.0
+	//     Luna Cryptographic Services for Microsoft Windows
+	//     Luna SChannel Cryptographic Services for Microsoft Windows
+	//     Safenet RSA Full Cryptographic Provider
+	//     nCipher Enhanced Cryptographic Provider
+	//     SafeSign Standard Cryptographic Service Provider
+	//     SafeSign Standard RSA and AES Cryptographic Service Provider
+	//     MySmartLogon NFC CSP
+	//     NFC Connector Enterprise
+	//     ActivClient Cryptographic Service Provider
+	//     EnterSafe ePass2003 CSP v1.0
+	//     Oberthur Card Systems Cryptographic Provider
+	//     Athena ASECard Crypto CSP"
+	bool LoadFromSmartcard(const char *csp);
+
+
 	// Loads the certificate from a PEM string.
 	bool LoadPem(const char *strPem);
 
@@ -766,6 +839,20 @@ class CK_VISIBLE_PUBLIC CkCert  : public CkMultiByteBase
 	// if all signatures are verified to the trusted root. Otherwise returns false.
 	bool VerifySignature(void);
 
+
+	// Returns the base64 representation of an X509PKIPathv1 containing just the
+	// calling certificate. This is typically used in an X.509 Binary Security Token.
+	// It is a PKIPath that contains an ordered list of X.509 public certificates
+	// packaged in a PKIPath. The X509PKIPathv1 token type may be used to represent a
+	// certificate path. (This is sometimes used in XAdES signatures.)
+	bool X509PKIPathv1(CkString &outStr);
+
+	// Returns the base64 representation of an X509PKIPathv1 containing just the
+	// calling certificate. This is typically used in an X.509 Binary Security Token.
+	// It is a PKIPath that contains an ordered list of X.509 public certificates
+	// packaged in a PKIPath. The X509PKIPathv1 token type may be used to represent a
+	// certificate path. (This is sometimes used in XAdES signatures.)
+	const char *x509PKIPathv1(void);
 
 
 

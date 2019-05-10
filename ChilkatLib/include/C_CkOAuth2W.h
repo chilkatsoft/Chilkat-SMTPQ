@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkOAuth2WH
 #define _C_CkOAuth2WH
 #include "chilkatDefs.h"
@@ -41,6 +41,8 @@ CK_VISIBLE_PUBLIC void  CkOAuth2W_putDebugLogFilePath(HCkOAuth2W cHandle, const 
 CK_VISIBLE_PUBLIC const wchar_t *CkOAuth2W_debugLogFilePath(HCkOAuth2W cHandle);
 CK_VISIBLE_PUBLIC void CkOAuth2W_getFailureInfo(HCkOAuth2W cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkOAuth2W_failureInfo(HCkOAuth2W cHandle);
+CK_VISIBLE_PUBLIC BOOL CkOAuth2W_getIncludeNonce(HCkOAuth2W cHandle);
+CK_VISIBLE_PUBLIC void  CkOAuth2W_putIncludeNonce(HCkOAuth2W cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkOAuth2W_getLastErrorHtml(HCkOAuth2W cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkOAuth2W_lastErrorHtml(HCkOAuth2W cHandle);
 CK_VISIBLE_PUBLIC void CkOAuth2W_getLastErrorText(HCkOAuth2W cHandle, HCkString retval);
@@ -68,6 +70,12 @@ CK_VISIBLE_PUBLIC const wchar_t *CkOAuth2W_refreshToken(HCkOAuth2W cHandle);
 CK_VISIBLE_PUBLIC void CkOAuth2W_getResource(HCkOAuth2W cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkOAuth2W_putResource(HCkOAuth2W cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkOAuth2W_resource(HCkOAuth2W cHandle);
+CK_VISIBLE_PUBLIC void CkOAuth2W_getResponseMode(HCkOAuth2W cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void  CkOAuth2W_putResponseMode(HCkOAuth2W cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC const wchar_t *CkOAuth2W_responseMode(HCkOAuth2W cHandle);
+CK_VISIBLE_PUBLIC void CkOAuth2W_getResponseType(HCkOAuth2W cHandle, HCkString retval);
+CK_VISIBLE_PUBLIC void  CkOAuth2W_putResponseType(HCkOAuth2W cHandle, const wchar_t *newVal);
+CK_VISIBLE_PUBLIC const wchar_t *CkOAuth2W_responseType(HCkOAuth2W cHandle);
 CK_VISIBLE_PUBLIC void CkOAuth2W_getScope(HCkOAuth2W cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkOAuth2W_putScope(HCkOAuth2W cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkOAuth2W_scope(HCkOAuth2W cHandle);
@@ -91,6 +99,8 @@ CK_VISIBLE_PUBLIC HCkTaskW CkOAuth2W_MonitorAsync(HCkOAuth2W cHandle);
 CK_VISIBLE_PUBLIC BOOL CkOAuth2W_RefreshAccessToken(HCkOAuth2W cHandle);
 CK_VISIBLE_PUBLIC HCkTaskW CkOAuth2W_RefreshAccessTokenAsync(HCkOAuth2W cHandle);
 CK_VISIBLE_PUBLIC BOOL CkOAuth2W_SaveLastError(HCkOAuth2W cHandle, const wchar_t *path);
+CK_VISIBLE_PUBLIC BOOL CkOAuth2W_SetRefreshHeader(HCkOAuth2W cHandle, const wchar_t *name, const wchar_t *value);
+CK_VISIBLE_PUBLIC HCkTaskW CkOAuth2W_SetRefreshHeaderAsync(HCkOAuth2W cHandle, const wchar_t *name, const wchar_t *value);
 CK_VISIBLE_PUBLIC void CkOAuth2W_SleepMs(HCkOAuth2W cHandle, int millisec);
 CK_VISIBLE_PUBLIC BOOL CkOAuth2W_StartAuth(HCkOAuth2W cHandle, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkOAuth2W_startAuth(HCkOAuth2W cHandle);

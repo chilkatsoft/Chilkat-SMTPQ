@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkUpload_H
 #define _C_CkUpload_H
 #include "chilkatDefs.h"
@@ -10,6 +10,15 @@ CK_VISIBLE_PUBLIC void CkUpload_setAbortCheck(HCkUpload cHandle, BOOL (*fnAbortC
 CK_VISIBLE_PUBLIC void CkUpload_setPercentDone(HCkUpload cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkUpload_setProgressInfo(HCkUpload cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkUpload_setTaskCompleted(HCkUpload cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
+CK_VISIBLE_PUBLIC void CkUpload_setAbortCheck2(HCkUpload cHandle, BOOL (*fnAbortCheck2)(void *pContext));
+CK_VISIBLE_PUBLIC void CkUpload_setPercentDone2(HCkUpload cHandle, BOOL (*fnPercentDone2)(int pctDone, void *pContext));
+CK_VISIBLE_PUBLIC void CkUpload_setProgressInfo2(HCkUpload cHandle, void (*fnProgressInfo2)(const char *name, const char *value, void *pContext));
+CK_VISIBLE_PUBLIC void CkUpload_setTaskCompleted2(HCkUpload cHandle, void (*fnTaskCompleted2)(HCkTask hTask, void *pContext));
+
+// setExternalProgress is for C callback functions defined in the external programming language (such as Go)
+CK_VISIBLE_PUBLIC void CkUpload_setExternalProgress(HCkUpload cHandle, BOOL on);
+CK_VISIBLE_PUBLIC void CkUpload_setCallbackContext(HCkUpload cHandle, void *pContext);
 
 CK_VISIBLE_PUBLIC HCkUpload CkUpload_Create(void);
 CK_VISIBLE_PUBLIC void CkUpload_Dispose(HCkUpload handle);

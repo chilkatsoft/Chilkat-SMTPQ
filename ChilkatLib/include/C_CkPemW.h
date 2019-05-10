@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkPemWH
 #define _C_CkPemWH
 #include "chilkatDefs.h"
@@ -29,6 +29,7 @@ CK_VISIBLE_PUBLIC const wchar_t *CkPemW_lastErrorXml(HCkPemW cHandle);
 CK_VISIBLE_PUBLIC BOOL CkPemW_getLastMethodSuccess(HCkPemW cHandle);
 CK_VISIBLE_PUBLIC void  CkPemW_putLastMethodSuccess(HCkPemW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkPemW_getNumCerts(HCkPemW cHandle);
+CK_VISIBLE_PUBLIC int CkPemW_getNumCrls(HCkPemW cHandle);
 CK_VISIBLE_PUBLIC int CkPemW_getNumCsrs(HCkPemW cHandle);
 CK_VISIBLE_PUBLIC int CkPemW_getNumPrivateKeys(HCkPemW cHandle);
 CK_VISIBLE_PUBLIC int CkPemW_getNumPublicKeys(HCkPemW cHandle);

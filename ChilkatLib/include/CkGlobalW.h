@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkGlobalW_H
 #define _CkGlobalW_H
@@ -209,6 +209,23 @@ class CK_VISIBLE_PUBLIC CkGlobalW  : public CkWideCharBase
 	// can be used to satisfy this requirement.)
 	void put_UsePkcsConstructedEncoding(bool newVal);
 
+	// If set to true, then causes extremely verbose logging (in LastErrorText) all
+	// TLS connections in any Chilkat class. This property should only be used for
+	// troubleshooting TLS problems. The default value is false.
+	// 
+	// Note: This property only has effect on Chilkat objects not yet created. Set the
+	// property first, then instantiate the Chilkat object.
+	// 
+	bool get_VerboseTls(void);
+	// If set to true, then causes extremely verbose logging (in LastErrorText) all
+	// TLS connections in any Chilkat class. This property should only be used for
+	// troubleshooting TLS problems. The default value is false.
+	// 
+	// Note: This property only has effect on Chilkat objects not yet created. Set the
+	// property first, then instantiate the Chilkat object.
+	// 
+	void put_VerboseTls(bool newVal);
+
 
 
 	// ----------------------
@@ -229,6 +246,9 @@ class CK_VISIBLE_PUBLIC CkGlobalW  : public CkWideCharBase
 	// it exits. This is especially true for programs written in VBScript and VB6.
 	// 
 	bool FinalizeThreadPool(void);
+
+	// Logs a line to the thread pool log file.
+	bool ThreadPoolLogLine(const wchar_t *str);
 
 	// Unlocks the entire Chilkat API for all classes. This should be called once at
 	// the beginning of a program. Once unlocked, objects of any Chilkat class may be

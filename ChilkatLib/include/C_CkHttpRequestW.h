@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkHttpRequestWH
 #define _C_CkHttpRequestWH
 #include "chilkatDefs.h"
@@ -48,6 +48,7 @@ CK_VISIBLE_PUBLIC BOOL CkHttpRequestW_getVerboseLogging(HCkHttpRequestW cHandle)
 CK_VISIBLE_PUBLIC void  CkHttpRequestW_putVerboseLogging(HCkHttpRequestW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC void CkHttpRequestW_getVersion(HCkHttpRequestW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC const wchar_t *CkHttpRequestW_version(HCkHttpRequestW cHandle);
+CK_VISIBLE_PUBLIC BOOL CkHttpRequestW_AddBdForUpload(HCkHttpRequestW cHandle, const wchar_t *name, const wchar_t *remoteFilename, HCkBinDataW byteData, const wchar_t *contentType);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequestW_AddBytesForUpload(HCkHttpRequestW cHandle, const wchar_t *name, const wchar_t *remoteFileName, HCkByteData byteData);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequestW_AddBytesForUpload2(HCkHttpRequestW cHandle, const wchar_t *name, const wchar_t *remoteFileName, HCkByteData byteData, const wchar_t *contentType);
 CK_VISIBLE_PUBLIC BOOL CkHttpRequestW_AddFileForUpload(HCkHttpRequestW cHandle, const wchar_t *name, const wchar_t *filePath);

@@ -48,5 +48,5 @@ typedef uint64_t ulong64;
 
 #endif
 
-#endif
+#endif  // CK_INT_TYPES_H
 

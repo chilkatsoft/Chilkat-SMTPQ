@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkCspW_H
 #define _CkCspW_H
@@ -13,6 +13,8 @@
 #include "CkWideCharBase.h"
 
 class CkStringArrayW;
+class CkStringTableW;
+class CkCertW;
 
 
 
@@ -144,6 +146,10 @@ class CK_VISIBLE_PUBLIC CkCspW  : public CkWideCharBase
 	// The caller is responsible for deleting the object returned by this method.
 	CkStringArrayW *GetKeyContainerNames(void);
 
+	// Returns the names of the CSP's (Cryptographic Service Providers) that are
+	// registered on the Windows system.
+	bool GetProviders(CkStringTableW &providerNames);
+
 	// Returns true if the currently selected CSP contains an encryption algorithm
 	// matching the name and key length. Otherwise returns false.
 	bool HasEncryptAlgorithm(const wchar_t *name, int numBits);
@@ -154,6 +160,10 @@ class CK_VISIBLE_PUBLIC CkCspW  : public CkWideCharBase
 
 	// Intializes the Csp with the selected ProviderName.
 	bool Initialize(void);
+
+	// Loads the cert with the certificate currently in the smartcard reader, or the
+	// USB token that is currently inserted.
+	bool LoadSmartcardCert(CkCertW &cert);
 
 	// Returns the name of the Nth encryption algorithm provided by the currently
 	// selected CSP. Indexing begins at 0.

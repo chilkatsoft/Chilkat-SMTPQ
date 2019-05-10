@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkRestWH
 #define _C_CkRestWH
 #include "chilkatDefs.h"
@@ -26,6 +26,8 @@ CK_VISIBLE_PUBLIC void  CkRestW_putConnectTimeoutMs(HCkRestW cHandle, int newVal
 CK_VISIBLE_PUBLIC void CkRestW_getDebugLogFilePath(HCkRestW cHandle, HCkString retval);
 CK_VISIBLE_PUBLIC void  CkRestW_putDebugLogFilePath(HCkRestW cHandle, const wchar_t *newVal);
 CK_VISIBLE_PUBLIC const wchar_t *CkRestW_debugLogFilePath(HCkRestW cHandle);
+CK_VISIBLE_PUBLIC BOOL CkRestW_getDebugMode(HCkRestW cHandle);
+CK_VISIBLE_PUBLIC void  CkRestW_putDebugMode(HCkRestW cHandle, BOOL newVal);
 CK_VISIBLE_PUBLIC int CkRestW_getHeartbeatMs(HCkRestW cHandle);
 CK_VISIBLE_PUBLIC void  CkRestW_putHeartbeatMs(HCkRestW cHandle, int newVal);
 CK_VISIBLE_PUBLIC void CkRestW_getHost(HCkRestW cHandle, HCkString retval);
@@ -104,6 +106,7 @@ CK_VISIBLE_PUBLIC HCkTaskW CkRestW_FullRequestStreamAsync(HCkRestW cHandle, cons
 CK_VISIBLE_PUBLIC BOOL CkRestW_FullRequestString(HCkRestW cHandle, const wchar_t *httpVerb, const wchar_t *uriPath, const wchar_t *bodyText, HCkString outStr);
 CK_VISIBLE_PUBLIC const wchar_t *CkRestW_fullRequestString(HCkRestW cHandle, const wchar_t *httpVerb, const wchar_t *uriPath, const wchar_t *bodyText);
 CK_VISIBLE_PUBLIC HCkTaskW CkRestW_FullRequestStringAsync(HCkRestW cHandle, const wchar_t *httpVerb, const wchar_t *uriPath, const wchar_t *bodyText);
+CK_VISIBLE_PUBLIC BOOL CkRestW_GetLastDebugRequest(HCkRestW cHandle, HCkBinDataW bd);
 CK_VISIBLE_PUBLIC BOOL CkRestW_ReadRespBd(HCkRestW cHandle, HCkBinDataW responseBody);
 CK_VISIBLE_PUBLIC HCkTaskW CkRestW_ReadRespBdAsync(HCkRestW cHandle, HCkBinDataW responseBody);
 CK_VISIBLE_PUBLIC BOOL CkRestW_ReadRespBodyBinary(HCkRestW cHandle, HCkByteData outBytes);

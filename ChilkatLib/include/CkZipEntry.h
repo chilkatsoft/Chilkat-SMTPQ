@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-// This header is generated for Chilkat 9.5.0.75
+// This header is generated for Chilkat 9.5.0.78
 
 #ifndef _CkZipEntry_H
 #define _CkZipEntry_H
@@ -271,10 +271,14 @@ class CK_VISIBLE_PUBLIC CkZipEntry  : public CkClassWithCallbacks
 	CkTask *ExtractAsync(const char *dirPath);
 
 
-	// Unzip a file into a specific directory
+	// Unzip a file into a specific directory. If this entry is a directory, then
+	// nothing occurs. (An application can check the IsDirectory property and instead
+	// call Extract if it is desired to create the directory. )
 	bool ExtractInto(const char *dirPath);
 
-	// Unzip a file into a specific directory
+	// Unzip a file into a specific directory. If this entry is a directory, then
+	// nothing occurs. (An application can check the IsDirectory property and instead
+	// call Extract if it is desired to create the directory. )
 	CkTask *ExtractIntoAsync(const char *dirPath);
 
 

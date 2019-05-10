@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkEmail_H
 #define _C_CkEmail_H
 #include "chilkatDefs.h"
@@ -183,6 +183,7 @@ CK_VISIBLE_PUBLIC BOOL CkEmail_BEncodeBytes(HCkEmail cHandle, HCkByteData inData
 CK_VISIBLE_PUBLIC const char *CkEmail_bEncodeBytes(HCkEmail cHandle, HCkByteData inData, const char *charset);
 CK_VISIBLE_PUBLIC BOOL CkEmail_BEncodeString(HCkEmail cHandle, const char *str, const char *charset, HCkString outEncodedStr);
 CK_VISIBLE_PUBLIC const char *CkEmail_bEncodeString(HCkEmail cHandle, const char *str, const char *charset);
+CK_VISIBLE_PUBLIC void CkEmail_Clear(HCkEmail cHandle);
 CK_VISIBLE_PUBLIC void CkEmail_ClearBcc(HCkEmail cHandle);
 CK_VISIBLE_PUBLIC void CkEmail_ClearCC(HCkEmail cHandle);
 CK_VISIBLE_PUBLIC void CkEmail_ClearEncryptCerts(HCkEmail cHandle);
@@ -192,6 +193,7 @@ CK_VISIBLE_PUBLIC BOOL CkEmail_ComputeGlobalKey(HCkEmail cHandle, const char *en
 CK_VISIBLE_PUBLIC const char *CkEmail_computeGlobalKey(HCkEmail cHandle, const char *encoding, BOOL bFold);
 CK_VISIBLE_PUBLIC BOOL CkEmail_ComputeGlobalKey2(HCkEmail cHandle, const char *encoding, BOOL bFold, HCkString outStr);
 CK_VISIBLE_PUBLIC const char *CkEmail_computeGlobalKey2(HCkEmail cHandle, const char *encoding, BOOL bFold);
+CK_VISIBLE_PUBLIC BOOL CkEmail_ConvertInlineImages(HCkEmail cHandle);
 CK_VISIBLE_PUBLIC HCkEmail CkEmail_CreateDsn(HCkEmail cHandle, const char *humanReadableMessage, const char *xmlStatusFields, BOOL bHeaderOnly);
 CK_VISIBLE_PUBLIC HCkEmail CkEmail_CreateForward(HCkEmail cHandle);
 CK_VISIBLE_PUBLIC HCkEmail CkEmail_CreateMdn(HCkEmail cHandle, const char *humanReadableMessage, const char *xmlStatusFields, BOOL bHeaderOnly);

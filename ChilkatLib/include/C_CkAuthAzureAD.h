@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkAuthAzureAD_H
 #define _C_CkAuthAzureAD_H
 #include "chilkatDefs.h"
@@ -10,6 +10,15 @@ CK_VISIBLE_PUBLIC void CkAuthAzureAD_setAbortCheck(HCkAuthAzureAD cHandle, BOOL 
 CK_VISIBLE_PUBLIC void CkAuthAzureAD_setPercentDone(HCkAuthAzureAD cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkAuthAzureAD_setProgressInfo(HCkAuthAzureAD cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkAuthAzureAD_setTaskCompleted(HCkAuthAzureAD cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
+CK_VISIBLE_PUBLIC void CkAuthAzureAD_setAbortCheck2(HCkAuthAzureAD cHandle, BOOL (*fnAbortCheck2)(void *pContext));
+CK_VISIBLE_PUBLIC void CkAuthAzureAD_setPercentDone2(HCkAuthAzureAD cHandle, BOOL (*fnPercentDone2)(int pctDone, void *pContext));
+CK_VISIBLE_PUBLIC void CkAuthAzureAD_setProgressInfo2(HCkAuthAzureAD cHandle, void (*fnProgressInfo2)(const char *name, const char *value, void *pContext));
+CK_VISIBLE_PUBLIC void CkAuthAzureAD_setTaskCompleted2(HCkAuthAzureAD cHandle, void (*fnTaskCompleted2)(HCkTask hTask, void *pContext));
+
+// setExternalProgress is for C callback functions defined in the external programming language (such as Go)
+CK_VISIBLE_PUBLIC void CkAuthAzureAD_setExternalProgress(HCkAuthAzureAD cHandle, BOOL on);
+CK_VISIBLE_PUBLIC void CkAuthAzureAD_setCallbackContext(HCkAuthAzureAD cHandle, void *pContext);
 
 CK_VISIBLE_PUBLIC HCkAuthAzureAD CkAuthAzureAD_Create(void);
 CK_VISIBLE_PUBLIC void CkAuthAzureAD_Dispose(HCkAuthAzureAD handle);

@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkTrustedRoots_H
 #define _C_CkTrustedRoots_H
 #include "chilkatDefs.h"
@@ -10,6 +10,15 @@ CK_VISIBLE_PUBLIC void CkTrustedRoots_setAbortCheck(HCkTrustedRoots cHandle, BOO
 CK_VISIBLE_PUBLIC void CkTrustedRoots_setPercentDone(HCkTrustedRoots cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkTrustedRoots_setProgressInfo(HCkTrustedRoots cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkTrustedRoots_setTaskCompleted(HCkTrustedRoots cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
+CK_VISIBLE_PUBLIC void CkTrustedRoots_setAbortCheck2(HCkTrustedRoots cHandle, BOOL (*fnAbortCheck2)(void *pContext));
+CK_VISIBLE_PUBLIC void CkTrustedRoots_setPercentDone2(HCkTrustedRoots cHandle, BOOL (*fnPercentDone2)(int pctDone, void *pContext));
+CK_VISIBLE_PUBLIC void CkTrustedRoots_setProgressInfo2(HCkTrustedRoots cHandle, void (*fnProgressInfo2)(const char *name, const char *value, void *pContext));
+CK_VISIBLE_PUBLIC void CkTrustedRoots_setTaskCompleted2(HCkTrustedRoots cHandle, void (*fnTaskCompleted2)(HCkTask hTask, void *pContext));
+
+// setExternalProgress is for C callback functions defined in the external programming language (such as Go)
+CK_VISIBLE_PUBLIC void CkTrustedRoots_setExternalProgress(HCkTrustedRoots cHandle, BOOL on);
+CK_VISIBLE_PUBLIC void CkTrustedRoots_setCallbackContext(HCkTrustedRoots cHandle, void *pContext);
 
 CK_VISIBLE_PUBLIC HCkTrustedRoots CkTrustedRoots_Create(void);
 CK_VISIBLE_PUBLIC void CkTrustedRoots_Dispose(HCkTrustedRoots handle);

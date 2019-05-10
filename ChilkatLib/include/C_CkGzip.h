@@ -1,4 +1,4 @@
-// This is a generated source file for Chilkat version 9.5.0.75
+// This is a generated source file for Chilkat version 9.5.0.78
 #ifndef _C_CkGzip_H
 #define _C_CkGzip_H
 #include "chilkatDefs.h"
@@ -10,6 +10,15 @@ CK_VISIBLE_PUBLIC void CkGzip_setAbortCheck(HCkGzip cHandle, BOOL (*fnAbortCheck
 CK_VISIBLE_PUBLIC void CkGzip_setPercentDone(HCkGzip cHandle, BOOL (*fnPercentDone)(int pctDone));
 CK_VISIBLE_PUBLIC void CkGzip_setProgressInfo(HCkGzip cHandle, void (*fnProgressInfo)(const char *name, const char *value));
 CK_VISIBLE_PUBLIC void CkGzip_setTaskCompleted(HCkGzip cHandle, void (*fnTaskCompleted)(HCkTask hTask));
+
+CK_VISIBLE_PUBLIC void CkGzip_setAbortCheck2(HCkGzip cHandle, BOOL (*fnAbortCheck2)(void *pContext));
+CK_VISIBLE_PUBLIC void CkGzip_setPercentDone2(HCkGzip cHandle, BOOL (*fnPercentDone2)(int pctDone, void *pContext));
+CK_VISIBLE_PUBLIC void CkGzip_setProgressInfo2(HCkGzip cHandle, void (*fnProgressInfo2)(const char *name, const char *value, void *pContext));
+CK_VISIBLE_PUBLIC void CkGzip_setTaskCompleted2(HCkGzip cHandle, void (*fnTaskCompleted2)(HCkTask hTask, void *pContext));
+
+// setExternalProgress is for C callback functions defined in the external programming language (such as Go)
+CK_VISIBLE_PUBLIC void CkGzip_setExternalProgress(HCkGzip cHandle, BOOL on);
+CK_VISIBLE_PUBLIC void CkGzip_setCallbackContext(HCkGzip cHandle, void *pContext);
 
 CK_VISIBLE_PUBLIC HCkGzip CkGzip_Create(void);
 CK_VISIBLE_PUBLIC void CkGzip_Dispose(HCkGzip handle);
